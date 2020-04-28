@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>title</title>
+    <meta charset="utf-8" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/little_ak.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/little_ak-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: top, left, inverse
+
+
+## ACCE DTP 
+
+### _Reproducible Research Data and Project Management in R_
+
+***
+
+.bottom[
+# Metadata
+
+&lt;br&gt;
+
+**&lt;svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;
+  &lt;path d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"&gt;&lt;/path&gt;
+&lt;/svg&gt; Apr-May 2020**
+&lt;br&gt;
+
+**&lt;svg viewBox="0 0 288 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;
+  &lt;path d="M112 316.94v156.69l22.02 33.02c4.75 7.12 15.22 7.12 19.97 0L176 473.63V316.94c-10.39 1.92-21.06 3.06-32 3.06s-21.61-1.14-32-3.06zM144 0C64.47 0 0 64.47 0 144s64.47 144 144 144 144-64.47 144-144S223.53 0 144 0zm0 76c-37.5 0-68 30.5-68 68 0 6.62-5.38 12-12 12s-12-5.38-12-12c0-50.73 41.28-92 92-92 6.62 0 12 5.38 12 12s-5.38 12-12 12z"&gt;&lt;/path&gt;
+&lt;/svg&gt; Online** 
+]
+
+---
+## You got data. Is it enough?
+
+&lt;blockquote class="twitter-tweet" data-conversation="none" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;&lt;a href="https://twitter.com/tomjwebb"&gt;@tomjwebb&lt;/a&gt; I see tons of spreadsheets that i don&amp;#39;t understand anything (or the stduent), making it really hard to share.&lt;/p&gt;&amp;mdash; Erika Berenguer (@Erika_Berenguer) &lt;a href="https://twitter.com/Erika_Berenguer/status/556111838715580417"&gt;January 16, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+
+&lt;blockquote class="twitter-tweet" data-conversation="none" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;&lt;a href="https://twitter.com/tomjwebb"&gt;@tomjwebb&lt;/a&gt; &lt;a href="https://twitter.com/ScientificData"&gt;@ScientificData&lt;/a&gt; &amp;quot;Document. Everything.&amp;quot; Data without documentation has no value.&lt;/p&gt;&amp;mdash; Sven Kochmann (@indianalytics) &lt;a href="https://twitter.com/indianalytics/status/556120920881115136"&gt;January 16, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+---
+
+&lt;blockquote class="twitter-tweet" data-conversation="none" data-lang="en"&gt;&lt;p lang="it" dir="ltr"&gt;&lt;a href="https://twitter.com/tomjwebb"&gt;@tomjwebb&lt;/a&gt; Annotate, annotate, annotate!&lt;/p&gt;&amp;mdash; CanJFishAquaticSci (@cjfas) &lt;a href="https://twitter.com/cjfas/status/556109252788379649"&gt;January 16, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;blockquote class="twitter-tweet" data-conversation="none" data-lang="en"&gt;&lt;p lang="und" dir="ltr"&gt;Document all the metadata (including protocols).&lt;a href="https://twitter.com/tomjwebb"&gt;@tomjwebb&lt;/a&gt;&lt;/p&gt;&amp;mdash; Ward Appeltans (@WrdAppltns) &lt;a href="https://twitter.com/WrdAppltns/status/556108414955560961"&gt;January 16, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+---
+
+&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;You download a zip file of &lt;a href="https://twitter.com/hashtag/OpenData?src=hash"&gt;#OpenData&lt;/a&gt;. Apart from your data file(s), what else should it contain?&lt;/p&gt;&amp;mdash; Leigh Dodds (@ldodds) &lt;a href="https://twitter.com/ldodds/status/828657155863638016"&gt;February 6, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+---
+
+## **#otherpeoplesdata dream match!**
+
+#### **Thought experiment: Imagine a dream open data set**
+#### **How would you locate it?**
+
+- what details would you need to know to determine relevance? 
+- what information would you need to know to use it?
+
+
+&lt;img src="assets/img/missing-unicorn.jpg" height="300px"&gt;
+
+---
+
+class: top, right, inverse
+
+# metadata = data about data
+
+***
+
+
+---
+
+
+
+&gt; ### _"Information that **describes, explains, locates**, or in some way makes it easier to **find, access**, and **use** a resource (in this case, data)."_" 
+
+.pull-left[
+&lt;img src="http://chiphouston.com/wp-content/uploads/2016/06/who-what-when-where-and-why11.jpg" width="200px"&gt;
+]
+
+.pull-right[
+### **Data Reuse Checklist**
+
+&lt;http://mozillascience.github.io/checklist/&gt;&lt;img src="https://mozillascience.github.io/working-open-workshop/assets/images/science-lab-logo.svg" width="300px"&gt;
+]
+
+
+&gt; ### **Backbone of digital curation**
+&gt;
+&gt; **Without it, a digital resource may be irretrievable, unidentifiable or unusable**
+
+---
+
+### **Descriptive**
+
+- enables **identification, location** and **retrieval** of data, often includes use of **controlled vocabularies** for classification and indexing.
+
+### **Technical**
+
+- describes the **technical processes** used to **produce**, or required to **use** a digital data object.
+
+### **Administrative**
+
+- used to manage **administrative aspects** of the digital object e.g. **intellectual property rights and acquisition.**
+
+
+---
+
+## **Elements of metadata**
+
+- #### **Structured data files:**
+    - readable by machines and humans, accessible through the web
+- #### **Controlled vocabularies** eg. [NERC Vocabulary server](https://www.bodc.ac.uk/resources/products/web_services/vocab/)
+    - allows for connectivity of data
+    
+### **KEY TO SEARCH FUNCTION**
+- By structuring &amp; adhering to controlled vocabularies, data can be **combined, accessed** and **searched!**
+- **Different communities** develop **different standards** which define both the structure and content of metadata
+
+
+---
+
+class: top, right, inverse
+
+# metadata in research
+
+***
+
+
+---
+
+## Identifying the right metadata standard
+
+
+- **General:** Dublin Core Metadata Initiative [Specification](http://dublincore.org/specifications/)
+
+- **[NERC Data Centers:](https://nerc.ukri.org/research/sites/data/)** Check with individual data centers for their metadata specification.
+
+- **[Re3data.org](https://www.re3data.org/):** Registry of Research Data Repositories.
+
+---
+
+### **Seek help from support teams**
+
+Most university libraries have assistants dedicated to Research Data Management:
+
+&lt;blockquote class="twitter-tweet" data-conversation="none" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;&lt;a href="https://twitter.com/tomjwebb"&gt;@tomjwebb&lt;/a&gt; &lt;a href="https://twitter.com/ScientificData"&gt;@ScientificData&lt;/a&gt; Talk to their librarian for data management strategies &lt;a href="https://twitter.com/hashtag/datainfolit?src=hash"&gt;#datainfolit&lt;/a&gt;&lt;/p&gt;&amp;mdash; Yasmeen Shorish (@yasmeen_azadi) &lt;a href="https://twitter.com/yasmeen_azadi/status/556129700129800192"&gt;January 16, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+
+---
+
+# Key metadata:
+
+## the bare minimum
+
+### document **data coverage** information
+
+- **taxonomic coverage**: a table containing **taxonomic information on species in data**.
+    - also record authority / source
+- **temporal coverage**: temporal range and resolution details
+- **spatial coverage**: 
+    + a human readable geographic description of the study area
+    + spatial range and resolution details
+    + include depth (marine/freshwater) or altitudinal (terrestrial) information
+
+Make sure to record units!
+
+---
+
+### document protocols in a `methods` document
+
+Keep a dynamic document used to **plan**, **record** and **write up** methods. 
+
+&lt;blockquote class="twitter-tweet" data-conversation="none" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;&lt;a href="https://twitter.com/tomjwebb"&gt;@tomjwebb&lt;/a&gt; record every detail about how/where/why it is collected&lt;/p&gt;&amp;mdash; Sal Keith (@Sal_Keith) &lt;a href="https://twitter.com/Sal_Keith/status/556110605053349888"&gt;January 16, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+**Any additional information other users would need to combine your data with theirs? Record it**
+---
+
+class: inverse, middle, center
+
+# Practical metadata
+
+***
+
+---
+
+# [ACCE DTP RDM](https://acce.shef.ac.uk/event/acce-data-management-workshop/) course
+
+&lt;br&gt;
+
+Teaching this course has always felt challenging in terms of practical exercises
+
+--
+- **Defining** Metadata &amp; **explaining importance**: ✅
+
+--
+
+- Advising on domain specific **Controlled Vocabularies** &amp; **structure** ❌
+
+- How can we practice creating metadata?
+
+
+
+---
+
+# [rOpenSci Unconf 18](http://unconf18.ropensci.org/)
+##### May 21 - 22, 2018. Seattle
+
+![](assets/seattle.svg)
+
+
+
+
+---    
+
+# rOpenSci Unconf mission
+
+
+&gt; bringing together scientists, developers, and open data enthusiasts from academia, industry, government, and non-profits to get together for a few days and hack on various projects.
+
+&lt;br&gt;
+
+#### Ideas for projects submitted through GitHub [**issues**](https://github.com/ropensci/unconf18/issues) in the [**runconf18** repo](https://github.com/ropensci/unconf18)
+
+---
+
+## issue [#72](https://github.com/ropensci/unconf18/issues/72) 🙋
+
+
+&lt;img src="assets/issue.png" width="100%"&gt;
+
+---
+
+
+# Metadata team!
+------------
+
+Luckily, a **whole bunch of other awesome folks** were also thinking about these topics and interested in working on them! 🤩
+
+(in alphabetical order):
+
+-   [Carl Boettiger](https://github.com/cboettig)
+-   [Scott Chamberlain](https://github.com/sckott)
+-   [Auriel Fournier](https://github.com/aurielfournier): #[41](https://github.com/ropensci/unconf18/issues/41)
+-   [Kelly Hondula](https://github.com/khondula)
+-   [Anna Krystalli](https://github.com/annakrystalli)
+-   [Bryce Mecum](https://github.com/amoeba)
+-   [Maëlle Salmon](https://github.com/maelle)
+-   [Kate Webbink](https://github.com/magpiedin): #[52](https://github.com/ropensci/unconf18/issues/52)
+-   [Kara Woo](https://github.com/karawoo): #[68](https://github.com/ropensci/unconf18/issues/68)
+
+
+---
+
+
+# [rOpenSciLabs](https://github.com/ropenscilabs) pkg [**`dataspice`**](https://github.com/ropenscilabs/dataspice) 
+
+&gt; Package [**`dataspice`**](https://github.com/ropenscilabs/dataspice) makes it easier for researchers to **create basic, lightweight and concise metadata files for their datasets**. 
+
+&lt;br&gt;
+
+- Metadata **collected in `csv` files**
+
+--
+
+- Metadata fields are **based on [schema.org](http://schema.org/Dataset)**
+    + underlies Google [Datasets](https://developers.google.com/search/docs/data-types/dataset) metadata specification
+
+--
+
+- Helper functions and shinyapps to **extract and edit metadata files**.
+
+--
+
+- Ability to produce:
+    + **structured json-ld metadata file**.
+    + a helpful dataset **README webpage**.
+ 
+    
+&lt;br&gt; 
+
+---
+
+### [Google unveils search engine for open data](https://www.nature.com/articles/d41586-018-06201-x)
+#### _The tool, called Google Dataset Search, should help researchers to find the data they need more easily._
+##### Nature NEWS - 05 SEPTEMBER 2018
+
+
+
+&lt;img src="assets/google_search.png" width="100%"&gt;
+
+&lt;br&gt;
+
+***
+
+&lt;https://toolbox.google.com/datasetsearch&gt;
+
+---
+class: inverse, middle, center
+
+# `dataspice` tutorial
+
+&lt;br&gt;
+
+#### tutorial repo: 
+### &lt;https://github.com/annakrystalli/dataspice-tutorial&gt;
+
+#### useful links: 
+### &lt;http://annakrystalli.me/dataspice-tutorial/useful_links.html&gt;
+
+---
+
+# `dataspice` tutorial
+
+&lt;br&gt;
+
+The goal of dataspice-tutorial is a **practical exercise in creating metadata** for an **example field collected data product** using package `dataspice`. 
+
+- Understand basic metadata and why it is important
+
+--
+
+- Understand where and how to store them
+
+--
+
+- Understand how they can feed into more complex metadata objects.
+
+---
+
+
+## `dataspice` workflow
+
+&lt;img src="https://github.com/ropenscilabs/dataspice/raw/master/man/figures/dataspice_workflow.png" width="100%"&gt;
+
+---
+
+
+# Example dataset
+
+### Data source : 
+
+#### [National Ecological Observatory Network](https://www.neonscience.org/) (NEON) data portal 
+
+
+
+### Dataset selected:
+
+#### *Woody plant vegetation structure*
+
+ This data product contains the quality-controlled, native sampling resolution data from **in-situ measurements of live and standing dead woody individuals and shrub groups**, from all **terrestrial NEON sites** with qualifying woody vegetation. 
+
+--
+ 
+- **Structure and mapping data** are reported **per individual per plot**
+
+- **Sampling metadata**, such as per growth form sampling area, are reported **per plot**. 
+
+---
+
+# `dataspice` workshop data
+
+![](http://data.neonscience.org/neon-data-theme/images/logo--blue-neon-data.png)
+
+The data are a **trimmed subset** of data downladed from the [**NEON data portal**](http://data.neonscience.org/browse-data) after filtering for:
+
+- time periods between **`2015-06` - `2016-06`**
+
+- locations within NEON Domain area **`D01: Northeast`**
+
+Filter returned data from **2 sites** from **`2015-6`** to **`2015-11`**.
+
+&lt;br&gt;
+
+***
+
+##### Citation:
+_National Ecological Observatory Network. 2018. Data Products: DP1.10098.001.  Provisional data downloaded from http://data.neonscience.org on 2018-05-04. Battelle, Boulder, CO, USA_
+
+
+
+---
+
+## vst_perplotperyear.csv
+
+Plot level data
+
+
+```
+## # A tibble: 231 x 17
+##    uid   namedLocation date       domainID siteID plotID plotType nlcdClass decimalLatitude
+##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;               &lt;dbl&gt;
+##  1 13b4… BART_001.bas… 2016-10-19 D01      BART   BART_… distrib… mixedFor…            44.0
+##  2 93ee… BART_002.bas… 2016-09-27 D01      BART   BART_… distrib… deciduou…            44.0
+##  3 4b5f… BART_003.bas… 2016-09-28 D01      BART   BART_… distrib… deciduou…            44.1
+##  4 dbbd… BART_004.bas… 2016-10-19 D01      BART   BART_… distrib… mixedFor…            44.0
+##  5 f254… BART_005.bas… 2016-09-23 D01      BART   BART_… distrib… mixedFor…            44.1
+##  6 6659… BART_006.bas… 2016-09-21 D01      BART   BART_… distrib… deciduou…            44.1
+##  7 7300… BART_007.bas… 2016-10-18 D01      BART   BART_… distrib… mixedFor…            44.0
+##  8 07c9… BART_010.bas… 2016-09-19 D01      BART   BART_… distrib… deciduou…            44.1
+##  9 5574… BART_011.bas… 2016-10-17 D01      BART   BART_… distrib… mixedFor…            44.1
+## 10 afc5… BART_012.bas… 2016-10-18 D01      BART   BART_… distrib… deciduou…            44.0
+## # … with 221 more rows, and 8 more variables: decimalLongitude &lt;dbl&gt;, geodeticDatum &lt;chr&gt;,
+## #   easting &lt;dbl&gt;, northing &lt;dbl&gt;, utmZone &lt;chr&gt;, elevation &lt;dbl&gt;, elevationUncertainty &lt;dbl&gt;,
+## #   eventID &lt;chr&gt;
+```
+
+---
+
+## vst_mappingandtagging.csv
+
+Individual level data
+
+
+```
+## # A tibble: 8,000 x 14
+##    uid   namedLocation date       eventID domainID siteID plotID pointID stemDistance stemAzimuth
+##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+##  1 f6df… BART_013.bas… 2014-09-15 vst_BA… D01      BART   BART_…      57         22.3       138. 
+##  2 8c27… BART_013.bas… 2014-09-15 vst_BA… D01      BART   BART_…      49          5.1       134. 
+##  3 8382… BART_013.bas… 2014-09-15 vst_BA… D01      BART   BART_…      49          4.6       140. 
+##  4 1431… BART_013.bas… 2014-09-15 vst_BA… D01      BART   BART_…      57         21.6       127. 
+##  5 75b3… BART_004.bas… 2014-09-11 vst_BA… D01      BART   BART_…      41          3           2.3
+##  6 4ab2… BART_007.bas… 2014-09-04 vst_BA… D01      BART   BART_…      41          6.1       356. 
+##  7 4e4a… BART_007.bas… 2014-09-04 vst_BA… D01      BART   BART_…      49          5.3       108. 
+##  8 8a7e… BART_007.bas… 2014-09-04 vst_BA… D01      BART   BART_…      49          3         124. 
+##  9 9119… BART_007.bas… 2014-09-04 vst_BA… D01      BART   BART_…      41          9.5       197. 
+## 10 935e… BART_007.bas… 2014-09-04 vst_BA… D01      BART   BART_…      41          5          30.9
+## # … with 7,990 more rows, and 4 more variables: individualID &lt;chr&gt;, taxonID &lt;chr&gt;,
+## #   scientificName &lt;chr&gt;, taxonRank &lt;chr&gt;
+```
+
+
+
+
+---
+class: inverse, right, center
+
+# Practical
+
+***
+
+--
+
+### time for some live coding 😱
+
+&lt;br&gt;
+&lt;br&gt;
+
+***
+
+_or head to the [tutorial](http://annakrystalli.me/dataspice-tutorial/) if working through this on your own_
+
+---
+class: inverse, right, center
+
+# Outro
+
+***
+
+---
+
+# Additional metadata tips
+
+- ### The approach we went for is very general / minimal
+
+--
+
+- #### You can **make your datasets more discoverable** by developing **richer/more domain specific metadata** files. 
+
+--
+
+- eg. create [Ecological Metadata Language (EML)](https://knb.ecoinformatics.org/#external//emlparser/docs/index.html) metadata using r pkg [`EML`](https://github.com/ropensci/EML). 
+
+--  
+
+- reposit your data at [KNB](https://knb.ecoinformatics.org/#data)
+
+--
+
+- allows richer [search and presentation of metadata](https://knb.ecoinformatics.org/#view/IC.13.1)
+    
+---
+# KNB data portal
+
+## Powerful search
+
+&lt;img src="assets/knb.png" width="100%"&gt;
+
+
+---
+
+# KNB data portal
+
+## Rich interactive metadata
+
+&lt;img src="assets/knb_attributes.png" width="100%"&gt;
+
+
+
+---
+
+# Parting words
+
+--
+
+- #### Any metadata documentation is better than none 👍
+
+--
+
+- #### Start small and build up to more complex standards 💯
+
+--
+
+- - #### But make sure to cover bare minimum ⚠️
+
+--
+
+- #### Reach out for help from your local librarians or try the [rOpenSci discussion board](https://discuss.ropensci.org/) 🙋
+
+--
+
+## 🌯
+
+
+## Get back [home](index.html)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
