@@ -1,7 +1,7 @@
 --- 
 title: "Reproducible Research Data & Project Management in R"
-author: "Anna Krystalli"
-date: "`r Sys.Date()`"
+author: "Course Instructor: Anna Krystalli"
+date: "Mar-Apr 2020"
 url: 'https\://annakrystalli.me/rrresearchACCE20'
 github-repo: "annakrystalli/rrresearchACCE20"
 site: bookdown::bookdown_site
