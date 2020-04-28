@@ -383,6 +383,6 @@ collection."
 # Get Ready
 
 
-
 ## Get back [home](`r params$book_url`)
+
 

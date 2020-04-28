@@ -420,4 +420,6 @@ _source: Pexels CC0_
 
 ---
 
-## Get back [home](index.html)
+
+## Get back [home](`r params$book_url`)
+
