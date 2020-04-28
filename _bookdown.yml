@@ -1,5 +1,6 @@
 book_filename: "rrresearchACCE20"
 delete_merged_file: true
+output_dir: "docs"
 language:
   ui:
     chapter_name: ""
