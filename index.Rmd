@@ -51,53 +51,54 @@ By the end of the workshop, participants will be able to:
 
 ***
 
+## Course Outline
 
-## Schedule
+.pull-left[
+### Welcome
 
-<div class="panel">
-### Day 1
+- Introduction
 
-####  Introduction
-
+### Basics
+- Intro to R & Rstudio
 - R basics
-- Data Management Basics
+- Data types, structures & classes
+- Indexing and Subsetting
+- The tidyverse way
+- Data management basics
 
+### Project Management
+- Projects in Rstudio
+- Good File Naming
+- Paths and projects structure
+]
 
-####  Project Management
-
-- Rstudio projects
-- Good filenaming
-- File paths and project structure
-
-####  Data munging
-
+.pull-right[
+### Data Munging
 - Iteration
-- Merging
+- Combining tables
 - Functions
-- Creating Metadata
+- Research Data Management - Metadata
+- Literate Programming with Rmarkdown
+- Version Control with Git
 
-</div> 
+### Metadata
+- Intro to metadata
+- Creating metadata with `dataspice`
 
-####  Research Code Management
+### Analysing & presenting data
+- Plotting
+- Literate programming
 
-#### Literate Programming 
-- Intoduction to long form documentation in `Rmarkdown`
+### Version Control
 
-
-#### Git & GitHub through Rstudio
-- Version control
-- Sharing code
-
-#### Collaborative Git & GitHub
-- Collaborating on code
-
-
-
-### Day 2
+- Version control with Git 
+- Collaboration through GitHub
+]
 
 
+## Optional
 
-#### Packaging code
+### Packaging code
 - Writing & documenting functions
 - Capturing metadata incl. dependencies
 - Checking & Testing functions
