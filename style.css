@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Julius+Sans+One&family=Lato');
+
+.book.font-family-0 {font-family: 'Inconsolata', monospace;}
+.book.font-family-1 {font-family: Lato, sans-serif;}
+.book .book-summary{
+  left:-250px;
+  width:250px;
+  background: #e5fffc;
+  }
+.book .book-body .page-wrapper .page-inner{max-width:850px;}@media (min-width: 600px) {.book.with-summary .book-header.fixed {left: 250px;}.book.with-summary .book-body{left:250px}}@media (max-width: 600px) {.book.with-summary .book-header.fixed {
+  min-width: 250px;
+}
+.book-header.fixed{
+   background-color: #e5fffc;
+}
+.book.with-summary .book-body {min-width: 250px;}}
+
+h1 {font-family: "Julius Sans One";
+  color: #0d3530;
+}

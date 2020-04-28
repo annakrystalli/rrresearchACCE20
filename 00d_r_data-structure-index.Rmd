@@ -1,0 +1,302 @@
+
+# Data types, structures and classes
+
+## Base types versus Object Oriented 
+> Every object has a base type and only R-core can create new types. 
+
+Over all there are 25 different base object types.
+
+## Base data types
+
+> There are **5 base data types: `double`, `integer`, `complex`, `logical`, `character`** as well as `NULL`.
+
+No matter how complicated your analyses become, all data in R is interpreted as one of these
+basic data types. 
+
+You can inspect the type of a value or object through function `typeof()`.
+
+```{r}
+typeof(3.14)
+typeof(1L) # The L suffix forces the number to be an integer, since by default R uses float numbers
+typeof(TRUE)
+typeof('banana')
+typeof(NULL)
+```
+
+## Data Structures
+
+### Arrays and type coersion
+
+> The distinguishing feature of arrays is that all values are of the same data type. 
+
+Arrays can take values of any base data type and span any number of dimensions. However, all values must be of the same base data type. This allows for efficent calculation and matrix mathematics. The strictness also has some really important consequences which introduces another key concept in R, that of **type coersion**.
+
+### Vectors and Type Coercion
+
+#### Vectors 
+
+> Vectors are one dimensional arrays.
+
+To better understand the importance of data types and coersion, let's meet a special case of an array, the **vector**. 
+
+To create a new vector use function `vector()`. You can specify the length of the vector with argument `length` and the base data type through 
+
+```{r}
+my_vector <- vector(length = 3)
+my_vector
+```
+
+A vector in R is essentially an ordered list of things, with the special
+condition that *everything in the vector must be the same basic data type*. 
+
+```{r}
+typeof(my_vector)
+```
+
+If you don't choose the datatype, it'll default to `logical`; or, you can declare
+an empty vector of whatever type you like.
+
+
+```{r}
+another_vector <- vector(mode='character', length=3)
+another_vector
+```
+
+You can also create vectors by combining individual elements using function `c` (for combine).
+
+```{r}
+combine_vector <- c(2,6,3)
+combine_vector
+```
+
+
+### Type coercion
+
+Q: Given what we've learned so far, what do you think the following will produce?
+
+```{r}
+c(2,6,'3')
+```
+
+This is something called *type coercion*, and it is the source of many surprises
+and the reason why we need to be aware of the basic data types and how R will
+interpret them. 
+
+When R encounters a mix of types (here numeric and character) to be combined into a single vector, it will force them all to be the same type. 
+
+Not all types can be coerced into another, rather, R has a coercion hierarchy rule. All values are converted to the lowest data type in the hierarchy.
+
+<div class="alert alert-success">
+
+##### R coercion rules: 
+
+**`logical` -> `integer` -> `numeric` -> `complex` -> `character`**
+
+_where `->` can be read as "are transformed into"._ 
+
+</div>
+
+
+In our case, our `2`, & `3` integer values where converted to character.
+
+Some other examples:
+
+```{r}
+c('a', TRUE)
+c("FALSE", TRUE)
+c(0, TRUE)
+```
+
+You can try to force coercion against this flow using the `as.` functions:
+
+```{r}
+chars <- c('0','2','4')
+as.numeric(chars)
+as.logical(chars)
+as.logical(as.numeric(chars))
+
+as.logical(c(0, TRUE))
+as.logical(c("FALSE", TRUE))
+as.numeric(c("FALSE", TRUE))
+
+as.numeric(as.logical(c("FALSE", TRUE)))
+```
+
+As you can see, some surprising things can happen when R forces one basic data
+type into another! 
+
+If your data isn't the data type you expected, type coercion
+may well be to blame; make sure everything is the same type in your vectors and
+your columns of data.frames, or you will get nasty surprises!
+
+
+You can also make series of numbers:
+
+```{r}
+mySeries <- 1:10
+mySeries
+seq(10)
+seq(1,10, by=0.1)
+```
+
+We can ask a few questions about vectors:
+
+```{r}
+sequence_example <- seq(10)
+
+head(sequence_example, n=2)
+tail(sequence_example, n=4)
+length(sequence_example)
+
+str(sequence_example)
+```
+
+The somewhat cryptic output from this command indicates the basic data type
+found in this vector - in this case `chr`, character; an indication of the
+number of things in the vector - actually, the indexes of the vector, in this
+case `[1:3]`; and a few examples of what's actually in the vector - in this case
+empty character strings. If we similarly do
+
+
+Finally, you can give names to elements in your vector:
+
+```{r}
+my_example <- 5:8
+names(my_example) <- c("a", "b", "c", "d")
+my_example
+names(my_example)
+```
+
+[Find out more about vectors](https://r4ds.had.co.nz/vectors.html)
+
+### Matrices
+
+> Matrices are 2 dimensional arrays 
+
+
+The dimensions are defined by the number of rows and columns.
+
+We can declare a matrix full of zeros:
+
+```{r}
+matrix_example <- matrix(0, ncol=6, nrow=3)
+matrix_example
+```
+
+
+We can get the dimensions of a matrix (or any array with dimensions > 1).
+
+```{r}
+dim(matrix_example)
+```
+
+
+## Lists
+
+> Lists can store objects of any data type and class
+
+Another key data structure is the `list`. List are the most flexible data structure because each element can hold any object, of any datat type and dimension, including other lists.
+
+Create lists using `list()` or coerce other objects using `as.list()`. 
+```{r}
+list(1, "a", TRUE)
+```
+
+
+```{r}
+as.list(1:4)
+```
+
+We can name list elements:
+```{r}
+a_list <- list(title = "Numbers", numbers = 1:10, data = TRUE )
+a_list
+```
+
+Lists are a base type:
+```{r}
+typeof(a_list)
+```
+
+
+## Data.frames
+
+### S3, S4 and S6 objects
+
+Arrays and lists are all immutable base types. However, there are other types of objects in R.
+
+These are S3, S4 & S6 type objects, with S3 being the most common. 
+
+Such objects have a class attribute (base types can have a class attribute too), enabling class specific functionality, a characteristic of object oriented programming. New classes can be created by users, allowing greater flexibility in the types of data structures available for analyses. 
+
+[Learn more about object types](https://adv-r.hadley.nz/base-types.html)
+
+### Data.frames
+
+> The most important S3 object class in R is the data.frame. Data.frames are special types of lists.
+
+Data.frames are special types of lists where each element is a vector, each of equal length. So each column of a data.frame contains values of consistent data type but the data type can vary between columns (ie along rows).
+
+```{r}
+df <- data.frame(id = 1:3, 
+                 treatment = c("a", "b", "b"), 
+                 complete = c(TRUE, TRUE, FALSE))
+df
+```
+
+We can check that our data.frame is a list under the hood:
+```{r}
+typeof(df)
+```
+
+As an S3 object, it also has a class attribute:
+```{r}
+class(df)
+```
+
+And we can check the type of object that it is:
+```{r}
+sloop::otype(df)
+```
+
+Compared to a vector?
+```{r}
+sloop::otype(1:10)
+```
+
+We can check the dimensions of a data.frame
+```{r}
+dim(df)
+```
+
+Get a certain number of rows from the top or bottom
+```{r}
+head(df, 1)
+```
+
+```{r}
+tail(df, 1)
+```
+
+Importantly, we can disply the structure of a data.frame
+
+```{r}
+str(df)
+```
+
+### A note on factors
+
+Note that the default behaviour of `data.frame()` is to covert character vectors to factors. Factors are another important data structure for handling categorical data, which have particular statistical properties. They can be useful during modeling and plotting but in the interest of time we will not be discuss them further here.
+
+You can suppress R default behaviour using:
+
+```{r}
+df <- data.frame(id = 1:3, 
+                 treatment = c("a", "b", "b"), 
+                 complete = c(TRUE, TRUE, FALSE),
+                 stringsAsFactors = FALSE)
+str(df)
+```
+
+
+[Find out more about factors.](https://r4ds.had.co.nz/factors.html)

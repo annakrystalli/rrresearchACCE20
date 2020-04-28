@@ -1,0 +1,19 @@
+# Welcome
+
+```{r, echo=FALSE}
+
+slide_page <- function(slidedeck_name = "03_filenaming.html", site = "https://annakrystalli.me/rrresearch/"){
+ url <- glue::glue("{site}{slidedeck_name}")   
+out <- glue::glue("assets/{tools::file_path_sans_ext(basename(url))}.png")
+
+webshot::webshot(glue::glue("{url}#1"), out)
+
+cat(glue::glue("[{icon::fontawesome('eye')} View Slides](url) <br>"))
+
+knitr::include_graphics(out)
+}
+```
+
+```{r, results="asis", echo = FALSE}
+slide_page(slidedeck_name = "01_intro.html")
+```

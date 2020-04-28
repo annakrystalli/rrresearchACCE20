@@ -1,0 +1,216 @@
+# Paths and Project structure
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(magrittr)
+```
+
+
+
+
+## Project Data
+
+We're in our new project so the first thing we need to do is get the data we'll be working with. This is a common start to any project where you start with a few data files, These might be generated through your data, given by others or published data products and you might need to clean, wrangle and combine them together to perform your analysis. 
+
+> Q: Where should I save my raw data files?
+
+
+### conventions: Data management 
+
+1. Store raw data in `data-raw/`: raw inputs to any pre-processing, read only. 
+  - Keep any processing scripts in the same folder
+  - Whether and where you publish data depends on size and copyright considerations.
+2. Store analytical data in `data/`: any clean, processed data that is used as the input to the analysis.
+  - Should be published along side analysis.
+
+## Setting up a `data-raw/` directory
+
+We **start by creating a `data-raw` directory** in the root of our project. We can use `usethis` function `usethis::use_data_raw()`. This creates the `data-raw` directory and an `.R` script within where we can save code that turns raw data into analytical data in the `data/` folder. We can supply a name for the analytical dataset we'll be creating in our script which automatically names the `.R` script for easy provenance tracking.  
+
+
+```{r, eval=FALSE}
+usethis::use_data_raw(name = "individual")
+```
+
+```r
+✔ Setting active project to '/Users/Anna/Desktop/wood-survey'
+✔ Creating 'data-raw/'
+✔ Adding '^data-raw$' to '.Rbuildignore'
+✔ Writing 'data-raw/individual.R'
+● Modify 'data-raw/individual.R'
+● Finish the data preparation script in 'data-raw/individual.R'
+● Use `usethis::use_data()` to add prepared data to package
+```
+
+**`data-raw/individual.R`** contains:
+
+```r
+## code to prepare `individual` dataset goes here
+
+usethis::use_data("individual")
+
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+fs::dir_delete(here::here("data-raw", "wood-survey-data-master")) 
+```
+
+
+### Download data
+
+Now that we've got our `data-raw` folder, let's download our data into it using function `usethis::use_course()` and supplying it with the url to the materials repository (bit.ly/wood-survey-data) and the path to the directory we want the materials saved into (`"data-raw"`).
+
+```{r, eval=FALSE}
+usethis::use_course("bit.ly/wood-survey-data",
+           destdir = "data-raw")
+```
+
+```bash
+✔ Downloading from 'https://github.com/annakrystalli/wood-survey-data/archive/master.zip'
+Downloaded: 0.03 MB  
+✔ Download stored in 'data-raw/wood-survey-data-master.zip'
+✔ Unpacking ZIP file into 'wood-survey-data-master/' (13 files extracted)
+Shall we delete the ZIP file ('wood-survey-data-master.zip')?
+
+1: Negative
+2: Absolutely not
+3: I agree
+
+Selection: 3
+✔ Deleting 'wood-survey-data-master.zip'
+✔ Opening 'wood-survey-data-master/' in the file manager
+```
+
+```{bash}
+tree 2
+```
+
+
+## NEON Data
+
+The downloaded folder `
+
+```
+.
+├── R
+├── data-raw
+│   ├── individual.R
+│   └── wood-survey-data-master
+│       ├── NEON_vst_variables.csv
+│       ├── README.md
+│       ├── individual [67 entries exceeds filelimit, not opening dir]
+│       ├── methods
+│       │   ├── NEON.DOC.000914vB.pdf
+│       │   ├── NEON.DOC.000987vH.pdf
+│       │   └── NEON_vegStructure_userGuide_vA.pdf
+│       ├── vst_mappingandtagging.csv
+│       └── vst_perplotperyear.csv
+└── wood-survey.Rproj
+```
+
+
+The important files for the analysis we want to perform are 
+
+```
+├── individual [67 entries exceeds filelimit, not opening dir]
+├── vst_mappingandtagging.csv
+└── vst_perplotperyear.csv
+```
+vst_apparentindividual: Biomass and productivity measurements of apparent individuals
+
+vst_mappingandtagging: Mapping, identifying and tagging of individual stems for remeasurement 
+
+vst_perplotperyear: 
+
+- **`vst_perplotperyear`**, 
+  - one record per `plotID` per `eventID`, 
+  - describe the presence/absence of woody growth forms
+  - sampling area utilized for each growth form. 
+- **`vst_mappingandtagging`** 
+  - one record per `individualID`, 
+  - data invariant through time, including `tagID`, `taxonID` and mapped location. 
+  - Records can be linked to `vst_perplotperyear` via the `plotID` and `eventID` fields. 
+- **`vst_apparentindividual` **
+  - one record per `individualID` per `eventID`
+  - includes growth form, structure
+  - may be linked
+    - `vst_mappingandtagging` records via `individualID`
+    - `vst_perplotperyear` via the `plotID` and `eventID` fields.
+
+## Paths
+
+Let's investigate our data. We want to access the files so we need to give R paths in order to load the data. 
+
+- `here`: Use `here::here()` to create paths relative to the project root directory.
+  - portable
+  - independent of the where code is evaluated or saved. 
+
+
+Let's start by assigning the path to the downloaded data directory. 
+```{r}
+raw_data_path <- here::here("data-raw", "wood-survey-data-master")
+raw_data_path
+```
+
+```r
+"/Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master"
+```
+We can use `raw_data_path` to make paths to files within it. There's a number of ways you can do this in R but I wanted to introduce you to package `fs`. It has a nice interpace and extensive functionality.
+
+```{r}
+fs::path(raw_data_path, "individual")
+```
+
+```r
+/Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual
+```
+
+We can work with the file system programmatically through R
+
+```{r}
+individual_paths <- fs::dir_ls(fs::path(raw_data_path, "individual"))
+head(individual_paths)
+```
+
+```{r}
+library(magrittr)
+
+individual_paths <-  raw_data_path %>%
+  fs::path("individual") %>%
+  fs::dir_ls()
+
+```
+
+```{r}
+indiv_df <- readr::read_csv(individual_paths[1])
+indiv_df
+```
+
+
+```{r, eval=FALSE}
+View(indiv_df)
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/indiv_df.png", error = FALSE)
+```
+
+```{r}
+names(indiv_df)
+```
+
+```{r, echo=FALSE}
+janitor::make_clean_names(names(indiv_df))
+```
+
+```{r, echo=FALSE}
+janitor::clean_names(indiv_df)
+```
+
+
+
+- indexing
+- select
+- filter
+- mutate

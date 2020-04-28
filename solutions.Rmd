@@ -1,0 +1,16 @@
+# Solutions
+
+## Part I
+
+### [List subsetting challenge](#chlg-list-subset){#csol-list-subset}
+
+```{r}
+xlist$b[2]
+```
+```{r}
+xlist[[2]][2]
+```
+```{r}
+xlist[["b"]][2]
+```
+

@@ -1,0 +1,164 @@
+# Software Setup {#setup}
+
+
+## Software Requirements
+
+This workshop assumes you have the **R**, **RStudio** and **Git** and **Bash Shell** software installed on your computer and a personal **GitHub** account. You will also need some geospatial system libraries installed.
+
+### R
+R can be downloaded [here](https://cran.r-project.org/mirrors.html).
+
+### RStudio
+RStudio is an environment for developing using R.
+
+It can be downloaded [here](https://www.rstudio.com/products/rstudio/download/).
+You will need the Desktop version (> 1.0) for your computer.
+
+
+### The Bash Shell
+
+Bash is a commonly-used shell that gives you the power to do simple tasks more quickly.
+
+
+<div class="row">
+<div class="col-md-4">
+<h4 id="shell-windows">Windows</h4>
+<a href="https://www.youtube.com/watch?v=339AEqk9c-8">Video Tutorial</a>
+<ol>
+<li>Download the Git for Windows <a href="https://git-for-windows.github.io/">installer</a>.</li>
+<li>Run the installer and follow the steps bellow:
+<ol>
+<li>Click on "Next".</li>
+<!-- Select Components -->
+<li>Click on "Next".</li>
+<!-- Adjusting your PATH environment -->
+<li>
+<strong>
+Keep "Use Git from the Windows Command Prompt" selected and click on "Next".
+</strong>
+If you forgot to do this programs that you need for the workshop will not work properly. If this happens rerun the installer and select the appropriate option.
+</li>
+<!-- Choosing the SSH executable -->
+<li>Click on "Next".</li>
+<!-- Configuring the line ending conversions -->
+<li>
+<strong>
+Keep "Checkout Windows-style, commit Unix-style line endings" selected and click on "Next".
+</strong>
+</li>
+<!-- Configuring the terminal emulator to use with Git Bash -->
+<li>
+<strong>
+Keep "Use Windows' default console window" selected and click on "Next".
+</strong>
+</li>
+<!-- Configuring experimental performance tweaks -->
+<li>Click on "Install".</li>
+<!-- Installing -->
+<!-- Completing the Git Setup Wizard -->
+<li>Click on "Finish".</li>
+</ol>
+</li>
+<li>
+If your "HOME" environment variable is not set (or you don't know what this is):
+<ol>
+<li>Open command prompt (Open Start Menu then type <code>cmd</code> and press [Enter])</li>
+<li>
+Type the following line into the command prompt window exactly as shown:
+<p><code>setx HOME "%USERPROFILE%"</code></p>
+</li>
+<li>Press [Enter], you should see <code>SUCCESS: Specified value was saved.</code></li>
+<li>Quit command prompt by typing <code>exit</code> then pressing [Enter]</li>
+</ol>
+</li>
+</ol>
+<p>This will provide you with both Git and Bash in the Git Bash program.</p>
+</div>
+<div class="col-md-4">
+<h4 id="shell-macosx">Mac OS X</h4>
+<p>
+The default shell in all versions of Mac OS X is Bash, so no need to install anything.  You access Bash from the Terminal (found in <code>/Applications/Utilities</code>). See the Git installation <a href="https://www.youtube.com/watch?v=9LQhwETCdwY ">video tutorial</a> for an example on how to open the Terminal. 
+</p>
+</div>
+<div class="col-md-4">
+<h4 id="shell-linux">Linux</h4>
+<p>The default shell is usually Bash, but if your machine is set up differently you can run it by opening a terminal and typing <code>bash</code>.  There is no need to install anything.
+</p>
+</div>
+</div>
+
+### Geospatial Libraries
+
+Some of the workflows require geospatial packages like `sf` and have additional system requirements. Follow the [installation instructions in `sf` package documentation](https://github.com/r-spatial/sf/#installing) according to your operating system.
+
+
+### Git & GitHub
+
+Required for the Version Control part of the the course
+
+Git is a version control system that lets you track who made changes to what when and has options for easily updating a shared or public version of your code on <a href="https://github.com/">github.com</a>. You will need a <a href="https://help.github.com/articles/supported-browsers/">supported</a> web browser (current versions of Chrome, Firefox or Safari, or Internet Explorer version 9 or above).
+
+You will also need an account at [github.com](https://github.com/). 
+
+Basic GitHub accounts are free. We encourage you to create a GitHub account if you don't have one already.
+Please consider what personal information you'd like to reveal. For example, you may want to review these [instructions for keeping your email address private](https://help.github.com/articles/keeping-your-email-address-private/) provided at GitHub.
+
+
+<div class="row">
+<div class="col-md-4">
+<h4 id="git-windows">Windows</h4>
+<p>
+Git should be installed on your computer as part of your Bash
+install (described above).
+</p>
+</div>
+<div class="col-md-4">
+<h4 id="git-macosx">Mac OS X</h4>
+<a href="https://www.youtube.com/watch?v=9LQhwETCdwY ">Video Tutorial</a>
+<p>
+<strong>For OS X 10.9 and higher</strong>, install Git for Mac
+by downloading and running the most recent "mavericks" installer from
+<a href="http://sourceforge.net/projects/git-osx-installer/files/">this list</a>.
+After installing Git, there will not be anything in your <code>/Applications</code> folder,
+as Git is a command line program.
+<strong>For older versions of OS X (10.5-10.8)</strong> use the
+most recent available installer labelled "snow-leopard"
+<a href="http://sourceforge.net/projects/git-osx-installer/files/">available here</a>.
+</p>
+</div>
+<div class="col-md-4">
+<h4 id="git-linux">Linux</h4>
+<p>
+If Git is not already available on your machine you can try to
+install it via your distro's package manager. For Debian/Ubuntu run
+<code>sudo apt-get install git</code> and for Fedora run
+<code>sudo yum install git</code>.
+</p>
+</div>
+
+### Research Compendium Exercise
+
+For the final practical sessions, we will need to use LaTeX. If you don't have LaTeX installed, consider installing `TinyTeX`, a custom LaTeX distribution based on TeX Live that is small in size but functions well in most cases, especially for R users. 
+
+```{r, eval=FALSE}
+install.packages('tinytex')
+tinytex::install_tinytex()
+```
+
+Check [docs](https://yihui.name/tinytex/) before before installing.
+
+
+#### `devtools` requirements
+
+You might also need a set of **development tools** to install and run `devtools`. On **Windows**, download and install [**Rtools**](https://cran.r-project.org/bin/windows/Rtools/), and `devtools` takes care of the rest. On **Mac**, install the [**Xcode**](https://developer.apple.com/xcode/) command line tools. On **Linux**, install the **R development package**, usually called **`r-devel`** or **`r-base-dev`**.
+
+
+### FAQs
+
+#### ***1. Are there any advantages or disadvantages to setting up a github account with our university email address? Is it possible to change emails say when we finish our PhD?***
+
+I personally prefer to use a non-institutional email for registering accounts to platforms I want smooth access to regardless of affiliation. However, there are advantages associated with affiliation with an academic institution on GitHub, namely that you get a free [developer account](https://github.com/pricing). The most important benefit of that is that it gives you unlimited public **AND private** repositories.
+
+You can however add your academic email as a secondary email which will allow you to benefit from this academic research discount. You can also just use your academic address from the start and just change it once you move on. 
+
+Find out more about claiming an academic discount [here](https://help.github.com/articles/applying-for-an-academic-research-discount/).

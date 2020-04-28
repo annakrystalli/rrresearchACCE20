@@ -1,0 +1,118 @@
+table,fieldName,description,dataType,units,downloadPkg
+vst_shrubgroup,uid,"Unique ID within NEON database; an identifier for the record",string,NA,basic
+vst_shrubgroup,namedLocation,"Name of the measurement location in the NEON database",string,NA,basic
+vst_shrubgroup,date,"Date or date and time of measurement, observation, or collection event",dateTime,NA,basic
+vst_shrubgroup,eventID,"An identifier for the set of information associated with the event, which includes information about the place and time of the event",string,NA,basic
+vst_shrubgroup,domainID,"Unique identifier of the NEON domain",string,NA,basic
+vst_shrubgroup,siteID,"NEON site code",string,NA,basic
+vst_shrubgroup,plotID,"Plot identifier (NEON site code_XXX)",string,NA,basic
+vst_shrubgroup,subplotID,"Identifier for the NEON subplot",string,NA,basic
+vst_shrubgroup,nestedSubplotID,"Numeric identifier for nested subplot ID within a subplotID",string,NA,basic
+vst_shrubgroup,groupID,"Identifier for a group of individuals being measured",string,NA,basic
+vst_shrubgroup,taxonID,"Species code, based on one or more sources",string,NA,basic
+vst_shrubgroup,scientificName,"Scientific name, associated with the taxonID. This is the name of the lowest level taxonomic rank that can be determined",string,NA,basic
+vst_shrubgroup,taxonRank,"The lowest level taxonomic rank that can be determined for the individual or specimen",string,NA,basic
+vst_shrubgroup,identificationReferences,"A list of sources (concatenated and semicolon separated) used to derive the specific taxon concept; including field guide editions, books, or versions of NEON keys used",string,NA,basic
+vst_shrubgroup,identificationQualifier,"A standard term to express the determiner's doubts about the Identification",string,NA,basic
+vst_shrubgroup,volumePercent,"Percent of the total volume of a group attributed to a particular species",real,percent,basic
+vst_shrubgroup,livePercent,"Percent of a given species, within a group, that is alive",real,percent,basic
+vst_shrubgroup,deadPercent,"Percent of a given species, within a group, that is dead",real,percent,basic
+vst_shrubgroup,canopyArea,"Area of the group canopy",real,squareMeter,basic
+vst_shrubgroup,meanHeight,"The mean of multiple height measurements",real,meter,basic
+vst_shrubgroup,remarks,"Technician notes; free text comments accompanying the record",string,NA,basic
+vst_shrubgroup,measuredBy,"An identifier for the technician who measured or collected the data",string,NA,basic
+vst_shrubgroup,recordedBy,"An identifier for the technician who recorded the data",string,NA,basic
+vst_shrubgroup,dataQF,"Data quality flag",string,NA,basic
+vst_apparentindividual,uid,"Unique ID within NEON database; an identifier for the record",string,NA,basic
+vst_apparentindividual,namedLocation,"Name of the measurement location in the NEON database",string,NA,basic
+vst_apparentindividual,date,"Date or date and time of measurement, observation, or collection event",dateTime,NA,basic
+vst_apparentindividual,eventID,"An identifier for the set of information associated with the event, which includes information about the place and time of the event",string,NA,basic
+vst_apparentindividual,domainID,"Unique identifier of the NEON domain",string,NA,basic
+vst_apparentindividual,siteID,"NEON site code",string,NA,basic
+vst_apparentindividual,plotID,"Plot identifier (NEON site code_XXX)",string,NA,basic
+vst_apparentindividual,subplotID,"Identifier for the NEON subplot",string,NA,basic
+vst_apparentindividual,individualID,"Domain-level unique identifier for an individual: NEON.MOD.D##.######",string,NA,basic
+vst_apparentindividual,tempShrubStemID,"Stem-level identifier for a multi-stemmed shrub",string,NA,basic
+vst_apparentindividual,tagStatus,"Description of state or condition of the physical tag",string,NA,basic
+vst_apparentindividual,growthForm,"The growth form classification",string,NA,basic
+vst_apparentindividual,plantStatus,"Physical status of individual: live, dead, lost",string,NA,basic
+vst_apparentindividual,stemDiameter,"Cross-sectional stem diameter",real,centimeter,basic
+vst_apparentindividual,measurementHeight,"Height at which stemDiameter is measured",real,centimeter,basic
+vst_apparentindividual,height,"Highest point of an individual or average height of a patch",real,meter,basic
+vst_apparentindividual,baseCrownHeight,"Height above the ground for the lowest portion of the crown",real,meter,basic
+vst_apparentindividual,breakHeight,"Height from the ground to the highest point along a broken bole",real,meter,basic
+vst_apparentindividual,breakDiameter,"Cross-sectional diameter at the break point along a broken bole",real,centimeter,basic
+vst_apparentindividual,maxCrownDiameter,"Maximum crown diameter of the individual or patch",real,meter,basic
+vst_apparentindividual,ninetyCrownDiameter,"Crown diameter perpendicular to maxDiameter",real,meter,basic
+vst_apparentindividual,canopyPosition,"Vertical status of an individual relative to its neighbors",string,NA,basic
+vst_apparentindividual,shape,"Description of three dimensional form",string,NA,basic
+vst_apparentindividual,basalStemDiameter,"Cross-sectional stem diameter at base of stem",real,centimeter,basic
+vst_apparentindividual,basalStemDiameterMsrmntHeight,"Height at which basalStemDiameter is measured",real,centimeter,basic
+vst_apparentindividual,maxBaseCrownDiameter,"Maximum crown diameter, measured at ground level",real,meter,basic
+vst_apparentindividual,ninetyBaseCrownDiameter,"Crown diameter perpendicular to maxBaseCrownDiameter, measured at ground level",real,meter,basic
+vst_apparentindividual,remarks,"Technician notes; free text comments accompanying the record",string,NA,basic
+vst_apparentindividual,recordedBy,"An identifier for the technician who recorded the data",string,NA,basic
+vst_apparentindividual,measuredBy,"An identifier for the technician who measured or collected the data",string,NA,basic
+vst_apparentindividual,dataQF,"Data quality flag",string,NA,basic
+vst_perplotperyear,uid,"Unique ID within NEON database; an identifier for the record",string,NA,basic
+vst_perplotperyear,namedLocation,"Name of the measurement location in the NEON database",string,NA,basic
+vst_perplotperyear,date,"Date or date and time of measurement, observation, or collection event",dateTime,NA,basic
+vst_perplotperyear,domainID,"Unique identifier of the NEON domain",string,NA,basic
+vst_perplotperyear,siteID,"NEON site code",string,NA,basic
+vst_perplotperyear,plotID,"Plot identifier (NEON site code_XXX)",string,NA,basic
+vst_perplotperyear,plotType,"NEON plot type in which sampling occurred: tower, distributed or gradient",string,NA,basic
+vst_perplotperyear,nlcdClass,"National Land Cover Database Vegetation Type Name",string,NA,basic
+vst_perplotperyear,decimalLatitude,"The geographic latitude (in decimal degrees, WGS84) of the geographic center of the reference area",real,decimalDegree,basic
+vst_perplotperyear,decimalLongitude,"The geographic longitude (in decimal degrees, WGS84) of the geographic center of the reference area",real,decimalDegree,basic
+vst_perplotperyear,geodeticDatum,"Model used to measure horizontal position on the earth",string,NA,basic
+vst_perplotperyear,coordinateUncertainty,"The horizontal distance (in meters) from the given decimalLatitude and decimalLongitude describing the smallest circle containing the whole of the Location. Zero is not a valid value for this term",real,meter,basic
+vst_perplotperyear,easting,"Geographic coordinate specifying the east-west position of a point on the Earth's surface (Universal Transverse Mercator, UTM)",real,meter,basic
+vst_perplotperyear,northing,"Geographic coordinate specifying the north-south position of a point on the Earth's surface (Universal Transverse Mercator, UTM)",real,meter,basic
+vst_perplotperyear,utmZone,"UTM zone",string,NA,basic
+vst_perplotperyear,elevation,"Elevation (in meters) above sea level",real,meter,basic
+vst_perplotperyear,elevationUncertainty,"Uncertainty in elevation values (in meters)",real,meter,basic
+vst_perplotperyear,eventID,"An identifier for the set of information associated with the event, which includes information about the place and time of the event",string,NA,basic
+vst_perplotperyear,samplingProtocolVersion,"The NEON document number and version where detailed information regarding the sampling method used is available; format NEON.DOC.######vX",string,NA,basic
+vst_perplotperyear,treesPresent,"Indicator of whether the plot contains trees >= 10 cm diameter",string,NA,basic
+vst_perplotperyear,treesAbsentList,"List of subplots in which trees are not present",string,NA,basic
+vst_perplotperyear,shrubsPresent,"Indicator of whether the plot contains shrubs, saplings, or small trees",string,NA,basic
+vst_perplotperyear,shrubsAbsentList,"List of subplots or nested subplots in which shrubs, saplings and small trees are not present",string,NA,basic
+vst_perplotperyear,lianasPresent,"Indicator of whether the plot contains lianas",string,NA,basic
+vst_perplotperyear,lianasAbsentList,"List of subplots or nested subplots in which lianas are not present",string,NA,basic
+vst_perplotperyear,nestedSubplotAreaShrubSapling,"Size of nested plot in which shrubs, saplings and small trees were measured",string,NA,basic
+vst_perplotperyear,nestedSubplotAreaLiana,"Size of nested plot in which lianas were measured",string,NA,basic
+vst_perplotperyear,totalSampledAreaTrees,"Total plot area sampled for single and multi-bole trees",real,squareMeter,basic
+vst_perplotperyear,totalSampledAreaShrubSapling,"Total plot area sampled for saplings, shrubs, and small trees",real,squareMeter,basic
+vst_perplotperyear,totalSampledAreaLiana,"Total plot area sampled for liana",real,squareMeter,basic
+vst_perplotperyear,remarks,"Technician notes; free text comments accompanying the record",string,NA,basic
+vst_perplotperyear,measuredBy,"An identifier for the technician who measured or collected the data",string,NA,basic
+vst_perplotperyear,recordedBy,"An identifier for the technician who recorded the data",string,NA,basic
+vst_perplotperyear,dataQF,"Data quality flag",string,NA,basic
+vst_mappingandtagging,uid,"Unique ID within NEON database; an identifier for the record",string,NA,basic
+vst_mappingandtagging,namedLocation,"Name of the measurement location in the NEON database",string,NA,basic
+vst_mappingandtagging,date,"Date or date and time of measurement, observation, or collection event",dateTime,NA,basic
+vst_mappingandtagging,eventID,"An identifier for the set of information associated with the event, which includes information about the place and time of the event",string,NA,basic
+vst_mappingandtagging,domainID,"Unique identifier of the NEON domain",string,NA,basic
+vst_mappingandtagging,siteID,"NEON site code",string,NA,basic
+vst_mappingandtagging,plotID,"Plot identifier (NEON site code_XXX)",string,NA,basic
+vst_mappingandtagging,subplotID,"Identifier for the NEON subplot",string,NA,basic
+vst_mappingandtagging,nestedSubplotID,"Numeric identifier for nested subplot ID within a subplotID",string,NA,basic
+vst_mappingandtagging,pointID,"Identifier for a point location",string,NA,basic
+vst_mappingandtagging,stemDistance,"Horizontal distance from stem to pointID location",real,meter,basic
+vst_mappingandtagging,stemAzimuth,"Azimuth relative to True North between stem and pointID location",real,degree,basic
+vst_mappingandtagging,recordType,"Categorical indicator for type of data record",string,NA,basic
+vst_mappingandtagging,individualID,"Domain-level unique identifier for an individual: NEON.MOD.D##.######",string,NA,basic
+vst_mappingandtagging,supportingStemIndividualID,"Globally unique identifier for stem on which a liana is growing",string,NA,basic
+vst_mappingandtagging,previouslyTaggedAs,"Indicates the tagID previously reported for a given individual",string,NA,basic
+vst_mappingandtagging,samplingProtocolVersion,"The NEON document number and version where detailed information regarding the sampling method used is available; format NEON.DOC.######vX",string,NA,basic
+vst_mappingandtagging,taxonID,"Species code, based on one or more sources",string,NA,basic
+vst_mappingandtagging,scientificName,"Scientific name, associated with the taxonID. This is the name of the lowest level taxonomic rank that can be determined",string,NA,basic
+vst_mappingandtagging,taxonRank,"The lowest level taxonomic rank that can be determined for the individual or specimen",string,NA,basic
+vst_mappingandtagging,identificationReferences,"A list of sources (concatenated and semicolon separated) used to derive the specific taxon concept; including field guide editions, books, or versions of NEON keys used",string,NA,basic
+vst_mappingandtagging,morphospeciesID,"Identifier for morphospecies",string,NA,basic
+vst_mappingandtagging,morphospeciesIDRemarks,"Technician notes about the morphospecies; free text comments accompanying the record",string,NA,basic
+vst_mappingandtagging,identificationQualifier,"A standard term to express the determiner's doubts about the Identification",string,NA,basic
+vst_mappingandtagging,remarks,"Technician notes; free text comments accompanying the record",string,NA,basic
+vst_mappingandtagging,measuredBy,"An identifier for the technician who measured or collected the data",string,NA,basic
+vst_mappingandtagging,recordedBy,"An identifier for the technician who recorded the data",string,NA,basic
+vst_mappingandtagging,dataQF,"Data quality flag",string,NA,basic

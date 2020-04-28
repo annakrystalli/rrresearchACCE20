@@ -1,0 +1,8 @@
+# About
+
+
+This course is funded by NERC through the [ACCE Doctoral Partnership](https://acce.shef.ac.uk/) program
+
+It started in 2015 by [Dr. Tom Webb](https://www.sheffield.ac.uk/aps/staff-and-students/acadstaff/webb) & [Dr. Anna Krystalli](https://annakrystalli.me/) from the University of Sheffield and has been continued since 2016 by Anna Krystalli.
+
+Since then it has gone from a one day course on Data management to a two day course, encompassing project management, version control and literate programming. It is aimed at preparing first year PhD students for managing their research code and data successfully, in line with shifting expectations on reproducibility, interoperability, accessibility and archiving of research materials.

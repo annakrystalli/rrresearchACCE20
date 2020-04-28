@@ -1,0 +1,187 @@
+---
+title: "Collaborative `Github` in `Rstudio`"
+author: "ACCE Research Data and Project Management"
+date: "01-02 May 2018, TUoS"
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/css/little_ak.css", "assets/css/little_ak-fonts.css"]
+    lib_dir: "../docs/libs"
+    seal: false
+    nature:
+      beforeInit: "https://platform.twitter.com/widgets.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: top, right, inverse
+
+
+## ACCE Research Data and Project Management
+
+***
+
+.bottom[
+# Collaborative `Github` in `Rstudio`
+#### 10-11 April 2019, University of Sheffield
+#### Dr Anna Krystalli @annakrystalli
+]
+
+---
+ 
+# Session Roadmap
+
+<br>
+
+### 1 Introductions 
+
+
+#### - **get to know github** 
+
+  - github as a computational research tool
+
+---
+
+# Session Roadmap
+
+<br>
+
+### 2 Get stuck in
+
+
+#### - [Collaborative github through rstudio](https://nhm-stars.github.io/materials/day04/evolottery.html) #EvoLottery (40 mins)
+  - In this exercise, each participant will fork a github repo, and contribute a file required to simulate the **evolutionary trajectory of an imaginary species' body size**.
+  
+  - We'll use github to collate all species files and plot them all up together at the end! We'll also **discover the skull and beak shapes** associated with each simulated species size.
+
+
+---
+
+class: top, right, inverse
+
+# introductions: **get to know github** 
+
+***
+
+## **GitHub features**
+
+
+---
+
+
+#### Back up and sync through the cloud
+
+<figure>
+<img src="assets/remotes.png">
+<figcaption>Image: Jessica Lord, 2013 BSD</figcaption>
+</figure>
+
+---
+
+#### Fork and contribute to other's work 
+
+<figure>
+<img src="assets/clone.png" height="500px">
+<figcaption>Image: Jessica Lord, 2013 BSD</figcaption>
+</figure>
+
+---
+
+
+## **GitHub for science**
+
+***
+
+
+> - ideal for managing the full suite of research outputs such as datasets, statistical code, figures, lab notes, and manuscripts.
+
+> - supports peer review, commenting, and discussion. 
+
+> - Diverse range of efforts, from individual to large bioinformatics projects, laboratory repositories, as well as global collaborations have found a home on GitHub
+
+<br>
+
+
+---
+
+### remote repositories
+
+centralising information e.g. [**weecology** / ***"Nine simple ways to make it easier to (re)use your data" paper***](http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/0)
+
+[<img src="assets/repo-1.png" width="500px"/>](https://github.com/weecology/data-sharing-paper)
+
+<br>
+---
+
+### commits
+
+traceability
+
+[<img src="assets/commits-1.png" width="500px"/>](https://github.com/ropensci/rfishbase/commits/master)
+
+<br>
+
+---
+
+### issues
+
+project management
+
+[<img src="assets/issues-1.png" width="500px"/>](https://github.com/weecology/data-sharing-paper/issues)
+
+<br>
+---
+
+### graphs 
+
+#### project & team tracking
+
+tracking contributors
+
+[<img src="assets/track-1.png" width="500px"/>](https://github.com/weecology/data-sharing-paper/graphs/contributors)
+
+---
+tracking commits
+
+[<img src="assets/track-2.png" width="500px"/>](https://github.com/weecology/data-sharing-paper/network)
+
+<br>
+---
+
+
+class: center
+
+# **entire process of project evolution reproducible**
+
+<br>
+
+
+---
+
+class: top, right, inverse
+
+## **Practical: Github & Rstudio for collaborative coding**
+
+***
+
+---
+
+### **#EvoLottery**
+
+**Beak and skull shapes in birds of prey (“raptors”) are strongly coupled and largely controlled by size.** 
+
+
+  - In this exercise, each participant will **fork a github repo**, and **contribute a file** required to simulate the *evolutionary trajectory of an imaginary species' body size*.
+
+
+  - We'll use **github** to **collate all species files** and **plot** them all up together at the end! We'll also **discover the skull and beak shapes** associated with each simulated species size.
+
+### [**Enter Practical**](evolottery.html)
+
+### See [**Collaborative plot**](https://rse.shef.ac.uk/collaborative_github_exercise/plot_trait_evolution.html)
+
+
+---
+
+## Get back [home](index.html)
+
+

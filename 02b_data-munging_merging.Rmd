@@ -1,0 +1,160 @@
+# Data munging: combining tables
+
+Let's say we want to geolocate every individual plant in out data. Currently, only the plot is geolocated, the data being contained in `vst_perplotperyear.csv` columns `decimalLatitude` and `decimalLongitude`. The location of each individual stem is defined in `vst_mappingandtagging.csv`. A number of variables are involved, including `pointID` which identifies a point on a 10m cell grid centered around `decimalLatitude` and `decimalLongitude`, and `stemDistance` and `stemAzimuth` which defines the location of a stem, relative to the location of `pointID`. is detailed in `methods/NEON_vegStructure_userGuide_vA.pdf` but we will briefly describe here. 
+
+
+```{r}
+knitr::include_graphics("assets/NEON_point_grid.png", error = FALSE)
+library(magrittr)
+library(dplyr)
+raw_data_path <- here::here("data-raw", "wood-survey-data-master")
+individual <- readr::read_csv(file.path(raw_data_path, "vst_individual.csv"), guess_max = 8000)
+```
+
+
+## Joining tables with `dplyr`
+
+```{r}
+# "Mutating" joins combine variables from the LHS and RHS
+band_members %>% inner_join(band_instruments)
+band_members %>% left_join(band_instruments)
+band_members %>% right_join(band_instruments)
+band_members %>% full_join(band_instruments)
+
+```
+
+### Application
+
+#### Merge `vst_mappingandtagging.csv`
+
+First let's read in both tables we need, `vst_perplotperyear.csv` and `vst_mappingandtagging.csv`.
+```{r, message=FALSE}
+maptag <- readr::read_csv(fs::path(raw_data_path, "vst_mappingandtagging.csv"))
+```
+
+
+First we'll merge data from `maptag`. This data set contains taxonomic and within-plot location metadata on individuals collected during mapping and tagging. There is one row per individual in the data set.  
+```{r}
+names(maptag)
+
+#dplyr::select(maptag, individualID, taxonID:taxonRank, pointID:stemAzimuth)
+```
+
+```{r}
+individual %>%
+  dplyr::left_join(maptag) 
+```
+
+Great we have our merge! 
+
+Looks successful right? How do we really know nothing has gone wrong. Remember, to successfully merge the tables, the data withing the columns the tables are being merged need to have corresponding values across all columns to be linked successfully so while the code ran, it may well not have found any matching rows in `maptag` to merge into `individual`. To check whether things have worked, we need to at least start with inspecting for the objects of interest.
+
+When working interactively and testing out pipes, you can pipe objects into `View()` for easier inspection. If you provide a character string as an argument, it is used as a name for the data view tab it launches
+
+```{r, eval=FALSE}
+individual %>%
+  dplyr::left_join(maptag) %>%
+  View("default")
+```
+
+Clearly this has not worked! We need to start digging into why but we don't want to have to keep manually checking whether it worked or not. Enter **DEFENSIVE PROGRAMMING**.
+
+
+### Defensive programming in scripts
+
+- `testthat`
+- `assertr`
+- `checkmate`
+
+
+
+
+```{r, error=TRUE}
+individual %>%
+  dplyr::left_join(maptag) %>%
+  assertr::assert(assertr::not_na,  stemAzimuth)
+```
+
+
+Handling clashes:
+
+I've shown the most minimal implementation in which dplyr does a lot of the guessing for us
+
+
+Be specific about which variables you want to:
+
+- Including them means they are combined into one column. If there are variable of the same name in both tables and they are not included in `by`, they will be kept in the new table and each suffixed with 
+
+```{r,eval=FALSE}
+df <- individual %>%
+  dplyr::left_join(maptag, by = c("namedLocation", "date", "eventID", "domainID", "siteID", "plotID", "individualID")) 
+
+```
+
+
+
+```{r,eval=FALSE}
+individual %>%
+  dplyr::left_join(maptag, by = c("namedLocation", "domainID", "siteID", "plotID", "individualID")) %>%
+  View()
+```
+
+```{r}
+individual %>%
+  dplyr::left_join(dplyr::select(maptag, individualID, 
+                                 taxonID:taxonRank, pointID:stemAzimuth))
+```
+
+
+
+
+
+```{r}
+nrow_indiv <- nrow(individual)
+
+individual %>%
+  dplyr::left_join(dplyr::select(maptag, -uid, -date))
+```
+
+
+Let's test to make sure we have not inadvertently added data through rogue duplicate data.
+```{r, error=TRUE}
+individual %>%
+  dplyr::left_join(maptag) %>%
+  assertr::verify(nrow(.) == nrow_indiv) %>%
+  assertr::assert(assertr::not_na,  stemAzimuth)
+```
+
+The data passes through the pipe after successfully passing our test. 
+
+Now let's say we also want to make sure our data was correctly matched and merged. We can do this by checking that there are there are no `NA`s in some key columns of interest:
+```{r}
+
+```
+
+
+```{r}
+checkmate::check_true(nrow(individual) == nrow_indiv)
+```
+
+
+#### Merge `vst_mappingandtagging.csv`
+
+First let's read in both tables we need, `vst_perplotperyear.csv` and `vst_mappingandtagging.csv`.
+```{r, message=FALSE}
+perplot <- readr::read_csv(fs::path(raw_data_path, "vst_perplotperyear.csv"))
+maptag <- readr::read_csv(fs::path(raw_data_path, "vst_mappingandtagging.csv"))
+```
+
+```{r}
+individual %<>% 
+  dplyr::left_join(dplyr::select(perplot, siteID:eventID))
+
+```
+
+
+```{r, message=FALSE, echo=FALSE, message=FALSE}
+individual %>%
+  readr::write_csv(file.path(raw_data_path, "vst_individual_merged.csv"))
+
+```

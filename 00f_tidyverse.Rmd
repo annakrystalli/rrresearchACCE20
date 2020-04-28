@@ -1,0 +1,169 @@
+# The tidyverse way
+
+
+## Intro to the tidyverse
+
+<div class="alert alert-info">
+
+The [Tidyverse](https://www.tidyverse.org/) is a coherent system of packages for data manipulation, exploration and visualization that share a common design philosophy.
+
+### Advantages of the tidyverse
+
+- Consistent functions.
+- Workflow coverage.
+- A parsimonious approach to the development of data science tools.
+
+</div>
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/tidyverse_copy.png")
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("https://rviews.rstudio.com/post/2017-06-09-What-is-the-tidyverse_files/tidyverse2.png")
+```
+
+### Tidyverse Principles
+
+- `tibbles` as main data structures.
+- Tidy data where rows are sigle observations and columns the variables observed.
+- Piping the outputs of tidyverse functions as inputs to subsequent functions.
+
+## `tibbles`
+
+> `tibbles` are one of the unifying features of the tidyverse, and are the tidyverse version of a data.frame (I will use them interchangeably in the rest of the text).
+
+### Features
+
+- Better printing behaviour.
+- Never coerces characters to factors.
+- More robust error handling.
+
+### Creating tibbles
+
+#### Coercing data.frames
+
+You can coerce a data.frame to a tibble
+```{r}
+tree_tbl <- tibble::as_tibble(trees)
+tree_tbl
+```
+
+As you can see, printing tibbles is much tidier and informative and designed so that you don’t accidentally overwhelm your console when you print large data.frames.
+
+#### Creating new tibbles
+
+You can create a new tibble from individual vectors with `tibble()`. `tibble()` will automatically recycle inputs of length 1, and allows you to refer to variables that you just created:
+
+```{r}
+tibble::tibble(
+    x = 1:5, 
+    y = 1, 
+    z = x ^ 2 + y
+)
+```
+
+
+
+## Subsetting tibbles
+
+### Base R subsetting
+
+We can use all the tools we learnt to subset data.frames to subset tibbles.
+
+
+### Subsetting using the tidyverse
+
+You can also subset `tibbles` using tidyverse functions from package `dplyr`. `dplyr` verbs are inspired by SQL vocabulary and designed to be more intuitive.
+
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+```
+
+The first argument of the main `dplyr` functions is a `tibble` (or data.frame)
+
+#### Filtering rows with `filter()`
+
+`filter()` allows us to subset observations (rows) based on their values. The first argument is the name of the data frame. The second and subsequent arguments are the expressions that filter the data frame.
+
+```{r}
+filter(tree_tbl, Girth > 14)
+```
+
+`dplyr` executes the filtering operation by generating a logical vector and returns a new `tibble` of the rows that match the filtering conditions. You can therefore use any logical operators we learnt using `[`.
+
+#### Slicing rows with `slice()`
+
+Using `slice()` is similar to subsetting using element indices in that we provide element indices to select rows.
+
+```{r}
+slice(tree_tbl, 2)
+
+slice(tree_tbl, 2:5)
+```
+
+#### Selecting columns with `select()`
+
+`select()` allows us to subset columns in tibbles using operations based on the names of the variables. 
+
+In `dplyr` we use **unquoted column names** (ie `Volume` rather than `"Volume"`).
+
+
+```{r}
+select(tree_tbl, Height, Volume)
+```
+
+Behind the scenes, `select` matches any variable arguments to column names creating a vector of column indices. This is then used to subset the `tibble`. As such we can create ranges of variables using their names and `:`
+
+```{r}
+select(tree_tbl, Height:Volume)
+```
+
+There's also a number of helper functions to make selections easier. For example, we can use `one_of()` to provide a character vector of column names to select.
+
+```{r}
+select(tree_tbl, one_of(c("Height", "Volume")))
+```
+
+[Find out more about `dplyr` helper functions](https://tidyselect.r-lib.org/reference/select_helpers.html)
+
+
+## The pipe operator `%>%`
+
+> Pipes are a powerful tool for clearly expressing a sequence of multiple operations. 
+
+> They help us write code in a way that is easier to read and understand. They also remove the need for creating intermediate objects.
+
+<div alert alert-info>
+
+Pipes take the output of the evaluation of the preceeding code and pipe it as the first argument to the subsequent expression.
+
+</div>
+
+Suppose we want to get the first two rows and only columns `Girth` and `Volume`. We can chain the two operations together using the pipe.
+
+```{r}
+tree_tbl %>%
+    select(Girth, Volume) %>%
+    slice(1:2)
+```
+
+This is form is very understandable because it focusses on intuitive verbs, not nouns. You can read this series of function compositions like it’s a set of imperative actions.
+
+
+As mentioned, the default behaviour of the pipe is to pipe objects as the first argument of the next expression. However, we can pipe the object into a different argument using the `.` operator.
+
+```{r}
+tree_tbl %>%
+    lm(Girth ~ Height, data = .)
+```
+
+
+_Note: The pipe, `%>%`, comes from the `magrittr` package by Stefan Milton Bache. Packages in the tidyverse load `%>%` for you automatically, so you don’t usually load `magrittr` explicitly._
+
+## Advanced R Cheat Sheet
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/cheatsheets/data-transformation.pdf")
+```

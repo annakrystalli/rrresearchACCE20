@@ -1,0 +1,154 @@
+# (PART) Part II: Data Munging {#process} 
+
+# Data Munging: Iteration
+
+
+## Iteration
+
+Let's say we want to repeat a process multiple times, iterating over a number of inputs. In this case we want to load every file in `/data-raw/wood-survey-data-master/individual/`. 
+
+We have a few options for how to approach this problem. In R there are two paradigms for iteration:
+
+- **imperative iterations**: (for and while loops)
+  - great place to start because they make iteration very explicit.
+  - quite verbose, and require quite a bit of bookkeeping code that is duplicated for every for loop.
+
+### Iterating using loops
+
+#### Every for loop has three components:
+
+- The output: It's important for efficiency to allocate sufficient space for the output before starting a for loop: if you grow the for loop at each iteration using `c()` (for example), your for loop will be very slow.
+> Use `output <- vector(mode = "double", length = length(x))` to create an output vector of type double the length of the input vector we want to iterate over (`x`).
+
+- **The sequence:** `i in seq_along(x)`. This determines what to loop over: each run of the for loop will assign i to a different value from seq_along(x). It’s useful to think of i as a pronoun, like “it”.
+We have the file paths in our `individual_paths` vector so we can use a **for loop** to iterate over `individual_paths`, using each path as the `file` argument in `readr::read_csv()` and bind each resulting `tibble` sequentially.
+```{r, message=FALSE}
+indiv_dfs <- NULL
+for(file in individual_paths){
+  indiv_dfs <- dplyr::bind_rows(indiv_dfs, readr::read_csv(file))
+}
+```
+
+Create an output vector to store dataframes in
+```{r, message=FALSE}
+indiv_df_list <- vector("list", length(individual_paths))
+
+```
+
+
+```{r}
+seq_along(individual_paths)
+```
+
+
+```{r, message=FALSE}
+for(i in seq_along(individual_paths)){
+  indiv_df_list[[i]] <- readr::read_csv(individual_paths[[i]])
+}
+
+
+
+
+```
+
+##### Base R
+```{r}
+do.call("rbind", indiv_df_list)
+```
+
+##### Tidyverse
+
+**`purrr::reduce`**
+More flexible in how you can join objects together
+
+```{r}
+purrr::reduce(indiv_df_list, rbind)
+
+```
+
+**`dplyr::bind_rows`**
+`bind_rows` offers a shortcut to the reduce by binding the rows of a list of tibbles or data.frames sequentially.
+
+```{r}
+dplyr::bind_rows(indiv_df_list)
+```
+
+
+
+
+### Iterating using `purrr`
+
+Loops are an important basic concept in programming. However another approach available in R is functional programming to vectorise a function or pipe of functions over given input(s).
+
+In base R there is a family of apply functions (`lapply`, `vapply`, `sapply`, `apply`, `mapply`). These are handy to know if wou want to write workflows or software that are low on dependencies.
+
+In the tidyverse the respective functionality is provide by package [`purrr`](https://purrr.tidyverse.org/), provides a complete and consistent set of tools for working with functions and vectors.. 
+
+```{r, echo = FALSE, caption = "purrr cheatsheets: https://github.com/rstudio/cheatsheets/blob/master/purrr.pdf"}
+knitr::include_graphics("assets/purrr-cheatsheet-thumbs.png", error = FALSE)
+```
+
+ allow you to replace many for loops with code that is both more succinct and easier to read. The best place to learn about the map() functions is the [iteration chapter](https://r4ds.had.co.nz/iteration.html) in R for data science
+
+```
+- apply(X, MARGIN, FUN)
+- lapply(X, FUN)
+```
+
+```{r, message=FALSE}
+
+individual <- purrr::map_df(individual_paths,
+           ~readr::read_csv(.x))
+```
+
+
+```{r, message=FALSE}
+
+individual <- purrr::map_df(individual_paths,
+           ~readr::read_csv(.x, col_types = readr::cols(.default = "c"))) %>%
+            readr::type_convert()
+  
+individual  
+```
+
+If you are dealing with very large tables make sure to check out packages `data.table` and `vroom`. Learn more about [perfomance and efficency](http://adv-r.had.co.nz/Performance.html) in general. 
+
+```{r, eval=FALSE}
+microbenchmark::microbenchmark({
+  # tidyverse
+  purrr::map_df(individual_paths,
+           ~readr::read_csv(.x))},
+  # tidyverse + read in as character
+  {purrr::map_df(individual_paths,
+           ~readr::read_csv(.x, col_types = readr::cols(.default = "c"))) %>%
+            readr::type_convert()},
+  # vroom package
+  {vroom::vroom(individual_paths)},
+  # data.table
+  {lapply(individual_paths, data.table::fread, sep=",")},
+  {purrr::map_df(individual_paths, data.table::fread, sep=",")},
+  times = 20)
+```
+
+```r
+       min        lq      mean    median        uq       max neval
+ 379.63553 388.89853 411.62862 399.62059 413.22663 577.22038    20
+ 156.02550 175.48882 183.36342 181.91229 191.59960 210.75355    20
+ 266.27813 268.37740 288.82870 279.64958 298.02430 381.60586    20
+  50.79947  53.11024  56.71559  55.25765  57.65712  73.02853    20
+  61.36634  63.85194  68.44160  65.12753  69.08671  88.60108    20
+ ```
+
+
+
+
+```{r, message=FALSE, echo=FALSE}
+individual %>%
+  readr::write_csv(file.path(raw_data_path, "vst_individual.csv"))
+
+```
+
+```{r}
+individual
+names(individual)
+```

@@ -1,0 +1,437 @@
+# Indexing and subsetting
+
+
+> R has many powerful subset operators. Mastering them will allow you to
+easily perform complex operations on any kind of dataset.
+
+There many different ways we can subset any kind of object, and three
+different subsetting operators for the different data structures.
+
+
+## Subsetting vectors
+
+Let's start by examining subsetting in the simplest data structure, the vector. 
+
+> Subsetting a vector always returns another vector.
+
+```{r}
+x <- 4:7
+x
+```
+
+### Subsetting using `[` and elements indices
+
+#### Extracting single elements
+
+To extract elements of a vector we can use the square bracket operator (`[`) and the target element index, starting from one:
+
+```{r}
+x[1]
+```
+
+```{r}
+x[4]
+```
+
+It may look different, but the square brackets operator is a function and means "get me the nth element".
+
+If we ask for an index beyond the length of the vector, R will return a missing value:
+```{r}
+x[6]
+```
+
+
+If we ask for the 0th element, we get an empty vector:
+
+```{r}
+x[0]
+```
+
+
+
+#### Extracting multiple elements
+
+We can also ask for multiple elements at once:
+
+```{r}
+x[c(1, 3)]
+```
+
+Or slices of the vector:
+
+```{r}
+x[2:4]
+```
+
+
+We can ask for the same element multiple times:
+
+```{r}
+x[c(1,1,3)]
+```
+
+#### Excluding and removing elements
+
+If we use a negative number as the index of a vector, R will return
+every element *except* for the one specified:
+
+```{r}
+x[-2]
+```
+
+We can skip multiple elements:
+
+```{r}
+x[c(-1, -5)]  # or x[-c(1,5)]
+```
+
+
+<div class="alert alert-warning">
+
+In general, e aware that the result of subsetting using indices could change if the vector is reordered. 
+
+</div>
+
+### Subsetting using element names
+
+
+If the vector has a name attribute, we can subset the vector more precisely using the element's name
+
+```{r}
+names(x) <- c("a", "b", "c", "d")
+
+x[c("a", "c")]
+```
+
+
+
+<div class="alert alert-success">
+
+Subsetting using names in the most robust way to extract elements. The
+position of various elements can often change when chaining together
+subsetting operations, but the names will always remain the same!
+
+</div>
+
+
+### Subsetting using logical vectors
+
+We can also use any logical vector to subset:
+
+```{r}
+x[c(FALSE, FALSE, TRUE, TRUE)]
+```
+
+Since comparison operators (e.g. `>`, `<`, `==`) evaluate to logical vectors, we can also
+use them to succinctly subset vectors: the following statement gives
+the same result as the previous one.
+
+```{r}
+x[x > 5]
+```
+
+Breaking it down, this statement first evaluates `x > 5`, generating
+a logical vector `c(FALSE, FALSE, TRUE, TRUE)`, and then
+selects the elements of `x` corresponding to the `TRUE` values.
+
+We can use `==` to mimic the previous method of indexing by name
+(remember you have to use `==` rather than `=` for comparisons):
+
+```{r}
+x[names(x) == "a"]
+```
+
+
+<div class="alert alert-warning">
+
+Avoid using `==` to compare numbers! See [function `dplyr::near()`](https://dplyr.tidyverse.org/reference/near.html) instead.
+
+</div>
+
+We also might want to subset using a vector of potential values, that might not necessarily have matches in `x`.
+
+In this case we can use `%in%`
+
+```{r}
+x[names(x) %in% c("a", "c", "e")]
+```
+
+
+#### Excluding named elements
+
+Excluding or removing named elements is a little harder. 
+
+If we try to skip one named element by negating the string, R complains (slightly obscurely) that it doesn't know how to take the negative of a string:
+
+```{r, error=TRUE}
+x[-"a"]
+```
+
+However, we can use the `!=` (not-equals) operator to construct a logical vector that will do what we want:
+
+```{r}
+x[names(x) != "a"]
+```
+
+Excluding multiple named indices requires a different tactic through. 
+
+Suppose we want to drop the `"a"` and `"c"` elements, so we try this:
+
+```{r}
+x[names(x) != c("a","c")]
+```
+
+R did *something*, but it gave us a warning that we ought to pay attention to - and it apparently *gave us the wrong answer* (the `"c"` element is still included in the vector)!
+
+This happens because we are trying to compare two vectors (`names(x)` and `c("a","c")`) and comparison operators are automatically vectorised in such a case. So in effect, R is comparing `"a"` in `names(x)` to `"a"` in `c("a","c")` and returning `FALSE` (ie `"a" != "a" = FALSE`), then `"b"` in `names(x)` to `"c"` in `c("a","c")` and returning `TRUE`. What happens with `"c"` in `names(x)` is R recuycles the comparison vector `c("a","c")` and starts again with `"a"`. `"c"` is not equal to `"a"` so `"a" != "c"` returns `TRUE` and the element is kept.
+
+On the other hand this works, but only by chance:
+```{r}
+x[names(x) != c("a","b")]
+```
+
+
+To perform such a subset robustly, we need to combine `%in%` and `!`.
+
+```{r}
+x[!names(x) %in% c("a","c")]
+```
+
+This checks whether names of `x` take any value of the values in `c("a","c")`, returning the elements where the condition is `TRUE`. The `!` then negates the selection, returning only the elements whose names are not contained in `c("a","c")`.
+
+## Matrix subsetting
+
+> As matrices are just 2d vectors, all the subsetting operations using the `[` can also be applied to matrices.
+
+### Subsetting using element indices
+
+Let's create a matrix
+
+```{r}
+m <- matrix(1:12, ncol=4, nrow=3)
+m
+```
+
+<div class="alert alert-info">
+
+Indexing matrices with `[` takes two arguments: **the first expression is applied to the rows, the second
+to the columns:**
+
+</div>
+
+Say we want the **2 and 3rd rows** of the **last and first column** (in that order) of our matrix. We can use all the subsetting we learned for vectors and apply them to each dimension of our matrix.
+
+```{r}
+m[2:3, c(4,1)]
+```
+
+#### Subsetting whole rows or columns
+
+We can leave the first or second arguments blank to retrieve all the
+rows or columns respectively:
+
+```{r}
+m[, c(2,3)]
+m[c(2,3),]
+```
+
+If we only access one row or column, R will automatically convert the result
+to a vector:
+
+```{r}
+m[3,]
+```
+
+If we want to keep the output as a matrix, we need to specify a *third* argument;
+`drop = FALSE`:
+
+```{r}
+m[3, , drop=FALSE]
+```
+
+
+<div class="alert alert-info">
+
+Tip: Higher dimensional arrays
+
+
+When dealing with multi-dimensional arrays, each argument to `[` corresponds to a dimension. For example, a 3D array, the first three arguments correspond to the rows, columns, and depth dimension.
+
+</div>
+
+
+## Subsetting lists
+
+
+> There are three functions used to subset lists and extract individual elements:  `[`, `[[`, and `$`.
+
+### Subsetting list elements
+
+
+Using `[` will always return a list. If you want to *subset* a list, but not
+*extract* an element, then you will likely use `[`.
+
+```{r}
+xlist <- list(a = "ACCE DTP", b = 1:10, data = head(iris))
+```
+
+####  Subsetting by element indices
+
+As with vectors, we can use element indices and `[` to subset lists.
+```{r}
+
+xlist[1]
+```
+
+This returns a *list with one element*.
+
+We can use multiple indices to subset multiple list elements:
+```{r}
+xlist[1:2]
+```
+
+####  Subsetting by name
+
+We can also use names:
+
+```{r}
+xlist[c("a", "b")]
+```
+
+It is accessing the list as if it were a vector and returning a list.
+
+Comparison operations involving the contents of list elements however won't work as they are not accessible at the level of `[` indexing.
+
+### Extracting individual elements
+
+> Extracting individual elements allow us to access the objects contained in a list, which can be any type of object. Hence the result depends on the object each element contains.
+
+
+To extract individual elements of a list, we use the double-square bracket function: `[[`.
+
+####  Extracting by element index
+
+Again we can use element indices to extract the object contained in an element.
+
+```{r}
+xlist[[2]]
+```
+
+Notice that now the result is a vector, not a list, which is what the second element contained.
+
+You can't extract more than one element at once:
+
+```{r, error=TRUE}
+xlist[[1:2]]
+```
+
+Nor use it to skip elements:
+
+```{r, error=TRUE}
+xlist[[-1]]
+```
+
+
+####  Extracting by element name
+
+We can however use single names to extract elements:
+
+
+```{r}
+xlist[["a"]]
+```
+
+
+##### The `$` operator
+
+The `$` operator is a shorthand way for extracting single elements by name:
+
+```{r}
+xlist$data
+```
+
+##### List subsetting challenge {#chlg-list-subset}
+
+Given the following list:
+
+```{r, eval=FALSE}
+xlist <- list(a = "ACCE DTP", b = 1:10, data = head(iris))
+```
+
+and using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
+
+_Hint: the number 2 is contained within the "b" item in the list._
+
+
+[Solution](#csol-list-subset)
+
+## Subsetting data.frames
+
+> Data frames are lists underneath the hood, so similar rules
+apply subsetting rules apply. However they are also two dimensional objects.
+
+### Subsetting data.frames as a list
+
+#### Using `[` to subset
+
+Using the **`[` operator with one argument** will act the same way as for lists, where each list
+element corresponds to a column. The resulting object will be a data.frame:
+
+```{r}
+trees[1]
+```
+
+```{r}
+trees["Girth"]
+```
+
+#### Using `[[` to extract
+
+Similarly, `[[` will act to extract *a single column* as a vector:
+
+```{r}
+trees[[1]]
+trees[["Girth"]]
+```
+
+And `$` provides a convenient shorthand to extract columns by name:
+
+```{r}
+trees$Girth
+```
+
+
+### Subsetting data.frames as a matrix
+
+With two arguments, `[` behaves the same way as for matrices:
+
+```{r}
+trees[1:5, c("Girth", "Volume")]
+```
+
+
+If we subset a single row, the result will be a data.frame (because
+the elements are mixed types):
+
+```{r}
+trees[3,]
+```
+
+But for a single column the result will be a vector.
+```{r}
+trees[, "Girth"]
+```
+
+
+This can be changed with the third argument, `drop = FALSE`).
+
+```{r}
+trees[, "Girth", drop=FALSE]
+```
+
+## Advanced R Cheat Sheet
+
+```{r, echo=FALSE, fig.cap="Environments, data Structures, Functions, Subsetting and more by Arianne Colton and Sean Chen"}
+knitr::include_url("https://rstudio.com/wp-content/uploads/2016/02/advancedR.pdf")
+```
+

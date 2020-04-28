@@ -1,0 +1,21 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Reproducible Research Data & Project Management in R</a></li>
+      after: |
+        <li><a href="https://annakrystalli.me/rrreasearchACCE2020" target="blank">Published with bookdown</a></li>
+        
+      collapse: section
+      scroll_highlight: yes
+    download: ["pdf", "epub"]
+    toolbar:
+      position: fixed
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default

@@ -1,0 +1,117 @@
+---
+title: "gapminder-analysis"
+author: "Anna Krystalli"
+date: "5/1/2018"
+output: 
+  html_document:
+      toc: true
+      toc_float: true
+      theme: cosmo
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+In this project, wer're using [Gapminder](http://www.gapminder.org/data/) data to explore the properties of R markdown.
+
+Gapminder produces free teaching resources helping make the world understandable based on reliable statistics. 
+
+We'll inspect and visualise the gapminder dataset sourced from the `gapminder` package. The main object in this package is the `gapminder` data frame or "tibble". 
+
+![](https://www.gapminder.org/wp-content/themes/gapminder/images/logo.png)
+
+# Installation
+
+Install `gapminder` from CRAN:
+
+```{r, eval=FALSE}
+install.packages("gapminder")
+
+```
+
+To perform our analysis we also need to install some additional packages
+
+```{r, eval=FALSE}
+install.packages(c("ggplot", "DT", "skimr"))
+```
+
+
+# Data
+
+Get data from the `gapminder` package
+```{r}
+library(gapminder)
+```
+
+```{r}
+DT::datatable(gapminder, caption = "gapminder dataset sourced from the gapminder r package")
+```
+
+### Summarise the data
+
+```{r}
+library(skimr)
+skim(gapminder)
+```
+
+# Analysis
+
+## Relationship between GDP per capita and Life Expectancy
+
+```{r, echo=FALSE}
+library(ggplot2)
+
+ggplot(gapminder, 
+       aes(x = gdpPercap, y = lifeExp, colour = continent)) +
+    geom_point()
+```
+
+### Linear model of Life expectancy as a function of GDP per capita
+
+```{r}
+lm <- lm(lifeExp ~ gdpPercap, data = gapminder) 
+lm
+summary(lm)
+```
+
+
+## Plot Life expectancy vs GDP per cap on a log scale
+
+```{r, echo=TRUE}
+library(ggplot2)
+
+ggplot(gapminder, 
+       aes(x = gdpPercap, y = lifeExp, colour = continent)) +
+  geom_point() + 
+  scale_x_log10() 
+```
+
+### Add smooth lines
+
+```{r, echo=TRUE}
+library(ggplot2)
+
+
+p <- ggplot(gapminder, 
+            aes(x = gdpPercap, y = lifeExp, color = continent)) +
+    geom_point() + 
+  scale_x_log10() + 
+    geom_smooth()
+p
+
+```
+
+
+### Make it interactive
+
+```{r}
+library(plotly)
+
+ggplotly(p)
+
+```
+

@@ -1,0 +1,73 @@
+# (PART) Project Management {#proj-management} 
+
+# Projects in Rstudio
+
+>  Rstudio projects are a convenient way to manage research projects, providing the scaffolding for robust, self-contained and portable work.
+
+## General Project Organisation
+
+**Good project layout helps ensure:**
+
+- Integrity of data
+- Portability of the project
+- work is easy to revisit after a break and onboard new collaborators
+- supports tool building which takes advantage of the shared structure.
+
+<div class="alert alert-info">
+
+### Principles
+
+- Everything required is contained in the project or sourced automatically.
+- Use paths relative to the project root directory.
+- Separate data, methods, and output, while making the relationship between them clear.
+- Use R package development and community conventions.
+- Do not manually edit raw data.
+- Keep a [clean pipeline](https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/) of data processing from raw to analytical.
+- Incorporate checks to ensure correct processing and analysing.
+</div>
+
+## Rstudio Projects
+
+Rstudio projects are a convenient way to manage research projects, providing the scaffolding for self contained and portable work.
+
+### Features
+- Self contained and portable
+- Clean environment on load
+- Working directory and files tab set to project root
+
+
+## Rstudio Cloud projects
+
+for the rest of the course, we will be working in a project where I have already set up the computational environment. This will save a lot of time by avoiding having to run a long installation scrip during the class or debug individual installation problems. 
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/rsc_space_copy.png", error = FALSE)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/rsc_copy_proj.png", error = FALSE)
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/rsc_open_project.png", error = FALSE)
+```
+
+
+
+
+### Creating projects locally 
+
+To create a new project locally in Rstudio, you can either use **File > New Project > New Directory**, or in the console (you only need to run this once, so you don't want it to be part of a repeatable script) run:
+
+```{r, eval=FALSE}
+usethis::create_project("~/Desktop/wood-survey")
+```
+
+<div class="alert alert-danger">
+
+In general, do not use such hard code paths in repeatable scripts. They might not work across operating systems and are unlikely to generalise across someone elses file system.
+
+</div>
+
+You will also need to run the `install.R` script. See the [setup instructions](#setup) for more details.
