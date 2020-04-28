@@ -10,7 +10,6 @@ In order to **ensure robustness** of outputs and **maximise the benefits** of AC
 
 Additionally, if analyses are to be deemed robust, they **must be at the very least reproducible**, but ideally well documented and reviewable. 
 
-
 R and Rstudio tools and conventions offer a powerful framework for making modern, open, reproducible and collaborative computational workflows more accessible to researchers. 
 
 
