@@ -15,8 +15,26 @@ params:
   date: "Apr-May 2020"
   location: "Online"
   book_url: "http://annakrystalli.me/rrresearchACCE20/"
-  hackpad_url: ""
+  hackpad_url: "https://bit.ly/acce20-notepad"
   bitly_url: "https://bit.ly/ACCE20"
+---
+class: inverse
+
+# Welcome
+
+***
+
+## Resources
+### Course Materials 
+
+#### [`r stringr::str_remove(params$bitly_url, "https://")`](`r params$bitly_url`)
+
+
+### Course Collaborative Notepad 
+#### [`r stringr::str_remove(params$hackpad_url, "https://")`](`r params$hackpad_url`)
+
+_Please **Sign In** on the Notepad_
+
 ---
 class: top, left, inverse
 
@@ -63,22 +81,16 @@ class: inverse
 
 # Ice Breaker
 
-### Split into Break Out rooms
+<br>
+
+### Split into break out rooms
 
 ### Introduce yourselves
 
 ### Q: Why did you decide to join this course?
 
----
-# Welcome
-## Resources
-### Course Materials 
-#### <`r params$book_url`>
-#### [`r stringr::str_remove(params$bitly_url, "https://")`](`r params$bitly_url`)
 
 
-### Course Hackpad 
-#### <`r params$hackpad_url`>
 ---
 class: top, right, inverse
 
@@ -141,6 +153,7 @@ _Nielsen, Michael. Reinventing Discovery: The New Era of Networked Science. Prin
 ]
 ---
 ## The internet was built for open science
+
 ### Key to next generation networked science
 
 .center[![](assets/www.jpg)]
@@ -193,30 +206,40 @@ class: top, right, inverse
 ***
 ---
 
-## **21st Century Research meta-responsibilities**
+## **Research meta-responsibilities**
 
 We need better digital curation of the workhorses of modern science: **code** & **data**
+
 
 > **aim to create secure materials that are [FAIR](https://www.nature.com/articles/sdata201618)**
 > *findable, accessible, interoperable, reusable*
 
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_graphics("assets/FAIRPrinciples.jpg")
+```
 
 ---
 
-## **21st Century Research meta-responsibilities**
+## **Research meta-responsibilities**
 
 ***
 
 .pull-left[
 
-- Think about traceablility and provencance
-- Follow community conventions
-- Prepare it to share it
+- #### Think about traceablility and provencance.
+
+- #### Follow community conventions.
+
+- #### Prepare it to share it.
 
 ]
-.pull-right[
+.pull-right.center[
 
-#### We all need to do our bit
+### We all need to do our bit!
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/CultureShift.jpg")
+```
 
 ]
 
@@ -256,7 +279,10 @@ We need better digital curation of the workhorses of modern science: **code** & 
 
 
 .centre[
-![](assets/img/beer_messy_tidy.png)
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_graphics("assets/img/beer_messy_tidy.png")
+```
+
 ]
 
 ---
@@ -271,6 +297,12 @@ collection."
 
 [_Gentleman and Temple Lang, 2004_](https://biostats.bepress.com/bioconductor/paper2/)
 
+.centre[
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("assets/ResearchCompendium.jpg")
+```
+
+]
 
 ---
 
@@ -286,12 +318,6 @@ collection."
 
 ---
 
-![](assets/reproducible-data-analysis-06.png)
-
-[_Kartik Ram: rstudio::conf 2019 talk_](https://github.com/karthik/rstudio2019)
-
----
-
 ## R + Rstudio
 
 ### Next generation data science powerhouse
@@ -301,19 +327,18 @@ collection."
 #### Backed by a diverse and active community of learners, users and developers
 
 
-<img src="https://www.rfordatasci.com/img/carousel/logo-big.png" width="150px" height="150px"><img src="https://software-carpentry.org/files/2017/12/satrday-logo.png" width="150px" height="150px"><img src="https://rladies.org/wp-content/uploads/2016/12/R-LadiesGlobal.png" width="150px" height="150px"><img src="https://forwards.github.io/images/forwards.svg" width="150px" height="150px"><img src="https://github.com/ropensci/dev_guide/raw/master/images/icon_short_color.png" width="150px" height="150px">
+<img src="https://www.rfordatasci.com/img/carousel/logo-big.png"  height="150px"><img src="https://software-carpentry.org/files/2017/12/satrday-logo.png" width="150px" height="150px"><img src="https://rladies.org/wp-content/uploads/2016/12/R-LadiesGlobal.png" width="150px" height="150px"><img src="https://forwards.github.io/images/forwards.svg" width="150px" height="150px"><img src="https://github.com/ropensci/dev_guide/raw/master/images/icon_short_color.png" width="150px" height="150px">
 
 
 ---
 
 ## Back to "Why are we here?"
 
-
-- To help you make the most of the real workhorses of your work, **YOUR CODE & DATA**!
+- To show you howto use R + Rstudio to perform reproducible data analyses.
 
 --
 
-- We'll do this by introducing you to **useful data and software tools and best practices**.
+- To help you make the most of the real workhorses of your work, **YOUR CODE & DATA**!
 
 --
 
@@ -329,32 +354,49 @@ collection."
 
 ---
 
-## Course Outline
-
-### Today
-
-- Introduction
-- Basic Data Hygiene
-- Research Data Management - Metadata
-- Literate Programming with Rmarkdown
-- Version Control with Git
+- We'll do this by introducing you to **useful data and software tools and best practices**.
 
 ---
 
-## Course Outline
+# Course Outline
 
-### Tomorrow
+.pull-left[
+- ### Welcome
 
-- Collaborating through GitHub
-- Managing code as a package
-- Bringing it all together: a Research compendium
+
+- ### Basics
+
+
+- ### Project Management
+
+- ### Data Munging
+]
+
+.pull-right[
+
+
+- ### Metadata
+
+
+- ### Analysing & presenting data
+
+
+- ### Version Control
+
+]
+
+***
+
+<br>
+
+#### **We'll take regular breaks and aim to break for lunch between 12:00-13:00 for an hour**
 
 ---
 
 # Before we dive in
 
-- We'll exploring best practice in data and workflow management. I've tried to focus on concepts and tools that I wish I knew when I started
 
+- We'll exploring best practice in data and workflow management. I've tried to focus on concepts and tools that I wish I knew when I started
 
 --
 
@@ -362,25 +404,54 @@ collection."
 
 --
 
-- We'll also be working together through exercises. 
+- We'll be coding together and working in Rstudio Cloud. 
+
 
 --
 
-- We'll be using colour post it's to track progress at give time for folks to catch up at key stages using traffic lights thhroughout the materials `r emo::ji("vertical_traffic_light")`
-
---
-
-- Feedback between sessions: After each session, let me know on your post-its:
+- Feedback: After each day, let me know on the notepad:
   - `r emo::ji("green_book")`: somethind you liked
   - `r emo::ji("red_circle")`: somethind that could be improved
 
 --
 
-- Please feel to stop me if I use jargon you don't understand or need some clarification.  Questions are helpful for everyone! `r emo::ji("sparkles")`
+- Please feel free to ask questions if I use jargon you don't understand or need some clarification.  Questions are helpful for everyone! `r emo::ji("sparkles")`
 
 ---
 
-# Get Ready
+
+## Working in Blackboard collaborate
+
+```{r, out.width="60%", echo=FALSE}
+knitr::include_graphics("assets/bb_comms.png")
+```
+
+
+- Have your mic on mute by default
+
+--
+
+- Please enter questions relevant to the course in the Collaborative notepad under **Participant Questions**
+
+--
+
+- Please ask technical questions in the chat
+
+--
+
+- Please try to help each other!
+
+--
+
+- Use status reaction emojis to communicate how it's going
+
+--
+
+- If you need to get my attention while speaking, raise your hand!
+
+---
+
+# Let's go!
 
 
 ## Get back [home](`r params$book_url`)
