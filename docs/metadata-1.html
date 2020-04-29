@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Data Munging: functions | Reproducible Research Data &amp; Project Management in R</title>
+  <title>Metadata | Reproducible Research Data &amp; Project Management in R</title>
   <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Data Munging: functions | Reproducible Research Data &amp; Project Management in R" />
+  <meta property="og:title" content="Metadata | Reproducible Research Data &amp; Project Management in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="annakrystalli/rrresearchACCE20" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Data Munging: functions | Reproducible Research Data &amp; Project Management in R" />
+  <meta name="twitter:title" content="Metadata | Reproducible Research Data &amp; Project Management in R" />
   
   <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-munging-combining-tables.html"/>
-<link rel="next" href="metadata-1.html"/>
+<link rel="prev" href="data-munging-functions.html"/>
+<link rel="next" href="analysing.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -398,28 +398,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-munging-functions" class="section level1">
-<h1>Data Munging: functions</h1>
-<p>Let’s say we want to geolocate every individual plant in out data. Currently, only the plot is geolocated, the data being contained in <code>vst_perplotperyear.csv</code> columns <code>decimalLatitude</code> and <code>decimalLongitude</code>. The location of each individual is defined in <code>vst_mappingandtagging.csv</code> which is detailed in <code>methods/NEON_vegStructure_userGuide_vA.pdf</code> but we will briefly describe here.</p>
-<div id="spatal-sampling-design" class="section level3">
-<h3>Spatal Sampling Design</h3>
-<p>At sites with qualifying woody and/or non-herbaceous vegetaton, stem mapping actvites and the collecton of vegetaton structure data take place in up to n=20 randomly selected, spatally-balanced Distributed Plots, te axact number and size of the plot varying according to plot type.</p>
-<p>An offset mapping technique is used to determine the within-plot locaton of mapped individuals relative to permanent plot markers (pointIDs) for which high-resoluton GPS data are collected (Figure 3). For additonal details on the sampling design and associated protocol, see <a href="https://data.neonscience.org/documents/10179/2139401/NEON.DOC.000987vE/313b430e-c0b0-4f78-894d-c0300b47488b?version=1.0">TOS Protocol and Procedure: Measurement of Vegetation Structure</a>.</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;assets/NEON_point_grid.png&quot;</span>, <span class="dt">error =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="assets/NEON_point_grid.png" width="346" /></p>
-</div>
-<div id="making-new-variables" class="section level3">
-<h3>Making new variables</h3>
+<div id="metadata-1" class="section level1">
+<h1>Metadata</h1>
+<p><a href="https://annakrystalli.me/rrresearchACCE20/slides/04_metadata.html" target="blank"><svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;">
+<path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"></path>
+</svg> View Slides</a> <br><br><iframe src="slides/04_metadata.html" width="672" height="400px"></iframe></p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-munging-combining-tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="metadata-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-munging-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
