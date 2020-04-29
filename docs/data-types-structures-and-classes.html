@@ -163,7 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r-basics.html"><a href="r-basics.html#comparing-things"><i class="fa fa-check"></i>Comparing things</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="data-types-structures-and-classes.html"><a href="data-types-structures-and-classes.html"><i class="fa fa-check"></i>Data types, structures and classes</a><ul>
-<li class="chapter" data-level="" data-path="data-types-structures-and-classes.html"><a href="data-types-structures-and-classes.html#base-types-versus-object-oriented"><i class="fa fa-check"></i>Base types versus Object Oriented</a></li>
+<li class="chapter" data-level="" data-path="data-types-structures-and-classes.html"><a href="data-types-structures-and-classes.html#base-types"><i class="fa fa-check"></i>Base types</a></li>
 <li class="chapter" data-level="" data-path="data-types-structures-and-classes.html"><a href="data-types-structures-and-classes.html#base-data-types"><i class="fa fa-check"></i>Base data types</a></li>
 <li class="chapter" data-level="" data-path="data-types-structures-and-classes.html"><a href="data-types-structures-and-classes.html#data-structures"><i class="fa fa-check"></i>Data Structures</a></li>
 <li class="chapter" data-level="" data-path="data-types-structures-and-classes.html"><a href="data-types-structures-and-classes.html#lists"><i class="fa fa-check"></i>Lists</a></li>
@@ -400,8 +400,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data-types-structures-and-classes" class="section level1">
 <h1>Data types, structures and classes</h1>
-<div id="base-types-versus-object-oriented" class="section level2">
-<h2>Base types versus Object Oriented</h2>
+<div id="base-types" class="section level2">
+<h2>Base types</h2>
 <blockquote>
 <p>Every object has a base type and only R-core can create new types.</p>
 </blockquote>
@@ -456,16 +456,29 @@ an empty vector of whatever type you like.</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">another_vector &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&#39;character&#39;</span>, <span class="dt">length=</span><span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb62-2" data-line-number="2">another_vector</a></code></pre></div>
 <pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<p>You can also make series of numbers:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>, <span class="dt">by=</span><span class="fl">0.1</span>)</a></code></pre></div>
+<pre><code>##  [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3  2.4
+## [16]  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9
+## [31]  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4
+## [46]  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5  6.6  6.7  6.8  6.9
+## [61]  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9  8.0  8.1  8.2  8.3  8.4
+## [76]  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3  9.4  9.5  9.6  9.7  9.8  9.9
+## [91] 10.0</code></pre>
 <p>You can also create vectors by combining individual elements using function <code>c</code> (for combine).</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">combine_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb64-2" data-line-number="2">combine_vector</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">combine_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb70-2" data-line-number="2">combine_vector</a></code></pre></div>
 <pre><code>## [1] 2 6 3</code></pre>
 </div>
 </div>
 <div id="type-coercion" class="section level3">
 <h3>Type coercion</h3>
 <p>Q: Given what we’ve learned so far, what do you think the following will produce?</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="st">&#39;3&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="st">&#39;3&#39;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;2&quot; &quot;6&quot; &quot;3&quot;</code></pre>
 <p>This is something called <em>type coercion</em>, and it is the source of many surprises
 and the reason why we need to be aware of the basic data types and how R will
@@ -479,48 +492,34 @@ interpret them.</p>
 </div>
 <p>In our case, our <code>2</code>, &amp; <code>3</code> integer values where converted to character.</p>
 <p>Some other examples:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot;    &quot;TRUE&quot;</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">c</span>(<span class="st">&quot;FALSE&quot;</span>, <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">c</span>(<span class="st">&quot;FALSE&quot;</span>, <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;FALSE&quot; &quot;TRUE&quot;</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">0</span>, <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">0</span>, <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0 1</code></pre>
 <p>You can try to force coercion against this flow using the <code>as.</code> functions:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;0&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;4&#39;</span>)</a>
-<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="kw">as.numeric</span>(chars)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;0&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;4&#39;</span>)</a>
+<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="kw">as.numeric</span>(chars)</a></code></pre></div>
 <pre><code>## [1] 0 2 4</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">as.logical</span>(chars)</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">as.logical</span>(chars)</a></code></pre></div>
 <pre><code>## [1] NA NA NA</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">as.logical</span>(<span class="kw">as.numeric</span>(chars))</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="kw">as.logical</span>(<span class="kw">as.numeric</span>(chars))</a></code></pre></div>
 <pre><code>## [1] FALSE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">as.logical</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">as.logical</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## [1] FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">as.logical</span>(<span class="kw">c</span>(<span class="st">&quot;FALSE&quot;</span>, <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="kw">as.logical</span>(<span class="kw">c</span>(<span class="st">&quot;FALSE&quot;</span>, <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## [1] FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="kw">as.numeric</span>(<span class="kw">c</span>(<span class="st">&quot;FALSE&quot;</span>, <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="kw">as.numeric</span>(<span class="kw">c</span>(<span class="st">&quot;FALSE&quot;</span>, <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## Warning: NAs introduced by coercion</code></pre>
 <pre><code>## [1] NA NA</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="kw">as.numeric</span>(<span class="kw">as.logical</span>(<span class="kw">c</span>(<span class="st">&quot;FALSE&quot;</span>, <span class="ot">TRUE</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="kw">as.numeric</span>(<span class="kw">as.logical</span>(<span class="kw">c</span>(<span class="st">&quot;FALSE&quot;</span>, <span class="ot">TRUE</span>)))</a></code></pre></div>
 <pre><code>## [1] 0 1</code></pre>
 <p>As you can see, some surprising things can happen when R forces one basic data
 type into another!</p>
 <p>If your data isn’t the data type you expected, type coercion
 may well be to blame; make sure everything is the same type in your vectors and
 your columns of data.frames, or you will get nasty surprises!</p>
-<p>You can also make series of numbers:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">mySeries &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb89-2" data-line-number="2">mySeries</a></code></pre></div>
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">10</span>)</a></code></pre></div>
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>, <span class="dt">by=</span><span class="fl">0.1</span>)</a></code></pre></div>
-<pre><code>##  [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3  2.4
-## [16]  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9
-## [31]  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4
-## [46]  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5  6.6  6.7  6.8  6.9
-## [61]  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9  8.0  8.1  8.2  8.3  8.4
-## [76]  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3  9.4  9.5  9.6  9.7  9.8  9.9
-## [91] 10.0</code></pre>
 <p>We can ask a few questions about vectors:</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">sequence_example &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>)</a>
 <a class="sourceLine" id="cb95-2" data-line-number="2"></a>

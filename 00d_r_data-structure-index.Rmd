@@ -1,7 +1,8 @@
 
 # Data types, structures and classes
 
-## Base types versus Object Oriented 
+## Base types
+
 > Every object has a base type and only R-core can create new types. 
 
 Over all there are 25 different base object types.
@@ -61,6 +62,16 @@ an empty vector of whatever type you like.
 another_vector <- vector(mode='character', length=3)
 another_vector
 ```
+
+
+You can also make series of numbers:
+
+```{r}
+1:10
+seq(10)
+seq(1,10, by=0.1)
+```
+
 
 You can also create vectors by combining individual elements using function `c` (for combine).
 
@@ -128,16 +139,6 @@ type into another!
 If your data isn't the data type you expected, type coercion
 may well be to blame; make sure everything is the same type in your vectors and
 your columns of data.frames, or you will get nasty surprises!
-
-
-You can also make series of numbers:
-
-```{r}
-mySeries <- 1:10
-mySeries
-seq(10)
-seq(1,10, by=0.1)
-```
 
 We can ask a few questions about vectors:
 

@@ -1,1 +1,7 @@
 # Data management Basics
+
+```{r, results="asis", echo = FALSE}
+slide_page(slidedeck_name = "02_RDM_intro.html")
+```
+
+
