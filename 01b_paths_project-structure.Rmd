@@ -7,7 +7,6 @@ library(magrittr)
 
 
 
-
 ## Project Data
 
 We're in our new project so the first thing we need to do is get the data we'll be working with. This is a common start to any project where you start with a few data files, These might be generated through your data, given by others or published data products and you might need to clean, wrangle and combine them together to perform your analysis. 
@@ -25,7 +24,9 @@ We're in our new project so the first thing we need to do is get the data we'll 
 
 ## Setting up a `data-raw/` directory
 
-We **start by creating a `data-raw` directory** in the root of our project. We can use `usethis` function `usethis::use_data_raw()`. This creates the `data-raw` directory and an `.R` script within where we can save code that turns raw data into analytical data in the `data/` folder. We can supply a name for the analytical dataset we'll be creating in our script which automatically names the `.R` script for easy provenance tracking.  
+We **start by creating a `data-raw` directory** in the root of our project. We can use `usethis` function `usethis::use_data_raw()`. This creates the `data-raw` directory and an `.R` script within where we can save code that turns raw data into analytical data in the `data/` folder. 
+
+We can supply a name for the analytical dataset we'll be creating in our script which automatically names the `.R` script for easy provenance tracking. In this case, we'll be calling it `individual.csv` so let's use `"individual"` for our name.
 
 
 ```{r, eval=FALSE}
@@ -42,7 +43,7 @@ usethis::use_data_raw(name = "individual")
 ● Use `usethis::use_data()` to add prepared data to package
 ```
 
-**`data-raw/individual.R`** contains:
+The **`data-raw/individual.R`** script created contains:
 
 ```r
 ## code to prepare `individual` dataset goes here
@@ -51,6 +52,7 @@ usethis::use_data("individual")
 
 ```
 
+We will use this file to perform the necessary preprocessing on our raw data. 
 
 ```{r, echo=FALSE, eval=FALSE}
 fs::dir_delete(here::here("data-raw", "wood-survey-data-master")) 
@@ -82,14 +84,16 @@ Selection: 3
 ✔ Opening 'wood-survey-data-master/' in the file manager
 ```
 
-```{bash}
-tree 2
-```
-
 
 ## NEON Data
 
-The downloaded folder `
+The downloaded folder contains a **subset of data from the NEON Woody plant vegetation survey**.
+
+This data product was downloaded from the [NEON data portal](http://data.neonscience.org/browse-data) and contains quality-controlled data from in-situ measurements of live and standing dead woody individuals and shrub groups, from all terrestrial NEON sites with qualifying woody vegetation.
+
+Surveys of each site are completed once every 3 years.
+
+Let's have a look at what we've downloaded:
 
 ```
 .
@@ -117,37 +121,41 @@ The important files for the analysis we want to perform are
 ├── vst_mappingandtagging.csv
 └── vst_perplotperyear.csv
 ```
-vst_apparentindividual: Biomass and productivity measurements of apparent individuals
 
-vst_mappingandtagging: Mapping, identifying and tagging of individual stems for remeasurement 
-
-vst_perplotperyear: 
-
-- **`vst_perplotperyear`**, 
+- **`vst_perplotperyear`**: Plot level metadata, including plot geolocation, 
   - one record per `plotID` per `eventID`, 
   - describe the presence/absence of woody growth forms
   - sampling area utilized for each growth form. 
-- **`vst_mappingandtagging`** 
+  
+- **`vst_mappingandtagging`**: Mapping, identifying and tagging of individual stems for remeasurement 
   - one record per `individualID`, 
   - data invariant through time, including `tagID`, `taxonID` and mapped location. 
   - Records can be linked to `vst_perplotperyear` via the `plotID` and `eventID` fields. 
-- **`vst_apparentindividual` **
-  - one record per `individualID` per `eventID`
+  
+- **`vst_apparentindividual`**: Biomass and productivity measurements of apparent individuals.
+  - may contain multiple records per individuals
   - includes growth form, structure
+  - currently in separate files contained in `individual/`
   - may be linked
     - `vst_mappingandtagging` records via `individualID`
     - `vst_perplotperyear` via the `plotID` and `eventID` fields.
 
+<div class="alert alert-secondary"> 
+
+`r icon::fontawesome("tasks")`  As our first challenge, we are going to combined all the files in `individual/` into a single analytical data file!
+
+</div>
+
 ## Paths
 
-Let's investigate our data. We want to access the files so we need to give R paths in order to load the data. 
+First let's investigate our data. We want to access the files so we need to give R paths in order to load the data. We can work with the file system programmatically through R.
 
 - `here`: Use `here::here()` to create paths relative to the project root directory.
   - portable
   - independent of the where code is evaluated or saved. 
 
 
-Let's start by assigning the path to the downloaded data directory. 
+Let's start by creating a path to the downloaded data directory using `here`. 
 ```{r}
 raw_data_path <- here::here("data-raw", "wood-survey-data-master")
 raw_data_path
@@ -156,7 +164,8 @@ raw_data_path
 ```r
 "/Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master"
 ```
-We can use `raw_data_path` to make paths to files within it. There's a number of ways you can do this in R but I wanted to introduce you to package `fs`. It has a nice interpace and extensive functionality.
+
+We can use `raw_data_path` as our basis for specifying paths to files within it. There's a number of ways we can do this in R but I wanted to introduce you to package `fs`. It has a nice interface and extensive functionality.
 
 ```{r}
 fs::path(raw_data_path, "individual")
@@ -166,27 +175,31 @@ fs::path(raw_data_path, "individual")
 /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual
 ```
 
-We can work with the file system programmatically through R
 
-```{r}
+Let's now use function `dir_ls` to get a character vector of paths to all the individual files in directory `individual`.
+
+```{r, eval=FALSE}
 individual_paths <- fs::dir_ls(fs::path(raw_data_path, "individual"))
 head(individual_paths)
 ```
 
-```{r}
-library(magrittr)
-
-individual_paths <-  raw_data_path %>%
-  fs::path("individual") %>%
-  fs::dir_ls()
-
+```{r, echo=FALSE}
+individual_paths <- fs::dir_ls(fs::path(raw_data_path, "individual"))
+head(fs::dir_ls(fs::path("~/Desktop", "wood-survey", "data-raw", "wood-survey-data-master", "individual")))
 ```
+
+We can now use this vector of paths to read in files. Let's read the first file in and check it out. We use function `read_csv()` from `readr` package which reads comma delimited files into tibbles.
 
 ```{r}
 indiv_df <- readr::read_csv(individual_paths[1])
 indiv_df
 ```
 
+Run `?read_delim` for more details on reading in tabular data.
+
+## Basic checks
+
+Let's perform some of the basic checks we learnt before we proceed.
 
 ```{r, eval=FALSE}
 View(indiv_df)
@@ -201,16 +214,11 @@ names(indiv_df)
 ```
 
 ```{r, echo=FALSE}
-janitor::make_clean_names(names(indiv_df))
+str(indiv_df)
 ```
 
 ```{r, echo=FALSE}
-janitor::clean_names(indiv_df)
+summary(indiv_df)
 ```
 
-
-
-- indexing
-- select
-- filter
-- mutate
+Everything looks good. So let's move onto the next step of reading in all the files and combining them together. To do this, we'll examine the principles of **Iteration**.
