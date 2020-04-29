@@ -30,6 +30,13 @@ knitr::include_graphics("https://rviews.rstudio.com/post/2017-06-09-What-is-the-
 - Tidy data where rows are sigle observations and columns the variables observed.
 - Piping the outputs of tidyverse functions as inputs to subsequent functions.
 
+
+```{r, eval=FALSE}
+install.packages(c("tibble", "dplyr"))
+```
+
+***
+
 ## `tibbles`
 
 > `tibbles` are one of the unifying features of the tidyverse, and are the tidyverse version of a data.frame (I will use them interchangeably in the rest of the text).
@@ -39,6 +46,7 @@ knitr::include_graphics("https://rviews.rstudio.com/post/2017-06-09-What-is-the-
 - Better printing behaviour.
 - Never coerces characters to factors.
 - More robust error handling.
+
 
 ### Creating tibbles
 
