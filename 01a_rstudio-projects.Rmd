@@ -20,11 +20,17 @@
 - Everything required is contained in the project or sourced automatically.
 - Use paths relative to the project root directory.
 - Separate data, methods, and output, while making the relationship between them clear.
+- Document the contents of your project and how to use them.
 - Use R package development and community conventions.
 - Do not manually edit raw data.
 - Keep a [clean pipeline](https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/) of data processing from raw to analytical.
 - Incorporate checks to ensure correct processing and analysing.
 </div>
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/Provenance.jpg", error = FALSE)
+```
 
 ## Rstudio Projects
 
@@ -38,16 +44,32 @@ Rstudio projects are a convenient way to manage research projects, providing the
 
 ## Rstudio Cloud projects
 
-for the rest of the course, we will be working in a project where I have already set up the computational environment. This will save a lot of time by avoiding having to run a long installation scrip during the class or debug individual installation problems. 
+For the rest of the course, we will be working in a project where I have already set up the computational environment. This will save a lot of time by avoiding having to run a long installation scrip during the class or debug individual installation problems. 
+
+
+### Launch Rstudio Cloud project 
+
+To access this project, please click on the **supplied project link**
+
+This should drop you into the **ACCE DTP Reproducible research in R Workspace**. If not, navigate to the space from the menu on the top left.
+
 
 ```{r, echo=FALSE}
 knitr::include_graphics("assets/rsc_space_copy.png", error = FALSE)
 ```
 
+In there you will find a project called **wood-survey**. Click on **+ Copy** to create your own copy of the project.
 
 ```{r, echo=FALSE}
 knitr::include_graphics("assets/rsc_copy_proj.png", error = FALSE)
 ```
+
+Once the project has been created you need to give it a name. Stick to **wood-survey**
+```{r, echo=FALSE}
+knitr::include_graphics("assets/rsc_new_proj_name.png", error = FALSE)
+```
+
+You now have your own version of the project.
 
 ```{r, echo=FALSE}
 knitr::include_graphics("assets/rsc_open_project.png", error = FALSE)
