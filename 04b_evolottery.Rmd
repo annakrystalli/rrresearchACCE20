@@ -1,8 +1,10 @@
 # Practical: `GitHub` & `Rstudio` for collaborative coding
 
+## **EvoLottery**
+
 ### **Welcome to the evolutionary lottery of skull and beak morphology**
 
-### **#EvoLottery**
+
 
 *** 
 <br>
@@ -18,7 +20,7 @@
 
 
 
-
+## Clone Github repo
 
 ### `r emo::ji("computer")` **Clone a GitHub repo**
 
@@ -72,7 +74,7 @@ Rstudio project now **contains all files from the GitHub repo.**
 
 
 
-## `r emo::ji("vertical_traffic_light")` **Make a change to the repo**
+### `r emo::ji("vertical_traffic_light")` **Make a change to the repo**
 
 ### make a copy of `params_tmpl.R`
 
@@ -108,7 +110,7 @@ Edit file with parameters of your choice and save.
 **NB: remember to save the changes to your file**
 
 
-## `r emo::ji("vertical_traffic_light")` Commit changes locally to git
+### `r emo::ji("vertical_traffic_light")` Commit changes locally to git
 
 In the *git* tab, select the **new file** you created and click **`Commit`**.
 
@@ -124,7 +126,7 @@ your new file has now been commited
 
 <img src="assets/commit-3.png" width="700px" />
 
-## Push changes to GitHub
+### Push changes to GitHub
 
 on the *git* tab click ⇧  to **push changes to GitHub**
 
@@ -136,7 +138,7 @@ changes have now been updated in the **GitHub repo**
 
 ---
 
-## `r emo::ji("vertical_traffic_light")` create pull request
+### `r emo::ji("vertical_traffic_light")` create pull request
 
 In your repository, create **`new pull request`** 
 to merge fork to master repo (ie the original repo you forked)
