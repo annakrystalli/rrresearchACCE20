@@ -1,3 +1,5 @@
+# (PART) Version Control {#version-control} 
+
 # Version Control with Git
 
 ## Background
