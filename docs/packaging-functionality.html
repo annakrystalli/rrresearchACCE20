@@ -819,20 +819,15 @@ Roxygen: list(markdown = TRUE)
 <p>Document, Install and restart to load our changes</p>
 <div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" data-line-number="1"><span class="kw">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</a></code></pre></div>
 <pre><code>## 
-##  ----- 
+##  -------------- 
 ## Hello y&#39;all from Anna! 
-##  ------ 
-##     \   
+##  --------------
+##     \
 ##      \
-##               |
-##               |
-##               |
-##              __
-##           | /  \ |
-##          \_\\  //_/
-##           .&#39;/()\&#39;.
-##            \\  //  [nosig]
-## </code></pre>
+##       \
+##          /\_/\
+##         ( o.o )
+##          &gt; ^ &lt;      [nosig]</code></pre>
 </div>
 <div id="check-package-integrity" class="section level2">
 <h2>🚦 Check package integrity</h2>
@@ -962,22 +957,23 @@ if you want to run the tests.</p>
 <a class="sourceLine" id="cb458-4" data-line-number="4">  <span class="kw">expect_message</span>(<span class="kw">hello</span>())</a>
 <a class="sourceLine" id="cb458-5" data-line-number="5">})</a></code></pre></div>
 <pre><code>## 
-##  ------------- 
+##  ----- 
 ## Hello world from Anna! 
-##  -------------- 
-##               \   
-##                \  
-##                 \
-##         __.--&#39;\     \.__./     /&#39;--.__
-##     _.-&#39;       &#39;.__.&#39;    &#39;.__.&#39;       &#39;-._
-##   .&#39;                                      &#39;.
-##  /                                          \
-## |                                            |
-## |                                            |
-##  \         .---.              .---.         /
-##   &#39;._    .&#39;     &#39;.&#39;&#39;.    .&#39;&#39;.&#39;     &#39;.    _.&#39;
-##      &#39;-./            \  /           \.-&#39;
-##                       &#39;&#39;mrf</code></pre>
+##  ------ 
+##     \   
+##      \
+##          _
+##        _/ }
+##       `&gt;&#39; \
+##       `|   \
+##        |   /&#39;-.     .-.
+##         \&#39;     &#39;;`--&#39; .&#39;
+##          \&#39;.    `&#39;-./
+##           &#39;.`-..-;`
+##             `;-..&#39;
+##             _| _|
+##             /` /` [nosig]
+## </code></pre>
 <pre><code>## Error: Test failed: &#39;hello works&#39;
 ## * &lt;text&gt;:4: `hello()` did not produce any messages.</code></pre>
 <p>Now let’s test our package</p>

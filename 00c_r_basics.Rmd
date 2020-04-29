@@ -63,14 +63,8 @@ RStudio allows you to execute commands directly from the script editor by using 
 
 When you execute command from a script, the line of code in the script indicated by the cursor or all of the commands in the currently highlighted will be sent to the console. You can find other keyboard shortcuts in **Tools > Keyboard Shortcuts Help** or in the [RStudio IDE cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf).
 
-```{r, echo=FALSE, fig.cap="Running full lines of code"}
-knitr::include_graphics("assets/script_exe_prompt.png")
-```
-
-
-
-```{r, echo=FALSE, fig.cap="Running selected parts of code"}
-knitr::include_graphics("assets/script_exe_select.png")
+```{r, echo=FALSE}
+knitr::include_graphics("assets/script_exe.png")
 ```
 
 ### Comments

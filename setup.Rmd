@@ -153,6 +153,10 @@ Check [docs](https://yihui.name/tinytex/) before before installing.
 You might also need a set of **development tools** to install and run `devtools`. On **Windows**, download and install [**Rtools**](https://cran.r-project.org/bin/windows/Rtools/), and `devtools` takes care of the rest. On **Mac**, install the [**Xcode**](https://developer.apple.com/xcode/) command line tools. On **Linux**, install the **R development package**, usually called **`r-devel`** or **`r-base-dev`**.
 
 
+### Install R dependecies
+
+To be able to run materials locally, you will also need to install all the required R packages.  Run the code in [`install.R`](https://github.com/annakrystalli/rrresearchACCE20/blob/master/.binder/install.R)
+
 ### FAQs
 
 #### ***1. Are there any advantages or disadvantages to setting up a github account with our university email address? Is it possible to change emails say when we finish our PhD?***
