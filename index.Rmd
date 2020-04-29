@@ -54,7 +54,7 @@ By the end of the workshop, participants will be able to:
 
 ## Course Outline
 
-.pull-left[
+
 ### Welcome
 
 - Introduction
@@ -71,9 +71,9 @@ By the end of the workshop, participants will be able to:
 - Projects in Rstudio
 - Good File Naming
 - Paths and projects structure
-]
 
-.pull-right[
+
+
 ### Data Munging
 - Iteration
 - Combining tables
@@ -87,14 +87,14 @@ By the end of the workshop, participants will be able to:
 - Creating metadata with `dataspice`
 
 ### Analysing & presenting data
-- Plotting
+- Plotting basics
 - Literate programming
 
 ### Version Control
 
 - Version control with Git 
 - Collaboration through GitHub
-]
+
 
 
 ## Optional

@@ -159,11 +159,18 @@ _Nielsen, Michael. Reinventing Discovery: The New Era of Networked Science. Prin
 .center[![](assets/www.jpg)]
 
 
+```{r, echo=FALSE, out.height="70%"}
+knitr:::include_graphics("assets/www.jpg")
+```
+
 
 
 ---
+class: top, right, inverse
 
-## **The grand vision**
+# **The grand vision**
+
+---
 
 ### Hans Rosling on open data (and data science) back in 2006
 
