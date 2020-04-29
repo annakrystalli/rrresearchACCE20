@@ -1,4 +1,4 @@
-# (PART) Part II: Data Munging {#process} 
+# (PART) Data Munging {#process} 
 
 # Data Munging: Iteration
 
