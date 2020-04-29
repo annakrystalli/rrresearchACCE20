@@ -163,54 +163,6 @@ the command and how it works, scrolling to the bottom of the
 help page will usually show a collection of code examples which
 illustrate command usage. We'll go through an example later.
 
-## Comparing things
-
-We can also do comparison in R:
-
-```{r}
-1 == 1  # equality (note two equals signs, read as "is equal to")
-```
-
-```{r}
-1 != 2  # inequality (read as "is not equal to")
-```
-
-```{r}
-1 < 2  # less than
-```
-
-```{r}
-1 <= 1  # less than or equal to
-```
-
-```{r}
-1 > 0  # greater than
-```
-
-```{r}
-1 >= -9 # greater than or equal to
-```
-
-> ### Tip: Comparing Numbers
->
-> A word of warning about comparing numbers: you should
-> never use `==` to compare two numbers unless they are
-> integers (a data type which can specifically represent
-> only whole numbers).
->
-> Computers may only represent decimal numbers with a
-> certain degree of precision, so two numbers which look
-> the same when printed out by R, may actually have
-> different underlying representations and therefore be
-> different by a small margin of error (called Machine
-> numeric tolerance).
->
-> Instead you should use the `all.equal` function.
->
-> Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
->
-{: .callout}
-
 
 ## Variables and assignment
 
@@ -227,11 +179,7 @@ in something called a **variable**. `x` now contains the **value** `0.025`:
 x
 ```
 
-More precisely, the stored value is a *decimal approximation* of
-this fraction called a [floating point number](http://en.wikipedia.org/wiki/Floating_point).
-
-Look for the `Environment` tab in one of the panes of RStudio, and you will see that `x` and its value
-have appeared. Our variable `x` can be used in place of a number in any calculation that expects a number:
+Look for the `Environment` tab in one of the panes of RStudio, and you will see that `x` and its value have appeared. Our variable `x` can be used in place of a number in any calculation that expects a number:
 
 ```{r}
 log(x)
@@ -252,18 +200,9 @@ x <- x + 1 #notice how RStudio updates its description of x on the top right tab
 y <- x * 2
 ```
 
-The right hand side of the assignment can be any valid R expression.
-The right hand side is *fully evaluated* before the assignment occurs.
+- The right hand side of the assignment can be any valid R expression.
+- The right hand side is *fully evaluated* before the assignment occurs.
 
-Variable names can contain letters, numbers, underscores and periods. They
-cannot start with a number nor contain spaces at all. Different people use
-different conventions for long variable names, these include
-
-  * periods.between.words
-  * underscores\_between_words
-  * camelCaseToSeparateWords
-
-What you use is up to you, but **be consistent**.
 
 It is also possible to use the `=` operator for assignment:
 
@@ -276,3 +215,75 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
+
+### On variable names
+
+Variable names can contain **letters, numbers, underscores and periods**. They
+cannot start with a number nor contain spaces at all. 
+
+Different people use
+different conventions for long variable names, these include
+
+  * periods.between.words
+  * camelCaseToSeparateWords
+  * **snake_case: underscores\_between_words**
+
+
+While I suggest you use snake_case, ultimately what you use is up to you, but **be consistent**.
+
+
+## Comparing things
+
+We can also do comparison in R:
+
+
+```{r}
+x <- 1
+```
+
+
+```{r}
+x < 2  # less than
+```
+
+```{r}
+x <= 1  # less than or equal to
+```
+
+```{r}
+x > 0  # greater than
+```
+
+```{r}
+x >= -9 # greater than or equal to
+```
+
+```{r}
+x == 1  # equality (note two equals signs, read as "is equal to")
+```
+
+```{r}
+1 != 2  # inequality (read as "is not equal to")
+```
+
+```{r}
+x %in% c(1, 5) # membership (read as "is member of")
+```
+
+
+_A word of warning about comparing numbers: you should
+never use `==` to compare two numbers unless they are
+integers (a data type which can specifically represent
+only whole numbers)._
+
+### Controlling flow using logical statements
+
+Comparing a single value results in `TRUE` or `FALSE`. This feature allows us to build conditional statements to control execution flow.
+
+```{r}
+if(x > 5){
+  print("x is greater than 5")
+}else{
+  print("x is less than 5")
+}
+```
