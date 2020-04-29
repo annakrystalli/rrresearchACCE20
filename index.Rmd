@@ -10,6 +10,7 @@ output:
   bookdown::gitbook:
     number_sections: false
     css: style.css
+    toc_depth: 2
   bookdown::html_book:
     number_sections: false
     theme: cerulean
