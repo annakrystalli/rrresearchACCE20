@@ -185,7 +185,14 @@ head(individual_paths)
 
 ```{r, echo=FALSE}
 individual_paths <- fs::dir_ls(fs::path(raw_data_path, "individual"))
-head(fs::dir_ls(fs::path("~/Desktop", "wood-survey", "data-raw", "wood-survey-data-master", "individual")))
+individual_paths_proj <- fs::path("~/Desktop", "wood-survey", "data-raw", "wood-survey-data-master", "individual")
+head(fs::dir_ls(individual_paths_proj))
+```
+
+We can check how many files we've got:
+
+```{r}
+length(individual_paths)
 ```
 
 We can now use this vector of paths to read in files. Let's read the first file in and check it out. We use function `read_csv()` from `readr` package which reads comma delimited files into tibbles.
