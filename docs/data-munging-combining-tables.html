@@ -200,7 +200,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>III Data Munging</b></span></li>
 <li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html"><i class="fa fa-check"></i>Data Munging: Iteration</a><ul>
-<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#iteration"><i class="fa fa-check"></i>Iteration</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#iterating-using-loops"><i class="fa fa-check"></i>Iterating using loops</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#functional-programming"><i class="fa fa-check"></i>Functional programming</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#writing-out-our-tibble-to-disk"><i class="fa fa-check"></i>Writing out our tibble to disk</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="data-munging-combining-tables.html"><a href="data-munging-combining-tables.html"><i class="fa fa-check"></i>Data munging: combining tables</a><ul>
 <li><a href="data-munging-combining-tables.html#joining-tables-with-dplyr">Joining tables with <code>dplyr</code></a></li>
@@ -401,12 +403,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-munging-combining-tables" class="section level1">
 <h1>Data munging: combining tables</h1>
 <p>Let’s say we want to geolocate every individual plant in out data. Currently, only the plot is geolocated, the data being contained in <code>vst_perplotperyear.csv</code> columns <code>decimalLatitude</code> and <code>decimalLongitude</code>. The location of each individual stem is defined in <code>vst_mappingandtagging.csv</code>. A number of variables are involved, including <code>pointID</code> which identifies a point on a 10m cell grid centered around <code>decimalLatitude</code> and <code>decimalLongitude</code>, and <code>stemDistance</code> and <code>stemAzimuth</code> which defines the location of a stem, relative to the location of <code>pointID</code>. is detailed in <code>methods/NEON_vegStructure_userGuide_vA.pdf</code> but we will briefly describe here.</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;assets/NEON_point_grid.png&quot;</span>, <span class="dt">error =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;assets/NEON_point_grid.png&quot;</span>, <span class="dt">error =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="assets/NEON_point_grid.png" width="346" /></p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1"><span class="kw">library</span>(magrittr)</a>
-<a class="sourceLine" id="cb296-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb296-3" data-line-number="3">raw_data_path &lt;-<span class="st"> </span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</a>
-<a class="sourceLine" id="cb296-4" data-line-number="4">individual &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="kw">file.path</span>(raw_data_path, <span class="st">&quot;vst_individual.csv&quot;</span>), <span class="dt">guess_max =</span> <span class="dv">8000</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1"><span class="kw">library</span>(magrittr)</a>
+<a class="sourceLine" id="cb310-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb310-3" data-line-number="3">raw_data_path &lt;-<span class="st"> </span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</a>
+<a class="sourceLine" id="cb310-4" data-line-number="4">individual &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="kw">file.path</span>(raw_data_path, <span class="st">&quot;vst_individual.csv&quot;</span>), <span class="dt">guess_max =</span> <span class="dv">8000</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   uid = col_character(),
@@ -424,15 +426,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## )</code></pre>
 <div id="joining-tables-with-dplyr" class="section level2">
 <h2>Joining tables with <code>dplyr</code></h2>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1"><span class="co"># &quot;Mutating&quot; joins combine variables from the LHS and RHS</span></a>
-<a class="sourceLine" id="cb298-2" data-line-number="2">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(band_instruments)</a></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1"><span class="co"># &quot;Mutating&quot; joins combine variables from the LHS and RHS</span></a>
+<a class="sourceLine" id="cb312-2" data-line-number="2">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(band_instruments)</a></code></pre></div>
 <pre><code>## Joining, by = &quot;name&quot;</code></pre>
 <pre><code>## # A tibble: 2 x 3
 ##   name  band    plays 
 ##   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
 ## 1 John  Beatles guitar
 ## 2 Paul  Beatles bass</code></pre>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(band_instruments)</a></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(band_instruments)</a></code></pre></div>
 <pre><code>## Joining, by = &quot;name&quot;</code></pre>
 <pre><code>## # A tibble: 3 x 3
 ##   name  band    plays 
@@ -440,7 +442,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1 Mick  Stones  &lt;NA&gt;  
 ## 2 John  Beatles guitar
 ## 3 Paul  Beatles bass</code></pre>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(band_instruments)</a></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(band_instruments)</a></code></pre></div>
 <pre><code>## Joining, by = &quot;name&quot;</code></pre>
 <pre><code>## # A tibble: 3 x 3
 ##   name  band    plays 
@@ -448,7 +450,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1 John  Beatles guitar
 ## 2 Paul  Beatles bass  
 ## 3 Keith &lt;NA&gt;    guitar</code></pre>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(band_instruments)</a></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(band_instruments)</a></code></pre></div>
 <pre><code>## Joining, by = &quot;name&quot;</code></pre>
 <pre><code>## # A tibble: 4 x 3
 ##   name  band    plays 
@@ -462,16 +464,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="merge-vst_mappingandtagging.csv" class="section level4">
 <h4>Merge <code>vst_mappingandtagging.csv</code></h4>
 <p>First let’s read in both tables we need, <code>vst_perplotperyear.csv</code> and <code>vst_mappingandtagging.csv</code>.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1">maptag &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1">maptag &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>))</a></code></pre></div>
 <p>First we’ll merge data from <code>maptag</code>. This data set contains taxonomic and within-plot location metadata on individuals collected during mapping and tagging. There is one row per individual in the data set.</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1"><span class="kw">names</span>(maptag)</a></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" data-line-number="1"><span class="kw">names</span>(maptag)</a></code></pre></div>
 <pre><code>##  [1] &quot;uid&quot;            &quot;namedLocation&quot;  &quot;date&quot;           &quot;eventID&quot;       
 ##  [5] &quot;domainID&quot;       &quot;siteID&quot;         &quot;plotID&quot;         &quot;pointID&quot;       
 ##  [9] &quot;stemDistance&quot;   &quot;stemAzimuth&quot;    &quot;individualID&quot;   &quot;taxonID&quot;       
 ## [13] &quot;scientificName&quot; &quot;taxonRank&quot;</code></pre>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1"><span class="co">#dplyr::select(maptag, individualID, taxonID:taxonRank, pointID:stemAzimuth)</span></a></code></pre></div>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb314-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) </a></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1"><span class="co">#dplyr::select(maptag, individualID, taxonID:taxonRank, pointID:stemAzimuth)</span></a></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb328-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) </a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;uid&quot;, &quot;namedLocation&quot;, &quot;date&quot;, &quot;eventID&quot;, &quot;domainID&quot;, &quot;siteID&quot;, &quot;plotID&quot;, &quot;individualID&quot;)</code></pre>
 <pre><code>## # A tibble: 21,388 x 18
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
@@ -493,9 +495,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Great we have our merge!</p>
 <p>Looks successful right? How do we really know nothing has gone wrong. Remember, to successfully merge the tables, the data withing the columns the tables are being merged need to have corresponding values across all columns to be linked successfully so while the code ran, it may well not have found any matching rows in <code>maptag</code> to merge into <code>individual</code>. To check whether things have worked, we need to at least start with inspecting for the objects of interest.</p>
 <p>When working interactively and testing out pipes, you can pipe objects into <code>View()</code> for easier inspection. If you provide a character string as an argument, it is used as a name for the data view tab it launches</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb317-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb317-3" data-line-number="3"><span class="st">  </span><span class="kw">View</span>(<span class="st">&quot;default&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb331-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb331-3" data-line-number="3"><span class="st">  </span><span class="kw">View</span>(<span class="st">&quot;default&quot;</span>)</a></code></pre></div>
 <p>Clearly this has not worked! We need to start digging into why but we don’t want to have to keep manually checking whether it worked or not. Enter <strong>DEFENSIVE PROGRAMMING</strong>.</p>
 </div>
 </div>
@@ -506,9 +508,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>assertr</code></li>
 <li><code>checkmate</code></li>
 </ul>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb318-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb318-3" data-line-number="3"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na,  stemAzimuth)</a></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb332-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb332-3" data-line-number="3"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na,  stemAzimuth)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;uid&quot;, &quot;namedLocation&quot;, &quot;date&quot;, &quot;eventID&quot;, &quot;domainID&quot;, &quot;siteID&quot;, &quot;plotID&quot;, &quot;individualID&quot;)</code></pre>
 <pre><code>## Column &#39;stemAzimuth&#39; violates assertion &#39;not_na&#39; 21388 times
 ##     verb redux_fn predicate      column index value
@@ -525,14 +527,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Including them means they are combined into one column. If there are variable of the same name in both tables and they are not included in <code>by</code>, they will be kept in the new table and each suffixed with</li>
 </ul>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1">df &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb322-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;namedLocation&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;eventID&quot;</span>, <span class="st">&quot;domainID&quot;</span>, <span class="st">&quot;siteID&quot;</span>, <span class="st">&quot;plotID&quot;</span>, <span class="st">&quot;individualID&quot;</span>)) </a></code></pre></div>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb323-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;namedLocation&quot;</span>, <span class="st">&quot;domainID&quot;</span>, <span class="st">&quot;siteID&quot;</span>, <span class="st">&quot;plotID&quot;</span>, <span class="st">&quot;individualID&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb323-3" data-line-number="3"><span class="st">  </span><span class="kw">View</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb324-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(dplyr<span class="op">::</span><span class="kw">select</span>(maptag, individualID, </a>
-<a class="sourceLine" id="cb324-3" data-line-number="3">                                 taxonID<span class="op">:</span>taxonRank, pointID<span class="op">:</span>stemAzimuth))</a></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1">df &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb336-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;namedLocation&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;eventID&quot;</span>, <span class="st">&quot;domainID&quot;</span>, <span class="st">&quot;siteID&quot;</span>, <span class="st">&quot;plotID&quot;</span>, <span class="st">&quot;individualID&quot;</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;namedLocation&quot;</span>, <span class="st">&quot;domainID&quot;</span>, <span class="st">&quot;siteID&quot;</span>, <span class="st">&quot;plotID&quot;</span>, <span class="st">&quot;individualID&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-3" data-line-number="3"><span class="st">  </span><span class="kw">View</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb338-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(dplyr<span class="op">::</span><span class="kw">select</span>(maptag, individualID, </a>
+<a class="sourceLine" id="cb338-3" data-line-number="3">                                 taxonID<span class="op">:</span>taxonRank, pointID<span class="op">:</span>stemAzimuth))</a></code></pre></div>
 <pre><code>## Joining, by = &quot;individualID&quot;</code></pre>
 <pre><code>## # A tibble: 21,388 x 18
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
@@ -551,10 +553,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;, taxonID &lt;chr&gt;,
 ## #   scientificName &lt;chr&gt;, taxonRank &lt;chr&gt;, pointID &lt;dbl&gt;, stemDistance &lt;dbl&gt;,
 ## #   stemAzimuth &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1">nrow_indiv &lt;-<span class="st"> </span><span class="kw">nrow</span>(individual)</a>
-<a class="sourceLine" id="cb327-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb327-3" data-line-number="3">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb327-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(dplyr<span class="op">::</span><span class="kw">select</span>(maptag, <span class="op">-</span>uid, <span class="op">-</span>date))</a></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">nrow_indiv &lt;-<span class="st"> </span><span class="kw">nrow</span>(individual)</a>
+<a class="sourceLine" id="cb341-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb341-3" data-line-number="3">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb341-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(dplyr<span class="op">::</span><span class="kw">select</span>(maptag, <span class="op">-</span>uid, <span class="op">-</span>date))</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;namedLocation&quot;, &quot;eventID&quot;, &quot;domainID&quot;, &quot;siteID&quot;, &quot;plotID&quot;, &quot;individualID&quot;)</code></pre>
 <pre><code>## # A tibble: 21,388 x 18
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
@@ -574,10 +576,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   stemDistance &lt;dbl&gt;, stemAzimuth &lt;dbl&gt;, taxonID &lt;chr&gt;, scientificName &lt;chr&gt;,
 ## #   taxonRank &lt;chr&gt;</code></pre>
 <p>Let’s test to make sure we have not inadvertently added data through rogue duplicate data.</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb330-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb330-3" data-line-number="3"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">verify</span>(<span class="kw">nrow</span>(.) <span class="op">==</span><span class="st"> </span>nrow_indiv) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb330-4" data-line-number="4"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na,  stemAzimuth)</a></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb344-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb344-3" data-line-number="3"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">verify</span>(<span class="kw">nrow</span>(.) <span class="op">==</span><span class="st"> </span>nrow_indiv) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb344-4" data-line-number="4"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na,  stemAzimuth)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;uid&quot;, &quot;namedLocation&quot;, &quot;date&quot;, &quot;eventID&quot;, &quot;domainID&quot;, &quot;siteID&quot;, &quot;plotID&quot;, &quot;individualID&quot;)</code></pre>
 <pre><code>## Column &#39;stemAzimuth&#39; violates assertion &#39;not_na&#39; 21388 times
 ##     verb redux_fn predicate      column index value
@@ -590,15 +592,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Error: assertr stopped execution</code></pre>
 <p>The data passes through the pipe after successfully passing our test.</p>
 <p>Now let’s say we also want to make sure our data was correctly matched and merged. We can do this by checking that there are there are no <code>NA</code>s in some key columns of interest:</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1">checkmate<span class="op">::</span><span class="kw">check_true</span>(<span class="kw">nrow</span>(individual) <span class="op">==</span><span class="st"> </span>nrow_indiv)</a></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1">checkmate<span class="op">::</span><span class="kw">check_true</span>(<span class="kw">nrow</span>(individual) <span class="op">==</span><span class="st"> </span>nrow_indiv)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div id="merge-vst_mappingandtagging.csv-1" class="section level4">
 <h4>Merge <code>vst_mappingandtagging.csv</code></h4>
 <p>First let’s read in both tables we need, <code>vst_perplotperyear.csv</code> and <code>vst_mappingandtagging.csv</code>.</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1">perplot &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_perplotperyear.csv&quot;</span>))</a>
-<a class="sourceLine" id="cb336-2" data-line-number="2">maptag &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1">individual <span class="op">%&lt;&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb337-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(dplyr<span class="op">::</span><span class="kw">select</span>(perplot, siteID<span class="op">:</span>eventID))</a></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1">perplot &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_perplotperyear.csv&quot;</span>))</a>
+<a class="sourceLine" id="cb350-2" data-line-number="2">maptag &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1">individual <span class="op">%&lt;&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb351-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(dplyr<span class="op">::</span><span class="kw">select</span>(perplot, siteID<span class="op">:</span>eventID))</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;eventID&quot;, &quot;siteID&quot;, &quot;plotID&quot;)</code></pre>
 
 </div>

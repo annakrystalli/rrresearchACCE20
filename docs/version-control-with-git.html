@@ -200,7 +200,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>III Data Munging</b></span></li>
 <li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html"><i class="fa fa-check"></i>Data Munging: Iteration</a><ul>
-<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#iteration"><i class="fa fa-check"></i>Iteration</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#iterating-using-loops"><i class="fa fa-check"></i>Iterating using loops</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#functional-programming"><i class="fa fa-check"></i>Functional programming</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#writing-out-our-tibble-to-disk"><i class="fa fa-check"></i>Writing out our tibble to disk</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="data-munging-combining-tables.html"><a href="data-munging-combining-tables.html"><i class="fa fa-check"></i>Data munging: combining tables</a><ul>
 <li><a href="data-munging-combining-tables.html#joining-tables-with-dplyr">Joining tables with <code>dplyr</code></a></li>
@@ -555,21 +557,21 @@ Image: xkcd CC BY-NC 2.5
 <h2>Configure git</h2>
 <p>First, <code>git</code> needs to know who you are so your commits can be attributed to you. <strong><code>usethis</code></strong> to the rescue again!</p>
 <p><strong>Check your configuration</strong></p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb408-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>()</a></code></pre></div>
 <p><strong>Set your configuration</strong></p>
 <p>Use your github username and and the email you used to sign-up on GitHub</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>(</a>
-<a class="sourceLine" id="cb409-2" data-line-number="2">    <span class="dt">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</a>
-<a class="sourceLine" id="cb409-3" data-line-number="3">    <span class="dt">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>(</a>
+<a class="sourceLine" id="cb423-2" data-line-number="2">    <span class="dt">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</a>
+<a class="sourceLine" id="cb423-3" data-line-number="3">    <span class="dt">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</a></code></pre></div>
 </div>
 <div id="set-up-github-pat" class="section level2">
 <h2>🚦 Set up GITHUB PAT</h2>
 <p>To authenticate with GitHub, you’ll also need a Personal Authorisation Token (PAT).</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">browse_github_pat</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">browse_github_pat</span>()</a></code></pre></div>
 <p>will open up the GitHub panel to generate your PAT.</p>
 <p><img src="assets/browse_github.png" height="300px"></p>
 <p>Copy it and paste it into your <code>.Renviron</code> file as system variable <code>GITHUB_PAT</code>.</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb425-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</a></code></pre></div>
 <p>Use <code>edit_r_environ()</code> to open and edit your <code>.Renviron</code> file</p>
 </div>
 <div id="section" class="section level2">
@@ -578,7 +580,7 @@ Image: xkcd CC BY-NC 2.5
 <div id="turn-our-project-into-a-repository" class="section level2">
 <h2>Turn our project into a repository</h2>
 <p>If you didn’t initialise git at the beginning of your project, you can do so now with:</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
 <p><em>This however commits everything in one go. So not ideal! I recommend using git from the start of every project.</em></p>
 </div>
 <div id="commiting-files" class="section level2">
@@ -600,7 +602,7 @@ Image: xkcd CC BY-NC 2.5
 <h2>🚦 Create a README</h2>
 <p>Our repository also needs a <code>README</code>. We only need a simple plain markdown (<code>.md</code>) file for our README.</p>
 <p>We can create a template using <code>usethis::use_readme_md()</code></p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_readme_md</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb427-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_readme_md</span>()</a></code></pre></div>
 <p><img src="assets/use-readme.png" /></p>
 </div>
 <div id="edit-readme" class="section level2">
@@ -615,7 +617,7 @@ Image: xkcd CC BY-NC 2.5
 <div id="create-repository" class="section level2">
 <h2>Create repository</h2>
 <p>Now that we have set up a <code>GITHUP_PAT</code>, we can use function <code>usethis::use_github()</code> to create a GitHub repository for our project:</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
 <p><img src="assets/use-github.png" /></p>
 </div>
 <div id="push-files" class="section level2">
@@ -632,7 +634,7 @@ Image: xkcd CC BY-NC 2.5
 <li><p>In the last plot of your <code>.index.Rmd</code>, see if you can add a <strong>smooth</strong> for each continent to generate the plot below (should be just one extra <code>ggplot2</code> function added to the plot). Look for the appropriate <code>geom_*</code> function.</p></li>
 <li><p>See also if you can include an interactive <code>plotly</code> version</p></li>
 </ul>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-214-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
 </div>
 <div id="commit-your-changes" class="section level2">
 <h2>Commit your changes</h2>

@@ -3,104 +3,240 @@
 # Data Munging: Iteration
 
 
-## Iteration
-
 Let's say we want to repeat a process multiple times, iterating over a number of inputs. In this case we want to load every file in `/data-raw/wood-survey-data-master/individual/`. 
 
 We have a few options for how to approach this problem. In R there are two paradigms for iteration:
 
 - **imperative iterations**: (for and while loops)
   - great place to start because they make iteration very explicit.
-  - quite verbose, and require quite a bit of bookkeeping code that is duplicated for every for loop.
+  - quite verbose, and require quite a bit of bookkeeping code that is duplicated for every `for` loop.
+- **functional programming**: using functions to iterate over other functions.
+  - focus is on the operation being performed rather than the bookkeeping.
+  - can be more elegant and succinct.
 
-### Iterating using loops
 
-#### Every for loop has three components:
+## Iterating using loops
 
-- The output: It's important for efficiency to allocate sufficient space for the output before starting a for loop: if you grow the for loop at each iteration using `c()` (for example), your for loop will be very slow.
-> Use `output <- vector(mode = "double", length = length(x))` to create an output vector of type double the length of the input vector we want to iterate over (`x`).
+### Simple loop
 
-- **The sequence:** `i in seq_along(x)`. This determines what to loop over: each run of the for loop will assign i to a different value from seq_along(x). It’s useful to think of i as a pronoun, like “it”.
-We have the file paths in our `individual_paths` vector so we can use a **for loop** to iterate over `individual_paths`, using each path as the `file` argument in `readr::read_csv()` and bind each resulting `tibble` sequentially.
-```{r, message=FALSE}
-indiv_dfs <- NULL
-for(file in individual_paths){
-  indiv_dfs <- dplyr::bind_rows(indiv_dfs, readr::read_csv(file))
+Here's an example of a simple loop. During each iteration, it prints a message to the console, reporting the value of `i`.
+
+
+```{r}
+for(i in 1:10){
+  print(paste0("i is ", i))
 }
 ```
 
-Create an output vector to store dataframes in
+The loop iterates over the vector of values supplied in `1:10`, sequentially assigning a new value to variable `i` each iteration. `i` is therefore the varying input and everything else in the code stays the same during each iteration.
+
+
+### Loops in practice
+
+### Reading in multiple files
+
+Let's now apply a loop to read in all `r length(individual_paths)` files at once.
+
+We have the file paths in our `individual_paths` vector. This is the input we want to iterate over.  We can use a **`for` loop**  to supply each path as the `file` argument in `readr::read_csv()`.
+
+#### Storing loop outputs
+
+The previous loop we saw didn't generate any new objects, it just printed output to the console. We, however, need to store the output of each iteration (the tibble we've just read in). 
+
+It's important for efficiency to allocate sufficient space for the output before starting a `for` loop.  Growing the `for` loop at each iteration, using `c()` for example, will be very slow.
+
+Let's create an output vector to store the tibbles containing the read in data. We want it to be a list because we'll be storing heterogeneous objects (tibbles) in each element.
+
 ```{r, message=FALSE}
 indiv_df_list <- vector("list", length(individual_paths))
 
+head(indiv_df_list)
 ```
 
+We've used the `length()` of the input to specify the size of our output list so each path gets an output element.
+
+
+#### Looping over indices
+
+Next, we need a sequence of indices as long as the input vector (`individual_paths`). We can use `seq_along()` to create our index vector:
 
 ```{r}
 seq_along(individual_paths)
 ```
 
+Now we're ready to write our `for` loop. 
 
 ```{r, message=FALSE}
 for(i in seq_along(individual_paths)){
   indiv_df_list[[i]] <- readr::read_csv(individual_paths[[i]])
 }
-
-
-
-
 ```
+
+At each step of the iteration, the file specified in the `i`th element of `individual_paths`  is read in and assigned to th `i`th element of our output list.
+
+We can extract individual tibbles using `[[` sub-setting to inspect:
+```{r}
+indiv_df_list[[1]]
+indiv_df_list[[2]]
+```
+
+We can also inspect the contents of our output list interactively using `View()`
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/view_indiv_list.png")
+```
+
+
+##### Looping over objects
+
+We can also loop over objects instead of indices.
+
+```{r, message=FALSE}
+indiv_df_list <- vector("list", length(individual_paths))
+names(indiv_df_list) <- basename(individual_paths)
+
+for(path in individual_paths){
+  indiv_df_list[[basename(path)]] <- readr::read_csv(path)
+}
+```
+
+In this case, we supply the paths themselves as the input to our loop and these are passed as-is to `read_csv()`. 
+
+This time we don't have our element indices to index the elements of the output list each tibble should be stored in. To get around this we assign names to each element and index the output list by name. 
+
+I've chosen to use the `basename` (actual file name) of each path as a name, which I can get through `basename()`.
+
+```{r, eval=FALSE}
+individual_paths[1]
+basename(individual_paths[1])
+```
+
+```{r, echo=FALSE}
+individual_paths_proj[1]
+basename(individual_paths_proj[1])
+```
+
+
+
+#### Collapsing our output list into a single tibble.
+
+Now we've got our list of tibbles, we want to collapse or "reduce" our output list into a single tibble. There are a number of ways to do this in R.
 
 ##### Base R
+
+One first approach we might think of is to use base function `rbind()`. This takes any number of tibbles as arguments and binds them all together.
+
 ```{r}
-do.call("rbind", indiv_df_list)
+rbind(indiv_df_list) %>% head()
 ```
+
+
+Hmm, that doesn't seem to have done what we want. That's because `rbind` expects multiple tibbles as inputs and we're giving it a single list. We somehow want to extract the contents of each element of `indiv_df_list` and pass them all to `rbind`.
+
+For this we can use `do.call`.`do.call` takes a function or the name of a function we want to execute as it's first argument, `what`. The second argument of `do.call`, `args` is a **list** of arguments we want to pass to the function specified in `what`. When `do.call` is executed, it extracts the elements of `args` and passes them as arguments to `what`. 
+
+
+```{r}
+do.call(what = "rbind", args = indiv_df_list)
+```
+
+Success!
+
 
 ##### Tidyverse
 
+There are also ways to do this using the tidyverse.
+
 **`purrr::reduce`**
-More flexible in how you can join objects together
+
+`reduce` from package `purrr` combines the elements of a vector or list into a single object according to the function supplied to `.f`.
 
 ```{r}
-purrr::reduce(indiv_df_list, rbind)
+purrr::reduce(indiv_df_list, .f = rbind)
 
 ```
 
 **`dplyr::bind_rows`**
-`bind_rows` offers a shortcut to the reduce by binding the rows of a list of tibbles or data.frames sequentially.
+
+`bind_rows` offers a shortcut to reducing a list of tibbles.
 
 ```{r}
 dplyr::bind_rows(indiv_df_list)
 ```
 
 
+## Functional programming
 
+Loops are an important basic concept in programming. However another approach available in R is functional programming which vectorises a function or pipe of functions over given input(s). We've actually just been using functional programming with `do.call` and `reduce`.
+
+This idea of passing a function to another function is one of the behaviours that makes R a functional programming language and is extremely powerful. 
+
+It allows us to:
+
+1. use functions rather than `for` loops to perform iteration over other functions.
+1. wrap the code we want to iterate over in custom functions.
+
+This iin turn allows us to replace many `for` loops with code that is both more succinct and easier to read. 
+
+In base R there is a family of apply functions (`lapply`, `vapply`, `sapply`, `apply`, `mapply`). These are handy to know if  want to write workflows or software that are low on dependencies. However, I prefer using the functions in tidyverse package `purrr`.
 
 ### Iterating using `purrr`
 
-Loops are an important basic concept in programming. However another approach available in R is functional programming to vectorise a function or pipe of functions over given input(s).
+In the tidyverse such functionality is provided by package [`purrr`](https://purrr.tidyverse.org/), which provides a complete and consistent set of tools for working with functions and vectors of inputs.
 
-In base R there is a family of apply functions (`lapply`, `vapply`, `sapply`, `apply`, `mapply`). These are handy to know if wou want to write workflows or software that are low on dependencies.
-
-In the tidyverse the respective functionality is provide by package [`purrr`](https://purrr.tidyverse.org/), provides a complete and consistent set of tools for working with functions and vectors.. 
-
-```{r, echo = FALSE, caption = "purrr cheatsheets: https://github.com/rstudio/cheatsheets/blob/master/purrr.pdf"}
-knitr::include_graphics("assets/purrr-cheatsheet-thumbs.png", error = FALSE)
+```{r, echo = FALSE}
+knitr::include_url("assets/cheatsheets/purrr.pdf")
 ```
 
- allow you to replace many for loops with code that is both more succinct and easier to read. The best place to learn about the map() functions is the [iteration chapter](https://r4ds.had.co.nz/iteration.html) in R for data science
+The first thing we might try is to replace our `for` loop with a function.
 
+#### `map`
+
+The basic `purrr` function is `map()` and it allows us to pass the elements of an input vector or list to a single argument of a function we want to repeat. It also has a handy shortcut for specifying the argument to pass the input object to.
+
+```{r, message=FALSE}
+indiv_df_list <- purrr::map(individual_paths,
+           ~readr::read_csv(file = .x))
 ```
-- apply(X, MARGIN, FUN)
-- lapply(X, FUN)
+
+The first argument to `map` is the input vector of paths we want to iterate over. The next argument is a formula specifying the function we want to repeat as well as which argument the input is passed to.
+
+Here we're saying that we want to repeatedly run `read_csv` and we indicate the argument we want the input passed to (`file`) by `.x`. Note as well the `~` notation before the function definition which is shorthand for `.f = `.
+
+#### `map_df`
+
+Just like our loop, `map` returns an output list. 
+
+
+```{r}
+class(indiv_df_list)
 ```
+
+We would therefore need to combine them together in another step.
+
+However, one of the great things about `purrr` functions is that you can specify what you expect the output of the mapped function to be. THere are functions that take advantage of that knowledge and bind or format the outputs appropriately.
+
+Because we know the output of `read_csv()` is a tibble, we can use `map_df()` instead of `map()`.
 
 ```{r, message=FALSE}
 
 individual <- purrr::map_df(individual_paths,
            ~readr::read_csv(.x))
+
+individual
 ```
 
+Success! We now have all our data in a single tibble is just two concise lines of code!! `r emo::ji("tada")` `r emo::ji("clap")`
+
+#### Some tips on efficiency
+
+While the above code is elegant, it might not be the most efficient. `read_csv` calls `readr` function `type_convert()` to determine the data type for each column when it reads a file in, which is relatively expensive. 
+
+The elegant code above mean that `type_convert()` is for every file that is loaded, ie `r length(individual_paths)` times.
+
+A more efficent way of implementing this to set all columns as character on-read and then run `type_convert` ourselves, only once, and only after our data have been combined into a single tibble.
+
+We can set all columns to character by default by providing column formating function `readr::cols(.default = "c"))` as the `read_csv` `col_types` argument.
 
 ```{r, message=FALSE}
 
@@ -111,7 +247,13 @@ individual <- purrr::map_df(individual_paths,
 individual  
 ```
 
-If you are dealing with very large tables make sure to check out packages `data.table` and `vroom`. Learn more about [perfomance and efficency](http://adv-r.had.co.nz/Performance.html) in general. 
+This might come in handy if you are dealing with a huge number of data files.
+
+Other packages to be aware of, especially if you are dealing with very large tables, are `data.table` and `vroom`. 
+
+Learn more about [perfomance and efficency](http://adv-r.had.co.nz/Performance.html) in general. 
+
+##### simple benchmark
 
 ```{r, eval=FALSE}
 microbenchmark::microbenchmark({
@@ -125,30 +267,36 @@ microbenchmark::microbenchmark({
   # vroom package
   {vroom::vroom(individual_paths)},
   # data.table
-  {lapply(individual_paths, data.table::fread, sep=",")},
+  {lapply(individual_paths, data.table::fread, sep=",") %>%
+    do.call("rbind", .)},
+  # purrr + data.table
   {purrr::map_df(individual_paths, data.table::fread, sep=",")},
   times = 20)
 ```
 
 ```r
        min        lq      mean    median        uq       max neval
- 379.63553 388.89853 411.62862 399.62059 413.22663 577.22038    20
- 156.02550 175.48882 183.36342 181.91229 191.59960 210.75355    20
- 266.27813 268.37740 288.82870 279.64958 298.02430 381.60586    20
-  50.79947  53.11024  56.71559  55.25765  57.65712  73.02853    20
-  61.36634  63.85194  68.44160  65.12753  69.08671  88.60108    20
+ 372.77828 389.98348 416.70189 395.01877 437.90033 512.19128    20
+ 150.52621 164.60759 190.92799 175.99858 192.44910 322.73216    20
+ 265.06628 272.09506 307.39295 285.53955 320.84952 518.55182    20
+  50.09148  53.22408  72.28593  58.26753  63.00565 182.50278    20
+  57.48761  58.76176  63.39054  63.31130  66.08371  75.92438    20
  ```
 
+## Writing out our tibble to disk
 
+Remember the other two files included in our raw data, `vst_mappingandtagging.csv`, and `vst_perplotperyear.csv`? Well the truth is they also came in multiple files which I put together in pretty much the same way as you just did!
 
+So for posterity, let's save this file out too. This isn't our finished analytic data set, we still have some processing to do. So let's just save it at `raw_data_path`, along with the other files.
 
-```{r, message=FALSE, echo=FALSE}
+To write out a csv file we use `readr::write_csv()`
+
+```{r, message=FALSE}
 individual %>%
   readr::write_csv(file.path(raw_data_path, "vst_individual.csv"))
 
 ```
 
-```{r}
-individual
-names(individual)
-```
+***
+
+Learn more about iteration and the family of `purrr` functions in the [iteration chapter](https://r4ds.had.co.nz/iteration.html) in R for data science

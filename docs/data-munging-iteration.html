@@ -200,7 +200,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>III Data Munging</b></span></li>
 <li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html"><i class="fa fa-check"></i>Data Munging: Iteration</a><ul>
-<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#iteration"><i class="fa fa-check"></i>Iteration</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#iterating-using-loops"><i class="fa fa-check"></i>Iterating using loops</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#functional-programming"><i class="fa fa-check"></i>Functional programming</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#writing-out-our-tibble-to-disk"><i class="fa fa-check"></i>Writing out our tibble to disk</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="data-munging-combining-tables.html"><a href="data-munging-combining-tables.html"><i class="fa fa-check"></i>Data munging: combining tables</a><ul>
 <li><a href="data-munging-combining-tables.html#joining-tables-with-dplyr">Joining tables with <code>dplyr</code></a></li>
@@ -400,44 +402,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data-munging-iteration" class="section level1">
 <h1>Data Munging: Iteration</h1>
-<div id="iteration" class="section level2">
-<h2>Iteration</h2>
 <p>Let’s say we want to repeat a process multiple times, iterating over a number of inputs. In this case we want to load every file in <code>/data-raw/wood-survey-data-master/individual/</code>.</p>
 <p>We have a few options for how to approach this problem. In R there are two paradigms for iteration:</p>
 <ul>
 <li><strong>imperative iterations</strong>: (for and while loops)
 <ul>
 <li>great place to start because they make iteration very explicit.</li>
-<li>quite verbose, and require quite a bit of bookkeeping code that is duplicated for every for loop.</li>
+<li>quite verbose, and require quite a bit of bookkeeping code that is duplicated for every <code>for</code> loop.</li>
+</ul></li>
+<li><strong>functional programming</strong>: using functions to iterate over other functions.
+<ul>
+<li>focus is on the operation being performed rather than the bookkeeping.</li>
+<li>can be more elegant and succinct.</li>
 </ul></li>
 </ul>
-<div id="iterating-using-loops" class="section level3">
-<h3>Iterating using loops</h3>
-<div id="every-for-loop-has-three-components" class="section level4">
-<h4>Every for loop has three components:</h4>
-<ul>
-<li><p>The output: It’s important for efficiency to allocate sufficient space for the output before starting a for loop: if you grow the for loop at each iteration using <code>c()</code> (for example), your for loop will be very slow.
-&gt; Use <code>output &lt;- vector(mode = &quot;double&quot;, length = length(x))</code> to create an output vector of type double the length of the input vector we want to iterate over (<code>x</code>).</p></li>
-<li><p><strong>The sequence:</strong> <code>i in seq_along(x)</code>. This determines what to loop over: each run of the for loop will assign i to a different value from seq_along(x). It’s useful to think of i as a pronoun, like “it”.
-We have the file paths in our <code>individual_paths</code> vector so we can use a <strong>for loop</strong> to iterate over <code>individual_paths</code>, using each path as the <code>file</code> argument in <code>readr::read_csv()</code> and bind each resulting <code>tibble</code> sequentially.</p></li>
-</ul>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1">indiv_dfs &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb274-2" data-line-number="2"><span class="cf">for</span>(file <span class="cf">in</span> individual_paths){</a>
-<a class="sourceLine" id="cb274-3" data-line-number="3">  indiv_dfs &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">bind_rows</span>(indiv_dfs, readr<span class="op">::</span><span class="kw">read_csv</span>(file))</a>
-<a class="sourceLine" id="cb274-4" data-line-number="4">}</a></code></pre></div>
-<p>Create an output vector to store dataframes in</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" data-line-number="1">indiv_df_list &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="kw">length</span>(individual_paths))</a></code></pre></div>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">seq_along</span>(individual_paths)</a></code></pre></div>
+<div id="iterating-using-loops" class="section level2">
+<h2>Iterating using loops</h2>
+<div id="simple-loop" class="section level3">
+<h3>Simple loop</h3>
+<p>Here’s an example of a simple loop. During each iteration, it prints a message to the console, reporting the value of <code>i</code>.</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb276-2" data-line-number="2">  <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;i is &quot;</span>, i))</a>
+<a class="sourceLine" id="cb276-3" data-line-number="3">}</a></code></pre></div>
+<pre><code>## [1] &quot;i is 1&quot;
+## [1] &quot;i is 2&quot;
+## [1] &quot;i is 3&quot;
+## [1] &quot;i is 4&quot;
+## [1] &quot;i is 5&quot;
+## [1] &quot;i is 6&quot;
+## [1] &quot;i is 7&quot;
+## [1] &quot;i is 8&quot;
+## [1] &quot;i is 9&quot;
+## [1] &quot;i is 10&quot;</code></pre>
+<p>The loop iterates over the vector of values supplied in <code>1:10</code>, sequentially assigning a new value to variable <code>i</code> each iteration. <code>i</code> is therefore the varying input and everything else in the code stays the same during each iteration.</p>
+</div>
+<div id="loops-in-practice" class="section level3">
+<h3>Loops in practice</h3>
+</div>
+<div id="reading-in-multiple-files" class="section level3">
+<h3>Reading in multiple files</h3>
+<p>Let’s now apply a loop to read in all 67 files at once.</p>
+<p>We have the file paths in our <code>individual_paths</code> vector. This is the input we want to iterate over. We can use a <strong><code>for</code> loop</strong> to supply each path as the <code>file</code> argument in <code>readr::read_csv()</code>.</p>
+<div id="storing-loop-outputs" class="section level4">
+<h4>Storing loop outputs</h4>
+<p>The previous loop we saw didn’t generate any new objects, it just printed output to the console. We, however, need to store the output of each iteration (the tibble we’ve just read in).</p>
+<p>It’s important for efficiency to allocate sufficient space for the output before starting a <code>for</code> loop. Growing the <code>for</code> loop at each iteration, using <code>c()</code> for example, will be very slow.</p>
+<p>Let’s create an output vector to store the tibbles containing the read in data. We want it to be a list because we’ll be storing heterogeneous objects (tibbles) in each element.</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1">indiv_df_list &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="kw">length</span>(individual_paths))</a>
+<a class="sourceLine" id="cb278-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb278-3" data-line-number="3"><span class="kw">head</span>(indiv_df_list)</a></code></pre></div>
+<pre><code>## [[1]]
+## NULL
+## 
+## [[2]]
+## NULL
+## 
+## [[3]]
+## NULL
+## 
+## [[4]]
+## NULL
+## 
+## [[5]]
+## NULL
+## 
+## [[6]]
+## NULL</code></pre>
+<p>We’ve used the <code>length()</code> of the input to specify the size of our output list so each path gets an output element.</p>
+</div>
+<div id="looping-over-indices" class="section level4">
+<h4>Looping over indices</h4>
+<p>Next, we need a sequence of indices as long as the input vector (<code>individual_paths</code>). We can use <code>seq_along()</code> to create our index vector:</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1"><span class="kw">seq_along</span>(individual_paths)</a></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 ## [26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
 ## [51] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67</code></pre>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(individual_paths)){</a>
-<a class="sourceLine" id="cb278-2" data-line-number="2">  indiv_df_list[[i]] &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(individual_paths[[i]])</a>
-<a class="sourceLine" id="cb278-3" data-line-number="3">}</a></code></pre></div>
-<div id="base-r" class="section level5">
-<h5>Base R</h5>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1"><span class="kw">do.call</span>(<span class="st">&quot;rbind&quot;</span>, indiv_df_list)</a></code></pre></div>
-<pre><code>## # A tibble: 21,388 x 12
+<p>Now we’re ready to write our <code>for</code> loop.</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(individual_paths)){</a>
+<a class="sourceLine" id="cb282-2" data-line-number="2">  indiv_df_list[[i]] &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(individual_paths[[i]])</a>
+<a class="sourceLine" id="cb282-3" data-line-number="3">}</a></code></pre></div>
+<p>At each step of the iteration, the file specified in the <code>i</code>th element of <code>individual_paths</code> is read in and assigned to th <code>i</code>th element of our output list.</p>
+<p>We can extract individual tibbles using <code>[[</code> sub-setting to inspect:</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1">indiv_df_list[[<span class="dv">1</span>]]</a></code></pre></div>
+<pre><code>## # A tibble: 369 x 12
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
 ##  1 68dc… BART_037.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
@@ -450,14 +497,211 @@ We have the file paths in our <code>individual_paths</code> vector so we can use
 ##  8 4918… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
 ##  9 ef16… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
 ## 10 f099… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+## # … with 359 more rows, and 4 more variables: growthForm &lt;chr&gt;,
+## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1">indiv_df_list[[<span class="dv">2</span>]]</a></code></pre></div>
+<pre><code>## # A tibble: 673 x 12
+##    uid   namedLocation date       eventID domainID siteID plotID individualID
+##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
+##  1 fb75… BART_036.bas… 2015-09-01 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  2 30a7… BART_046.bas… 2015-09-01 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  3 789d… BART_072.bas… 2015-09-01 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  4 0e4f… BART_072.bas… 2015-09-01 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  5 7397… BART_036.bas… 2015-09-01 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  6 cb0e… BART_036.bas… 2015-09-01 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  7 5fc5… BART_072.bas… 2015-09-01 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  8 5d15… BART_046.bas… 2015-09-01 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  9 d27a… BART_036.bas… 2015-09-01 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+## 10 d5f9… BART_036.bas… 2015-09-01 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+## # … with 663 more rows, and 4 more variables: growthForm &lt;chr&gt;,
+## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
+<p>We can also inspect the contents of our output list interactively using <code>View()</code></p>
+<p><img src="assets/view_indiv_list.png" width="818" /></p>
+<div id="looping-over-objects" class="section level5">
+<h5>Looping over objects</h5>
+<p>We can also loop over objects instead of indices.</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1">indiv_df_list &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="kw">length</span>(individual_paths))</a>
+<a class="sourceLine" id="cb287-2" data-line-number="2"><span class="kw">names</span>(indiv_df_list) &lt;-<span class="st"> </span><span class="kw">basename</span>(individual_paths)</a>
+<a class="sourceLine" id="cb287-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb287-4" data-line-number="4"><span class="cf">for</span>(path <span class="cf">in</span> individual_paths){</a>
+<a class="sourceLine" id="cb287-5" data-line-number="5">  indiv_df_list[[<span class="kw">basename</span>(path)]] &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(path)</a>
+<a class="sourceLine" id="cb287-6" data-line-number="6">}</a></code></pre></div>
+<p>In this case, we supply the paths themselves as the input to our loop and these are passed as-is to <code>read_csv()</code>.</p>
+<p>This time we don’t have our element indices to index the elements of the output list each tibble should be stored in. To get around this we assign names to each element and index the output list by name.</p>
+<p>I’ve chosen to use the <code>basename</code> (actual file name) of each path as a name, which I can get through <code>basename()</code>.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1">individual_paths[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb288-2" data-line-number="2"><span class="kw">basename</span>(individual_paths[<span class="dv">1</span>])</a></code></pre></div>
+<pre><code>## ~/Desktop/wood-survey/data-raw/wood-survey-data-master/individual</code></pre>
+<pre><code>## [1] &quot;individual&quot;</code></pre>
+</div>
+</div>
+<div id="collapsing-our-output-list-into-a-single-tibble." class="section level4">
+<h4>Collapsing our output list into a single tibble.</h4>
+<p>Now we’ve got our list of tibbles, we want to collapse or “reduce” our output list into a single tibble. There are a number of ways to do this in R.</p>
+<div id="base-r" class="section level5">
+<h5>Base R</h5>
+<p>One first approach we might think of is to use base function <code>rbind()</code>. This takes any number of tibbles as arguments and binds them all together.</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1"><span class="kw">rbind</span>(indiv_df_list) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
+<pre><code>##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T172340Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T144119Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-08.basic.20190806T143255Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-09.basic.20190806T143433Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-10.basic.20190806T144133Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2017-07.basic.20190806T144111Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2017-08.basic.20190806T143426Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2017-09.basic.20190806T143740Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2018-08.basic.20190806T143026Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2018-09.basic.20190806T144743Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T155155Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T155228Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2015-10.basic.20190806T160029Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2015-11.basic.20190806T155340Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2016-07.basic.20190806T154424Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2016-08.basic.20190806T155619Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2016-09.basic.20190806T155751Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2016-10.basic.20190806T154902Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2017-07.basic.20190806T161731Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2017-08.basic.20190806T155239Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2017-09.basic.20190806T154054Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2017-10.basic.20190806T154917Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2018-09.basic.20190806T154756Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D01.HARV.DP1.10098.001.vst_apparentindividual.2018-10.basic.20190904T080421Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D02.BLAN.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T180623Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D02.BLAN.DP1.10098.001.vst_apparentindividual.2015-10.basic.20190806T180501Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D02.BLAN.DP1.10098.001.vst_apparentindividual.2016-09.basic.20190806T180452Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D02.BLAN.DP1.10098.001.vst_apparentindividual.2016-11.basic.20190806T162810Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D02.BLAN.DP1.10098.001.vst_apparentindividual.2017-09.basic.20190806T180226Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D02.BLAN.DP1.10098.001.vst_apparentindividual.2017-10.basic.20190806T162804Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D02.BLAN.DP1.10098.001.vst_apparentindividual.2018-09.basic.20190806T162758Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D02.BLAN.DP1.10098.001.vst_apparentindividual.2018-11.basic.20190930T153245Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D03.DSNY.DP1.10098.001.vst_apparentindividual.2018-01.basic.20190806T170456Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D03.DSNY.DP1.10098.001.vst_apparentindividual.2018-05.basic.20190806T165614Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T155333Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2016-02.basic.20190806T151351Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2016-03.basic.20190806T151416Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2016-04.basic.20190806T151437Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2016-05.basic.20190806T154733Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2016-06.basic.20190806T155301Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2016-07.basic.20190806T155324Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2016-08.basic.20190806T153300Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2016-09.basic.20190806T151857Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2016-10.basic.20190806T154351Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2016-11.basic.20190806T152215Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2017-03.basic.20190806T152514Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2017-04.basic.20190806T154915Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2017-12.basic.20190806T164409Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2018-01.basic.20190806T150606Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D04.GUAN.DP1.10098.001.vst_apparentindividual.2018-02.basic.20190806T150635Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D07.GRSM.DP1.10098.001.vst_apparentindividual.2015-05.basic.20190806T151458Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D07.GRSM.DP1.10098.001.vst_apparentindividual.2015-06.basic.20190806T151516Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D07.GRSM.DP1.10098.001.vst_apparentindividual.2016-10.basic.20190806T154811Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D07.GRSM.DP1.10098.001.vst_apparentindividual.2016-11.basic.20190806T154932Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D07.GRSM.DP1.10098.001.vst_apparentindividual.2017-10.basic.20190806T155315Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D07.GRSM.DP1.10098.001.vst_apparentindividual.2017-11.basic.20190806T164155Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D07.GRSM.DP1.10098.001.vst_apparentindividual.2018-11.basic.20190930T154643Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D08.DELA.DP1.10098.001.vst_apparentindividual.2015-06.basic.20190806T173627Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D08.DELA.DP1.10098.001.vst_apparentindividual.2015-07.basic.20190806T165116Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D08.DELA.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T160924Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D08.DELA.DP1.10098.001.vst_apparentindividual.2016-09.basic.20190806T161107Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D08.DELA.DP1.10098.001.vst_apparentindividual.2016-10.basic.20190806T155600Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D08.DELA.DP1.10098.001.vst_apparentindividual.2017-10.basic.20190806T161504Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D08.DELA.DP1.10098.001.vst_apparentindividual.2017-11.basic.20190806T165044Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D08.DELA.DP1.10098.001.vst_apparentindividual.2018-10.basic.20190904T074322Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D08.DELA.DP1.10098.001.vst_apparentindividual.2018-11.basic.20190930T162311Z.csv
+## indiv_df_list List,12                                                                              
+##               NEON.D09.DCFS.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T161704Z.csv
+## indiv_df_list List,12</code></pre>
+<p>Hmm, that doesn’t seem to have done what we want. That’s because <code>rbind</code> expects multiple tibbles as inputs and we’re giving it a single list. We somehow want to extract the contents of each element of <code>indiv_df_list</code> and pass them all to <code>rbind</code>.</p>
+<p>For this we can use <code>do.call</code>.<code>do.call</code> takes a function or the name of a function we want to execute as it’s first argument, <code>what</code>. The second argument of <code>do.call</code>, <code>args</code> is a <strong>list</strong> of arguments we want to pass to the function specified in <code>what</code>. When <code>do.call</code> is executed, it extracts the elements of <code>args</code> and passes them as arguments to <code>what</code>.</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1"><span class="kw">do.call</span>(<span class="dt">what =</span> <span class="st">&quot;rbind&quot;</span>, <span class="dt">args =</span> indiv_df_list)</a></code></pre></div>
+<pre><code>## # A tibble: 21,388 x 12
+##    uid   namedLocation date       eventID domainID siteID plotID individualID
+##  * &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
+##  1 68dc… BART_037.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  2 a895… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  3 eb34… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  4 2a44… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  5 e485… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  6 280c… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  7 0e50… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  8 4918… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  9 ef16… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+## 10 f099… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
 ## # … with 21,378 more rows, and 4 more variables: growthForm &lt;chr&gt;,
 ## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
+<p>Success!</p>
 </div>
 <div id="tidyverse" class="section level5">
 <h5>Tidyverse</h5>
-<p><strong><code>purrr::reduce</code></strong>
-More flexible in how you can join objects together</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" data-line-number="1">purrr<span class="op">::</span><span class="kw">reduce</span>(indiv_df_list, rbind)</a></code></pre></div>
+<p>There are also ways to do this using the tidyverse.</p>
+<p><strong><code>purrr::reduce</code></strong></p>
+<p><code>reduce</code> from package <code>purrr</code> combines the elements of a vector or list into a single object according to the function supplied to <code>.f</code>.</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1">purrr<span class="op">::</span><span class="kw">reduce</span>(indiv_df_list, <span class="dt">.f =</span> rbind)</a></code></pre></div>
 <pre><code>## # A tibble: 21,388 x 12
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -473,9 +717,9 @@ More flexible in how you can join objects together</p>
 ## 10 f099… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
 ## # … with 21,378 more rows, and 4 more variables: growthForm &lt;chr&gt;,
 ## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
-<p><strong><code>dplyr::bind_rows</code></strong>
-<code>bind_rows</code> offers a shortcut to the reduce by binding the rows of a list of tibbles or data.frames sequentially.</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1">dplyr<span class="op">::</span><span class="kw">bind_rows</span>(indiv_df_list)</a></code></pre></div>
+<p><strong><code>dplyr::bind_rows</code></strong></p>
+<p><code>bind_rows</code> offers a shortcut to reducing a list of tibbles.</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1">dplyr<span class="op">::</span><span class="kw">bind_rows</span>(indiv_df_list)</a></code></pre></div>
 <pre><code>## # A tibble: 21,388 x 12
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -494,81 +738,128 @@ More flexible in how you can join objects together</p>
 </div>
 </div>
 </div>
+</div>
+<div id="functional-programming" class="section level2">
+<h2>Functional programming</h2>
+<p>Loops are an important basic concept in programming. However another approach available in R is functional programming which vectorises a function or pipe of functions over given input(s). We’ve actually just been using functional programming with <code>do.call</code> and <code>reduce</code>.</p>
+<p>This idea of passing a function to another function is one of the behaviours that makes R a functional programming language and is extremely powerful.</p>
+<p>It allows us to:</p>
+<ol style="list-style-type: decimal">
+<li>use functions rather than <code>for</code> loops to perform iteration over other functions.</li>
+<li>wrap the code we want to iterate over in custom functions.</li>
+</ol>
+<p>This iin turn allows us to replace many <code>for</code> loops with code that is both more succinct and easier to read.</p>
+<p>In base R there is a family of apply functions (<code>lapply</code>, <code>vapply</code>, <code>sapply</code>, <code>apply</code>, <code>mapply</code>). These are handy to know if want to write workflows or software that are low on dependencies. However, I prefer using the functions in tidyverse package <code>purrr</code>.</p>
 <div id="iterating-using-purrr" class="section level3">
 <h3>Iterating using <code>purrr</code></h3>
-<p>Loops are an important basic concept in programming. However another approach available in R is functional programming to vectorise a function or pipe of functions over given input(s).</p>
-<p>In base R there is a family of apply functions (<code>lapply</code>, <code>vapply</code>, <code>sapply</code>, <code>apply</code>, <code>mapply</code>). These are handy to know if wou want to write workflows or software that are low on dependencies.</p>
-<p>In the tidyverse the respective functionality is provide by package <a href="https://purrr.tidyverse.org/"><code>purrr</code></a>, provides a complete and consistent set of tools for working with functions and vectors..</p>
-<p><img src="assets/purrr-cheatsheet-thumbs.png" width="615" /></p>
-<p>allow you to replace many for loops with code that is both more succinct and easier to read. The best place to learn about the map() functions is the <a href="https://r4ds.had.co.nz/iteration.html">iteration chapter</a> in R for data science</p>
-<pre><code>- apply(X, MARGIN, FUN)
-- lapply(X, FUN)</code></pre>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1">individual &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
-<a class="sourceLine" id="cb286-2" data-line-number="2">           <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(.x))</a></code></pre></div>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1">individual &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
-<a class="sourceLine" id="cb287-2" data-line-number="2">           <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(.x, <span class="dt">col_types =</span> readr<span class="op">::</span><span class="kw">cols</span>(<span class="dt">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb287-3" data-line-number="3"><span class="st">            </span>readr<span class="op">::</span><span class="kw">type_convert</span>()</a>
-<a class="sourceLine" id="cb287-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb287-5" data-line-number="5">individual  </a></code></pre></div>
-<pre><code>## # A tibble: 21,388 x 12
-##    uid   namedLocation date       eventID domainID siteID plotID individualID
-##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
-##  1 68dc… BART_037.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  2 a895… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  3 eb34… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  4 2a44… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  5 e485… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  6 280c… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  7 0e50… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  8 4918… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  9 ef16… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-## 10 f099… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-## # … with 21,378 more rows, and 4 more variables: growthForm &lt;chr&gt;,
-## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
-<p>If you are dealing with very large tables make sure to check out packages <code>data.table</code> and <code>vroom</code>. Learn more about <a href="http://adv-r.had.co.nz/Performance.html">perfomance and efficency</a> in general.</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1">microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>({</a>
-<a class="sourceLine" id="cb289-2" data-line-number="2">  <span class="co"># tidyverse</span></a>
-<a class="sourceLine" id="cb289-3" data-line-number="3">  purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
-<a class="sourceLine" id="cb289-4" data-line-number="4">           <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(.x))},</a>
-<a class="sourceLine" id="cb289-5" data-line-number="5">  <span class="co"># tidyverse + read in as character</span></a>
-<a class="sourceLine" id="cb289-6" data-line-number="6">  {purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
-<a class="sourceLine" id="cb289-7" data-line-number="7">           <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(.x, <span class="dt">col_types =</span> readr<span class="op">::</span><span class="kw">cols</span>(<span class="dt">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb289-8" data-line-number="8"><span class="st">            </span>readr<span class="op">::</span><span class="kw">type_convert</span>()},</a>
-<a class="sourceLine" id="cb289-9" data-line-number="9">  <span class="co"># vroom package</span></a>
-<a class="sourceLine" id="cb289-10" data-line-number="10">  {vroom<span class="op">::</span><span class="kw">vroom</span>(individual_paths)},</a>
-<a class="sourceLine" id="cb289-11" data-line-number="11">  <span class="co"># data.table</span></a>
-<a class="sourceLine" id="cb289-12" data-line-number="12">  {<span class="kw">lapply</span>(individual_paths, data.table<span class="op">::</span>fread, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)},</a>
-<a class="sourceLine" id="cb289-13" data-line-number="13">  {purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths, data.table<span class="op">::</span>fread, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)},</a>
-<a class="sourceLine" id="cb289-14" data-line-number="14">  <span class="dt">times =</span> <span class="dv">20</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1">       min        lq      mean    median        uq       max neval</a>
-<a class="sourceLine" id="cb290-2" data-line-number="2"> <span class="fl">379.63553</span> <span class="fl">388.89853</span> <span class="fl">411.62862</span> <span class="fl">399.62059</span> <span class="fl">413.22663</span> <span class="fl">577.22038</span>    <span class="dv">20</span></a>
-<a class="sourceLine" id="cb290-3" data-line-number="3"> <span class="fl">156.02550</span> <span class="fl">175.48882</span> <span class="fl">183.36342</span> <span class="fl">181.91229</span> <span class="fl">191.59960</span> <span class="fl">210.75355</span>    <span class="dv">20</span></a>
-<a class="sourceLine" id="cb290-4" data-line-number="4"> <span class="fl">266.27813</span> <span class="fl">268.37740</span> <span class="fl">288.82870</span> <span class="fl">279.64958</span> <span class="fl">298.02430</span> <span class="fl">381.60586</span>    <span class="dv">20</span></a>
-<a class="sourceLine" id="cb290-5" data-line-number="5">  <span class="fl">50.79947</span>  <span class="fl">53.11024</span>  <span class="fl">56.71559</span>  <span class="fl">55.25765</span>  <span class="fl">57.65712</span>  <span class="fl">73.02853</span>    <span class="dv">20</span></a>
-<a class="sourceLine" id="cb290-6" data-line-number="6">  <span class="fl">61.36634</span>  <span class="fl">63.85194</span>  <span class="fl">68.44160</span>  <span class="fl">65.12753</span>  <span class="fl">69.08671</span>  <span class="fl">88.60108</span>    <span class="dv">20</span></a></code></pre></div>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1">individual</a></code></pre></div>
-<pre><code>## # A tibble: 21,388 x 12
-##    uid   namedLocation date       eventID domainID siteID plotID individualID
-##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
-##  1 68dc… BART_037.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  2 a895… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  3 eb34… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  4 2a44… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  5 e485… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  6 280c… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  7 0e50… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  8 4918… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-##  9 ef16… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-## 10 f099… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
-## # … with 21,378 more rows, and 4 more variables: growthForm &lt;chr&gt;,
-## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1"><span class="kw">names</span>(individual)</a></code></pre></div>
-<pre><code>##  [1] &quot;uid&quot;               &quot;namedLocation&quot;     &quot;date&quot;             
-##  [4] &quot;eventID&quot;           &quot;domainID&quot;          &quot;siteID&quot;           
-##  [7] &quot;plotID&quot;            &quot;individualID&quot;      &quot;growthForm&quot;       
-## [10] &quot;stemDiameter&quot;      &quot;measurementHeight&quot; &quot;height&quot;</code></pre>
-
+<p>In the tidyverse such functionality is provided by package <a href="https://purrr.tidyverse.org/"><code>purrr</code></a>, which provides a complete and consistent set of tools for working with functions and vectors of inputs.</p>
+<iframe src="assets/cheatsheets/purrr.pdf" width="672" height="400px">
+</iframe>
+<p>The first thing we might try is to replace our <code>for</code> loop with a function.</p>
+<div id="map" class="section level4">
+<h4><code>map</code></h4>
+<p>The basic <code>purrr</code> function is <code>map()</code> and it allows us to pass the elements of an input vector or list to a single argument of a function we want to repeat. It also has a handy shortcut for specifying the argument to pass the input object to.</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1">indiv_df_list &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map</span>(individual_paths,</a>
+<a class="sourceLine" id="cb299-2" data-line-number="2">           <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="dt">file =</span> .x))</a></code></pre></div>
+<p>The first argument to <code>map</code> is the input vector of paths we want to iterate over. The next argument is a formula specifying the function we want to repeat as well as which argument the input is passed to.</p>
+<p>Here we’re saying that we want to repeatedly run <code>read_csv</code> and we indicate the argument we want the input passed to (<code>file</code>) by <code>.x</code>. Note as well the <code>~</code> notation before the function definition which is shorthand for <code>.f =</code>.</p>
 </div>
+<div id="map_df" class="section level4">
+<h4><code>map_df</code></h4>
+<p>Just like our loop, <code>map</code> returns an output list.</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1"><span class="kw">class</span>(indiv_df_list)</a></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p>We would therefore need to combine them together in another step.</p>
+<p>However, one of the great things about <code>purrr</code> functions is that you can specify what you expect the output of the mapped function to be. THere are functions that take advantage of that knowledge and bind or format the outputs appropriately.</p>
+<p>Because we know the output of <code>read_csv()</code> is a tibble, we can use <code>map_df()</code> instead of <code>map()</code>.</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1">individual &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
+<a class="sourceLine" id="cb302-2" data-line-number="2">           <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(.x))</a>
+<a class="sourceLine" id="cb302-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb302-4" data-line-number="4">individual</a></code></pre></div>
+<pre><code>## # A tibble: 21,388 x 12
+##    uid   namedLocation date       eventID domainID siteID plotID individualID
+##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
+##  1 68dc… BART_037.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  2 a895… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  3 eb34… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  4 2a44… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  5 e485… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  6 280c… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  7 0e50… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  8 4918… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  9 ef16… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+## 10 f099… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+## # … with 21,378 more rows, and 4 more variables: growthForm &lt;chr&gt;,
+## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
+<p>Success! We now have all our data in a single tibble is just two concise lines of code!! 🎉 👏</p>
+</div>
+<div id="some-tips-on-efficiency" class="section level4">
+<h4>Some tips on efficiency</h4>
+<p>While the above code is elegant, it might not be the most efficient. <code>read_csv</code> calls <code>readr</code> function <code>type_convert()</code> to determine the data type for each column when it reads a file in, which is relatively expensive.</p>
+<p>The elegant code above mean that <code>type_convert()</code> is for every file that is loaded, ie 67 times.</p>
+<p>A more efficent way of implementing this to set all columns as character on-read and then run <code>type_convert</code> ourselves, only once, and only after our data have been combined into a single tibble.</p>
+<p>We can set all columns to character by default by providing column formating function <code>readr::cols(.default = &quot;c&quot;))</code> as the <code>read_csv</code> <code>col_types</code> argument.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1">individual &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
+<a class="sourceLine" id="cb304-2" data-line-number="2">           <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(.x, <span class="dt">col_types =</span> readr<span class="op">::</span><span class="kw">cols</span>(<span class="dt">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb304-3" data-line-number="3"><span class="st">            </span>readr<span class="op">::</span><span class="kw">type_convert</span>()</a>
+<a class="sourceLine" id="cb304-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb304-5" data-line-number="5">individual  </a></code></pre></div>
+<pre><code>## # A tibble: 21,388 x 12
+##    uid   namedLocation date       eventID domainID siteID plotID individualID
+##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
+##  1 68dc… BART_037.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  2 a895… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  3 eb34… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  4 2a44… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  5 e485… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  6 280c… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  7 0e50… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  8 4918… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  9 ef16… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+## 10 f099… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+## # … with 21,378 more rows, and 4 more variables: growthForm &lt;chr&gt;,
+## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
+<p>This might come in handy if you are dealing with a huge number of data files.</p>
+<p>Other packages to be aware of, especially if you are dealing with very large tables, are <code>data.table</code> and <code>vroom</code>.</p>
+<p>Learn more about <a href="http://adv-r.had.co.nz/Performance.html">perfomance and efficency</a> in general.</p>
+<div id="simple-benchmark" class="section level5">
+<h5>simple benchmark</h5>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1">microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>({</a>
+<a class="sourceLine" id="cb306-2" data-line-number="2">  <span class="co"># tidyverse</span></a>
+<a class="sourceLine" id="cb306-3" data-line-number="3">  purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
+<a class="sourceLine" id="cb306-4" data-line-number="4">           <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(.x))},</a>
+<a class="sourceLine" id="cb306-5" data-line-number="5">  <span class="co"># tidyverse + read in as character</span></a>
+<a class="sourceLine" id="cb306-6" data-line-number="6">  {purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
+<a class="sourceLine" id="cb306-7" data-line-number="7">           <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(.x, <span class="dt">col_types =</span> readr<span class="op">::</span><span class="kw">cols</span>(<span class="dt">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb306-8" data-line-number="8"><span class="st">            </span>readr<span class="op">::</span><span class="kw">type_convert</span>()},</a>
+<a class="sourceLine" id="cb306-9" data-line-number="9">  <span class="co"># vroom package</span></a>
+<a class="sourceLine" id="cb306-10" data-line-number="10">  {vroom<span class="op">::</span><span class="kw">vroom</span>(individual_paths)},</a>
+<a class="sourceLine" id="cb306-11" data-line-number="11">  <span class="co"># data.table</span></a>
+<a class="sourceLine" id="cb306-12" data-line-number="12">  {<span class="kw">lapply</span>(individual_paths, data.table<span class="op">::</span>fread, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb306-13" data-line-number="13"><span class="st">    </span><span class="kw">do.call</span>(<span class="st">&quot;rbind&quot;</span>, .)},</a>
+<a class="sourceLine" id="cb306-14" data-line-number="14">  <span class="co"># purrr + data.table</span></a>
+<a class="sourceLine" id="cb306-15" data-line-number="15">  {purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths, data.table<span class="op">::</span>fread, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)},</a>
+<a class="sourceLine" id="cb306-16" data-line-number="16">  <span class="dt">times =</span> <span class="dv">20</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1">       min        lq      mean    median        uq       max neval</a>
+<a class="sourceLine" id="cb307-2" data-line-number="2"> <span class="fl">372.77828</span> <span class="fl">389.98348</span> <span class="fl">416.70189</span> <span class="fl">395.01877</span> <span class="fl">437.90033</span> <span class="fl">512.19128</span>    <span class="dv">20</span></a>
+<a class="sourceLine" id="cb307-3" data-line-number="3"> <span class="fl">150.52621</span> <span class="fl">164.60759</span> <span class="fl">190.92799</span> <span class="fl">175.99858</span> <span class="fl">192.44910</span> <span class="fl">322.73216</span>    <span class="dv">20</span></a>
+<a class="sourceLine" id="cb307-4" data-line-number="4"> <span class="fl">265.06628</span> <span class="fl">272.09506</span> <span class="fl">307.39295</span> <span class="fl">285.53955</span> <span class="fl">320.84952</span> <span class="fl">518.55182</span>    <span class="dv">20</span></a>
+<a class="sourceLine" id="cb307-5" data-line-number="5">  <span class="fl">50.09148</span>  <span class="fl">53.22408</span>  <span class="fl">72.28593</span>  <span class="fl">58.26753</span>  <span class="fl">63.00565</span> <span class="fl">182.50278</span>    <span class="dv">20</span></a>
+<a class="sourceLine" id="cb307-6" data-line-number="6">  <span class="fl">57.48761</span>  <span class="fl">58.76176</span>  <span class="fl">63.39054</span>  <span class="fl">63.31130</span>  <span class="fl">66.08371</span>  <span class="fl">75.92438</span>    <span class="dv">20</span></a></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="writing-out-our-tibble-to-disk" class="section level2">
+<h2>Writing out our tibble to disk</h2>
+<p>Remember the other two files included in our raw data, <code>vst_mappingandtagging.csv</code>, and <code>vst_perplotperyear.csv</code>? Well the truth is they also came in multiple files which I put together in pretty much the same way as you just did!</p>
+<p>So for posterity, let’s save this file out too. This isn’t our finished analytic data set, we still have some processing to do. So let’s just save it at <code>raw_data_path</code>, along with the other files.</p>
+<p>To write out a csv file we use <code>readr::write_csv()</code></p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb308-2" data-line-number="2"><span class="st">  </span>readr<span class="op">::</span><span class="kw">write_csv</span>(<span class="kw">file.path</span>(raw_data_path, <span class="st">&quot;vst_individual.csv&quot;</span>))</a></code></pre></div>
+<hr />
+<p>Learn more about iteration and the family of <code>purrr</code> functions in the <a href="https://r4ds.had.co.nz/iteration.html">iteration chapter</a> in R for data science</p>
+
 </div>
 </div>
             </section>

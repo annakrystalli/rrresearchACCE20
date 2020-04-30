@@ -200,7 +200,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>III Data Munging</b></span></li>
 <li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html"><i class="fa fa-check"></i>Data Munging: Iteration</a><ul>
-<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#iteration"><i class="fa fa-check"></i>Iteration</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#iterating-using-loops"><i class="fa fa-check"></i>Iterating using loops</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#functional-programming"><i class="fa fa-check"></i>Functional programming</a></li>
+<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#writing-out-our-tibble-to-disk"><i class="fa fa-check"></i>Writing out our tibble to disk</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="data-munging-combining-tables.html"><a href="data-munging-combining-tables.html"><i class="fa fa-check"></i>Data munging: combining tables</a><ul>
 <li><a href="data-munging-combining-tables.html#joining-tables-with-dplyr">Joining tables with <code>dplyr</code></a></li>
@@ -404,11 +406,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Part I</h2>
 <div id="list-subsetting-challenge" class="section level3">
 <h3><a href="indexing-and-subsetting.html#chlg-list-subset" id="csol-list-subset">List subsetting challenge</a></h3>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb543-1" data-line-number="1">xlist<span class="op">$</span>b[<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" data-line-number="1">xlist<span class="op">$</span>b[<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb545-1" data-line-number="1">xlist[[<span class="dv">2</span>]][<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb559-1" data-line-number="1">xlist[[<span class="dv">2</span>]][<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb547-1" data-line-number="1">xlist[[<span class="st">&quot;b&quot;</span>]][<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb561-1" data-line-number="1">xlist[[<span class="st">&quot;b&quot;</span>]][<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 
 </div>
