@@ -89,6 +89,10 @@ Selection: 3
 
 The downloaded folder contains a **subset of data from the NEON Woody plant vegetation survey**.
 
+
+**Citation:**
+_National Ecological Observatory Network. 2020. Data Products: DP1.10098.001.  Provisional data downloaded from http://data.neonscience.org on 2020-01-15. Battelle, Boulder, CO, USA_
+
 This data product was downloaded from the [NEON data portal](http://data.neonscience.org/browse-data) and contains quality-controlled data from in-situ measurements of live and standing dead woody individuals and shrub groups, from all terrestrial NEON sites with qualifying woody vegetation.
 
 Surveys of each site are completed once every 3 years.

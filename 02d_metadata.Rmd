@@ -1,4 +1,6 @@
-# Metadata
+# (PART) Working with metadata {#metadata} 
+
+# Metadata {#metadata-slides}
 
 ```{r, results="asis", echo = FALSE}
 slide_page(slidedeck_name = "04_metadata.html")

@@ -1,0 +1,33 @@
+fileName,variableName,description,unitText
+individual.csv,uid,Unique ID within NEON database; an identifier for the record,NA
+individual.csv,named_location,Name of the measurement location in the NEON database,NA
+individual.csv,date,"Date or date and time of measurement, observation, or collection event",NA
+individual.csv,event_id,"An identifier for the set of information associated with the event, which includes information about the place and time of the event",NA
+individual.csv,domain_id,Unique identifier of the NEON domain,NA
+individual.csv,site_id,NEON site code,NA
+individual.csv,plot_id,Plot identifier (NEON site code_XXX),NA
+individual.csv,individual_id,Domain-level unique identifier for an individual: NEON.MOD.D##.######,NA
+individual.csv,growth_form,The growth form classification,NA
+individual.csv,stem_diameter,Cross-sectional stem diameter,centimeter
+individual.csv,measurement_height,Height at which stemDiameter is measured,centimeter
+individual.csv,height,Highest point of an individual or average height of a patch,meter
+individual.csv,uid_map,NA,NA
+individual.csv,point_id,Identifier for a point location,NA
+individual.csv,stem_distance,Horizontal distance from stem to pointID location,meter
+individual.csv,stem_azimuth,Azimuth relative to True North between stem and pointID location,degree
+individual.csv,taxon_id,"Species code, based on one or more sources",NA
+individual.csv,scientific_name,"Scientific name, associated with the taxonID. This is the name of the lowest level taxonomic rank that can be determined",NA
+individual.csv,taxon_rank,The lowest level taxonomic rank that can be determined for the individual or specimen,NA
+individual.csv,uid_ppl,NA,NA
+individual.csv,plot_type,"NEON plot type in which sampling occurred: tower, distributed or gradient",NA
+individual.csv,nlcd_class,National Land Cover Database Vegetation Type Name,NA
+individual.csv,decimal_latitude,"The geographic latitude (in decimal degrees, WGS84) of the geographic center of the reference area",decimalDegree
+individual.csv,decimal_longitude,"The geographic longitude (in decimal degrees, WGS84) of the geographic center of the reference area",decimalDegree
+individual.csv,geodetic_datum,Model used to measure horizontal position on the earth,NA
+individual.csv,easting,"Geographic coordinate specifying the east-west position of a point on the Earth's surface (Universal Transverse Mercator, UTM)",meter
+individual.csv,northing,"Geographic coordinate specifying the north-south position of a point on the Earth's surface (Universal Transverse Mercator, UTM)",meter
+individual.csv,utm_zone,UTM zone,NA
+individual.csv,elevation,Elevation (in meters) above sea level,meter
+individual.csv,elevation_uncertainty,Uncertainty in elevation values (in meters),meter
+individual.csv,stem_lat,NA,NA
+individual.csv,stem_lon,NA,NA

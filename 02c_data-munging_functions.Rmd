@@ -144,7 +144,7 @@ It's best to store functions in separate scripts in the `R/` directory.
 
 We can use function `usethis::use_r()` to create scripts in `R/`. Let's create a new one to start working on our function. 
 
-```{r}
+```{r, eval=FALSE}
 usethis::use_r("geolocation")
 ```
 

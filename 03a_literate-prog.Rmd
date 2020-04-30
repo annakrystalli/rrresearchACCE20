@@ -1,4 +1,4 @@
-# (PART) Part III: Analysing and presenting analyses {#analysing} 
+# (PART) Analysing and presenting analyses {#analysing} 
 
 # Literate programming in rmarkdown
 

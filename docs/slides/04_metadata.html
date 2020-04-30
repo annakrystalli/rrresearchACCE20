@@ -219,7 +219,8 @@ Teaching this course has always felt challenging in terms of practical exercises
 # [rOpenSci Unconf 18](http://unconf18.ropensci.org/)
 ##### May 21 - 22, 2018. Seattle
 
-![](assets/seattle.svg)
+&lt;img src="assets/seattle.svg" height="65%" /&gt;
+
 
 
 
@@ -309,25 +310,12 @@ Luckily, a **whole bunch of other awesome folks** were also thinking about these
 &lt;https://toolbox.google.com/datasetsearch&gt;
 
 ---
-class: inverse, middle, center
 
-# `dataspice` tutorial
-
-&lt;br&gt;
-
-#### tutorial repo: 
-### &lt;https://github.com/annakrystalli/dataspice-tutorial&gt;
-
-#### useful links: 
-### &lt;http://annakrystalli.me/dataspice-tutorial/useful_links.html&gt;
-
----
-
-# `dataspice` tutorial
+## `dataspice` tutorial
 
 &lt;br&gt;
 
-The goal of dataspice-tutorial is a **practical exercise in creating metadata** for an **example field collected data product** using package `dataspice`. 
+The goal of this section is to provide a **practical exercise in creating metadata** for an **example field collected data product** using package `dataspice`. 
 
 - Understand basic metadata and why it is important
 
@@ -344,103 +332,9 @@ The goal of dataspice-tutorial is a **practical exercise in creating metadata** 
 
 ## `dataspice` workflow
 
-&lt;img src="https://github.com/ropenscilabs/dataspice/raw/master/man/figures/dataspice_workflow.png" width="100%"&gt;
 
----
+&lt;img src="https://github.com/ropenscilabs/dataspice/raw/master/man/figures/dataspice_workflow.png" width="100%" /&gt;
 
-
-# Example dataset
-
-### Data source : 
-
-#### [National Ecological Observatory Network](https://www.neonscience.org/) (NEON) data portal 
-
-
-
-### Dataset selected:
-
-#### *Woody plant vegetation structure*
-
- This data product contains the quality-controlled, native sampling resolution data from **in-situ measurements of live and standing dead woody individuals and shrub groups**, from all **terrestrial NEON sites** with qualifying woody vegetation. 
-
---
- 
-- **Structure and mapping data** are reported **per individual per plot**
-
-- **Sampling metadata**, such as per growth form sampling area, are reported **per plot**. 
-
----
-
-# `dataspice` workshop data
-
-![](http://data.neonscience.org/neon-data-theme/images/logo--blue-neon-data.png)
-
-The data are a **trimmed subset** of data downladed from the [**NEON data portal**](http://data.neonscience.org/browse-data) after filtering for:
-
-- time periods between **`2015-06` - `2016-06`**
-
-- locations within NEON Domain area **`D01: Northeast`**
-
-Filter returned data from **2 sites** from **`2015-6`** to **`2015-11`**.
-
-&lt;br&gt;
-
-***
-
-##### Citation:
-_National Ecological Observatory Network. 2018. Data Products: DP1.10098.001.  Provisional data downloaded from http://data.neonscience.org on 2018-05-04. Battelle, Boulder, CO, USA_
-
-
-
----
-
-## vst_perplotperyear.csv
-
-Plot level data
-
-
-```
-## # A tibble: 231 x 17
-##    uid   namedLocation date       domainID siteID plotID plotType nlcdClass decimalLatitude
-##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;               &lt;dbl&gt;
-##  1 13b4… BART_001.bas… 2016-10-19 D01      BART   BART_… distrib… mixedFor…            44.0
-##  2 93ee… BART_002.bas… 2016-09-27 D01      BART   BART_… distrib… deciduou…            44.0
-##  3 4b5f… BART_003.bas… 2016-09-28 D01      BART   BART_… distrib… deciduou…            44.1
-##  4 dbbd… BART_004.bas… 2016-10-19 D01      BART   BART_… distrib… mixedFor…            44.0
-##  5 f254… BART_005.bas… 2016-09-23 D01      BART   BART_… distrib… mixedFor…            44.1
-##  6 6659… BART_006.bas… 2016-09-21 D01      BART   BART_… distrib… deciduou…            44.1
-##  7 7300… BART_007.bas… 2016-10-18 D01      BART   BART_… distrib… mixedFor…            44.0
-##  8 07c9… BART_010.bas… 2016-09-19 D01      BART   BART_… distrib… deciduou…            44.1
-##  9 5574… BART_011.bas… 2016-10-17 D01      BART   BART_… distrib… mixedFor…            44.1
-## 10 afc5… BART_012.bas… 2016-10-18 D01      BART   BART_… distrib… deciduou…            44.0
-## # … with 221 more rows, and 8 more variables: decimalLongitude &lt;dbl&gt;, geodeticDatum &lt;chr&gt;, easting &lt;dbl&gt;,
-## #   northing &lt;dbl&gt;, utmZone &lt;chr&gt;, elevation &lt;dbl&gt;, elevationUncertainty &lt;dbl&gt;, eventID &lt;chr&gt;
-```
-
----
-
-## vst_mappingandtagging.csv
-
-Individual level data
-
-
-```
-## # A tibble: 8,000 x 14
-##    uid   namedLocation date       eventID domainID siteID plotID pointID stemDistance stemAzimuth
-##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
-##  1 f6df… BART_013.bas… 2014-09-15 vst_BA… D01      BART   BART_…      57         22.3       138. 
-##  2 8c27… BART_013.bas… 2014-09-15 vst_BA… D01      BART   BART_…      49          5.1       134. 
-##  3 8382… BART_013.bas… 2014-09-15 vst_BA… D01      BART   BART_…      49          4.6       140. 
-##  4 1431… BART_013.bas… 2014-09-15 vst_BA… D01      BART   BART_…      57         21.6       127. 
-##  5 75b3… BART_004.bas… 2014-09-11 vst_BA… D01      BART   BART_…      41          3           2.3
-##  6 4ab2… BART_007.bas… 2014-09-04 vst_BA… D01      BART   BART_…      41          6.1       356. 
-##  7 4e4a… BART_007.bas… 2014-09-04 vst_BA… D01      BART   BART_…      49          5.3       108. 
-##  8 8a7e… BART_007.bas… 2014-09-04 vst_BA… D01      BART   BART_…      49          3         124. 
-##  9 9119… BART_007.bas… 2014-09-04 vst_BA… D01      BART   BART_…      41          9.5       197. 
-## 10 935e… BART_007.bas… 2014-09-04 vst_BA… D01      BART   BART_…      41          5          30.9
-## # … with 7,990 more rows, and 4 more variables: individualID &lt;chr&gt;, taxonID &lt;chr&gt;, scientificName &lt;chr&gt;,
-## #   taxonRank &lt;chr&gt;
-```
 
 
 
@@ -461,7 +355,7 @@ class: inverse, right, center
 
 ***
 
-_or head to the [tutorial](http://annakrystalli.me/dataspice-tutorial/) if working through this on your own_
+_head to the [tutorial](#dataspice)_
 
 ---
 class: inverse, right, center
@@ -497,7 +391,9 @@ class: inverse, right, center
 
 ## Powerful search
 
-&lt;img src="assets/knb.png" width="100%"&gt;
+
+
+&lt;img src="assets/knb.png" width="60%" /&gt;
 
 
 ---
@@ -506,8 +402,9 @@ class: inverse, right, center
 
 ## Rich interactive metadata
 
-&lt;img src="assets/knb_attributes.png" width="100%"&gt;
 
+
+&lt;img src="assets/knb_attributes.png" width="60%" /&gt;
 
 
 ---
@@ -535,7 +432,7 @@ class: inverse, right, center
 ## 🌯
 
 
-## Get back [home](index.html)
+## Get back [home](http://annakrystalli.me/rrresearchACCE20/)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
