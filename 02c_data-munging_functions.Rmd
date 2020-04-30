@@ -1,24 +1,447 @@
-# Data Munging: functions
+# Functions
 
+As we've mentioned, functions, and especially user built custom functions, are a key feature of R and are a really powerful of reducing code repetition.
 
-Let's say we want to geolocate every individual plant in out data. Currently, only the plot is geolocated, the data being contained in `vst_perplotperyear.csv` columns `decimalLatitude` and `decimalLongitude`. The location of each individual is defined in `vst_mappingandtagging.csv` which is detailed in `methods/NEON_vegStructure_userGuide_vA.pdf` but we will briefly describe here. 
+<div class="alert alert-info">
 
-### Spatal Sampling Design
+## Function basics
 
-At sites with qualifying woody and/or non-herbaceous vegetaton, stem mapping actvites and the collecton of vegetaton structure data take place in up to n=20 randomly selected, spatally-balanced Distributed Plots, te axact number and size of the plot varying according to plot type.
+**Functions allow us to:**
 
-An offset mapping technique is used to determine the within-plot locaton of mapped individuals relative to permanent plot markers (pointIDs) for which high-resoluton GPS data are collected (Figure 3). For additonal details on the sampling design and associated protocol, see  [TOS Protocol and Procedure: Measurement of Vegetation Structure](https://data.neonscience.org/documents/10179/2139401/NEON.DOC.000987vE/313b430e-c0b0-4f78-894d-c0300b47488b?version=1.0).
+- incorporate sets of instructions that we want to use repeatedly
+- contain complex code in a neat sub-program
+- reduce opportunity for errors
+- make code more readable
+
+**You can do anything with functions that you can do with vectors:**
+
+- assign them to variables 
+- store them in lists
+- pass them as arguments to other functions 
+- create them inside functions
+- return them as the result of a function
+
+**In general, functions usually:**
+- accept parameters (arguments) <- `INPUT`
+- return value(s) <- `OUTPUT`
+
+</div>
+
+## Elements of a function
+
+Here's a simple skeleton of a function.
+
+```{r, eval = TRUE}
+name <- function(variables) {
+    
+}
+```
+
+### Function name
+
+This can be any valid variable name, but you should avoid using names that are used elsewhere in R, such as `dir`, `function`, `plot`, etc
+
+- choose descriptive names
+- use verbs
+- check whether they are already in use: `? function.name`
+
+(you can access a function from a specific package using `package.name::function.name`)
+
+<br>
+
+### Arguments
+
+Functions can have **any number of arguments**. These can be **any R object:** numbers, strings, arrays, data frames, of even pointers to other functions; anything that is needed for the function to run.
+
+- Again, use descriptive names for arguments.
+
+### Body
+
+The function code between the `{}` brackets is run every time the function is called. Ideally functions are short and do just one thing. 
+
+**All inputs required for computation in the body must be supplied as arguments.**
+
+### Simple example
+
+Let's write a simple function that takes two arguments `x` and `y` and adds them together.
+```{r}
+add <- function(x, y) {
+    x + y
+}
+```
+
+Let's test it.
 
 ```{r}
-knitr::include_graphics("assets/NEON_point_grid.png", error = FALSE)
+x <- 4
+y <- 2
+add(x, y)
+```
+
+Cool it works!
+
+
+### Return value
+
+By default, the output of the last line of the code is evaluated is the value that will be returned by the function.
+
+We can override that default by using `return` to explicitly specify what is returned.
+```{r}
+add <- function(x, y) {
+    x + y
+    return(NULL)
+}
+```
+
+```{r}
+add(x, y)
 ```
 
 
+It is not necessary that a function return anything, for example a function that makes a plot might not return anything, whereas a function that does a mathematical operation might return a number, or a list.
+
+###  Function Environment
+
+
+<div class="alert alert-info">
+
+**Every time a function is called, a new environment is created to host execution.**
+
+- Each invocation is **completely independent of previous ones**
+
+- Variables used within are ***local***, e.g. their scope lies within - and is limited to - the function itself. They are therefore **invisible outside the function body**
+
+</div>
+
+Objects required by the function will be sought first in the ***local environment***. If an argument specified in the function is missing, it will return an error, even if such an object exists in the global environment.
+
+Objects required by computation but not specified as function arguments will be sought in the containing environment iteratively until it reaches the ***global environment***. This can be a source of bugs when developing with an untidy global environment.
+
+```{r, error=TRUE}
+b <- 10
+f2 <- function(a){a + b}
+f2(a = 10)
+rm(b) # remove object b
+f2(a = 10)
+```
+
+Solution: always make sure any required variables are passed as arguments to your functions.
+
+
+## Creating our user-built functions
+
+Now that we've got all the information required, we can start building a function that will return our latitude and longitude for each individual.
+
+We can use function `destPoint` form package `geosphere` to calculate the destination latitude and longitude from a given starting point, the distance travelled and the direction (bearing) travelled in. 
+
+I our case the distance travelled is equivalent to `stemDistance` and the direction or bearing is equivalent to `stemAzimuth`. The starting point is given by `decimalLatitude` and ``decimalLongitude.`
+
+Now, let's write a function that takes these columns as inputs and returns the latitude and longitude of the location of our individuals.
+
+### Storing functions in scripts.
+
+It's best to store functions in separate scripts in the `R/` directory.
+
+We can use function `usethis::use_r()` to create scripts in `R/`. Let's create a new one to start working on our function. 
 
 ```{r}
+usethis::use_r("geolocation")
+```
+
+This creates the required `R/` directory, creates a new R script named `geolocation.R` within it and launches it for editing all in one go! Nice.
+
+## Experimenting
+
+Now before we begin writing our function, let's test `destPoint` out. To do that, let's subset a single row from `individual` and use it to test out the function. We need to supply a vector of length two, containing the starting longitude and latitude to argument `p`. We pass `stemAzimuth` to argument `b` (for bearing) and `stemDistance` to argument `d` (for distance).
+
+```{r}
+x <- individual[1,]
+geosphere::destPoint(p = c(x$decimalLongitude, x$decimalLatitude), 
+                     b = x$stemAzimuth, d = x$stemDistance)
+```
+
+This looks like it's working nicely. Let's also check that it vectorises easily, i.e. that if we give it vectors of values instead of single ones that it works properly.
+
+```{r}
+geosphere::destPoint(p = cbind(individual$decimalLongitude, individual$decimalLatitude), 
+                     b = individual$stemAzimuth, d = individual$stemDistance) %>%
+    head()
+```
+
+Excellent! I now get a two dimensional matrix of with two columns and a row for each input element! This is looking promising.
+
+We're ready to start writing our function.
+
+## Developing our function
+
+Let's start by using a handy feature in Rstudio, code snippets. Code snippets are text macros that are used for quickly inserting common snippets of code. 
+
+The fun snippet inserts an R function definition. To invoke it start typing `fun` until the auto-complete drop-down pops up. 
+
+```r
+fun
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/snippet_fun.png")
+```
+
+Select `fun` and hit Return / Enter.
+
+You end up with this handy function skeleton. Now, let's start populating it with our own function.
+```{r, eval = FALSE}
+name <- function(variables) {
+    
+}
+```
+
+First lets start with a descriptive name:
+```{r, eval = FALSE}
+get_stem_location <- function(variables) {
+    
+}
+```
+
+Let's add our arguments:
+
+```{r}
+get_stem_location <- function(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){
+
+}
+
+```
+
+Finally, let's populate the body our our function:
+```{r}
+get_stem_location <- function(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){
+    geosphere::destPoint(p = cbind(decimalLongitude, decimalLatitude), 
+                     b = stemAzimuth, d = stemDistance)
+}
+
+```
+
+
+Let's also convert the output to a tibble, for better printing.
+```{r}
+get_stem_location <- function(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){
+    geosphere::destPoint(p = cbind(decimalLongitude, decimalLatitude), 
+                         b = stemAzimuth, d = stemDistance) %>%
+        tibble::as_tibble()
+}
+```
+
+Now let's test it out with vectors from `individual`.
+
+```{r}
+test <- get_stem_location(individual$decimalLongitude, individual$decimalLatitude, 
+                  individual$stemAzimuth, individual$stemDistance)
+test
+```
+
+
+Looks like it works nicely!
+
+### Defensive programming in functions
+
+Our function seems to be working correctly but it's good to incorporate checks, especially on our inputs and outputs. For example, if we supply a character vector to our function by mistake, our function won't work.
+
+We can write smart checks using the suite of functions in package `checkmate`.
+
+One such function is `assert_numeric()`
+
+This checks whether the the object we give it is numeric. If the check is not successful, it returns the object invisibly. If the check is not successful, it throws an error.
+
+
+```{r,error=TRUE}
+checkmate::assert_numeric(x$decimalLatitude)
+checkmate::assert_numeric(x$uid)
+```
+
+There are two other versions, `test_numeric` which returns `FALSE` if the check is not successful, and `check_numeric` which returns a string with the error message. We want to throw an error and stop execution so we use `assert_numeric`.
+
+Let's add a validation check for each argument in our function.
+
+```{r}
+get_stem_location <- function(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){
+    
+    # validation checks
+    checkmate::assert_numeric(decimalLongitude)
+    checkmate::assert_numeric(decimalLatitude)
+    checkmate::assert_numeric(stemAzimuth)
+    checkmate::assert_numeric(stemDistance)
+    
+    
+    geosphere::destPoint(p = cbind(decimalLongitude, decimalLatitude), 
+                         b = stemAzimuth, d = stemDistance) %>%
+        tibble::as_tibble()
+}
+
 
 
 ```
+
+Let's also add a check to our output. Let's throw a warning if there are any `NA` values in our output.
+
+First we store our output so we can evaluate it.
+```{r}
+get_stem_location <- function(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){
+    # validation checks
+    checkmate::assert_numeric(decimalLongitude)
+    checkmate::assert_numeric(decimalLatitude)
+    checkmate::assert_numeric(stemAzimuth)
+    checkmate::assert_numeric(stemDistance)
+    
+    
+    out <- geosphere::destPoint(p = cbind(decimalLongitude, decimalLatitude), 
+                                b = stemAzimuth, d = stemDistance) %>%
+        tibble::as_tibble()
+}
+
+```
+
+Next we can add our check:
+
+We can check the whole tibble for `NA`s in one go. We get a 2 dimensional matrix of logical values.
+```{r}
+is.na(test) %>% head()
+```
+
+We can then wrap the output of that in `any()` which tests whether there are any `TRUE` values in a logical array.
+```{r}
+
+any(is.na(test))
+```
+
+
+Let's apply that to our function.
+```{r}
+get_stem_location <- function(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){
+    # validation checks
+    checkmate::assert_numeric(decimalLongitude)
+    checkmate::assert_numeric(decimalLatitude)
+    checkmate::assert_numeric(stemAzimuth)
+    checkmate::assert_numeric(stemDistance)
+    
+    
+    out <- geosphere::destPoint(p = cbind(decimalLongitude, decimalLatitude), 
+                                b = stemAzimuth, d = stemDistance) %>%
+        tibble::as_tibble()
+    
+    checkmate::assert_false(any(is.na(out)))
+}
+```
+
+Lastly, we need to return our actual output!
+
+```{r}
+get_stem_location <- function(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){
+    # validation checks
+    checkmate::assert_numeric(decimalLongitude)
+    checkmate::assert_numeric(decimalLatitude)
+    checkmate::assert_numeric(stemAzimuth)
+    checkmate::assert_numeric(stemDistance)
+    
+    
+    out <- geosphere::destPoint(p = cbind(decimalLongitude, decimalLatitude), 
+                                b = stemAzimuth, d = stemDistance) %>%
+        tibble::as_tibble()
+    
+    checkmate::assert_false(any(is.na(out)))
+    
+    return(out)
+}
+```
+
+Let's test it again:
+
+```{r}
+get_stem_location(individual$decimalLongitude, individual$decimalLatitude, 
+                  individual$stemAzimuth, individual$stemDistance)
+```
+
+And now, remove any excess code form our script and save.
+
+Our function is now ready to be sourced into our last preprocessing stage, adding the new `stemLat` and `stemLon` columns. `r emo::ji("tada")`.
 
 
 ### Making new variables
+
+Let's move back to our `individual.R` script. At the top of our script, let's add the code to source our function so it's available during preprocessing:
+
+```{r}
+source(here::here("R", "geolocation.R"))
+```
+
+
+Now we want to use data in `individual` to geolocate our individulas while at the same time creating new columns `stemLat` and `stemLon`
+
+For this we use `dplyr::mutate()`:
+
+```{r}
+individual %>% dplyr::mutate(stemLat = get_stem_location(decimalLongitude, decimalLatitude, 
+                                                         stemAzimuth, stemDistance)$lat, 
+                             stemLon = get_stem_location(decimalLongitude, decimalLatitude, 
+                                                         stemAzimuth, stemDistance)$lon)
+```
+
+We also need to extract the appropriate coordinate for each column. We do that by using the `$` subsetting operation after we call `get_stem_location()`.
+
+It works! We're almost done with our data munging!
+
+Lets use the assignment pipe again now that we are happy.
+
+```{r}
+individual %<>% dplyr::mutate(stemLat = get_stem_location(decimalLongitude, decimalLatitude, 
+                                                         stemAzimuth, stemDistance)$lat, 
+                             stemLon = get_stem_location(decimalLongitude, decimalLatitude, 
+                                                         stemAzimuth, stemDistance)$lon)
+```
+
+Let's do a couple last sanity checks:
+```{r, eval=FALSE}
+View(individual)
+```
+
+```{r}
+str(individual)
+```
+
+And save our file.
+
+## Saving analytical data
+
+At the bottom of `individual.R` there is some template code, `usethis::use_data("individual")`. 
+
+This functions invokes functionality to store an r object as an `.Rdata` object (ie as a tibble not a `csv`) in the `data` directory. This is the standard way to store exported data in packages but does not apply to our non-package project so won't work.
+
+```{r, error=TRUE}
+usethis::use_data("individual")
+```
+
+Let's just get rid of it and instead, save our analytic data as a csv in our `data` directory.
+
+Frist lets create a data directory (you can do this in the console)
+
+```{r}
+fs::dir_create("data")
+```
+
+Now were ready to write or data out. Before we do so, I will add one last touch. Before I do so, I would like to get rid of a pet hate of mine, and thats camelCase variable names!
+
+I use a handy function in package `janitor`, !
+
+```{r}
+individual %>%
+    janitor::clean_names()
+```
+
+This turns all the column names to my beloved snake case!
+
+Now, with that final tweek, we are ready to save our data.
+
+```{r}
+individual %>%
+    janitor::clean_names() %>%
+    readr::write_csv(here::here("data", "individual.csv"))
+```
+

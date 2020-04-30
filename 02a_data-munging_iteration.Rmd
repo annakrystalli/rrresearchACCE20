@@ -1,6 +1,6 @@
 # (PART) Data Munging {#process} 
 
-# Data Munging: Iteration
+# Iteration
 
 
 Let's say we want to repeat a process multiple times, iterating over a number of inputs. In this case we want to load every file in `/data-raw/wood-survey-data-master/individual/`. 
@@ -250,6 +250,11 @@ individual
 This might come in handy if you are dealing with a huge number of data files.
 
 Other packages to be aware of, especially if you are dealing with very large tables, are `data.table` and `vroom`. 
+
+
+```{r, echo=FALSE}
+knitr::include_url("assets/cheatsheets/datatable.pdf")
+```
 
 Learn more about [perfomance and efficency](http://adv-r.had.co.nz/Performance.html) in general. 
 
