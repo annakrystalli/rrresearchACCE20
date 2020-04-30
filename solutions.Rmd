@@ -14,3 +14,11 @@ xlist[[2]][2]
 xlist[["b"]][2]
 ```
 
+
+## Part III
+
+###### [Finding column name matches in two tables](#chlg-col-matches){#csol-col-matches}
+
+```{r}
+names(individual)[names(individual) %in% names(maptag)]
+```

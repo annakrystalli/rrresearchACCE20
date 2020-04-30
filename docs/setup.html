@@ -199,13 +199,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="paths-and-project-structure.html"><a href="paths-and-project-structure.html#basic-checks"><i class="fa fa-check"></i>Basic checks</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Munging</b></span></li>
-<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html"><i class="fa fa-check"></i>Data Munging: Iteration</a><ul>
-<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#iterating-using-loops"><i class="fa fa-check"></i>Iterating using loops</a></li>
-<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#functional-programming"><i class="fa fa-check"></i>Functional programming</a></li>
-<li class="chapter" data-level="" data-path="data-munging-iteration.html"><a href="data-munging-iteration.html#writing-out-our-tibble-to-disk"><i class="fa fa-check"></i>Writing out our tibble to disk</a></li>
+<li class="chapter" data-level="" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i>Iteration</a><ul>
+<li class="chapter" data-level="" data-path="iteration.html"><a href="iteration.html#iterating-using-loops"><i class="fa fa-check"></i>Iterating using loops</a></li>
+<li class="chapter" data-level="" data-path="iteration.html"><a href="iteration.html#functional-programming"><i class="fa fa-check"></i>Functional programming</a></li>
+<li class="chapter" data-level="" data-path="iteration.html"><a href="iteration.html#writing-out-our-tibble-to-disk"><i class="fa fa-check"></i>Writing out our tibble to disk</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-munging-combining-tables.html"><a href="data-munging-combining-tables.html"><i class="fa fa-check"></i>Data munging: combining tables</a><ul>
-<li><a href="data-munging-combining-tables.html#joining-tables-with-dplyr">Joining tables with <code>dplyr</code></a></li>
+<li class="chapter" data-level="" data-path="combining-tables.html"><a href="combining-tables.html"><i class="fa fa-check"></i>Combining tables</a><ul>
+<li class="chapter" data-level="" data-path="combining-tables.html"><a href="combining-tables.html#join-basics"><i class="fa fa-check"></i>Join Basics</a></li>
+<li><a href="combining-tables.html#joining-our-tables-with-dplyr">Joining our tables with <code>dplyr</code></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="data-munging-functions.html"><a href="data-munging-functions.html"><i class="fa fa-check"></i>Data Munging: functions</a></li>
 <li class="chapter" data-level="" data-path="metadata-1.html"><a href="metadata-1.html"><i class="fa fa-check"></i>Metadata</a></li>
@@ -379,6 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a><ul>
 <li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html#part-i"><i class="fa fa-check"></i>Part I</a></li>
+<li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html#part-iii"><i class="fa fa-check"></i>Part III</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://annakrystalli.me/rrreasearchACCE2020" target="blank">Published with bookdown</a></li>
@@ -567,8 +569,8 @@ install it via your distro’s package manager. For Debian/Ubuntu run
 <div id="research-compendium-exercise" class="section level3">
 <h3>Research Compendium Exercise</h3>
 <p>For the final practical sessions, we will need to use LaTeX. If you don’t have LaTeX installed, consider installing <code>TinyTeX</code>, a custom LaTeX distribution based on TeX Live that is small in size but functions well in most cases, especially for R users.</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb556-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</a>
-<a class="sourceLine" id="cb556-2" data-line-number="2">tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb551-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</a>
+<a class="sourceLine" id="cb551-2" data-line-number="2">tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</a></code></pre></div>
 <p>Check <a href="https://yihui.name/tinytex/">docs</a> before before installing.</p>
 <div id="devtools-requirements" class="section level4">
 <h4><code>devtools</code> requirements</h4>
