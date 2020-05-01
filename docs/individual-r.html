@@ -392,8 +392,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#final-compendium"><i class="fa fa-check"></i>Final compendium</a></li>
 </ul></li>
 <li class="part"><span><b>VII APPENDIX</b></span></li>
-<li><a href="individual-r.html#individual.r"><code>individual.R</code></a></li>
-<li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a></li>
+<li><a href="individual-r.html#individual.r"><code>individual.R</code></a><ul>
+<li><a href="individual-r.html#data-rawindividual.r"><strong>data-raw/individual.R`</strong></a></li>
+</ul></li>
+<li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a><ul>
+<li><a href="geolocate-r.html#rgeolocate.r"><strong>R/geolocate.R`</strong></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -428,7 +432,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="individual.r" class="section level1">
 <h1><code>individual.R</code></h1>
 <p>This file should contain your processing workflow and saved at:</p>
-<p><code>**data-raw/individual.R</code></p>
+<div id="data-rawindividual.r" class="section level2">
+<h2><strong>data-raw/individual.R`</strong></h2>
 <p>Create the file using:</p>
 <div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb632-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_data_raw</span>(<span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
 <p>Your script should contain:</p>
@@ -487,6 +492,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb633-53" data-line-number="53"><span class="co"># write out analytic file</span></a>
 <a class="sourceLine" id="cb633-54" data-line-number="54">readr<span class="op">::</span><span class="kw">write_csv</span>(individual, here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</a></code></pre></div>
 
+</div>
 </div>
             </section>
 
