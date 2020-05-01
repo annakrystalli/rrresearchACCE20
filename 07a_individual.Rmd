@@ -3,9 +3,9 @@
 # `individual.R`
 
 
-This file should contain your processing workflow and saved at:
+This file should contain your processing workflow and be saved at:
 
-## **data-raw/individual.R`**
+## **`data-raw/individual.R`**
 
 Create the file using:
 ```{r, eval=FALSE}

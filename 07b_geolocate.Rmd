@@ -1,8 +1,8 @@
 # `geolocate.R`
 
-This file should contain your function and saved at:
+This file should contain your function and be saved at:
 
-## **R/geolocate.R`**
+## **`R/geolocate.R`**
 
 Create the file using:
 ```{r, eval=FALSE}
