@@ -19,6 +19,12 @@ xlist[["b"]][2]
 
 ### [Finding column name matches in two tables](#chlg-col-matches){#csol-col-matches}
 
+
+```{r, echo=FALSE, message=FALSE}
+individual <- readr::read_csv(file.path(raw_data_path, "vst_individual.csv"))
+maptag <- readr::read_csv(fs::path(raw_data_path, "vst_mappingandtagging.csv"))
+```
+
 ```{r}
 names(individual)[names(individual) %in% names(maptag)]
 ```
