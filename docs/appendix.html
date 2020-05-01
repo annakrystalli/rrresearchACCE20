@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Version Control with Git | Reproducible Research Data &amp; Project Management in R</title>
+  <title>(PART) APPENDIX | Reproducible Research Data &amp; Project Management in R</title>
   <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Version Control with Git | Reproducible Research Data &amp; Project Management in R" />
+  <meta property="og:title" content="(PART) APPENDIX | Reproducible Research Data &amp; Project Management in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="annakrystalli/rrresearchACCE20" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Version Control with Git | Reproducible Research Data &amp; Project Management in R" />
+  <meta name="twitter:title" content="(PART) APPENDIX | Reproducible Research Data &amp; Project Management in R" />
   
   <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="version-control.html"/>
-<link rel="next" href="practical-github-rstudio-for-collaborative-coding.html"/>
+<link rel="prev" href="creating-a-research-compendium-with-rrtools.html"/>
+<link rel="next" href="individual-r.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -425,375 +425,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="version-control-with-git" class="section level1">
-<h1>Version Control with Git</h1>
-<div id="background" class="section level2">
-<h2>Background</h2>
-<p>Hands up - <em>who has heard of version control software?</em><br />
-<em>What do you think it does?</em></p>
-<p><br></p>
-<div id="what-is-version-control" class="section level3">
-<h3>What is Version control? 🤔</h3>
-<p>The <strong>management of changes</strong> to documents, computer programs, large web sites, and other collections of information.</p>
-<p><strong>Examples:</strong></p>
-<ul>
-<li>Numbering of book editions</li>
-<li>Wikipedia’s Page history</li>
-</ul>
-<p><br></p>
-<div id="where-did-it-come-from" class="section level4">
-<h4>Where did it come from?</h4>
-<p>The need for a logical way to organize and control revisions has existed for almost as long as writing has existed, but <strong>revision control became much more important, and complicated when the era of computing began</strong></p>
-</div>
-</div>
-<div id="elements-of-a-version-control-system" class="section level3">
-<h3>Elements of a Version Control system</h3>
-<ul>
-<li><p>Changes are usually identified by a number or letter code, termed the “revision number”</p></li>
-<li><p>Each revision is associated with a timestamp and the person making the change.</p></li>
-<li><p>Only changes to a file are recorded rather than saving a whole new copy.</p></li>
-<li><p>Revisions can be compared, restored, and with some types of files, merged.</p></li>
-</ul>
-<p><br></p>
-</div>
-</div>
-<div id="what-is-git" class="section level2">
-<h2>What is git? 🤔</h2>
-<p>Open source (free to use) Version control software. Usually accessed via the command line, or a client program.</p>
-<p><img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png" height="200px" width="300px"></p>
-<div id="where-did-it-come-from-1" class="section level3">
-<h3>Where did it come from?</h3>
-<p>Git development began in 2006 after many developers of the Linux kernel gave up access to <a href="http://www.bitkeeper.org/">BitKeeper</a> (at the time the best but proprietary)</p>
-<p>Linus Torvalds on the name <strong><code>git</code></strong>:</p>
-<blockquote>
-<p>&quot;I’m an egotistical bastard, and I name all my projects after myself. First ‘Linux’, now ‘git’</p>
-</blockquote>
-<p><small>More on the name in the source code original <a href="https://github.com/git/git/tree/e83c5163316f89bfbde7d9ab23ca2e25604af290">readme</a> file</small></p>
-</div>
-</div>
-<div id="why-use-it-in-research" class="section level2">
-<h2>Why use it in research?</h2>
-<div id="exhibit-a" class="section level3">
-<h3>Exhibit A</h3>
-<figure>
-<img src="http://smutch.github.io/VersionControlTutorial/_images/vc-xkcd.jpg" height="300px" width="400px">
-<figcaption>
-Image: xkcd CC BY-NC 2.5
-</figcaption>
-</figure>
-</div>
-</div>
-<div id="what-is-github" class="section level2">
-<h2>What is GitHub 🤔</h2>
-<p><img src="assets/github_logo.jpg" height="300px" width="200px"></p>
-<p>A <strong>website</strong> that allows you to <strong>store your Git repositories online</strong> and makes it easy to collaborate with others. They also provide other services like issue (bug) tracking and wikis. Similar services are <a href="https://gitlab.com">GitLab</a> and <a href="https://bitbucket.org/">BitBucket</a>.</p>
-<div id="why-use-it-in-research-1" class="section level3">
-<h3>Why use it in research:</h3>
-<p>To enable collaboration and track contributions</p>
-<p><img src="assets/workflows.png" width="350px"><img src="assets/collab.png" width="350px"></p>
-<p><em>images: Mozilla Science Lab</em> CC-BY 4.0</p>
-<p><br></p>
-<ul>
-<li>Acts as a remote back-up</li>
-<li>Facilitates transparency</li>
-<li>Facilitates project management</li>
-<li>Facilitates sharing and collaboration</li>
-<li>Super-charges innovation by Open Sourcing Science
-<ul>
-<li><a href="https://www.youtube.com/watch?v=quKdaqlR_9w">Mozilla &amp; Working Open</a></li>
-<li><a href="https://www.youtube.com/watch?v=Tyd0FO0tko8">Open Source Basics</a></li>
-<li><a href="https://www.amazon.co.uk/Reinventing-Discovery-New-Networked-Science/dp/0691160198/ref=sr_1_1?ie=UTF8&amp;qid=1544031907&amp;sr=8-1&amp;keywords=reinventing+discovery">Reinventing Discovery</a></li>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/ecog.03424">Macroecological and macroevolutionary patterns emerge in the universe of GNU/Linux operating systems</a></li>
-</ul></li>
-</ul>
-</div>
-<div id="anatomy-of-github-repo" class="section level3">
-<h3>Anatomy of GitHub Repo</h3>
-<ul>
-<li><p><strong>Readme files</strong>. Create a <code>README.md</code> file to explain what your project is, and how to install and use it. <code>README.md</code> is the file that is automatically displayed when you open a GitHub repo.</p></li>
-<li><strong>License</strong>. Without some sort of licence, the contents of the repository are technically closed. Some allow users of the code to do anything they like with their code - these are known as permissive licences. Examples are the <a href="https://tldrlegal.com/license/mit-license">MIT Licence</a> or <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache</a>.
-<ul>
-<li><a href="https://choosealicense.com/">https://choosealicense.com/</a> - does what it says on the tin and helps you choose a licence. Here are some resources to help you choose:</li>
-<li><a href="https://tldrlegal.com/">https://tldrlegal.com/</a> - plain english explanations of licences in bullet form.</li>
-</ul></li>
-<li><p><strong>Contributing guide</strong> - make a file called <code>CONTRIBUTING.md</code> and guidelines for contributors so they know what they should do if they want to help you out.</p></li>
-<li><p><strong>Code of Conduct</strong> - good projects have codes of conduct to make sure that people are treated well. Github has an <a href="https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/">Code of Conduct wizard</a> to make it easy to add one.</p></li>
-<li><p><strong>Issues</strong> - use GitHub issues to record and discuss tasks.</p></li>
-</ul>
-</div>
-</div>
-<div id="git-github-rstudio" class="section level2">
-<h2>Git, Github &amp; Rstudio</h2>
-<div id="before-git-only-through-the-terminal" class="section level3">
-<h3>Before: git only through the terminal</h3>
-<p><img src="assets/git_status.png" /></p>
-</div>
-<div id="rstudio-usethis-to-the-rescue" class="section level3">
-<h3>Rstudio &amp; <code>usethis</code> to the rescue!</h3>
-<div id="rstudio-usethis-heavenly-git-github" class="section level4">
-<h4>Rstudio + <code>usethis</code> 📦 == heavenly <code>Git</code> &amp; <code>GitHub</code></h4>
-<ul>
-<li>Initialise <strong>Rstudio project</strong> with Git by <strong>just checking a box!</strong>
-<ul>
-<li>Forgot to? use <code>usethis::use_git()</code></li>
-</ul></li>
-<li><p>visual panel to easily see the status of all your files</p></li>
-<li><p>interactive navigation through file version history</p></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="demo" class="section level2">
-<h2>Demo</h2>
-</div>
-<div id="how-does-git-work" class="section level2">
-<h2>How does <code>Git</code> work?</h2>
-<p>When a local directory becomes <strong><em>initialised with git</em></strong>, a <strong>hidden <code>.git</code> folder is added</strong> to it.</p>
-<blockquote>
-<p>it’s now called a <strong>repository</strong></p>
-</blockquote>
-<ul>
-<li><p>New copies of files you tell git to track will be <strong>added</strong> to that <code>.git</code> folder.</p></li>
-<li><p>After adding, git will track any modifications to those files</p></li>
-</ul>
-<div id="first-commit---whole-file-added" class="section level3">
-<h3>first commit - whole file added</h3>
-<ul>
-<li>Any file unknown to git will have a yellow ? box next to it.</li>
-</ul>
-<p><img src="assets/git-unadded.png" height="75px"></p>
-<ul>
-<li>The first time you commit a file you are <strong>adding</strong> it to <code>.git</code>, effectively telling it to start tracking the file</li>
-</ul>
-<p><img src="assets/commit1.png" height="400px"></p>
-</div>
-<div id="second-commit---only-difference-highlighted" class="section level3">
-<h3>second commit - only difference highlighted</h3>
-<p><img src="assets/commit2.png" /></p>
-<p>All changes have been committed so the git panel is clear</p>
-<p><img src="assets/commit2-file.png" /></p>
-<p>Enough theory, how about in practice!</p>
-</div>
-</div>
-<div id="configure-git-github" class="section level2">
-<h2>💻 Configure git &amp; GitHub</h2>
-</div>
-<div id="configure-git" class="section level2">
-<h2>Configure git</h2>
-<p>First, <code>git</code> needs to know who you are so your commits can be attributed to you. <strong><code>usethis</code></strong> to the rescue again!</p>
-<p><strong>Check your configuration</strong></p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb498-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>()</a></code></pre></div>
-<p><strong>Set your configuration</strong></p>
-<p>Use your github username and and the email you used to sign-up on GitHub</p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb499-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>(</a>
-<a class="sourceLine" id="cb499-2" data-line-number="2">    <span class="dt">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</a>
-<a class="sourceLine" id="cb499-3" data-line-number="3">    <span class="dt">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</a></code></pre></div>
-</div>
-<div id="set-up-github-pat" class="section level2">
-<h2>🚦 Set up GITHUB PAT</h2>
-<p>To authenticate with GitHub, you’ll also need a Personal Authorisation Token (PAT).</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb500-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">browse_github_pat</span>()</a></code></pre></div>
-<p>will open up the GitHub panel to generate your PAT.</p>
-<p><img src="assets/browse_github.png" height="300px"></p>
-<p>Copy it and paste it into your <code>.Renviron</code> file as system variable <code>GITHUB_PAT</code>.</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb501-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</a></code></pre></div>
-<p>Use <code>edit_r_environ()</code> to open and edit your <code>.Renviron</code> file</p>
-</div>
-<div id="section" class="section level2">
-<h2><img src="assets/GITHUB_PAT.png" /></h2>
-</div>
-<div id="turn-our-project-into-a-repository" class="section level2">
-<h2>Turn our project into a repository</h2>
-<p>If you didn’t initialise git at the beginning of your project, you can do so now with:</p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb502-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
-<p><em>This however commits everything in one go. So not ideal! I recommend using git from the start of every project.</em></p>
-</div>
-<div id="commiting-files" class="section level2">
-<h2>🚦 Commiting files</h2>
-<p>In our project, let’s have a look at the Rstudio <strong>Git</strong> tab. It shows all the files currently in the folder. The <strong>yellow ?</strong> indicates none of the files have been added to git yet.</p>
-<p><img src="assets/git-view.png" /></p>
-</div>
-<div id="add-files" class="section level2">
-<h2>Add files</h2>
-<p>To commit changes in a file just select it in the git pane. When changes to a file are commited for the first time, the whole file is indicated as Added (green A).</p>
-<p><img src="assets/git-add.png" /></p>
-</div>
-<div id="commit-changes" class="section level2">
-<h2>Commit changes</h2>
-<p>Click on commit and write an appropriate commit message:</p>
-<p><img src="assets/add-first.png" /></p>
-</div>
-<div id="create-a-readme" class="section level2">
-<h2>🚦 Create a README</h2>
-<p>Our repository also needs a <code>README</code>. We only need a simple plain markdown (<code>.md</code>) file for our README.</p>
-<p>We can create a template using <code>usethis::use_readme_md()</code></p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb503-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_readme_md</span>()</a></code></pre></div>
-<p><img src="assets/use-readme.png" /></p>
-</div>
-<div id="edit-readme" class="section level2">
-<h2>Edit README</h2>
-<p>Adapt the template, adding a short description about your project.</p>
-<p>Add and commit your new README</p>
-<p><img src="assets/use-gh.png" /></p>
-</div>
-<div id="create-repository-on-github" class="section level2">
-<h2>🚦 Create repository on GitHub</h2>
-</div>
-<div id="create-repository" class="section level2">
-<h2>Create repository</h2>
-<p>Now that we have set up a <code>GITHUP_PAT</code>, we can use function <code>usethis::use_github()</code> to create a GitHub repository for our project:</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb504-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
-<p><img src="assets/use-github.png" /></p>
-</div>
-<div id="push-files" class="section level2">
-<h2>push files</h2>
-<p>Click on the ⬆️ button on the Git tab to push our changes up to our newly minted repository</p>
-<p>Let’s go have a look at the history 🕒</p>
-</div>
-<div id="tracking-changes" class="section level2">
-<h2>🚦 Tracking changes</h2>
-</div>
-<div id="making-a-change-to-our-gapminder-analysis.rmd" class="section level2">
-<h2>Making a change to our <code>gapminder-analysis.Rmd</code></h2>
-<ul>
-<li><p>In the last plot of your <code>.index.Rmd</code>, see if you can add a <strong>smooth</strong> for each continent to generate the plot below (should be just one extra <code>ggplot2</code> function added to the plot). Look for the appropriate <code>geom_*</code> function.</p></li>
-<li><p>See also if you can include an interactive <code>plotly</code> version</p></li>
-</ul>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
-</div>
-<div id="commit-your-changes" class="section level2">
-<h2>Commit your changes</h2>
-<p>On the commit window:</p>
-<ul>
-<li><p>Have a look at the differences</p></li>
-<li><p>Have a look at the history</p></li>
-</ul>
-</div>
-<div id="host-content-on-github" class="section level2">
-<h2>🚦 Host content on GitHub</h2>
-<p>Let’s head to the repo and have a look at what we’ve shared. To host our html content on GitHub, we need to <strong>enable <code>gh-pages</code></strong> in our repository.</p>
-</div>
-<div id="go-to-repo-settings" class="section level2">
-<h2>Go to repo <strong>Settings</strong></h2>
-<p><img src="assets/gh-settings.png" /></p>
-</div>
-<div id="enable-gh-pages" class="section level2">
-<h2>Enable <code>gh-pages</code></h2>
-<p><img src="assets/gh-set.png" /></p>
-<p>Review setup</p>
-<p><img src="assets/gh-setup.png" /></p>
-<p>Ensure the <em>Enforce HTTPS</em> option is selected.</p>
-<p>Click on the link displayed and go check out your work!</p>
-<p>Copy the link. In the main repo page, edit the page details at the top and paste copied the url in the <strong>website</strong> field.</p>
-<p><img src="assets/add-url-gh.png" /></p>
-</div>
-<div id="making-changes-on-github" class="section level2">
-<h2>🚦 Making changes on GitHub</h2>
-<p>We can also create new documents and edit existing ones on GitHub.</p>
-</div>
-<div id="create-license" class="section level2">
-<h2>Create <code>LICENSE</code></h2>
-<p>Let’s create also create a LICENSE in our repository.</p>
-<div id="click-on-new-file" class="section level3">
-<h3>Click on <strong>New File</strong></h3>
-<p><img src="assets/new-file.png" /></p>
-</div>
-<div id="start-typing-license" class="section level3">
-<h3>Start typing <code>LICENSE</code></h3>
-<p>A <strong>choose license template</strong> will button will pop up on the right. Click on it.</p>
-<p><img src="assets/new-license.png" /></p>
-</div>
-<div id="choose-license" class="section level3">
-<h3>Choose license</h3>
-<p>On the left side panel, choose the <strong>MIT License</strong></p>
-<p><img src="assets/choos-license.png" /></p>
-</div>
-<div id="review-licence" class="section level3">
-<h3>Review licence</h3>
-<p>Review the details in the license. Scroll down to commit it</p>
-<p><img src="assets/review-license.png" /></p>
-</div>
-<div id="commit-license" class="section level3">
-<h3>Commit License</h3>
-<p>Commit the LICENSE <strong>directly to your master branch</strong></p>
-<p><img src="assets/commit-license.png" /></p>
-<p>Once commited, the <code>LICENSE</code> file should be visible in the repo</p>
-<p><img src="assets/license-done.png" /></p>
-</div>
-</div>
-<div id="add-link-to-analysis-index.html-to-readme" class="section level2">
-<h2>Add link to analysis <code>index.html</code> to README</h2>
-<p>Let’s edit the <code>README.md</code> on GitHub to add</p>
-<p><img src="assets/add-link-readme.png" /></p>
-<p>Commit the changes directly into the master again.</p>
-</div>
-<div id="pull-changes-locally" class="section level2">
-<h2>🚦 Pull changes locally</h2>
-<p>Finally, let’s pull the changes back down to our local repository by clicking the ⬇️ button on the Git tab.</p>
-</div>
-<div id="deleting-files" class="section level2">
-<h2>🚦 Deleting files</h2>
-<ul>
-<li><p>Create a new file, any type of file.
-<img src="assets/dead-man-new.png" height="200px"></p></li>
-<li><p>Commit it.</p></li>
-<li><p>Delete it
-<img src="assets/dead-man-delete.png" height="75px"></p></li>
-<li><p>Commit the deletion</p></li>
-<li><p>Look back through the history</p></li>
-</ul>
-</div>
-<div id="gitignore" class="section level2">
-<h2><code>.gitignore</code></h2>
-<p>There may be files that you don’t want to commit to git, e.g.</p>
-<ul>
-<li><p>data files that are too large</p></li>
-<li><p>documents with sensitive information (eg authorisation tokens etc)</p></li>
-<li><p>intermediate files that you don’t need to save copies of.</p></li>
-</ul>
-<blockquote>
-<p>Tell git to ingnore them by adding them to the <code>.gitignore</code> file.</p>
-</blockquote>
-</div>
-<div id="gitignore-regex" class="section level2">
-<h2><code>gitignore</code> regex</h2>
-<p>You can use <code>regex</code> in <code>.gitignore</code> files to ignore files according to a pattern.</p>
-<ul>
-<li><p><code>*.html</code> will ignore any file ending in <code>.html</code></p></li>
-<li><p>prefix “!” which negates the pattern</p>
-<pre><code>data/*
-!data/commit-this.csv</code></pre></li>
-</ul>
-<div id="git-tips" class="section level3">
-<h3><code>Git</code> tips</h3>
-<ul>
-<li>commit early, commit often</li>
-<li>commit logical bits of work together</li>
-<li>write meaninful messages</li>
-</ul>
-</div>
-</div>
-<div id="further-resources" class="section level2">
-<h2>Further Resources</h2>
-<ul>
-<li><a href="http://jlord.us/git-it/">Git-it</a></li>
-<li><a href="http://happygitwithr.com/">Happy with Git</a></li>
-<li><a href="http://ohshitgit.com/">Oh Shit Git</a></li>
-</ul>
-</div>
-<div id="never-forget" class="section level2">
-<h2>Never forget</h2>
-<p><img src="https://optimalbi.com/wp-content/uploads/2018/02/gitsave-300x210.png" /></p>
-
-</div>
+<div id="appendix" class="section level1">
+<h1>(PART) APPENDIX</h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="version-control.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="practical-github-rstudio-for-collaborative-coding.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="creating-a-research-compendium-with-rrtools.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="individual-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

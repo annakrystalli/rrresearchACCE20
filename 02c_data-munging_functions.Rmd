@@ -145,7 +145,12 @@ It's best to store functions in separate scripts in the `R/` directory.
 We can use function `usethis::use_r()` to create scripts in `R/`. Let's create a new one to start working on our function. 
 
 ```{r, eval=FALSE}
-usethis::use_r("geolocation")
+usethis::use_r("geolocate")
+```
+
+```r
+✔ Setting active project to '/Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20'
+● Modify 'R/geolocate.R'
 ```
 
 This creates the required `R/` directory, creates a new R script named `geolocation.R` within it and launches it for editing all in one go! Nice.
@@ -451,5 +456,96 @@ Now, with that final tweek, we are ready to save our data.
 individual %>%
     janitor::clean_names() %>%
     readr::write_csv(here::here("data", "individual.csv"))
+```
+
+
+## Final processing script:
+
+**`data-raw/individual.R`**
+
+```{r, eval=FALSE}
+## code to prepare `individual` dataset goes here
+library(dplyr)
+source(here::here("R", "geolocate.R"))
+
+# Read in and compile all individual data
+raw_data_path <- here::here("data-raw", "wood-survey-data-master")
+individual_path <- fs::path(raw_data_path, "individual")
+individual_paths <- fs::dir_ls(individual_path)
+
+# read in all tables into one
+individual <- purrr::map_df(individual_paths,
+              ~readr::read_csv(file = .x,
+                               col_types = readr::cols(.default = "c"))) %>%
+  readr::type_convert()
+
+individual %>%
+  readr::write_csv(path = fs::path(raw_data_path, "vst_individuals.csv"))
+
+
+
+# Combine NEON data tables
+# read in additonal table
+maptag <- readr::read_csv(fs::path(raw_data_path, 
+                                   "vst_mappingandtagging.csv")) %>%
+  select(-eventID)
+
+perplot <- readr::read_csv(fs::path(raw_data_path, 
+                                    "vst_perplotperyear.csv")) %>%
+  select(-eventID)
+
+
+individual %<>%
+  left_join(maptag, by = "individualID",
+            suffix = c("", "_map")) %>%
+  left_join(perplot, by = "plotID",
+            suffix = c("", "_ppl")) %>%
+  assertr::assert(assertr::not_na, stemDistance, stemAzimuth, pointID,
+                  decimalLongitude, decimalLatitude, plotID)
+
+# ---- Geolocate individuals_functions ----
+individual <- individual %>%
+  dplyr::mutate(stemLat = get_stem_location(decimalLongitude = decimalLongitude,
+                                            decimalLatitude = decimalLatitude,
+                                            stemAzimuth = stemAzimuth,
+                                            stemDistance = stemDistance)$lat,
+                stemLon = get_stem_location(decimalLongitude = decimalLongitude,
+                                            decimalLatitude = decimalLatitude,
+                                            stemAzimuth = stemAzimuth,
+                                            stemDistance = stemDistance)$lon) %>%
+  janitor::clean_names()
+
+
+# write out analytic file
+readr::write_csv(individual, here::here("data", "individual.csv"))
+
+```
+
+
+## Final function
+
+**`R/geolocate.R`**
+
+```{r, eval=FALSE}
+# Function
+get_stem_location <- function(decimalLongitude, decimalLatitude,
+                              stemAzimuth, stemDistance) {
+  # check inputs are correct type (numeric)
+  checkmate::assert_numeric(decimalLatitude)
+  checkmate::assert_numeric(decimalLongitude)
+  checkmate::assert_numeric(stemAzimuth)
+  checkmate::assert_numeric(stemDistance)
+  
+  
+  out <- geosphere::destPoint(p = cbind(decimalLongitude, decimalLatitude),
+                       b = stemAzimuth, d = stemDistance) %>%
+    tibble::as_tibble()
+  
+  # check output for NAs
+  checkmate::assert_false(any(is.na(out)))
+  
+  return(out)
+  }
+
 ```
 

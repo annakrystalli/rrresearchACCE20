@@ -217,6 +217,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#experimenting"><i class="fa fa-check"></i>Experimenting</a></li>
 <li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#developing-our-function"><i class="fa fa-check"></i>Developing our function</a></li>
 <li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#saving-analytical-data"><i class="fa fa-check"></i>Saving analytical data</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#final-processing-script"><i class="fa fa-check"></i>Final processing script:</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#final-function"><i class="fa fa-check"></i>Final function</a></li>
 </ul></li>
 <li class="part"><span><b>IV Working with metadata</b></span></li>
 <li class="chapter" data-level="" data-path="metadata-slides.html"><a href="metadata-slides.html"><i class="fa fa-check"></i>Metadata</a></li>
@@ -389,6 +391,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#add-paper-dependencies"><i class="fa fa-check"></i>🚦 Add paper dependencies</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#final-compendium"><i class="fa fa-check"></i>Final compendium</a></li>
 </ul></li>
+<li class="part"><span><b>VII APPENDIX</b></span></li>
+<li><a href="individual-r.html#individual.r"><code>individual.R</code></a></li>
+<li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -426,11 +431,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Part I</h2>
 <div id="list-subsetting-challenge" class="section level3">
 <h3><a href="indexing-and-subsetting.html#chlg-list-subset" id="csol-list-subset">List subsetting challenge</a></h3>
-<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb630-1" data-line-number="1">xlist<span class="op">$</span>b[<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb637-1" data-line-number="1">xlist<span class="op">$</span>b[<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb632-1" data-line-number="1">xlist[[<span class="dv">2</span>]][<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb639-1" data-line-number="1">xlist[[<span class="dv">2</span>]][<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb634-1" data-line-number="1">xlist[[<span class="st">&quot;b&quot;</span>]][<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb641-1" data-line-number="1">xlist[[<span class="st">&quot;b&quot;</span>]][<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 </div>
 </div>
@@ -438,7 +443,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Part III</h2>
 <div id="finding-column-name-matches-in-two-tables" class="section level3">
 <h3><a href="combining-tables.html#chlg-col-matches" id="csol-col-matches">Finding column name matches in two tables</a></h3>
-<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb636-1" data-line-number="1"><span class="kw">names</span>(individual)[<span class="kw">names</span>(individual) <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(maptag)]</a></code></pre></div>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb643-1" data-line-number="1"><span class="kw">names</span>(individual)[<span class="kw">names</span>(individual) <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(maptag)]</a></code></pre></div>
 <pre><code>## [1] &quot;uid&quot;</code></pre>
 </div>
 </div>
@@ -446,13 +451,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Part IV</h2>
 <div id="dataspice-mega-challenge" class="section level3">
 <h3><a href="dataspice.html#chlg-mega" id="csol-mega"><code>dataspice</code> mega challenge!</a></h3>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb638-1" data-line-number="1">variables &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>,</a>
-<a class="sourceLine" id="cb638-2" data-line-number="2">                                        <span class="st">&quot;NEON_vst_variables.csv&quot;</span>),</a>
-<a class="sourceLine" id="cb638-3" data-line-number="3">                             <span class="dt">col_types =</span> readr<span class="op">::</span><span class="kw">cols</span>(<span class="dt">.default =</span> <span class="st">&quot;c&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb638-4" data-line-number="4"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">fieldName =</span> janitor<span class="op">::</span><span class="kw">make_clean_names</span>(fieldName)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb638-5" data-line-number="5"><span class="st">    </span><span class="kw">select</span>(fieldName, description, units)</a></code></pre></div>
-<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb639-1" data-line-number="1">attributes &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;metadata&quot;</span>, <span class="st">&quot;attributes.csv&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb639-2" data-line-number="2"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>description, <span class="op">-</span>unitText)</a></code></pre></div>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb645-1" data-line-number="1">variables &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>,</a>
+<a class="sourceLine" id="cb645-2" data-line-number="2">                                        <span class="st">&quot;NEON_vst_variables.csv&quot;</span>),</a>
+<a class="sourceLine" id="cb645-3" data-line-number="3">                             <span class="dt">col_types =</span> readr<span class="op">::</span><span class="kw">cols</span>(<span class="dt">.default =</span> <span class="st">&quot;c&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb645-4" data-line-number="4"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">fieldName =</span> janitor<span class="op">::</span><span class="kw">make_clean_names</span>(fieldName)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb645-5" data-line-number="5"><span class="st">    </span><span class="kw">select</span>(fieldName, description, units)</a></code></pre></div>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb646-1" data-line-number="1">attributes &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;metadata&quot;</span>, <span class="st">&quot;attributes.csv&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb646-2" data-line-number="2"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>description, <span class="op">-</span>unitText)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   fileName = col_character(),
@@ -460,10 +465,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   description = col_logical(),
 ##   unitText = col_logical()
 ## )</code></pre>
-<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb641-1" data-line-number="1">dplyr<span class="op">::</span><span class="kw">left_join</span>(attributes, variables, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;variableName&quot;</span> =<span class="st"> &quot;fieldName&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb641-2" data-line-number="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">unitText =</span> <span class="st">&quot;units&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb641-3" data-line-number="3"><span class="st">    </span>readr<span class="op">::</span><span class="kw">write_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;metadata&quot;</span>, <span class="st">&quot;attributes.csv&quot;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb642-1" data-line-number="1"><span class="kw">edit_attributes</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb648-1" data-line-number="1">dplyr<span class="op">::</span><span class="kw">left_join</span>(attributes, variables, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;variableName&quot;</span> =<span class="st"> &quot;fieldName&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb648-2" data-line-number="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">unitText =</span> <span class="st">&quot;units&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb648-3" data-line-number="3"><span class="st">    </span>readr<span class="op">::</span><span class="kw">write_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;metadata&quot;</span>, <span class="st">&quot;attributes.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb649-1" data-line-number="1"><span class="kw">edit_attributes</span>()</a></code></pre></div>
 
 </div>
 </div>

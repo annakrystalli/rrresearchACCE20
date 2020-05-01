@@ -217,6 +217,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#experimenting"><i class="fa fa-check"></i>Experimenting</a></li>
 <li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#developing-our-function"><i class="fa fa-check"></i>Developing our function</a></li>
 <li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#saving-analytical-data"><i class="fa fa-check"></i>Saving analytical data</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#final-processing-script"><i class="fa fa-check"></i>Final processing script:</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#final-function"><i class="fa fa-check"></i>Final function</a></li>
 </ul></li>
 <li class="part"><span><b>IV Working with metadata</b></span></li>
 <li class="chapter" data-level="" data-path="metadata-slides.html"><a href="metadata-slides.html"><i class="fa fa-check"></i>Metadata</a></li>
@@ -389,6 +391,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#add-paper-dependencies"><i class="fa fa-check"></i>🚦 Add paper dependencies</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#final-compendium"><i class="fa fa-check"></i>Final compendium</a></li>
 </ul></li>
+<li class="part"><span><b>VII APPENDIX</b></span></li>
+<li><a href="individual-r.html#individual.r"><code>individual.R</code></a></li>
+<li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -529,26 +534,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Storing functions in scripts.</h3>
 <p>It’s best to store functions in separate scripts in the <code>R/</code> directory.</p>
 <p>We can use function <code>usethis::use_r()</code> to create scripts in <code>R/</code>. Let’s create a new one to start working on our function.</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_r</span>(<span class="st">&quot;geolocation&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_r</span>(<span class="st">&quot;geolocate&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1">✔ Setting active project to <span class="st">&#39;/Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20&#39;</span></a>
+<a class="sourceLine" id="cb360-2" data-line-number="2">● Modify <span class="st">&#39;R/geolocate.R&#39;</span></a></code></pre></div>
 <p>This creates the required <code>R/</code> directory, creates a new R script named <code>geolocation.R</code> within it and launches it for editing all in one go! Nice.</p>
 </div>
 </div>
 <div id="experimenting" class="section level2">
 <h2>Experimenting</h2>
 <p>Now before we begin writing our function, let’s test <code>destPoint</code> out. To do that, let’s subset a single row from <code>individual</code> and use it to test out the function. We need to supply a vector of length two, containing the starting longitude and latitude to argument <code>p</code>. We pass <code>stemAzimuth</code> to argument <code>b</code> (for bearing) and <code>stemDistance</code> to argument <code>d</code> (for distance).</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1">x &lt;-<span class="st"> </span>individual[<span class="dv">1</span>,]</a>
-<a class="sourceLine" id="cb360-2" data-line-number="2">geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">c</span>(x<span class="op">$</span>decimalLongitude, x<span class="op">$</span>decimalLatitude), </a>
-<a class="sourceLine" id="cb360-3" data-line-number="3">                     <span class="dt">b =</span> x<span class="op">$</span>stemAzimuth, <span class="dt">d =</span> x<span class="op">$</span>stemDistance)</a></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" data-line-number="1">x &lt;-<span class="st"> </span>individual[<span class="dv">1</span>,]</a>
+<a class="sourceLine" id="cb361-2" data-line-number="2">geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">c</span>(x<span class="op">$</span>decimalLongitude, x<span class="op">$</span>decimalLatitude), </a>
+<a class="sourceLine" id="cb361-3" data-line-number="3">                     <span class="dt">b =</span> x<span class="op">$</span>stemAzimuth, <span class="dt">d =</span> x<span class="op">$</span>stemDistance)</a></code></pre></div>
 <pre><code>##            lon      lat
 ## [1,] -71.28333 44.06151</code></pre>
 <p>This looks like it’s working nicely. Let’s also check that it vectorises easily, i.e. that if we give it vectors of values instead of single ones that it works properly.</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1">x &lt;-<span class="st"> </span>individual[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,]</a>
-<a class="sourceLine" id="cb362-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb362-3" data-line-number="3">geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">c</span>(x<span class="op">$</span>decimalLongitude, x<span class="op">$</span>decimalLatitude), </a>
-<a class="sourceLine" id="cb362-4" data-line-number="4">                     <span class="dt">b =</span> x<span class="op">$</span>stemAzimuth, <span class="dt">d =</span> x<span class="op">$</span>stemDistance)</a></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" data-line-number="1">x &lt;-<span class="st"> </span>individual[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,]</a>
+<a class="sourceLine" id="cb363-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb363-3" data-line-number="3">geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">c</span>(x<span class="op">$</span>decimalLongitude, x<span class="op">$</span>decimalLatitude), </a>
+<a class="sourceLine" id="cb363-4" data-line-number="4">                     <span class="dt">b =</span> x<span class="op">$</span>stemAzimuth, <span class="dt">d =</span> x<span class="op">$</span>stemDistance)</a></code></pre></div>
 <pre><code>## Error in .pointsToMatrix(p): Wrong length for a vector, should be 2</code></pre>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1">geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(x<span class="op">$</span>decimalLongitude, x<span class="op">$</span>decimalLatitude), </a>
-<a class="sourceLine" id="cb364-2" data-line-number="2">                     <span class="dt">b =</span> x<span class="op">$</span>stemAzimuth, <span class="dt">d =</span> x<span class="op">$</span>stemDistance)</a></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1">geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(x<span class="op">$</span>decimalLongitude, x<span class="op">$</span>decimalLatitude), </a>
+<a class="sourceLine" id="cb365-2" data-line-number="2">                     <span class="dt">b =</span> x<span class="op">$</span>stemAzimuth, <span class="dt">d =</span> x<span class="op">$</span>stemDistance)</a></code></pre></div>
 <pre><code>##            lon      lat
 ## [1,] -71.28333 44.06151
 ## [2,] -71.28325 44.06165
@@ -562,36 +569,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Developing our function</h2>
 <p>Let’s start by using a handy feature in Rstudio, code snippets. Code snippets are text macros that are used for quickly inserting common snippets of code.</p>
 <p>The fun snippet inserts an R function definition. To invoke it start typing <code>fun</code> until the auto-complete drop-down pops up.</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" data-line-number="1">fun</a></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" data-line-number="1">fun</a></code></pre></div>
 <p><img src="assets/snippet_fun.png" width="140" /></p>
 <p>Select <code>fun</code> and hit Return / Enter.</p>
 <p>You end up with this handy function skeleton. Now, let’s start populating it with our own function.</p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" data-line-number="1">name &lt;-<span class="st"> </span><span class="cf">function</span>(variables) {</a>
-<a class="sourceLine" id="cb367-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb367-3" data-line-number="3">}</a></code></pre></div>
-<p>First lets start with a descriptive name:</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(variables) {</a>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" data-line-number="1">name &lt;-<span class="st"> </span><span class="cf">function</span>(variables) {</a>
 <a class="sourceLine" id="cb368-2" data-line-number="2">    </a>
 <a class="sourceLine" id="cb368-3" data-line-number="3">}</a></code></pre></div>
-<p>Let’s add our arguments:</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
-<a class="sourceLine" id="cb369-2" data-line-number="2"></a>
+<p>First lets start with a descriptive name:</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(variables) {</a>
+<a class="sourceLine" id="cb369-2" data-line-number="2">    </a>
 <a class="sourceLine" id="cb369-3" data-line-number="3">}</a></code></pre></div>
-<p>Finally, let’s populate the body our our function:</p>
+<p>Let’s add our arguments:</p>
 <div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
-<a class="sourceLine" id="cb370-2" data-line-number="2">    geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude), </a>
-<a class="sourceLine" id="cb370-3" data-line-number="3">                     <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance)</a>
-<a class="sourceLine" id="cb370-4" data-line-number="4">}</a></code></pre></div>
-<p>Let’s also convert the output to a tibble, for better printing.</p>
+<a class="sourceLine" id="cb370-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb370-3" data-line-number="3">}</a></code></pre></div>
+<p>Finally, let’s populate the body our our function:</p>
 <div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb371-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
 <a class="sourceLine" id="cb371-2" data-line-number="2">    geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude), </a>
-<a class="sourceLine" id="cb371-3" data-line-number="3">                         <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb371-4" data-line-number="4"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
-<a class="sourceLine" id="cb371-5" data-line-number="5">}</a></code></pre></div>
+<a class="sourceLine" id="cb371-3" data-line-number="3">                     <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance)</a>
+<a class="sourceLine" id="cb371-4" data-line-number="4">}</a></code></pre></div>
+<p>Let’s also convert the output to a tibble, for better printing.</p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
+<a class="sourceLine" id="cb372-2" data-line-number="2">    geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude), </a>
+<a class="sourceLine" id="cb372-3" data-line-number="3">                         <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb372-4" data-line-number="4"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
+<a class="sourceLine" id="cb372-5" data-line-number="5">}</a></code></pre></div>
 <p>Now let’s test it out with vectors from <code>individual</code>.</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" data-line-number="1">test &lt;-<span class="st"> </span><span class="kw">get_stem_location</span>(x<span class="op">$</span>decimalLongitude, x<span class="op">$</span>decimalLatitude, </a>
-<a class="sourceLine" id="cb372-2" data-line-number="2">                  x<span class="op">$</span>stemAzimuth, x<span class="op">$</span>stemDistance)</a>
-<a class="sourceLine" id="cb372-3" data-line-number="3">test</a></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" data-line-number="1">test &lt;-<span class="st"> </span><span class="kw">get_stem_location</span>(x<span class="op">$</span>decimalLongitude, x<span class="op">$</span>decimalLatitude, </a>
+<a class="sourceLine" id="cb373-2" data-line-number="2">                  x<span class="op">$</span>stemAzimuth, x<span class="op">$</span>stemDistance)</a>
+<a class="sourceLine" id="cb373-3" data-line-number="3">test</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##     lon   lat
 ##   &lt;dbl&gt; &lt;dbl&gt;
@@ -607,41 +614,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can write smart checks using the suite of functions in package <code>checkmate</code>.</p>
 <p>One such function is <code>assert_numeric()</code></p>
 <p>This checks whether the the object we give it is numeric. If the check is not successful, it returns the object invisibly. If the check is not successful, it throws an error.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" data-line-number="1">checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(x<span class="op">$</span>decimalLatitude)</a>
-<a class="sourceLine" id="cb374-2" data-line-number="2">checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(x<span class="op">$</span>uid)</a></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb375-1" data-line-number="1">checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(x<span class="op">$</span>decimalLatitude)</a>
+<a class="sourceLine" id="cb375-2" data-line-number="2">checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(x<span class="op">$</span>uid)</a></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): Assertion on &#39;x$uid&#39; failed: Must be of type &#39;numeric&#39;, not &#39;character&#39;.</code></pre>
 <p>There are two other versions, <code>test_numeric</code> which returns <code>FALSE</code> if the check is not successful, and <code>check_numeric</code> which returns a string with the error message. We want to throw an error and stop execution so we use <code>assert_numeric</code>.</p>
 <p>Let’s add a validation check for each argument in our function.</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
-<a class="sourceLine" id="cb376-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb376-3" data-line-number="3">    <span class="co"># validation checks</span></a>
-<a class="sourceLine" id="cb376-4" data-line-number="4">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLongitude)</a>
-<a class="sourceLine" id="cb376-5" data-line-number="5">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLatitude)</a>
-<a class="sourceLine" id="cb376-6" data-line-number="6">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemAzimuth)</a>
-<a class="sourceLine" id="cb376-7" data-line-number="7">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemDistance)</a>
-<a class="sourceLine" id="cb376-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb376-9" data-line-number="9">    </a>
-<a class="sourceLine" id="cb376-10" data-line-number="10">    geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude), </a>
-<a class="sourceLine" id="cb376-11" data-line-number="11">                         <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb376-12" data-line-number="12"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
-<a class="sourceLine" id="cb376-13" data-line-number="13">}</a></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
+<a class="sourceLine" id="cb377-2" data-line-number="2">    </a>
+<a class="sourceLine" id="cb377-3" data-line-number="3">    <span class="co"># validation checks</span></a>
+<a class="sourceLine" id="cb377-4" data-line-number="4">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLongitude)</a>
+<a class="sourceLine" id="cb377-5" data-line-number="5">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLatitude)</a>
+<a class="sourceLine" id="cb377-6" data-line-number="6">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemAzimuth)</a>
+<a class="sourceLine" id="cb377-7" data-line-number="7">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemDistance)</a>
+<a class="sourceLine" id="cb377-8" data-line-number="8">    </a>
+<a class="sourceLine" id="cb377-9" data-line-number="9">    </a>
+<a class="sourceLine" id="cb377-10" data-line-number="10">    geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude), </a>
+<a class="sourceLine" id="cb377-11" data-line-number="11">                         <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb377-12" data-line-number="12"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
+<a class="sourceLine" id="cb377-13" data-line-number="13">}</a></code></pre></div>
 <p>Let’s also add a check to our output. Let’s throw a warning if there are any <code>NA</code> values in our output.</p>
 <p>First we store our output so we can evaluate it.</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
-<a class="sourceLine" id="cb377-2" data-line-number="2">    <span class="co"># validation checks</span></a>
-<a class="sourceLine" id="cb377-3" data-line-number="3">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLongitude)</a>
-<a class="sourceLine" id="cb377-4" data-line-number="4">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLatitude)</a>
-<a class="sourceLine" id="cb377-5" data-line-number="5">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemAzimuth)</a>
-<a class="sourceLine" id="cb377-6" data-line-number="6">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemDistance)</a>
-<a class="sourceLine" id="cb377-7" data-line-number="7">    </a>
-<a class="sourceLine" id="cb377-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb377-9" data-line-number="9">    out &lt;-<span class="st"> </span>geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude), </a>
-<a class="sourceLine" id="cb377-10" data-line-number="10">                                <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb377-11" data-line-number="11"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
-<a class="sourceLine" id="cb377-12" data-line-number="12">}</a></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
+<a class="sourceLine" id="cb378-2" data-line-number="2">    <span class="co"># validation checks</span></a>
+<a class="sourceLine" id="cb378-3" data-line-number="3">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLongitude)</a>
+<a class="sourceLine" id="cb378-4" data-line-number="4">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLatitude)</a>
+<a class="sourceLine" id="cb378-5" data-line-number="5">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemAzimuth)</a>
+<a class="sourceLine" id="cb378-6" data-line-number="6">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemDistance)</a>
+<a class="sourceLine" id="cb378-7" data-line-number="7">    </a>
+<a class="sourceLine" id="cb378-8" data-line-number="8">    </a>
+<a class="sourceLine" id="cb378-9" data-line-number="9">    out &lt;-<span class="st"> </span>geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude), </a>
+<a class="sourceLine" id="cb378-10" data-line-number="10">                                <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb378-11" data-line-number="11"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
+<a class="sourceLine" id="cb378-12" data-line-number="12">}</a></code></pre></div>
 <p>Next we can add our check:</p>
 <p>We can check the whole tibble for <code>NA</code>s in one go. We get a 2 dimensional matrix of logical values.</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" data-line-number="1"><span class="kw">is.na</span>(test) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb379-1" data-line-number="1"><span class="kw">is.na</span>(test) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
 <pre><code>##        lon   lat
 ## [1,] FALSE FALSE
 ## [2,] FALSE FALSE
@@ -649,24 +656,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [4,] FALSE FALSE
 ## [5,] FALSE FALSE</code></pre>
 <p>We can then wrap the output of that in <code>any()</code> which tests whether there are any <code>TRUE</code> values in a logical array.</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" data-line-number="1"><span class="kw">any</span>(<span class="kw">is.na</span>(test))</a></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb381-1" data-line-number="1"><span class="kw">any</span>(<span class="kw">is.na</span>(test))</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Let’s apply that to our function.</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
-<a class="sourceLine" id="cb382-2" data-line-number="2">    <span class="co"># validation checks</span></a>
-<a class="sourceLine" id="cb382-3" data-line-number="3">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLongitude)</a>
-<a class="sourceLine" id="cb382-4" data-line-number="4">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLatitude)</a>
-<a class="sourceLine" id="cb382-5" data-line-number="5">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemAzimuth)</a>
-<a class="sourceLine" id="cb382-6" data-line-number="6">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemDistance)</a>
-<a class="sourceLine" id="cb382-7" data-line-number="7">    </a>
-<a class="sourceLine" id="cb382-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb382-9" data-line-number="9">    out &lt;-<span class="st"> </span>geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude), </a>
-<a class="sourceLine" id="cb382-10" data-line-number="10">                                <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb382-11" data-line-number="11"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
-<a class="sourceLine" id="cb382-12" data-line-number="12">    </a>
-<a class="sourceLine" id="cb382-13" data-line-number="13">    checkmate<span class="op">::</span><span class="kw">assert_false</span>(<span class="kw">any</span>(<span class="kw">is.na</span>(out)))</a>
-<a class="sourceLine" id="cb382-14" data-line-number="14">}</a></code></pre></div>
-<p>Lastly, we need to return our actual output!</p>
 <div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb383-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
 <a class="sourceLine" id="cb383-2" data-line-number="2">    <span class="co"># validation checks</span></a>
 <a class="sourceLine" id="cb383-3" data-line-number="3">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLongitude)</a>
@@ -680,12 +672,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb383-11" data-line-number="11"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
 <a class="sourceLine" id="cb383-12" data-line-number="12">    </a>
 <a class="sourceLine" id="cb383-13" data-line-number="13">    checkmate<span class="op">::</span><span class="kw">assert_false</span>(<span class="kw">any</span>(<span class="kw">is.na</span>(out)))</a>
-<a class="sourceLine" id="cb383-14" data-line-number="14">    </a>
-<a class="sourceLine" id="cb383-15" data-line-number="15">    <span class="kw">return</span>(out)</a>
-<a class="sourceLine" id="cb383-16" data-line-number="16">}</a></code></pre></div>
+<a class="sourceLine" id="cb383-14" data-line-number="14">}</a></code></pre></div>
+<p>Lastly, we need to return our actual output!</p>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" data-line-number="1">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</a>
+<a class="sourceLine" id="cb384-2" data-line-number="2">    <span class="co"># validation checks</span></a>
+<a class="sourceLine" id="cb384-3" data-line-number="3">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLongitude)</a>
+<a class="sourceLine" id="cb384-4" data-line-number="4">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLatitude)</a>
+<a class="sourceLine" id="cb384-5" data-line-number="5">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemAzimuth)</a>
+<a class="sourceLine" id="cb384-6" data-line-number="6">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemDistance)</a>
+<a class="sourceLine" id="cb384-7" data-line-number="7">    </a>
+<a class="sourceLine" id="cb384-8" data-line-number="8">    </a>
+<a class="sourceLine" id="cb384-9" data-line-number="9">    out &lt;-<span class="st"> </span>geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude), </a>
+<a class="sourceLine" id="cb384-10" data-line-number="10">                                <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb384-11" data-line-number="11"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
+<a class="sourceLine" id="cb384-12" data-line-number="12">    </a>
+<a class="sourceLine" id="cb384-13" data-line-number="13">    checkmate<span class="op">::</span><span class="kw">assert_false</span>(<span class="kw">any</span>(<span class="kw">is.na</span>(out)))</a>
+<a class="sourceLine" id="cb384-14" data-line-number="14">    </a>
+<a class="sourceLine" id="cb384-15" data-line-number="15">    <span class="kw">return</span>(out)</a>
+<a class="sourceLine" id="cb384-16" data-line-number="16">}</a></code></pre></div>
 <p>Let’s test it again:</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" data-line-number="1"><span class="kw">get_stem_location</span>(x<span class="op">$</span>decimalLongitude, x<span class="op">$</span>decimalLatitude, </a>
-<a class="sourceLine" id="cb384-2" data-line-number="2">                  x<span class="op">$</span>stemAzimuth, x<span class="op">$</span>stemDistance)</a></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb385-1" data-line-number="1"><span class="kw">get_stem_location</span>(x<span class="op">$</span>decimalLongitude, x<span class="op">$</span>decimalLatitude, </a>
+<a class="sourceLine" id="cb385-2" data-line-number="2">                  x<span class="op">$</span>stemAzimuth, x<span class="op">$</span>stemDistance)</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##     lon   lat
 ##   &lt;dbl&gt; &lt;dbl&gt;
@@ -700,13 +707,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="making-new-variables" class="section level3">
 <h3>Making new variables</h3>
 <p>Let’s move back to our <code>individual.R</code> script. At the top of our script, let’s add the code to source our function so it’s available during preprocessing:</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" data-line-number="1"><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocation.R&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb387-1" data-line-number="1"><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocation.R&quot;</span>))</a></code></pre></div>
 <p>Now we want to use data in <code>individual</code> to geolocate our individulas while at the same time creating new columns <code>stemLat</code> and <code>stemLon</code></p>
 <p>For this we use <code>dplyr::mutate()</code>:</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb387-1" data-line-number="1">individual <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">stemLat =</span> <span class="kw">get_stem_location</span>(decimalLongitude, decimalLatitude, </a>
-<a class="sourceLine" id="cb387-2" data-line-number="2">                                                         stemAzimuth, stemDistance)<span class="op">$</span>lat, </a>
-<a class="sourceLine" id="cb387-3" data-line-number="3">                             <span class="dt">stemLon =</span> <span class="kw">get_stem_location</span>(decimalLongitude, decimalLatitude, </a>
-<a class="sourceLine" id="cb387-4" data-line-number="4">                                                         stemAzimuth, stemDistance)<span class="op">$</span>lon)</a></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" data-line-number="1">individual <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">stemLat =</span> <span class="kw">get_stem_location</span>(decimalLongitude, decimalLatitude, </a>
+<a class="sourceLine" id="cb388-2" data-line-number="2">                                                         stemAzimuth, stemDistance)<span class="op">$</span>lat, </a>
+<a class="sourceLine" id="cb388-3" data-line-number="3">                             <span class="dt">stemLon =</span> <span class="kw">get_stem_location</span>(decimalLongitude, decimalLatitude, </a>
+<a class="sourceLine" id="cb388-4" data-line-number="4">                                                         stemAzimuth, stemDistance)<span class="op">$</span>lon)</a></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 32
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -730,13 +737,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We also need to extract the appropriate coordinate for each column. We do that by using the <code>$</code> subsetting operation after we call <code>get_stem_location()</code>.</p>
 <p>It works! We’re almost done with our data munging!</p>
 <p>Lets use the assignment pipe again now that we are happy.</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb389-1" data-line-number="1">individual <span class="op">%&lt;&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">stemLat =</span> <span class="kw">get_stem_location</span>(decimalLongitude, decimalLatitude, </a>
-<a class="sourceLine" id="cb389-2" data-line-number="2">                                                         stemAzimuth, stemDistance)<span class="op">$</span>lat, </a>
-<a class="sourceLine" id="cb389-3" data-line-number="3">                             <span class="dt">stemLon =</span> <span class="kw">get_stem_location</span>(decimalLongitude, decimalLatitude, </a>
-<a class="sourceLine" id="cb389-4" data-line-number="4">                                                         stemAzimuth, stemDistance)<span class="op">$</span>lon)</a></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" data-line-number="1">individual <span class="op">%&lt;&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">stemLat =</span> <span class="kw">get_stem_location</span>(decimalLongitude, decimalLatitude, </a>
+<a class="sourceLine" id="cb390-2" data-line-number="2">                                                         stemAzimuth, stemDistance)<span class="op">$</span>lat, </a>
+<a class="sourceLine" id="cb390-3" data-line-number="3">                             <span class="dt">stemLon =</span> <span class="kw">get_stem_location</span>(decimalLongitude, decimalLatitude, </a>
+<a class="sourceLine" id="cb390-4" data-line-number="4">                                                         stemAzimuth, stemDistance)<span class="op">$</span>lon)</a></code></pre></div>
 <p>Let’s do a couple last sanity checks:</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" data-line-number="1"><span class="kw">View</span>(individual)</a></code></pre></div>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb391-1" data-line-number="1"><span class="kw">str</span>(individual)</a></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb391-1" data-line-number="1"><span class="kw">View</span>(individual)</a></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" data-line-number="1"><span class="kw">str</span>(individual)</a></code></pre></div>
 <pre><code>## tibble [14,961 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ uid                 : chr [1:14961] &quot;a36a162d-ed1f-4f80-ae45-88e973855c68&quot; &quot;68dc7adf-48e2-4f7a-9272-9a468fde6d55&quot; &quot;a8951ab9-4462-48dd-ab9e-7b89e24f2e03&quot; &quot;eb348eaf-3969-46a4-ac3b-523c3548efeb&quot; ...
 ##  $ namedLocation       : chr [1:14961] &quot;BART_037.basePlot.vst&quot; &quot;BART_037.basePlot.vst&quot; &quot;BART_044.basePlot.vst&quot; &quot;BART_044.basePlot.vst&quot; ...
@@ -777,17 +784,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Saving analytical data</h2>
 <p>At the bottom of <code>individual.R</code> there is some template code, <code>usethis::use_data(&quot;individual&quot;)</code>.</p>
 <p>This functions invokes functionality to store an r object as an <code>.Rdata</code> object (ie as a tibble not a <code>csv</code>) in the <code>data</code> directory. This is the standard way to store exported data in packages but does not apply to our non-package project so won’t work.</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb393-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_data</span>(<span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_data</span>(<span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
 <pre><code>## ✔ Setting active project to &#39;/Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20&#39;</code></pre>
 <pre><code>## Error: `use_data()` is designed to work with packages.
 ## Project &#39;rrresearchACCE20&#39; is not an R package.</code></pre>
 <p>Let’s just get rid of it and instead, save our analytic data as a csv in our <code>data</code> directory.</p>
 <p>Frist lets create a data directory (you can do this in the console)</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" data-line-number="1">fs<span class="op">::</span><span class="kw">dir_create</span>(<span class="st">&quot;data&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb397-1" data-line-number="1">fs<span class="op">::</span><span class="kw">dir_create</span>(<span class="st">&quot;data&quot;</span>)</a></code></pre></div>
 <p>Now were ready to write or data out. Before we do so, I will add one last touch. Before I do so, I would like to get rid of a pet hate of mine, and thats camelCase variable names!</p>
 <p>I use a handy function in package <code>janitor</code>, !</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb397-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb397-2" data-line-number="2"><span class="st">    </span>janitor<span class="op">::</span><span class="kw">clean_names</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb398-2" data-line-number="2"><span class="st">    </span>janitor<span class="op">::</span><span class="kw">clean_names</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 32
 ##    uid   named_location date       event_id domain_id site_id plot_id
 ##    &lt;chr&gt; &lt;chr&gt;          &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;  
@@ -811,9 +818,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   elevation_uncertainty &lt;dbl&gt;, stem_lat &lt;dbl&gt;, stem_lon &lt;dbl&gt;</code></pre>
 <p>This turns all the column names to my beloved snake case!</p>
 <p>Now, with that final tweek, we are ready to save our data.</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb399-2" data-line-number="2"><span class="st">    </span>janitor<span class="op">::</span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb399-3" data-line-number="3"><span class="st">    </span>readr<span class="op">::</span><span class="kw">write_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb400-2" data-line-number="2"><span class="st">    </span>janitor<span class="op">::</span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb400-3" data-line-number="3"><span class="st">    </span>readr<span class="op">::</span><span class="kw">write_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</a></code></pre></div>
+</div>
+<div id="final-processing-script" class="section level2">
+<h2>Final processing script:</h2>
+<p><strong><code>data-raw/individual.R</code></strong></p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" data-line-number="1"><span class="co">## code to prepare `individual` dataset goes here</span></a>
+<a class="sourceLine" id="cb401-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb401-3" data-line-number="3"><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocate.R&quot;</span>))</a>
+<a class="sourceLine" id="cb401-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb401-5" data-line-number="5"><span class="co"># Read in and compile all individual data</span></a>
+<a class="sourceLine" id="cb401-6" data-line-number="6">raw_data_path &lt;-<span class="st"> </span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</a>
+<a class="sourceLine" id="cb401-7" data-line-number="7">individual_path &lt;-<span class="st"> </span>fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</a>
+<a class="sourceLine" id="cb401-8" data-line-number="8">individual_paths &lt;-<span class="st"> </span>fs<span class="op">::</span><span class="kw">dir_ls</span>(individual_path)</a>
+<a class="sourceLine" id="cb401-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb401-10" data-line-number="10"><span class="co"># read in all tables into one</span></a>
+<a class="sourceLine" id="cb401-11" data-line-number="11">individual &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
+<a class="sourceLine" id="cb401-12" data-line-number="12">              <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="dt">file =</span> .x,</a>
+<a class="sourceLine" id="cb401-13" data-line-number="13">                               <span class="dt">col_types =</span> readr<span class="op">::</span><span class="kw">cols</span>(<span class="dt">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-14" data-line-number="14"><span class="st">  </span>readr<span class="op">::</span><span class="kw">type_convert</span>()</a>
+<a class="sourceLine" id="cb401-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb401-16" data-line-number="16">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-17" data-line-number="17"><span class="st">  </span>readr<span class="op">::</span><span class="kw">write_csv</span>(<span class="dt">path =</span> fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_individuals.csv&quot;</span>))</a>
+<a class="sourceLine" id="cb401-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb401-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb401-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb401-21" data-line-number="21"><span class="co"># Combine NEON data tables</span></a>
+<a class="sourceLine" id="cb401-22" data-line-number="22"><span class="co"># read in additonal table</span></a>
+<a class="sourceLine" id="cb401-23" data-line-number="23">maptag &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, </a>
+<a class="sourceLine" id="cb401-24" data-line-number="24">                                   <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-25" data-line-number="25"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>eventID)</a>
+<a class="sourceLine" id="cb401-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb401-27" data-line-number="27">perplot &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, </a>
+<a class="sourceLine" id="cb401-28" data-line-number="28">                                    <span class="st">&quot;vst_perplotperyear.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-29" data-line-number="29"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>eventID)</a>
+<a class="sourceLine" id="cb401-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb401-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb401-32" data-line-number="32">individual <span class="op">%&lt;&gt;%</span></a>
+<a class="sourceLine" id="cb401-33" data-line-number="33"><span class="st">  </span><span class="kw">left_join</span>(maptag, <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>,</a>
+<a class="sourceLine" id="cb401-34" data-line-number="34">            <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-35" data-line-number="35"><span class="st">  </span><span class="kw">left_join</span>(perplot, <span class="dt">by =</span> <span class="st">&quot;plotID&quot;</span>,</a>
+<a class="sourceLine" id="cb401-36" data-line-number="36">            <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-37" data-line-number="37"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na, stemDistance, stemAzimuth, pointID,</a>
+<a class="sourceLine" id="cb401-38" data-line-number="38">                  decimalLongitude, decimalLatitude, plotID)</a>
+<a class="sourceLine" id="cb401-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb401-40" data-line-number="40"><span class="co"># ---- Geolocate individuals_functions ----</span></a>
+<a class="sourceLine" id="cb401-41" data-line-number="41">individual &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-42" data-line-number="42"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">stemLat =</span> <span class="kw">get_stem_location</span>(<span class="dt">decimalLongitude =</span> decimalLongitude,</a>
+<a class="sourceLine" id="cb401-43" data-line-number="43">                                            <span class="dt">decimalLatitude =</span> decimalLatitude,</a>
+<a class="sourceLine" id="cb401-44" data-line-number="44">                                            <span class="dt">stemAzimuth =</span> stemAzimuth,</a>
+<a class="sourceLine" id="cb401-45" data-line-number="45">                                            <span class="dt">stemDistance =</span> stemDistance)<span class="op">$</span>lat,</a>
+<a class="sourceLine" id="cb401-46" data-line-number="46">                <span class="dt">stemLon =</span> <span class="kw">get_stem_location</span>(<span class="dt">decimalLongitude =</span> decimalLongitude,</a>
+<a class="sourceLine" id="cb401-47" data-line-number="47">                                            <span class="dt">decimalLatitude =</span> decimalLatitude,</a>
+<a class="sourceLine" id="cb401-48" data-line-number="48">                                            <span class="dt">stemAzimuth =</span> stemAzimuth,</a>
+<a class="sourceLine" id="cb401-49" data-line-number="49">                                            <span class="dt">stemDistance =</span> stemDistance)<span class="op">$</span>lon) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-50" data-line-number="50"><span class="st">  </span>janitor<span class="op">::</span><span class="kw">clean_names</span>()</a>
+<a class="sourceLine" id="cb401-51" data-line-number="51"></a>
+<a class="sourceLine" id="cb401-52" data-line-number="52"></a>
+<a class="sourceLine" id="cb401-53" data-line-number="53"><span class="co"># write out analytic file</span></a>
+<a class="sourceLine" id="cb401-54" data-line-number="54">readr<span class="op">::</span><span class="kw">write_csv</span>(individual, here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</a></code></pre></div>
+</div>
+<div id="final-function" class="section level2">
+<h2>Final function</h2>
+<p><strong><code>R/geolocate.R</code></strong></p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1"><span class="co"># Function</span></a>
+<a class="sourceLine" id="cb402-2" data-line-number="2">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude,</a>
+<a class="sourceLine" id="cb402-3" data-line-number="3">                              stemAzimuth, stemDistance) {</a>
+<a class="sourceLine" id="cb402-4" data-line-number="4">  <span class="co"># check inputs are correct type (numeric)</span></a>
+<a class="sourceLine" id="cb402-5" data-line-number="5">  checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLatitude)</a>
+<a class="sourceLine" id="cb402-6" data-line-number="6">  checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLongitude)</a>
+<a class="sourceLine" id="cb402-7" data-line-number="7">  checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemAzimuth)</a>
+<a class="sourceLine" id="cb402-8" data-line-number="8">  checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemDistance)</a>
+<a class="sourceLine" id="cb402-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb402-10" data-line-number="10">  </a>
+<a class="sourceLine" id="cb402-11" data-line-number="11">  out &lt;-<span class="st"> </span>geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude),</a>
+<a class="sourceLine" id="cb402-12" data-line-number="12">                       <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb402-13" data-line-number="13"><span class="st">    </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
+<a class="sourceLine" id="cb402-14" data-line-number="14">  </a>
+<a class="sourceLine" id="cb402-15" data-line-number="15">  <span class="co"># check output for NAs</span></a>
+<a class="sourceLine" id="cb402-16" data-line-number="16">  checkmate<span class="op">::</span><span class="kw">assert_false</span>(<span class="kw">any</span>(<span class="kw">is.na</span>(out)))</a>
+<a class="sourceLine" id="cb402-17" data-line-number="17">  </a>
+<a class="sourceLine" id="cb402-18" data-line-number="18">  <span class="kw">return</span>(out)</a>
+<a class="sourceLine" id="cb402-19" data-line-number="19">  }</a></code></pre></div>
 
 </div>
 </div>
