@@ -50,6 +50,9 @@
 
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/jsoneditor-5.25.6/jsoneditor.min.css" rel="stylesheet" />
+<script src="libs/jsoneditor-5.25.6/jsoneditor.min.js"></script>
+<script src="libs/jsonedit-binding-3.0.0/jsonedit.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.12/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -222,6 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html"><i class="fa fa-check"></i>Create the metadata folder</a></li>
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#record-metadata"><i class="fa fa-check"></i>Record metadata</a></li>
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#create-metadata-json-ld-file"><i class="fa fa-check"></i>Create metadata json-ld file</a></li>
+<li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#build-readme-site"><i class="fa fa-check"></i>Build README site</a></li>
 </ul></li>
 <li class="part"><span><b>V Analysing and presenting analyses</b></span></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html"><i class="fa fa-check"></i>Literate programming in rmarkdown</a><ul>
@@ -429,7 +433,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="https://github.com/ropenscilabs/dataspice/raw/master/man/figures/dataspice_workflow.png" width="100%" /></p>
 <p><em>see <a href="index.html#metadata">introductory slides</a></em></p>
 <p>Let’s load our library and start creating some metadata!</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" data-line-number="1"><span class="kw">library</span>(dataspice)</a></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" data-line-number="1"><span class="kw">library</span>(dataspice)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dataspice&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:devtools&#39;:
@@ -439,7 +443,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="create-the-metadata-folder" class="section level2">
 <h2>Create the metadata folder</h2>
 <p>We’ll <strong>start by creating the basic metadata <code>.csv</code> files</strong> in which to collect metadata related to our example dataset using function <strong><code>dataspice::create_spice()</code></strong>.</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" data-line-number="1"><span class="kw">create_spice</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1"><span class="kw">create_spice</span>()</a></code></pre></div>
 <p>This <strong>creates a <code>metadata</code> folder</strong> in your project’s <code>data</code> folder (although you can specify a different directory if required) containing <strong>4 <code>.csv</code> files</strong> in which to record your metadata.</p>
 <p><img src="assets/dataspice_files.png" width="100%" /></p>
 <ul>
@@ -458,7 +462,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>Let’s start with a quick and easy file to complete, the <strong>creators</strong>. We can <strong>open and edit</strong> the file using in an <strong>interactive shiny app</strong> using <strong><code>dataspice::edit_creators()</code></strong>.</p>
 <p><strong><em>Although we did not collect this data, just complete with your own details for the purposes of this tutorial.</em></strong></p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1"><span class="kw">edit_creators</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1"><span class="kw">edit_creators</span>()</a></code></pre></div>
 <p><img src="assets/edit_creators.png" width="100%" /></p>
 <p>Remember to click on <strong>Save</strong> when you’re done editing.</p>
 <p><br></p>
@@ -469,11 +473,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The <code>access.csv</code> contains details about <strong>where the data can be accessed</strong>.</p>
 </blockquote>
 <p>Before manually completing any details in the <code>access.csv</code>, we can use <code>dataspice</code>’s dedicated function <strong><code>prep_access()</code> to extract relevant information</strong> from the data files themselves.</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1"><span class="kw">prep_access</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1"><span class="kw">prep_access</span>()</a></code></pre></div>
 <p>Next, we can <strong>use function <code>edit_access()</code></strong> to view <code>access</code>. The final details required, namely <strong>the URL at which each dataset can be downloaded from</strong> cannot be completed now so just leave that blank for now.</p>
 <p>Eventually it should link to a permanent identifier from which the published. data set can be downloaded from.</p>
 <p>We can also edit details such as the <code>name</code> field to something more informative if required.</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1"><span class="kw">edit_access</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" data-line-number="1"><span class="kw">edit_access</span>()</a></code></pre></div>
 <p>Remember to click on <strong>Save</strong> when you’re done editing.</p>
 <p><br></p>
 </div>
@@ -486,7 +490,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="get-temporal-extent" class="section level4">
 <h4>get <strong>temporal extent</strong></h4>
 <p>Although dates are stored as a text string, <strong>because they are in ISO format (YYYY-MM-DD), sorting them results in correct chronological ordering</strong>. If your temporal data is not in ISO format, consider converting them (see package <code>lubridate</code>)</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1"><span class="kw">range</span>(individual<span class="op">$</span>date) </a></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1"><span class="kw">range</span>(individual<span class="op">$</span>date) </a></code></pre></div>
 <pre><code>## [1] &quot;2015-05-18&quot; &quot;2018-11-16&quot;</code></pre>
 </div>
 <div id="get-geographical-extent" class="section level4">
@@ -494,12 +498,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The lat/lon coordinates are in decimal degrees which again are easy to sort or calculate the range in each dimension.</p>
 <div id="southnorth-boundaries" class="section level5">
 <h5>South/North boundaries</h5>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1"><span class="kw">range</span>(individual<span class="op">$</span>decimal_latitude)</a></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" data-line-number="1"><span class="kw">range</span>(individual<span class="op">$</span>decimal_latitude)</a></code></pre></div>
 <pre><code>## [1] 17.95570 47.16582</code></pre>
 </div>
 <div id="westeast-boundaries" class="section level5">
 <h5>West/East boundaries</h5>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" data-line-number="1"><span class="kw">range</span>(individual<span class="op">$</span>decimal_longitude)</a></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" data-line-number="1"><span class="kw">range</span>(individual<span class="op">$</span>decimal_longitude)</a></code></pre></div>
 <pre><code>## [1] -99.11107 -66.82463</code></pre>
 <p><em>NB: you can also supply the geographic boundaries of your data as a single <a href="https://en.wikipedia.org/wiki/Well-known_text">well-known text string</a> in field <code>wktString</code> instead of supplying the four boundary coordinates.</em></p>
 </div>
@@ -507,16 +511,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h5>Geographic description</h5>
 <p>We’ll also need a geographic textual description.</p>
 <p>Let’s check the unique values in <code>domain_id</code> and use those to create a geographic description.</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" data-line-number="1"><span class="kw">unique</span>(individual<span class="op">$</span>domain_id)</a></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" data-line-number="1"><span class="kw">unique</span>(individual<span class="op">$</span>domain_id)</a></code></pre></div>
 <pre><code>## [1] &quot;D01&quot; &quot;D02&quot; &quot;D03&quot; &quot;D04&quot; &quot;D07&quot; &quot;D08&quot; &quot;D09&quot;</code></pre>
 <p>We could use <code>NEON Domain areas D01:D09</code> for our geographic description.</p>
 <p>Now that we’ve got the values for our temporal and spatial extents and decided on the geographic description, we can <strong>complete the rest of the fields in the <code>biblio.csv</code> file using function <code>dataspice::edit_biblio()</code></strong>.</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" data-line-number="1"><span class="kw">edit_biblio</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" data-line-number="1"><span class="kw">edit_biblio</span>()</a></code></pre></div>
 <p><img src="assets/edit_biblio.png" width="100%" /></p>
 <div class="alert alert-success">
 <h4 id="metadata-hunt">🔍 metadata hunt</h4>
 <h5 id="complete-the-rest-of-the-fields-in-biblio.csv">Complete the rest of the fields in <code>biblio.csv</code></h5>
 <p>Additional information required to complete these fields can be found on the <a href="http://data.neonscience.org/data-product-view?dpCode=DP1.10098.001"><strong>NEON data portal page for this dataset</strong></a> and the <strong><code>data-raw/wood-survey-data-master</code> <a href="data-raw/wood-survey-data-master/README.md">README.md</a></strong></p>
+<p><strong>Citation:</strong>
+<em>National Ecological Observatory Network. 2020. Data Products: DP1.10098.001. Provisional data downloaded from <a href="http://data.neonscience.org" class="uri">http://data.neonscience.org</a> on 2020-01-15. Battelle, Boulder, CO, USA</em></p>
 <p>Here’s <a href="data/metadata/biblio-half.csv">an example to get you started</a></p>
 </div>
 <p>Remember to click on <strong>Save</strong> when you’re done editing.</p>
@@ -531,14 +537,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>Again, <code>dataspice</code> provides functionality to <strong>populate the <code>attributes.csv</code> by extracting the variable names from our data file</strong> using function <strong><code>dataspice::prep_attributes()</code></strong>.</p>
 <p>The functions is vectorised and maps over each <code>.csv</code> file in our <code>data/</code> folder.</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" data-line-number="1"><span class="kw">prep_attributes</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" data-line-number="1"><span class="kw">prep_attributes</span>()</a></code></pre></div>
 <p><img src="assets/edit_attributes.png" width="100%" />
 All column names in <code>individual.csv</code> have been successfully extracted into the <code>variableName</code> column.</p>
 <p>Now, we could manually complete the <code>description</code> and <code>unitText</code> fields,… or we can use a secret weapon,
 <code>NEON_vst_variables.csv</code> in our raw data!</p>
 <p>Let’s read it in and have a look:</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" data-line-number="1">variables &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>, </a>
-<a class="sourceLine" id="cb415-2" data-line-number="2">                                        <span class="st">&quot;NEON_vst_variables.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" data-line-number="1">variables &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>, </a>
+<a class="sourceLine" id="cb417-2" data-line-number="2">                                        <span class="st">&quot;NEON_vst_variables.csv&quot;</span>))</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   table = col_character(),
@@ -548,7 +554,7 @@ All column names in <code>individual.csv</code> have been successfully extracted
 ##   units = col_character(),
 ##   downloadPkg = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" data-line-number="1">variables</a></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" data-line-number="1">variables</a></code></pre></div>
 <pre><code>## # A tibble: 117 x 6
 ##    table    fieldName   description                   dataType units downloadPkg
 ##    &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;                         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;      
@@ -564,7 +570,7 @@ All column names in <code>individual.csv</code> have been successfully extracted
 ## 10 vst_shr… groupID     Identifier for a group of in… string   &lt;NA&gt;  basic      
 ## # … with 107 more rows</code></pre>
 <p>All original data variable names are contained in <code>fieldName</code>.</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" data-line-number="1">variables<span class="op">$</span>fieldName</a></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" data-line-number="1">variables<span class="op">$</span>fieldName</a></code></pre></div>
 <pre><code>##   [1] &quot;uid&quot;                           &quot;namedLocation&quot;                
 ##   [3] &quot;date&quot;                          &quot;eventID&quot;                      
 ##   [5] &quot;domainID&quot;                      &quot;siteID&quot;                       
@@ -646,8 +652,40 @@ All column names in <code>individual.csv</code> have been successfully extracted
 <div id="create-metadata-json-ld-file" class="section level2">
 <h2>Create metadata json-ld file</h2>
 <p>Now that all our metadata files are complete, we can <strong>compile it all into a structured <code>dataspice.json</code> file</strong> in our <code>data/metadata/</code> folder.</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" data-line-number="1"><span class="kw">write_spice</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" data-line-number="1"><span class="kw">write_spice</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;jsonlite&quot;</span>, <span class="st">&quot;listviewer&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb425-1" data-line-number="1">jsonlite<span class="op">::</span><span class="kw">read_json</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;metadata&quot;</span>, <span class="st">&quot;dataspice.json&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb425-2" data-line-number="2"><span class="st">    </span>listviewer<span class="op">::</span><span class="kw">jsonedit</span>()</a></code></pre></div>
+<div id="htmlwidget-fef0bfd952b62a4a24b2" style="width:672px;height:480px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fef0bfd952b62a4a24b2">{"x":{"data":{"@context":"http://schema.org","type":"Dataset","name":"NEON Woody plant survey data: ACCE DTP analytical subset","creator":[{"type":"Person","id":"0000-0002-2378-4915","givenName":"Anna","familyName":"Krystalli","email":"a.krystalli@sheffield.ac.uk","affiliation":"University of Sheffield"}],"description":"This data product, sourced from the NEON data portal for the purposes of the ACCE DTP tutorial, contains processed individual level data from measurements of woody individuals and shrub groups. ","datePublished":"01/05/2020","keywords":["annual net primary productivity (ANPP)","biomass","carbon cycle","lianas","net primary productivity (NPP)","plant productivity","plants","production","productivity","saplings","shrubs","trees","vegetation","woody plants"],"funder":"National Science Foundation","temporalCoverage":"2015-05-18/2018-11-16","license":"CC-0","spatialCoverage":{"type":"Place","name":"NEON Domain areas D01:D09","geo":{"type":"GeoShape","box":"47.16582 -66.82463 17.9557 -99.11107"}},"variableMeasured":[{"type":"PropertyValue","unitText":[],"name":"uid","description":"Unique ID within NEON database; an identifier for the record"},{"type":"PropertyValue","unitText":[],"name":"named_location","description":"Name of the measurement location in the NEON database"},{"type":"PropertyValue","unitText":[],"name":"date","description":"Date or date and time of measurement, observation, or collection event"},{"type":"PropertyValue","unitText":[],"name":"event_id","description":"An identifier for the set of information associated with the event, which includes information about the place and time of the event"},{"type":"PropertyValue","unitText":[],"name":"domain_id","description":"Unique identifier of the NEON domain"},{"type":"PropertyValue","unitText":[],"name":"site_id","description":"NEON site code"},{"type":"PropertyValue","unitText":[],"name":"plot_id","description":"Plot identifier (NEON site code_XXX)"},{"type":"PropertyValue","unitText":[],"name":"individual_id","description":"Domain-level unique identifier for an individual: NEON.MOD.D##.######"},{"type":"PropertyValue","unitText":[],"name":"growth_form","description":"The growth form classification"},{"type":"PropertyValue","unitText":"centimeter","name":"stem_diameter","description":"Cross-sectional stem diameter"},{"type":"PropertyValue","unitText":"centimeter","name":"measurement_height","description":"Height at which stemDiameter is measured"},{"type":"PropertyValue","unitText":"meter","name":"height","description":"Highest point of an individual or average height of a patch"},{"type":"PropertyValue","unitText":[],"name":"uid_map","description":[]},{"type":"PropertyValue","unitText":[],"name":"point_id","description":"Identifier for a point location"},{"type":"PropertyValue","unitText":"meter","name":"stem_distance","description":"Horizontal distance from stem to pointID location"},{"type":"PropertyValue","unitText":"degree","name":"stem_azimuth","description":"Azimuth relative to True North between stem and pointID location"},{"type":"PropertyValue","unitText":[],"name":"taxon_id","description":"Species code, based on one or more sources"},{"type":"PropertyValue","unitText":[],"name":"scientific_name","description":"Scientific name, associated with the taxonID. This is the name of the lowest level taxonomic rank that can be determined"},{"type":"PropertyValue","unitText":[],"name":"taxon_rank","description":"The lowest level taxonomic rank that can be determined for the individual or specimen"},{"type":"PropertyValue","unitText":[],"name":"uid_ppl","description":[]},{"type":"PropertyValue","unitText":[],"name":"plot_type","description":"NEON plot type in which sampling occurred: tower, distributed or gradient"},{"type":"PropertyValue","unitText":[],"name":"nlcd_class","description":"National Land Cover Database Vegetation Type Name"},{"type":"PropertyValue","unitText":"decimalDegree","name":"decimal_latitude","description":"The geographic latitude (in decimal degrees, WGS84) of the geographic center of the reference area"},{"type":"PropertyValue","unitText":"decimalDegree","name":"decimal_longitude","description":"The geographic longitude (in decimal degrees, WGS84) of the geographic center of the reference area"},{"type":"PropertyValue","unitText":[],"name":"geodetic_datum","description":"Model used to measure horizontal position on the earth"},{"type":"PropertyValue","unitText":"meter","name":"easting","description":"Geographic coordinate specifying the east-west position of a point on the Earth's surface (Universal Transverse Mercator, UTM)"},{"type":"PropertyValue","unitText":"meter","name":"northing","description":"Geographic coordinate specifying the north-south position of a point on the Earth's surface (Universal Transverse Mercator, UTM)"},{"type":"PropertyValue","unitText":[],"name":"utm_zone","description":"UTM zone"},{"type":"PropertyValue","unitText":"meter","name":"elevation","description":"Elevation (in meters) above sea level"},{"type":"PropertyValue","unitText":"meter","name":"elevation_uncertainty","description":"Uncertainty in elevation values (in meters)"},{"type":"PropertyValue","unitText":"decimalDegree","name":"stem_lat","description":"The geographic latitude (in decimal degrees, WGS84) of individual plants"},{"type":"PropertyValue","unitText":"decimalDegree","name":"stem_lon","description":"The geographic latitude (in decimal degrees, WGS84) of individual plants"}],"distribution":[{"type":"DataDownload","name":"individual","contentUrl":[],"fileFormat":"csv"}]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
+<p><strong>Publishing this file on the web means it will be indexed by Google Datasets search!</strong> 😃 👍</p>
+<p><br></p>
+<hr />
+</div>
+<div id="build-readme-site" class="section level2">
+<h2>Build README site</h2>
+<p>Finally, we can <strong>use the <code>dataspice.json</code> file</strong> we just created to <strong>produce an informative README web page</strong> to include with our dataset for humans to enjoy! 🤩</p>
+<p>We use function <strong><code>dataspice::build_site()</code></strong> which <strong>creates file <code>index.html</code></strong> in the <code>docs/</code> folder of your project (which it creates if it doesn’t already exist).</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" data-line-number="1"><span class="kw">build_site</span>()</a></code></pre></div>
+<p><br></p>
+<div id="view-the-resulting-file-here" class="section level3">
+<h3>View the resulting file <a href="dataspice/index.html">here</a></h3>
+<p><br></p>
+<p>Here’s a screen shot!</p>
+<p><img src="assets/index_webshot.png" width="100%" /></p>
+</div>
+<div id="example-completed-metadata-files" class="section level3">
+<h3>Example completed metadata files</h3>
+<ul>
+<li><a href="https://github.com/annakrystalli/rrresearchACCE20/blob/master/data/metadata/access.csv"><code>access.csv</code></a></li>
+<li><a href="https://github.com/annakrystalli/rrresearchACCE20/blob/master/data/metadata/attributes.csv"><code>attributes.csv</code></a></li>
+<li><a href="https://github.com/annakrystalli/rrresearchACCE20/blob/master/data/metadata/biblio.csv"><code>biblio.csv</code></a></li>
+<li><a href="https://github.com/annakrystalli/rrresearchACCE20/blob/master/data/data/metadata/creators.csv"><code>creators.csv</code></a></li>
+</ul>
+<hr />
+<p><em>back to the <a href="slides/04_metadata.html#30">outro slides</a></em></p>
 
+</div>
 </div>
 </div>
             </section>

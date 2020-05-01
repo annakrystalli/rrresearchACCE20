@@ -50,6 +50,9 @@
 
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/jsoneditor-5.25.6/jsoneditor.min.css" rel="stylesheet" />
+<script src="libs/jsoneditor-5.25.6/jsoneditor.min.js"></script>
+<script src="libs/jsonedit-binding-3.0.0/jsonedit.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.12/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -222,6 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html"><i class="fa fa-check"></i>Create the metadata folder</a></li>
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#record-metadata"><i class="fa fa-check"></i>Record metadata</a></li>
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#create-metadata-json-ld-file"><i class="fa fa-check"></i>Create metadata json-ld file</a></li>
+<li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#build-readme-site"><i class="fa fa-check"></i>Build README site</a></li>
 </ul></li>
 <li class="part"><span><b>V Analysing and presenting analyses</b></span></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html"><i class="fa fa-check"></i>Literate programming in rmarkdown</a><ul>
@@ -573,21 +577,21 @@ Image: xkcd CC BY-NC 2.5
 <h2>Configure git</h2>
 <p>First, <code>git</code> needs to know who you are so your commits can be attributed to you. <strong><code>usethis</code></strong> to the rescue again!</p>
 <p><strong>Check your configuration</strong></p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>()</a></code></pre></div>
 <p><strong>Set your configuration</strong></p>
 <p>Use your github username and and the email you used to sign-up on GitHub</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb491-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>(</a>
-<a class="sourceLine" id="cb491-2" data-line-number="2">    <span class="dt">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</a>
-<a class="sourceLine" id="cb491-3" data-line-number="3">    <span class="dt">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb496-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>(</a>
+<a class="sourceLine" id="cb496-2" data-line-number="2">    <span class="dt">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</a>
+<a class="sourceLine" id="cb496-3" data-line-number="3">    <span class="dt">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</a></code></pre></div>
 </div>
 <div id="set-up-github-pat" class="section level2">
 <h2>🚦 Set up GITHUB PAT</h2>
 <p>To authenticate with GitHub, you’ll also need a Personal Authorisation Token (PAT).</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">browse_github_pat</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb497-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">browse_github_pat</span>()</a></code></pre></div>
 <p>will open up the GitHub panel to generate your PAT.</p>
 <p><img src="assets/browse_github.png" height="300px"></p>
 <p>Copy it and paste it into your <code>.Renviron</code> file as system variable <code>GITHUB_PAT</code>.</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb493-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb498-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</a></code></pre></div>
 <p>Use <code>edit_r_environ()</code> to open and edit your <code>.Renviron</code> file</p>
 </div>
 <div id="section" class="section level2">
@@ -596,7 +600,7 @@ Image: xkcd CC BY-NC 2.5
 <div id="turn-our-project-into-a-repository" class="section level2">
 <h2>Turn our project into a repository</h2>
 <p>If you didn’t initialise git at the beginning of your project, you can do so now with:</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb494-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb499-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
 <p><em>This however commits everything in one go. So not ideal! I recommend using git from the start of every project.</em></p>
 </div>
 <div id="commiting-files" class="section level2">
@@ -618,7 +622,7 @@ Image: xkcd CC BY-NC 2.5
 <h2>🚦 Create a README</h2>
 <p>Our repository also needs a <code>README</code>. We only need a simple plain markdown (<code>.md</code>) file for our README.</p>
 <p>We can create a template using <code>usethis::use_readme_md()</code></p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_readme_md</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb500-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_readme_md</span>()</a></code></pre></div>
 <p><img src="assets/use-readme.png" /></p>
 </div>
 <div id="edit-readme" class="section level2">
@@ -633,7 +637,7 @@ Image: xkcd CC BY-NC 2.5
 <div id="create-repository" class="section level2">
 <h2>Create repository</h2>
 <p>Now that we have set up a <code>GITHUP_PAT</code>, we can use function <code>usethis::use_github()</code> to create a GitHub repository for our project:</p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb496-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb501-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
 <p><img src="assets/use-github.png" /></p>
 </div>
 <div id="push-files" class="section level2">
@@ -650,7 +654,7 @@ Image: xkcd CC BY-NC 2.5
 <li><p>In the last plot of your <code>.index.Rmd</code>, see if you can add a <strong>smooth</strong> for each continent to generate the plot below (should be just one extra <code>ggplot2</code> function added to the plot). Look for the appropriate <code>geom_*</code> function.</p></li>
 <li><p>See also if you can include an interactive <code>plotly</code> version</p></li>
 </ul>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-277-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-282-1.png" width="672" /></p>
 </div>
 <div id="commit-your-changes" class="section level2">
 <h2>Commit your changes</h2>

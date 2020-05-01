@@ -29,5 +29,5 @@ individual.csv,northing,"Geographic coordinate specifying the north-south positi
 individual.csv,utm_zone,UTM zone,NA
 individual.csv,elevation,Elevation (in meters) above sea level,meter
 individual.csv,elevation_uncertainty,Uncertainty in elevation values (in meters),meter
-individual.csv,stem_lat,NA,NA
-individual.csv,stem_lon,NA,NA
+individual.csv,stem_lat,"The geographic latitude (in decimal degrees, WGS84) of individual plants",decimalDegree
+individual.csv,stem_lon,"The geographic latitude (in decimal degrees, WGS84) of individual plants",decimalDegree

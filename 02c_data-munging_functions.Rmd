@@ -162,11 +162,19 @@ geosphere::destPoint(p = c(x$decimalLongitude, x$decimalLatitude),
 
 This looks like it's working nicely. Let's also check that it vectorises easily, i.e. that if we give it vectors of values instead of single ones that it works properly.
 
-```{r}
-geosphere::destPoint(p = cbind(individual$decimalLongitude, individual$decimalLatitude), 
-                     b = individual$stemAzimuth, d = individual$stemDistance) %>%
-    head()
+```{r, error=TRUE}
+x <- individual[1:5,]
+
+geosphere::destPoint(p = c(x$decimalLongitude, x$decimalLatitude), 
+                     b = x$stemAzimuth, d = x$stemDistance)
+
 ```
+
+```{r}
+geosphere::destPoint(p = cbind(x$decimalLongitude, x$decimalLatitude), 
+                     b = x$stemAzimuth, d = x$stemDistance)
+```
+
 
 Excellent! I now get a two dimensional matrix of with two columns and a row for each input element! This is looking promising.
 
@@ -233,8 +241,8 @@ get_stem_location <- function(decimalLongitude, decimalLatitude, stemAzimuth, st
 Now let's test it out with vectors from `individual`.
 
 ```{r}
-test <- get_stem_location(individual$decimalLongitude, individual$decimalLatitude, 
-                  individual$stemAzimuth, individual$stemDistance)
+test <- get_stem_location(x$decimalLongitude, x$decimalLatitude, 
+                  x$stemAzimuth, x$stemDistance)
 test
 ```
 
@@ -355,8 +363,8 @@ get_stem_location <- function(decimalLongitude, decimalLatitude, stemAzimuth, st
 Let's test it again:
 
 ```{r}
-get_stem_location(individual$decimalLongitude, individual$decimalLatitude, 
-                  individual$stemAzimuth, individual$stemDistance)
+get_stem_location(x$decimalLongitude, x$decimalLatitude, 
+                  x$stemAzimuth, x$stemDistance)
 ```
 
 And now, remove any excess code form our script and save.

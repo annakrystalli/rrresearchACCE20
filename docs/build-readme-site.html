@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Indexing and subsetting | Reproducible Research Data &amp; Project Management in R</title>
+  <title>Build README site | Reproducible Research Data &amp; Project Management in R</title>
   <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Indexing and subsetting | Reproducible Research Data &amp; Project Management in R" />
+  <meta property="og:title" content="Build README site | Reproducible Research Data &amp; Project Management in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="annakrystalli/rrresearchACCE20" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Indexing and subsetting | Reproducible Research Data &amp; Project Management in R" />
+  <meta name="twitter:title" content="Build README site | Reproducible Research Data &amp; Project Management in R" />
   
   <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-types-structures-and-classes.html"/>
-<link rel="next" href="the-tidyverse-way.html"/>
+<link rel="prev" href="dataspice.html"/>
+<link rel="next" href="analysing.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -225,8 +225,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html"><i class="fa fa-check"></i>Create the metadata folder</a></li>
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#record-metadata"><i class="fa fa-check"></i>Record metadata</a></li>
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#create-metadata-json-ld-file"><i class="fa fa-check"></i>Create metadata json-ld file</a></li>
-<li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#build-readme-site"><i class="fa fa-check"></i>Build README site</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="build-readme-site.html"><a href="build-readme-site.html"><i class="fa fa-check"></i>Build README site</a></li>
 <li class="part"><span><b>V Analysing and presenting analyses</b></span></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html"><i class="fa fa-check"></i>Literate programming in rmarkdown</a><ul>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#why-is-this-important-in-science"><i class="fa fa-check"></i>Why is this important in science:</a></li>
@@ -420,436 +420,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="indexing-and-subsetting" class="section level1">
-<h1>Indexing and subsetting</h1>
-<blockquote>
-<p>R has many powerful subset operators. Mastering them will allow you to
-easily perform complex operations on any kind of dataset.</p>
-</blockquote>
-<p>There many different ways we can subset any kind of object, and three
-different subsetting operators for the different data structures.</p>
-<div id="subsetting-vectors" class="section level2">
-<h2>Subsetting vectors</h2>
-<p>Let’s start by examining subsetting in the simplest data structure, the vector.</p>
-<blockquote>
-<p>Subsetting a vector always returns another vector.</p>
-</blockquote>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">4</span><span class="op">:</span><span class="dv">7</span></a>
-<a class="sourceLine" id="cb139-2" data-line-number="2">x</a></code></pre></div>
-<pre><code>## [1] 4 5 6 7</code></pre>
-<div id="subsetting-using-and-elements-indices" class="section level3">
-<h3>Subsetting using <code>[</code> and elements indices</h3>
-<div id="extracting-single-elements" class="section level4">
-<h4>Extracting single elements</h4>
-<p>To extract elements of a vector we can use the square bracket operator (<code>[</code>) and the target element index, starting from one:</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1">x[<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">x[<span class="dv">4</span>]</a></code></pre></div>
-<pre><code>## [1] 7</code></pre>
-<p>It may look different, but the square brackets operator is a function and means “get me the nth element”.</p>
-<p>If we ask for an index beyond the length of the vector, R will return a missing value:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">x[<span class="dv">6</span>]</a></code></pre></div>
-<pre><code>## [1] NA</code></pre>
-<p>If we ask for the 0th element, we get an empty vector:</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1">x[<span class="dv">0</span>]</a></code></pre></div>
-<pre><code>## integer(0)</code></pre>
+<div id="build-readme-site" class="section level1">
+<h1>Build README site</h1>
+<p>Finally, we can <strong>use the <code>dataspice.json</code> file</strong> we just created to <strong>produce an informative README web page</strong> to include with our dataset for humans to enjoy! 🤩</p>
+<p>We use function <strong><code>dataspice::build_site()</code></strong> which <strong>creates file <code>index.html</code></strong> in the <code>docs/</code> folder of your project (which it creates if it doesn’t already exist).</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" data-line-number="1"><span class="kw">build_site</span>()</a></code></pre></div>
+<p><br></p>
+<div id="view-the-resulting-file-here" class="section level4">
+<h4>View the resulting file <a href="dataspice/index.html">here</a></h4>
+<p><br></p>
+<p>Here’s a screen shot!</p>
+<p><img src="assets/index_webshot.png" width="100%" /></p>
+<hr />
 </div>
-<div id="extracting-multiple-elements" class="section level4">
-<h4>Extracting multiple elements</h4>
-<p>We can also ask for multiple elements at once:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">x[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</a></code></pre></div>
-<pre><code>## [1] 4 6</code></pre>
-<p>Or slices of the vector:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1">x[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>]</a></code></pre></div>
-<pre><code>## [1] 5 6 7</code></pre>
-<p>We can ask for the same element multiple times:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1">x[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>)]</a></code></pre></div>
-<pre><code>## [1] 4 4 6</code></pre>
-</div>
-<div id="excluding-and-removing-elements" class="section level4">
-<h4>Excluding and removing elements</h4>
-<p>If we use a negative number as the index of a vector, R will return
-every element <em>except</em> for the one specified:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">x[<span class="op">-</span><span class="dv">2</span>]</a></code></pre></div>
-<pre><code>## [1] 4 6 7</code></pre>
-<p>We can skip multiple elements:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">x[<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">-5</span>)]  <span class="co"># or x[-c(1,5)]</span></a></code></pre></div>
-<pre><code>## [1] 5 6 7</code></pre>
-<div class="alert alert-warning">
-<p>In general, e aware that the result of subsetting using indices could change if the vector is reordered.</p>
-</div>
-</div>
-</div>
-<div id="subsetting-using-element-names" class="section level3">
-<h3>Subsetting using element names</h3>
-<p>If the vector has a name attribute, we can subset the vector more precisely using the element’s name</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</a>
-<a class="sourceLine" id="cb159-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb159-3" data-line-number="3">x[<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>)]</a></code></pre></div>
-<pre><code>## a c 
-## 4 6</code></pre>
-<div class="alert alert-success">
-<p>Subsetting using names in the most robust way to extract elements. The
-position of various elements can often change when chaining together
-subsetting operations, but the names will always remain the same!</p>
-</div>
-</div>
-<div id="subsetting-using-logical-vectors" class="section level3">
-<h3>Subsetting using logical vectors</h3>
-<p>We can also use any logical vector to subset:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1">x[<span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>)]</a></code></pre></div>
-<pre><code>## c d 
-## 6 7</code></pre>
-<p>Since comparison operators (e.g. <code>&gt;</code>, <code>&lt;</code>, <code>==</code>) evaluate to logical vectors, we can also
-use them to succinctly subset vectors: the following statement gives
-the same result as the previous one.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1">x[x <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>]</a></code></pre></div>
-<pre><code>## c d 
-## 6 7</code></pre>
-<p>Breaking it down, this statement first evaluates <code>x &gt; 5</code>, generating
-a logical vector <code>c(FALSE, FALSE, TRUE, TRUE)</code>, and then
-selects the elements of <code>x</code> corresponding to the <code>TRUE</code> values.</p>
-<p>We can use <code>==</code> to mimic the previous method of indexing by name
-(remember you have to use <code>==</code> rather than <code>=</code> for comparisons):</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1">x[<span class="kw">names</span>(x) <span class="op">==</span><span class="st"> &quot;a&quot;</span>]</a></code></pre></div>
-<pre><code>## a 
-## 4</code></pre>
-<div class="alert alert-warning">
-<p>Avoid using <code>==</code> to compare numbers! See <a href="https://dplyr.tidyverse.org/reference/near.html">function <code>dplyr::near()</code></a> instead.</p>
-</div>
-<p>We also might want to subset using a vector of potential values, that might not necessarily have matches in <code>x</code>.</p>
-<p>In this case we can use <code>%in%</code></p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1">x[<span class="kw">names</span>(x) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;e&quot;</span>)]</a></code></pre></div>
-<pre><code>## a c 
-## 4 6</code></pre>
-<div id="excluding-named-elements" class="section level4">
-<h4>Excluding named elements</h4>
-<p>Excluding or removing named elements is a little harder.</p>
-<p>If we try to skip one named element by negating the string, R complains (slightly obscurely) that it doesn’t know how to take the negative of a string:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1">x[<span class="op">-</span><span class="st">&quot;a&quot;</span>]</a></code></pre></div>
-<pre><code>## Error in -&quot;a&quot;: invalid argument to unary operator</code></pre>
-<p>However, we can use the <code>!=</code> (not-equals) operator to construct a logical vector that will do what we want:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">x[<span class="kw">names</span>(x) <span class="op">!=</span><span class="st"> &quot;a&quot;</span>]</a></code></pre></div>
-<pre><code>## b c d 
-## 5 6 7</code></pre>
-<p>Excluding multiple named indices requires a different tactic through.</p>
-<p>Suppose we want to drop the <code>&quot;a&quot;</code> and <code>&quot;c&quot;</code> elements, so we try this:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1">x[<span class="kw">names</span>(x) <span class="op">!=</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>)]</a></code></pre></div>
-<pre><code>## b c d 
-## 5 6 7</code></pre>
-<p>R did <em>something</em>, but it gave us a warning that we ought to pay attention to - and it apparently <em>gave us the wrong answer</em> (the <code>&quot;c&quot;</code> element is still included in the vector)!</p>
-<p>This happens because we are trying to compare two vectors (<code>names(x)</code> and <code>c(&quot;a&quot;,&quot;c&quot;)</code>) and comparison operators are automatically vectorised in such a case. So in effect, R is comparing <code>&quot;a&quot;</code> in <code>names(x)</code> to <code>&quot;a&quot;</code> in <code>c(&quot;a&quot;,&quot;c&quot;)</code> and returning <code>FALSE</code> (ie <code>&quot;a&quot; != &quot;a&quot; = FALSE</code>), then <code>&quot;b&quot;</code> in <code>names(x)</code> to <code>&quot;c&quot;</code> in <code>c(&quot;a&quot;,&quot;c&quot;)</code> and returning <code>TRUE</code>. What happens with <code>&quot;c&quot;</code> in <code>names(x)</code> is R recuycles the comparison vector <code>c(&quot;a&quot;,&quot;c&quot;)</code> and starts again with <code>&quot;a&quot;</code>. <code>&quot;c&quot;</code> is not equal to <code>&quot;a&quot;</code> so <code>&quot;a&quot; != &quot;c&quot;</code> returns <code>TRUE</code> and the element is kept.</p>
-<p>On the other hand this works, but only by chance:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1">x[<span class="kw">names</span>(x) <span class="op">!=</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>)]</a></code></pre></div>
-<pre><code>## c d 
-## 6 7</code></pre>
-<p>To perform such a subset robustly, we need to combine <code>%in%</code> and <code>!</code>.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1">x[<span class="op">!</span><span class="kw">names</span>(x) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>)]</a></code></pre></div>
-<pre><code>## b d 
-## 5 7</code></pre>
-<p>This checks whether names of <code>x</code> take any value of the values in <code>c(&quot;a&quot;,&quot;c&quot;)</code>, returning the elements where the condition is <code>TRUE</code>. The <code>!</code> then negates the selection, returning only the elements whose names are not contained in <code>c(&quot;a&quot;,&quot;c&quot;)</code>.</p>
-</div>
-</div>
-</div>
-<div id="matrix-subsetting" class="section level2">
-<h2>Matrix subsetting</h2>
-<blockquote>
-<p>As matrices are just 2d vectors, all the subsetting operations using the <code>[</code> can also be applied to matrices.</p>
-</blockquote>
-<div id="subsetting-using-element-indices" class="section level3">
-<h3>Subsetting using element indices</h3>
-<p>Let’s create a matrix</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">ncol=</span><span class="dv">4</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb179-2" data-line-number="2">m</a></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    4    7   10
-## [2,]    2    5    8   11
-## [3,]    3    6    9   12</code></pre>
-<div class="alert alert-info">
-<p>Indexing matrices with <code>[</code> takes two arguments: <strong>the first expression is applied to the rows, the second
-to the columns:</strong></p>
-</div>
-<p>Say we want the <strong>2 and 3rd rows</strong> of the <strong>last and first column</strong> (in that order) of our matrix. We can use all the subsetting we learned for vectors and apply them to each dimension of our matrix.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1">m[<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>, <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>)]</a></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]   11    2
-## [2,]   12    3</code></pre>
-<div id="subsetting-whole-rows-or-columns" class="section level4">
-<h4>Subsetting whole rows or columns</h4>
-<p>We can leave the first or second arguments blank to retrieve all the
-rows or columns respectively:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1">m[, <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</a></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    4    7
-## [2,]    5    8
-## [3,]    6    9</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1">m[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),]</a></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    2    5    8   11
-## [2,]    3    6    9   12</code></pre>
-<p>If we only access one row or column, R will automatically convert the result
-to a vector:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">m[<span class="dv">3</span>,]</a></code></pre></div>
-<pre><code>## [1]  3  6  9 12</code></pre>
-<p>If we want to keep the output as a matrix, we need to specify a <em>third</em> argument;
-<code>drop = FALSE</code>:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1">m[<span class="dv">3</span>, , drop=<span class="ot">FALSE</span>]</a></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    3    6    9   12</code></pre>
-<div class="alert alert-info">
-<p>Tip: Higher dimensional arrays</p>
-<p>When dealing with multi-dimensional arrays, each argument to <code>[</code> corresponds to a dimension. For example, a 3D array, the first three arguments correspond to the rows, columns, and depth dimension.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="subsetting-lists" class="section level2">
-<h2>Subsetting lists</h2>
-<blockquote>
-<p>There are three functions used to subset lists and extract individual elements: <code>[</code>, <code>[[</code>, and <code>$</code>.</p>
-</blockquote>
-<div id="subsetting-list-elements" class="section level3">
-<h3>Subsetting list elements</h3>
-<p>Using <code>[</code> will always return a list. If you want to <em>subset</em> a list, but not
-<em>extract</em> an element, then you will likely use <code>[</code>.</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;ACCE DTP&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris))</a></code></pre></div>
-<div id="subsetting-by-element-indices" class="section level4">
-<h4>Subsetting by element indices</h4>
-<p>As with vectors, we can use element indices and <code>[</code> to subset lists.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">xlist[<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>## $a
-## [1] &quot;ACCE DTP&quot;</code></pre>
-<p>This returns a <em>list with one element</em>.</p>
-<p>We can use multiple indices to subset multiple list elements:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">xlist[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a></code></pre></div>
-<pre><code>## $a
-## [1] &quot;ACCE DTP&quot;
-## 
-## $b
-##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-</div>
-<div id="subsetting-by-name" class="section level4">
-<h4>Subsetting by name</h4>
-<p>We can also use names:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">xlist[<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)]</a></code></pre></div>
-<pre><code>## $a
-## [1] &quot;ACCE DTP&quot;
-## 
-## $b
-##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<p>It is accessing the list as if it were a vector and returning a list.</p>
-<p>Comparison operations involving the contents of list elements however won’t work as they are not accessible at the level of <code>[</code> indexing.</p>
-</div>
-</div>
-<div id="extracting-individual-elements" class="section level3">
-<h3>Extracting individual elements</h3>
-<blockquote>
-<p>Extracting individual elements allow us to access the objects contained in a list, which can be any type of object. Hence the result depends on the object each element contains.</p>
-</blockquote>
-<p>To extract individual elements of a list, we use the double-square bracket function: <code>[[</code>.</p>
-<div id="extracting-by-element-index" class="section level4">
-<h4>Extracting by element index</h4>
-<p>Again we can use element indices to extract the object contained in an element.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">xlist[[<span class="dv">2</span>]]</a></code></pre></div>
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<p>Notice that now the result is a vector, not a list, which is what the second element contained.</p>
-<p>You can’t extract more than one element at once:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">xlist[[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]]</a></code></pre></div>
-<pre><code>## Error in xlist[[1:2]]: subscript out of bounds</code></pre>
-<p>Nor use it to skip elements:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1">xlist[[<span class="op">-</span><span class="dv">1</span>]]</a></code></pre></div>
-<pre><code>## Error in xlist[[-1]]: attempt to select more than one element in get1index &lt;real&gt;</code></pre>
-</div>
-<div id="extracting-by-element-name" class="section level4">
-<h4>Extracting by element name</h4>
-<p>We can however use single names to extract elements:</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">xlist[[<span class="st">&quot;a&quot;</span>]]</a></code></pre></div>
-<pre><code>## [1] &quot;ACCE DTP&quot;</code></pre>
-<div id="the-operator" class="section level5">
-<h5>The <code>$</code> operator</h5>
-<p>The <code>$</code> operator is a shorthand way for extracting single elements by name:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1">xlist<span class="op">$</span>data</a></code></pre></div>
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-</div>
-<div id="chlg-list-subset" class="section level5">
-<h5>List subsetting challenge</h5>
-<p>Given the following list:</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;ACCE DTP&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris))</a></code></pre></div>
-<p>and using your knowledge of both list and vector subsetting, extract the number 2 from xlist.</p>
-<p><em>Hint: the number 2 is contained within the “b” item in the list.</em></p>
-<p><a href="solutions.html#csol-list-subset">Solution</a></p>
-</div>
-</div>
-</div>
-</div>
-<div id="subsetting-data.frames" class="section level2">
-<h2>Subsetting data.frames</h2>
-<blockquote>
-<p>Data frames are lists underneath the hood, so similar rules
-apply subsetting rules apply. However they are also two dimensional objects.</p>
-</blockquote>
-<div id="subsetting-data.frames-as-a-list" class="section level3">
-<h3>Subsetting data.frames as a list</h3>
-<div id="using-to-subset" class="section level4">
-<h4>Using <code>[</code> to subset</h4>
-<p>Using the <strong><code>[</code> operator with one argument</strong> will act the same way as for lists, where each list
-element corresponds to a column. The resulting object will be a data.frame:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">trees[<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>##    Girth
-## 1    8.3
-## 2    8.6
-## 3    8.8
-## 4   10.5
-## 5   10.7
-## 6   10.8
-## 7   11.0
-## 8   11.0
-## 9   11.1
-## 10  11.2
-## 11  11.3
-## 12  11.4
-## 13  11.4
-## 14  11.7
-## 15  12.0
-## 16  12.9
-## 17  12.9
-## 18  13.3
-## 19  13.7
-## 20  13.8
-## 21  14.0
-## 22  14.2
-## 23  14.5
-## 24  16.0
-## 25  16.3
-## 26  17.3
-## 27  17.5
-## 28  17.9
-## 29  18.0
-## 30  18.0
-## 31  20.6</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">trees[<span class="st">&quot;Girth&quot;</span>]</a></code></pre></div>
-<pre><code>##    Girth
-## 1    8.3
-## 2    8.6
-## 3    8.8
-## 4   10.5
-## 5   10.7
-## 6   10.8
-## 7   11.0
-## 8   11.0
-## 9   11.1
-## 10  11.2
-## 11  11.3
-## 12  11.4
-## 13  11.4
-## 14  11.7
-## 15  12.0
-## 16  12.9
-## 17  12.9
-## 18  13.3
-## 19  13.7
-## 20  13.8
-## 21  14.0
-## 22  14.2
-## 23  14.5
-## 24  16.0
-## 25  16.3
-## 26  17.3
-## 27  17.5
-## 28  17.9
-## 29  18.0
-## 30  18.0
-## 31  20.6</code></pre>
-</div>
-<div id="using-to-extract" class="section level4">
-<h4>Using <code>[[</code> to extract</h4>
-<p>Similarly, <code>[[</code> will act to extract <em>a single column</em> as a vector:</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">trees[[<span class="dv">1</span>]]</a></code></pre></div>
-<pre><code>##  [1]  8.3  8.6  8.8 10.5 10.7 10.8 11.0 11.0 11.1 11.2 11.3 11.4 11.4 11.7 12.0
-## [16] 12.9 12.9 13.3 13.7 13.8 14.0 14.2 14.5 16.0 16.3 17.3 17.5 17.9 18.0 18.0
-## [31] 20.6</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">trees[[<span class="st">&quot;Girth&quot;</span>]]</a></code></pre></div>
-<pre><code>##  [1]  8.3  8.6  8.8 10.5 10.7 10.8 11.0 11.0 11.1 11.2 11.3 11.4 11.4 11.7 12.0
-## [16] 12.9 12.9 13.3 13.7 13.8 14.0 14.2 14.5 16.0 16.3 17.3 17.5 17.9 18.0 18.0
-## [31] 20.6</code></pre>
-<p>And <code>$</code> provides a convenient shorthand to extract columns by name:</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">trees<span class="op">$</span>Girth</a></code></pre></div>
-<pre><code>##  [1]  8.3  8.6  8.8 10.5 10.7 10.8 11.0 11.0 11.1 11.2 11.3 11.4 11.4 11.7 12.0
-## [16] 12.9 12.9 13.3 13.7 13.8 14.0 14.2 14.5 16.0 16.3 17.3 17.5 17.9 18.0 18.0
-## [31] 20.6</code></pre>
-</div>
-</div>
-<div id="subsetting-data.frames-as-a-matrix" class="section level3">
-<h3>Subsetting data.frames as a matrix</h3>
-<p>With two arguments, <code>[</code> behaves the same way as for matrices:</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">trees[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="kw">c</span>(<span class="st">&quot;Girth&quot;</span>, <span class="st">&quot;Volume&quot;</span>)]</a></code></pre></div>
-<pre><code>##   Girth Volume
-## 1   8.3   10.3
-## 2   8.6   10.3
-## 3   8.8   10.2
-## 4  10.5   16.4
-## 5  10.7   18.8</code></pre>
-<p>If we subset a single row, the result will be a data.frame (because
-the elements are mixed types):</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">trees[<span class="dv">3</span>,]</a></code></pre></div>
-<pre><code>##   Girth Height Volume
-## 3   8.8     63   10.2</code></pre>
-<p>But for a single column the result will be a vector.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">trees[, <span class="st">&quot;Girth&quot;</span>]</a></code></pre></div>
-<pre><code>##  [1]  8.3  8.6  8.8 10.5 10.7 10.8 11.0 11.0 11.1 11.2 11.3 11.4 11.4 11.7 12.0
-## [16] 12.9 12.9 13.3 13.7 13.8 14.0 14.2 14.5 16.0 16.3 17.3 17.5 17.9 18.0 18.0
-## [31] 20.6</code></pre>
-<p>This can be changed with the third argument, <code>drop = FALSE</code>).</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">trees[, <span class="st">&quot;Girth&quot;</span>, drop=<span class="ot">FALSE</span>]</a></code></pre></div>
-<pre><code>##    Girth
-## 1    8.3
-## 2    8.6
-## 3    8.8
-## 4   10.5
-## 5   10.7
-## 6   10.8
-## 7   11.0
-## 8   11.0
-## 9   11.1
-## 10  11.2
-## 11  11.3
-## 12  11.4
-## 13  11.4
-## 14  11.7
-## 15  12.0
-## 16  12.9
-## 17  12.9
-## 18  13.3
-## 19  13.7
-## 20  13.8
-## 21  14.0
-## 22  14.2
-## 23  14.5
-## 24  16.0
-## 25  16.3
-## 26  17.3
-## 27  17.5
-## 28  17.9
-## 29  18.0
-## 30  18.0
-## 31  20.6</code></pre>
-</div>
-</div>
-<div id="advanced-r-cheat-sheet" class="section level2">
-<h2>Advanced R Cheat Sheet</h2>
-<div class="figure"><span id="fig:unnamed-chunk-109"></span>
-<iframe src="https://rstudio.com/wp-content/uploads/2016/02/advancedR.pdf" width="672" height="400px">
-</iframe>
-<p class="caption">
-Figure 1: Environments, data Structures, Functions, Subsetting and more by Arianne Colton and Sean Chen
-</p>
-</div>
+<div id="back-to-the-outro-slides" class="section level4">
+<h4><em>back to the <a href="slides/04_metadata.html#30">outro slides</a></em></h4>
 
 </div>
 </div>
@@ -858,8 +443,8 @@ Figure 1: Environments, data Structures, Functions, Subsetting and more by Arian
           </div>
         </div>
       </div>
-<a href="data-types-structures-and-classes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-tidyverse-way.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dataspice.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

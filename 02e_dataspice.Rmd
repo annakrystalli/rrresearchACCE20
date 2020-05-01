@@ -166,6 +166,11 @@ knitr::include_graphics("assets/edit_biblio.png")
 
 Additional information required to complete these fields can be found on the [**NEON data portal page for this dataset**](http://data.neonscience.org/data-product-view?dpCode=DP1.10098.001) and the **`data-raw/wood-survey-data-master` [README.md](data-raw/wood-survey-data-master/README.md)**
 
+
+
+**Citation:**
+_National Ecological Observatory Network. 2020. Data Products: DP1.10098.001.  Provisional data downloaded from http://data.neonscience.org on 2020-01-15. Battelle, Boulder, CO, USA_
+
 Here's [an example to get you started](data/metadata/biblio-half.csv)
 
 </div>
@@ -241,3 +246,57 @@ Now that all our metadata files are complete, we can **compile it all into a str
 write_spice()
 ```
 
+```{r, eval=FALSE}
+install.packages(c("jsonlite", "listviewer"))
+```
+
+
+```{r}
+jsonlite::read_json(here::here("data", "metadata", "dataspice.json")) %>% 
+    listviewer::jsonedit()
+
+```
+
+
+**Publishing this file on the web means it will be indexed by Google Datasets search!** `r emo::ji("smiley")` `r emo::ji("+1")` 
+
+<br>
+
+***
+
+## Build README site
+
+Finally, we can **use the `dataspice.json` file** we just created to **produce an informative README web page** to include with our dataset for humans to enjoy! `r emo::ji("star_struck")`
+
+We use function **`dataspice::build_site()`** which **creates file `index.html`** in the `docs/` folder of your project (which it creates if it doesn't already exist).
+
+
+```{r, eval=FALSE}
+build_site()
+```
+
+<br> 
+
+### View the resulting file [here](dataspice/index.html)
+
+<br>
+
+Here's a screen shot!
+
+
+
+```{r, out.width="100%", echo=FALSE}
+knitr::include_graphics("assets/index_webshot.png")
+```
+
+
+### Example completed metadata files
+
+- [`access.csv`](https://github.com/annakrystalli/rrresearchACCE20/blob/master/data/metadata/access.csv)
+- [`attributes.csv`](https://github.com/annakrystalli/rrresearchACCE20/blob/master/data/metadata/attributes.csv)
+- [`biblio.csv`](https://github.com/annakrystalli/rrresearchACCE20/blob/master/data/metadata/biblio.csv)
+- [`creators.csv`](https://github.com/annakrystalli/rrresearchACCE20/blob/master/data/data/metadata/creators.csv)
+
+***
+
+ _back to the [outro slides](slides/04_metadata.html#30)_
