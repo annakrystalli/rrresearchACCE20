@@ -249,21 +249,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#git-github-rstudio"><i class="fa fa-check"></i>Git, Github &amp; Rstudio</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#demo"><i class="fa fa-check"></i>Demo</a></li>
 <li><a href="version-control-with-git.html#how-does-git-work">How does <code>Git</code> work?</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git-github"><i class="fa fa-check"></i>💻 Configure git &amp; GitHub</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git-github"><i class="fa fa-check"></i>Configure git &amp; GitHub</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#version-controlling-projects"><i class="fa fa-check"></i>Version Controlling projects</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-a-readme"><i class="fa fa-check"></i>Create a README</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#edit-readme"><i class="fa fa-check"></i>Edit README</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository-on-github"><i class="fa fa-check"></i>🚦 Create repository on GitHub</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository"><i class="fa fa-check"></i>Create repository</a></li>
-<li><a href="version-control-with-git.html#go-to-repo-settings">Go to repo <strong>Settings</strong></a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository-on-github"><i class="fa fa-check"></i>Create repository on GitHub</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#host-html-content-on-github"><i class="fa fa-check"></i>Host html content on GitHub</a></li>
 <li><a href="version-control-with-git.html#enable-gh-pages">Enable <code>gh-pages</code></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#pushing-files"><i class="fa fa-check"></i>pushing files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-your-changes"><i class="fa fa-check"></i>Commit your changes</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#deleting-files"><i class="fa fa-check"></i>🚦 Deleting files</a></li>
-<li><a href="version-control-with-git.html#gitignore"><code>.gitignore</code></a></li>
-<li><a href="version-control-with-git.html#gitignore-regex"><code>gitignore</code> regex</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#tracking-changes"><i class="fa fa-check"></i>Tracking changes</a></li>
+<li><a href="version-control-with-git.html#ignoring-files-through-.gitignore">Ignoring files through <code>.gitignore</code></a></li>
+<li><a href="version-control-with-git.html#git-tips"><code>Git</code> tips</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#further-resources"><i class="fa fa-check"></i>Further Resources</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#never-forget"><i class="fa fa-check"></i>Never forget</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="collaborative-github.html"><a href="collaborative-github.html"><i class="fa fa-check"></i>Collaborative GitHub</a></li>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a><ul>
@@ -428,15 +422,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>An abstraction which makes <strong>thinking, reasoning and communicating graphics easier</strong>.</p>
 </blockquote>
 <p>Developed by Leland Wilkinson, particularly in <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/wics.118">“The Grammar of Graphics” 1999/2005</a>,</p>
-<p><img src="assets/gog.jpg" width="260" /></p>
 <p>Describes a consistent syntax for the construction of a wide range of complex graphics by a concise description of their components.</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*MMZuYgeC_YjXNC1r4D4sog.png" width="60%" /></p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*w1RnmuE7VRK9aCAbtW9KAQ.gif" width="40%" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*MMZuYgeC_YjXNC1r4D4sog.png" width="90%" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*w1RnmuE7VRK9aCAbtW9KAQ.gif" width="90%" /></p>
 </div>
 <div id="building-a-plot-from-its-components." class="section level4">
 <h4>Building a plot from its components.</h4>
 <div id="start-with-some-tabular-data-mtcars" class="section level5">
-<h5>start with some tabular data: <code>mtcars</code></h5>
+<h5>Start with some tabular data: <code>mtcars</code></h5>
 <pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
@@ -473,26 +466,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="encoding-variables-on-axes" class="section level5">
 <h5>Encoding variables on axes</h5>
-<p>The first way we can visualise a single variable would be to plot it on a single axis.</p>
+<p>The first way we can visualise a single variable is to plot it on a single axis.</p>
 <p>For example, here’s variable <code>mpg</code> (miles per gallon) plotted along a single axis:</p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-254-1.png" width="672" /></p>
+<p>We could use the same way to visualise a second variable, <code>hp</code> (horsepower)</p>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
-<p>We could use the same to visualise a second variable, <code>hp</code> (horsepower)</p>
+<p>We can combine these two axes to visualise both the values of the data on each axis as well as the relationship of the two variables:</p>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-256-1.png" width="672" /></p>
-<p>When we can combine these two axes, we can visualise both the values of the data on each axis as well as the relationship of the two variables:</p>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
 </div>
 <div id="encoding-a-third-variable-using-colour" class="section level5">
 <h5>Encoding a third variable using colour</h5>
-<p>Now that we’ve used two axes, we might want to consider another attribute to encode a thrid variable with.</p>
+<p>Now that we’ve used our two axes, we might want to consider another attribute to encode a third variable with.</p>
 <p>We can use colour to encode <code>cyl</code> (number of cylinders).</p>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-258-1.png" width="672" /></p>
-<blockquote>
-<p>Good visualization can bring out important aspects of data, but visualization can also be used to conceal or mislead.</p>
-</blockquote>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
 </div>
 </div>
 <div id="principles-of-good-data-encoding" class="section level4">
-<h4>principles of good data encoding</h4>
+<h4>Principles of good data encoding</h4>
+<blockquote>
+<p>Good visualization can bring out important aspects of data, but visualization can also be used to conceal or mislead.</p>
+</blockquote>
 <ul>
 <li>Consistency: The properties of the image (visual variables) should match the properties of the data.</li>
 <li>Importance Ordering: Encode the most important information in the most effective way.</li>
@@ -502,29 +495,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 (where better = faster and/or more accurate)</li>
 </ul>
 </div>
-<div id="calling-bullshit" class="section level4">
-<h4><a href="https://callingbullshit.org/">Calling Bullshit</a></h4>
+<div id="check-out-calling-bullshit-data-reasoning-in-a-digital-world" class="section level4">
+<h4>Check out <a href="https://callingbullshit.org/">Calling Bullshit: Data Reasoning in a Digital World</a></h4>
 <ul>
 <li><a href="https://callingbullshit.org/tools/tools_misleading_axes.html">Misleading axes</a></li>
 <li><a href="https://callingbullshit.org/tools/tools_proportional_ink.html">Proportional Ink</a></li>
-</ul>
-</div>
-<div id="marks" class="section level4">
-<h4>marks</h4>
-<ul>
-<li>points</li>
-<li>lines</li>
-<li>areas</li>
-</ul>
-</div>
-<div id="attributes" class="section level4">
-<h4>attributes</h4>
-<p>appearance properties of marks</p>
-<ul>
-<li>colour</li>
-<li>size</li>
-<li>shape</li>
-<li>position</li>
 </ul>
 </div>
 </div>
@@ -532,7 +507,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="graphics-in-r" class="section level2">
 <h2>Graphics in R</h2>
 <p>The R language has extensive graphical capabilities.</p>
-<p>Graphics in R may be created by many different methods including base graphics and more advanced plotting packages such as lattice.</p>
+<p>Graphics in R may be created by many different methods including base graphics and more advanced plotting packages such as lattice and ggplot2.</p>
 <p>You’ll find a rich selection of graphs in R at <a href="https://www.r-graph-gallery.com/">The R Graph Gallery</a></p>
 <iframe src="https://www.r-graph-gallery.com/" width="80%" height="400px">
 </iframe>
@@ -557,6 +532,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ggplot2-in-practice.-plotting-mtcars" class="section level3">
 <h3><code>ggplot2</code> in practice. Plotting <code>mtcars</code></h3>
 <p>To demonstrate the use of <code>ggplot2</code> to plot data according to the grammar of graphics, let’s recreate the <code>mtcars</code> plot I just showed you.</p>
+<p>Let’s work in our <code>attic/sketchbook</code> script for now.</p>
 <div id="initialising-a-plot" class="section level4">
 <h4>Initialising a plot</h4>
 <p>The first thing we need to do is initialise a new plot.</p>
@@ -569,7 +545,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
 <a class="sourceLine" id="cb431-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb431-3" data-line-number="3"><span class="kw">ggplot</span>()</a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-264-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-263-1.png" width="672" /></p>
 </div>
 <div id="specifying-the-data" class="section level4">
 <h4>Specifying the data</h4>
@@ -577,28 +553,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The first argument to <code>ggplot()</code> is the data we want to use for plotting, usually a data.frame or tibble. We can pipe that in to <code>ggplot()</code>.</p>
 <div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb432-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>()</a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-265-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-264-1.png" width="672" /></p>
 </div>
 <div id="mapping-to-aesthetics-with-aes" class="section level4">
 <h4>Mapping to Aesthetics with <code>aes()</code></h4>
 <p>Now that we’ve specified our data, we can start encoding our variables to visual properties of our plot.</p>
-<p>Lets start by mapping <code>mpg</code> and <code>hp</code> to our two axes. We do that in the second argument <code>mapping</code>, where we supply the output of function <code>aes()</code>.</p>
+<p>Lets start by mapping <code>mpg</code> and <code>hp</code> to our two axes. We do that in the second argument <code>mapping</code> through function <code>aes()</code>.</p>
 <p>Function <code>aes()</code> is used to specify the <strong>set of aesthetic mappings between variables in the data and visual properties</strong> in our plot.</p>
 <iframe src="https://ggplot2.tidyverse.org/reference/aes.html" width="70%" height="400px">
 </iframe>
-<p>Any aesthetics defined in <code>ggplot()</code> will apply to all subsequent layers unless they are overriden within the individual layers.</p>
+<p>Any aesthetics defined in <code>ggplot(aes())</code> will apply to all subsequent layers unless they are overriden within the individual layers.</p>
 <div id="mapping-variables-to-axes-x-and-y." class="section level5">
 <h5>Mapping variables to axes <code>x</code> and <code>y</code>.</h5>
 <p>In our case, we want to map variable <code>mpg</code> to aesthetic <code>x</code> (the x axis) and variable <code>hp</code> to aesthetic <code>y</code> (the y axis).</p>
 <div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb433-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp))</a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-267-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-266-1.png" width="672" /></p>
 </div>
 </div>
 <div id="adding-geometries-with-geom_" class="section level4">
 <h4>Adding geometries with <code>geom_*()</code></h4>
 <p>Currently, we only have our axes, initialised with reasonably infered scales from the data.</p>
-<p>Following the specification of data and aesthetics, we next need to specify which geometries (or <code>geoms</code>s in ggplot) to use to present the data. The <code>geom</code> is a critical component and describes the type of plot used.</p>
+<p>Following the specification of data and aesthetics, we next need to specify which geometries (or <code>geoms</code>s in ggplot) to use to present the data. The <code>geom</code> is a critical component that describes the type of plot used.</p>
 <p>Several geoms are available in ggplot2 as separate functions:</p>
 <ul>
 <li><code>geom_point()</code> - Scatter plots</li>
@@ -621,7 +597,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb434-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb434-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-269-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-268-1.png" width="672" /></p>
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_point.html" width="70%" height="400px">
 </iframe>
 </div>
@@ -639,14 +615,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb435-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">colour =</span> cyl)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb435-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-271-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-270-1.png" width="672" /></p>
 <p>Now each point is coloured according to the value of <code>cyl</code>.</p>
 <p>Because <code>cyl</code> is numeric, the default behaviour of R is to present it on a continuous scale, hence the colour gradient legend.</p>
 <p>If we want to present <code>cyl</code> as a categorical variable, we can override that behaviour by turning it into a factor using <code>factor()</code></p>
 <div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb436-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">colour =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span></a>
 <a class="sourceLine" id="cb436-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>() </a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-272-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-271-1.png" width="672" /></p>
 </div>
 <div id="adding-a-plot-theme" class="section level4">
 <h4>Adding a plot theme</h4>
@@ -658,7 +634,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb437-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">fill =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span></a>
 <a class="sourceLine" id="cb437-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb437-4" data-line-number="4"><span class="st">    </span><span class="kw">theme_minimal</span>() </a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-274-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-273-1.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -668,7 +644,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s say we are interested in exploring the relationship between individual plant <code>stem_diameter</code> and <code>height</code>.</p>
 <p>Let’s also say that, from previous knowledge, we expect that the relationship may vary according to the <code>growth_form</code></p>
 <p>So lets use data visualisation to explore the properties and relationships between the three variables.</p>
-<p>Start by loading the library and reading in the data as well as <code>dplyr</code> so we have access to the pipe. Let’s also narrow the data down to our variables of interest using <code>dplyr::select()</code></p>
+<p>Start by loading the <code>ggplot2</code> as well as package <code>magrittr</code> so we have access to the pipe. Let’s read in the data and also narrow it down to our variables of interest using <code>dplyr::select()</code></p>
 <div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
 <a class="sourceLine" id="cb438-2" data-line-number="2"><span class="kw">library</span>(magrittr)</a>
 <a class="sourceLine" id="cb438-3" data-line-number="3">individual &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
@@ -721,14 +697,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb443-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> stem_diameter)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb443-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-278-1.png" width="672" /></p>
-<p>The distribution across all our data looks quite skewed towards lower values and even shows a small dip in a certain range of <code>stem_diameter</code>.</p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-277-1.png" width="672" /></p>
+<p>The distribution across all our data looks quite skewed towards lower values and a lomg tail of larger values and even shows a small dip in a certain range of <code>stem_diameter</code>.</p>
 <p>Many statistical tests assume normality of the data and a common tranformation to such skewed numeric data might be to log them. <code>ggplot</code> allows us to perform such tranformations during plotting and prints it as part of the variable axes label.</p>
 <div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb445-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
 <a class="sourceLine" id="cb445-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-279-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-278-1.png" width="672" /></p>
 <p>Still rather wonky and may well violate assumptions of statistical tests down the line but it is slightly better than before so just for demonstration purposes, let’s carry own presenting our data on a log scale.</p>
 <div id="applying-aesthetics-to-geometries" class="section level6">
 <h6>Applying aesthetics to geometries</h6>
@@ -739,7 +715,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb447-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb447-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-280-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-279-1.png" width="672" /></p>
 <p>But this has unexpected results! This happens because we are supplying the colour name within <code>aes()</code>. <code>aes()</code> is for mapping variables to aesthetics and expects a variable name in our data or a vector of values.</p>
 <p>Here we are giving it a single character value which it converts to a factor. It then uses it’s default function for creating categorical colour scales to assign the first colour in that scale (red) to our single factor level <code>&quot;grey&quot;</code>. The important point here is that R is not interpretting <code>&quot;grey&quot;</code> as a colour, but as a categorical variable, as it did for <code>factor(cyl)</code>.</p>
 <p>To specify explicitly the fill colour of our density geom, we instead supply it as an <strong>argument to our <code>geom_density()</code> function, outside of <code>aes()</code></strong>. Let’s change both the <code>colour</code> of the line and <code>fill</code> to <code>&quot;grey&quot;</code>.</p>
@@ -747,7 +723,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb449-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
 <a class="sourceLine" id="cb449-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-281-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-280-1.png" width="672" /></p>
 </div>
 </div>
 <div id="distribution-of-height" class="section level5">
@@ -757,13 +733,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb451-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> height)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb451-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1711 rows containing non-finite values (stat_density).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-282-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-281-1.png" width="672" /></p>
 <p>It’s also a bit skewed so lets go ahead and work with <code>log()</code> values again.</p>
 <div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb453-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height))) <span class="op">+</span></a>
 <a class="sourceLine" id="cb453-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1711 rows containing non-finite values (stat_density).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-283-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-282-1.png" width="672" /></p>
 </div>
 <div id="distribution-of-growth_form" class="section level5">
 <h5>Distribution of <code>growth_form</code></h5>
@@ -775,33 +751,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb455-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb455-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>()</a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-285-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
 <p>We can see that there are very few entries for <code>liana</code> and also a whole bunch of <code>NA</code>s in <code>growth_form</code>. So let’s remove any such rows from our data by using <code>dplyr::filter()</code>. Let’s assign this new data to a new <code>analysis_df</code> and work with that from now on.</p>
 <div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" data-line-number="1">analysis_df &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb456-2" data-line-number="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(growth_form), growth_form <span class="op">!=</span><span class="st"> &quot;liana&quot;</span>) </a></code></pre></div>
 <p>Let’s also order our bars in order of ascending counts. The simplest way to do this is to convert <code>growth_form</code> to a factor and specify the ordering of the factor levels.</p>
-<p>To do that let’s create a vector of <code>growth_form</code> unique values, ordered according to their counts.</p>
+<p>To do that let’s create a vector of <code>growth_form</code> unique values, ordered according to their counts in the raw data.</p>
 <p>We can do this by using <code>table</code> to get the counts, <code>order</code> to order them in ascending order and <code>names</code> to extract the names!</p>
 <div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" data-line-number="1">gf_levels &lt;-<span class="st"> </span><span class="kw">table</span>(analysis_df<span class="op">$</span>growth_form) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb457-2" data-line-number="2"><span class="st">    </span><span class="kw">sort</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb457-3" data-line-number="3"><span class="st">    </span><span class="kw">names</span>()</a></code></pre></div>
-<p>We can then specify the level order using that vector when we mutate to a factor through argument <code>levels</code> in <code>factor</code>.</p>
+<p>We can then specify the level order when we mutate <code>growth_form</code> to a factor using <code>gf_levels</code> through argument <code>levels</code> in <code>factor</code>.</p>
 <div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" data-line-number="1">analysis_df <span class="op">%&lt;&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb458-2" data-line-number="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">growth_form =</span> <span class="kw">factor</span>(growth_form, </a>
 <a class="sourceLine" id="cb458-3" data-line-number="3">                                       <span class="dt">levels =</span> gf_levels))</a></code></pre></div>
+<p><strong>Let’s move those data preparation steps to <code>analysis.R</code></strong></p>
 <p>Let’s have a look at our barplot now:</p>
 <div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb459-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb459-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>()</a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
 <p>The order of the levels in <code>growth_form</code> now dictates the order in which the bars are plotted!</p>
 <p>Finally, let’s just add a few extra touches to make the plot even more visually clear.</p>
-<p>Let’s flip the axis by mapping <code>growth_form</code> to <code>y</code>, that prevents <code>growth_form</code> axes labels to overlap.</p>
+<p>Let’s flip the axis by mapping <code>growth_form</code> to <code>y</code>, that prevents <code>growth_form</code> axes labels from overlapping.</p>
 <p>Let’s also remove the superfluous legend and reduce the opacity of our bars so we can see the scales through them</p>
 <div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb460-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb460-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb460-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
 <p>That’s better.</p>
 <p><strong>Let’s keep this plot and move it to our analysis script as fig 1</strong>.</p>
 </div>
@@ -810,15 +787,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="plotting-multiple-densities-according-to-the-values-of-a-second-variable" class="section level3">
 <h3>Plotting multiple densities according to the values of a second variable</h3>
 <p>When plotting the density distributions we ended up having one plot per variable with little understanding of how values where distributed across the various growth forms.</p>
-<p>However, <code>ggplot</code> and the grammar of graphics allows us to build more informative plots, by combining the information in categorical variables to present cross variable properties in distributions.</p>
-<p>Let’s explore what this means by focusing on the distribution of <code>stem_diameter</code> across the <code>growth_form</code> categories in our <code>sketchbook.R</code>.</p>
+<p>However, <code>ggplot</code> and the grammar of graphics allows us to build more informative plots, by combining the information in categorical variables to present cross variable distributions.</p>
 <p>The grammar of graphics allows to easily plot the same properties of interest across groups dictated by other aesthetics.</p>
+<p>Let’s explore what this means by focusing on the distribution of <code>stem_diameter</code> across the <code>growth_form</code> categories in our <code>sketchbook.R</code>.</p>
 <p>We can plot out a separate density curve for each growth form by mapping categorical variable <code>grow_form</code> to <code>aes()</code> argument <code>group</code>.</p>
 <div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb461-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">group =</span> growth_form)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb461-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
 <p>Now we have separate distribution curves for each <code>growth_form</code>!</p>
 <p>This first pass is not however visually easy to interpret. Let’s assign <code>growth_form</code> to some additional aesthetics to make the visual encoding clearer.</p>
 <p>We can in fact get rid of the <code>group</code> argument and use <code>fill</code> and <code>colour</code> instead. The grouping behaviour is equivalent.</p>
@@ -826,15 +803,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb463-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb463-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-292-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
 <p>To make things even clearer we can supply additional argument to <code>geom_density</code>.</p>
 <p>Let’s decrease the opacity of each density geom and trim it to the ranges of values across each <code>growth_form</code>.</p>
 <div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb465-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb465-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-293-1.png" width="672" /></p>
-<p>That’s a lot clearer, and now we can see that overall the distribution of <code>log(stem_diameter)</code> across growth forms follows a broably bimodal distribution.</p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-292-1.png" width="672" /></p>
+<p>That’s a lot clearer, and now we can see that overall the distribution of <code>log(stem_diameter)</code> across growth forms follows a broably bimodal distribution. However, the distributions across each growth formal appear more normal.</p>
 <p>To allow us to focus more on the individual distributions, we can use <code>facet_wrap()</code> and formula <code>~growth_form</code> to create individual panels for each growth form on a grid:</p>
 <iframe src="https://ggplot2.tidyverse.org/reference/facet_wrap.html" width="70%" height="400px">
 </iframe>
@@ -843,10 +820,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb467-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb467-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>growth_form)</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-295-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-294-1.png" width="672" /></p>
 <div id="encoding-multiple-distribution-with-violin-plots" class="section level5">
 <h5>Encoding multiple distribution with violin plots</h5>
-<p>Another way we can present the distribution of a continuous variable iin a compact way and grouped according to the value of a categorical variable is to use a violin plot.</p>
+<p>Another way we can present the distribution of a continuous variable in a compact way and grouped according to the value of a categorical variable is to use a violin plot.</p>
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_violin.html" width="70%" height="400px">
 </iframe>
 <p>Let’s straight away add some colour aesthetics also.</p>
@@ -854,8 +831,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb469-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb469-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T)</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_ydensity).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-297-1.png" width="672" /></p>
-<p>Violin plots show the density distribution of a continuous variable, grouped according to the values of the categorical values and presented mirrored.</p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-296-1.png" width="672" /></p>
 </div>
 <div id="adding-statistical-summaries-with-geom_boxplot" class="section level5">
 <h5>Adding statistical summaries with <code>geom_boxplot()</code></h5>
@@ -869,19 +845,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb471-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_ydensity).</code></pre>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-299-1.png" width="672" /></p>
-<p>The central liine in each box corresponds to the median.</p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-298-1.png" width="672" /></p>
+<p>The central line in each box corresponds to the median.</p>
 <p>The lower and upper hinges correspond to the first and third quartiles (the 25th and 75th percentiles) and define the Interquartile range (IQR).</p>
 <p>The whiskers are calculated from the IQR and identify points considered statistical outliers.</p>
-<p>Again, here we can see the bimodal distribution across all values, the two loose groups of multibole trees, single bole trees and small trees, but this time we have a must more informative plot packed in quite compactly.</p>
-<p>We would still need a plot per variable though. We could try and utilise <code>facet_grid</code> to combine a boxplot for each continuous variable <code>stem_diameter</code> and <code>height</code> into a single plot. Hovever, there isn’t a variable in the data in the current form that could be uset to facet on. The data is instead help in</p>
+<p>Again, here we can see the bimodal distribution across all values, the two loose groups of multibole trees, single bole trees and small trees, but this time we have a much more informative and compact plot.</p>
+<p>We would still need a plot per variable though.</p>
+<p>We could try and utilise <code>facet_grid</code> to combine a boxplot for each continuous variable <code>stem_diameter</code> and <code>height</code> into a single plot. Hovever, there isn’t a variable in the data in the current form that could be used to facet on. The data is instead held acroos two separate columns, <code>stem_diameter</code> and <code>height</code>.</p>
 </div>
-<div id="pivoting-data-to-build-plot-with-facet_grid" class="section level4">
-<h4>Pivoting data to build plot with <code>facet_grid</code></h4>
+<div id="pivoting-data-to-longer" class="section level4">
+<h4>Pivoting data to longer</h4>
 <p>To take advantage of <code>facet_wrap</code> we need to <strong>pivot</strong> our data into a longer format using <code>pivot_longer</code> from package <code>tidyr</code>.</p>
 <iframe src="https://tidyr.tidyverse.org/reference/pivot_longer.html" width="70%" height="400px">
 </iframe>
-<p><code>pivot_longer()</code> “lengthens” data, increasing the number of rows and decreasing the number of columns. We use it to stack the values of <code>stem_diameter</code> and <code>height</code> into a column called <code>value</code> and store the original column names which define the variable each value relates to in a new column <code>var</code>.</p>
+<p><code>pivot_longer()</code> “lengthens” data, increasing the number of rows and decreasing the number of columns. We use it to stack the values of <code>stem_diameter</code> and <code>height</code> into a column called <code>value</code> and store the original column names which define the variable each value relates to in a new column <code>var</code>. The values of <code>growth_form</code> are duplicated and stacked.</p>
 <div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb474-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb474-2" data-line-number="2"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
 <a class="sourceLine" id="cb474-3" data-line-number="3">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
@@ -900,12 +877,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 single bole tree stem_diameter  29.2
 ## 10 single bole tree height         16.7
 ## # … with 27,766 more rows</code></pre>
-<p>Note that the number of rows is now twice the size of the original data.frame because two columns have been stacked. Those columns have also been removed.</p>
-<p>In this format we can use variable <code>var</code> to create a facet for each variable.</p>
+<p>Note that the number of rows is now twice the size of the original data because two columns have been stacked. Those columns have also now been removed.</p>
+<p>With data in this format, we can use variable <code>var</code> to create a facet for each variable.</p>
 </div>
 <div id="figure-2-data-characteristics-of-our-raw-data" class="section level4">
 <h4>Figure 2: Data characteristics of our raw data</h4>
-<p>Let’s add that as a step in our plotting pipe</p>
+<p>Let’s add the pivot as a step in our plotting pipe</p>
 <div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb476-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb476-2" data-line-number="2"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
 <a class="sourceLine" id="cb476-3" data-line-number="3">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
@@ -916,7 +893,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb476-8" data-line-number="8"><span class="st">    </span><span class="kw">facet_grid</span>(<span class="op">~</span>var)</a></code></pre></div>
 <pre><code>## Warning: Removed 2388 rows containing non-finite values (stat_ydensity).</code></pre>
 <pre><code>## Warning: Removed 2388 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-302-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-301-1.png" width="672" /></p>
 <p>Hurray! Now we have a super informative plot, containing visual encodings of distributions and statistical summaries for both our continuous variables in one compact plot!</p>
 <p><strong>Let’s move that to <code>analysis.R</code> as</strong> <strong><em>Figure 2</em></strong></p>
 </div>
@@ -930,7 +907,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In R, we use <code>lm</code> to fit linear models. It can be used to carry out regression, single stratum analysis of variance and analysis of covariance.</p>
 <div id="fitting-a-linear-model" class="section level5">
 <h5>Fitting a linear model</h5>
-<p>We specify our model through a formula <code>log(stem_diameter) ~ log(height)</code>. This translates to log stem diameter as a function of height in which <code>stem_diameter</code> is the response variable and <code>height</code> the predictor.</p>
+<p>We specify our model through a formula <code>log(stem_diameter) ~ log(height)</code>. This translates to log stem diameter as a function of height where <code>stem_diameter</code> is the response variable and <code>height</code> the predictor.</p>
 <div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" data-line-number="1">lm_overall &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height), analysis_df)</a>
 <a class="sourceLine" id="cb479-2" data-line-number="2">lm_overall</a></code></pre></div>
 <pre><code>## 
@@ -970,13 +947,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing missing values (geom_point).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-306-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-305-1.png" width="672" /></p>
 </div>
 </div>
 <div id="including-an-interaction-with-growth_form" class="section level4">
 <h4>Including an interaction with <code>growth_form</code></h4>
 <p>Inspecting the plot we can clearly see sub groups in our data. We already know that both our variables have very different distributions across <code>growth_form</code>. So let’s see if our model improves if we include <code>growth_form</code> in our model specification.</p>
-<p>Growth form is a categorical variable so when we include it in our regression, <code>lm</code> will fit separate coefficients for our model at every level of the factor. To include it, we added to the preictor side of our formula. If we include it as an additive effect through <code>+</code>, only the intercept will vary across factor levels. If we fit it as an interaction using <code>*</code> both the slope and intercept are allowed to vary.</p>
+<p>Growth form is a categorical variable so when we include it in our regression, <code>lm</code> will fit separate coefficients for our model at every level of the factor. To include it, we add it to the predictor side of our formula. If we include it as an additive effect through <code>+</code>, only the intercept will vary across factor levels. If we fit it as an interaction using <code>*</code> both the slope and intercept are allowed to vary.</p>
 <div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb489-1" data-line-number="1">lm_growth &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height) <span class="op">*</span><span class="st"> </span>growth_form, analysis_df) </a></code></pre></div>
 <p>We can again examine our model using <code>broom</code></p>
 <div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" data-line-number="1">lm_growth <span class="op">%&gt;%</span></a>
@@ -1019,7 +996,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing missing values (geom_point).</code></pre>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-310-1.png" width="672" /></p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-309-1.png" width="672" /></p>
 <p>Excellent! We now have specified both models and visualised them! Our analysis is complete.</p>
 <p><em>NOTE: the geom_smooth method of plotting model lines is not ideal and you will likely take more formal approaches to calculating and plotting confidence intervals. But for the purposes of of this workshop, we’ll stick with this.</em></p>
 <p><strong>Lets add all our models and plots to our <code>analysis.R</code> script.</strong></p>

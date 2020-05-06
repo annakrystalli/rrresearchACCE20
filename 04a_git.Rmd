@@ -41,8 +41,10 @@ The **management of changes** to documents, computer programs, large web sites, 
 
 Open source (free to use) Version control software. Usually accessed via the command line, or a client program.
 
-<img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png" height="200px" width="300px">
 
+```{r, out.width="40%", echo=FALSE}
+knitr::include_graphics("https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png")
+```
 
 
 
@@ -62,16 +64,21 @@ Linus Torvalds on the name **`git`**:
 
 #### Exhibit A
 
-<figure>
-<img src="http://smutch.github.io/VersionControlTutorial/_images/vc-xkcd.jpg" height="300px" width="400px">
-<figcaption> Image: xkcd CC BY-NC 2.5 </figcaption></figure>
 
 
+```{r, out.width="50%", echo=FALSE, fig.cap="Image: xkcd CC BY-NC 2.5"}
+knitr::include_graphics("http://smutch.github.io/VersionControlTutorial/_images/vc-xkcd.jpg")
+```
 
 
 ## What is GitHub `r emo::ji("thinking")`
 
 <img src="assets/github_logo.jpg" height="300px" width="200px">
+```{r, out.width="50%", echo=FALSE}
+knitr::include_graphics("assets/github_logo.jpg")
+```
+
+
 
 A **website** that allows you to **store your Git repositories online** and makes it easy to collaborate with others. They also provide other services like issue (bug) tracking and wikis. Similar services are [GitLab](https://gitlab.com) and [BitBucket](https://bitbucket.org/).
 
@@ -79,7 +86,7 @@ A **website** that allows you to **store your Git repositories online** and make
 
 To enable collaboration and track contributions
 
-<img src="assets/workflows.png" width="350px"><img src="assets/collab.png" width="350px">
+<img src="assets/workflows.png" width="50%"><img src="assets/collab.png" width="50%">
 
 _images: Mozilla Science Lab_ CC-BY 4.0
 
@@ -110,12 +117,15 @@ _images: Mozilla Science Lab_ CC-BY 4.0
 
 - **Issues** - use GitHub issues to record and discuss tasks.
 
+<br>
+
 ## Git, Github & Rstudio
 
 ### Before: git only through the terminal
 
-![](assets/git_status.png)
-
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/git_status.png")
+```
 
 
 ### Rstudio & `usethis` to the rescue!
@@ -153,37 +163,44 @@ When a local directory becomes ***initialised with git***, a **hidden `.git` fol
 
 ### first commit - whole file added
 
-- Any file unknown to git will have a yellow ? box next to it.
-
-<img src="assets/git-unadded.png" height="75px">
-
-- The first time you commit a file you are **adding** it to `.git`, effectively telling it to start tracking the file
-
-<img src="assets/commit1.png" height="400px">
+Any file unknown to git will have a **yellow ?** box next to it.
 
 
+```{r, out.width="60%", echo=FALSE}
+knitr::include_graphics("assets/git-unadded.png")
+```
+
+
+The first time you commit a file you are **adding** it to `.git`, effectively telling it to start tracking the file
+
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/commit1.png")
+```
 
 
 
 
 ### second commit - only difference highlighted
 
+The first time you commit a file, only the changes are shown and any file that has uncommited modifications is shown with a **blue M**
 
-![](assets/commit2.png)
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/commit2.png")
+```
 
 
+When all changes have been committed, the git panel is clear.
 
-
-All changes have been committed so the git panel is clear
-
-![](assets/commit2-file.png)
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/commit2-file.png")
+```
 
 
 Enough theory, how about in practice!
 
 
 
-## `r emo::ji("computer")` Configure git & GitHub
+## Configure git & GitHub
 
 ### Configure git
 
@@ -234,7 +251,11 @@ usethis::edit_r_environ()
 
 Use `edit_r_environ()` to open and edit your `.Renviron` file
 
-![](assets/GITHUB_PAT.png)
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/GITHUB_PAT.png")
+```
+
+
 
 ## Version Controlling projects
 
@@ -299,18 +320,23 @@ knitr::include_graphics("assets/git-view.png")
 
 To commit changes in a file just select it in the git pane. When changes to a file are commited for the first time, the whole file is indicated as Added (green A).
 
-Let's focus on the files and analytical data we created so far. For now ignore the `data-raw` folder and all the other files we didn't create
+Let's focus on the files and analytical data we created so far. For now ignore the `data-raw` folder and all the other files we didn't create:
 
-![](assets/git-add.png)
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/git-add.png")
+```
+
+
 
 #### Commit changes
 
 Click on commit and write an appropriate commit message:
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/add-first.png")
+```
 
-![](assets/add-first.png)
 
-
-## Create a README
+### Create a README
 
 Our repository also needs a `README`. We only need a simple plain markdown (`.md`) file for our README. 
 
@@ -320,19 +346,18 @@ We can create a template using `usethis::use_readme_md()`
 usethis::use_readme_md()
 ```
 
-![](assets/use-readme.png)
 
-## Edit README
+#### Edit README
 
 Adapt the template, adding a short description about your project.
 
 Add and commit your new README
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/use-readme-complete.png")
+```
 
-![](assets/use-readme-complete.png)
 
-## `r emo::ji("vertical_traffic_light")` Create repository on GitHub
-
-## Create repository
+##  Create repository on GitHub
 
 Now that we have set up a `GITHUP_PAT`, we can use function `usethis::use_github()` to create a GitHub repository for our project:
 
@@ -353,26 +378,36 @@ Are title and description ok?
 ```
 Answer affirmatively for the process to continue. Once the repo is created and any commmited files pushed, the repo is launched in the browser:
 
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/use-github.png")
+```
 
-![](assets/use-github.png)
 
 
-### Host content on GitHub
+## Host html content on GitHub
 
 
 Let's head to the repo and have a look at what we've shared. To host our html content on GitHub, we need to **enable `gh-pages`** in our repository.
 
-## Go to repo **Settings**
+### Go to repo **Settings**
 
-![](assets/gh-settings.png)
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/gh-settings.png")
+```
+
 
 ## Enable `gh-pages`
 
-![](assets/gh-set.png)
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/gh-set.png")
+```
+
 
 Review setup
 
-![](assets/gh-setup.png)
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/gh-setup.png")
+```
 
 Ensure the _Enforce HTTPS_ option is selected.
 
@@ -380,55 +415,59 @@ Click on the link displayed and go check out your work!
 
 Copy the link. In the main repo page, edit the page details at the top and paste copied the url in the **website** field.
 
-![](assets/add-url-gh.png)
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/add-url-gh.png")
+```
+
 
 Once added it provides easy access to the rendered content:
 
-![](assets/added-url-gh.png)
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/added-url-gh.png")
+```
 
-## pushing files
+##  Tracking changes 
 
-Click on the `r emo::ji("up_arrow")` button on the Git tab to push our changes up to our newly minted repository
+###  Making a change to our  `index.Rmd`
+
+Let's add the link to the rendered content to our place holder in `index.Rmd`
+
+Let's add and commit our changes
+
+### Pushing changes to GitHub
+
+Click on the `r emo::ji("up_arrow")` button on the Git tab to push our changes up to the repository
 
 Let's go have a look at the history `r emo::ji("clock3")`
 
 
 
-###  Tracking changes 
-
-####  Making a change to our  `index.Rmd`
-
-
-
-## Commit your changes
-
-On the commit window:
-
-- Have a look at the differences
-
-- Have a look at the history
-
-
-
-
-## `r emo::ji("vertical_traffic_light")` Deleting files
+### `r emo::ji("vertical_traffic_light")` Deleting files
 
 - Create a new file, any type of file.
-<img src="assets/dead-man-new.png" height="200px">
 
-- Commit it.
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/deleted-file-add.png")
+```
+
+- Add and Commit it.
 
 - Delete it
-<img src="assets/dead-man-delete.png" height="75px">
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/deleted-file-delete.png")
+```
 
 - Commit the deletion
 
 - Look back through the history
 
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/deleted-file-history.png")
+```
 
 
 
-## `.gitignore`
+## Ignoring files through `.gitignore`
 
 There may be files that you don't want to commit to git, e.g. 
 
@@ -440,25 +479,43 @@ There may be files that you don't want to commit to git, e.g.
 
 > Tell git to ingnore them by adding them to the `.gitignore` file.
 
+When we open `.gitgnore` we see there are a number of files already added. Let's the rest of the files we want to ignore.
 
+```
+.Rproj.user
+.Rhistory
+.RData
+.Rbuildignore
+.DS_Store
+
+```
 
 
 ### `gitignore` regex
 
-You can use `regex` in `.gitignore` files to ignore files according to a pattern. 
+You can use `regex` (regular expressions) in `.gitignore` files to ignore files according to a pattern.
+
+- `directoryname/*` will ignore all files in a directory.
 
 - `*.html` will ignore any file ending in  `.html` 
 
 - prefix "!" which negates the pattern
 
-    ```
-    data-raw/*
-    !data-raw/individual.R
-    ```
+
+So let's use regex to ignore all files in `attic/` and all files in `data-raw/` apart from `individual.R`. Add the following to the bottom of `.gitignore`
+
+```
+attic/*
+data-raw/*
+!data-raw/individual.R
+```
 
 
+### Commit `.gitignore`
 
-### `Git` tips
+Now that we've determined which files we want to ignore, let's commit `.gitignore` so we can have a record of it and track any changes.
+
+## `Git` tips
 
 - commit early, commit often
 - commit logical bits of work together

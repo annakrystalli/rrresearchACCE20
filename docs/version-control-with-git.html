@@ -249,21 +249,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#git-github-rstudio"><i class="fa fa-check"></i>Git, Github &amp; Rstudio</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#demo"><i class="fa fa-check"></i>Demo</a></li>
 <li><a href="version-control-with-git.html#how-does-git-work">How does <code>Git</code> work?</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git-github"><i class="fa fa-check"></i>💻 Configure git &amp; GitHub</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git-github"><i class="fa fa-check"></i>Configure git &amp; GitHub</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#version-controlling-projects"><i class="fa fa-check"></i>Version Controlling projects</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-a-readme"><i class="fa fa-check"></i>Create a README</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#edit-readme"><i class="fa fa-check"></i>Edit README</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository-on-github"><i class="fa fa-check"></i>🚦 Create repository on GitHub</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository"><i class="fa fa-check"></i>Create repository</a></li>
-<li><a href="version-control-with-git.html#go-to-repo-settings">Go to repo <strong>Settings</strong></a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository-on-github"><i class="fa fa-check"></i>Create repository on GitHub</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#host-html-content-on-github"><i class="fa fa-check"></i>Host html content on GitHub</a></li>
 <li><a href="version-control-with-git.html#enable-gh-pages">Enable <code>gh-pages</code></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#pushing-files"><i class="fa fa-check"></i>pushing files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-your-changes"><i class="fa fa-check"></i>Commit your changes</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#deleting-files"><i class="fa fa-check"></i>🚦 Deleting files</a></li>
-<li><a href="version-control-with-git.html#gitignore"><code>.gitignore</code></a></li>
-<li><a href="version-control-with-git.html#gitignore-regex"><code>gitignore</code> regex</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#tracking-changes"><i class="fa fa-check"></i>Tracking changes</a></li>
+<li><a href="version-control-with-git.html#ignoring-files-through-.gitignore">Ignoring files through <code>.gitignore</code></a></li>
+<li><a href="version-control-with-git.html#git-tips"><code>Git</code> tips</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#further-resources"><i class="fa fa-check"></i>Further Resources</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#never-forget"><i class="fa fa-check"></i>Never forget</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="collaborative-github.html"><a href="collaborative-github.html"><i class="fa fa-check"></i>Collaborative GitHub</a></li>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a><ul>
@@ -409,7 +403,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="what-is-git" class="section level2">
 <h2>What is git? 🤔</h2>
 <p>Open source (free to use) Version control software. Usually accessed via the command line, or a client program.</p>
-<p><img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png" height="200px" width="300px"></p>
+<p><img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png" width="40%" /></p>
 <div id="where-did-it-come-from-1" class="section level3">
 <h3>Where did it come from?</h3>
 <p>Git development began in 2006 after many developers of the Linux kernel gave up access to <a href="http://www.bitkeeper.org/">BitKeeper</a> (at the time the best but proprietary)</p>
@@ -423,23 +417,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Why use it in research?</h3>
 <div id="exhibit-a" class="section level4">
 <h4>Exhibit A</h4>
-<figure>
-<img src="http://smutch.github.io/VersionControlTutorial/_images/vc-xkcd.jpg" height="300px" width="400px">
-<figcaption>
-Image: xkcd CC BY-NC 2.5
-</figcaption>
-</figure>
+<div class="figure"><span id="fig:unnamed-chunk-352"></span>
+<img src="http://smutch.github.io/VersionControlTutorial/_images/vc-xkcd.jpg" alt="Image: xkcd CC BY-NC 2.5" width="50%" />
+<p class="caption">
+Figure 2: Image: xkcd CC BY-NC 2.5
+</p>
+</div>
 </div>
 </div>
 </div>
 <div id="what-is-github" class="section level2">
 <h2>What is GitHub 🤔</h2>
-<p><img src="assets/github_logo.jpg" height="300px" width="200px"></p>
+<p><img src="assets/github_logo.jpg" height="300px" width="200px">
+<img src="assets/github_logo.jpg" width="50%" /></p>
 <p>A <strong>website</strong> that allows you to <strong>store your Git repositories online</strong> and makes it easy to collaborate with others. They also provide other services like issue (bug) tracking and wikis. Similar services are <a href="https://gitlab.com">GitLab</a> and <a href="https://bitbucket.org/">BitBucket</a>.</p>
 <div id="why-use-it-in-research-1" class="section level3">
 <h3>Why use it in research:</h3>
 <p>To enable collaboration and track contributions</p>
-<p><img src="assets/workflows.png" width="350px"><img src="assets/collab.png" width="350px"></p>
+<p><img src="assets/workflows.png" width="50%"><img src="assets/collab.png" width="50%"></p>
 <p><em>images: Mozilla Science Lab</em> CC-BY 4.0</p>
 <p><br></p>
 <ul>
@@ -469,13 +464,14 @@ Image: xkcd CC BY-NC 2.5
 <li><p><strong>Code of Conduct</strong> - good projects have codes of conduct to make sure that people are treated well. Github has an <a href="https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/">Code of Conduct wizard</a> to make it easy to add one.</p></li>
 <li><p><strong>Issues</strong> - use GitHub issues to record and discuss tasks.</p></li>
 </ul>
+<p><br></p>
 </div>
 </div>
 <div id="git-github-rstudio" class="section level2">
 <h2>Git, Github &amp; Rstudio</h2>
 <div id="before-git-only-through-the-terminal" class="section level3">
 <h3>Before: git only through the terminal</h3>
-<p><img src="assets/git_status.png" /></p>
+<p><img src="assets/git_status.png" width="90%" /></p>
 </div>
 <div id="rstudio-usethis-to-the-rescue" class="section level3">
 <h3>Rstudio &amp; <code>usethis</code> to the rescue!</h3>
@@ -507,25 +503,22 @@ Image: xkcd CC BY-NC 2.5
 </ul>
 <div id="first-commit---whole-file-added" class="section level3">
 <h3>first commit - whole file added</h3>
-<ul>
-<li>Any file unknown to git will have a yellow ? box next to it.</li>
-</ul>
-<p><img src="assets/git-unadded.png" height="75px"></p>
-<ul>
-<li>The first time you commit a file you are <strong>adding</strong> it to <code>.git</code>, effectively telling it to start tracking the file</li>
-</ul>
-<p><img src="assets/commit1.png" height="400px"></p>
+<p>Any file unknown to git will have a <strong>yellow ?</strong> box next to it.</p>
+<p><img src="assets/git-unadded.png" width="60%" /></p>
+<p>The first time you commit a file you are <strong>adding</strong> it to <code>.git</code>, effectively telling it to start tracking the file</p>
+<p><img src="assets/commit1.png" width="90%" /></p>
 </div>
 <div id="second-commit---only-difference-highlighted" class="section level3">
 <h3>second commit - only difference highlighted</h3>
-<p><img src="assets/commit2.png" /></p>
-<p>All changes have been committed so the git panel is clear</p>
-<p><img src="assets/commit2-file.png" /></p>
+<p>The first time you commit a file, only the changes are shown and any file that has uncommited modifications is shown with a <strong>blue M</strong></p>
+<p><img src="assets/commit2.png" width="90%" /></p>
+<p>When all changes have been committed, the git panel is clear.</p>
+<p><img src="assets/commit2-file.png" width="90%" /></p>
 <p>Enough theory, how about in practice!</p>
 </div>
 </div>
 <div id="configure-git-github" class="section level2">
-<h2>💻 Configure git &amp; GitHub</h2>
+<h2>Configure git &amp; GitHub</h2>
 <div id="configure-git" class="section level3">
 <h3>Configure git</h3>
 <p>First, <code>git</code> needs to know who you are so your commits can be attributed to you. <strong><code>usethis</code></strong> to the rescue again!</p>
@@ -546,7 +539,7 @@ Image: xkcd CC BY-NC 2.5
 <p>Copy it and paste it into your <code>.Renviron</code> file as system variable <code>GITHUB_PAT</code>.</p>
 <div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb562-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</a></code></pre></div>
 <p>Use <code>edit_r_environ()</code> to open and edit your <code>.Renviron</code> file</p>
-<p><img src="assets/GITHUB_PAT.png" /></p>
+<p><img src="assets/GITHUB_PAT.png" width="90%" /></p>
 </div>
 </div>
 <div id="version-controlling-projects" class="section level2">
@@ -593,34 +586,30 @@ Image: xkcd CC BY-NC 2.5
 <div id="add-files" class="section level4">
 <h4>Add files</h4>
 <p>To commit changes in a file just select it in the git pane. When changes to a file are commited for the first time, the whole file is indicated as Added (green A).</p>
-<p>Let’s focus on the files and analytical data we created so far. For now ignore the <code>data-raw</code> folder and all the other files we didn’t create</p>
-<p><img src="assets/git-add.png" /></p>
+<p>Let’s focus on the files and analytical data we created so far. For now ignore the <code>data-raw</code> folder and all the other files we didn’t create:</p>
+<p><img src="assets/git-add.png" width="90%" /></p>
 </div>
 <div id="commit-changes" class="section level4">
 <h4>Commit changes</h4>
-<p>Click on commit and write an appropriate commit message:</p>
-<p><img src="assets/add-first.png" /></p>
+<p>Click on commit and write an appropriate commit message:
+<img src="assets/add-first.png" width="90%" /></p>
 </div>
 </div>
-</div>
-<div id="create-a-readme" class="section level2">
-<h2>Create a README</h2>
+<div id="create-a-readme" class="section level3">
+<h3>Create a README</h3>
 <p>Our repository also needs a <code>README</code>. We only need a simple plain markdown (<code>.md</code>) file for our README.</p>
 <p>We can create a template using <code>usethis::use_readme_md()</code></p>
 <div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb566-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_readme_md</span>()</a></code></pre></div>
-<p><img src="assets/use-readme.png" /></p>
-</div>
-<div id="edit-readme" class="section level2">
-<h2>Edit README</h2>
+<div id="edit-readme" class="section level4">
+<h4>Edit README</h4>
 <p>Adapt the template, adding a short description about your project.</p>
-<p>Add and commit your new README</p>
-<p><img src="assets/use-readme-complete.png" /></p>
+<p>Add and commit your new README
+<img src="assets/use-readme-complete.png" width="90%" /></p>
+</div>
+</div>
 </div>
 <div id="create-repository-on-github" class="section level2">
-<h2>🚦 Create repository on GitHub</h2>
-</div>
-<div id="create-repository" class="section level2">
-<h2>Create repository</h2>
+<h2>Create repository on GitHub</h2>
 <p>Now that we have set up a <code>GITHUP_PAT</code>, we can use function <code>usethis::use_github()</code> to create a GitHub repository for our project:</p>
 <div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb568-1" data-line-number="1">✔ Checking that current branch is <span class="st">&#39;master&#39;</span></a>
@@ -633,61 +622,58 @@ Image: xkcd CC BY-NC 2.5
 <a class="sourceLine" id="cb568-8" data-line-number="8"><span class="dv">2</span><span class="op">:</span><span class="st"> </span>Yes</a>
 <a class="sourceLine" id="cb568-9" data-line-number="9"><span class="dv">3</span><span class="op">:</span><span class="st"> </span>Nope</a></code></pre></div>
 <p>Answer affirmatively for the process to continue. Once the repo is created and any commmited files pushed, the repo is launched in the browser:</p>
-<p><img src="assets/use-github.png" /></p>
-<div id="host-content-on-github" class="section level3">
-<h3>Host content on GitHub</h3>
+<p><img src="assets/use-github.png" width="90%" /></p>
+</div>
+<div id="host-html-content-on-github" class="section level2">
+<h2>Host html content on GitHub</h2>
 <p>Let’s head to the repo and have a look at what we’ve shared. To host our html content on GitHub, we need to <strong>enable <code>gh-pages</code></strong> in our repository.</p>
+<div id="go-to-repo-settings" class="section level3">
+<h3>Go to repo <strong>Settings</strong></h3>
+<p><img src="assets/gh-settings.png" width="90%" /></p>
 </div>
-</div>
-<div id="go-to-repo-settings" class="section level2">
-<h2>Go to repo <strong>Settings</strong></h2>
-<p><img src="assets/gh-settings.png" /></p>
 </div>
 <div id="enable-gh-pages" class="section level2">
 <h2>Enable <code>gh-pages</code></h2>
-<p><img src="assets/gh-set.png" /></p>
+<p><img src="assets/gh-set.png" width="90%" /></p>
 <p>Review setup</p>
-<p><img src="assets/gh-setup.png" /></p>
+<p><img src="assets/gh-setup.png" width="90%" /></p>
 <p>Ensure the <em>Enforce HTTPS</em> option is selected.</p>
 <p>Click on the link displayed and go check out your work!</p>
 <p>Copy the link. In the main repo page, edit the page details at the top and paste copied the url in the <strong>website</strong> field.</p>
-<p><img src="assets/add-url-gh.png" /></p>
+<p><img src="assets/add-url-gh.png" width="90%" /></p>
 <p>Once added it provides easy access to the rendered content:</p>
-<p><img src="assets/added-url-gh.png" /></p>
+<p><img src="assets/added-url-gh.png" width="90%" /></p>
 </div>
-<div id="pushing-files" class="section level2">
-<h2>pushing files</h2>
-<p>Click on the ⬆️ button on the Git tab to push our changes up to our newly minted repository</p>
+<div id="tracking-changes" class="section level2">
+<h2>Tracking changes</h2>
+<div id="making-a-change-to-our-index.rmd" class="section level3">
+<h3>Making a change to our <code>index.Rmd</code></h3>
+<p>Let’s add the link to the rendered content to our place holder in <code>index.Rmd</code></p>
+<p>Let’s add and commit our changes</p>
+</div>
+<div id="pushing-changes-to-github" class="section level3">
+<h3>Pushing changes to GitHub</h3>
+<p>Click on the ⬆️ button on the Git tab to push our changes up to the repository</p>
 <p>Let’s go have a look at the history 🕒</p>
-<div id="tracking-changes" class="section level3">
-<h3>Tracking changes</h3>
-<div id="making-a-change-to-our-index.rmd" class="section level4">
-<h4>Making a change to our <code>index.Rmd</code></h4>
 </div>
-</div>
-</div>
-<div id="commit-your-changes" class="section level2">
-<h2>Commit your changes</h2>
-<p>On the commit window:</p>
+<div id="deleting-files" class="section level3">
+<h3>🚦 Deleting files</h3>
 <ul>
-<li><p>Have a look at the differences</p></li>
-<li><p>Have a look at the history</p></li>
+<li>Create a new file, any type of file.</li>
 </ul>
-</div>
-<div id="deleting-files" class="section level2">
-<h2>🚦 Deleting files</h2>
+<p><img src="assets/deleted-file-add.png" width="90%" /></p>
 <ul>
-<li><p>Create a new file, any type of file.
-<img src="assets/dead-man-new.png" height="200px"></p></li>
-<li><p>Commit it.</p></li>
+<li><p>Add and Commit it.</p></li>
 <li><p>Delete it
-<img src="assets/dead-man-delete.png" height="75px"></p></li>
+<img src="assets/deleted-file-delete.png" width="90%" /></p></li>
 <li><p>Commit the deletion</p></li>
 <li><p>Look back through the history</p></li>
 </ul>
+<p><img src="assets/deleted-file-history.png" width="90%" /></p>
 </div>
-<div id="gitignore" class="section level2">
-<h2><code>.gitignore</code></h2>
+</div>
+<div id="ignoring-files-through-.gitignore" class="section level2">
+<h2>Ignoring files through <code>.gitignore</code></h2>
 <p>There may be files that you don’t want to commit to git, e.g.</p>
 <ul>
 <li><p>data files that are too large</p></li>
@@ -697,24 +683,38 @@ Image: xkcd CC BY-NC 2.5
 <blockquote>
 <p>Tell git to ingnore them by adding them to the <code>.gitignore</code> file.</p>
 </blockquote>
-</div>
-<div id="gitignore-regex" class="section level2">
-<h2><code>gitignore</code> regex</h2>
-<p>You can use <code>regex</code> in <code>.gitignore</code> files to ignore files according to a pattern.</p>
+<p>When we open <code>.gitgnore</code> we see there are a number of files already added. Let’s the rest of the files we want to ignore.</p>
+<pre><code>.Rproj.user
+.Rhistory
+.RData
+.Rbuildignore
+.DS_Store
+</code></pre>
+<div id="gitignore-regex" class="section level3">
+<h3><code>gitignore</code> regex</h3>
+<p>You can use <code>regex</code> (regular expressions) in <code>.gitignore</code> files to ignore files according to a pattern.</p>
 <ul>
+<li><p><code>directoryname/*</code> will ignore all files in a directory.</p></li>
 <li><p><code>*.html</code> will ignore any file ending in <code>.html</code></p></li>
-<li><p>prefix “!” which negates the pattern</p>
-<pre><code>data/*
-!data/commit-this.csv</code></pre></li>
+<li><p>prefix “!” which negates the pattern</p></li>
 </ul>
-<div id="git-tips" class="section level3">
-<h3><code>Git</code> tips</h3>
+<p>So let’s use regex to ignore all files in <code>attic/</code> and all files in <code>data-raw/</code> apart from <code>individual.R</code>. Add the following to the bottom of <code>.gitignore</code></p>
+<pre><code>attic/*
+data-raw/*
+!data-raw/individual.R</code></pre>
+</div>
+<div id="commit-.gitignore" class="section level3">
+<h3>Commit <code>.gitignore</code></h3>
+<p>Now that we’ve determined which files we want to ignore, let’s commit <code>.gitignore</code> so we can have a record of it and track any changes.</p>
+</div>
+</div>
+<div id="git-tips" class="section level2">
+<h2><code>Git</code> tips</h2>
 <ul>
 <li>commit early, commit often</li>
 <li>commit logical bits of work together</li>
 <li>write meaninful messages</li>
 </ul>
-</div>
 </div>
 <div id="further-resources" class="section level2">
 <h2>Further Resources</h2>
@@ -723,11 +723,11 @@ Image: xkcd CC BY-NC 2.5
 <li><a href="http://happygitwithr.com/">Happy with Git</a></li>
 <li><a href="http://ohshitgit.com/">Oh Shit Git</a></li>
 </ul>
-</div>
-<div id="never-forget" class="section level2">
-<h2>Never forget</h2>
+<div id="never-forget" class="section level3">
+<h3>Never forget</h3>
 <p><img src="https://optimalbi.com/wp-content/uploads/2018/02/gitsave-300x210.png" /></p>
 
+</div>
 </div>
 </div>
             </section>
