@@ -1,0 +1,18 @@
+# `index.Rmd`
+
+This Rmarkdown file should contain your analysis and be saved in the root directory:
+
+## **`index.Rmd`**
+
+My final `index.Rmd` looks like this:
+
+```{r, echo=FALSE, message=FALSE}
+knitr::include_url(here::here("demos", "index.Rmd"))
+```
+
+and renders to:
+
+```{r, echo=FALSE, message=FALSE}
+
+knitr::include_url(here::here("demos", "index.html"))
+```

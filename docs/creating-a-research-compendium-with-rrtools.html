@@ -60,10 +60,6 @@
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.9.2/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -230,98 +226,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#build-readme-site"><i class="fa fa-check"></i>Build README site</a></li>
 </ul></li>
 <li class="part"><span><b>V Analysing and presenting analyses</b></span></li>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i>Plotting with ggplot2</a><ul>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#data-visualisation-and-analysis-basics"><i class="fa fa-check"></i>Data visualisation and analysis basics</a></li>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#graphics-in-r"><i class="fa fa-check"></i>Graphics in R</a></li>
+<li><a href="plotting-with-ggplot2.html#data-visualisation-in-practice-exploring-individual-with-ggplot2">Data visualisation in practice: Exploring <code>individual</code> with <code>ggplot2</code></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html"><i class="fa fa-check"></i>Literate programming in rmarkdown</a><ul>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#why-is-this-important-in-science"><i class="fa fa-check"></i>Why is this important in science:</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#calls-for-open-science"><strong>Calls for open science</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#tldr"><i class="fa fa-check"></i>tl;dr</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#rmarkdown-overview"><strong>Rmarkdown overview</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#elements-of-r-markdown"><i class="fa fa-check"></i>elements of R markdown</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#markdown-.md"><strong>markdown {<code>.md</code>}</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#code-r-python-sql"><strong>code {r,</strong> python, SQL, … <strong>}</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#outputs"><strong>outputs</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#publish-to-the-web-for-free"><i class="fa fa-check"></i>Publish to the web for free!</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#applications-in-research"><i class="fa fa-check"></i>Applications in research</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-1"><i class="fa fa-check"></i>💻 Exercise Part 1</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#yaml-header">🚦 <strong>YAML header</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#define-outputs"><i class="fa fa-check"></i>define outputs</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#define-a-floating-table-of-contents"><i class="fa fa-check"></i>define a floating table of contents</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#choose-a-theme"><i class="fa fa-check"></i>choose a theme</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#choose-code-highlights"><i class="fa fa-check"></i>choose code highlights</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-2"><i class="fa fa-check"></i>💻 Exercise Part 2</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#markdown-basics">🚦 <strong>Markdown basics</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#text"><strong>text</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#headers"><strong>headers</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#unordered-lists"><strong>unordered lists</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#ordered-lists"><strong>ordered lists</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#quotes"><strong>quotes</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#code"><strong>code</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#images"><strong>images</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#basic-tables-in-markdown"><strong>basic tables in markdown</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#links"><strong>links</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#mathematical-expressions"><i class="fa fa-check"></i>mathematical expressions</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-3"><i class="fa fa-check"></i>💻 Exercise: Part 3</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#chunks-inline-r-code"><i class="fa fa-check"></i>🚦 Chunks &amp; Inline R code</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#inserting-new-chunks"><strong>inserting new chunks</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#chunk-uses"><i class="fa fa-check"></i>chunk uses</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#chunk-notation"><strong>chunk notation</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#chunk-options"><strong>chunk options</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#uses"><i class="fa fa-check"></i>uses</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-4"><i class="fa fa-check"></i>💻 Exercise Part 4</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#displaying-data"><i class="fa fa-check"></i>🚦 Displaying data</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-5"><i class="fa fa-check"></i>💻 Exercise Part 5</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#plots"><i class="fa fa-check"></i>🚦 plots</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-6a"><i class="fa fa-check"></i>💻 Exercise Part 6a</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-6b"><i class="fa fa-check"></i>Exercise Part 6b</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#advanced-.rmd">🚦 Advanced <code>.Rmd</code></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#reading-chunks-of-code"><strong>reading chunks of code</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#extracting-code-from-an-.rmd"><strong>Extracting code from an <code>.Rmd</code></strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-7"><i class="fa fa-check"></i>💻 Exercise: Part 7*</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#purl-your-document"><i class="fa fa-check"></i>purl your document</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#html-in-rmarkdown"><i class="fa fa-check"></i>🚦 html in rmarkdown</a></li>
+<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#literate-programming"><i class="fa fa-check"></i>Literate programming</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#literate-programming-in-r"><strong>Literate programming in R</strong></a></li>
+<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#applications-of-rmd-in-research"><i class="fa fa-check"></i>Applications of Rmd in research</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#rmd-in-practice"><code>Rmd</code> in Practice</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#advanced-.rmd">Advanced <code>.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#parting-words"><i class="fa fa-check"></i>Parting words</a></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#getting-help-with-markdown"><i class="fa fa-check"></i>Getting help with markdown</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#resources"><strong>Resources</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#solutions-my-example"><i class="fa fa-check"></i>Solutions: My example</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#resources-1"><strong>Resources</strong></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i>Plotting with ggplot2</a></li>
 <li class="part"><span><b>VI Version Control</b></span></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html"><i class="fa fa-check"></i>Version Control with Git</a><ul>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-version-control"><i class="fa fa-check"></i>What is Version control? 🤔</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-git"><i class="fa fa-check"></i>What is git? 🤔</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#why-use-it-in-research"><i class="fa fa-check"></i>Why use it in research?</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-github"><i class="fa fa-check"></i>What is GitHub 🤔</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#git-github-rstudio"><i class="fa fa-check"></i>Git, Github &amp; Rstudio</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#demo"><i class="fa fa-check"></i>Demo</a></li>
 <li><a href="version-control-with-git.html#how-does-git-work">How does <code>Git</code> work?</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git-github"><i class="fa fa-check"></i>💻 Configure git &amp; GitHub</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git"><i class="fa fa-check"></i>Configure git</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#set-up-github-pat"><i class="fa fa-check"></i>🚦 Set up GITHUB PAT</a></li>
-<li><a href="version-control-with-git.html#section"><img src="assets/GITHUB_PAT.png" /></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#turn-our-project-into-a-repository"><i class="fa fa-check"></i>Turn our project into a repository</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commiting-files"><i class="fa fa-check"></i>🚦 Commiting files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#add-files"><i class="fa fa-check"></i>Add files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-changes"><i class="fa fa-check"></i>Commit changes</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-a-readme"><i class="fa fa-check"></i>🚦 Create a README</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#version-controlling-projects"><i class="fa fa-check"></i>Version Controlling projects</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-a-readme"><i class="fa fa-check"></i>Create a README</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#edit-readme"><i class="fa fa-check"></i>Edit README</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository-on-github"><i class="fa fa-check"></i>🚦 Create repository on GitHub</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository"><i class="fa fa-check"></i>Create repository</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#push-files"><i class="fa fa-check"></i>push files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#tracking-changes"><i class="fa fa-check"></i>🚦 Tracking changes</a></li>
-<li><a href="version-control-with-git.html#making-a-change-to-our-gapminder-analysis.rmd">Making a change to our <code>gapminder-analysis.Rmd</code></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-your-changes"><i class="fa fa-check"></i>Commit your changes</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#host-content-on-github"><i class="fa fa-check"></i>🚦 Host content on GitHub</a></li>
 <li><a href="version-control-with-git.html#go-to-repo-settings">Go to repo <strong>Settings</strong></a></li>
 <li><a href="version-control-with-git.html#enable-gh-pages">Enable <code>gh-pages</code></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#making-changes-on-github"><i class="fa fa-check"></i>🚦 Making changes on GitHub</a></li>
-<li><a href="version-control-with-git.html#create-license">Create <code>LICENSE</code></a></li>
-<li><a href="version-control-with-git.html#add-link-to-analysis-index.html-to-readme">Add link to analysis <code>index.html</code> to README</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#pull-changes-locally"><i class="fa fa-check"></i>🚦 Pull changes locally</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#pushing-files"><i class="fa fa-check"></i>pushing files</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-your-changes"><i class="fa fa-check"></i>Commit your changes</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#deleting-files"><i class="fa fa-check"></i>🚦 Deleting files</a></li>
 <li><a href="version-control-with-git.html#gitignore"><code>.gitignore</code></a></li>
 <li><a href="version-control-with-git.html#gitignore-regex"><code>gitignore</code> regex</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#further-resources"><i class="fa fa-check"></i>Further Resources</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#never-forget"><i class="fa fa-check"></i>Never forget</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="collaborative-github.html"><a href="collaborative-github.html"><i class="fa fa-check"></i>Collaborative GitHub</a></li>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a><ul>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#evolottery"><strong>EvoLottery</strong></a></li>
 <li class="chapter" data-level="" data-path="practical-github-rstudio-for-collaborative-coding.html"><a href="practical-github-rstudio-for-collaborative-coding.html"><i class="fa fa-check"></i>Clone Github repo</a></li>
@@ -356,7 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html#create-documentation-site"><i class="fa fa-check"></i>🚦 Create documentation site</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html"><i class="fa fa-check"></i>Creating a research compendium with rrtools</a><ul>
-<li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#background-1"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#background"><i class="fa fa-check"></i>Background</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#enter-the-research-compendium"><i class="fa fa-check"></i>Enter the Research Compendium</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#r-community-response"><i class="fa fa-check"></i>R community response</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#general-project-organisation-1"><i class="fa fa-check"></i>General Project Organisation</a></li>
@@ -398,6 +342,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a><ul>
 <li><a href="geolocate-r.html#rgeolocate.r"><strong><code>R/geolocate.R</code></strong></a></li>
 </ul></li>
+<li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a><ul>
+<li><a href="analysis-r-1.html#analysis.r-2"><strong><code>analysis.R</code></strong></a></li>
+</ul></li>
+<li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a><ul>
+<li><a href="index-rmd.html#index.rmd-1"><strong><code>index.Rmd</code></strong></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -429,7 +379,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="creating-a-research-compendium-with-rrtools" class="section level1">
 <h1>Creating a research compendium with rrtools</h1>
-<div id="background-1" class="section level2">
+<div id="background" class="section level2">
 <h2>Background</h2>
 <ul>
 <li><p><strong>Research is increasingly computational</strong></p></li>
@@ -524,7 +474,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>pkg <code>here</code></h3>
 <p>Use function <code>here::here(&quot;path&quot;, &quot;to&quot;, &quot;file&quot;)</code> to create robust paths <strong>relative to the project root</strong>.</p>
 <p>eg</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb563-1" data-line-number="1">here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;path&quot;</span>, <span class="st">&quot;to&quot;</span>, <span class="st">&quot;file&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb627-1" data-line-number="1">here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;path&quot;</span>, <span class="st">&quot;to&quot;</span>, <span class="st">&quot;file&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;/Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20/path/to/file&quot;</code></pre>
 <hr />
 </div>
@@ -658,22 +608,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="install-packages" class="section level3">
 <h3>Install packages</h3>
 <p>Next, let’s <strong>install the packages we’ll need, starting with <code>rrtools</code></strong> (if you haven’t got devtools installed, you’ll need to before you can install <code>rrtools</code> from GitHub).</p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb565-1" data-line-number="1"><span class="co"># install.packages(&quot;devtools&quot;)</span></a>
-<a class="sourceLine" id="cb565-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;benmarwick/rrtools&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb629-1" data-line-number="1"><span class="co"># install.packages(&quot;devtools&quot;)</span></a>
+<a class="sourceLine" id="cb629-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;benmarwick/rrtools&quot;</span>)</a></code></pre></div>
 <p>Installing <code>rrtools</code> <strong>imports many of the packages we’ll need today</strong> (eg, have a look at the imports section of the <a href="https://github.com/benmarwick/rrtools/blob/master/DESCRIPTION"><code>DESCRIPTION</code></a> file).</p>
 <pre><code>Imports: devtools, git2r, whisker, rstudioapi, rmarkdown, knitr,
     bookdown, curl, RCurl, jsonlite, methods, httr, usethis, clisymbols,
     crayon, glue, readr (&gt;= 1.1.1)</code></pre>
 <p>Now, <strong>install some additional packages</strong> we’ll need for the workshop.</p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb567-2" data-line-number="2">    <span class="co"># source paper analysis</span></a>
-<a class="sourceLine" id="cb567-3" data-line-number="3">    <span class="st">&quot;ggthemes&quot;</span></a>
-<a class="sourceLine" id="cb567-4" data-line-number="4">    <span class="co"># bibliographic / publishing</span></a>
-<a class="sourceLine" id="cb567-5" data-line-number="5">    <span class="st">&quot;citr&quot;</span>, <span class="st">&quot;rticles&quot;</span>,</a>
-<a class="sourceLine" id="cb567-6" data-line-number="6">    <span class="co"># documentation</span></a>
-<a class="sourceLine" id="cb567-7" data-line-number="7">    <span class="st">&quot;roxygen2&quot;</span>,</a>
-<a class="sourceLine" id="cb567-8" data-line-number="8">    <span class="co"># graphics</span></a>
-<a class="sourceLine" id="cb567-9" data-line-number="9">    <span class="st">&quot;Cairo&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb631-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb631-2" data-line-number="2">    <span class="co"># source paper analysis</span></a>
+<a class="sourceLine" id="cb631-3" data-line-number="3">    <span class="st">&quot;ggthemes&quot;</span></a>
+<a class="sourceLine" id="cb631-4" data-line-number="4">    <span class="co"># bibliographic / publishing</span></a>
+<a class="sourceLine" id="cb631-5" data-line-number="5">    <span class="st">&quot;citr&quot;</span>, <span class="st">&quot;rticles&quot;</span>,</a>
+<a class="sourceLine" id="cb631-6" data-line-number="6">    <span class="co"># documentation</span></a>
+<a class="sourceLine" id="cb631-7" data-line-number="7">    <span class="st">&quot;roxygen2&quot;</span>,</a>
+<a class="sourceLine" id="cb631-8" data-line-number="8">    <span class="co"># graphics</span></a>
+<a class="sourceLine" id="cb631-9" data-line-number="9">    <span class="st">&quot;Cairo&quot;</span>))</a></code></pre></div>
 <p><br></p>
 </div>
 <div id="get-workshop-materials" class="section level3">
@@ -687,7 +637,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h5>Carl Boettiger <a href="https://orcid.org/0000-0002-1642-628X"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" /></a>. <em>From noise to knowledge: how randomness generates novel phenomena and reveals information</em>. Published in <em>Ecology Letters</em>, 22 May 2018 <a href="https://doi.org/10.1111/ele.13085" class="uri">https://doi.org/10.1111/ele.13085</a></h5>
 <p><img src="assets/Boettiger-2018.png" heigth="250px" width="400px"></p>
 <p>You can <strong>download the materials using <code>usethis::use_course()</code></strong> and supplying a path to a destination folder to argument <code>destdir</code>:</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb568-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_course</span>(<span class="dt">url =</span> <span class="st">&quot;bit.ly/rrtools_wks&quot;</span>, <span class="dt">destdir =</span> <span class="st">&quot;~/Desktop&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb632-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_course</span>(<span class="dt">url =</span> <span class="st">&quot;bit.ly/rrtools_wks&quot;</span>, <span class="dt">destdir =</span> <span class="st">&quot;~/Desktop&quot;</span>)</a></code></pre></div>
 <p>This will <strong>download</strong> everything we need from a GitHub repository as a <code>.zip</code> file, <strong>unzip</strong> it and launch it in a <strong>new Rstudio session</strong> for us to explore.</p>
 <p><br></p>
 </div>
@@ -715,7 +665,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="load-library" class="section level3">
 <h3>load library</h3>
 <p>First we need to load <code>rrtools</code></p>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb570-1" data-line-number="1"><span class="kw">library</span>(rrtools) </a></code></pre></div>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb634-1" data-line-number="1"><span class="kw">library</span>(rrtools) </a></code></pre></div>
 <pre><code>## ✔ Git is installed on this computer, your username is annakrystalli</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;rrtools&#39;</code></pre>
@@ -724,13 +674,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     use_circleci, use_readme_rmd, use_travis</code></pre>
 <p>This performs a quick check to <strong>confirm you have Git installed and configured</strong></p>
 <p>If you do, you should see the following output in the console.</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb574-1" data-line-number="1">✔ Git is installed on this computer, your username is annakrystalli</a></code></pre></div>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb638-1" data-line-number="1">✔ Git is installed on this computer, your username is annakrystalli</a></code></pre></div>
 </div>
 <div id="create-compendium-1" class="section level3">
 <h3>create compendium</h3>
 <p>Now we’re ready to <strong>create our compendium</strong>. We use function <strong><code>rrtools::create_compendium</code></strong> and supply it with a path at which our compendium will be created. The final part of our path becomes the compendium name. Because the function effectively creates a package, only a <strong>single string of lowercase alpha characters is accepted as a name</strong>. so let’s go for <code>rrcompendium</code> as the final part of our path.</p>
 <p>To <strong>create <code>rrcompendium</code> in a directory called <code>Documents/workflows/</code> I use:</strong></p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">create_compendium</span>(<span class="st">&quot;~/Documents/workflows/rrcompendium&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb639-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">create_compendium</span>(<span class="st">&quot;~/Documents/workflows/rrcompendium&quot;</span>)</a></code></pre></div>
 <p>Go ahead and <strong>create a compendium at a location of your choice</strong>. Stick with compendium name <code>rrcompendium</code> for ease of following the materials. If the call was successfull you should see the following console output:</p>
 <pre><code>✔ Setting active project to &#39;/Users/Anna/Documents/workflows/rrcompendium&#39;
 ✔ Creating &#39;R/&#39;
@@ -754,7 +704,7 @@ Next, you need to:  ↓ ↓ ↓
 <div id="initiate-git" class="section level3">
 <h3>Initiate <code>git</code></h3>
 <p>We can initialise our compendium with <code>.git</code> using:</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb577-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb641-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
 <p><strong>N.B. Beware, you may have ended up with two Rstudio sessions of <code>rrcompendium</code>.</strong> Make sure to only have one session of a single project at one time to avoid problems.</p>
 <p><br></p>
 </div>
@@ -823,7 +773,7 @@ LazyData: true
 <div id="license" class="section level3">
 <h3>License</h3>
 <p>Finally, let’s <strong>add a license for the material we create</strong>. We’ll use an <a href="https://opensource.org/licenses/MIT"><strong>MIT license</strong></a>. Note however that <strong>his only covers the code</strong>. We can do this with:</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb583-1" data-line-number="1"> usethis<span class="op">::</span><span class="kw">use_mit_license</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb647-1" data-line-number="1"> usethis<span class="op">::</span><span class="kw">use_mit_license</span>()</a></code></pre></div>
 <pre><code>✔ Setting License field in DESCRIPTION to &#39;MIT + file LICENSE&#39;
 ✔ Writing &#39;LICENSE.md&#39;
 ✔ Adding &#39;^LICENSE\\.md$&#39; to &#39;.Rbuildignore&#39;</code></pre>
@@ -875,7 +825,7 @@ LazyData: true
 <h2>Create README</h2>
 <p>Every GitHub repository needs a <code>README</code> landing page.</p>
 <p>We can <strong>create an <code>rrtools</code> <code>README</code> template</strong> using:</p>
-<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb588-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">use_readme_rmd</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb652-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">use_readme_rmd</span>()</a></code></pre></div>
 <pre><code>
 ✔ Creating &#39;README.Rmd&#39; from template.
 ✔ Adding &#39;README.Rmd&#39; to `.Rbuildignore`.
@@ -916,14 +866,14 @@ This repository contains the data and code for our paper:
 
 Our pre-print is online here:
 
-&gt; Authors, (YYYY). _Title of paper_. Name of journal/book, Accessed 02 May 2020. Online at &lt;https://doi.org/xxx/xxx&gt;
+&gt; Authors, (YYYY). _Title of paper_. Name of journal/book, Accessed 06 May 2020. Online at &lt;https://doi.org/xxx/xxx&gt;
 
 
 ### How to cite
 
 Please cite this compendium as:
 
-&gt; Authors, (2020). _Compendium of R code and data for &#39;Title of paper&#39;_. Accessed 02 May 2020. Online at &lt;https://doi.org/xxx/xxx&gt;
+&gt; Authors, (2020). _Compendium of R code and data for &#39;Title of paper&#39;_. Accessed 06 May 2020. Online at &lt;https://doi.org/xxx/xxx&gt;
 
 ### How to download or install
 
@@ -964,14 +914,14 @@ We welcome contributions from everyone. Before you get started, please see our [
 <h3>edit paper.pdf DOI</h3>
 <pre><code>Our reproduction pre-print is online here:
 
-&gt; Krystalli, A, (2018). _Partial Reproduction of Boettiger Ecology Letters 2018;21:1255–1267 with rrtools_, Accessed 02 May 2020. Online at &lt;https://doi.org/{DOI-to-compendium}&gt;
+&gt; Krystalli, A, (2018). _Partial Reproduction of Boettiger Ecology Letters 2018;21:1255–1267 with rrtools_, Accessed 06 May 2020. Online at &lt;https://doi.org/{DOI-to-compendium}&gt;
 </code></pre>
 </div>
 <div id="edit-compendium-citation" class="section level3">
 <h3>edit compendium citation</h3>
 <pre><code>Please cite this compendium as:
 
-&gt; Krystalli, A, (2020). _Compendium of R code and data for &#39;Partial Reproduction of Boettiger Ecology Letters 2018;21:1255–1267 with rrtools&#39;_. Accessed 02 May 2020. Online at &lt;https://doi.org/{DOI-to-compendium}&gt;</code></pre>
+&gt; Krystalli, A, (2020). _Compendium of R code and data for &#39;Partial Reproduction of Boettiger Ecology Letters 2018;21:1255–1267 with rrtools&#39;_. Accessed 06 May 2020. Online at &lt;https://doi.org/{DOI-to-compendium}&gt;</code></pre>
 </div>
 <div id="update-zip-url" class="section level3">
 <h3>update zip url</h3>
@@ -995,7 +945,7 @@ You can download the compendium as a zip from from this URL: &lt;https://github.
 <div id="create-github-repository" class="section level2">
 <h2>🚦 Create GitHub repository</h2>
 <p>Next, we’ll <strong>create a GitHub repository to share our compendium</strong>. We’ll make use of our <code>GITHUB_PAT</code> and go for <code>https</code> authentication. We can do this with function:</p>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb596-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb660-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
 <pre><code>✔ Setting active project to &#39;/Users/Anna/Documents/workflows/rrcompendium&#39;
 ● Check title and description
   Name:        rrcompendium
@@ -1059,7 +1009,7 @@ You can download the compendium as a zip from from this URL: &lt;https://github.
 <li><p><code>vignettes</code> to create a <code>vignettes/</code> directory (and automatically update the <code>DESCRIPTION</code>).</p></li>
 </ul>
 <p>The default is a top-level <code>analysis/</code>.</p>
-<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb601-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">use_analysis</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb665-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">use_analysis</span>()</a></code></pre></div>
 <pre><code>✔ Adding bookdown to Imports
 ✔ Creating &#39;analysis&#39; directory and contents
 ✔ Creating &#39;analysis&#39;
@@ -1143,30 +1093,30 @@ Note that:
 <p>Let’s also <strong>open <code>analysis.R</code></strong> in the course materials and run the code. The script has some <strong>initial setup</strong>, then <strong>loads the data</strong>, <strong>recodes one of the columns</strong> for plotting and then <strong>plots the results</strong> of the simulation, which <strong>generates figure 1 in <a href="https://github.com/annakrystalli/rrtools-wkshp-materials/blob/master/paper.pdf"><code>paper.pdf</code></a></strong>.</p>
 <div id="analysis.r" class="section level4">
 <h4><code>analysis.R</code></h4>
-<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb605-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb605-2" data-line-number="2"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb605-3" data-line-number="3"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb605-4" data-line-number="4"><span class="kw">library</span>(ggthemes)</a>
-<a class="sourceLine" id="cb605-5" data-line-number="5"><span class="kw">theme_set</span>(<span class="kw">theme_grey</span>())</a></code></pre></div>
-<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb606-1" data-line-number="1"><span class="co"># load-data</span></a>
-<a class="sourceLine" id="cb606-2" data-line-number="2">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="dt">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb607-1" data-line-number="1"><span class="co"># create colour palette</span></a>
-<a class="sourceLine" id="cb607-2" data-line-number="2">colours &lt;-<span class="st"> </span><span class="kw">ptol_pal</span>()(<span class="dv">2</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb608-1" data-line-number="1"><span class="co"># recode-data</span></a>
-<a class="sourceLine" id="cb608-2" data-line-number="2">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb608-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">system_size =</span> <span class="kw">recode</span>(system_size, </a>
-<a class="sourceLine" id="cb608-4" data-line-number="4">                              <span class="dt">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, </a>
-<a class="sourceLine" id="cb608-5" data-line-number="5">                              <span class="dt">small =</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </a>
-<a class="sourceLine" id="cb608-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb608-7" data-line-number="7"><span class="co"># plot-gillespie</span></a>
-<a class="sourceLine" id="cb608-8" data-line-number="8">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb608-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb608-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> mean), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb608-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> minus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb608-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> plus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb608-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> n), <span class="dt">col=</span>colours[<span class="dv">1</span>]) <span class="op">+</span></a>
-<a class="sourceLine" id="cb608-14" data-line-number="14"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>system_size, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) </a></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-330-1.png" width="672" /></p>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb669-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb669-2" data-line-number="2"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb669-3" data-line-number="3"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb669-4" data-line-number="4"><span class="kw">library</span>(ggthemes)</a>
+<a class="sourceLine" id="cb669-5" data-line-number="5"><span class="kw">theme_set</span>(<span class="kw">theme_grey</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb670-1" data-line-number="1"><span class="co"># load-data</span></a>
+<a class="sourceLine" id="cb670-2" data-line-number="2">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="dt">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb671-1" data-line-number="1"><span class="co"># create colour palette</span></a>
+<a class="sourceLine" id="cb671-2" data-line-number="2">colours &lt;-<span class="st"> </span><span class="kw">ptol_pal</span>()(<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb672-1" data-line-number="1"><span class="co"># recode-data</span></a>
+<a class="sourceLine" id="cb672-2" data-line-number="2">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb672-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">system_size =</span> <span class="kw">recode</span>(system_size, </a>
+<a class="sourceLine" id="cb672-4" data-line-number="4">                              <span class="dt">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, </a>
+<a class="sourceLine" id="cb672-5" data-line-number="5">                              <span class="dt">small =</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </a>
+<a class="sourceLine" id="cb672-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb672-7" data-line-number="7"><span class="co"># plot-gillespie</span></a>
+<a class="sourceLine" id="cb672-8" data-line-number="8">data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb672-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb672-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> mean), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb672-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> minus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb672-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> plus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb672-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> n), <span class="dt">col=</span>colours[<span class="dv">1</span>]) <span class="op">+</span></a>
+<a class="sourceLine" id="cb672-14" data-line-number="14"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>system_size, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) </a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-405-1.png" width="672" /></p>
 <hr />
 </div>
 </div>
@@ -1191,7 +1141,7 @@ Note that:
 </ul>
 <p><img src="assets/rticle.png" /></p>
 <p>Or we can use <code>rmarkdown::draft()</code> to create articles:</p>
-<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb609-1" data-line-number="1">rmarkdown<span class="op">::</span><span class="kw">draft</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;analysis&quot;</span>,<span class="st">&quot;paper.Rmd&quot;</span>), <span class="dt">template =</span> <span class="st">&quot;elsevier_article&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rticles&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb673-1" data-line-number="1">rmarkdown<span class="op">::</span><span class="kw">draft</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;analysis&quot;</span>,<span class="st">&quot;paper.Rmd&quot;</span>), <span class="dt">template =</span> <span class="st">&quot;elsevier_article&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rticles&quot;</span>)</a></code></pre></div>
 <p>Both these functions create the following files in a new directory <code>analysis/paper</code>.</p>
 <pre><code>analysis/paper
 ├── elsarticle.cls
@@ -1233,7 +1183,7 @@ abstract: |
   It consists of two paragraphs.
 
 journal: &quot;An awesome journal&quot;
-date: &quot;2020-05-02&quot;
+date: &quot;2020-05-06&quot;
 bibliography: mybibfile.bib
 output: rticles::elsevier_article
 ---</code></pre>
@@ -1418,8 +1368,8 @@ project CA-B-INS-0162-H.
 <div id="set-document-chunk-options" class="section level4">
 <h4>set document chunk options</h4>
 <p>Now, let’s set some <code>knitr</code> options for the whole document by adding the following code to our <code>libraries</code> chunk:</p>
-<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb624-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">FALSE</span>, <span class="dt">message=</span><span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb624-2" data-line-number="2">                      <span class="dt">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="dt">fig.width=</span><span class="dv">7</span>, <span class="dt">fig.height=</span><span class="fl">3.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb688-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">FALSE</span>, <span class="dt">message=</span><span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb688-2" data-line-number="2">                      <span class="dt">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="dt">fig.width=</span><span class="dv">7</span>, <span class="dt">fig.height=</span><span class="fl">3.5</span>)</a></code></pre></div>
 <p>We’re setting default chunk options to:</p>
 <ul>
 <li><code>echo = FALSE</code></li>
@@ -1438,21 +1388,21 @@ project CA-B-INS-0162-H.
 <div id="add-libraries" class="section level3">
 <h3>add libraries</h3>
 <p>Copy and paste the <strong>code for loading all the libraries from <code>analysis.R</code></strong>. Add library <code>rrcompendium</code> so we can access function <code>recode_system_size</code>. The <code>libraries</code> chunk should now look like so:</p>
-<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb625-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">FALSE</span>, <span class="dt">message=</span><span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb625-2" data-line-number="2">                      <span class="dt">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="dt">fig.width=</span><span class="dv">7</span>, <span class="dt">fig.height=</span><span class="fl">3.5</span>)</a>
-<a class="sourceLine" id="cb625-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb625-4" data-line-number="4"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb625-5" data-line-number="5"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb625-6" data-line-number="6"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb625-7" data-line-number="7"><span class="kw">library</span>(ggthemes)</a>
-<a class="sourceLine" id="cb625-8" data-line-number="8"><span class="kw">library</span>(rrcompendium)</a></code></pre></div>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb689-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">FALSE</span>, <span class="dt">message=</span><span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb689-2" data-line-number="2">                      <span class="dt">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="dt">fig.width=</span><span class="dv">7</span>, <span class="dt">fig.height=</span><span class="fl">3.5</span>)</a>
+<a class="sourceLine" id="cb689-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb689-4" data-line-number="4"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb689-5" data-line-number="5"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb689-6" data-line-number="6"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb689-7" data-line-number="7"><span class="kw">library</span>(ggthemes)</a>
+<a class="sourceLine" id="cb689-8" data-line-number="8"><span class="kw">library</span>(rrcompendium)</a></code></pre></div>
 <p><br></p>
 </div>
 <div id="add-set-theme-chunk" class="section level3">
 <h3>Add <code>set-theme</code> chunk</h3>
 <p>Right below the <code>libraries</code> chunk, <strong>insert a new chunk and call it <code>set-theme</code></strong></p>
 <p>Copy the <strong>code to set the plot theme</strong> and pasted into the <code>set-theme</code> code:</p>
-<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb626-1" data-line-number="1"><span class="kw">theme_set</span>(<span class="kw">theme_grey</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb690-1" data-line-number="1"><span class="kw">theme_set</span>(<span class="kw">theme_grey</span>())</a></code></pre></div>
 <p><br></p>
 </div>
 <div id="add-figure1-chunk" class="section level3">
@@ -1461,24 +1411,24 @@ project CA-B-INS-0162-H.
 <div id="add-code-1" class="section level4">
 <h4>Add code</h4>
 <p>Copy and <strong>paste the remaining code into a new chunk which will create figure 1</strong>.</p>
-<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb627-1" data-line-number="1"><span class="co"># create colour palette</span></a>
-<a class="sourceLine" id="cb627-2" data-line-number="2">colours &lt;-<span class="st"> </span><span class="kw">ptol_pal</span>()(<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb627-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb627-4" data-line-number="4"><span class="co"># load-data</span></a>
-<a class="sourceLine" id="cb627-5" data-line-number="5">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="dt">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)  </a>
-<a class="sourceLine" id="cb627-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb627-7" data-line-number="7"><span class="co"># recode-data</span></a>
-<a class="sourceLine" id="cb627-8" data-line-number="8">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb627-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">system_size =</span> <span class="kw">recode</span>(system_size, <span class="dt">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, <span class="dt">small=</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </a>
-<a class="sourceLine" id="cb627-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb627-11" data-line-number="11"><span class="co"># plot-gillespie</span></a>
-<a class="sourceLine" id="cb627-12" data-line-number="12">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb627-13" data-line-number="13"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb627-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> mean), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb627-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> minus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb627-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> plus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb627-17" data-line-number="17"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> n), <span class="dt">col=</span>colours[<span class="dv">1</span>]) <span class="op">+</span></a>
-<a class="sourceLine" id="cb627-18" data-line-number="18"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>system_size, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb691-1" data-line-number="1"><span class="co"># create colour palette</span></a>
+<a class="sourceLine" id="cb691-2" data-line-number="2">colours &lt;-<span class="st"> </span><span class="kw">ptol_pal</span>()(<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb691-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb691-4" data-line-number="4"><span class="co"># load-data</span></a>
+<a class="sourceLine" id="cb691-5" data-line-number="5">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="dt">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)  </a>
+<a class="sourceLine" id="cb691-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb691-7" data-line-number="7"><span class="co"># recode-data</span></a>
+<a class="sourceLine" id="cb691-8" data-line-number="8">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb691-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">system_size =</span> <span class="kw">recode</span>(system_size, <span class="dt">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, <span class="dt">small=</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </a>
+<a class="sourceLine" id="cb691-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb691-11" data-line-number="11"><span class="co"># plot-gillespie</span></a>
+<a class="sourceLine" id="cb691-12" data-line-number="12">data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb691-13" data-line-number="13"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb691-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> mean), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb691-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> minus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb691-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> plus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb691-17" data-line-number="17"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> n), <span class="dt">col=</span>colours[<span class="dv">1</span>]) <span class="op">+</span></a>
+<a class="sourceLine" id="cb691-18" data-line-number="18"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>system_size, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) </a></code></pre></div>
 </div>
 <div id="add-caption" class="section level4">
 <h4>🚦 Add caption</h4>
@@ -1498,7 +1448,7 @@ project CA-B-INS-0162-H.
 <div id="add-paper-dependencies" class="section level2">
 <h2>🚦 Add paper dependencies</h2>
 <p>Finally, before we’re finished, let’s ensure the dependencies introduced in the paper are included. We can use <code>rrtools::add_dependencies_to_description()</code></p>
-<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb629-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">add_dependencies_to_description</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb693-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">add_dependencies_to_description</span>()</a></code></pre></div>
 <p>This function <strong>scans script files (<code>.R</code>, <code>.Rmd</code>, <code>.Rnw</code>, <code>.Rpres</code>, etc.) for external package dependencies</strong> indicated by <code>library()</code>, <code>require()</code> or <code>::</code> and <strong>adds those packages to the <code>Imports</code> field in the package <code>DESCRIPTION</code></strong>:</p>
 <pre><code>Imports: 
     bookdown,

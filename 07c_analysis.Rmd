@@ -1,0 +1,12 @@
+# `analysis.R`
+
+This R script should contain your analysis and be saved in the root directory as:
+
+## **`analysis.R`**
+
+Your script should contain:
+
+```{r, eval=FALSE, code=readLines("analysis.R")}
+
+```
+

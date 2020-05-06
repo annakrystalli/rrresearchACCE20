@@ -1,29 +1,42 @@
 ---
 title: "Collaborative `Github` in `Rstudio`"
-author: "ACCE Research Data and Project Management"
-date: "01-02 May 2018, TUoS"
 output:
   xaringan::moon_reader:
     css: ["default", "assets/css/little_ak.css", "assets/css/little_ak-fonts.css"]
-    lib_dir: "../docs/libs"
+    lib_dir: "libs"
     seal: false
     nature:
       beforeInit: "https://platform.twitter.com/widgets.js"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+params:
+  slide_title: "Collaborative `Github` in `Rstudio`"
+  course_title: "Reproducible Research Data and Project Management in R"
+  date: "Apr-May 2020"
+  location: "Online"
+  book_url: "http://annakrystalli.me/rrresearchACCE20/"
+  hackpad_url: ""
+  bitly_url: "https://bit.ly/ACCE20"
 ---
-class: top, right, inverse
+class: top, left, inverse
 
 
-## ACCE Research Data and Project Management
+## ACCE DTP 
+
+### _`r params$course_title`_
 
 ***
 
 .bottom[
-# Collaborative `Github` in `Rstudio`
-#### 10-11 April 2019, University of Sheffield
-#### Dr Anna Krystalli @annakrystalli
+# `r params$slide_title`
+
+<br>
+
+**`r glue::glue('{icon::fontawesome("calendar")} {params$date}')`**
+<br>
+
+**`r glue::glue('{icon::fontawesome("map-pin")} {params$location}')`** 
 ]
 
 ---
@@ -70,19 +83,20 @@ class: top, right, inverse
 
 #### Back up and sync through the cloud
 
-<figure>
-<img src="assets/remotes.png">
-<figcaption>Image: Jessica Lord, 2013 BSD</figcaption>
-</figure>
+```{r, out.width="90%", echo=FALSE, fig.cap="Image: Jessica Lord, 2013 BSD"}
+knitr::include_graphics("assets/remotes.png")
+```
+
 
 ---
 
 #### Fork and contribute to other's work 
 
-<figure>
-<img src="assets/clone.png" height="500px">
-<figcaption>Image: Jessica Lord, 2013 BSD</figcaption>
-</figure>
+
+
+```{r, out.width="90%", echo=FALSE, fig.cap="Image: Jessica Lord, 2013 BSD"}
+knitr::include_graphics("assets/clone.png")
+```
 
 ---
 
@@ -105,18 +119,24 @@ class: top, right, inverse
 
 ### remote repositories
 
-centralising information e.g. [**weecology** / ***"Nine simple ways to make it easier to (re)use your data" paper***](http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/0)
+centralising information e.g. [**weecology** / ***"Nine simple ways to make it easier to (re)use your data" paper***](http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/0) | [Repo](https://github.com/weecology/data-sharing-paper)
 
-[<img src="assets/repo-1.png" width="500px"/>](https://github.com/weecology/data-sharing-paper)
+```{r, out.width="80%", echo=FALSE}
+knitr::include_graphics("assets/repo-1.png")
+```
 
-<br>
+
 ---
 
 ### commits
 
 traceability
 
-[<img src="assets/commits-1.png" width="500px"/>](https://github.com/ropensci/rfishbase/commits/master)
+#### [Repo](https://github.com/ropensci/rfishbase/commits/master)
+
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/commits-1.png")
+```
 
 <br>
 
@@ -126,31 +146,43 @@ traceability
 
 project management
 
-[<img src="assets/issues-1.png" width="500px"/>](https://github.com/weecology/data-sharing-paper/issues)
+
+#### [Repo](https://github.com/weecology/data-sharing-paper/issues)
+
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/issues-1.png")
+```
 
 <br>
 ---
 
 ### graphs 
 
-#### project & team tracking
+#### project & team tracking: 
+Tracking contributors [Repo](https://github.com/weecology/data-sharing-paper/graphs/contributors)
 
-tracking contributors
-
-[<img src="assets/track-1.png" width="500px"/>](https://github.com/weecology/data-sharing-paper/graphs/contributors)
+```{r, out.width="80%", echo=FALSE}
+knitr::include_graphics("assets/track-1.png")
+```
 
 ---
 tracking commits
 
-[<img src="assets/track-2.png" width="500px"/>](https://github.com/weecology/data-sharing-paper/network)
+#### [Repo](https://github.com/weecology/data-sharing-paper/network)
+
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("assets/track-2.png")
+```
 
 <br>
 ---
 
 
-class: center
+class: center, middle, invert
 
-# **entire process of project evolution reproducible**
+## **entire process of project evolution reproducible**
+
+***
 
 <br>
 
@@ -182,6 +214,6 @@ class: top, right, inverse
 
 ---
 
-## Get back [home](index.html)
 
 
+## Get back [home](`r params$book_url`)

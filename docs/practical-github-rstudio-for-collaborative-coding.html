@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="version-control-with-git.html"/>
+<link rel="prev" href="collaborative-github.html"/>
 <link rel="next" href="packaging-functionality.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -60,10 +60,6 @@
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.9.2/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -230,98 +226,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#build-readme-site"><i class="fa fa-check"></i>Build README site</a></li>
 </ul></li>
 <li class="part"><span><b>V Analysing and presenting analyses</b></span></li>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i>Plotting with ggplot2</a><ul>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#data-visualisation-and-analysis-basics"><i class="fa fa-check"></i>Data visualisation and analysis basics</a></li>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#graphics-in-r"><i class="fa fa-check"></i>Graphics in R</a></li>
+<li><a href="plotting-with-ggplot2.html#data-visualisation-in-practice-exploring-individual-with-ggplot2">Data visualisation in practice: Exploring <code>individual</code> with <code>ggplot2</code></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html"><i class="fa fa-check"></i>Literate programming in rmarkdown</a><ul>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#why-is-this-important-in-science"><i class="fa fa-check"></i>Why is this important in science:</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#calls-for-open-science"><strong>Calls for open science</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#tldr"><i class="fa fa-check"></i>tl;dr</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#rmarkdown-overview"><strong>Rmarkdown overview</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#elements-of-r-markdown"><i class="fa fa-check"></i>elements of R markdown</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#markdown-.md"><strong>markdown {<code>.md</code>}</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#code-r-python-sql"><strong>code {r,</strong> python, SQL, … <strong>}</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#outputs"><strong>outputs</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#publish-to-the-web-for-free"><i class="fa fa-check"></i>Publish to the web for free!</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#applications-in-research"><i class="fa fa-check"></i>Applications in research</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-1"><i class="fa fa-check"></i>💻 Exercise Part 1</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#yaml-header">🚦 <strong>YAML header</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#define-outputs"><i class="fa fa-check"></i>define outputs</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#define-a-floating-table-of-contents"><i class="fa fa-check"></i>define a floating table of contents</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#choose-a-theme"><i class="fa fa-check"></i>choose a theme</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#choose-code-highlights"><i class="fa fa-check"></i>choose code highlights</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-2"><i class="fa fa-check"></i>💻 Exercise Part 2</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#markdown-basics">🚦 <strong>Markdown basics</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#text"><strong>text</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#headers"><strong>headers</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#unordered-lists"><strong>unordered lists</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#ordered-lists"><strong>ordered lists</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#quotes"><strong>quotes</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#code"><strong>code</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#images"><strong>images</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#basic-tables-in-markdown"><strong>basic tables in markdown</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#links"><strong>links</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#mathematical-expressions"><i class="fa fa-check"></i>mathematical expressions</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-3"><i class="fa fa-check"></i>💻 Exercise: Part 3</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#chunks-inline-r-code"><i class="fa fa-check"></i>🚦 Chunks &amp; Inline R code</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#inserting-new-chunks"><strong>inserting new chunks</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#chunk-uses"><i class="fa fa-check"></i>chunk uses</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#chunk-notation"><strong>chunk notation</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#chunk-options"><strong>chunk options</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#uses"><i class="fa fa-check"></i>uses</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-4"><i class="fa fa-check"></i>💻 Exercise Part 4</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#displaying-data"><i class="fa fa-check"></i>🚦 Displaying data</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-5"><i class="fa fa-check"></i>💻 Exercise Part 5</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#plots"><i class="fa fa-check"></i>🚦 plots</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-6a"><i class="fa fa-check"></i>💻 Exercise Part 6a</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-6b"><i class="fa fa-check"></i>Exercise Part 6b</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#advanced-.rmd">🚦 Advanced <code>.Rmd</code></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#reading-chunks-of-code"><strong>reading chunks of code</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#extracting-code-from-an-.rmd"><strong>Extracting code from an <code>.Rmd</code></strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-7"><i class="fa fa-check"></i>💻 Exercise: Part 7*</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#purl-your-document"><i class="fa fa-check"></i>purl your document</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#html-in-rmarkdown"><i class="fa fa-check"></i>🚦 html in rmarkdown</a></li>
+<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#literate-programming"><i class="fa fa-check"></i>Literate programming</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#literate-programming-in-r"><strong>Literate programming in R</strong></a></li>
+<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#applications-of-rmd-in-research"><i class="fa fa-check"></i>Applications of Rmd in research</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#rmd-in-practice"><code>Rmd</code> in Practice</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#advanced-.rmd">Advanced <code>.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#parting-words"><i class="fa fa-check"></i>Parting words</a></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#getting-help-with-markdown"><i class="fa fa-check"></i>Getting help with markdown</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#resources"><strong>Resources</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#solutions-my-example"><i class="fa fa-check"></i>Solutions: My example</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#resources-1"><strong>Resources</strong></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i>Plotting with ggplot2</a></li>
 <li class="part"><span><b>VI Version Control</b></span></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html"><i class="fa fa-check"></i>Version Control with Git</a><ul>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-version-control"><i class="fa fa-check"></i>What is Version control? 🤔</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-git"><i class="fa fa-check"></i>What is git? 🤔</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#why-use-it-in-research"><i class="fa fa-check"></i>Why use it in research?</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-github"><i class="fa fa-check"></i>What is GitHub 🤔</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#git-github-rstudio"><i class="fa fa-check"></i>Git, Github &amp; Rstudio</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#demo"><i class="fa fa-check"></i>Demo</a></li>
 <li><a href="version-control-with-git.html#how-does-git-work">How does <code>Git</code> work?</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git-github"><i class="fa fa-check"></i>💻 Configure git &amp; GitHub</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git"><i class="fa fa-check"></i>Configure git</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#set-up-github-pat"><i class="fa fa-check"></i>🚦 Set up GITHUB PAT</a></li>
-<li><a href="version-control-with-git.html#section"><img src="assets/GITHUB_PAT.png" /></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#turn-our-project-into-a-repository"><i class="fa fa-check"></i>Turn our project into a repository</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commiting-files"><i class="fa fa-check"></i>🚦 Commiting files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#add-files"><i class="fa fa-check"></i>Add files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-changes"><i class="fa fa-check"></i>Commit changes</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-a-readme"><i class="fa fa-check"></i>🚦 Create a README</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#version-controlling-projects"><i class="fa fa-check"></i>Version Controlling projects</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-a-readme"><i class="fa fa-check"></i>Create a README</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#edit-readme"><i class="fa fa-check"></i>Edit README</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository-on-github"><i class="fa fa-check"></i>🚦 Create repository on GitHub</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository"><i class="fa fa-check"></i>Create repository</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#push-files"><i class="fa fa-check"></i>push files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#tracking-changes"><i class="fa fa-check"></i>🚦 Tracking changes</a></li>
-<li><a href="version-control-with-git.html#making-a-change-to-our-gapminder-analysis.rmd">Making a change to our <code>gapminder-analysis.Rmd</code></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-your-changes"><i class="fa fa-check"></i>Commit your changes</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#host-content-on-github"><i class="fa fa-check"></i>🚦 Host content on GitHub</a></li>
 <li><a href="version-control-with-git.html#go-to-repo-settings">Go to repo <strong>Settings</strong></a></li>
 <li><a href="version-control-with-git.html#enable-gh-pages">Enable <code>gh-pages</code></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#making-changes-on-github"><i class="fa fa-check"></i>🚦 Making changes on GitHub</a></li>
-<li><a href="version-control-with-git.html#create-license">Create <code>LICENSE</code></a></li>
-<li><a href="version-control-with-git.html#add-link-to-analysis-index.html-to-readme">Add link to analysis <code>index.html</code> to README</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#pull-changes-locally"><i class="fa fa-check"></i>🚦 Pull changes locally</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#pushing-files"><i class="fa fa-check"></i>pushing files</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-your-changes"><i class="fa fa-check"></i>Commit your changes</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#deleting-files"><i class="fa fa-check"></i>🚦 Deleting files</a></li>
 <li><a href="version-control-with-git.html#gitignore"><code>.gitignore</code></a></li>
 <li><a href="version-control-with-git.html#gitignore-regex"><code>gitignore</code> regex</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#further-resources"><i class="fa fa-check"></i>Further Resources</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#never-forget"><i class="fa fa-check"></i>Never forget</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="collaborative-github.html"><a href="collaborative-github.html"><i class="fa fa-check"></i>Collaborative GitHub</a></li>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a><ul>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#evolottery"><strong>EvoLottery</strong></a></li>
 <li class="chapter" data-level="" data-path="practical-github-rstudio-for-collaborative-coding.html"><a href="practical-github-rstudio-for-collaborative-coding.html"><i class="fa fa-check"></i>Clone Github repo</a></li>
@@ -356,7 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html#create-documentation-site"><i class="fa fa-check"></i>🚦 Create documentation site</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html"><i class="fa fa-check"></i>Creating a research compendium with rrtools</a><ul>
-<li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#background-1"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#background"><i class="fa fa-check"></i>Background</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#enter-the-research-compendium"><i class="fa fa-check"></i>Enter the Research Compendium</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#r-community-response"><i class="fa fa-check"></i>R community response</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#general-project-organisation-1"><i class="fa fa-check"></i>General Project Organisation</a></li>
@@ -397,6 +341,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a><ul>
 <li><a href="geolocate-r.html#rgeolocate.r"><strong><code>R/geolocate.R</code></strong></a></li>
+</ul></li>
+<li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a><ul>
+<li><a href="analysis-r-1.html#analysis.r-2"><strong><code>analysis.R</code></strong></a></li>
+</ul></li>
+<li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a><ul>
+<li><a href="index-rmd.html#index.rmd-1"><strong><code>index.Rmd</code></strong></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
@@ -555,7 +505,7 @@ If all is good, click on <strong><code>Create pull request</code></strong></p>
           </div>
         </div>
       </div>
-<a href="version-control-with-git.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="collaborative-github.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="packaging-functionality.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

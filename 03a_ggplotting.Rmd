@@ -1,0 +1,857 @@
+# (PART) Analysing and presenting analyses {#analysing} 
+
+# Plotting with ggplot2
+
+## Data visualisation and analysis basics
+
+### Statistical Analyses and data
+
+> **Statistical analysis** is the science of **collecting, exploring and presenting** large amounts of data to discover underlying patterns and trends
+
+
+<div class="alert alert-danger">
+
+
+**The theory of Statistical Analysis is NOT part of this course**
+
+Rather, it is to introduce you with the computational building blocks and example workflows you can build on to develop your own analysis. 
+
+The actual plots you create and statistical analyses you use will **depend on the properties of the data and the questions you are trying to answer**. For this, I recommend refering to [many great books available on Statistics in R](https://community.rstudio.com/t/book-recommendations-statistics-in-r/10859).
+
+
+A great place to start is ***The Elements of Statistical Learning: Data Mining, Inference, and Prediction.*** **by Hastie, Tibshirani & Friedman** 
+
+```{r, echo=FALSE, out.width="30%"}
+knitr::include_url("https://web.stanford.edu/~hastie/Papers/ESLII.pdf")
+```
+
+
+while there are also many more on specialist topics like:
+
+- [Generalized Additive Models](https://books.google.co.uk/books?id=hr17lZC-3jQC&hl=en)
+- [Mixed Effects Models and Extensions in Ecology with R](https://www.springer.com/gp/book/9780387874579) 
+- [Statistical Rethinking: A Bayesian Course with Examples in R and Stan](https://xcelab.net/rm/statistical-rethinking/)
+
+</div>
+
+
+The foundation of any statistical analysis is **DATA**, most commonly, tabular data.
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/data.svg")
+```
+
+
+<div class="alert alert-info">
+
+We cannot easily establish comparative size and relationships between multiple data points from tabular data. 
+
+We need a better representation to visually extract meaning.
+
+</div>
+
+### Data Visualisation: the visual encoding of data
+
+
+> Data Visualisation is the _visual encoding_ and _presentation_ of _data_ to _facilitate understanding_.
+
+#### Data properties guide visual encoding 
+
+> The visual encoding we use is determined by the data and the relationships and statistical properties we want to convey.
+
+
+You'll find a handy guide at [datavizcatalogue.com](https://datavizcatalogue.com/)
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://datavizcatalogue.com/")
+```
+
+Once we've chosen the appropriate plots, we need tools to construct them.
+
+#### The grammar of grahics
+
+> An abstraction which makes **thinking, reasoning and communicating graphics easier**.
+
+Developed by Leland Wilkinson, particularly in [“The Grammar of Graphics” 1999/2005](https://onlinelibrary.wiley.com/doi/abs/10.1002/wics.118), 
+
+
+
+
+```{r, echo=FALSE, fig.height=2}
+knitr::include_graphics("assets/gog.jpg")
+```
+
+
+Describes a consistent syntax for the construction of a wide range of complex graphics by a concise description of their components.
+
+
+```{r, echo=FALSE, out.width="60%"}
+knitr::include_graphics("https://cdn-images-1.medium.com/max/800/1*MMZuYgeC_YjXNC1r4D4sog.png")
+```
+
+
+
+
+```{r, echo=FALSE, out.width="40%"}
+knitr::include_graphics("https://cdn-images-1.medium.com/max/800/1*w1RnmuE7VRK9aCAbtW9KAQ.gif")
+```
+
+
+
+
+
+#### Building a plot from its components.
+
+##### start with some tabular data: `mtcars`
+
+```{r, echo=FALSE}
+mtcars
+```
+
+##### Encoding variables on axes
+
+The first way we can visualise a single variable would be to plot it on a single axis.
+
+For example, here's variable `mpg` (miles per gallon) plotted along a single axis:
+
+```{r, fig.height=1, echo=FALSE, message=FALSE}
+library(ggplot2)
+library(dplyr)
+mtcars_fct <- mtcars %>%
+    mutate(cyl = factor(cyl))
+
+mtcars_fct %>%
+ggplot(aes(x = mpg, y = 0)) +
+    geom_point(shape = 21) +
+    theme_minimal() +
+    theme(axis.title.y = element_blank(),
+          axis.text.y.left = element_blank())
+```
+
+We could use the same to visualise a second variable, `hp` (horsepower)
+
+```{r, fig.height=1, echo=FALSE, message=FALSE}
+mtcars_fct %>%
+ggplot(aes(x = hp, y = 0)) +
+    geom_point(shape = 21) +
+    theme_minimal() +
+    theme(axis.title.y = element_blank(),
+          axis.text.y.left = element_blank())
+```
+
+
+When we can combine these two axes, we can visualise both the values of the data on each axis as well as the relationship of the two variables:
+
+```{r, fig.height=7, echo=FALSE, message=FALSE}
+mtcars_fct %>%
+ggplot(aes(x = mpg, y = hp)) +
+    geom_point(shape = 21) +
+    theme_minimal() 
+```
+
+##### Encoding a third variable using colour
+
+Now that we've used two axes, we might want to consider another attribute to encode a thrid variable with.
+
+We can use colour to encode `cyl` (number of cylinders).
+
+```{r, fig.height=7, echo=FALSE, message=FALSE}
+mtcars_fct %>%
+ggplot(aes(x = mpg, y = hp, fill = cyl)) +
+    geom_point(shape = 21) +
+    theme_minimal() 
+```
+
+
+
+
+
+
+
+> Good visualization can bring out important aspects of data, but visualization can also be used to conceal or mislead.
+
+
+#### principles of good data encoding
+
+- Consistency: The properties of the image (visual variables) should match the properties of the data. 
+- Importance Ordering: Encode the most important information in the most effective way.
+- Expressiveness: Tell the truth and nothing but the truth
+(don’t lie, and don’t lie by omission)
+- Effectiveness: Use encodings that people decode better
+(where better = faster and/or more accurate)
+
+
+#### [Calling Bullshit](https://callingbullshit.org/)
+- [Misleading axes](https://callingbullshit.org/tools/tools_misleading_axes.html)
+- [Proportional Ink](https://callingbullshit.org/tools/tools_proportional_ink.html)
+
+
+#### marks
+- points
+- lines
+- areas
+
+#### attributes
+appearance properties of marks
+
+- colour
+- size
+- shape
+- position
+
+
+
+## Graphics in R
+
+The R language has extensive graphical capabilities.
+
+Graphics in R may be created by many different methods including base graphics and more advanced plotting packages such as lattice.
+
+
+You'll find a rich selection of graphs in R at [The R Graph Gallery](https://www.r-graph-gallery.com/)
+
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_url("https://www.r-graph-gallery.com/")
+```
+
+
+
+### `ggplot2`
+
+The ggplot2 package was created by Hadley Wickham and provides an intuitive plotting system to rapidly generate publication quality graphics.
+
+**`ggplot2` builds on the "Grammar of Graphics"** 
+
+#### Resources
+
+[**Paper on the grammar of graphics as the foundation for `ggplot2`**](https://vita.had.co.nz/papers/layered-grammar.html)
+
+
+**Online working draft of 3rd Edition of** [***`ggplot2`: Elegant Graphics for Data Analysis***](https://ggplot2-book.org/)
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2-book.org/")
+```
+
+[**`ggplot2` documentation**](https://ggplot2.tidyverse.org/index.html)
+
+```{r, echo=FALSE}
+knitr::include_url("https://ggplot2.tidyverse.org/index.html")
+```
+
+
+**`ggplot2` cheatsheet**
+
+```{r, echo=FALSE}
+knitr::include_url("assets/cheatsheets/data-visualization-2.1.pdf")
+```
+
+
+
+### `ggplot2` in practice. Plotting `mtcars`
+
+To demonstrate the use of `ggplot2` to plot data according to the grammar of graphics, let's recreate the `mtcars` plot I just showed you.
+
+#### Initialising a plot
+
+The first thing we need to do is initialise a new plot.
+
+<div class="alert alert-info">
+
+Function `ggplot()` is used to construct the initial plot object, and is [**almost always followed by `+`**](https://ggplot2.tidyverse.org/reference/gg-add.html) to add component to the plot. 
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2.tidyverse.org/reference/ggplot.html")
+```
+
+
+</div>
+
+Let's load the library and create an empty plot:
+
+```{r}
+library(ggplot2)
+
+ggplot()
+```
+
+
+#### Specifying the data
+
+Next thing we need to do is specify the data.
+
+The first argument to `ggplot()` is the data we want to use for plotting, usually a data.frame or tibble. We can pipe that in to `ggplot()`.
+
+```{r}
+mtcars %>%
+    ggplot()
+```
+
+#### Mapping to Aesthetics with `aes()`
+
+Now that we've specified our data, we can start encoding our variables to visual properties of our plot.
+
+Lets start by mapping `mpg` and `hp` to our two axes. We do that in the second argument `mapping`, where we supply the output of function `aes()`. 
+
+Function `aes()` is used to specify the **set of aesthetic mappings between variables in the data and visual properties** in our plot. 
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2.tidyverse.org/reference/aes.html")
+```
+
+
+Any aesthetics defined in `ggplot()` will apply to all subsequent layers unless they are overriden within the individual layers.
+
+
+##### Mapping variables to axes `x` and `y`.
+
+In our case, we want to map variable `mpg` to aesthetic `x` (the x axis) and variable `hp` to aesthetic `y` (the y axis).
+
+```{r, fig.height=7, message=FALSE}
+mtcars %>%
+    ggplot(mapping = aes(x = mpg, y = hp))
+```
+
+#### Adding geometries with `geom_*()`
+
+Currently, we only have our axes, initialised with reasonably infered scales from the data.
+
+Following the specification of data and aesthetics, we next need to specify which geometries (or `geoms`s in ggplot) to use to present the data. The `geom` is a critical component and describes the type of plot used.
+
+Several geoms are available in ggplot2 as separate functions:
+
+* `geom_point()` - Scatter plots
+* `geom_line()` - Line plots
+* `geom_smooth()` - Fitted line plots
+* `geom_bar()` - Bar plots
+* `geom_boxplot()` - Boxplots
+* `geom_jitter()` - Jitter to plots
+* `geom_histogram()` - Histogram plots
+* `geom_density()` - Density plots
+* `geom_text()` - Text to plots
+* `geom_errorbar()` - Errorbars to plots
+* `geom_violin()` - Violin plots
+
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2.tidyverse.org/reference/index.html#section-layer-geoms")
+```
+
+##### Plotting a scatterplot
+
+To visualise the relationship between the data points in our two variables, and given both are numeric, we can plot them as points on a scatterplot using `geom_point()`.
+
+```{r, fig.height=7, message=FALSE}
+mtcars %>%
+ggplot(aes(x = mpg, y = hp)) +
+    geom_point()
+```
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2.tidyverse.org/reference/geom_point.html")
+```
+
+
+
+#### Mapping a third variable
+
+Now that we exhausted our first two options for visual encoding, we can use other aesthetics in our plot to map additional variables to. Example aesthetics available for `geom_point()` are
+
+- `color` or `colour`: colour mapping.
+- `shape`: mapping to symbols used for points.
+- `fill`: colour mapping to shapes that have a `fill` attribute.
+- `size`: mapping to the size of points.
+
+Let's now map the number of cylinders `cyl` to the `colour` of points.
+
+```{r, fig.height=7, message=FALSE}
+mtcars %>%
+ggplot(aes(x = mpg, y = hp, colour = cyl)) +
+    geom_point()
+```
+
+Now each point is coloured according to the value of `cyl`. 
+
+Because `cyl` is numeric, the default behaviour of R is to present it on a continuous scale, hence the colour gradient legend. 
+
+If we want to present `cyl` as a categorical variable, we can override that behaviour by turning it into a factor using `factor()`
+
+```{r, fig.height=7, message=FALSE}
+mtcars %>%
+ggplot(aes(x = mpg, y = hp, colour = factor(cyl))) +
+    geom_point() 
+```
+
+
+#### Adding a plot theme
+
+Finally, any design elements can be specified in the theme layer. Theme elements can be customised using function [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) 
+
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2.tidyverse.org/reference/theme.html")
+```
+
+
+`ggplot2` also has a number of in built themes. Let's just use one of those.
+
+```{r, fig.height=7, message=FALSE}
+mtcars %>%
+ggplot(aes(x = mpg, y = hp, fill = factor(cyl))) +
+    geom_point() +
+    theme_minimal() 
+```
+
+
+## Data visualisation in practice: Exploring `individual` with `ggplot2` 
+
+Now let's start putting some the tools and concepts we just learned to use with our `data/individual.csv` data.
+
+Let's say we are interested in exploring the relationship between individual plant `stem_diameter` and `height`. 
+
+Let's also say that, from previous knowledge, we expect that the relationship may vary according to the `growth_form` 
+
+
+
+
+
+So lets use data visualisation to explore the properties and relationships between the three variables.
+
+Start by loading the library and reading in the data as well as `dplyr` so we have access to the pipe. Let's also narrow the data down to our variables of interest using `dplyr::select()`
+
+```{r}
+library(ggplot2)
+library(magrittr)
+individual <- readr::read_csv(here::here("data", "individual.csv")) %>%
+    dplyr::select(stem_diameter, height, growth_form)
+```
+
+**Let's also create a new `.R` script and save it as `analysis.R` in the root of our project.**
+
+Copy that last section of code as the first few lines of our `analysis.R` script.
+
+
+### Exploratory Data Analysis
+
+Before we start exploring the relationship between variables, it's important to understand the statistical properties of the underlying data. Statistical summaries such as the output of `summary()` are a good starting point.
+
+```{r}
+summary(individual)
+```
+
+
+But data visualisation can be an even more powerful tool in expressing statistical properties of our data.
+
+#### Distribution of data
+
+To begin with, we can explore the properties of individual variables, starting with the distribution of values.
+
+Let's just work in our code `attic/sketckbook.R` script for now. We'll transfer final plots to `analysis.R` when we are happy with them.
+
+##### Distribution of `stem_diameter`
+
+Lets start with `stem_diameter` which is a numeric variable. As such we can use `geom_density` to plot the distribution of the data.
+
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2.tidyverse.org/reference/geom_density.html")
+```
+
+
+```{r}
+individual %>%
+    ggplot(aes(x = stem_diameter)) +
+    geom_density()
+```
+
+The distribution across all our data looks quite skewed towards lower values and even shows a small dip in a certain range of `stem_diameter`. 
+
+Many statistical tests assume normality of the data and a common tranformation to such skewed numeric data might be to log them. `ggplot` allows us to perform such tranformations during plotting and prints it as part of the variable axes label.
+
+```{r}
+individual %>%
+    ggplot(aes(x = log(stem_diameter))) +
+    geom_density()
+```
+
+Still rather wonky and may well violate assumptions of statistical tests down the line but it is slightly better than before so just for demonstration purposes, let's carry own presenting our data on a log scale.
+
+
+###### Applying aesthetics to geometries
+
+One thing that can make such plots visually more appealing is to fill in the area under the distribution curve.
+
+This also gives us the opportunity to dig into what exactly the aesthetic mapping in `aes()` is doing.
+
+Let's say we wanted to fill in the area with the colour `grey`. Our first instinct might me to use `aes()` in `ggplot()` and map aesthetic `fill` to the name of the colour `"grey"`.
+
+```{r}
+individual %>%
+    ggplot(aes(x = log(stem_diameter), fill = "grey")) +
+    geom_density()
+```
+
+But this has unexpected results! This happens because we are supplying the colour name within `aes()`. `aes()` is for mapping variables to aesthetics and expects a variable name in our data or a vector of values. 
+
+Here we are giving it a single character value which it converts to a factor. It then uses it's default function for creating categorical colour scales to assign the first colour in that scale (red) to our single factor level `"grey"`. The important point here is that R is not interpretting `"grey"` as a colour, but as a categorical variable, as it did for `factor(cyl)`. 
+
+To specify explicitly the fill colour of our density geom, we instead supply it as an **argument to our `geom_density()` function, outside of `aes()`**. Let's change both the `colour` of the line and `fill` to `"grey"`.
+
+```{r}
+individual %>%
+    ggplot(aes(x = log(stem_diameter))) +
+    geom_density(colour = "grey", fill = "grey")
+```
+
+##### Distribution of `height`
+
+We can similarly create a density plot for `height`
+
+```{r}
+individual %>%
+    ggplot(aes(x = height)) +
+    geom_density(colour = "grey", fill = "grey")
+```
+
+It's also a bit skewed so lets go ahead and work with `log()` values again.
+
+```{r}
+individual %>%
+    ggplot(aes(x = log(height))) +
+    geom_density(colour = "grey", fill = "grey")
+```
+
+##### Distribution of `growth_form`
+
+In contrast to `stem_diameter` and `height`, `growth_form` is a categorical variable.
+
+As such, we use `geom_bar()` to plot a barplot of the counts of values of each `growth_form` in our data. A barplot plots categorical data across the x axes and numeric data (in this case counts on the `y` axis). 
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2.tidyverse.org/reference/geom_bar.html")
+```
+
+Let's also map colour aesthetics to growth form. 
+
+```{r}
+individual %>%
+    ggplot(aes(x = growth_form, colour = growth_form, fill = growth_form)) +
+    geom_bar()
+```
+
+We can see that there are very few entries for `liana` and also a whole bunch of `NA`s in `growth_form`. So let's remove any such rows from our data by using `dplyr::filter()`. Let's assign this new data to a new `analysis_df` and work with that from now on.
+
+```{r}
+analysis_df <- individual %>%
+    dplyr::filter(!is.na(growth_form), growth_form != "liana") 
+```
+
+Let's also order our bars in order of ascending counts. The simplest way to do this is to convert `growth_form` to a factor and specify the ordering of the factor levels.
+
+To do that let's create a vector of `growth_form` unique values, ordered according to their counts.
+
+We can do this by using `table` to get the counts, `order` to order them in ascending order and `names` to extract the names!
+
+
+```{r}
+gf_levels <- table(analysis_df$growth_form) %>% 
+    sort() %>% 
+    names()
+```
+
+We can then specify the level order using that vector when we mutate to a factor through argument `levels` in `factor`.
+
+```{r}
+analysis_df %<>% 
+    dplyr::mutate(growth_form = factor(growth_form, 
+                                       levels = gf_levels))
+```
+
+Let's have a look at our barplot now:
+
+```{r}
+analysis_df %>%
+    ggplot(aes(x = growth_form, colour = growth_form, fill = growth_form)) +
+    geom_bar()
+```
+
+
+The order of the levels in `growth_form` now dictates the order in which the bars are plotted!
+
+Finally, let's just add a few extra touches to make the plot even more visually clear. 
+
+Let's flip the axis by mapping `growth_form` to `y`, that prevents `growth_form` axes labels to overlap. 
+
+Let's also remove the superfluous legend and reduce the opacity of our bars so we can see the scales through them
+
+```{r}
+analysis_df %>%
+    ggplot(aes(y = growth_form, colour = growth_form, fill = growth_form)) +
+    geom_bar(alpha = 0.5, show.legend = FALSE)
+```
+
+That's better.
+
+**Let's keep this plot and move it to our analysis script as fig 1**.
+
+
+### Plotting multiple densities according to the values of a second variable
+
+When plotting the density distributions we ended up having one plot per variable with little understanding of how values where distributed across the various growth forms.
+
+However, `ggplot` and the grammar of graphics allows us to build more informative plots, by combining the information in categorical variables to present cross variable properties in distributions.
+
+Let's explore what this means by focusing on the distribution of `stem_diameter` across the `growth_form` categories in our `sketchbook.R`.
+
+The grammar of graphics allows to easily plot the same properties of interest across groups dictated by other aesthetics. 
+
+We can plot out a separate density curve for each growth form by mapping categorical variable `grow_form` to `aes()` argument `group`.
+
+```{r}
+analysis_df %>%
+    ggplot(aes(x = log(stem_diameter), group = growth_form)) +
+    geom_density()
+```
+
+Now we have separate distribution curves for each `growth_form`!
+
+This first pass is not however visually easy to interpret. Let's assign `growth_form` to some additional aesthetics to make the visual encoding clearer.
+
+We can in fact get rid of the `group` argument and use `fill` and `colour` instead. The grouping behaviour is equivalent.
+
+```{r}
+analysis_df %>%
+    ggplot(aes(x = log(stem_diameter), colour = growth_form, fill = growth_form)) +
+    geom_density()
+```
+
+
+To make things even clearer we can supply additional argument to `geom_density`.
+
+Let's decrease the opacity of each density geom and trim it to the ranges of values across each `growth_form`.
+
+```{r}
+analysis_df %>%
+    ggplot(aes(x = log(stem_diameter), colour = growth_form, fill = growth_form)) +
+    geom_density(alpha = 0.5, trim = TRUE)
+```
+
+That's a lot clearer, and now we can see that overall the distribution of `log(stem_diameter)` across growth forms follows a broably bimodal distribution.
+
+To allow us to focus more on the individual distributions, we can use `facet_wrap()`  and formula `~growth_form` to create individual panels for each growth form on a grid:
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2.tidyverse.org/reference/facet_wrap.html")
+```
+
+```{r}
+analysis_df %>%
+    ggplot(aes(x = log(stem_diameter), colour = growth_form, fill = growth_form)) +
+    geom_density(alpha = 0.5, trim = TRUE) +
+    facet_wrap(~growth_form)
+```
+
+
+##### Encoding multiple distribution with violin plots
+
+Another way we can present the distribution of a continuous variable iin a compact way and grouped according to the value of a categorical variable is to use a violin plot.
+
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2.tidyverse.org/reference/geom_violin.html")
+```
+
+Let's straight away add some colour aesthetics also.
+
+```{r}
+analysis_df %>%
+    ggplot(aes(x = log(stem_diameter), y = growth_form, colour = growth_form, fill = growth_form)) +
+    geom_violin(alpha = 0.5, trim = T)
+```
+
+Violin plots show the density distribution of a continuous variable, grouped according to the values of the categorical values and presented mirrored.
+
+
+##### Adding statistical summaries with `geom_boxplot()`
+
+We can go a step further and add statistical information about our variable by overlaying a boxplot (or box and whiskers plot). The boxplot compactly displays the distribution of a continuous variable by visualising **five key summary statistics (the median, two hinges and two whiskers)**, and all "outlying" points individually.
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://ggplot2.tidyverse.org/reference/geom_boxplot.html")
+```
+
+
+Let's also suppress the legend for the box plot layer and reduce the opacity. 
+
+```{r}
+analysis_df %>%
+    ggplot(aes(x = log(stem_diameter), y = growth_form, colour = growth_form, fill = growth_form)) +
+    geom_violin(alpha = 0.5, trim = T) +
+    geom_boxplot(alpha = 0.7, show.legend = FALSE)
+```
+
+The central liine in each box corresponds to the median.
+
+The lower and upper hinges correspond to the first and third quartiles (the 25th and 75th percentiles) and define the Interquartile range (IQR). 
+
+The whiskers are calculated from the IQR and identify points considered statistical outliers. 
+
+Again, here we can see the bimodal distribution across all values, the two loose groups of multibole trees, single bole trees and small trees, but this time we have a must more informative plot packed in quite compactly. 
+
+We would still need a plot per variable though. We could try and utilise `facet_grid` to combine a boxplot for each continuous variable `stem_diameter` and `height` into a single plot. Hovever, there isn't a variable in the data in the current form that could be uset to facet on. The data is instead help in 
+
+#### Pivoting data to build plot with `facet_grid`
+
+To take advantage of `facet_wrap` we need to **pivot** our data into a longer format using `pivot_longer` from package `tidyr`.
+
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_url("https://tidyr.tidyverse.org/reference/pivot_longer.html")
+```
+
+
+`pivot_longer()` "lengthens" data, increasing the number of rows and decreasing the number of columns. We use it to stack the values of `stem_diameter` and `height` into a column called `value` and store the original column names which define the variable each value relates to in a new column `var`.
+
+```{r}
+analysis_df %>%
+    tidyr::pivot_longer(cols = c(stem_diameter, height), 
+                        names_to = "var",
+                        values_to = "value")
+```
+
+Note that the number of rows is now twice the size of the original data.frame because two columns have been stacked. Those columns have also been removed.
+
+In this format we can use variable `var` to create a facet for each variable.
+
+#### Figure 2: Data characteristics of our raw data
+
+
+Let's add that as a step in our plotting pipe
+```{r}
+analysis_df %>%
+    tidyr::pivot_longer(cols = c(stem_diameter, height), 
+                        names_to = "var",
+                        values_to = "value") %>%
+    ggplot(aes(x = log(value), y = growth_form, colour = growth_form, fill = growth_form)) +
+    geom_violin(alpha = 0.5, trim = T) +
+    geom_boxplot(alpha = 0.7, show.legend = FALSE) +
+    facet_grid(~var)
+```
+
+Hurray! Now we have a super informative plot, containing visual encodings of distributions and statistical summaries for both our continuous variables in one compact plot!
+
+**Let's move that to `analysis.R` as** ***Figure 2***
+
+
+### Analysis in practice: fitting and visualising a simple linear model
+
+Now that we've explored our variables, it's time to start looking at the statistical relationship between them.
+
+#### Analysing the relationship between `log(stem_diameter)` and `log(height)`
+
+First we might want to look at the overall relationship between our two continuous variables and we can start with fitting a simple linear regression model.
+
+In R, we use `lm` to fit linear models. It can be used to carry out regression, single stratum analysis of variance and analysis of covariance.
+
+##### Fitting a linear model
+
+We specify our model through a formula `log(stem_diameter) ~ log(height)`. This translates to log stem diameter as a function of height in which `stem_diameter` is the response variable and `height` the predictor.
+
+```{r}
+lm_overall <- lm(log(stem_diameter) ~ log(height), analysis_df)
+lm_overall
+```
+
+By default `lm` prints a rather terse summary of the model.
+
+An easy way to print nice and tidy outputs of most models in R is by using functions from package `broom`.
+
+```{r}
+lm_overall %>%
+    broom::glance()
+```
+
+Glance accepts a model object and returns a tibble with exactly one row of model summaries. The summaries are typically goodness of fit measures, p-values for hypothesis tests on residuals, or model convergence information.
+
+
+```{r}
+lm_overall %>%
+    broom::tidy()
+```
+
+Tidy summarizes information about the components of a model. In the case of a linear model, components are the parameters associated with a regression i.e. the intercept and slope.
+
+##### Visualising our overall model
+
+To plot the relationship that the `lm` has fit, we plot a scatterplot using `geom_point()` and map `log(height)` to `x` (the predictor) and `log(stem_diameter)` to `y` (the response).
+
+We can also add a line to our plot using `geom_smooth()`. This plots a smooth over the data by default but can use method `lm` to plot lines using a linear model.
+
+
+```{r}
+analysis_df %>%
+    ggplot(aes(x = log(height), y = log(stem_diameter))) +
+    geom_point(alpha = 0.2) +
+    geom_smooth(method = "lm")
+```
+
+#### Including an interaction with `growth_form`
+
+Inspecting the plot we can clearly see sub groups in our data. We already know that both our variables have very different distributions across `growth_form`. So let's see if our model improves if we include `growth_form` in our model specification.
+
+Growth form is a categorical variable so when we include it in our regression, `lm` will fit separate coefficients for our model at every level of the factor. To include it, we added to the preictor side of our formula. If we include it as an additive effect through `+`, only the intercept will vary across factor levels. If we fit it as an interaction using `*` both the slope and intercept are allowed to vary.
+
+```{r}
+lm_growth <- lm(log(stem_diameter) ~ log(height) * growth_form, analysis_df) 
+
+```
+
+We can again examine our model using `broom`
+
+```{r}
+lm_growth %>%
+    broom::glance()
+
+```
+
+
+We can see that model coverage as indicated by `r.squared` is now higher and the `p.value` is still significant
+```{r}
+lm_growth %>%
+    broom::tidy()
+```
+
+We see the model coefficients for each growth form slope and interaction.
+
+The first 2 row show the intercept and slope for the first level of `growth_form` ie `r levels(analysis_df$growth_form)[1]` which is considered the reference level.
+
+The rest of the rows show the **intercepts and slopes with respect to the values of the coeffients for `r levels(analysis_df$growth_form)[1]`** so they represent differences from the reference level, level 1.
+
+### Visualising our model
+
+To include the interaction with `growth_form` we apply a grouping to our scatterplot through aesthetic `colour`.
+
+```{r}
+analysis_df %>%
+    ggplot(aes(x = log(height), y = log(stem_diameter), colour = growth_form)) +
+    geom_point(alpha = 0.1) +
+    geom_smooth(method = "lm") 
+```
+
+
+Excellent! We now have specified both models and visualised them! Our analysis is complete.
+
+_NOTE: the geom_smooth method of plotting model lines is not ideal and you will likely take more formal approaches to calculating and plotting confidence intervals. But for the purposes of of this workshop, we'll stick with this._
+
+**Lets add all our models and plots to our `analysis.R` script.**
+
+**Lets also add comment sections with machine readable names to our `analysis.R` script.**
+
+**Your `analysis.R` script should now look like this.**
+
+```{r, code = readLines("analysis00.R"), eval=FALSE}
+
+```
+
+
+

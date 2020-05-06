@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="literate-programming-in-rmarkdown.html"/>
-<link rel="next" href="version-control.html"/>
+<link rel="prev" href="analysing.html"/>
+<link rel="next" href="literate-programming-in-rmarkdown.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -60,10 +60,6 @@
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.9.2/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -230,98 +226,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#build-readme-site"><i class="fa fa-check"></i>Build README site</a></li>
 </ul></li>
 <li class="part"><span><b>V Analysing and presenting analyses</b></span></li>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i>Plotting with ggplot2</a><ul>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#data-visualisation-and-analysis-basics"><i class="fa fa-check"></i>Data visualisation and analysis basics</a></li>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#graphics-in-r"><i class="fa fa-check"></i>Graphics in R</a></li>
+<li><a href="plotting-with-ggplot2.html#data-visualisation-in-practice-exploring-individual-with-ggplot2">Data visualisation in practice: Exploring <code>individual</code> with <code>ggplot2</code></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html"><i class="fa fa-check"></i>Literate programming in rmarkdown</a><ul>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#why-is-this-important-in-science"><i class="fa fa-check"></i>Why is this important in science:</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#calls-for-open-science"><strong>Calls for open science</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#tldr"><i class="fa fa-check"></i>tl;dr</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#rmarkdown-overview"><strong>Rmarkdown overview</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#elements-of-r-markdown"><i class="fa fa-check"></i>elements of R markdown</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#markdown-.md"><strong>markdown {<code>.md</code>}</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#code-r-python-sql"><strong>code {r,</strong> python, SQL, … <strong>}</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#outputs"><strong>outputs</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#publish-to-the-web-for-free"><i class="fa fa-check"></i>Publish to the web for free!</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#applications-in-research"><i class="fa fa-check"></i>Applications in research</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-1"><i class="fa fa-check"></i>💻 Exercise Part 1</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#yaml-header">🚦 <strong>YAML header</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#define-outputs"><i class="fa fa-check"></i>define outputs</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#define-a-floating-table-of-contents"><i class="fa fa-check"></i>define a floating table of contents</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#choose-a-theme"><i class="fa fa-check"></i>choose a theme</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#choose-code-highlights"><i class="fa fa-check"></i>choose code highlights</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-2"><i class="fa fa-check"></i>💻 Exercise Part 2</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#markdown-basics">🚦 <strong>Markdown basics</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#text"><strong>text</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#headers"><strong>headers</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#unordered-lists"><strong>unordered lists</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#ordered-lists"><strong>ordered lists</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#quotes"><strong>quotes</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#code"><strong>code</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#images"><strong>images</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#basic-tables-in-markdown"><strong>basic tables in markdown</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#links"><strong>links</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#mathematical-expressions"><i class="fa fa-check"></i>mathematical expressions</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-3"><i class="fa fa-check"></i>💻 Exercise: Part 3</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#chunks-inline-r-code"><i class="fa fa-check"></i>🚦 Chunks &amp; Inline R code</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#inserting-new-chunks"><strong>inserting new chunks</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#chunk-uses"><i class="fa fa-check"></i>chunk uses</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#chunk-notation"><strong>chunk notation</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#chunk-options"><strong>chunk options</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#uses"><i class="fa fa-check"></i>uses</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-4"><i class="fa fa-check"></i>💻 Exercise Part 4</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#displaying-data"><i class="fa fa-check"></i>🚦 Displaying data</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-5"><i class="fa fa-check"></i>💻 Exercise Part 5</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#plots"><i class="fa fa-check"></i>🚦 plots</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-6a"><i class="fa fa-check"></i>💻 Exercise Part 6a</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-6b"><i class="fa fa-check"></i>Exercise Part 6b</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#advanced-.rmd">🚦 Advanced <code>.Rmd</code></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#reading-chunks-of-code"><strong>reading chunks of code</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#extracting-code-from-an-.rmd"><strong>Extracting code from an <code>.Rmd</code></strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-7"><i class="fa fa-check"></i>💻 Exercise: Part 7*</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#purl-your-document"><i class="fa fa-check"></i>purl your document</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#html-in-rmarkdown"><i class="fa fa-check"></i>🚦 html in rmarkdown</a></li>
+<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#literate-programming"><i class="fa fa-check"></i>Literate programming</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#literate-programming-in-r"><strong>Literate programming in R</strong></a></li>
+<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#applications-of-rmd-in-research"><i class="fa fa-check"></i>Applications of Rmd in research</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#rmd-in-practice"><code>Rmd</code> in Practice</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#advanced-.rmd">Advanced <code>.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#parting-words"><i class="fa fa-check"></i>Parting words</a></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#getting-help-with-markdown"><i class="fa fa-check"></i>Getting help with markdown</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#resources"><strong>Resources</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#solutions-my-example"><i class="fa fa-check"></i>Solutions: My example</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#resources-1"><strong>Resources</strong></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i>Plotting with ggplot2</a></li>
 <li class="part"><span><b>VI Version Control</b></span></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html"><i class="fa fa-check"></i>Version Control with Git</a><ul>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-version-control"><i class="fa fa-check"></i>What is Version control? 🤔</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-git"><i class="fa fa-check"></i>What is git? 🤔</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#why-use-it-in-research"><i class="fa fa-check"></i>Why use it in research?</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-github"><i class="fa fa-check"></i>What is GitHub 🤔</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#git-github-rstudio"><i class="fa fa-check"></i>Git, Github &amp; Rstudio</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#demo"><i class="fa fa-check"></i>Demo</a></li>
 <li><a href="version-control-with-git.html#how-does-git-work">How does <code>Git</code> work?</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git-github"><i class="fa fa-check"></i>💻 Configure git &amp; GitHub</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git"><i class="fa fa-check"></i>Configure git</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#set-up-github-pat"><i class="fa fa-check"></i>🚦 Set up GITHUB PAT</a></li>
-<li><a href="version-control-with-git.html#section"><img src="assets/GITHUB_PAT.png" /></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#turn-our-project-into-a-repository"><i class="fa fa-check"></i>Turn our project into a repository</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commiting-files"><i class="fa fa-check"></i>🚦 Commiting files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#add-files"><i class="fa fa-check"></i>Add files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-changes"><i class="fa fa-check"></i>Commit changes</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-a-readme"><i class="fa fa-check"></i>🚦 Create a README</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#version-controlling-projects"><i class="fa fa-check"></i>Version Controlling projects</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-a-readme"><i class="fa fa-check"></i>Create a README</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#edit-readme"><i class="fa fa-check"></i>Edit README</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository-on-github"><i class="fa fa-check"></i>🚦 Create repository on GitHub</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository"><i class="fa fa-check"></i>Create repository</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#push-files"><i class="fa fa-check"></i>push files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#tracking-changes"><i class="fa fa-check"></i>🚦 Tracking changes</a></li>
-<li><a href="version-control-with-git.html#making-a-change-to-our-gapminder-analysis.rmd">Making a change to our <code>gapminder-analysis.Rmd</code></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-your-changes"><i class="fa fa-check"></i>Commit your changes</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#host-content-on-github"><i class="fa fa-check"></i>🚦 Host content on GitHub</a></li>
 <li><a href="version-control-with-git.html#go-to-repo-settings">Go to repo <strong>Settings</strong></a></li>
 <li><a href="version-control-with-git.html#enable-gh-pages">Enable <code>gh-pages</code></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#making-changes-on-github"><i class="fa fa-check"></i>🚦 Making changes on GitHub</a></li>
-<li><a href="version-control-with-git.html#create-license">Create <code>LICENSE</code></a></li>
-<li><a href="version-control-with-git.html#add-link-to-analysis-index.html-to-readme">Add link to analysis <code>index.html</code> to README</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#pull-changes-locally"><i class="fa fa-check"></i>🚦 Pull changes locally</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#pushing-files"><i class="fa fa-check"></i>pushing files</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-your-changes"><i class="fa fa-check"></i>Commit your changes</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#deleting-files"><i class="fa fa-check"></i>🚦 Deleting files</a></li>
 <li><a href="version-control-with-git.html#gitignore"><code>.gitignore</code></a></li>
 <li><a href="version-control-with-git.html#gitignore-regex"><code>gitignore</code> regex</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#further-resources"><i class="fa fa-check"></i>Further Resources</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#never-forget"><i class="fa fa-check"></i>Never forget</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="collaborative-github.html"><a href="collaborative-github.html"><i class="fa fa-check"></i>Collaborative GitHub</a></li>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a><ul>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#evolottery"><strong>EvoLottery</strong></a></li>
 <li class="chapter" data-level="" data-path="practical-github-rstudio-for-collaborative-coding.html"><a href="practical-github-rstudio-for-collaborative-coding.html"><i class="fa fa-check"></i>Clone Github repo</a></li>
@@ -356,7 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html#create-documentation-site"><i class="fa fa-check"></i>🚦 Create documentation site</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html"><i class="fa fa-check"></i>Creating a research compendium with rrtools</a><ul>
-<li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#background-1"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#background"><i class="fa fa-check"></i>Background</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#enter-the-research-compendium"><i class="fa fa-check"></i>Enter the Research Compendium</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#r-community-response"><i class="fa fa-check"></i>R community response</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#general-project-organisation-1"><i class="fa fa-check"></i>General Project Organisation</a></li>
@@ -398,6 +342,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a><ul>
 <li><a href="geolocate-r.html#rgeolocate.r"><strong><code>R/geolocate.R</code></strong></a></li>
 </ul></li>
+<li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a><ul>
+<li><a href="analysis-r-1.html#analysis.r-2"><strong><code>analysis.R</code></strong></a></li>
+</ul></li>
+<li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a><ul>
+<li><a href="index-rmd.html#index.rmd-1"><strong><code>index.Rmd</code></strong></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -429,15 +379,723 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="plotting-with-ggplot2" class="section level1">
 <h1>Plotting with ggplot2</h1>
+<div id="data-visualisation-and-analysis-basics" class="section level2">
+<h2>Data visualisation and analysis basics</h2>
+<div id="statistical-analyses-and-data" class="section level3">
+<h3>Statistical Analyses and data</h3>
+<blockquote>
+<p><strong>Statistical analysis</strong> is the science of <strong>collecting, exploring and presenting</strong> large amounts of data to discover underlying patterns and trends</p>
+</blockquote>
+<div class="alert alert-danger">
+<p><strong>The theory of Statistical Analysis is NOT part of this course</strong></p>
+<p>Rather, it is to introduce you with the computational building blocks and example workflows you can build on to develop your own analysis.</p>
+<p>The actual plots you create and statistical analyses you use will <strong>depend on the properties of the data and the questions you are trying to answer</strong>. For this, I recommend refering to <a href="https://community.rstudio.com/t/book-recommendations-statistics-in-r/10859">many great books available on Statistics in R</a>.</p>
+<p>A great place to start is <strong><em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction.</em></strong> <strong>by Hastie, Tibshirani &amp; Friedman</strong></p>
+<iframe src="https://web.stanford.edu/~hastie/Papers/ESLII.pdf" width="30%" height="400px">
+</iframe>
+<p>while there are also many more on specialist topics like:</p>
+<ul>
+<li><a href="https://books.google.co.uk/books?id=hr17lZC-3jQC&amp;hl=en">Generalized Additive Models</a></li>
+<li><a href="https://www.springer.com/gp/book/9780387874579">Mixed Effects Models and Extensions in Ecology with R</a></li>
+<li><a href="https://xcelab.net/rm/statistical-rethinking/">Statistical Rethinking: A Bayesian Course with Examples in R and Stan</a></li>
+</ul>
+</div>
+<p>The foundation of any statistical analysis is <strong>DATA</strong>, most commonly, tabular data.</p>
+<p><img src="assets/data.svg" /><!-- --></p>
+<div class="alert alert-info">
+<p>We cannot easily establish comparative size and relationships between multiple data points from tabular data.</p>
+<p>We need a better representation to visually extract meaning.</p>
+</div>
+</div>
+<div id="data-visualisation-the-visual-encoding-of-data" class="section level3">
+<h3>Data Visualisation: the visual encoding of data</h3>
+<blockquote>
+<p>Data Visualisation is the <em>visual encoding</em> and <em>presentation</em> of <em>data</em> to <em>facilitate understanding</em>.</p>
+</blockquote>
+<div id="data-properties-guide-visual-encoding" class="section level4">
+<h4>Data properties guide visual encoding</h4>
+<blockquote>
+<p>The visual encoding we use is determined by the data and the relationships and statistical properties we want to convey.</p>
+</blockquote>
+<p>You’ll find a handy guide at <a href="https://datavizcatalogue.com/">datavizcatalogue.com</a></p>
+<iframe src="https://datavizcatalogue.com/" width="70%" height="400px">
+</iframe>
+<p>Once we’ve chosen the appropriate plots, we need tools to construct them.</p>
+</div>
+<div id="the-grammar-of-grahics" class="section level4">
+<h4>The grammar of grahics</h4>
+<blockquote>
+<p>An abstraction which makes <strong>thinking, reasoning and communicating graphics easier</strong>.</p>
+</blockquote>
+<p>Developed by Leland Wilkinson, particularly in <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/wics.118">“The Grammar of Graphics” 1999/2005</a>,</p>
+<p><img src="assets/gog.jpg" width="260" /></p>
+<p>Describes a consistent syntax for the construction of a wide range of complex graphics by a concise description of their components.</p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*MMZuYgeC_YjXNC1r4D4sog.png" width="60%" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*w1RnmuE7VRK9aCAbtW9KAQ.gif" width="40%" /></p>
+</div>
+<div id="building-a-plot-from-its-components." class="section level4">
+<h4>Building a plot from its components.</h4>
+<div id="start-with-some-tabular-data-mtcars" class="section level5">
+<h5>start with some tabular data: <code>mtcars</code></h5>
+<pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+</div>
+<div id="encoding-variables-on-axes" class="section level5">
+<h5>Encoding variables on axes</h5>
+<p>The first way we can visualise a single variable would be to plot it on a single axis.</p>
+<p>For example, here’s variable <code>mpg</code> (miles per gallon) plotted along a single axis:</p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
+<p>We could use the same to visualise a second variable, <code>hp</code> (horsepower)</p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-256-1.png" width="672" /></p>
+<p>When we can combine these two axes, we can visualise both the values of the data on each axis as well as the relationship of the two variables:</p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
+</div>
+<div id="encoding-a-third-variable-using-colour" class="section level5">
+<h5>Encoding a third variable using colour</h5>
+<p>Now that we’ve used two axes, we might want to consider another attribute to encode a thrid variable with.</p>
+<p>We can use colour to encode <code>cyl</code> (number of cylinders).</p>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-258-1.png" width="672" /></p>
+<blockquote>
+<p>Good visualization can bring out important aspects of data, but visualization can also be used to conceal or mislead.</p>
+</blockquote>
+</div>
+</div>
+<div id="principles-of-good-data-encoding" class="section level4">
+<h4>principles of good data encoding</h4>
+<ul>
+<li>Consistency: The properties of the image (visual variables) should match the properties of the data.</li>
+<li>Importance Ordering: Encode the most important information in the most effective way.</li>
+<li>Expressiveness: Tell the truth and nothing but the truth
+(don’t lie, and don’t lie by omission)</li>
+<li>Effectiveness: Use encodings that people decode better
+(where better = faster and/or more accurate)</li>
+</ul>
+</div>
+<div id="calling-bullshit" class="section level4">
+<h4><a href="https://callingbullshit.org/">Calling Bullshit</a></h4>
+<ul>
+<li><a href="https://callingbullshit.org/tools/tools_misleading_axes.html">Misleading axes</a></li>
+<li><a href="https://callingbullshit.org/tools/tools_proportional_ink.html">Proportional Ink</a></li>
+</ul>
+</div>
+<div id="marks" class="section level4">
+<h4>marks</h4>
+<ul>
+<li>points</li>
+<li>lines</li>
+<li>areas</li>
+</ul>
+</div>
+<div id="attributes" class="section level4">
+<h4>attributes</h4>
+<p>appearance properties of marks</p>
+<ul>
+<li>colour</li>
+<li>size</li>
+<li>shape</li>
+<li>position</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="graphics-in-r" class="section level2">
+<h2>Graphics in R</h2>
+<p>The R language has extensive graphical capabilities.</p>
+<p>Graphics in R may be created by many different methods including base graphics and more advanced plotting packages such as lattice.</p>
+<p>You’ll find a rich selection of graphs in R at <a href="https://www.r-graph-gallery.com/">The R Graph Gallery</a></p>
+<iframe src="https://www.r-graph-gallery.com/" width="80%" height="400px">
+</iframe>
+<div id="ggplot2" class="section level3">
+<h3><code>ggplot2</code></h3>
+<p>The ggplot2 package was created by Hadley Wickham and provides an intuitive plotting system to rapidly generate publication quality graphics.</p>
+<p><strong><code>ggplot2</code> builds on the “Grammar of Graphics”</strong></p>
+<div id="resources" class="section level4">
+<h4>Resources</h4>
+<p><a href="https://vita.had.co.nz/papers/layered-grammar.html"><strong>Paper on the grammar of graphics as the foundation for <code>ggplot2</code></strong></a></p>
+<p><strong>Online working draft of 3rd Edition of</strong> <a href="https://ggplot2-book.org/"><strong><em><code>ggplot2</code>: Elegant Graphics for Data Analysis</em></strong></a></p>
+<iframe src="https://ggplot2-book.org/" width="70%" height="400px">
+</iframe>
+<p><a href="https://ggplot2.tidyverse.org/index.html"><strong><code>ggplot2</code> documentation</strong></a></p>
+<iframe src="https://ggplot2.tidyverse.org/index.html" width="672" height="400px">
+</iframe>
+<p><strong><code>ggplot2</code> cheatsheet</strong></p>
+<iframe src="assets/cheatsheets/data-visualization-2.1.pdf" width="672" height="400px">
+</iframe>
+</div>
+</div>
+<div id="ggplot2-in-practice.-plotting-mtcars" class="section level3">
+<h3><code>ggplot2</code> in practice. Plotting <code>mtcars</code></h3>
+<p>To demonstrate the use of <code>ggplot2</code> to plot data according to the grammar of graphics, let’s recreate the <code>mtcars</code> plot I just showed you.</p>
+<div id="initialising-a-plot" class="section level4">
+<h4>Initialising a plot</h4>
+<p>The first thing we need to do is initialise a new plot.</p>
+<div class="alert alert-info">
+<p>Function <code>ggplot()</code> is used to construct the initial plot object, and is <a href="https://ggplot2.tidyverse.org/reference/gg-add.html"><strong>almost always followed by <code>+</code></strong></a> to add component to the plot.</p>
+<iframe src="https://ggplot2.tidyverse.org/reference/ggplot.html" width="70%" height="400px">
+</iframe>
+</div>
+<p>Let’s load the library and create an empty plot:</p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb431-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb431-3" data-line-number="3"><span class="kw">ggplot</span>()</a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-264-1.png" width="672" /></p>
+</div>
+<div id="specifying-the-data" class="section level4">
+<h4>Specifying the data</h4>
+<p>Next thing we need to do is specify the data.</p>
+<p>The first argument to <code>ggplot()</code> is the data we want to use for plotting, usually a data.frame or tibble. We can pipe that in to <code>ggplot()</code>.</p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb432-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>()</a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-265-1.png" width="672" /></p>
+</div>
+<div id="mapping-to-aesthetics-with-aes" class="section level4">
+<h4>Mapping to Aesthetics with <code>aes()</code></h4>
+<p>Now that we’ve specified our data, we can start encoding our variables to visual properties of our plot.</p>
+<p>Lets start by mapping <code>mpg</code> and <code>hp</code> to our two axes. We do that in the second argument <code>mapping</code>, where we supply the output of function <code>aes()</code>.</p>
+<p>Function <code>aes()</code> is used to specify the <strong>set of aesthetic mappings between variables in the data and visual properties</strong> in our plot.</p>
+<iframe src="https://ggplot2.tidyverse.org/reference/aes.html" width="70%" height="400px">
+</iframe>
+<p>Any aesthetics defined in <code>ggplot()</code> will apply to all subsequent layers unless they are overriden within the individual layers.</p>
+<div id="mapping-variables-to-axes-x-and-y." class="section level5">
+<h5>Mapping variables to axes <code>x</code> and <code>y</code>.</h5>
+<p>In our case, we want to map variable <code>mpg</code> to aesthetic <code>x</code> (the x axis) and variable <code>hp</code> to aesthetic <code>y</code> (the y axis).</p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb433-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp))</a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-267-1.png" width="672" /></p>
+</div>
+</div>
+<div id="adding-geometries-with-geom_" class="section level4">
+<h4>Adding geometries with <code>geom_*()</code></h4>
+<p>Currently, we only have our axes, initialised with reasonably infered scales from the data.</p>
+<p>Following the specification of data and aesthetics, we next need to specify which geometries (or <code>geoms</code>s in ggplot) to use to present the data. The <code>geom</code> is a critical component and describes the type of plot used.</p>
+<p>Several geoms are available in ggplot2 as separate functions:</p>
+<ul>
+<li><code>geom_point()</code> - Scatter plots</li>
+<li><code>geom_line()</code> - Line plots</li>
+<li><code>geom_smooth()</code> - Fitted line plots</li>
+<li><code>geom_bar()</code> - Bar plots</li>
+<li><code>geom_boxplot()</code> - Boxplots</li>
+<li><code>geom_jitter()</code> - Jitter to plots</li>
+<li><code>geom_histogram()</code> - Histogram plots</li>
+<li><code>geom_density()</code> - Density plots</li>
+<li><code>geom_text()</code> - Text to plots</li>
+<li><code>geom_errorbar()</code> - Errorbars to plots</li>
+<li><code>geom_violin()</code> - Violin plots</li>
+</ul>
+<iframe src="https://ggplot2.tidyverse.org/reference/index.html#section-layer-geoms" width="70%" height="400px">
+</iframe>
+<div id="plotting-a-scatterplot" class="section level5">
+<h5>Plotting a scatterplot</h5>
+<p>To visualise the relationship between the data points in our two variables, and given both are numeric, we can plot them as points on a scatterplot using <code>geom_point()</code>.</p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb434-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb434-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-269-1.png" width="672" /></p>
+<iframe src="https://ggplot2.tidyverse.org/reference/geom_point.html" width="70%" height="400px">
+</iframe>
+</div>
+</div>
+<div id="mapping-a-third-variable" class="section level4">
+<h4>Mapping a third variable</h4>
+<p>Now that we exhausted our first two options for visual encoding, we can use other aesthetics in our plot to map additional variables to. Example aesthetics available for <code>geom_point()</code> are</p>
+<ul>
+<li><code>color</code> or <code>colour</code>: colour mapping.</li>
+<li><code>shape</code>: mapping to symbols used for points.</li>
+<li><code>fill</code>: colour mapping to shapes that have a <code>fill</code> attribute.</li>
+<li><code>size</code>: mapping to the size of points.</li>
+</ul>
+<p>Let’s now map the number of cylinders <code>cyl</code> to the <code>colour</code> of points.</p>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb435-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">colour =</span> cyl)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb435-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-271-1.png" width="672" /></p>
+<p>Now each point is coloured according to the value of <code>cyl</code>.</p>
+<p>Because <code>cyl</code> is numeric, the default behaviour of R is to present it on a continuous scale, hence the colour gradient legend.</p>
+<p>If we want to present <code>cyl</code> as a categorical variable, we can override that behaviour by turning it into a factor using <code>factor()</code></p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb436-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">colour =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb436-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>() </a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-272-1.png" width="672" /></p>
+</div>
+<div id="adding-a-plot-theme" class="section level4">
+<h4>Adding a plot theme</h4>
+<p>Finally, any design elements can be specified in the theme layer. Theme elements can be customised using function <a href="https://ggplot2.tidyverse.org/reference/theme.html"><code>theme()</code></a></p>
+<iframe src="https://ggplot2.tidyverse.org/reference/theme.html" width="70%" height="400px">
+</iframe>
+<p><code>ggplot2</code> also has a number of in built themes. Let’s just use one of those.</p>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb437-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">fill =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb437-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb437-4" data-line-number="4"><span class="st">    </span><span class="kw">theme_minimal</span>() </a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-274-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="data-visualisation-in-practice-exploring-individual-with-ggplot2" class="section level2">
+<h2>Data visualisation in practice: Exploring <code>individual</code> with <code>ggplot2</code></h2>
+<p>Now let’s start putting some the tools and concepts we just learned to use with our <code>data/individual.csv</code> data.</p>
+<p>Let’s say we are interested in exploring the relationship between individual plant <code>stem_diameter</code> and <code>height</code>.</p>
+<p>Let’s also say that, from previous knowledge, we expect that the relationship may vary according to the <code>growth_form</code></p>
+<p>So lets use data visualisation to explore the properties and relationships between the three variables.</p>
+<p>Start by loading the library and reading in the data as well as <code>dplyr</code> so we have access to the pipe. Let’s also narrow the data down to our variables of interest using <code>dplyr::select()</code></p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb438-2" data-line-number="2"><span class="kw">library</span>(magrittr)</a>
+<a class="sourceLine" id="cb438-3" data-line-number="3">individual &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb438-4" data-line-number="4"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">select</span>(stem_diameter, height, growth_form)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_character(),
+##   date = col_date(format = &quot;&quot;),
+##   stem_diameter = col_double(),
+##   measurement_height = col_double(),
+##   height = col_double(),
+##   point_id = col_double(),
+##   stem_distance = col_double(),
+##   stem_azimuth = col_double(),
+##   decimal_latitude = col_double(),
+##   decimal_longitude = col_double(),
+##   easting = col_double(),
+##   northing = col_double(),
+##   elevation = col_double(),
+##   elevation_uncertainty = col_double(),
+##   stem_lat = col_double(),
+##   stem_lon = col_double()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<p><strong>Let’s also create a new <code>.R</code> script and save it as <code>analysis.R</code> in the root of our project.</strong></p>
+<p>Copy that last section of code as the first few lines of our <code>analysis.R</code> script.</p>
+<div id="exploratory-data-analysis" class="section level3">
+<h3>Exploratory Data Analysis</h3>
+<p>Before we start exploring the relationship between variables, it’s important to understand the statistical properties of the underlying data. Statistical summaries such as the output of <code>summary()</code> are a good starting point.</p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" data-line-number="1"><span class="kw">summary</span>(individual)</a></code></pre></div>
+<pre><code>##  stem_diameter        height       growth_form       
+##  Min.   :  1.00   Min.   :  0.30   Length:14961      
+##  1st Qu.: 11.60   1st Qu.:  5.30   Class :character  
+##  Median : 16.50   Median : 10.60   Mode  :character  
+##  Mean   : 20.21   Mean   : 11.27                     
+##  3rd Qu.: 26.30   3rd Qu.: 16.20                     
+##  Max.   :373.30   Max.   :119.80                     
+##  NA&#39;s   :1346     NA&#39;s   :1711</code></pre>
+<p>But data visualisation can be an even more powerful tool in expressing statistical properties of our data.</p>
+<div id="distribution-of-data" class="section level4">
+<h4>Distribution of data</h4>
+<p>To begin with, we can explore the properties of individual variables, starting with the distribution of values.</p>
+<p>Let’s just work in our code <code>attic/sketckbook.R</code> script for now. We’ll transfer final plots to <code>analysis.R</code> when we are happy with them.</p>
+<div id="distribution-of-stem_diameter" class="section level5">
+<h5>Distribution of <code>stem_diameter</code></h5>
+<p>Lets start with <code>stem_diameter</code> which is a numeric variable. As such we can use <code>geom_density</code> to plot the distribution of the data.</p>
+<iframe src="https://ggplot2.tidyverse.org/reference/geom_density.html" width="70%" height="400px">
+</iframe>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb443-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> stem_diameter)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb443-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-278-1.png" width="672" /></p>
+<p>The distribution across all our data looks quite skewed towards lower values and even shows a small dip in a certain range of <code>stem_diameter</code>.</p>
+<p>Many statistical tests assume normality of the data and a common tranformation to such skewed numeric data might be to log them. <code>ggplot</code> allows us to perform such tranformations during plotting and prints it as part of the variable axes label.</p>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb445-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb445-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-279-1.png" width="672" /></p>
+<p>Still rather wonky and may well violate assumptions of statistical tests down the line but it is slightly better than before so just for demonstration purposes, let’s carry own presenting our data on a log scale.</p>
+<div id="applying-aesthetics-to-geometries" class="section level6">
+<h6>Applying aesthetics to geometries</h6>
+<p>One thing that can make such plots visually more appealing is to fill in the area under the distribution curve.</p>
+<p>This also gives us the opportunity to dig into what exactly the aesthetic mapping in <code>aes()</code> is doing.</p>
+<p>Let’s say we wanted to fill in the area with the colour <code>grey</code>. Our first instinct might me to use <code>aes()</code> in <code>ggplot()</code> and map aesthetic <code>fill</code> to the name of the colour <code>&quot;grey&quot;</code>.</p>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb447-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb447-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-280-1.png" width="672" /></p>
+<p>But this has unexpected results! This happens because we are supplying the colour name within <code>aes()</code>. <code>aes()</code> is for mapping variables to aesthetics and expects a variable name in our data or a vector of values.</p>
+<p>Here we are giving it a single character value which it converts to a factor. It then uses it’s default function for creating categorical colour scales to assign the first colour in that scale (red) to our single factor level <code>&quot;grey&quot;</code>. The important point here is that R is not interpretting <code>&quot;grey&quot;</code> as a colour, but as a categorical variable, as it did for <code>factor(cyl)</code>.</p>
+<p>To specify explicitly the fill colour of our density geom, we instead supply it as an <strong>argument to our <code>geom_density()</code> function, outside of <code>aes()</code></strong>. Let’s change both the <code>colour</code> of the line and <code>fill</code> to <code>&quot;grey&quot;</code>.</p>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb449-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb449-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-281-1.png" width="672" /></p>
+</div>
+</div>
+<div id="distribution-of-height" class="section level5">
+<h5>Distribution of <code>height</code></h5>
+<p>We can similarly create a density plot for <code>height</code></p>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb451-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> height)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb451-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 1711 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-282-1.png" width="672" /></p>
+<p>It’s also a bit skewed so lets go ahead and work with <code>log()</code> values again.</p>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb453-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb453-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 1711 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-283-1.png" width="672" /></p>
+</div>
+<div id="distribution-of-growth_form" class="section level5">
+<h5>Distribution of <code>growth_form</code></h5>
+<p>In contrast to <code>stem_diameter</code> and <code>height</code>, <code>growth_form</code> is a categorical variable.</p>
+<p>As such, we use <code>geom_bar()</code> to plot a barplot of the counts of values of each <code>growth_form</code> in our data. A barplot plots categorical data across the x axes and numeric data (in this case counts on the <code>y</code> axis).</p>
+<iframe src="https://ggplot2.tidyverse.org/reference/geom_bar.html" width="70%" height="400px">
+</iframe>
+<p>Let’s also map colour aesthetics to growth form.</p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb455-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb455-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-285-1.png" width="672" /></p>
+<p>We can see that there are very few entries for <code>liana</code> and also a whole bunch of <code>NA</code>s in <code>growth_form</code>. So let’s remove any such rows from our data by using <code>dplyr::filter()</code>. Let’s assign this new data to a new <code>analysis_df</code> and work with that from now on.</p>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" data-line-number="1">analysis_df &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb456-2" data-line-number="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(growth_form), growth_form <span class="op">!=</span><span class="st"> &quot;liana&quot;</span>) </a></code></pre></div>
+<p>Let’s also order our bars in order of ascending counts. The simplest way to do this is to convert <code>growth_form</code> to a factor and specify the ordering of the factor levels.</p>
+<p>To do that let’s create a vector of <code>growth_form</code> unique values, ordered according to their counts.</p>
+<p>We can do this by using <code>table</code> to get the counts, <code>order</code> to order them in ascending order and <code>names</code> to extract the names!</p>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" data-line-number="1">gf_levels &lt;-<span class="st"> </span><span class="kw">table</span>(analysis_df<span class="op">$</span>growth_form) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb457-2" data-line-number="2"><span class="st">    </span><span class="kw">sort</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb457-3" data-line-number="3"><span class="st">    </span><span class="kw">names</span>()</a></code></pre></div>
+<p>We can then specify the level order using that vector when we mutate to a factor through argument <code>levels</code> in <code>factor</code>.</p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" data-line-number="1">analysis_df <span class="op">%&lt;&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb458-2" data-line-number="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">growth_form =</span> <span class="kw">factor</span>(growth_form, </a>
+<a class="sourceLine" id="cb458-3" data-line-number="3">                                       <span class="dt">levels =</span> gf_levels))</a></code></pre></div>
+<p>Let’s have a look at our barplot now:</p>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb459-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb459-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
+<p>The order of the levels in <code>growth_form</code> now dictates the order in which the bars are plotted!</p>
+<p>Finally, let’s just add a few extra touches to make the plot even more visually clear.</p>
+<p>Let’s flip the axis by mapping <code>growth_form</code> to <code>y</code>, that prevents <code>growth_form</code> axes labels to overlap.</p>
+<p>Let’s also remove the superfluous legend and reduce the opacity of our bars so we can see the scales through them</p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb460-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb460-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb460-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
+<p>That’s better.</p>
+<p><strong>Let’s keep this plot and move it to our analysis script as fig 1</strong>.</p>
+</div>
+</div>
+</div>
+<div id="plotting-multiple-densities-according-to-the-values-of-a-second-variable" class="section level3">
+<h3>Plotting multiple densities according to the values of a second variable</h3>
+<p>When plotting the density distributions we ended up having one plot per variable with little understanding of how values where distributed across the various growth forms.</p>
+<p>However, <code>ggplot</code> and the grammar of graphics allows us to build more informative plots, by combining the information in categorical variables to present cross variable properties in distributions.</p>
+<p>Let’s explore what this means by focusing on the distribution of <code>stem_diameter</code> across the <code>growth_form</code> categories in our <code>sketchbook.R</code>.</p>
+<p>The grammar of graphics allows to easily plot the same properties of interest across groups dictated by other aesthetics.</p>
+<p>We can plot out a separate density curve for each growth form by mapping categorical variable <code>grow_form</code> to <code>aes()</code> argument <code>group</code>.</p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb461-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">group =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb461-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
+<p>Now we have separate distribution curves for each <code>growth_form</code>!</p>
+<p>This first pass is not however visually easy to interpret. Let’s assign <code>growth_form</code> to some additional aesthetics to make the visual encoding clearer.</p>
+<p>We can in fact get rid of the <code>group</code> argument and use <code>fill</code> and <code>colour</code> instead. The grouping behaviour is equivalent.</p>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb463-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb463-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-292-1.png" width="672" /></p>
+<p>To make things even clearer we can supply additional argument to <code>geom_density</code>.</p>
+<p>Let’s decrease the opacity of each density geom and trim it to the ranges of values across each <code>growth_form</code>.</p>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb465-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb465-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-293-1.png" width="672" /></p>
+<p>That’s a lot clearer, and now we can see that overall the distribution of <code>log(stem_diameter)</code> across growth forms follows a broably bimodal distribution.</p>
+<p>To allow us to focus more on the individual distributions, we can use <code>facet_wrap()</code> and formula <code>~growth_form</code> to create individual panels for each growth form on a grid:</p>
+<iframe src="https://ggplot2.tidyverse.org/reference/facet_wrap.html" width="70%" height="400px">
+</iframe>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb467-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb467-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb467-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>growth_form)</a></code></pre></div>
+<pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-295-1.png" width="672" /></p>
+<div id="encoding-multiple-distribution-with-violin-plots" class="section level5">
+<h5>Encoding multiple distribution with violin plots</h5>
+<p>Another way we can present the distribution of a continuous variable iin a compact way and grouped according to the value of a categorical variable is to use a violin plot.</p>
+<iframe src="https://ggplot2.tidyverse.org/reference/geom_violin.html" width="70%" height="400px">
+</iframe>
+<p>Let’s straight away add some colour aesthetics also.</p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb469-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb469-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb469-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T)</a></code></pre></div>
+<pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_ydensity).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-297-1.png" width="672" /></p>
+<p>Violin plots show the density distribution of a continuous variable, grouped according to the values of the categorical values and presented mirrored.</p>
+</div>
+<div id="adding-statistical-summaries-with-geom_boxplot" class="section level5">
+<h5>Adding statistical summaries with <code>geom_boxplot()</code></h5>
+<p>We can go a step further and add statistical information about our variable by overlaying a boxplot (or box and whiskers plot). The boxplot compactly displays the distribution of a continuous variable by visualising <strong>five key summary statistics (the median, two hinges and two whiskers)</strong>, and all “outlying” points individually.</p>
+<iframe src="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" width="70%" height="400px">
+</iframe>
+<p>Let’s also suppress the legend for the box plot layer and reduce the opacity.</p>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb471-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb471-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T) <span class="op">+</span></a>
+<a class="sourceLine" id="cb471-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_ydensity).</code></pre>
+<pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-299-1.png" width="672" /></p>
+<p>The central liine in each box corresponds to the median.</p>
+<p>The lower and upper hinges correspond to the first and third quartiles (the 25th and 75th percentiles) and define the Interquartile range (IQR).</p>
+<p>The whiskers are calculated from the IQR and identify points considered statistical outliers.</p>
+<p>Again, here we can see the bimodal distribution across all values, the two loose groups of multibole trees, single bole trees and small trees, but this time we have a must more informative plot packed in quite compactly.</p>
+<p>We would still need a plot per variable though. We could try and utilise <code>facet_grid</code> to combine a boxplot for each continuous variable <code>stem_diameter</code> and <code>height</code> into a single plot. Hovever, there isn’t a variable in the data in the current form that could be uset to facet on. The data is instead help in</p>
+</div>
+<div id="pivoting-data-to-build-plot-with-facet_grid" class="section level4">
+<h4>Pivoting data to build plot with <code>facet_grid</code></h4>
+<p>To take advantage of <code>facet_wrap</code> we need to <strong>pivot</strong> our data into a longer format using <code>pivot_longer</code> from package <code>tidyr</code>.</p>
+<iframe src="https://tidyr.tidyverse.org/reference/pivot_longer.html" width="70%" height="400px">
+</iframe>
+<p><code>pivot_longer()</code> “lengthens” data, increasing the number of rows and decreasing the number of columns. We use it to stack the values of <code>stem_diameter</code> and <code>height</code> into a column called <code>value</code> and store the original column names which define the variable each value relates to in a new column <code>var</code>.</p>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb474-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb474-2" data-line-number="2"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
+<a class="sourceLine" id="cb474-3" data-line-number="3">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
+<a class="sourceLine" id="cb474-4" data-line-number="4">                        <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 27,776 x 3
+##    growth_form      var           value
+##    &lt;fct&gt;            &lt;chr&gt;         &lt;dbl&gt;
+##  1 single bole tree stem_diameter  17.1
+##  2 single bole tree height         15.2
+##  3 single bole tree stem_diameter  13.7
+##  4 single bole tree height          9.8
+##  5 single bole tree stem_diameter  12.3
+##  6 single bole tree height          7.7
+##  7 single bole tree stem_diameter  12.1
+##  8 single bole tree height         15.2
+##  9 single bole tree stem_diameter  29.2
+## 10 single bole tree height         16.7
+## # … with 27,766 more rows</code></pre>
+<p>Note that the number of rows is now twice the size of the original data.frame because two columns have been stacked. Those columns have also been removed.</p>
+<p>In this format we can use variable <code>var</code> to create a facet for each variable.</p>
+</div>
+<div id="figure-2-data-characteristics-of-our-raw-data" class="section level4">
+<h4>Figure 2: Data characteristics of our raw data</h4>
+<p>Let’s add that as a step in our plotting pipe</p>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb476-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb476-2" data-line-number="2"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
+<a class="sourceLine" id="cb476-3" data-line-number="3">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
+<a class="sourceLine" id="cb476-4" data-line-number="4">                        <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb476-5" data-line-number="5"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(value), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb476-6" data-line-number="6"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T) <span class="op">+</span></a>
+<a class="sourceLine" id="cb476-7" data-line-number="7"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb476-8" data-line-number="8"><span class="st">    </span><span class="kw">facet_grid</span>(<span class="op">~</span>var)</a></code></pre></div>
+<pre><code>## Warning: Removed 2388 rows containing non-finite values (stat_ydensity).</code></pre>
+<pre><code>## Warning: Removed 2388 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-302-1.png" width="672" /></p>
+<p>Hurray! Now we have a super informative plot, containing visual encodings of distributions and statistical summaries for both our continuous variables in one compact plot!</p>
+<p><strong>Let’s move that to <code>analysis.R</code> as</strong> <strong><em>Figure 2</em></strong></p>
+</div>
+</div>
+<div id="analysis-in-practice-fitting-and-visualising-a-simple-linear-model" class="section level3">
+<h3>Analysis in practice: fitting and visualising a simple linear model</h3>
+<p>Now that we’ve explored our variables, it’s time to start looking at the statistical relationship between them.</p>
+<div id="analysing-the-relationship-between-logstem_diameter-and-logheight" class="section level4">
+<h4>Analysing the relationship between <code>log(stem_diameter)</code> and <code>log(height)</code></h4>
+<p>First we might want to look at the overall relationship between our two continuous variables and we can start with fitting a simple linear regression model.</p>
+<p>In R, we use <code>lm</code> to fit linear models. It can be used to carry out regression, single stratum analysis of variance and analysis of covariance.</p>
+<div id="fitting-a-linear-model" class="section level5">
+<h5>Fitting a linear model</h5>
+<p>We specify our model through a formula <code>log(stem_diameter) ~ log(height)</code>. This translates to log stem diameter as a function of height in which <code>stem_diameter</code> is the response variable and <code>height</code> the predictor.</p>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" data-line-number="1">lm_overall &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height), analysis_df)</a>
+<a class="sourceLine" id="cb479-2" data-line-number="2">lm_overall</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(stem_diameter) ~ log(height), data = analysis_df)
+## 
+## Coefficients:
+## (Intercept)  log(height)  
+##      0.5609       0.9439</code></pre>
+<p>By default <code>lm</code> prints a rather terse summary of the model.</p>
+<p>An easy way to print nice and tidy outputs of most models in R is by using functions from package <code>broom</code>.</p>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" data-line-number="1">lm_overall <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb481-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 11
+##   r.squared adj.r.squared sigma statistic p.value    df logLik    AIC    BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1     0.679         0.679 0.487    24613.       0     2 -8132. 16271. 16293.
+## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
+<p>Glance accepts a model object and returns a tibble with exactly one row of model summaries. The summaries are typically goodness of fit measures, p-values for hypothesis tests on residuals, or model convergence information.</p>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb483-1" data-line-number="1">lm_overall <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb483-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic   p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 (Intercept)    0.561   0.0145       38.7 5.36e-308
+## 2 log(height)    0.944   0.00602     157.  0.</code></pre>
+<p>Tidy summarizes information about the components of a model. In the case of a linear model, components are the parameters associated with a regression i.e. the intercept and slope.</p>
+</div>
+<div id="visualising-our-overall-model" class="section level5">
+<h5>Visualising our overall model</h5>
+<p>To plot the relationship that the <code>lm</code> has fit, we plot a scatterplot using <code>geom_point()</code> and map <code>log(height)</code> to <code>x</code> (the predictor) and <code>log(stem_diameter)</code> to <code>y</code> (the response).</p>
+<p>We can also add a line to our plot using <code>geom_smooth()</code>. This plots a smooth over the data by default but can use method <code>lm</code> to plot lines using a linear model.</p>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb485-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb485-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb485-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb485-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 2262 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 2262 rows containing missing values (geom_point).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-306-1.png" width="672" /></p>
+</div>
+</div>
+<div id="including-an-interaction-with-growth_form" class="section level4">
+<h4>Including an interaction with <code>growth_form</code></h4>
+<p>Inspecting the plot we can clearly see sub groups in our data. We already know that both our variables have very different distributions across <code>growth_form</code>. So let’s see if our model improves if we include <code>growth_form</code> in our model specification.</p>
+<p>Growth form is a categorical variable so when we include it in our regression, <code>lm</code> will fit separate coefficients for our model at every level of the factor. To include it, we added to the preictor side of our formula. If we include it as an additive effect through <code>+</code>, only the intercept will vary across factor levels. If we fit it as an interaction using <code>*</code> both the slope and intercept are allowed to vary.</p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb489-1" data-line-number="1">lm_growth &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height) <span class="op">*</span><span class="st"> </span>growth_form, analysis_df) </a></code></pre></div>
+<p>We can again examine our model using <code>broom</code></p>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" data-line-number="1">lm_growth <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb490-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 11
+##   r.squared adj.r.squared sigma statistic p.value    df logLik    AIC    BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1     0.799         0.799 0.386     4195.       0    12 -5418. 10862. 10957.
+## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
+<p>We can see that model coverage as indicated by <code>r.squared</code> is now higher and the <code>p.value</code> is still significant</p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" data-line-number="1">lm_growth <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb492-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 12 x 5
+##    term                                    estimate std.error statistic  p.value
+##    &lt;chr&gt;                                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+##  1 (Intercept)                                0.187    0.0957      1.96 5.02e- 2
+##  2 log(height)                                0.952    0.0490     19.4  1.08e-82
+##  3 growth_formsapling                         0.223    0.0992      2.25 2.46e- 2
+##  4 growth_formsingle shrub                   -0.690    0.109      -6.34 2.44e-10
+##  5 growth_formsmall shrub                     0.255    0.107       2.38 1.73e- 2
+##  6 growth_formmulti-bole tree                 1.16     0.103      11.2  4.57e-29
+##  7 growth_formsingle bole tree                1.38     0.0978     14.1  1.27e-44
+##  8 log(height):growth_formsapling            -0.643    0.0778     -8.27 1.45e-16
+##  9 log(height):growth_formsingle shrub        0.251    0.0645      3.89 1.00e- 4
+## 10 log(height):growth_formsmall shrub        -0.561    0.151      -3.73 1.93e- 4
+## 11 log(height):growth_formmulti-bole tree    -0.316    0.0519     -6.08 1.22e- 9
+## 12 log(height):growth_formsingle bole tree   -0.376    0.0497     -7.57 3.88e-14</code></pre>
+<p>We see the model coefficients for each growth form slope and interaction.</p>
+<p>The first 2 row show the intercept and slope for the first level of <code>growth_form</code> ie small tree which is considered the reference level.</p>
+<p>The rest of the rows show the <strong>intercepts and slopes with respect to the values of the coeffients for small tree</strong> so they represent differences from the reference level, level 1.</p>
+</div>
+</div>
+<div id="visualising-our-model" class="section level3">
+<h3>Visualising our model</h3>
+<p>To include the interaction with <code>growth_form</code> we apply a grouping to our scatterplot through aesthetic <code>colour</code>.</p>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb494-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb494-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 2262 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 2262 rows containing missing values (geom_point).</code></pre>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-310-1.png" width="672" /></p>
+<p>Excellent! We now have specified both models and visualised them! Our analysis is complete.</p>
+<p><em>NOTE: the geom_smooth method of plotting model lines is not ideal and you will likely take more formal approaches to calculating and plotting confidence intervals. But for the purposes of of this workshop, we’ll stick with this.</em></p>
+<p><strong>Lets add all our models and plots to our <code>analysis.R</code> script.</strong></p>
+<p><strong>Lets also add comment sections with machine readable names to our <code>analysis.R</code> script.</strong></p>
+<p><strong>Your <code>analysis.R</code> script should now look like this.</strong></p>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb498-1" data-line-number="1"><span class="co">#  analysis-setup  </span></a>
+<a class="sourceLine" id="cb498-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb498-3" data-line-number="3"><span class="kw">library</span>(magrittr)</a>
+<a class="sourceLine" id="cb498-4" data-line-number="4">individual &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">select</span>(stem_diameter, height, growth_form)</a>
+<a class="sourceLine" id="cb498-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb498-7" data-line-number="7"><span class="co">#  analysis-filter-data  </span></a>
+<a class="sourceLine" id="cb498-8" data-line-number="8">analysis_df &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-9" data-line-number="9"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(growth_form), </a>
+<a class="sourceLine" id="cb498-10" data-line-number="10">                  growth_form <span class="op">!=</span><span class="st"> &quot;liana&quot;</span>) </a>
+<a class="sourceLine" id="cb498-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb498-12" data-line-number="12"><span class="co">#  analysis-set-factor-levels  </span></a>
+<a class="sourceLine" id="cb498-13" data-line-number="13">gf_levels &lt;-<span class="st"> </span><span class="kw">table</span>(analysis_df<span class="op">$</span>growth_form) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb498-14" data-line-number="14"><span class="st">    </span><span class="kw">sort</span>(<span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb498-15" data-line-number="15"><span class="st">    </span><span class="kw">names</span>()</a>
+<a class="sourceLine" id="cb498-16" data-line-number="16">analysis_df <span class="op">%&lt;&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb498-17" data-line-number="17"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">growth_form =</span> <span class="kw">factor</span>(growth_form, </a>
+<a class="sourceLine" id="cb498-18" data-line-number="18">                                       <span class="dt">levels =</span> gf_levels))</a>
+<a class="sourceLine" id="cb498-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb498-20" data-line-number="20"><span class="co">#  analysis-fig1-barplot </span></a>
+<a class="sourceLine" id="cb498-21" data-line-number="21">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-22" data-line-number="22"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, </a>
+<a class="sourceLine" id="cb498-23" data-line-number="23">           <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb498-24" data-line-number="24"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb498-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb498-26" data-line-number="26"><span class="co">#  analysis-fg2-violinplots </span></a>
+<a class="sourceLine" id="cb498-27" data-line-number="27">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-28" data-line-number="28"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
+<a class="sourceLine" id="cb498-29" data-line-number="29">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
+<a class="sourceLine" id="cb498-30" data-line-number="30">                        <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-31" data-line-number="31"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(value), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb498-32" data-line-number="32"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T) <span class="op">+</span></a>
+<a class="sourceLine" id="cb498-33" data-line-number="33"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb498-34" data-line-number="34"><span class="st">    </span><span class="kw">facet_grid</span>(<span class="op">~</span>var)</a>
+<a class="sourceLine" id="cb498-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb498-36" data-line-number="36"><span class="co">#  analysis-lm-overall</span></a>
+<a class="sourceLine" id="cb498-37" data-line-number="37">lm_overall &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height), analysis_df) </a>
+<a class="sourceLine" id="cb498-38" data-line-number="38">lm_overall <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-39" data-line-number="39"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a>
+<a class="sourceLine" id="cb498-40" data-line-number="40">lm_overall <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-41" data-line-number="41"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a>
+<a class="sourceLine" id="cb498-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb498-43" data-line-number="43"><span class="co"># analysis-lm-fig3-overall </span></a>
+<a class="sourceLine" id="cb498-44" data-line-number="44">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-45" data-line-number="45"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb498-46" data-line-number="46"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb498-47" data-line-number="47"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb498-48" data-line-number="48"></a>
+<a class="sourceLine" id="cb498-49" data-line-number="49"><span class="co">#  analysis-lm-growth</span></a>
+<a class="sourceLine" id="cb498-50" data-line-number="50">lm_growth &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height) <span class="op">*</span><span class="st"> </span>growth_form, analysis_df) </a>
+<a class="sourceLine" id="cb498-51" data-line-number="51">lm_growth <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-52" data-line-number="52"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a>
+<a class="sourceLine" id="cb498-53" data-line-number="53">lm_growth <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-54" data-line-number="54"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a>
+<a class="sourceLine" id="cb498-55" data-line-number="55"></a>
+<a class="sourceLine" id="cb498-56" data-line-number="56"><span class="co"># analysis-lm-fig4-growth </span></a>
+<a class="sourceLine" id="cb498-57" data-line-number="57">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb498-58" data-line-number="58"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb498-59" data-line-number="59"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb498-60" data-line-number="60"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </a></code></pre></div>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="literate-programming-in-rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="version-control.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="analysing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literate-programming-in-rmarkdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

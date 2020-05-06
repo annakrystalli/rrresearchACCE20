@@ -1,2 +1,2 @@
-# ---- demo-read_chunk ----
+## @knitr demo-read_chunk
 print("hello world")

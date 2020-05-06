@@ -1,0 +1,7 @@
+# Collaborative GitHub
+
+
+```{r, results="asis", echo = FALSE}
+slide_page(slidedeck_name = "07_collab_gh.html")
+```
+

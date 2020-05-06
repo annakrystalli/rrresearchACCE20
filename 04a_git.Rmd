@@ -2,14 +2,13 @@
 
 # Version Control with Git
 
-## Background
 
   Hands up - _who has heard of version control software?_  
   _What do you think it does?_
 
 <br>
 
-### What is Version control? `r emo::ji("thinking")`
+## What is Version control? `r emo::ji("thinking")`
 
 The **management of changes** to documents, computer programs, large web sites, and other collections of information.
 
@@ -20,7 +19,7 @@ The **management of changes** to documents, computer programs, large web sites, 
 
 <br>
 
-#### Where did it come from?
+### Where did it come from?
 
  The need for a logical way to organize and control revisions has existed for almost as long as writing has existed,  but **revision control became much more important, and complicated when the era of computing began**
 
@@ -59,9 +58,9 @@ Linus Torvalds on the name **`git`**:
 
 
 
-## Why use it in research? 
+### Why use it in research? 
 
-### Exhibit A
+#### Exhibit A
 
 <figure>
 <img src="http://smutch.github.io/VersionControlTutorial/_images/vc-xkcd.jpg" height="300px" width="400px">
@@ -180,20 +179,13 @@ All changes have been committed so the git panel is clear
 ![](assets/commit2-file.png)
 
 
-
-
-
-```{r echo=FALSE}
-library(gapminder)
-```
-
 Enough theory, how about in practice!
 
 
 
 ## `r emo::ji("computer")` Configure git & GitHub
 
-## Configure git
+### Configure git
 
 First, `git` needs to know who you are so your commits can be attributed to you. **`usethis`** to the rescue again!
 
@@ -217,7 +209,7 @@ usethis::use_git_config(
 
 
 
-## `r emo::ji("vertical_traffic_light")` Set up GITHUB PAT
+###  Set up GITHUB PAT
 
 
 To authenticate with GitHub, you'll also need a Personal Authorisation Token (PAT).
@@ -243,41 +235,82 @@ usethis::edit_r_environ()
 Use `edit_r_environ()` to open and edit your `.Renviron` file
 
 ![](assets/GITHUB_PAT.png)
--
 
-## Turn our project into a repository
+## Version Controlling projects
 
-If you didn't initialise git at the beginning of your project, you can do so now with:
+### Turn our project into a repository
+
+If you didn't initialise git at the beginning of your project, you can do so now with `usethis::use_git()`:
+
+<div class="alert alert-warning">
+
+This will try to **commit everything in the repo so far in one go!** Override that behaviour by selecting a negative response when asked.
+
+</div>
 
 ```{r, eval = F}
 usethis::use_git()
 ```
 
-_This however commits everything in one go. So not ideal! I recommend using git from the start of every project._
+```r
+✔ Initialising Git repo
+✔ Adding '.Rhistory', '.RData' to '.gitignore'
+There are 10 uncommitted files:
+* '.DS_Store'
+* '.gitignore'
+* '.Rbuildignore'
+* 'analysis.R'
+* 'data-raw/'
+* 'data/'
+* 'index.html'
+* 'index.Rmd'
+* 'R/'
+* 'wood-survey.Rproj'
+Is it ok to commit them?
 
+1: Negative
+2: Nope
+3: I agree
 
-## `r emo::ji("vertical_traffic_light")` Commiting files
+Selection: 
+```
+
+Next allow Rstudio to restart when asked:
+
+```r
+● A restart of RStudio is required to activate the Git pane
+Restart now?
+
+1: Absolutely
+2: Absolutely not
+3: Negative
+```
+
+### Committing files
 
 In our project, let's have a look at the Rstudio **Git** tab. It shows all the files currently in the folder. The **yellow ?** indicates none of the files have been added to git yet.
 
-![](assets/git-view.png)
+```{r, out.width="80%", echo=FALSE}
+knitr::include_graphics("assets/git-view.png")
+```
 
 
-
-## Add files
+#### Add files
 
 To commit changes in a file just select it in the git pane. When changes to a file are commited for the first time, the whole file is indicated as Added (green A).
 
+Let's focus on the files and analytical data we created so far. For now ignore the `data-raw` folder and all the other files we didn't create
+
 ![](assets/git-add.png)
 
-## Commit changes
+#### Commit changes
 
 Click on commit and write an appropriate commit message:
 
 ![](assets/add-first.png)
 
 
-##  `r emo::ji("vertical_traffic_light")` Create a README
+## Create a README
 
 Our repository also needs a `README`. We only need a simple plain markdown (`.md`) file for our README. 
 
@@ -295,7 +328,7 @@ Adapt the template, adding a short description about your project.
 
 Add and commit your new README
 
-![](assets/use-gh.png)
+![](assets/use-readme-complete.png)
 
 ## `r emo::ji("vertical_traffic_light")` Create repository on GitHub
 
@@ -307,48 +340,24 @@ Now that we have set up a `GITHUP_PAT`, we can use function `usethis::use_github
 usethis::use_github(protocol = "https")
 ```
 
+```r
+✔ Checking that current branch is 'master'
+● Check title and description
+  Name:        wood-survey
+  Description: 
+Are title and description ok?
+
+1: No
+2: Yes
+3: Nope
+```
+Answer affirmatively for the process to continue. Once the repo is created and any commmited files pushed, the repo is launched in the browser:
+
+
 ![](assets/use-github.png)
 
-## push files
 
-Click on the `r emo::ji("up_arrow")` button on the Git tab to push our changes up to our newly minted repository
-
-Let's go have a look at the history `r emo::ji("clock3")`
-
-
-
-## `r emo::ji("vertical_traffic_light")` Tracking changes 
-
-##  Making a change to our  `gapminder-analysis.Rmd`
-
-- In the last plot of your `.index.Rmd`, see if you can add a **smooth** for each continent to generate the plot below (should be just one extra `ggplot2` function added to the plot). Look for the appropriate `geom_*` function.
-
-- See also if you can include an interactive `plotly` version
-
-```{r, echo =FALSE, warning=FALSE, message=FALSE, fig.height=5}
-library(dplyr)
-library(ggplot2)
-
-ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
-    geom_point() + 
-  scale_x_log10() +
-  geom_smooth()
-```
-
-
-
-## Commit your changes
-
-On the commit window:
-
-- Have a look at the differences
-
-- Have a look at the history
-
-
-
-
-## `r emo::ji("vertical_traffic_light")` Host content on GitHub
+### Host content on GitHub
 
 
 Let's head to the repo and have a look at what we've shared. To host our html content on GitHub, we need to **enable `gh-pages`** in our repository.
@@ -373,61 +382,32 @@ Copy the link. In the main repo page, edit the page details at the top and paste
 
 ![](assets/add-url-gh.png)
 
-## `r emo::ji("vertical_traffic_light")` Making changes on GitHub
+Once added it provides easy access to the rendered content:
+
+![](assets/added-url-gh.png)
+
+## pushing files
+
+Click on the `r emo::ji("up_arrow")` button on the Git tab to push our changes up to our newly minted repository
+
+Let's go have a look at the history `r emo::ji("clock3")`
 
 
-We can also create new documents and edit existing ones on GitHub. 
 
-## Create `LICENSE`
+###  Tracking changes 
 
-Let's create also create a LICENSE in our repository.
-
-### Click on **New File**
-
-![](assets/new-file.png)
-
-### Start typing `LICENSE`
-
-A **choose license template** will button will pop up on the right. Click on it.
-
-![](assets/new-license.png)
-
-### Choose license
-
-On the left side panel, choose the **MIT License**
-
-![](assets/choos-license.png)
+####  Making a change to our  `index.Rmd`
 
 
-### Review licence
 
-Review the details in the license. Scroll down to commit it
+## Commit your changes
 
-![](assets/review-license.png)
+On the commit window:
 
-### Commit License
+- Have a look at the differences
 
-Commit the LICENSE **directly to your master branch**
+- Have a look at the history
 
-![](assets/commit-license.png)
-
-Once commited, the `LICENSE` file should be visible in the repo
-
-![](assets/license-done.png)
-
-## Add link to analysis `index.html` to README
-
-Let's edit the `README.md` on GitHub to add 
-
-
-![](assets/add-link-readme.png)
-
-Commit the changes directly into the master again.
-
-
-## `r emo::ji("vertical_traffic_light")` Pull changes locally
-
-Finally, let's pull the changes back down to our local repository by clicking the `r emo::ji("down_arrow")` button on the Git tab.
 
 
 
@@ -463,7 +443,7 @@ There may be files that you don't want to commit to git, e.g.
 
 
 
-## `gitignore` regex
+### `gitignore` regex
 
 You can use `regex` in `.gitignore` files to ignore files according to a pattern. 
 
@@ -472,8 +452,8 @@ You can use `regex` in `.gitignore` files to ignore files according to a pattern
 - prefix "!" which negates the pattern
 
     ```
-    data/*
-    !data/commit-this.csv
+    data-raw/*
+    !data-raw/individual.R
     ```
 
 
@@ -496,7 +476,7 @@ You can use `regex` in `.gitignore` files to ignore files according to a pattern
 
 
 
-## Never forget
+### Never forget
 
 ![](https://optimalbi.com/wp-content/uploads/2018/02/gitsave-300x210.png)
 

@@ -60,10 +60,6 @@
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.9.2/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -230,98 +226,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="dataspice.html"><a href="dataspice.html#build-readme-site"><i class="fa fa-check"></i>Build README site</a></li>
 </ul></li>
 <li class="part"><span><b>V Analysing and presenting analyses</b></span></li>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i>Plotting with ggplot2</a><ul>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#data-visualisation-and-analysis-basics"><i class="fa fa-check"></i>Data visualisation and analysis basics</a></li>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#graphics-in-r"><i class="fa fa-check"></i>Graphics in R</a></li>
+<li><a href="plotting-with-ggplot2.html#data-visualisation-in-practice-exploring-individual-with-ggplot2">Data visualisation in practice: Exploring <code>individual</code> with <code>ggplot2</code></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html"><i class="fa fa-check"></i>Literate programming in rmarkdown</a><ul>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#why-is-this-important-in-science"><i class="fa fa-check"></i>Why is this important in science:</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#calls-for-open-science"><strong>Calls for open science</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#tldr"><i class="fa fa-check"></i>tl;dr</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#rmarkdown-overview"><strong>Rmarkdown overview</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#elements-of-r-markdown"><i class="fa fa-check"></i>elements of R markdown</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#markdown-.md"><strong>markdown {<code>.md</code>}</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#code-r-python-sql"><strong>code {r,</strong> python, SQL, … <strong>}</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#outputs"><strong>outputs</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#publish-to-the-web-for-free"><i class="fa fa-check"></i>Publish to the web for free!</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#applications-in-research"><i class="fa fa-check"></i>Applications in research</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-1"><i class="fa fa-check"></i>💻 Exercise Part 1</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#yaml-header">🚦 <strong>YAML header</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#define-outputs"><i class="fa fa-check"></i>define outputs</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#define-a-floating-table-of-contents"><i class="fa fa-check"></i>define a floating table of contents</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#choose-a-theme"><i class="fa fa-check"></i>choose a theme</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#choose-code-highlights"><i class="fa fa-check"></i>choose code highlights</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-2"><i class="fa fa-check"></i>💻 Exercise Part 2</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#markdown-basics">🚦 <strong>Markdown basics</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#text"><strong>text</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#headers"><strong>headers</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#unordered-lists"><strong>unordered lists</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#ordered-lists"><strong>ordered lists</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#quotes"><strong>quotes</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#code"><strong>code</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#images"><strong>images</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#basic-tables-in-markdown"><strong>basic tables in markdown</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#links"><strong>links</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#mathematical-expressions"><i class="fa fa-check"></i>mathematical expressions</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-3"><i class="fa fa-check"></i>💻 Exercise: Part 3</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#chunks-inline-r-code"><i class="fa fa-check"></i>🚦 Chunks &amp; Inline R code</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#inserting-new-chunks"><strong>inserting new chunks</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#chunk-uses"><i class="fa fa-check"></i>chunk uses</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#chunk-notation"><strong>chunk notation</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#chunk-options"><strong>chunk options</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#uses"><i class="fa fa-check"></i>uses</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-4"><i class="fa fa-check"></i>💻 Exercise Part 4</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#displaying-data"><i class="fa fa-check"></i>🚦 Displaying data</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-5"><i class="fa fa-check"></i>💻 Exercise Part 5</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#plots"><i class="fa fa-check"></i>🚦 plots</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-6a"><i class="fa fa-check"></i>💻 Exercise Part 6a</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-6b"><i class="fa fa-check"></i>Exercise Part 6b</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#advanced-.rmd">🚦 Advanced <code>.Rmd</code></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#reading-chunks-of-code"><strong>reading chunks of code</strong></a></li>
-<li><a href="literate-programming-in-rmarkdown.html#extracting-code-from-an-.rmd"><strong>Extracting code from an <code>.Rmd</code></strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#exercise-part-7"><i class="fa fa-check"></i>💻 Exercise: Part 7*</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#purl-your-document"><i class="fa fa-check"></i>purl your document</a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#html-in-rmarkdown"><i class="fa fa-check"></i>🚦 html in rmarkdown</a></li>
+<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#literate-programming"><i class="fa fa-check"></i>Literate programming</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#literate-programming-in-r"><strong>Literate programming in R</strong></a></li>
+<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#applications-of-rmd-in-research"><i class="fa fa-check"></i>Applications of Rmd in research</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#rmd-in-practice"><code>Rmd</code> in Practice</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#advanced-.rmd">Advanced <code>.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#parting-words"><i class="fa fa-check"></i>Parting words</a></li>
 <li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#getting-help-with-markdown"><i class="fa fa-check"></i>Getting help with markdown</a></li>
-<li><a href="literate-programming-in-rmarkdown.html#resources"><strong>Resources</strong></a></li>
-<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html#solutions-my-example"><i class="fa fa-check"></i>Solutions: My example</a></li>
+<li><a href="literate-programming-in-rmarkdown.html#resources-1"><strong>Resources</strong></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i>Plotting with ggplot2</a></li>
 <li class="part"><span><b>VI Version Control</b></span></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html"><i class="fa fa-check"></i>Version Control with Git</a><ul>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-version-control"><i class="fa fa-check"></i>What is Version control? 🤔</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-git"><i class="fa fa-check"></i>What is git? 🤔</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#why-use-it-in-research"><i class="fa fa-check"></i>Why use it in research?</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#what-is-github"><i class="fa fa-check"></i>What is GitHub 🤔</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#git-github-rstudio"><i class="fa fa-check"></i>Git, Github &amp; Rstudio</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#demo"><i class="fa fa-check"></i>Demo</a></li>
 <li><a href="version-control-with-git.html#how-does-git-work">How does <code>Git</code> work?</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git-github"><i class="fa fa-check"></i>💻 Configure git &amp; GitHub</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#configure-git"><i class="fa fa-check"></i>Configure git</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#set-up-github-pat"><i class="fa fa-check"></i>🚦 Set up GITHUB PAT</a></li>
-<li><a href="version-control-with-git.html#section"><img src="assets/GITHUB_PAT.png" /></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#turn-our-project-into-a-repository"><i class="fa fa-check"></i>Turn our project into a repository</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commiting-files"><i class="fa fa-check"></i>🚦 Commiting files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#add-files"><i class="fa fa-check"></i>Add files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-changes"><i class="fa fa-check"></i>Commit changes</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-a-readme"><i class="fa fa-check"></i>🚦 Create a README</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#version-controlling-projects"><i class="fa fa-check"></i>Version Controlling projects</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-a-readme"><i class="fa fa-check"></i>Create a README</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#edit-readme"><i class="fa fa-check"></i>Edit README</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository-on-github"><i class="fa fa-check"></i>🚦 Create repository on GitHub</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#create-repository"><i class="fa fa-check"></i>Create repository</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#push-files"><i class="fa fa-check"></i>push files</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#tracking-changes"><i class="fa fa-check"></i>🚦 Tracking changes</a></li>
-<li><a href="version-control-with-git.html#making-a-change-to-our-gapminder-analysis.rmd">Making a change to our <code>gapminder-analysis.Rmd</code></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-your-changes"><i class="fa fa-check"></i>Commit your changes</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#host-content-on-github"><i class="fa fa-check"></i>🚦 Host content on GitHub</a></li>
 <li><a href="version-control-with-git.html#go-to-repo-settings">Go to repo <strong>Settings</strong></a></li>
 <li><a href="version-control-with-git.html#enable-gh-pages">Enable <code>gh-pages</code></a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#making-changes-on-github"><i class="fa fa-check"></i>🚦 Making changes on GitHub</a></li>
-<li><a href="version-control-with-git.html#create-license">Create <code>LICENSE</code></a></li>
-<li><a href="version-control-with-git.html#add-link-to-analysis-index.html-to-readme">Add link to analysis <code>index.html</code> to README</a></li>
-<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#pull-changes-locally"><i class="fa fa-check"></i>🚦 Pull changes locally</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#pushing-files"><i class="fa fa-check"></i>pushing files</a></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#commit-your-changes"><i class="fa fa-check"></i>Commit your changes</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#deleting-files"><i class="fa fa-check"></i>🚦 Deleting files</a></li>
 <li><a href="version-control-with-git.html#gitignore"><code>.gitignore</code></a></li>
 <li><a href="version-control-with-git.html#gitignore-regex"><code>gitignore</code> regex</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#further-resources"><i class="fa fa-check"></i>Further Resources</a></li>
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html#never-forget"><i class="fa fa-check"></i>Never forget</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="collaborative-github.html"><a href="collaborative-github.html"><i class="fa fa-check"></i>Collaborative GitHub</a></li>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a><ul>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#evolottery"><strong>EvoLottery</strong></a></li>
 <li class="chapter" data-level="" data-path="practical-github-rstudio-for-collaborative-coding.html"><a href="practical-github-rstudio-for-collaborative-coding.html"><i class="fa fa-check"></i>Clone Github repo</a></li>
@@ -356,7 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html#create-documentation-site"><i class="fa fa-check"></i>🚦 Create documentation site</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html"><i class="fa fa-check"></i>Creating a research compendium with rrtools</a><ul>
-<li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#background-1"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#background"><i class="fa fa-check"></i>Background</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#enter-the-research-compendium"><i class="fa fa-check"></i>Enter the Research Compendium</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#r-community-response"><i class="fa fa-check"></i>R community response</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#general-project-organisation-1"><i class="fa fa-check"></i>General Project Organisation</a></li>
@@ -397,6 +341,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a><ul>
 <li><a href="geolocate-r.html#rgeolocate.r"><strong><code>R/geolocate.R</code></strong></a></li>
+</ul></li>
+<li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a><ul>
+<li><a href="analysis-r-1.html#analysis.r-2"><strong><code>analysis.R</code></strong></a></li>
+</ul></li>
+<li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a><ul>
+<li><a href="index-rmd.html#index.rmd-1"><strong><code>index.Rmd</code></strong></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
@@ -521,12 +471,12 @@ Roxygen: list(markdown = TRUE)
 </code></pre>
 <div id="citation" class="section level3">
 <h3>citation</h3>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb507-1" data-line-number="1"><span class="kw">citation</span>(<span class="st">&quot;pkgreviewr&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" data-line-number="1"><span class="kw">citation</span>(<span class="st">&quot;pkgreviewr&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## To cite package &#39;pkgreviewr&#39; in publications use:
 ## 
 ##   Anna Krystalli and Maëlle Salmon (2019). pkgreviewr: rOpenSci package
-##   review project template. R package version 0.1.2.
+##   review project template. R package version 0.1.3.
 ##   https://github.com/ropenscilabs/pkgreviewr
 ## 
 ## A BibTeX entry for LaTeX users is
@@ -535,7 +485,7 @@ Roxygen: list(markdown = TRUE)
 ##     title = {pkgreviewr: rOpenSci package review project template},
 ##     author = {Anna Krystalli and Maëlle Salmon},
 ##     year = {2019},
-##     note = {R package version 0.1.2},
+##     note = {R package version 0.1.3},
 ##     url = {https://github.com/ropenscilabs/pkgreviewr},
 ##   }</code></pre>
 </div>
@@ -592,8 +542,8 @@ Roxygen: list(markdown = TRUE)
 <div id="example-function-script" class="section level3">
 <h3>example function script</h3>
 <p>Create a new function <code>.R</code> file in the <code>R/</code> folder</p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb512-1" data-line-number="1"><span class="kw">library</span>(usethis)</a>
-<a class="sourceLine" id="cb512-2" data-line-number="2"><span class="kw">use_r</span>(<span class="st">&quot;add&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb576-1" data-line-number="1"><span class="kw">library</span>(usethis)</a>
+<a class="sourceLine" id="cb576-2" data-line-number="2"><span class="kw">use_r</span>(<span class="st">&quot;add&quot;</span>)</a></code></pre></div>
 <pre><code>R
 └── add.R
 
@@ -606,17 +556,17 @@ Roxygen: list(markdown = TRUE)
 <li>Document functions with <strong>Roxygen</strong> notation</li>
 <li>Automatically create help files on build</li>
 </ul>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb514-1" data-line-number="1"><span class="co">#&#39; Add together two numbers.</span></a>
-<a class="sourceLine" id="cb514-2" data-line-number="2"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb514-3" data-line-number="3"><span class="co">#&#39; @param x A number.</span></a>
-<a class="sourceLine" id="cb514-4" data-line-number="4"><span class="co">#&#39; @param y A number.</span></a>
-<a class="sourceLine" id="cb514-5" data-line-number="5"><span class="co">#&#39; @return The sum of x and y.</span></a>
-<a class="sourceLine" id="cb514-6" data-line-number="6"><span class="co">#&#39; @examples</span></a>
-<a class="sourceLine" id="cb514-7" data-line-number="7"><span class="co">#&#39; add(1, 1)</span></a>
-<a class="sourceLine" id="cb514-8" data-line-number="8"><span class="co">#&#39; add(10, 1)</span></a>
-<a class="sourceLine" id="cb514-9" data-line-number="9">add &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
-<a class="sourceLine" id="cb514-10" data-line-number="10">  x <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb514-11" data-line-number="11">}</a></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb578-1" data-line-number="1"><span class="co">#&#39; Add together two numbers.</span></a>
+<a class="sourceLine" id="cb578-2" data-line-number="2"><span class="co">#&#39; </span></a>
+<a class="sourceLine" id="cb578-3" data-line-number="3"><span class="co">#&#39; @param x A number.</span></a>
+<a class="sourceLine" id="cb578-4" data-line-number="4"><span class="co">#&#39; @param y A number.</span></a>
+<a class="sourceLine" id="cb578-5" data-line-number="5"><span class="co">#&#39; @return The sum of x and y.</span></a>
+<a class="sourceLine" id="cb578-6" data-line-number="6"><span class="co">#&#39; @examples</span></a>
+<a class="sourceLine" id="cb578-7" data-line-number="7"><span class="co">#&#39; add(1, 1)</span></a>
+<a class="sourceLine" id="cb578-8" data-line-number="8"><span class="co">#&#39; add(10, 1)</span></a>
+<a class="sourceLine" id="cb578-9" data-line-number="9">add &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
+<a class="sourceLine" id="cb578-10" data-line-number="10">  x <span class="op">+</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb578-11" data-line-number="11">}</a></code></pre></div>
 </div>
 <div id="tests" class="section level2">
 <h2><code>tests/</code></h2>
@@ -634,16 +584,16 @@ Roxygen: list(markdown = TRUE)
 1 directory, 6 files</code></pre>
 <div id="example-test" class="section level3">
 <h3>Example test</h3>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb516-1" data-line-number="1"><span class="kw">use_test</span>(<span class="st">&quot;add&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb580-1" data-line-number="1"><span class="kw">use_test</span>(<span class="st">&quot;add&quot;</span>)</a></code></pre></div>
 <pre><code>tests
 ├── testthat
 │   ├── test-add.R
 └── testthat.R</code></pre>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb518-1" data-line-number="1"><span class="kw">context</span>(<span class="st">&quot;test-add&quot;</span>)</a>
-<a class="sourceLine" id="cb518-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb518-3" data-line-number="3"><span class="kw">test_that</span>(<span class="st">&quot;add works&quot;</span>, {</a>
-<a class="sourceLine" id="cb518-4" data-line-number="4">  <span class="kw">expect_equal</span>(<span class="kw">add</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb518-5" data-line-number="5">})</a></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb582-1" data-line-number="1"><span class="kw">context</span>(<span class="st">&quot;test-add&quot;</span>)</a>
+<a class="sourceLine" id="cb582-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb582-3" data-line-number="3"><span class="kw">test_that</span>(<span class="st">&quot;add works&quot;</span>, {</a>
+<a class="sourceLine" id="cb582-4" data-line-number="4">  <span class="kw">expect_equal</span>(<span class="kw">add</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb582-5" data-line-number="5">})</a></code></pre></div>
 <p>The <strong>R package structure</strong> can help with providing a logical organisation of files, by <strong>providing a set of standard locations for certain types of files</strong>.</p>
 <p>To work with packages in RStudio we use the <strong>Build pane</strong>, which includes a variety of tools for <strong>building, documenting and testing packages</strong>. This will appear if Rstudio recognises the project as an R package.</p>
 <p><img src="assets/build-panel.png" height="200px"></p>
@@ -672,33 +622,33 @@ Roxygen: list(markdown = TRUE)
 <h2>🚦 Functions in the <strong><code>R/</code></strong> dir</h2>
 <p>Let’s inspect <strong><code>hello.R</code></strong></p>
 <p>it contains a function that takes now arguments and prints <code>hello world</code> to the console when called. The comments above are just that, comments and don’t serve any functional purpose.</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb520-1" data-line-number="1"><span class="co"># Hello, world!</span></a>
-<a class="sourceLine" id="cb520-2" data-line-number="2"><span class="co">#</span></a>
-<a class="sourceLine" id="cb520-3" data-line-number="3"><span class="co"># This is an example function named &#39;hello&#39; </span></a>
-<a class="sourceLine" id="cb520-4" data-line-number="4"><span class="co"># which prints &#39;Hello, world!&#39;.</span></a>
-<a class="sourceLine" id="cb520-5" data-line-number="5"><span class="co">#</span></a>
-<a class="sourceLine" id="cb520-6" data-line-number="6"><span class="co"># You can learn more about package authoring with RStudio at:</span></a>
-<a class="sourceLine" id="cb520-7" data-line-number="7"><span class="co">#</span></a>
-<a class="sourceLine" id="cb520-8" data-line-number="8"><span class="co">#   http://r-pkgs.had.co.nz/</span></a>
-<a class="sourceLine" id="cb520-9" data-line-number="9"><span class="co">#</span></a>
-<a class="sourceLine" id="cb520-10" data-line-number="10"><span class="co"># Some useful keyboard shortcuts for package authoring:</span></a>
-<a class="sourceLine" id="cb520-11" data-line-number="11"><span class="co">#</span></a>
-<a class="sourceLine" id="cb520-12" data-line-number="12"><span class="co">#   Build and Reload Package:  &#39;Cmd + Shift + B&#39;</span></a>
-<a class="sourceLine" id="cb520-13" data-line-number="13"><span class="co">#   Check Package:             &#39;Cmd + Shift + E&#39;</span></a>
-<a class="sourceLine" id="cb520-14" data-line-number="14"><span class="co">#   Test Package:              &#39;Cmd + Shift + T&#39;</span></a>
-<a class="sourceLine" id="cb520-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb520-16" data-line-number="16">hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb520-17" data-line-number="17">  <span class="kw">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</a>
-<a class="sourceLine" id="cb520-18" data-line-number="18">}</a></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb584-1" data-line-number="1"><span class="co"># Hello, world!</span></a>
+<a class="sourceLine" id="cb584-2" data-line-number="2"><span class="co">#</span></a>
+<a class="sourceLine" id="cb584-3" data-line-number="3"><span class="co"># This is an example function named &#39;hello&#39; </span></a>
+<a class="sourceLine" id="cb584-4" data-line-number="4"><span class="co"># which prints &#39;Hello, world!&#39;.</span></a>
+<a class="sourceLine" id="cb584-5" data-line-number="5"><span class="co">#</span></a>
+<a class="sourceLine" id="cb584-6" data-line-number="6"><span class="co"># You can learn more about package authoring with RStudio at:</span></a>
+<a class="sourceLine" id="cb584-7" data-line-number="7"><span class="co">#</span></a>
+<a class="sourceLine" id="cb584-8" data-line-number="8"><span class="co">#   http://r-pkgs.had.co.nz/</span></a>
+<a class="sourceLine" id="cb584-9" data-line-number="9"><span class="co">#</span></a>
+<a class="sourceLine" id="cb584-10" data-line-number="10"><span class="co"># Some useful keyboard shortcuts for package authoring:</span></a>
+<a class="sourceLine" id="cb584-11" data-line-number="11"><span class="co">#</span></a>
+<a class="sourceLine" id="cb584-12" data-line-number="12"><span class="co">#   Build and Reload Package:  &#39;Cmd + Shift + B&#39;</span></a>
+<a class="sourceLine" id="cb584-13" data-line-number="13"><span class="co">#   Check Package:             &#39;Cmd + Shift + E&#39;</span></a>
+<a class="sourceLine" id="cb584-14" data-line-number="14"><span class="co">#   Test Package:              &#39;Cmd + Shift + T&#39;</span></a>
+<a class="sourceLine" id="cb584-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb584-16" data-line-number="16">hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb584-17" data-line-number="17">  <span class="kw">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</a>
+<a class="sourceLine" id="cb584-18" data-line-number="18">}</a></code></pre></div>
 <div id="install-package." class="section level3">
 <h3>Install package.</h3>
 <p>You can install a package locally from it’s source code with function <code>install()</code></p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb521-1" data-line-number="1"><span class="kw">library</span>(devtools)</a>
-<a class="sourceLine" id="cb521-2" data-line-number="2"><span class="kw">install</span>(<span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb585-1" data-line-number="1"><span class="kw">library</span>(devtools)</a>
+<a class="sourceLine" id="cb585-2" data-line-number="2"><span class="kw">install</span>(<span class="st">&quot;.&quot;</span>)</a></code></pre></div>
 <p>You can now load it like any other package…</p>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb522-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;mypackage&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb586-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;mypackage&quot;</span>)</a></code></pre></div>
 <p>And use your function!</p>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb523-1" data-line-number="1"><span class="kw">hello</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb587-1" data-line-number="1"><span class="kw">hello</span>()</a></code></pre></div>
 <pre><code>## [1] &quot;Hello, world!&quot;</code></pre>
 <hr />
 </div>
@@ -719,15 +669,15 @@ Roxygen: list(markdown = TRUE)
 <blockquote>
 <p><strong>Code &gt; Insert Roxygen Skeleton</strong></p>
 </blockquote>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb525-1" data-line-number="1"><span class="co">#&#39; Title</span></a>
-<a class="sourceLine" id="cb525-2" data-line-number="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb525-3" data-line-number="3"><span class="co">#&#39; @return</span></a>
-<a class="sourceLine" id="cb525-4" data-line-number="4"><span class="co">#&#39; @export</span></a>
-<a class="sourceLine" id="cb525-5" data-line-number="5"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb525-6" data-line-number="6"><span class="co">#&#39; @examples</span></a>
-<a class="sourceLine" id="cb525-7" data-line-number="7">hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb525-8" data-line-number="8">  <span class="kw">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</a>
-<a class="sourceLine" id="cb525-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb589-1" data-line-number="1"><span class="co">#&#39; Title</span></a>
+<a class="sourceLine" id="cb589-2" data-line-number="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb589-3" data-line-number="3"><span class="co">#&#39; @return</span></a>
+<a class="sourceLine" id="cb589-4" data-line-number="4"><span class="co">#&#39; @export</span></a>
+<a class="sourceLine" id="cb589-5" data-line-number="5"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb589-6" data-line-number="6"><span class="co">#&#39; @examples</span></a>
+<a class="sourceLine" id="cb589-7" data-line-number="7">hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb589-8" data-line-number="8">  <span class="kw">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</a>
+<a class="sourceLine" id="cb589-9" data-line-number="9">}</a></code></pre></div>
 <div id="roxygen-basics" class="section level4">
 <h4>Roxygen basics</h4>
 <ul>
@@ -743,22 +693,22 @@ Roxygen: list(markdown = TRUE)
 </div>
 <div id="complete-roxygen-documentation" class="section level3">
 <h3>Complete Roxygen documentation</h3>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb526-1" data-line-number="1"><span class="co">#&#39; Hello World! </span></a>
-<a class="sourceLine" id="cb526-2" data-line-number="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb526-3" data-line-number="3"><span class="co">#&#39; Print hello greeting</span></a>
-<a class="sourceLine" id="cb526-4" data-line-number="4"><span class="co">#&#39; @return prints hello greeting to console</span></a>
-<a class="sourceLine" id="cb526-5" data-line-number="5"><span class="co">#&#39; @export</span></a>
-<a class="sourceLine" id="cb526-6" data-line-number="6"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb526-7" data-line-number="7"><span class="co">#&#39; @examples</span></a>
-<a class="sourceLine" id="cb526-8" data-line-number="8"><span class="co">#&#39; hello()</span></a>
-<a class="sourceLine" id="cb526-9" data-line-number="9">hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb526-10" data-line-number="10">  <span class="kw">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</a>
-<a class="sourceLine" id="cb526-11" data-line-number="11">}</a></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb590-1" data-line-number="1"><span class="co">#&#39; Hello World! </span></a>
+<a class="sourceLine" id="cb590-2" data-line-number="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb590-3" data-line-number="3"><span class="co">#&#39; Print hello greeting</span></a>
+<a class="sourceLine" id="cb590-4" data-line-number="4"><span class="co">#&#39; @return prints hello greeting to console</span></a>
+<a class="sourceLine" id="cb590-5" data-line-number="5"><span class="co">#&#39; @export</span></a>
+<a class="sourceLine" id="cb590-6" data-line-number="6"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb590-7" data-line-number="7"><span class="co">#&#39; @examples</span></a>
+<a class="sourceLine" id="cb590-8" data-line-number="8"><span class="co">#&#39; hello()</span></a>
+<a class="sourceLine" id="cb590-9" data-line-number="9">hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb590-10" data-line-number="10">  <span class="kw">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</a>
+<a class="sourceLine" id="cb590-11" data-line-number="11">}</a></code></pre></div>
 </div>
 <div id="autogenerate-documentation" class="section level3">
 <h3>Autogenerate documentation</h3>
 <p>Use function <code>devtools::document()</code> to create documentation. This re-creates a <code>hello.Rd</code> helpfile in the <code>man/</code> folder and populates the <code>NAMESPACE</code> with our functions</p>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb527-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">document</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb591-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">document</span>()</a></code></pre></div>
 <p>Click <strong>Install and Restart</strong> to re-install the package and make the documentation available.</p>
 <p><img src="assets/roxygen-done.png" /></p>
 <p>You can configure your build tools in the <strong>Global Options</strong> to automatically build documentation every time you <strong>Install &amp; Rebuild</strong></p>
@@ -768,25 +718,25 @@ Roxygen: list(markdown = TRUE)
 <div id="personalise-function" class="section level2">
 <h2>🚦 Personalise function</h2>
 <p>Let’s go a step further and customise our function so that the greeting is from ourselves!</p>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb528-1" data-line-number="1"><span class="co">#&#39; Hello World!</span></a>
-<a class="sourceLine" id="cb528-2" data-line-number="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb528-3" data-line-number="3"><span class="co">#&#39; Print hello greeting</span></a>
-<a class="sourceLine" id="cb528-4" data-line-number="4"><span class="co">#&#39; @return prints hello greeting to console from me</span></a>
-<a class="sourceLine" id="cb528-5" data-line-number="5"><span class="co">#&#39; @export</span></a>
-<a class="sourceLine" id="cb528-6" data-line-number="6"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb528-7" data-line-number="7"><span class="co">#&#39; @examples</span></a>
-<a class="sourceLine" id="cb528-8" data-line-number="8"><span class="co">#&#39; hello()</span></a>
-<a class="sourceLine" id="cb528-9" data-line-number="9">hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb528-10" data-line-number="10">  <span class="kw">print</span>(<span class="st">&quot;Hello, world from Anna&quot;</span>)</a>
-<a class="sourceLine" id="cb528-11" data-line-number="11">}</a></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb592-1" data-line-number="1"><span class="co">#&#39; Hello World!</span></a>
+<a class="sourceLine" id="cb592-2" data-line-number="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb592-3" data-line-number="3"><span class="co">#&#39; Print hello greeting</span></a>
+<a class="sourceLine" id="cb592-4" data-line-number="4"><span class="co">#&#39; @return prints hello greeting to console from me</span></a>
+<a class="sourceLine" id="cb592-5" data-line-number="5"><span class="co">#&#39; @export</span></a>
+<a class="sourceLine" id="cb592-6" data-line-number="6"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb592-7" data-line-number="7"><span class="co">#&#39; @examples</span></a>
+<a class="sourceLine" id="cb592-8" data-line-number="8"><span class="co">#&#39; hello()</span></a>
+<a class="sourceLine" id="cb592-9" data-line-number="9">hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb592-10" data-line-number="10">  <span class="kw">print</span>(<span class="st">&quot;Hello, world from Anna&quot;</span>)</a>
+<a class="sourceLine" id="cb592-11" data-line-number="11">}</a></code></pre></div>
 </div>
 <div id="add-some-fun" class="section level2">
 <h2>Add some fun!</h2>
 <p>Programming is most useful for having fun. So let’s make our function extra fun!</p>
 <p>We’ll use package <code>cowsay</code></p>
-<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb529-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;cowsay&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb593-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;cowsay&quot;</span>)</a></code></pre></div>
 <p>which has a single function <code>say</code>, which does this…</p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb530-1" data-line-number="1">cowsay<span class="op">::</span><span class="kw">say</span>(<span class="st">&quot;Say whaaaaaat?&quot;</span>, <span class="dt">by =</span> <span class="st">&quot;shark&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb594-1" data-line-number="1">cowsay<span class="op">::</span><span class="kw">say</span>(<span class="st">&quot;Say whaaaaaat?&quot;</span>, <span class="dt">by =</span> <span class="st">&quot;shark&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  -------------- 
 ## Say whaaaaaat? 
@@ -821,41 +771,42 @@ Roxygen: list(markdown = TRUE)
 ## </code></pre>
 <p>😜</p>
 <p>So let’s create a function that randomly chooses one of the animals available in <code>cowsay</code> to deliver the greeting, and also allow the user to customise who the recipient of the greeting is</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb532-1" data-line-number="1"><span class="co">#&#39; Hello World!</span></a>
-<a class="sourceLine" id="cb532-2" data-line-number="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb532-3" data-line-number="3"><span class="co">#&#39; Print personalised hello greeting from me.</span></a>
-<a class="sourceLine" id="cb532-4" data-line-number="4"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb532-5" data-line-number="5"><span class="co">#&#39; @param name character string. Your name!</span></a>
-<a class="sourceLine" id="cb532-6" data-line-number="6"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb532-7" data-line-number="7"><span class="co">#&#39; @return prints hello greeting to console</span></a>
-<a class="sourceLine" id="cb532-8" data-line-number="8"><span class="co">#&#39; @export</span></a>
-<a class="sourceLine" id="cb532-9" data-line-number="9"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb532-10" data-line-number="10"><span class="co">#&#39; @examples</span></a>
-<a class="sourceLine" id="cb532-11" data-line-number="11"><span class="co">#&#39; hello()</span></a>
-<a class="sourceLine" id="cb532-12" data-line-number="12"><span class="co">#&#39; hello(&quot;Lucy Elen&quot;)</span></a>
-<a class="sourceLine" id="cb532-13" data-line-number="13">hello &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">name =</span> <span class="ot">NULL</span>) {</a>
-<a class="sourceLine" id="cb532-14" data-line-number="14">    </a>
-<a class="sourceLine" id="cb532-15" data-line-number="15">    <span class="co"># create greeting</span></a>
-<a class="sourceLine" id="cb532-16" data-line-number="16">    <span class="cf">if</span>(<span class="kw">is.null</span>(name)){name &lt;-<span class="st"> &quot;world&quot;</span>}</a>
-<a class="sourceLine" id="cb532-17" data-line-number="17">    greeting &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;Hello&quot;</span>, name, <span class="st">&quot;from Anna!&quot;</span>)</a>
-<a class="sourceLine" id="cb532-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb532-19" data-line-number="19">    <span class="co"># randomly sample an animal</span></a>
-<a class="sourceLine" id="cb532-20" data-line-number="20">    animal_names &lt;-<span class="st"> </span><span class="kw">names</span>(cowsay<span class="op">::</span>animals)</a>
-<a class="sourceLine" id="cb532-21" data-line-number="21">    i &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(animal_names), <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb532-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb532-23" data-line-number="23">    cowsay<span class="op">::</span><span class="kw">say</span>(greeting, animal_names[i])</a>
-<a class="sourceLine" id="cb532-24" data-line-number="24">}</a></code></pre></div>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb596-1" data-line-number="1"><span class="co">#&#39; Hello World!</span></a>
+<a class="sourceLine" id="cb596-2" data-line-number="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb596-3" data-line-number="3"><span class="co">#&#39; Print personalised hello greeting from me.</span></a>
+<a class="sourceLine" id="cb596-4" data-line-number="4"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb596-5" data-line-number="5"><span class="co">#&#39; @param name character string. Your name!</span></a>
+<a class="sourceLine" id="cb596-6" data-line-number="6"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb596-7" data-line-number="7"><span class="co">#&#39; @return prints hello greeting to console</span></a>
+<a class="sourceLine" id="cb596-8" data-line-number="8"><span class="co">#&#39; @export</span></a>
+<a class="sourceLine" id="cb596-9" data-line-number="9"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb596-10" data-line-number="10"><span class="co">#&#39; @examples</span></a>
+<a class="sourceLine" id="cb596-11" data-line-number="11"><span class="co">#&#39; hello()</span></a>
+<a class="sourceLine" id="cb596-12" data-line-number="12"><span class="co">#&#39; hello(&quot;Lucy Elen&quot;)</span></a>
+<a class="sourceLine" id="cb596-13" data-line-number="13">hello &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">name =</span> <span class="ot">NULL</span>) {</a>
+<a class="sourceLine" id="cb596-14" data-line-number="14">    </a>
+<a class="sourceLine" id="cb596-15" data-line-number="15">    <span class="co"># create greeting</span></a>
+<a class="sourceLine" id="cb596-16" data-line-number="16">    <span class="cf">if</span>(<span class="kw">is.null</span>(name)){name &lt;-<span class="st"> &quot;world&quot;</span>}</a>
+<a class="sourceLine" id="cb596-17" data-line-number="17">    greeting &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;Hello&quot;</span>, name, <span class="st">&quot;from Anna!&quot;</span>)</a>
+<a class="sourceLine" id="cb596-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb596-19" data-line-number="19">    <span class="co"># randomly sample an animal</span></a>
+<a class="sourceLine" id="cb596-20" data-line-number="20">    animal_names &lt;-<span class="st"> </span><span class="kw">names</span>(cowsay<span class="op">::</span>animals)</a>
+<a class="sourceLine" id="cb596-21" data-line-number="21">    i &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(animal_names), <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb596-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb596-23" data-line-number="23">    cowsay<span class="op">::</span><span class="kw">say</span>(greeting, animal_names[i])</a>
+<a class="sourceLine" id="cb596-24" data-line-number="24">}</a></code></pre></div>
 <p>Document, Install and restart to load our changes</p>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb533-1" data-line-number="1"><span class="kw">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb597-1" data-line-number="1"><span class="kw">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  ----- 
 ## Hello y&#39;all from Anna! 
 ##  ------ 
 ##     \   
 ##      \
-##       ( )_( )
-##       (=&#39;.&#39;=)
-##       (^)_(^) [nosig]
+##      _[_]_
+##       (&quot;)
+##   &gt;--( : )--&lt;
+##     (__:__) [nosig]
 ## </code></pre>
 </div>
 <div id="check-package-integrity" class="section level2">
@@ -905,14 +856,14 @@ Exited with status 1.</code></pre>
 <div id="add-dependencies" class="section level2">
 <h2>🚦 Add dependencies</h2>
 <p>Add <code>cowsay</code> as a dependency.</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb536-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_package</span>(<span class="st">&quot;cowsay&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb600-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_package</span>(<span class="st">&quot;cowsay&quot;</span>)</a></code></pre></div>
 <pre><code>✔ Setting active project to &#39;/Users/Anna/Desktop/mypackage&#39;
 ✔ Adding &#39;cowsay&#39; to Imports field in DESCRIPTION
 ● Refer to functions with `cowsay::fun()`</code></pre>
 </div>
 <div id="add-license" class="section level2">
 <h2>Add License</h2>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb538-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_mit_license</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb602-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_mit_license</span>()</a></code></pre></div>
 <p><img src="assets/clear-checks.png" /></p>
 <p>Check again…All should be good!</p>
 <pre><code>── R CMD check results ──────────────────────────────────── mypackage 0.1.0 ────
@@ -937,13 +888,13 @@ R CMD check succeeded</code></pre>
 <h2>create test file</h2>
 <p>To create a new test file (and the testing framework if required), use function
 <code>usethis::use_test()</code>. It’s good practice to name the test files after the <code>.R</code> files containing the functions being tested.</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb540-1" data-line-number="1"><span class="kw">use_test</span>(<span class="st">&quot;hello&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb541-1" data-line-number="1">✔ Setting active project to <span class="st">&#39;/Users/Anna/Documents/workflows/workshops/materials/mypackage&#39;</span></a>
-<a class="sourceLine" id="cb541-2" data-line-number="2">✔ Adding <span class="st">&#39;testthat&#39;</span> to Suggests field <span class="cf">in</span> DESCRIPTION</a>
-<a class="sourceLine" id="cb541-3" data-line-number="3">✔ Creating <span class="st">&#39;tests/testthat/&#39;</span></a>
-<a class="sourceLine" id="cb541-4" data-line-number="4">✔ Writing <span class="st">&#39;tests/testthat.R&#39;</span></a>
-<a class="sourceLine" id="cb541-5" data-line-number="5">✔ Writing <span class="st">&#39;tests/testthat/test-hello.R&#39;</span></a>
-<a class="sourceLine" id="cb541-6" data-line-number="6">● Modify <span class="st">&#39;tests/testthat/test-hello.R&#39;</span></a></code></pre></div>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb604-1" data-line-number="1"><span class="kw">use_test</span>(<span class="st">&quot;hello&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb605-1" data-line-number="1">✔ Setting active project to <span class="st">&#39;/Users/Anna/Documents/workflows/workshops/materials/mypackage&#39;</span></a>
+<a class="sourceLine" id="cb605-2" data-line-number="2">✔ Adding <span class="st">&#39;testthat&#39;</span> to Suggests field <span class="cf">in</span> DESCRIPTION</a>
+<a class="sourceLine" id="cb605-3" data-line-number="3">✔ Creating <span class="st">&#39;tests/testthat/&#39;</span></a>
+<a class="sourceLine" id="cb605-4" data-line-number="4">✔ Writing <span class="st">&#39;tests/testthat.R&#39;</span></a>
+<a class="sourceLine" id="cb605-5" data-line-number="5">✔ Writing <span class="st">&#39;tests/testthat/test-hello.R&#39;</span></a>
+<a class="sourceLine" id="cb605-6" data-line-number="6">● Modify <span class="st">&#39;tests/testthat/test-hello.R&#39;</span></a></code></pre></div>
 <p>This just created the following folders and files</p>
 <pre><code>tests
 ├── testthat
@@ -959,18 +910,18 @@ if you want to run the tests.</p>
 <p>When the tests are run (either through running <code>devtools::test()</code>, clicking on <strong>More &gt; Test Package</strong> in the Build panel or <code>Cmd/Ctrl + Shift + T</code>), the code in each test script in directory <code>testthat</code> is run.</p>
 <p><strong><code>test-hello.R</code></strong></p>
 <p>Let’s load the library so we can explore the <code>testthat</code> testing framework</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb544-1" data-line-number="1"><span class="kw">library</span>(testthat)</a></code></pre></div>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb545-1" data-line-number="1"><span class="kw">context</span>(<span class="st">&quot;test-hello&quot;</span>)</a>
-<a class="sourceLine" id="cb545-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb545-3" data-line-number="3"><span class="kw">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</a>
-<a class="sourceLine" id="cb545-4" data-line-number="4">  <span class="kw">expect_equal</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb545-5" data-line-number="5">})</a></code></pre></div>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb608-1" data-line-number="1"><span class="kw">library</span>(testthat)</a></code></pre></div>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb609-1" data-line-number="1"><span class="kw">context</span>(<span class="st">&quot;test-hello&quot;</span>)</a>
+<a class="sourceLine" id="cb609-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb609-3" data-line-number="3"><span class="kw">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</a>
+<a class="sourceLine" id="cb609-4" data-line-number="4">  <span class="kw">expect_equal</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb609-5" data-line-number="5">})</a></code></pre></div>
 <p>If the test doesn’t pass it throws an error</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb546-1" data-line-number="1"><span class="kw">context</span>(<span class="st">&quot;test-hello&quot;</span>)</a>
-<a class="sourceLine" id="cb546-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb546-3" data-line-number="3"><span class="kw">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</a>
-<a class="sourceLine" id="cb546-4" data-line-number="4">  <span class="kw">expect_equal</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb546-5" data-line-number="5">})</a></code></pre></div>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb610-1" data-line-number="1"><span class="kw">context</span>(<span class="st">&quot;test-hello&quot;</span>)</a>
+<a class="sourceLine" id="cb610-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb610-3" data-line-number="3"><span class="kw">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</a>
+<a class="sourceLine" id="cb610-4" data-line-number="4">  <span class="kw">expect_equal</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb610-5" data-line-number="5">})</a></code></pre></div>
 <pre><code>## Error: Test failed: &#39;multiplication works&#39;
 ## * &lt;text&gt;:4: 2 * 2 not equal to 5.
 ## 1/1 mismatches
@@ -980,37 +931,29 @@ if you want to run the tests.</p>
 <h2>Write test</h2>
 <p>Let’s write a simple test to check that we are getting an expected output type. The first thing to note, looking at the <code>say()</code> documentation is that it takes an argument <code>type</code> which allows us to specify the output we want. It defaults <code>message</code> which means the output of the function is returned as a message.</p>
 <p>We can therefore use <code>testthat::expect_message()</code></p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb548-1" data-line-number="1"><span class="kw">context</span>(<span class="st">&quot;test-hello&quot;</span>)</a>
-<a class="sourceLine" id="cb548-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb548-3" data-line-number="3"><span class="kw">test_that</span>(<span class="st">&quot;hello works&quot;</span>, {</a>
-<a class="sourceLine" id="cb548-4" data-line-number="4">  <span class="kw">expect_message</span>(<span class="kw">hello</span>())</a>
-<a class="sourceLine" id="cb548-5" data-line-number="5">})</a></code></pre></div>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb612-1" data-line-number="1"><span class="kw">context</span>(<span class="st">&quot;test-hello&quot;</span>)</a>
+<a class="sourceLine" id="cb612-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb612-3" data-line-number="3"><span class="kw">test_that</span>(<span class="st">&quot;hello works&quot;</span>, {</a>
+<a class="sourceLine" id="cb612-4" data-line-number="4">  <span class="kw">expect_message</span>(<span class="kw">hello</span>())</a>
+<a class="sourceLine" id="cb612-5" data-line-number="5">})</a></code></pre></div>
 <pre><code>## 
-##  ------------- 
+## 
+##  ----- 
 ## Hello world from Anna! 
-##  -------------- 
-##               \   
-##                \  
-##                 \
-## _____________________                              _____________________
-## `-._                 \           |\__/|           /                 _.-&#39;
-##     \                 \          |    |          /                 /
-##      \                 `-_______/      \_______-&#39;                 /
-##       |                                                          |
-##       |                                                          |
-##       |                                                          |
-##       /                                                          \
-##      /_____________                                  _____________\
-##                    `----._                    _.----&#39;
-##                           `--.            .--&#39;
-##                               `-.      .-&#39;
-##                                  \    / :F_P:
-##                                   \  /
-##                                    \/</code></pre>
+##  ------ 
+##     \   
+##      \   __
+##    / \
+##    | |
+##    @ @
+##   || ||
+##   || ||
+##   |\_/|
+##   \___/ GB</code></pre>
 <pre><code>## Error: Test failed: &#39;hello works&#39;
 ## * &lt;text&gt;:4: `hello()` did not produce any messages.</code></pre>
 <p>Now let’s test our package</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb551-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">test</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb615-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">test</span>()</a></code></pre></div>
 <p>Success!</p>
 <pre><code>==&gt; devtools::test()
 
@@ -1065,7 +1008,7 @@ Suggests:
 Date: 2019-04-10</code></pre>
 <p>Check your package. If all is good, document, install and restart!</p>
 <p>Now, check you’re package’s citation:</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb555-1" data-line-number="1"><span class="kw">citation</span>(<span class="st">&quot;mypackage&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb619-1" data-line-number="1"><span class="kw">citation</span>(<span class="st">&quot;mypackage&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## To cite package &#39;mypackage&#39; in publications use:
 ## 
@@ -1085,7 +1028,7 @@ Date: 2019-04-10</code></pre>
 <div id="create-readme" class="section level2">
 <h2>🚦 Create README</h2>
 <p>The final document you will need for your package is a <code>README</code>.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_readme_rmd</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb621-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_readme_rmd</span>()</a></code></pre></div>
 <pre><code>✔ Writing &#39;README.Rmd&#39;
 ✔ Adding &#39;^README\\.Rmd$&#39; to &#39;.Rbuildignore&#39;
 ● Modify &#39;README.Rmd&#39;
@@ -1097,13 +1040,13 @@ Date: 2019-04-10</code></pre>
 <h2>Commit and push to GitHub</h2>
 <p>Now you have everything you need to share your package on GitHub so commit and push it up.</p>
 <p>Anyone will be able to install it using, eg:</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb559-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;annakrystalli/mypackage&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb623-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;annakrystalli/mypackage&quot;</span>)</a></code></pre></div>
 </div>
 <div id="create-documentation-site" class="section level2">
 <h2>🚦 Create documentation site</h2>
 <p>You can use package <code>pkgdown</code> to create an online site for your documentation:</p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb560-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;pkgdown&quot;</span>)</a>
-<a class="sourceLine" id="cb560-2" data-line-number="2">pkgdown<span class="op">::</span><span class="kw">build_site</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb624-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;pkgdown&quot;</span>)</a>
+<a class="sourceLine" id="cb624-2" data-line-number="2">pkgdown<span class="op">::</span><span class="kw">build_site</span>()</a></code></pre></div>
 <pre><code>══ Building pkgdown site ════════════════════════════════════════════
 Reading from: &#39;/Users/Anna/Documents/workflows/dummy/mypackage&#39;
 Writing to:   &#39;/Users/Anna/Documents/workflows/dummy/mypackage/docs&#39;
