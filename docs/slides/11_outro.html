@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>title</title>
+    <title>Closing Remarks</title>
     <meta charset="utf-8" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/little_ak.css" type="text/css" />
@@ -20,7 +20,7 @@ class: top, left, inverse
 ***
 
 .bottom[
-# Good File Naming
+# Closing Remarks
 
 &lt;br&gt;
 
@@ -36,318 +36,143 @@ class: top, left, inverse
 
 ---
 
-# Background
+## take ownership
 
-### Let's face it...
+- #### Try to think ahead about where the pitfalls lie.
 
-- There are going to be files
+- #### Iterate on your process. Every little helps
 
-- **LOTS** of files
-
-- The files will **change over time**
-
-- The files will **have relationships to each other**
-
-### It'll probably get complicated
+- #### What works? What makes using data easy, what makes it painful?
 
 ---
 
-![](assets/img/files_messy_tidy.png)
+## take aways
+
+- #### prepare it to share it
+- #### human readable code and machine readable data
+- #### automated pipeline from raw data to outputs
+- #### better in the open
+
+
+
+&gt; #### make yourself the [most expendable member](http://www.datacarpentry.org/blog/soft-skills/) of you team!
+
 
 ---
 
-## **Strategy against chaos**
-
-### **File organization** and **naming** is a mighty weapon against chaos
-
-- Make a file's **name** and **location** ***VERY INFORMATIVE*** about:
-    - what it is, 
-    - why it exists, 
-    - how it relates to other things
-
-- The more things are **self-explanatory**, the better.
+# Resources
 
 ---
 
-## File naming
+## BES guide to data management 
+
+&lt;img src="../assets/img/BES.png" height=300px&gt;
 
 &lt;br&gt;
 
-### **Names matter**
+This guide for early career researchers explains what data and data management are, and provides advice and examples of best practices in data management, including case studies from researchers currently working in ecology and evolution.
 
-![](assets/img/cheers.png)
+&lt;br&gt;
 
----
-
-### **What works, what doesn't?**
-
-**NO**
-
-~~~
-myabstract.docx
-Joe’s Filenames Use Spaces and Punctuation.xlsx
-figure 1.png
-fig 2.png
-JW7d^(2sl@deletethisandyourcareerisoverWx2*.txt
-~~~
-
-**YES**
-
-~~~
-2014-06-08_abstract-for-sla.docx
-joes-filenames-are-getting-better.xlsx
-fig01_scatterplot-talk-length-vs-interest.png
-fig02_histogram-talk-attendance.png
-1986-01-28_raw-data-from-challenger-o-rings.txt
-~~~
+#### [download](http://www.britishecologicalsociety.org/wp-content/uploads/Publ_Data-Management-Booklet.pdf)
 
 ---
 
-# **Three principles for good (file) names**
+## BES guide to reproducible code 
 
+&lt;img src="https://methodsblog.files.wordpress.com/2017/12/code-cover.jpg?w=424&amp;h=600" height=300px&gt;
 
+A Guide to Reproducible Code covers all the basic tools and information you will
+need to start making your code more reproducible. We focus on R and Python, but
+many of the tips apply to any programming language.
 
-1. ### **Machine readable**
+#### [download](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf)
 
+---
 
+### Further reading
 
-1. ### **Human readable**
+- [**Blog post**](https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/) **by Dynamic ecology** [\@DynamicEcology](https://twitter.com/DynamicEcology)
+- [**rOpenSci Reproducibility in Science:** 
+A Guide to enhancing reproducibility in scientific results and writing](http://ropensci.github.io/reproducibility-guide/)
+- [**Nine simple ways to make it easier to (re)use your data**](http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/4898)
 
+---
 
+## Training materials
 
-1. ### **Play well with default ordering**
+**The Carpentries**
+
+- **Domain specific lessons in Software &amp; Data available** [**free online**](https://carpentries.org/)
+    + Ecology materials
+    + Genomics materials
+    + Geospatial data materials
+    + Biology semester long materials
 
 
 ---
 
-# **Machine readable**
+## go further
 
-- **Regular expression and globbing friendly**
-    + Avoid spaces, punctuation, accented characters, case sensitivity
+## coding
 
-- **Easy to compute on**
-    + Deliberate use of delimiters
-
----
-
-## Filtering and search through [Globbing](http://searchsecurity.techtarget.com/definition/globbing)
-
-### **Excerpt of complete file listing:**
-
-![](assets/img/plasmid_names.png)
----
-
-### **Example of globbing to filter file listing:**
-
-![](assets/img/plasmid_glob.png)
-
----
-
-### **Search using Mac OS Finder search facilities**
-
-
-![](assets/img/plasmid_mac_os_search.png)
-
----
-
-### **Search using regex in R**
-
-
-![](assets/img/plasmid_regex.png)
+&lt;blockquote class="twitter-tweet" data-conversation="none" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;&lt;a href="https://twitter.com/tomjwebb"&gt;@tomjwebb&lt;/a&gt; agree very much with &lt;a href="https://twitter.com/ucfagls"&gt;@ucfagls&lt;/a&gt;. Early investment in programming skills pays off in the future in terms of speed &amp;amp; reproducibility.&lt;/p&gt;&amp;mdash; Susan Johnston (@SuseJohnston) &lt;a href="https://twitter.com/SuseJohnston/status/556110171483947008"&gt;January 16, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
 
 ---
 
 
-
-## **Delimit information with punctuation** 
-
-**Deliberate use of `"-"` and `"_"` allows recovery of metadata from the filenames:**
-
-- `"_"` underscore used to delimit units of metadata I want to access later
-- `"-"` hyphen used to delimit words so our eyes don't bleed
+- #### [software carpentry: R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/)
 
 
-![](assets/img/plasmid_delimiters.png)
+![](https://d21ii91i3y6o6h.cloudfront.net/gallery_images/from_proof/3802/large/1421543874/software-carpentry.png)
 
----
+- #### [An Introduction to Reproducible Research in R and R Studio.](https://susanejohnston.wordpress.com/category/reproducible-research/)
 
-### Splitting filenames by delimiters
+- #### Research data management (RDM) open training materials on [Zenodo](https://zenodo.org/communities/dcc-rdm-training-materials/?page=1&amp;size=20)
 
-![](assets/img/plasmid_delimiters_code.png)
-
-
-This happens to be `R` but also possible in the `shell`, `Python`, etc.
-
----
-
-## **Include important metadata**
-
-e.g. I'm saving a number of files of temperature data extracted at different resolutions (`res`) and for a number of months (`month`). Including these parameters in the filename allows me to use them to target files to read in.
-
-
-
-```r
-write.csv(df, paste("variable", res, month, sep ="_"))
-
-df &lt;- read.csv(paste("variable", res, month, sep ="_"))
-```
-
----
-
-## **Recap: machine readable**
-
-
-- **Easy to search for files later**
-
-
-- **Easy to filter file lists based on names**
-
-
-- **Easy to extract info from file names, e.g. by splitting**
-
-**New to regular expressions and globbing? be kind to yourself and avoid**
- + Spaces in file names
- + Punctuation
- + Accented characters
-
+- #### Coursera Reproducible Research [MOOC](https://www.coursera.org/learn/reproducible-research)
 
 
 ---
 
-# **Human readable**
+## seek support
 
+&lt;br&gt;
 
-- **Name contains info on content**
-
-- **Connects to concept of a** [***slug***](https://en.wikipedia.org/wiki/Semantic_URL#Slug) **from semantic URLs**
-
----
-
-### **Example**
-
-#### **Which set of file(name)s do you want at 3 a.m. before a deadline?**
-
-![](assets/img/human_readable_not_options.png)
+- #### Your supervisor / research group /ACCE peers
+- #### Institutional Research Data Management Teams
+    - http://www.york.ac.uk/rdm
+    - https://www.sheffield.ac.uk/library/rdm
+    - http://www.liv.ac.uk/research-data-management/
+- #### NERC data centres (BODC Liverpool, EIDC CEH)
+- #### ROpenSci, Rladies, R4DS Learning community, theh Carpentries
 
 ---
 
-## **Embrace the slug**
+## Publish your markdown work on GitHub!
 
-
-&lt;img src="assets/img/slug_filenames.png" height="400px"&gt;
-
+Use **Git** and **GitHub** to manage, publish and collaborate on your work
 
 
 ---
 
-### Use slugs to link inputs, scripts &amp; outputs
+## Share your work
 
-#### **The `R` scripts:**
+- Start a blog!
 
-~~~
-01_marshal-data.r
-02_pre-dea-filtering.r
-03_dea-with-limma-voom.r
-04_explore-dea-results.r
-90_limma-model-term-name-fiasco.r
-~~~
+  &lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Ready to start your data science blog? Check out &lt;a href="https://twitter.com/ma_salmon?ref_src=twsrc%5Etfw"&gt;@ma_salmon&lt;/a&gt;&amp;#39;s excellent slides to help you figure out:&lt;br&gt;&lt;br&gt;💭what you can write about, w/ examples. Hint: it&amp;#39;s not just &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt; code!&lt;br&gt;📝 how to get it done.&lt;br&gt;🗣️ where/how to share it.&lt;a href="https://t.co/RpMOzU0Ntc"&gt;https://t.co/RpMOzU0Ntc&lt;/a&gt;&lt;/p&gt;&amp;mdash; Emily Robinson (@robinson_es) &lt;a href="https://twitter.com/robinson_es/status/977941365119176704?ref_src=twsrc%5Etfw"&gt;March 25, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
 
-#### **The figures left behind:**
-
-~~~
-02_pre-dea-filtering-preDE-filtering.png
-03-dea-with-limma-voom-voom-plot.png
-04_explore-dea-results-focus-term-adjusted-p-values1.png
-04_explore-dea-results-focus-term-adjusted-p-values2.png
-...
-90_limma-model-term-name-fiasco-first-voom.png
-90_limma-model-term-name-fiasco-second-voom.png
-~~~
-
----
-
-## **Recap: Human readable**
-
-- `\(\rightarrow\)` **Easy to figure out what the heck something is, based on its name**
+- Work openly
 
 
 ---
 
-# **Play well with default ordering**
+## Keep learning with others
 
-- **Put something numeric first**
-- **Use the ISO 8601 standard for dates**
-- **Left pad other numbers with zeros**
-
----
-
-### Examples
-
-### **Chronological order:**
-
-![](assets/img/chronological_order.png)
-
----
-
-### Dates
-
-Use the **ISO 8601** standard for dates: `YYYY-MM-DD`
-
-![](assets/img/chronological_order.png)
-
----
-
-![iso_psa](assets/img/iso_8601.tiff)
-
-
----
-
-### **Logical order:** Put something numeric first
-
-![](assets/img/logical_order.png)
-
----
-
-## Left pad other numbers with zeros
-
-![](assets/img/logical_order.png)
-
-
-**If you don’t left pad, you get this:**
-
-~~~
-10_final-figs-for-publication.R
-1_data-cleaning.R
-2_fit-model.R
-~~~
-
-which is just sad :(
-
----
-
-## Recap: Play well with default ordering
-
-- Put something numeric first
-
-- Use the ISO 8601 standard for dates
-
-- Left pad other numbers with zeros
-
----
-
-# **Recap: Three principles for (file) names**
-
-1. Machine readable
-
-2. Human readable
-
-3. Play well with default ordering
-
-## Go forth and use awesome file names :)
-
----
-
-## Get back [home](index.html)
+- **#R4DS slack [learning community](https://medium.com/@kierisi/r4ds-the-next-iteration-d51e0a1b0b82)**. Sign up [**here**](https://docs.google.com/forms/d/e/1FAIpQLSeT3zfzjWxoaQ6RmUEdT9n0xtvkuSaMeBetDQLpzNJvGUB6IQ/viewform)
+- [Sheffield R Users group](https://www.meetup.com/SheffieldR-Sheffield-R-Users-Group/events/)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

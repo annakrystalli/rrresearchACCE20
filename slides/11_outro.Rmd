@@ -1,29 +1,42 @@
 ---
 title: "Closing Remarks"
-author: "ACCE Research Data and Project Management"
-date: "01-02 May 2018, TUoS"
 output:
   xaringan::moon_reader:
     css: ["default", "assets/css/little_ak.css", "assets/css/little_ak-fonts.css"]
-    lib_dir: "../docs/libs"
+    lib_dir: "libs"
     seal: false
     nature:
       beforeInit: "https://platform.twitter.com/widgets.js"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+params:
+  slide_title: "Closing Remarks"
+  course_title: "Reproducible Research Data and Project Management in R"
+  date: "Apr-May 2020"
+  location: "Online"
+  book_url: "http://annakrystalli.me/rrresearchACCE20/"
+  hackpad_url: ""
+  bitly_url: "https://bit.ly/ACCE20"
 ---
-class: top, right, inverse
+class: top, left, inverse
 
 
-## ACCE Research Data and Project Management
+## ACCE DTP 
+
+### _`r params$course_title`_
 
 ***
 
 .bottom[
-# Closing Remarks
-#### 10-11 April 2019, University of Sheffield
-#### Dr Anna Krystalli @annakrystalli
+# `r params$slide_title`
+
+<br>
+
+**`r glue::glue('{icon::fontawesome("calendar")} {params$date}')`**
+<br>
+
+**`r glue::glue('{icon::fontawesome("map-pin")} {params$location}')`** 
 ]
 
 ---

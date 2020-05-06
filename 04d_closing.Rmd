@@ -1,0 +1,8 @@
+# (PART) Closing {#mclosing} 
+
+# Closing Remarks
+
+```{r, results="asis", echo = FALSE}
+slide_page(slidedeck_name = "11_outro.html")
+```
+
