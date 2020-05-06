@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="practical-github-rstudio-for-collaborative-coding.html"/>
+<link rel="prev" href="closing-remarks.html"/>
 <link rel="next" href="creating-a-research-compendium-with-rrtools.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -264,6 +264,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#evolottery"><strong>EvoLottery</strong></a></li>
 <li class="chapter" data-level="" data-path="practical-github-rstudio-for-collaborative-coding.html"><a href="practical-github-rstudio-for-collaborative-coding.html"><i class="fa fa-check"></i>Clone Github repo</a></li>
 </ul></li>
+<li class="part"><span><b>VII Closing</b></span></li>
+<li class="chapter" data-level="" data-path="closing-remarks.html"><a href="closing-remarks.html"><i class="fa fa-check"></i>Closing Remarks</a></li>
 <li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html"><i class="fa fa-check"></i>Packaging functionality</a><ul>
 <li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html#r-package-structure"><i class="fa fa-check"></i>R Package Structure</a></li>
 <li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html#r-package-conventions"><i class="fa fa-check"></i>R Package conventions:</a></li>
@@ -329,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#add-paper-dependencies"><i class="fa fa-check"></i>🚦 Add paper dependencies</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#final-compendium"><i class="fa fa-check"></i>Final compendium</a></li>
 </ul></li>
-<li class="part"><span><b>VII APPENDIX</b></span></li>
+<li class="part"><span><b>VIII APPENDIX</b></span></li>
 <li><a href="individual-r.html#individual.r"><code>individual.R</code></a><ul>
 <li><a href="individual-r.html#data-rawindividual.r"><strong><code>data-raw/individual.R</code></strong></a></li>
 </ul></li>
@@ -792,13 +794,14 @@ Roxygen: list(markdown = TRUE)
 <p>Document, Install and restart to load our changes</p>
 <div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb598-1" data-line-number="1"><span class="kw">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</a></code></pre></div>
 <pre><code>## 
-##  -------------- 
+##  ----- 
 ## Hello y&#39;all from Anna! 
-##  --------------
-## (\__/) ||
-## (•ㅅ•) ||
-## /   づ
-##           [nosig]
+##  ------ 
+##     \   
+##      \
+##       ( )_( )
+##       (=&#39;.&#39;=)
+##       (^)_(^) [nosig]
 ## </code></pre>
 </div>
 <div id="check-package-integrity" class="section level2">
@@ -929,47 +932,15 @@ if you want to run the tests.</p>
 <a class="sourceLine" id="cb613-4" data-line-number="4">  <span class="kw">expect_message</span>(<span class="kw">hello</span>())</a>
 <a class="sourceLine" id="cb613-5" data-line-number="5">})</a></code></pre></div>
 <pre><code>## 
-##  ----- 
+##  -------------- 
 ## Hello world from Anna! 
-##  ------ 
-##     \   
+##  --------------
+##     \
 ##      \
-##                    ____
-##                 _.&#39; :  `._
-##             .-.&#39;`.  ;   .&#39;`.-.
-##    __      / : ___\ ;  /___ ; \      __
-##   ,&#39;_ &quot;&quot;--.:__;&quot;.-.&quot;;: :&quot;.-.&quot;:__;.--&quot;&quot; _`,
-##   :&#39; `.t&quot;&quot;--.. &#39;&lt;@.`;_  &#39;,@&gt;` ..--&quot;&quot;j.&#39; `;
-##        `:-.._J &#39;-.-&#39;L__ `-- &#39; L_..-;&#39;
-##           &quot;-.__ ;  .-&quot;  &quot;-.  : __.-&quot;
-##              L &#39; /.------.\ &#39; J
-##              &quot;-.   &quot;--&quot;   .-&quot;
-##              __.l&quot;-:_JL_;-&quot;;.__
-##          .-j/&#39;.;  ;&quot;&quot;&quot;&quot;  / .&#39;\&quot;-.
-##          .&#39; /:`. &quot;-.:     .-&quot; .&#39;;  `.
-##       .-&quot;  / ;  &quot;-. &quot;-..-&quot; .-&quot;  :    &quot;-.
-##   .+&quot;-.  : :      &quot;-.__.-&quot;      ;-._   \
-##   ; \  `.; ;                    : : &quot;+. ;
-##   :  ;   ; ;                    : ;  : \:
-##   ;  :   ; :                    ;:   ;  :
-##   : \  ;  :  ;                  : ;  /  ::
-##   ;  ; :   ; :                  ;   :   ;:
-##   :  :  ;  :  ;                : :  ;  : ;
-##   ;\    :   ; :                ; ;     ; ;
-##   : `.&quot;-;   :  ;              :  ;    /  ;
-##  ;    -:   ; :              ;  : .-&quot;   :
-##   :\     \  :  ;            : \.-&quot;      :
-##   ;`.    \  ; :            ;.&#39;_..--  / ;
-##   :  &quot;-.  &quot;-:  ;          :/.&quot;      .&#39;  :
-##    \         \ :          ;/  __        :
-##     \       .-`.\        /t-&quot;&quot;  &quot;:-+.   :
-##      `.  .-&quot;    `l    __/ /`. :  ; ; \  ;
-##        \   .-&quot; .-&quot;-.-&quot;  .&#39; .&#39;j \  /   ;/
-##         \ / .-&quot;   /.     .&#39;.&#39; ;_:&#39;    ;
-##   :-&quot;&quot;-.`./-.&#39;     /    `.___.&#39;
-##                \ `t  ._  /  bug
-##                 &quot;-.t-._:&#39;
-## </code></pre>
+##       \
+##          /\_/\
+##         ( o.o )
+##          &gt; ^ &lt;      [nosig]</code></pre>
 <pre><code>## Error: Test failed: &#39;hello works&#39;
 ## * &lt;text&gt;:4: `hello()` did not produce any messages.</code></pre>
 <p>Now let’s test our package</p>
@@ -1141,7 +1112,7 @@ Writing &#39;reference/hello.html&#39;
           </div>
         </div>
       </div>
-<a href="practical-github-rstudio-for-collaborative-coding.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="closing-remarks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="creating-a-research-compendium-with-rrtools.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
