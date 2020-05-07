@@ -2,7 +2,7 @@
 
 This Rmarkdown file should contain your analysis and be saved in the root directory:
 
-## **`index.Rmd`**
+**`index.Rmd`**
 
 My final `index.Rmd` looks like this:
 

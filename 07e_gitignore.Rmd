@@ -2,7 +2,7 @@
 
 This file should contain details of files to be ignored by version control and be saved in the root directory as:
 
-## **`.gitignore`**
+**`.gitignore`**
 
 Your file should contain:
 
