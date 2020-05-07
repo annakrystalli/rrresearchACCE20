@@ -375,8 +375,117 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This Rmarkdown file should contain your analysis and be saved in the root directory:</p>
 <p><strong><code>index.Rmd</code></strong></p>
 <p>My final <code>index.Rmd</code> looks like this:</p>
-<iframe src="demos/index.Rmd" width="672" height="400px">
-</iframe>
+<pre><code>---
+title: &quot;Analysis of NEON Woody plant vegetation structure data&quot;
+author: &quot;Anna Krystalli&quot;
+date: &quot;06/05/2020&quot;
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cosmo
+    highlight: zenburn
+---
+
+# Background
+
+&lt;img src=&quot;https://data.neonscience.org/data-products/static/media/NSF-NEON-logo.192b6661.png&quot; width=&quot;40%&quot;&gt;
+
+The [NEON Woody plant vegetation structure dataset](https://data.neonscience.org/data-products/DP1.10098.001) contains structure measurements, including height, canopy diameter, and stem diameter, as well as mapped position of individual woody plants across the survey area.
+
+This data product contains the quality-controlled, native sampling resolution data from in-situ measurements of live and standing dead woody individuals and shrub groups, from all terrestrial NEON sites with qualifying woody vegetation. The exact measurements collected per individual depend on growth form, and these measurements are focused on enabling biomass and productivity estimation, estimation of shrub volume and biomass, and calibration / validation of multiple NEON airborne remote-sensing data products. 
+
+Our analyses focus on the **relationship between individual stem height and diameter** and how that relationship **varies across growth forms**.
+
+# Data
+
+The data were downloaded from the NEON data portal and processed into a single table using script `data-raw/individual.R`
+
+```{r, echo=FALSE}
+knitr::read_chunk(here::here(&quot;analysis.R&quot;))
+```
+
+### Read in data and setup analysis
+
+First we read in the data and select only the columns we are interested in, i.e `stem_diameter`, `height` and `growth_form`
+```{r analysis-setup, message=FALSE}
+
+```
+
+### Prepare data
+
+To prepare the data we exclude rows for which the value of `growth_form` was `NA` or `liana`.
+
+```{r analysis-filter-data}
+
+```
+
+
+We also convert `growth_form` to a factor and set the levels according to to ascending counts of each level in the raw data.
+
+```{r analysis-set-factor-levels}
+
+```
+
+```{r}
+DT::datatable(analysis_df, caption = &quot;Table 1: Prepared analysis data&quot;)
+```
+
+Our prepared data is a tibble of `r ncol(analysis_df)` columns and `r nrow(analysis_df)` rows.
+
+### Data properties
+
+#### Statistical summaries of our variables
+```{r}
+summary(analysis_df)
+```
+
+```{r analysis-fig1-barplot, fig.cap=&quot;Figure 1: Counts of growth forms&quot;}
+
+```
+
+```{r analysis-fg2-violinplots, fig.cap=&quot;Figure 2: Distribution and statistical summaries of stem_diameter and height across growth forms.&quot;}
+
+```
+
+## Analysis
+
+### Modelling overall `stem_diameter` as a function of `height`
+
+Initially we fit a linear model of form `log(stem_diameter)` as a function of `log(height)`
+
+```{r analysis-lm-overall}
+
+```
+
+Our model is statistically significant and has modest coverage, indicated by `r.squared` of `r broom::glance(lm_overall)$r.squared`
+
+```{r analysis-lm-fig3-overall, fig.cap=&quot;Figure 3: Log stem diameter as a function of log height&quot;}
+
+```
+
+However, plotting our data reveals sub groups in the data. We can examine whether including `growth_form` in our analysis would improve our model fit by capturing variation explained by differing relationships across growth forms
+
+
+### Including an interaction with `growth_form`
+
+We fit another model, this time including an interaction term for variable `growth_form`
+
+```{r analysis-lm-growth}
+
+```
+
+Our model is still significant but this time explains a larger proportion of the variation (`r broom::glance(lm_growth)$r.squared`).
+
+```{r analysis-lm-fig4-growth, fig.cap=&quot;Figure 4: Log stem diameter as a function of the interaction of log height and growth_form&quot;}
+
+```
+
+## Session info
+
+```{r}
+sessionInfo()
+```</code></pre>
 <p>and renders to:</p>
 <iframe src="demos/index.html" width="672" height="400px">
 </iframe>
