@@ -26,11 +26,9 @@
 
 <https://GitHub.com/RSE-Sheffield/collaborative_GitHub_exercise>
 
-<img src="assets/repo.png" width="700px" />
-
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/repo.png")
+knitr::include_graphics("assets/repo.png")
 ```
 
 ### **Fork  it** 
@@ -40,7 +38,7 @@ make your **own copy of the repository** on GitHub. Fork are linked and traceabl
 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/fork-1.png")
+knitr::include_graphics("assets/fork-1.png")
 ```
 
 GitHub makes a **copy into your account**
@@ -48,7 +46,7 @@ GitHub makes a **copy into your account**
 
  
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/fork-2.png")
+knitr::include_graphics("assets/fork-2.png")
 ```
  
 <br>
@@ -60,7 +58,7 @@ knitr::include_url("assets/fork-2.png")
     
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/fork-3.png")
+knitr::include_graphics("assets/fork-3.png")
 ```
  
 
@@ -68,7 +66,7 @@ knitr::include_url("assets/fork-3.png")
 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/newproj-1.png")
+knitr::include_graphics("assets/newproj-1.png")
 ```
  
 
@@ -76,7 +74,7 @@ Checkout from **version control repository**
 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/newproj-2.png")
+knitr::include_graphics("assets/newproj-2.png")
 ```
  
 
@@ -84,14 +82,14 @@ Clone project from a **git** repository
 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/newproj-3.png")
+knitr::include_graphics("assets/newproj-3.png")
 ```
  
 
 Paste **repo link copied from GitHub** into **Repository URL** field. Click **`Create Project`**. 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/newproj-4.png")
+knitr::include_graphics("assets/newproj-4.png")
 ```
  
 
@@ -99,7 +97,7 @@ knitr::include_url("assets/newproj-4.png")
 Rstudio project now **contains all files from the GitHub repo.**
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/newproj-5.png")
+knitr::include_graphics("assets/newproj-5.png")
 ```
  
 
@@ -114,7 +112,7 @@ open **`params/params_tmpl.R`**
 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/edir-1.png")
+knitr::include_graphics("assets/edit-1.png")
 ```
  
 
@@ -127,7 +125,7 @@ Use species name of your choice to name new file.
 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/edit-2.png")
+knitr::include_graphics("assets/edit-2.png")
 ```
  
 
@@ -137,7 +135,7 @@ knitr::include_url("assets/edit-2.png")
 Edit file with parameters of your choice and save.
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/edit-3.png")
+knitr::include_graphics("assets/edit-3.png")
 ```
  
 
@@ -161,20 +159,20 @@ In the *git* tab, select the **new file** you created and click **`Commit`**.
 <div class="alert alert-warning">Please **ONLY COMMIT YOUR NEW FILE**</div>
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/commit-1.png")
+knitr::include_graphics("assets/commit-1.png")
 ```
  
 
 Write an informative commit message and click **`Commit`**  
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/commit-2.png")
+knitr::include_graphics("assets/commit-2.png")
 ```
 
 your new file has now been commited  
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/commit-3.png")
+knitr::include_graphics("assets/commit-3.png")
 ```
 
 ## Push changes to GitHub
@@ -182,13 +180,13 @@ knitr::include_url("assets/commit-3.png")
 on the *git* tab click ⇧  to **push changes to GitHub**
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/push-1.png")
+knitr::include_graphics("assets/push-1.png")
 ```
 
 changes have now been updated in the **GitHub repo**
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/push-2.png")
+knitr::include_graphics("assets/push-2.png")
 ```
 
 
@@ -199,7 +197,7 @@ In your repository, create **`new pull request`**
 to merge fork to master repo (ie the original repo you forked)
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/merge-1.png")
+knitr::include_graphics("assets/merge-1.png")
 ```
 
 
@@ -209,7 +207,7 @@ If all is good, click on **`Create pull request`**
 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/merge-2.png")
+knitr::include_graphics("assets/merge-2.png")
 ```
 
 
@@ -217,7 +215,7 @@ Write an informative message explaining your changes to the master repo administ
 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/merge-3.png")
+knitr::include_graphics("assets/merge-3.png")
 ```
 
 
@@ -227,7 +225,7 @@ Check original repo to see **your merged changes**
 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_url("assets/merged.png")
+knitr::include_graphics("assets/merged.png")
 ```
 
 
