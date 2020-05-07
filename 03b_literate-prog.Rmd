@@ -920,7 +920,7 @@ knitr::include_url("demos/index.Rmd")
 and renders to:
 
 ```{r, echo=FALSE, message=FALSE}
-knitr::include_url(here::here("demos/index.html"))
+knitr::include_url("demos/index.html")
 ```
 
 <div class="alert alert-success">
