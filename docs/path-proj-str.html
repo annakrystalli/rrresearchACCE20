@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>(PART) Project Management | Reproducible Research Data &amp; Project Management in R</title>
+  <title>Paths and Project structure | Reproducible Research Data &amp; Project Management in R</title>
   <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="(PART) Project Management | Reproducible Research Data &amp; Project Management in R" />
+  <meta property="og:title" content="Paths and Project structure | Reproducible Research Data &amp; Project Management in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="annakrystalli/rrresearchACCE20" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="(PART) Project Management | Reproducible Research Data &amp; Project Management in R" />
+  <meta name="twitter:title" content="Paths and Project structure | Reproducible Research Data &amp; Project Management in R" />
   
   <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rdm-intro-view.html"/>
-<link rel="next" href="projects-in-rstudio.html"/>
+<link rel="prev" href="filenaming-view.html"/>
+<link rel="next" href="process.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -367,16 +367,263 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="proj-management" class="section level1">
-<h1>(PART) Project Management</h1>
+<div id="path-proj-str" class="section level1">
+<h1>Paths and Project structure</h1>
+<div id="project-data" class="section level2">
+<h2>Project Data</h2>
+<p>We’re in our new project so the first thing we need to do is get the data we’ll be working with. This is a common start to any project where you start with a few data files, These might be generated through your data, given by others or published data products and you might need to clean, wrangle and combine them together to perform your analysis.</p>
+<blockquote>
+<p>Q: Where should I save my raw data files?</p>
+</blockquote>
+<div id="conventions-data-management" class="section level3">
+<h3>conventions: Data management</h3>
+<ol style="list-style-type: decimal">
+<li>Store raw data in <code>data-raw/</code>: raw inputs to any pre-processing, read only.</li>
+</ol>
+<ul>
+<li>Keep any processing scripts in the same folder</li>
+<li>Whether and where you publish data depends on size and copyright considerations.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Store analytical data in <code>data/</code>: any clean, processed data that is used as the input to the analysis.</li>
+</ol>
+<ul>
+<li>Should be published along side analysis.</li>
+</ul>
+</div>
+</div>
+<div id="setting-up-a-data-raw-directory" class="section level2">
+<h2>Setting up a <code>data-raw/</code> directory</h2>
+<p>We <strong>start by creating a <code>data-raw</code> directory</strong> in the root of our project. We can use <code>usethis</code> function <code>usethis::use_data_raw()</code>. This creates the <code>data-raw</code> directory and an <code>.R</code> script within where we can save code that turns raw data into analytical data in the <code>data/</code> folder.</p>
+<p>We can supply a name for the analytical dataset we’ll be creating in our script which automatically names the <code>.R</code> script for easy provenance tracking. In this case, we’ll be calling it <code>individual.csv</code> so let’s use <code>&quot;individual&quot;</code> for our name.</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_data_raw</span>(<span class="dt">name =</span> <span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">✔ Setting active project to <span class="st">&#39;/Users/Anna/Desktop/wood-survey&#39;</span></a>
+<a class="sourceLine" id="cb251-2" data-line-number="2">✔ Creating <span class="st">&#39;data-raw/&#39;</span></a>
+<a class="sourceLine" id="cb251-3" data-line-number="3">✔ Adding <span class="st">&#39;^data-raw$&#39;</span> to <span class="st">&#39;.Rbuildignore&#39;</span></a>
+<a class="sourceLine" id="cb251-4" data-line-number="4">✔ Writing <span class="st">&#39;data-raw/individual.R&#39;</span></a>
+<a class="sourceLine" id="cb251-5" data-line-number="5">● Modify <span class="st">&#39;data-raw/individual.R&#39;</span></a>
+<a class="sourceLine" id="cb251-6" data-line-number="6">● Finish the data preparation script <span class="cf">in</span> <span class="st">&#39;data-raw/individual.R&#39;</span></a>
+<a class="sourceLine" id="cb251-7" data-line-number="7">● Use <span class="st">`</span><span class="dt">usethis::use_data()</span><span class="st">`</span> to add prepared data to package</a></code></pre></div>
+<p>The <strong><code>data-raw/individual.R</code></strong> script created contains:</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1"><span class="co">## code to prepare `individual` dataset goes here</span></a>
+<a class="sourceLine" id="cb252-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb252-3" data-line-number="3">usethis<span class="op">::</span><span class="kw">use_data</span>(<span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
+<p>We will use this file to perform the necessary preprocessing on our raw data.</p>
+<div id="download-data" class="section level3">
+<h3>Download data</h3>
+<p>Now that we’ve got our <code>data-raw</code> folder, let’s download our data into it using function <code>usethis::use_course()</code> and supplying it with the url to the materials repository (bit.ly/wood-survey-data) and the path to the directory we want the materials saved into (<code>&quot;data-raw&quot;</code>).</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_course</span>(<span class="st">&quot;bit.ly/wood-survey-data&quot;</span>,</a>
+<a class="sourceLine" id="cb253-2" data-line-number="2">           <span class="dt">destdir =</span> <span class="st">&quot;data-raw&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb254-1" data-line-number="1">✔ <span class="ex">Downloading</span> from <span class="st">&#39;https://github.com/annakrystalli/wood-survey-data/archive/master.zip&#39;</span></a>
+<a class="sourceLine" id="cb254-2" data-line-number="2"><span class="ex">Downloaded</span>: 0.03 MB  </a>
+<a class="sourceLine" id="cb254-3" data-line-number="3">✔ <span class="ex">Download</span> stored in <span class="st">&#39;data-raw/wood-survey-data-master.zip&#39;</span></a>
+<a class="sourceLine" id="cb254-4" data-line-number="4">✔ <span class="ex">Unpacking</span> ZIP file into <span class="st">&#39;wood-survey-data-master/&#39;</span> (13 files extracted)</a>
+<a class="sourceLine" id="cb254-5" data-line-number="5"><span class="ex">Shall</span> we delete the ZIP file (<span class="st">&#39;wood-survey-data-master.zip&#39;</span>)<span class="ex">?</span></a>
+<a class="sourceLine" id="cb254-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb254-7" data-line-number="7"><span class="ex">1</span>: Negative</a>
+<a class="sourceLine" id="cb254-8" data-line-number="8"><span class="ex">2</span>: Absolutely not</a>
+<a class="sourceLine" id="cb254-9" data-line-number="9"><span class="ex">3</span>: I agree</a>
+<a class="sourceLine" id="cb254-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb254-11" data-line-number="11"><span class="ex">Selection</span>: 3</a>
+<a class="sourceLine" id="cb254-12" data-line-number="12">✔ <span class="ex">Deleting</span> <span class="st">&#39;wood-survey-data-master.zip&#39;</span></a>
+<a class="sourceLine" id="cb254-13" data-line-number="13">✔ <span class="ex">Opening</span> <span class="st">&#39;wood-survey-data-master/&#39;</span> in the file manager</a></code></pre></div>
+</div>
+</div>
+<div id="neon-data" class="section level2">
+<h2>NEON Data</h2>
+<p>The downloaded folder contains a <strong>subset of data from the NEON Woody plant vegetation survey</strong>.</p>
+<p><strong>Citation:</strong>
+<em>National Ecological Observatory Network. 2020. Data Products: DP1.10098.001. Provisional data downloaded from <a href="http://data.neonscience.org" class="uri">http://data.neonscience.org</a> on 2020-01-15. Battelle, Boulder, CO, USA</em></p>
+<p>This data product was downloaded from the <a href="http://data.neonscience.org/browse-data">NEON data portal</a> and contains quality-controlled data from in-situ measurements of live and standing dead woody individuals and shrub groups, from all terrestrial NEON sites with qualifying woody vegetation.</p>
+<p>Surveys of each site are completed once every 3 years.</p>
+<p>Let’s have a look at what we’ve downloaded:</p>
+<pre><code>.
+├── R
+├── data-raw
+│   ├── individual.R
+│   └── wood-survey-data-master
+│       ├── NEON_vst_variables.csv
+│       ├── README.md
+│       ├── individual [67 entries exceeds filelimit, not opening dir]
+│       ├── methods
+│       │   ├── NEON.DOC.000914vB.pdf
+│       │   ├── NEON.DOC.000987vH.pdf
+│       │   └── NEON_vegStructure_userGuide_vA.pdf
+│       ├── vst_mappingandtagging.csv
+│       └── vst_perplotperyear.csv
+└── wood-survey.Rproj</code></pre>
+<p>The important files for the analysis we want to perform are</p>
+<pre><code>├── individual [67 entries exceeds filelimit, not opening dir]
+├── vst_mappingandtagging.csv
+└── vst_perplotperyear.csv</code></pre>
+<ul>
+<li><strong><code>vst_perplotperyear</code></strong>: Plot level metadata, including plot geolocation,
+<ul>
+<li>one record per <code>plotID</code> per <code>eventID</code>,</li>
+<li>describe the presence/absence of woody growth forms</li>
+<li>sampling area utilized for each growth form.</li>
+</ul></li>
+<li><strong><code>vst_mappingandtagging</code></strong>: Mapping, identifying and tagging of individual stems for remeasurement
+<ul>
+<li>one record per <code>individualID</code>,</li>
+<li>data invariant through time, including <code>tagID</code>, <code>taxonID</code> and mapped location.</li>
+<li>Records can be linked to <code>vst_perplotperyear</code> via the <code>plotID</code> and <code>eventID</code> fields.</li>
+</ul></li>
+<li><strong><code>vst_apparentindividual</code></strong>: Biomass and productivity measurements of apparent individuals.
+<ul>
+<li>may contain multiple records per individuals</li>
+<li>includes growth form, structure</li>
+<li>currently in separate files contained in <code>individual/</code></li>
+<li>may be linked
+<ul>
+<li><code>vst_mappingandtagging</code> records via <code>individualID</code></li>
+<li><code>vst_perplotperyear</code> via the <code>plotID</code> and <code>eventID</code> fields.</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="alert alert-secondary">
+<p>
+<svg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg' style='height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;'>
+  <path d='M139.61 35.5a12 12 0 0 0-17 0L58.93 98.81l-22.7-22.12a12 12 0 0 0-17 0L3.53 92.41a12 12 0 0 0 0 17l47.59 47.4a12.78 12.78 0 0 0 17.61 0l15.59-15.62L156.52 69a12.09 12.09 0 0 0 .09-17zm0 159.19a12 12 0 0 0-17 0l-63.68 63.72-22.7-22.1a12 12 0 0 0-17 0L3.53 252a12 12 0 0 0 0 17L51 316.5a12.77 12.77 0 0 0 17.6 0l15.7-15.69 72.2-72.22a12 12 0 0 0 .09-16.9zM64 368c-26.49 0-48.59 21.5-48.59 48S37.53 464 64 464a48 48 0 0 0 0-96zm432 16H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z'></path>
+</svg> As our first challenge, we are going to combined all the files in <code>individual/</code> into a single analytical data file!</p>
+</div>
+</div>
+<div id="paths" class="section level2">
+<h2>Paths</h2>
+<p>First let’s investigate our data. We want to access the files so we need to give R paths in order to load the data. We can work with the file system programmatically through R.</p>
+<ul>
+<li><code>here</code>: Use <code>here::here()</code> to create paths relative to the project root directory.
+<ul>
+<li>portable</li>
+<li>independent of the where code is evaluated or saved.</li>
+</ul></li>
+</ul>
+<p>Let’s start by creating a path to the downloaded data directory using <code>here</code>.</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">raw_data_path &lt;-<span class="st"> </span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</a>
+<a class="sourceLine" id="cb257-2" data-line-number="2">raw_data_path</a></code></pre></div>
+<pre><code>## [1] &quot;/Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20/data-raw/wood-survey-data-master&quot;</code></pre>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1"><span class="st">&quot;/Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master&quot;</span></a></code></pre></div>
+<p>We can use <code>raw_data_path</code> as our basis for specifying paths to files within it. There’s a number of ways we can do this in R but I wanted to introduce you to package <code>fs</code>. It has a nice interface and extensive functionality.</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1">fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
+<pre><code>## /Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20/data-raw/wood-survey-data-master/individual</code></pre>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1"><span class="op">/</span>Users<span class="op">/</span>Anna<span class="op">/</span>Desktop<span class="op">/</span>wood<span class="op">-</span>survey<span class="op">/</span>data<span class="op">-</span>raw<span class="op">/</span>wood<span class="op">-</span>survey<span class="op">-</span>data<span class="op">-</span>master<span class="op">/</span>individual</a></code></pre></div>
+<p>Let’s now use function <code>dir_ls</code> to get a character vector of paths to all the individual files in directory <code>individual</code>.</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1">individual_paths &lt;-<span class="st"> </span>fs<span class="op">::</span><span class="kw">dir_ls</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>))</a>
+<a class="sourceLine" id="cb263-2" data-line-number="2"><span class="kw">head</span>(individual_paths)</a></code></pre></div>
+<pre><code>## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T172340Z.csv
+## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T144119Z.csv
+## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-08.basic.20190806T143255Z.csv
+## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-09.basic.20190806T143433Z.csv
+## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-10.basic.20190806T144133Z.csv
+## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2017-07.basic.20190806T144111Z.csv</code></pre>
+<p>We can check how many files we’ve got:</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1"><span class="kw">length</span>(individual_paths)</a></code></pre></div>
+<pre><code>## [1] 67</code></pre>
+<p>We can now use this vector of paths to read in files. Let’s read the first file in and check it out. We use function <code>read_csv()</code> from <code>readr</code> package which reads comma delimited files into tibbles.</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1">indiv_df &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(individual_paths[<span class="dv">1</span>])</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   uid = col_character(),
+##   namedLocation = col_character(),
+##   date = col_date(format = &quot;&quot;),
+##   eventID = col_character(),
+##   domainID = col_character(),
+##   siteID = col_character(),
+##   plotID = col_character(),
+##   individualID = col_character(),
+##   growthForm = col_character(),
+##   stemDiameter = col_double(),
+##   measurementHeight = col_double(),
+##   height = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1">indiv_df</a></code></pre></div>
+<pre><code>## # A tibble: 376 x 12
+##    uid   namedLocation date       eventID domainID siteID plotID individualID
+##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
+##  1 a36a… BART_037.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  2 68dc… BART_037.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  3 a895… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  4 eb34… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  5 2a44… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  6 e485… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  7 280c… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  8 0e50… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+##  9 4918… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+## 10 ef16… BART_044.bas… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
+## # … with 366 more rows, and 4 more variables: growthForm &lt;chr&gt;,
+## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
+<p>Run <code>?read_delim</code> for more details on reading in tabular data.</p>
+</div>
+<div id="basic-checks" class="section level2">
+<h2>Basic checks</h2>
+<p>Let’s perform some of the basic checks we learnt before we proceed.</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1"><span class="kw">View</span>(indiv_df)</a></code></pre></div>
+<p><img src="assets/indiv_df.png" width="857" /></p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1"><span class="kw">names</span>(indiv_df)</a></code></pre></div>
+<pre><code>##  [1] &quot;uid&quot;               &quot;namedLocation&quot;     &quot;date&quot;             
+##  [4] &quot;eventID&quot;           &quot;domainID&quot;          &quot;siteID&quot;           
+##  [7] &quot;plotID&quot;            &quot;individualID&quot;      &quot;growthForm&quot;       
+## [10] &quot;stemDiameter&quot;      &quot;measurementHeight&quot; &quot;height&quot;</code></pre>
+<pre><code>## tibble [376 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ uid              : chr [1:376] &quot;a36a162d-ed1f-4f80-ae45-88e973855c68&quot; &quot;68dc7adf-48e2-4f7a-9272-9a468fde6d55&quot; &quot;a8951ab9-4462-48dd-ab9e-7b89e24f2e03&quot; &quot;eb348eaf-3969-46a4-ac3b-523c3548efeb&quot; ...
+##  $ namedLocation    : chr [1:376] &quot;BART_037.basePlot.vst&quot; &quot;BART_037.basePlot.vst&quot; &quot;BART_044.basePlot.vst&quot; &quot;BART_044.basePlot.vst&quot; ...
+##  $ date             : Date[1:376], format: &quot;2015-08-26&quot; &quot;2015-08-26&quot; ...
+##  $ eventID          : chr [1:376] &quot;vst_BART_2015&quot; &quot;vst_BART_2015&quot; &quot;vst_BART_2015&quot; &quot;vst_BART_2015&quot; ...
+##  $ domainID         : chr [1:376] &quot;D01&quot; &quot;D01&quot; &quot;D01&quot; &quot;D01&quot; ...
+##  $ siteID           : chr [1:376] &quot;BART&quot; &quot;BART&quot; &quot;BART&quot; &quot;BART&quot; ...
+##  $ plotID           : chr [1:376] &quot;BART_037&quot; &quot;BART_037&quot; &quot;BART_044&quot; &quot;BART_044&quot; ...
+##  $ individualID     : chr [1:376] &quot;NEON.PLA.D01.BART.05285&quot; &quot;NEON.PLA.D01.BART.05279&quot; &quot;NEON.PLA.D01.BART.05419&quot; &quot;NEON.PLA.D01.BART.05092&quot; ...
+##  $ growthForm       : chr [1:376] &quot;single bole tree&quot; &quot;single bole tree&quot; &quot;single bole tree&quot; &quot;single bole tree&quot; ...
+##  $ stemDiameter     : num [1:376] 17.1 13.7 12.3 12.1 29.2 12.1 23.4 39.5 10 10.6 ...
+##  $ measurementHeight: num [1:376] 130 130 130 130 130 130 130 130 130 130 ...
+##  $ height           : num [1:376] 15.2 9.8 7.7 15.2 16.7 10.6 18.4 19 5.7 8.7 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   uid = col_character(),
+##   ..   namedLocation = col_character(),
+##   ..   date = col_date(format = &quot;&quot;),
+##   ..   eventID = col_character(),
+##   ..   domainID = col_character(),
+##   ..   siteID = col_character(),
+##   ..   plotID = col_character(),
+##   ..   individualID = col_character(),
+##   ..   growthForm = col_character(),
+##   ..   stemDiameter = col_double(),
+##   ..   measurementHeight = col_double(),
+##   ..   height = col_double()
+##   .. )</code></pre>
+<pre><code>##      uid            namedLocation           date              eventID         
+##  Length:376         Length:376         Min.   :2015-08-26   Length:376        
+##  Class :character   Class :character   1st Qu.:2015-08-27   Class :character  
+##  Mode  :character   Mode  :character   Median :2015-08-27   Mode  :character  
+##                                        Mean   :2015-08-27                     
+##                                        3rd Qu.:2015-08-31                     
+##                                        Max.   :2015-08-31                     
+##    domainID            siteID             plotID          individualID      
+##  Length:376         Length:376         Length:376         Length:376        
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##   growthForm         stemDiameter   measurementHeight     height     
+##  Length:376         Min.   : 2.00   Min.   : 10.0     Min.   : 0.50  
+##  Class :character   1st Qu.:13.90   1st Qu.:130.0     1st Qu.:10.60  
+##  Mode  :character   Median :20.20   Median :130.0     Median :14.30  
+##                     Mean   :23.01   Mean   :129.5     Mean   :13.91  
+##                     3rd Qu.:29.55   3rd Qu.:130.0     3rd Qu.:17.23  
+##                     Max.   :69.90   Max.   :130.0     Max.   :30.20</code></pre>
+<p>Everything looks good. So let’s move onto the next step of reading in all the files and combining them together. To do this, we’ll examine the principles of <strong>Iteration</strong>.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="rdm-intro-view.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="projects-in-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="filenaming-view.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="process.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
