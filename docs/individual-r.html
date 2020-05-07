@@ -375,64 +375,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This file should contain your processing workflow and be saved at:</p>
 <p><strong><code>data-raw/individual.R</code></strong></p>
 <p>Create the file using:</p>
-<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb697-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_data_raw</span>(<span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb698-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_data_raw</span>(<span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
 <p>Your script should contain:</p>
-<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb698-1" data-line-number="1"><span class="co">## code to prepare `individual` dataset goes here</span></a>
-<a class="sourceLine" id="cb698-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb698-3" data-line-number="3"><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocate.R&quot;</span>))</a>
-<a class="sourceLine" id="cb698-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb698-5" data-line-number="5"><span class="co"># Read in and compile all individual data</span></a>
-<a class="sourceLine" id="cb698-6" data-line-number="6">raw_data_path &lt;-<span class="st"> </span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</a>
-<a class="sourceLine" id="cb698-7" data-line-number="7">individual_path &lt;-<span class="st"> </span>fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</a>
-<a class="sourceLine" id="cb698-8" data-line-number="8">individual_paths &lt;-<span class="st"> </span>fs<span class="op">::</span><span class="kw">dir_ls</span>(individual_path)</a>
-<a class="sourceLine" id="cb698-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb698-10" data-line-number="10"><span class="co"># read in all tables into one</span></a>
-<a class="sourceLine" id="cb698-11" data-line-number="11">individual &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
-<a class="sourceLine" id="cb698-12" data-line-number="12">                            <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="dt">file =</span> .x,</a>
-<a class="sourceLine" id="cb698-13" data-line-number="13">                                             <span class="dt">col_types =</span> readr<span class="op">::</span><span class="kw">cols</span>(<span class="dt">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb698-14" data-line-number="14"><span class="st">    </span>readr<span class="op">::</span><span class="kw">type_convert</span>()</a>
-<a class="sourceLine" id="cb698-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb698-16" data-line-number="16">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb698-17" data-line-number="17"><span class="st">    </span>readr<span class="op">::</span><span class="kw">write_csv</span>(<span class="dt">path =</span> fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_individuals.csv&quot;</span>))</a>
-<a class="sourceLine" id="cb698-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb698-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb698-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb698-21" data-line-number="21"><span class="co"># Combine NEON data tables</span></a>
-<a class="sourceLine" id="cb698-22" data-line-number="22"><span class="co"># read in additonal table</span></a>
-<a class="sourceLine" id="cb698-23" data-line-number="23">maptag &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, </a>
-<a class="sourceLine" id="cb698-24" data-line-number="24">                                   <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb698-25" data-line-number="25"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>eventID)</a>
-<a class="sourceLine" id="cb698-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb698-27" data-line-number="27">perplot &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, </a>
-<a class="sourceLine" id="cb698-28" data-line-number="28">                                    <span class="st">&quot;vst_perplotperyear.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb698-29" data-line-number="29"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>eventID)</a>
-<a class="sourceLine" id="cb698-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb698-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb698-32" data-line-number="32">individual <span class="op">%&lt;&gt;%</span></a>
-<a class="sourceLine" id="cb698-33" data-line-number="33"><span class="st">    </span><span class="kw">left_join</span>(maptag, <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>,</a>
-<a class="sourceLine" id="cb698-34" data-line-number="34">              <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb698-35" data-line-number="35"><span class="st">    </span><span class="kw">left_join</span>(perplot, <span class="dt">by =</span> <span class="st">&quot;plotID&quot;</span>,</a>
-<a class="sourceLine" id="cb698-36" data-line-number="36">              <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb698-37" data-line-number="37"><span class="st">    </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na, stemDistance, stemAzimuth, pointID,</a>
-<a class="sourceLine" id="cb698-38" data-line-number="38">                    decimalLongitude, decimalLatitude, plotID)</a>
-<a class="sourceLine" id="cb698-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb698-40" data-line-number="40"><span class="co"># ---- Geolocate individuals_functions ----</span></a>
-<a class="sourceLine" id="cb698-41" data-line-number="41">individual &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb698-42" data-line-number="42"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">stemLat =</span> <span class="kw">get_stem_location</span>(<span class="dt">decimalLongitude =</span> decimalLongitude,</a>
-<a class="sourceLine" id="cb698-43" data-line-number="43">                                              <span class="dt">decimalLatitude =</span> decimalLatitude,</a>
-<a class="sourceLine" id="cb698-44" data-line-number="44">                                              <span class="dt">stemAzimuth =</span> stemAzimuth,</a>
-<a class="sourceLine" id="cb698-45" data-line-number="45">                                              <span class="dt">stemDistance =</span> stemDistance)<span class="op">$</span>lat,</a>
-<a class="sourceLine" id="cb698-46" data-line-number="46">                  <span class="dt">stemLon =</span> <span class="kw">get_stem_location</span>(<span class="dt">decimalLongitude =</span> decimalLongitude,</a>
-<a class="sourceLine" id="cb698-47" data-line-number="47">                                              <span class="dt">decimalLatitude =</span> decimalLatitude,</a>
-<a class="sourceLine" id="cb698-48" data-line-number="48">                                              <span class="dt">stemAzimuth =</span> stemAzimuth,</a>
-<a class="sourceLine" id="cb698-49" data-line-number="49">                                              <span class="dt">stemDistance =</span> stemDistance)<span class="op">$</span>lon) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb698-50" data-line-number="50"><span class="st">    </span>janitor<span class="op">::</span><span class="kw">clean_names</span>()</a>
-<a class="sourceLine" id="cb698-51" data-line-number="51"></a>
-<a class="sourceLine" id="cb698-52" data-line-number="52"><span class="co"># create data directory</span></a>
-<a class="sourceLine" id="cb698-53" data-line-number="53">fs<span class="op">::</span><span class="kw">dir_create</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>))</a>
-<a class="sourceLine" id="cb698-54" data-line-number="54"></a>
-<a class="sourceLine" id="cb698-55" data-line-number="55"><span class="co"># write out analytic file</span></a>
-<a class="sourceLine" id="cb698-56" data-line-number="56">readr<span class="op">::</span><span class="kw">write_csv</span>(individual, here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb699-1" data-line-number="1"><span class="co">## code to prepare `individual` dataset goes here</span></a>
+<a class="sourceLine" id="cb699-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb699-3" data-line-number="3"><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocate.R&quot;</span>))</a>
+<a class="sourceLine" id="cb699-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb699-5" data-line-number="5"><span class="co"># Read in and compile all individual data</span></a>
+<a class="sourceLine" id="cb699-6" data-line-number="6">raw_data_path &lt;-<span class="st"> </span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</a>
+<a class="sourceLine" id="cb699-7" data-line-number="7">individual_path &lt;-<span class="st"> </span>fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</a>
+<a class="sourceLine" id="cb699-8" data-line-number="8">individual_paths &lt;-<span class="st"> </span>fs<span class="op">::</span><span class="kw">dir_ls</span>(individual_path)</a>
+<a class="sourceLine" id="cb699-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb699-10" data-line-number="10"><span class="co"># read in all tables into one</span></a>
+<a class="sourceLine" id="cb699-11" data-line-number="11">individual &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map_df</span>(individual_paths,</a>
+<a class="sourceLine" id="cb699-12" data-line-number="12">                            <span class="op">~</span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="dt">file =</span> .x,</a>
+<a class="sourceLine" id="cb699-13" data-line-number="13">                                             <span class="dt">col_types =</span> readr<span class="op">::</span><span class="kw">cols</span>(<span class="dt">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb699-14" data-line-number="14"><span class="st">    </span>readr<span class="op">::</span><span class="kw">type_convert</span>()</a>
+<a class="sourceLine" id="cb699-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb699-16" data-line-number="16">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb699-17" data-line-number="17"><span class="st">    </span>readr<span class="op">::</span><span class="kw">write_csv</span>(<span class="dt">path =</span> fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_individuals.csv&quot;</span>))</a>
+<a class="sourceLine" id="cb699-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb699-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb699-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb699-21" data-line-number="21"><span class="co"># Combine NEON data tables</span></a>
+<a class="sourceLine" id="cb699-22" data-line-number="22"><span class="co"># read in additonal table</span></a>
+<a class="sourceLine" id="cb699-23" data-line-number="23">maptag &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, </a>
+<a class="sourceLine" id="cb699-24" data-line-number="24">                                   <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb699-25" data-line-number="25"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>eventID)</a>
+<a class="sourceLine" id="cb699-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb699-27" data-line-number="27">perplot &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, </a>
+<a class="sourceLine" id="cb699-28" data-line-number="28">                                    <span class="st">&quot;vst_perplotperyear.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb699-29" data-line-number="29"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>eventID)</a>
+<a class="sourceLine" id="cb699-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb699-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb699-32" data-line-number="32">individual <span class="op">%&lt;&gt;%</span></a>
+<a class="sourceLine" id="cb699-33" data-line-number="33"><span class="st">    </span><span class="kw">left_join</span>(maptag, <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>,</a>
+<a class="sourceLine" id="cb699-34" data-line-number="34">              <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb699-35" data-line-number="35"><span class="st">    </span><span class="kw">left_join</span>(perplot, <span class="dt">by =</span> <span class="st">&quot;plotID&quot;</span>,</a>
+<a class="sourceLine" id="cb699-36" data-line-number="36">              <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb699-37" data-line-number="37"><span class="st">    </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na, stemDistance, stemAzimuth, pointID,</a>
+<a class="sourceLine" id="cb699-38" data-line-number="38">                    decimalLongitude, decimalLatitude, plotID)</a>
+<a class="sourceLine" id="cb699-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb699-40" data-line-number="40"><span class="co"># ---- Geolocate individuals_functions ----</span></a>
+<a class="sourceLine" id="cb699-41" data-line-number="41">individual &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb699-42" data-line-number="42"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">stemLat =</span> <span class="kw">get_stem_location</span>(<span class="dt">decimalLongitude =</span> decimalLongitude,</a>
+<a class="sourceLine" id="cb699-43" data-line-number="43">                                              <span class="dt">decimalLatitude =</span> decimalLatitude,</a>
+<a class="sourceLine" id="cb699-44" data-line-number="44">                                              <span class="dt">stemAzimuth =</span> stemAzimuth,</a>
+<a class="sourceLine" id="cb699-45" data-line-number="45">                                              <span class="dt">stemDistance =</span> stemDistance)<span class="op">$</span>lat,</a>
+<a class="sourceLine" id="cb699-46" data-line-number="46">                  <span class="dt">stemLon =</span> <span class="kw">get_stem_location</span>(<span class="dt">decimalLongitude =</span> decimalLongitude,</a>
+<a class="sourceLine" id="cb699-47" data-line-number="47">                                              <span class="dt">decimalLatitude =</span> decimalLatitude,</a>
+<a class="sourceLine" id="cb699-48" data-line-number="48">                                              <span class="dt">stemAzimuth =</span> stemAzimuth,</a>
+<a class="sourceLine" id="cb699-49" data-line-number="49">                                              <span class="dt">stemDistance =</span> stemDistance)<span class="op">$</span>lon) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb699-50" data-line-number="50"><span class="st">    </span>janitor<span class="op">::</span><span class="kw">clean_names</span>()</a>
+<a class="sourceLine" id="cb699-51" data-line-number="51"></a>
+<a class="sourceLine" id="cb699-52" data-line-number="52"><span class="co"># create data directory</span></a>
+<a class="sourceLine" id="cb699-53" data-line-number="53">fs<span class="op">::</span><span class="kw">dir_create</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>))</a>
+<a class="sourceLine" id="cb699-54" data-line-number="54"></a>
+<a class="sourceLine" id="cb699-55" data-line-number="55"><span class="co"># write out analytic file</span></a>
+<a class="sourceLine" id="cb699-56" data-line-number="56">readr<span class="op">::</span><span class="kw">write_csv</span>(individual, here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</a></code></pre></div>
 
 </div>
             </section>

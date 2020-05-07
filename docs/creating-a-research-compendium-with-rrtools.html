@@ -467,7 +467,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>pkg <code>here</code></h3>
 <p>Use function <code>here::here(&quot;path&quot;, &quot;to&quot;, &quot;file&quot;)</code> to create robust paths <strong>relative to the project root</strong>.</p>
 <p>eg</p>
-<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb628-1" data-line-number="1">here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;path&quot;</span>, <span class="st">&quot;to&quot;</span>, <span class="st">&quot;file&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb629-1" data-line-number="1">here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;path&quot;</span>, <span class="st">&quot;to&quot;</span>, <span class="st">&quot;file&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;/Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20/path/to/file&quot;</code></pre>
 <hr />
 </div>
@@ -601,22 +601,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="install-packages" class="section level3">
 <h3>Install packages</h3>
 <p>Next, let’s <strong>install the packages we’ll need, starting with <code>rrtools</code></strong> (if you haven’t got devtools installed, you’ll need to before you can install <code>rrtools</code> from GitHub).</p>
-<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb630-1" data-line-number="1"><span class="co"># install.packages(&quot;devtools&quot;)</span></a>
-<a class="sourceLine" id="cb630-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;benmarwick/rrtools&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb631-1" data-line-number="1"><span class="co"># install.packages(&quot;devtools&quot;)</span></a>
+<a class="sourceLine" id="cb631-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;benmarwick/rrtools&quot;</span>)</a></code></pre></div>
 <p>Installing <code>rrtools</code> <strong>imports many of the packages we’ll need today</strong> (eg, have a look at the imports section of the <a href="https://github.com/benmarwick/rrtools/blob/master/DESCRIPTION"><code>DESCRIPTION</code></a> file).</p>
 <pre><code>Imports: devtools, git2r, whisker, rstudioapi, rmarkdown, knitr,
     bookdown, curl, RCurl, jsonlite, methods, httr, usethis, clisymbols,
     crayon, glue, readr (&gt;= 1.1.1)</code></pre>
 <p>Now, <strong>install some additional packages</strong> we’ll need for the workshop.</p>
-<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb632-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb632-2" data-line-number="2">    <span class="co"># source paper analysis</span></a>
-<a class="sourceLine" id="cb632-3" data-line-number="3">    <span class="st">&quot;ggthemes&quot;</span></a>
-<a class="sourceLine" id="cb632-4" data-line-number="4">    <span class="co"># bibliographic / publishing</span></a>
-<a class="sourceLine" id="cb632-5" data-line-number="5">    <span class="st">&quot;citr&quot;</span>, <span class="st">&quot;rticles&quot;</span>,</a>
-<a class="sourceLine" id="cb632-6" data-line-number="6">    <span class="co"># documentation</span></a>
-<a class="sourceLine" id="cb632-7" data-line-number="7">    <span class="st">&quot;roxygen2&quot;</span>,</a>
-<a class="sourceLine" id="cb632-8" data-line-number="8">    <span class="co"># graphics</span></a>
-<a class="sourceLine" id="cb632-9" data-line-number="9">    <span class="st">&quot;Cairo&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb633-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb633-2" data-line-number="2">    <span class="co"># source paper analysis</span></a>
+<a class="sourceLine" id="cb633-3" data-line-number="3">    <span class="st">&quot;ggthemes&quot;</span></a>
+<a class="sourceLine" id="cb633-4" data-line-number="4">    <span class="co"># bibliographic / publishing</span></a>
+<a class="sourceLine" id="cb633-5" data-line-number="5">    <span class="st">&quot;citr&quot;</span>, <span class="st">&quot;rticles&quot;</span>,</a>
+<a class="sourceLine" id="cb633-6" data-line-number="6">    <span class="co"># documentation</span></a>
+<a class="sourceLine" id="cb633-7" data-line-number="7">    <span class="st">&quot;roxygen2&quot;</span>,</a>
+<a class="sourceLine" id="cb633-8" data-line-number="8">    <span class="co"># graphics</span></a>
+<a class="sourceLine" id="cb633-9" data-line-number="9">    <span class="st">&quot;Cairo&quot;</span>))</a></code></pre></div>
 <p><br></p>
 </div>
 <div id="get-workshop-materials" class="section level3">
@@ -630,7 +630,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h5>Carl Boettiger <a href="https://orcid.org/0000-0002-1642-628X"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" /></a>. <em>From noise to knowledge: how randomness generates novel phenomena and reveals information</em>. Published in <em>Ecology Letters</em>, 22 May 2018 <a href="https://doi.org/10.1111/ele.13085" class="uri">https://doi.org/10.1111/ele.13085</a></h5>
 <p><img src="assets/Boettiger-2018.png" heigth="250px" width="400px"></p>
 <p>You can <strong>download the materials using <code>usethis::use_course()</code></strong> and supplying a path to a destination folder to argument <code>destdir</code>:</p>
-<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb633-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_course</span>(<span class="dt">url =</span> <span class="st">&quot;bit.ly/rrtools_wks&quot;</span>, <span class="dt">destdir =</span> <span class="st">&quot;~/Desktop&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb634-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_course</span>(<span class="dt">url =</span> <span class="st">&quot;bit.ly/rrtools_wks&quot;</span>, <span class="dt">destdir =</span> <span class="st">&quot;~/Desktop&quot;</span>)</a></code></pre></div>
 <p>This will <strong>download</strong> everything we need from a GitHub repository as a <code>.zip</code> file, <strong>unzip</strong> it and launch it in a <strong>new Rstudio session</strong> for us to explore.</p>
 <p><br></p>
 </div>
@@ -658,7 +658,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="load-library" class="section level3">
 <h3>load library</h3>
 <p>First we need to load <code>rrtools</code></p>
-<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb635-1" data-line-number="1"><span class="kw">library</span>(rrtools) </a></code></pre></div>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb636-1" data-line-number="1"><span class="kw">library</span>(rrtools) </a></code></pre></div>
 <pre><code>## ✔ Git is installed on this computer, your username is annakrystalli</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;rrtools&#39;</code></pre>
@@ -667,13 +667,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     use_circleci, use_readme_rmd, use_travis</code></pre>
 <p>This performs a quick check to <strong>confirm you have Git installed and configured</strong></p>
 <p>If you do, you should see the following output in the console.</p>
-<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb639-1" data-line-number="1">✔ Git is installed on this computer, your username is annakrystalli</a></code></pre></div>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb640-1" data-line-number="1">✔ Git is installed on this computer, your username is annakrystalli</a></code></pre></div>
 </div>
 <div id="create-compendium-1" class="section level3">
 <h3>create compendium</h3>
 <p>Now we’re ready to <strong>create our compendium</strong>. We use function <strong><code>rrtools::create_compendium</code></strong> and supply it with a path at which our compendium will be created. The final part of our path becomes the compendium name. Because the function effectively creates a package, only a <strong>single string of lowercase alpha characters is accepted as a name</strong>. so let’s go for <code>rrcompendium</code> as the final part of our path.</p>
 <p>To <strong>create <code>rrcompendium</code> in a directory called <code>Documents/workflows/</code> I use:</strong></p>
-<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb640-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">create_compendium</span>(<span class="st">&quot;~/Documents/workflows/rrcompendium&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb641-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">create_compendium</span>(<span class="st">&quot;~/Documents/workflows/rrcompendium&quot;</span>)</a></code></pre></div>
 <p>Go ahead and <strong>create a compendium at a location of your choice</strong>. Stick with compendium name <code>rrcompendium</code> for ease of following the materials. If the call was successfull you should see the following console output:</p>
 <pre><code>✔ Setting active project to &#39;/Users/Anna/Documents/workflows/rrcompendium&#39;
 ✔ Creating &#39;R/&#39;
@@ -697,7 +697,7 @@ Next, you need to:  ↓ ↓ ↓
 <div id="initiate-git" class="section level3">
 <h3>Initiate <code>git</code></h3>
 <p>We can initialise our compendium with <code>.git</code> using:</p>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb642-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb643-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
 <p><strong>N.B. Beware, you may have ended up with two Rstudio sessions of <code>rrcompendium</code>.</strong> Make sure to only have one session of a single project at one time to avoid problems.</p>
 <p><br></p>
 </div>
@@ -766,7 +766,7 @@ LazyData: true
 <div id="license" class="section level3">
 <h3>License</h3>
 <p>Finally, let’s <strong>add a license for the material we create</strong>. We’ll use an <a href="https://opensource.org/licenses/MIT"><strong>MIT license</strong></a>. Note however that <strong>his only covers the code</strong>. We can do this with:</p>
-<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb648-1" data-line-number="1"> usethis<span class="op">::</span><span class="kw">use_mit_license</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb649-1" data-line-number="1"> usethis<span class="op">::</span><span class="kw">use_mit_license</span>()</a></code></pre></div>
 <pre><code>✔ Setting License field in DESCRIPTION to &#39;MIT + file LICENSE&#39;
 ✔ Writing &#39;LICENSE.md&#39;
 ✔ Adding &#39;^LICENSE\\.md$&#39; to &#39;.Rbuildignore&#39;</code></pre>
@@ -818,7 +818,7 @@ LazyData: true
 <h2>Create README</h2>
 <p>Every GitHub repository needs a <code>README</code> landing page.</p>
 <p>We can <strong>create an <code>rrtools</code> <code>README</code> template</strong> using:</p>
-<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb653-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">use_readme_rmd</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb654-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">use_readme_rmd</span>()</a></code></pre></div>
 <pre><code>
 ✔ Creating &#39;README.Rmd&#39; from template.
 ✔ Adding &#39;README.Rmd&#39; to `.Rbuildignore`.
@@ -938,7 +938,7 @@ You can download the compendium as a zip from from this URL: &lt;https://github.
 <div id="create-github-repository" class="section level2">
 <h2>🚦 Create GitHub repository</h2>
 <p>Next, we’ll <strong>create a GitHub repository to share our compendium</strong>. We’ll make use of our <code>GITHUB_PAT</code> and go for <code>https</code> authentication. We can do this with function:</p>
-<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb661-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb662-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
 <pre><code>✔ Setting active project to &#39;/Users/Anna/Documents/workflows/rrcompendium&#39;
 ● Check title and description
   Name:        rrcompendium
@@ -1002,7 +1002,7 @@ You can download the compendium as a zip from from this URL: &lt;https://github.
 <li><p><code>vignettes</code> to create a <code>vignettes/</code> directory (and automatically update the <code>DESCRIPTION</code>).</p></li>
 </ul>
 <p>The default is a top-level <code>analysis/</code>.</p>
-<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb666-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">use_analysis</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb667-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">use_analysis</span>()</a></code></pre></div>
 <pre><code>✔ Adding bookdown to Imports
 ✔ Creating &#39;analysis&#39; directory and contents
 ✔ Creating &#39;analysis&#39;
@@ -1086,29 +1086,29 @@ Note that:
 <p>Let’s also <strong>open <code>analysis.R</code></strong> in the course materials and run the code. The script has some <strong>initial setup</strong>, then <strong>loads the data</strong>, <strong>recodes one of the columns</strong> for plotting and then <strong>plots the results</strong> of the simulation, which <strong>generates figure 1 in <a href="https://github.com/annakrystalli/rrtools-wkshp-materials/blob/master/paper.pdf"><code>paper.pdf</code></a></strong>.</p>
 <div id="analysis.r" class="section level4">
 <h4><code>analysis.R</code></h4>
-<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb670-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb670-2" data-line-number="2"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb670-3" data-line-number="3"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb670-4" data-line-number="4"><span class="kw">library</span>(ggthemes)</a>
-<a class="sourceLine" id="cb670-5" data-line-number="5"><span class="kw">theme_set</span>(<span class="kw">theme_grey</span>())</a></code></pre></div>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb671-1" data-line-number="1"><span class="co"># load-data</span></a>
-<a class="sourceLine" id="cb671-2" data-line-number="2">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="dt">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb672-1" data-line-number="1"><span class="co"># create colour palette</span></a>
-<a class="sourceLine" id="cb672-2" data-line-number="2">colours &lt;-<span class="st"> </span><span class="kw">ptol_pal</span>()(<span class="dv">2</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb673-1" data-line-number="1"><span class="co"># recode-data</span></a>
-<a class="sourceLine" id="cb673-2" data-line-number="2">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb673-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">system_size =</span> <span class="kw">recode</span>(system_size, </a>
-<a class="sourceLine" id="cb673-4" data-line-number="4">                              <span class="dt">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, </a>
-<a class="sourceLine" id="cb673-5" data-line-number="5">                              <span class="dt">small =</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </a>
-<a class="sourceLine" id="cb673-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb673-7" data-line-number="7"><span class="co"># plot-gillespie</span></a>
-<a class="sourceLine" id="cb673-8" data-line-number="8">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb673-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb673-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> mean), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb673-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> minus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb673-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> plus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb673-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> n), <span class="dt">col=</span>colours[<span class="dv">1</span>]) <span class="op">+</span></a>
-<a class="sourceLine" id="cb673-14" data-line-number="14"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>system_size, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb671-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb671-2" data-line-number="2"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb671-3" data-line-number="3"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb671-4" data-line-number="4"><span class="kw">library</span>(ggthemes)</a>
+<a class="sourceLine" id="cb671-5" data-line-number="5"><span class="kw">theme_set</span>(<span class="kw">theme_grey</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb672-1" data-line-number="1"><span class="co"># load-data</span></a>
+<a class="sourceLine" id="cb672-2" data-line-number="2">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="dt">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb673-1" data-line-number="1"><span class="co"># create colour palette</span></a>
+<a class="sourceLine" id="cb673-2" data-line-number="2">colours &lt;-<span class="st"> </span><span class="kw">ptol_pal</span>()(<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb674-1" data-line-number="1"><span class="co"># recode-data</span></a>
+<a class="sourceLine" id="cb674-2" data-line-number="2">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb674-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">system_size =</span> <span class="kw">recode</span>(system_size, </a>
+<a class="sourceLine" id="cb674-4" data-line-number="4">                              <span class="dt">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, </a>
+<a class="sourceLine" id="cb674-5" data-line-number="5">                              <span class="dt">small =</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </a>
+<a class="sourceLine" id="cb674-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb674-7" data-line-number="7"><span class="co"># plot-gillespie</span></a>
+<a class="sourceLine" id="cb674-8" data-line-number="8">data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb674-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb674-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> mean), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb674-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> minus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb674-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> plus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb674-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> n), <span class="dt">col=</span>colours[<span class="dv">1</span>]) <span class="op">+</span></a>
+<a class="sourceLine" id="cb674-14" data-line-number="14"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>system_size, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) </a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-448-1.png" width="672" /></p>
 <hr />
 </div>
@@ -1134,7 +1134,7 @@ Note that:
 </ul>
 <p><img src="assets/rticle.png" /></p>
 <p>Or we can use <code>rmarkdown::draft()</code> to create articles:</p>
-<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb674-1" data-line-number="1">rmarkdown<span class="op">::</span><span class="kw">draft</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;analysis&quot;</span>,<span class="st">&quot;paper.Rmd&quot;</span>), <span class="dt">template =</span> <span class="st">&quot;elsevier_article&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rticles&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb675-1" data-line-number="1">rmarkdown<span class="op">::</span><span class="kw">draft</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;analysis&quot;</span>,<span class="st">&quot;paper.Rmd&quot;</span>), <span class="dt">template =</span> <span class="st">&quot;elsevier_article&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rticles&quot;</span>)</a></code></pre></div>
 <p>Both these functions create the following files in a new directory <code>analysis/paper</code>.</p>
 <pre><code>analysis/paper
 ├── elsarticle.cls
@@ -1361,8 +1361,8 @@ project CA-B-INS-0162-H.
 <div id="set-document-chunk-options" class="section level4">
 <h4>set document chunk options</h4>
 <p>Now, let’s set some <code>knitr</code> options for the whole document by adding the following code to our <code>libraries</code> chunk:</p>
-<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb689-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">FALSE</span>, <span class="dt">message=</span><span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb689-2" data-line-number="2">                      <span class="dt">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="dt">fig.width=</span><span class="dv">7</span>, <span class="dt">fig.height=</span><span class="fl">3.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb690-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">FALSE</span>, <span class="dt">message=</span><span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb690-2" data-line-number="2">                      <span class="dt">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="dt">fig.width=</span><span class="dv">7</span>, <span class="dt">fig.height=</span><span class="fl">3.5</span>)</a></code></pre></div>
 <p>We’re setting default chunk options to:</p>
 <ul>
 <li><code>echo = FALSE</code></li>
@@ -1381,21 +1381,21 @@ project CA-B-INS-0162-H.
 <div id="add-libraries" class="section level3">
 <h3>add libraries</h3>
 <p>Copy and paste the <strong>code for loading all the libraries from <code>analysis.R</code></strong>. Add library <code>rrcompendium</code> so we can access function <code>recode_system_size</code>. The <code>libraries</code> chunk should now look like so:</p>
-<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb690-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">FALSE</span>, <span class="dt">message=</span><span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb690-2" data-line-number="2">                      <span class="dt">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="dt">fig.width=</span><span class="dv">7</span>, <span class="dt">fig.height=</span><span class="fl">3.5</span>)</a>
-<a class="sourceLine" id="cb690-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb690-4" data-line-number="4"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb690-5" data-line-number="5"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb690-6" data-line-number="6"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb690-7" data-line-number="7"><span class="kw">library</span>(ggthemes)</a>
-<a class="sourceLine" id="cb690-8" data-line-number="8"><span class="kw">library</span>(rrcompendium)</a></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb691-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">FALSE</span>, <span class="dt">message=</span><span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb691-2" data-line-number="2">                      <span class="dt">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="dt">fig.width=</span><span class="dv">7</span>, <span class="dt">fig.height=</span><span class="fl">3.5</span>)</a>
+<a class="sourceLine" id="cb691-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb691-4" data-line-number="4"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb691-5" data-line-number="5"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb691-6" data-line-number="6"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb691-7" data-line-number="7"><span class="kw">library</span>(ggthemes)</a>
+<a class="sourceLine" id="cb691-8" data-line-number="8"><span class="kw">library</span>(rrcompendium)</a></code></pre></div>
 <p><br></p>
 </div>
 <div id="add-set-theme-chunk" class="section level3">
 <h3>Add <code>set-theme</code> chunk</h3>
 <p>Right below the <code>libraries</code> chunk, <strong>insert a new chunk and call it <code>set-theme</code></strong></p>
 <p>Copy the <strong>code to set the plot theme</strong> and pasted into the <code>set-theme</code> code:</p>
-<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb691-1" data-line-number="1"><span class="kw">theme_set</span>(<span class="kw">theme_grey</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb692-1" data-line-number="1"><span class="kw">theme_set</span>(<span class="kw">theme_grey</span>())</a></code></pre></div>
 <p><br></p>
 </div>
 <div id="add-figure1-chunk" class="section level3">
@@ -1404,24 +1404,24 @@ project CA-B-INS-0162-H.
 <div id="add-code-1" class="section level4">
 <h4>Add code</h4>
 <p>Copy and <strong>paste the remaining code into a new chunk which will create figure 1</strong>.</p>
-<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb692-1" data-line-number="1"><span class="co"># create colour palette</span></a>
-<a class="sourceLine" id="cb692-2" data-line-number="2">colours &lt;-<span class="st"> </span><span class="kw">ptol_pal</span>()(<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb692-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb692-4" data-line-number="4"><span class="co"># load-data</span></a>
-<a class="sourceLine" id="cb692-5" data-line-number="5">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="dt">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)  </a>
-<a class="sourceLine" id="cb692-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb692-7" data-line-number="7"><span class="co"># recode-data</span></a>
-<a class="sourceLine" id="cb692-8" data-line-number="8">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb692-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">system_size =</span> <span class="kw">recode</span>(system_size, <span class="dt">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, <span class="dt">small=</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </a>
-<a class="sourceLine" id="cb692-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb692-11" data-line-number="11"><span class="co"># plot-gillespie</span></a>
-<a class="sourceLine" id="cb692-12" data-line-number="12">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb692-13" data-line-number="13"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb692-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> mean), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb692-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> minus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb692-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> plus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb692-17" data-line-number="17"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> n), <span class="dt">col=</span>colours[<span class="dv">1</span>]) <span class="op">+</span></a>
-<a class="sourceLine" id="cb692-18" data-line-number="18"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>system_size, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb693-1" data-line-number="1"><span class="co"># create colour palette</span></a>
+<a class="sourceLine" id="cb693-2" data-line-number="2">colours &lt;-<span class="st"> </span><span class="kw">ptol_pal</span>()(<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb693-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb693-4" data-line-number="4"><span class="co"># load-data</span></a>
+<a class="sourceLine" id="cb693-5" data-line-number="5">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="dt">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)  </a>
+<a class="sourceLine" id="cb693-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb693-7" data-line-number="7"><span class="co"># recode-data</span></a>
+<a class="sourceLine" id="cb693-8" data-line-number="8">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb693-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">system_size =</span> <span class="kw">recode</span>(system_size, <span class="dt">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, <span class="dt">small=</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </a>
+<a class="sourceLine" id="cb693-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb693-11" data-line-number="11"><span class="co"># plot-gillespie</span></a>
+<a class="sourceLine" id="cb693-12" data-line-number="12">data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb693-13" data-line-number="13"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb693-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> mean), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb693-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> minus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb693-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> plus_sd), <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span>colours[<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb693-17" data-line-number="17"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> n), <span class="dt">col=</span>colours[<span class="dv">1</span>]) <span class="op">+</span></a>
+<a class="sourceLine" id="cb693-18" data-line-number="18"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>system_size, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) </a></code></pre></div>
 </div>
 <div id="add-caption" class="section level4">
 <h4>🚦 Add caption</h4>
@@ -1441,7 +1441,7 @@ project CA-B-INS-0162-H.
 <div id="add-paper-dependencies" class="section level2">
 <h2>🚦 Add paper dependencies</h2>
 <p>Finally, before we’re finished, let’s ensure the dependencies introduced in the paper are included. We can use <code>rrtools::add_dependencies_to_description()</code></p>
-<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb694-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">add_dependencies_to_description</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb695-1" data-line-number="1">rrtools<span class="op">::</span><span class="kw">add_dependencies_to_description</span>()</a></code></pre></div>
 <p>This function <strong>scans script files (<code>.R</code>, <code>.Rmd</code>, <code>.Rnw</code>, <code>.Rpres</code>, etc.) for external package dependencies</strong> indicated by <code>library()</code>, <code>require()</code> or <code>::</code> and <strong>adds those packages to the <code>Imports</code> field in the package <code>DESCRIPTION</code></strong>:</p>
 <pre><code>Imports: 
     bookdown,

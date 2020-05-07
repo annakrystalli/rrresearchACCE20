@@ -375,27 +375,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This file should contain your function and be saved at:</p>
 <p><strong><code>R/geolocate.R</code></strong></p>
 <p>Create the file using:</p>
-<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb699-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_r</span>(<span class="st">&quot;geolocate&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb700-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_r</span>(<span class="st">&quot;geolocate&quot;</span>)</a></code></pre></div>
 <p>Your script should contain:</p>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb700-1" data-line-number="1"><span class="co"># Function</span></a>
-<a class="sourceLine" id="cb700-2" data-line-number="2">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude,</a>
-<a class="sourceLine" id="cb700-3" data-line-number="3">                              stemAzimuth, stemDistance) {</a>
-<a class="sourceLine" id="cb700-4" data-line-number="4">    <span class="co"># check inputs are correct type (numeric)</span></a>
-<a class="sourceLine" id="cb700-5" data-line-number="5">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLatitude)</a>
-<a class="sourceLine" id="cb700-6" data-line-number="6">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLongitude)</a>
-<a class="sourceLine" id="cb700-7" data-line-number="7">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemAzimuth)</a>
-<a class="sourceLine" id="cb700-8" data-line-number="8">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemDistance)</a>
-<a class="sourceLine" id="cb700-9" data-line-number="9">    </a>
-<a class="sourceLine" id="cb700-10" data-line-number="10">    </a>
-<a class="sourceLine" id="cb700-11" data-line-number="11">    out &lt;-<span class="st"> </span>geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude),</a>
-<a class="sourceLine" id="cb700-12" data-line-number="12">                                <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb700-13" data-line-number="13"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
-<a class="sourceLine" id="cb700-14" data-line-number="14">    </a>
-<a class="sourceLine" id="cb700-15" data-line-number="15">    <span class="co"># check output for NAs</span></a>
-<a class="sourceLine" id="cb700-16" data-line-number="16">    checkmate<span class="op">::</span><span class="kw">assert_false</span>(<span class="kw">any</span>(<span class="kw">is.na</span>(out)))</a>
-<a class="sourceLine" id="cb700-17" data-line-number="17">    </a>
-<a class="sourceLine" id="cb700-18" data-line-number="18">    <span class="kw">return</span>(out)</a>
-<a class="sourceLine" id="cb700-19" data-line-number="19">}</a></code></pre></div>
+<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb701-1" data-line-number="1"><span class="co"># Function</span></a>
+<a class="sourceLine" id="cb701-2" data-line-number="2">get_stem_location &lt;-<span class="st"> </span><span class="cf">function</span>(decimalLongitude, decimalLatitude,</a>
+<a class="sourceLine" id="cb701-3" data-line-number="3">                              stemAzimuth, stemDistance) {</a>
+<a class="sourceLine" id="cb701-4" data-line-number="4">    <span class="co"># check inputs are correct type (numeric)</span></a>
+<a class="sourceLine" id="cb701-5" data-line-number="5">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLatitude)</a>
+<a class="sourceLine" id="cb701-6" data-line-number="6">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(decimalLongitude)</a>
+<a class="sourceLine" id="cb701-7" data-line-number="7">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemAzimuth)</a>
+<a class="sourceLine" id="cb701-8" data-line-number="8">    checkmate<span class="op">::</span><span class="kw">assert_numeric</span>(stemDistance)</a>
+<a class="sourceLine" id="cb701-9" data-line-number="9">    </a>
+<a class="sourceLine" id="cb701-10" data-line-number="10">    </a>
+<a class="sourceLine" id="cb701-11" data-line-number="11">    out &lt;-<span class="st"> </span>geosphere<span class="op">::</span><span class="kw">destPoint</span>(<span class="dt">p =</span> <span class="kw">cbind</span>(decimalLongitude, decimalLatitude),</a>
+<a class="sourceLine" id="cb701-12" data-line-number="12">                                <span class="dt">b =</span> stemAzimuth, <span class="dt">d =</span> stemDistance) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb701-13" data-line-number="13"><span class="st">        </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>()</a>
+<a class="sourceLine" id="cb701-14" data-line-number="14">    </a>
+<a class="sourceLine" id="cb701-15" data-line-number="15">    <span class="co"># check output for NAs</span></a>
+<a class="sourceLine" id="cb701-16" data-line-number="16">    checkmate<span class="op">::</span><span class="kw">assert_false</span>(<span class="kw">any</span>(<span class="kw">is.na</span>(out)))</a>
+<a class="sourceLine" id="cb701-17" data-line-number="17">    </a>
+<a class="sourceLine" id="cb701-18" data-line-number="18">    <span class="kw">return</span>(out)</a>
+<a class="sourceLine" id="cb701-19" data-line-number="19">}</a></code></pre></div>
 
 </div>
             </section>
