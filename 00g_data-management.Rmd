@@ -1,4 +1,4 @@
-# Data management Basics
+# Data management Basics {#rdm-intro-view}
 
 ```{r, results="asis", echo = FALSE}
 slide_page(slidedeck_name = "02_RDM_intro.html")

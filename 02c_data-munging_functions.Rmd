@@ -1,4 +1,4 @@
-# Functions
+# Functions {#functions}
 
 As we've mentioned, functions, and especially user built custom functions, are a key feature of R and are a really powerful of reducing code repetition.
 

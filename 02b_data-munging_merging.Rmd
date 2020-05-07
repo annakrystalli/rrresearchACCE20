@@ -1,4 +1,4 @@
-# Combining tables
+# Merging data {#data-merge}
 
 Let's say we want to geolocate every individual in our analytic data. 
 
