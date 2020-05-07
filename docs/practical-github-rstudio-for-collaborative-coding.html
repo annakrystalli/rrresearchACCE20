@@ -263,6 +263,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a><ul>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#evolottery"><strong>EvoLottery</strong></a></li>
 <li class="chapter" data-level="" data-path="practical-github-rstudio-for-collaborative-coding.html"><a href="practical-github-rstudio-for-collaborative-coding.html"><i class="fa fa-check"></i>Clone Github repo</a></li>
+<li><a href="practical-github-rstudio-for-collaborative-coding.html#make-a-change-to-the-repo"><strong>Make a change to the repo</strong></a></li>
+<li class="chapter" data-level="" data-path="practical-github-rstudio-for-collaborative-coding.html"><a href="practical-github-rstudio-for-collaborative-coding.html#commit-changes-locally-to-git"><i class="fa fa-check"></i>Commit changes locally to git</a></li>
+<li class="chapter" data-level="" data-path="practical-github-rstudio-for-collaborative-coding.html"><a href="practical-github-rstudio-for-collaborative-coding.html#push-changes-to-github"><i class="fa fa-check"></i>Push changes to GitHub</a></li>
+<li class="chapter" data-level="" data-path="practical-github-rstudio-for-collaborative-coding.html"><a href="practical-github-rstudio-for-collaborative-coding.html#create-pull-request"><i class="fa fa-check"></i>Create pull request</a></li>
 </ul></li>
 <li class="part"><span><b>VII Closing</b></span></li>
 <li class="chapter" data-level="" data-path="closing-remarks.html"><a href="closing-remarks.html"><i class="fa fa-check"></i>Closing Remarks</a></li>
@@ -332,18 +336,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html#final-compendium"><i class="fa fa-check"></i>Final compendium</a></li>
 </ul></li>
 <li class="part"><span><b>VIII APPENDIX</b></span></li>
-<li><a href="individual-r.html#individual.r"><code>individual.R</code></a><ul>
-<li><a href="individual-r.html#data-rawindividual.r"><strong><code>data-raw/individual.R</code></strong></a></li>
-</ul></li>
-<li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a><ul>
-<li><a href="geolocate-r.html#rgeolocate.r"><strong><code>R/geolocate.R</code></strong></a></li>
-</ul></li>
-<li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a><ul>
-<li><a href="analysis-r-1.html#analysis.r-2"><strong><code>analysis.R</code></strong></a></li>
-</ul></li>
-<li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a><ul>
-<li><a href="index-rmd.html#index.rmd-1"><strong><code>index.Rmd</code></strong></a></li>
-</ul></li>
+<li><a href="individual-r.html#individual.r"><code>individual.R</code></a></li>
+<li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a></li>
+<li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
+<li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
+<li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -395,46 +392,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="clone-github-repo" class="section level2">
 <h2>Clone Github repo</h2>
-<div id="clone-a-github-repo" class="section level3">
-<h3>💻 <strong>Clone a GitHub repo</strong></h3>
-<div id="start-with-github-repo" class="section level4">
-<h4>Start with GitHub repo</h4>
+<div id="start-with-github-repo" class="section level3">
+<h3>Start with GitHub repo</h3>
 <p><a href="https://GitHub.com/RSE-Sheffield/collaborative_GitHub_exercise" class="uri">https://GitHub.com/RSE-Sheffield/collaborative_GitHub_exercise</a></p>
 <p><img src="assets/repo.png" width="700px" /></p>
+<iframe src="assets/repo.png" width="90%" height="400px">
+</iframe>
 </div>
-<div id="fork-it" class="section level4">
-<h4><strong>Fork it</strong></h4>
+<div id="fork-it" class="section level3">
+<h3><strong>Fork it</strong></h3>
 <p>make your <strong>own copy of the repository</strong> on GitHub. Fork are linked and traceable</p>
-<p><img src="assets/fork-1.png" width="700px" /></p>
+<iframe src="assets/fork-1.png" width="90%" height="400px">
+</iframe>
 <p>GitHub makes a <strong>copy into your account</strong></p>
-<p><img src="assets/fork-2.png" width="700px" /></p>
+<iframe src="assets/fork-2.png" width="90%" height="400px">
+</iframe>
 <p><br></p>
 </div>
-<div id="clone-repo" class="section level4">
-<h4>🚦 <strong>Clone repo</strong></h4>
+<div id="clone-repo" class="section level3">
+<h3>🚦 <strong>Clone repo</strong></h3>
 <p><strong>copy repo link</strong> to create a new Rstudio project from the repository.</p>
-<p><img src="assets/fork-3.png" width="700px" /></p>
+<iframe src="assets/fork-3.png" width="90%" height="400px">
+</iframe>
 </div>
-<div id="create-new-project-in-rstudio" class="section level4">
-<h4><strong>Create new project in Rstudio</strong></h4>
-<p><img src="assets/newproj-1.png" width="700px" /></p>
+<div id="create-new-project-in-rstudio" class="section level3">
+<h3><strong>Create new project in Rstudio</strong></h3>
+<iframe src="assets/newproj-1.png" width="90%" height="400px">
+</iframe>
 <p>Checkout from <strong>version control repository</strong></p>
-<p><img src="assets/newproj-2.png" width="700px" /></p>
+<iframe src="assets/newproj-2.png" width="90%" height="400px">
+</iframe>
 <p>Clone project from a <strong>git</strong> repository</p>
-<p><img src="assets/newproj-3.png" width="700px" /></p>
+<iframe src="assets/newproj-3.png" width="90%" height="400px">
+</iframe>
 <p>Paste <strong>repo link copied from GitHub</strong> into <strong>Repository URL</strong> field. Click <strong><code>Create Project</code></strong>.</p>
-<p><img src="assets/newproj-4.png" width="700px" /></p>
+<iframe src="assets/newproj-4.png" width="90%" height="400px">
+</iframe>
 <p>Rstudio project now <strong>contains all files from the GitHub repo.</strong></p>
-<p><img src="assets/newproj-5.png" width="700px" /></p>
+<iframe src="assets/newproj-5.png" width="90%" height="400px">
+</iframe>
 </div>
 </div>
-<div id="make-a-change-to-the-repo" class="section level3">
-<h3>🚦 <strong>Make a change to the repo</strong></h3>
-</div>
+<div id="make-a-change-to-the-repo" class="section level2">
+<h2><strong>Make a change to the repo</strong></h2>
 <div id="make-a-copy-of-params_tmpl.r" class="section level3">
 <h3>make a copy of <code>params_tmpl.R</code></h3>
 <p>open <strong><code>params/params_tmpl.R</code></strong></p>
-<p><img src="assets/edit-1.png" width="700px" /></p>
+<iframe src="assets/edir-1.png" width="90%" height="400px">
+</iframe>
 <div class="inverse">
 <strong>SAVE AS NEW <code>.R</code> script in <code>params/</code> folder</strong>
 </div>
@@ -442,12 +447,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="alert alert-warning">
 Please <strong><em>DO NOT OVERWRITE</em></strong> <strong><code>params/params_tmpl.R</code></strong>.
 </div>
-<p><img src="assets/edit-2.png" width="700px" /></p>
+<iframe src="assets/edit-2.png" width="90%" height="400px">
+</iframe>
 </div>
 <div id="edit-file" class="section level3">
-<h3>🚦 Edit file</h3>
+<h3>Edit file</h3>
 <p>Edit file with parameters of your choice and save.</p>
-<p><img src="assets/edit-3.png" width="700px" /></p>
+<iframe src="assets/edit-3.png" width="90%" height="400px">
+</iframe>
 <div id="the-parameters-each-participants-need-to-supply-are" class="section level4">
 <h4>The parameters each participants need to supply are:</h4>
 <ul>
@@ -458,42 +465,50 @@ Please <strong><em>DO NOT OVERWRITE</em></strong> <strong><code>params/params_tm
 <p><strong>NB: remember to save the changes to your file</strong></p>
 </div>
 </div>
-<div id="commit-changes-locally-to-git" class="section level3">
-<h3>🚦 Commit changes locally to git</h3>
+</div>
+<div id="commit-changes-locally-to-git" class="section level2">
+<h2>Commit changes locally to git</h2>
 <p>In the <em>git</em> tab, select the <strong>new file</strong> you created and click <strong><code>Commit</code></strong>.</p>
 <div class="alert alert-warning">
 Please <strong>ONLY COMMIT YOUR NEW FILE</strong>
 </div>
-<p><img src="assets/commit-1.png" width="700px" /></p>
+<iframe src="assets/commit-1.png" width="90%" height="400px">
+</iframe>
 <p>Write an informative commit message and click <strong><code>Commit</code></strong></p>
-<p><img src="assets/commit-2.png" width="700px" /></p>
+<iframe src="assets/commit-2.png" width="90%" height="400px">
+</iframe>
 <p>your new file has now been commited</p>
-<p><img src="assets/commit-3.png" width="700px" /></p>
+<iframe src="assets/commit-3.png" width="90%" height="400px">
+</iframe>
 </div>
-<div id="push-changes-to-github" class="section level3">
-<h3>Push changes to GitHub</h3>
+<div id="push-changes-to-github" class="section level2">
+<h2>Push changes to GitHub</h2>
 <p>on the <em>git</em> tab click ⇧ to <strong>push changes to GitHub</strong></p>
-<p><img src="assets/push-1.png" width="700px" /></p>
+<iframe src="assets/push-1.png" width="90%" height="400px">
+</iframe>
 <p>changes have now been updated in the <strong>GitHub repo</strong></p>
-<p><img src="assets/push-2.png" width="700px" /></p>
-<hr />
+<iframe src="assets/push-2.png" width="90%" height="400px">
+</iframe>
 </div>
-<div id="create-pull-request" class="section level3">
-<h3>🚦 create pull request</h3>
+<div id="create-pull-request" class="section level2">
+<h2>Create pull request</h2>
 <p>In your repository, create <strong><code>new pull request</code></strong>
 to merge fork to master repo (ie the original repo you forked)</p>
-<p><img src="assets/merge-1.png" width="700px" /></p>
+<iframe src="assets/merge-1.png" width="90%" height="400px">
+</iframe>
 <p>GitHub checks whether your requested merge creates any coflicts.
 If all is good, click on <strong><code>Create pull request</code></strong></p>
-<p><img src="assets/merge-2.png" width="700px" /></p>
+<iframe src="assets/merge-2.png" width="90%" height="400px">
+</iframe>
 <p>Write an informative message explaining your changes to the master repo administrators. Click on <strong><code>Create pull request</code></strong></p>
-<p><img src="assets/merge-3.png" width="700px" /></p>
+<iframe src="assets/merge-3.png" width="90%" height="400px">
+</iframe>
 <p>The repository owner will then review your PR and either merge it in or respond with some guidance if they spot a problem.</p>
 <p>Check original repo to see <strong>your merged changes</strong></p>
-<p><img src="assets/merged.png" width="700px" /></p>
+<iframe src="assets/merged.png" width="90%" height="400px">
+</iframe>
 <p>We’ll merge all contributions and <a href="https://rse.shef.ac.uk/collaborative_github_exercise/plot_trait_evolution.html">plot them together at the end!</a></p>
 
-</div>
 </div>
 </div>
             </section>
