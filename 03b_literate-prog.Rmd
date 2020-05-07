@@ -1,8 +1,6 @@
+# Literate Programming in rmarkdown
 
-
-# Literate programming in rmarkdown
-
-## Literate programming
+## Literate programming 
 
 Literate programming is a programming paradigm first introduced by **Donald E. Knuth**. 
 
@@ -1068,10 +1066,6 @@ Once your document is ready, try and extract the contents of your `.Rmd` into an
 
 Embbed gifs, videos, widgets in this way
 
-
-
-
-## Parting words
 
 
 
