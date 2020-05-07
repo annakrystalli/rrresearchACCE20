@@ -7,8 +7,10 @@ This Rmarkdown file should contain your analysis and be saved in the root direct
 My final `index.Rmd` looks like this:
 
 
-```{r, echo=FALSE, message=FALSE}
-knitr::include_url("demos/index.Rmd")
+```{r echo=FALSE, message=TRUE, comment=""}
+
+message(readr::read_file(here::here("demos","index.Rmd")))
+
 ```
 
 and renders to:

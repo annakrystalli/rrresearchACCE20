@@ -912,9 +912,10 @@ Details on [chunk arguments related to plotting](https://bookdown.org/yihui/rmar
 My final `index.Rmd` looks like this:
 
 
+```{r echo=FALSE, message=TRUE, comment=""}
 
-```{r, echo=FALSE, message=FALSE}
-knitr::include_url("demos/index.Rmd")
+message(readr::read_file(here::here("demos","index.Rmd")))
+
 ```
 
 and renders to:
