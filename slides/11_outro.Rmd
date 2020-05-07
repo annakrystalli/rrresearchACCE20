@@ -41,7 +41,20 @@ class: top, left, inverse
 
 ---
 
-## take ownership
+# tl;dr
+
+- ### prepare it to share it
+
+- ### human readable code and machine readable data
+
+- ### automated pipeline from raw data to outputs
+
+- ### better in the open
+---
+
+## take aways
+
+### take ownership
 
 - #### Try to think ahead about where the pitfalls lie.
 
@@ -49,113 +62,149 @@ class: top, left, inverse
 
 - #### What works? What makes using data easy, what makes it painful?
 
----
-
-## take aways
-
-- #### prepare it to share it
-- #### human readable code and machine readable data
-- #### automated pipeline from raw data to outputs
-- #### better in the open
-
 
 
 > #### make yourself the [most expendable member](http://www.datacarpentry.org/blog/soft-skills/) of you team!
 
 
 ---
+class: inverse, center, middle
 
 # Resources
 
 ---
 
-## BES guide to data management 
+## Additional content in materials on:
 
-<img src="../assets/img/BES.png" height=300px>
+- ### Creating a package in R
 
-<br>
+- ### Creating a research compendium with rrtools
+
+---
+.pull-left[
+
+### BES guide to data management 
+
+```{r, out.width="50%", echo=FALSE}
+knitr::include_graphics("assets/BES.png")
+```
 
 This guide for early career researchers explains what data and data management are, and provides advice and examples of best practices in data management, including case studies from researchers currently working in ecology and evolution.
 
-<br>
 
 #### [download](http://www.britishecologicalsociety.org/wp-content/uploads/Publ_Data-Management-Booklet.pdf)
+]
 
----
+.pull-right[
 
-## BES guide to reproducible code 
+### BES guide to reproducible code 
 
-<img src="https://methodsblog.files.wordpress.com/2017/12/code-cover.jpg?w=424&h=600" height=300px>
+
+```{r, out.width="50%", echo=FALSE}
+knitr::include_graphics("https://methodsblog.files.wordpress.com/2017/12/code-cover.jpg?w=424&h=600")
+```
+
+
 
 A Guide to Reproducible Code covers all the basic tools and information you will
 need to start making your code more reproducible. We focus on R and Python, but
 many of the tips apply to any programming language.
 
 #### [download](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf)
+]
+
+---
+# The Turing Way
+
+.pull-left[
+
+### Book
+#### a lightly opinionated guide to reproducible data science
+<https://the-turing-way.netlify.com> 
+
+
+```{r, out.width="50%", echo=FALSE}
+knitr::include_graphics("assets/1728_TURI_Book sprint_12 chapter_040619.jpg")
+```
+
+]
+
+.pull-right[
+
+### Workshops
+
+- **Boost Your Research Reproducibility with Binder** [materials](https://github.com/alan-turing-institute/the-turing-way/tree/master/workshops/boost-research-reproducibility-binder)
+
+- **Build a binderhub** [materials](https://github.com/alan-turing-institute/the-turing-way/tree/master/workshops/build-a-binderhub)
+
+]
+
+### <https://github.com/alan-turing-institute/the-turing-way>
 
 ---
 
-### Further reading
+## Resources in R
 
-- [**Blog post**](https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/) **by Dynamic ecology** [\@DynamicEcology](https://twitter.com/DynamicEcology)
-- [**rOpenSci Reproducibility in Science:** 
-A Guide to enhancing reproducibility in scientific results and writing](http://ropensci.github.io/reproducibility-guide/)
-- [**Nine simple ways to make it easier to (re)use your data**](http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/4898)
+#### R 4 Data Science
+- [R for Data Science](https://r4ds.had.co.nz/)
 
----
+#### Version Control
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
-## Training materials
+#### RMarkdown
 
-**The Carpentries**
+- [R Markdown: The Definitive guide](https://bookdown.org/yihui/rmarkdown/)
+- [RMarkdown Driven Development (RmdDD)](https://emilyriederer.netlify.com/post/rmarkdown-driven-development/): Blog post by Emily Riederer
 
-- **Domain specific lessons in Software & Data available** [**free online**](https://carpentries.org/)
-    + Ecology materials
-    + Genomics materials
-    + Geospatial data materials
-    + Biology semester long materials
+#### Advanced R
 
+- [R packages](https://r-pkgs.org/) by Hadley Wickham and Jenny Bryan
 
----
-
-## go further
-
-## coding
-
-<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> agree very much with <a href="https://twitter.com/ucfagls">@ucfagls</a>. Early investment in programming skills pays off in the future in terms of speed &amp; reproducibility.</p>&mdash; Susan Johnston (@SuseJohnston) <a href="https://twitter.com/SuseJohnston/status/556110171483947008">January 16, 2015</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
----
-
-
-- #### [software carpentry: R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/)
-
-
-![](https://d21ii91i3y6o6h.cloudfront.net/gallery_images/from_proof/3802/large/1421543874/software-carpentry.png)
-
-- #### [An Introduction to Reproducible Research in R and R Studio.](https://susanejohnston.wordpress.com/category/reproducible-research/)
-
-- #### Research data management (RDM) open training materials on [Zenodo](https://zenodo.org/communities/dcc-rdm-training-materials/?page=1&size=20)
-
-- #### Coursera Reproducible Research [MOOC](https://www.coursera.org/learn/reproducible-research)
 
 
 ---
+class: inverse, center, middle
 
-## seek support
+# Support
 
-<br>
+---
+## Institutional
 
-- #### Your supervisor / research group /ACCE peers
-- #### Institutional Research Data Management Teams
+
+- Your supervisor / research group /ACCE peers
+- Institutional Research Data Management Teams
     - http://www.york.ac.uk/rdm
     - https://www.sheffield.ac.uk/library/rdm
     - http://www.liv.ac.uk/research-data-management/
-- #### NERC data centres (BODC Liverpool, EIDC CEH)
-- #### ROpenSci, Rladies, R4DS Learning community, theh Carpentries
+- NERC data centres (BODC Liverpool, EIDC CEH)
+
 
 ---
+## Communities
 
-## Publish your markdown work on GitHub!
+.pull-left[
+### Local
+
+- [Sheffield R Users Group](https://www.meetup.com/SheffieldR-Sheffield-R-Users-Group/)
+- [Manchester R Users Group](https://www.rmanchester.org/)
+- [Manchester R Ladies](https://www.meetup.com/rladies-manchester/)
+- [Lancaster R Ladies](https://www.meetup.com/rladies-lancaster/)
+- [Leeds R Users Group](https://r-users-leeds.netlify.app/)
+]
+
+.pull-right[
+### Remote
+
+- [rOpenSci](https://ropensci.org/)
+- [Rstudio forum](https://community.rstudio.com/)
+- [Rladies Remote & slack](https://www.meetup.com/rladies-remote/)
+- [R4DS Learning community](https://www.rfordatasci.com/)
+- [The Carpentries](https://carpentries.org/)
+]
+---
+
+
+## Publish your work on GitHub!
 
 Use **Git** and **GitHub** to manage, publish and collaborate on your work
 
@@ -173,9 +222,6 @@ Use **Git** and **GitHub** to manage, publish and collaborate on your work
 
 
 ---
+class: invert, middle, center
 
-## Keep learning with others
-
-- **#R4DS slack [learning community](https://medium.com/@kierisi/r4ds-the-next-iteration-d51e0a1b0b82)**. Sign up [**here**](https://docs.google.com/forms/d/e/1FAIpQLSeT3zfzjWxoaQ6RmUEdT9n0xtvkuSaMeBetDQLpzNJvGUB6IQ/viewform)
-- [Sheffield R Users group](https://www.meetup.com/SheffieldR-Sheffield-R-Users-Group/events/)
-
+# Have fun!
