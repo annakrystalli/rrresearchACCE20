@@ -1,7 +1,5 @@
 # Solutions
 
-## Part I
-
 ### [List subsetting challenge](#chlg-list-subset){#csol-list-subset}
 
 ```{r}
@@ -12,5 +10,63 @@ xlist[[2]][2]
 ```
 ```{r}
 xlist[["b"]][2]
+```
+
+
+
+
+### [Finding column name matches in two tables](#chlg-col-matches){#csol-col-matches}
+
+
+```{r, echo=FALSE, message=FALSE}
+individual <- readr::read_csv(file.path(raw_data_path, "vst_individual.csv"))
+maptag <- readr::read_csv(fs::path(raw_data_path, "vst_mappingandtagging.csv"))
+```
+
+```{r}
+names(individual)[names(individual) %in% names(maptag)]
+```
+
+
+
+
+### [dataspice mega challenge!](#chlg-mega){#csol-mega}
+
+```{r}
+variables <- readr::read_csv(here::here("data-raw", "wood-survey-data-master",
+                                        "NEON_vst_variables.csv"),
+                             col_types = readr::cols(.default = "c")) %>% 
+    dplyr::mutate(fieldName = janitor::make_clean_names(fieldName)) %>%
+    select(fieldName, description, units)
+```
+
+
+```{r, eval=FALSE}
+attributes <- readr::read_csv(here::here("data", "metadata", "attributes.csv")) %>% 
+    select(-description, -unitText)
+```
+
+```{r, echo=FALSE}
+attributes <- readr::read_csv(here::here("data", "metadata", "attributes-prepped.csv")) %>% 
+    select(-description, -unitText)
+```
+
+```{r echo=FALSE}
+dplyr::left_join(attributes, variables, by = c("variableName" = "fieldName")) %>%
+    dplyr::rename(unitText = "units") %>%
+    readr::write_csv(here::here("data", "metadata", "attributes-complete.csv"))
+    
+```
+
+```{r eval=FALSE}
+dplyr::left_join(attributes, variables, by = c("variableName" = "fieldName")) %>%
+    dplyr::rename(unitText = "units") %>%
+    readr::write_csv(here::here("data", "metadata", "attributes.csv"))
+    
+```
+
+
+```{r, eval=FALSE}
+edit_attributes()
 ```
 
