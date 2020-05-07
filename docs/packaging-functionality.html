@@ -792,15 +792,16 @@ Roxygen: list(markdown = TRUE)
 <p>Document, Install and restart to load our changes</p>
 <div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb599-1" data-line-number="1"><span class="kw">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</a></code></pre></div>
 <pre><code>## 
-##  -------------- 
+##  ----- 
 ## Hello y&#39;all from Anna! 
-##  --------------
-##     \
-##       \
-##          /\ /\
-##          (O o)
-##         =(:^:)=
-##            U      [nosig]
+##  ------ 
+##     \   
+##      \
+##      .-.
+##     (o o)
+##     | O \
+##      \   \
+##       `~~~&#39; [nosig]
 ## </code></pre>
 </div>
 <div id="check-package-integrity" class="section level2">
@@ -930,15 +931,23 @@ if you want to run the tests.</p>
 <a class="sourceLine" id="cb614-3" data-line-number="3"><span class="kw">test_that</span>(<span class="st">&quot;hello works&quot;</span>, {</a>
 <a class="sourceLine" id="cb614-4" data-line-number="4">  <span class="kw">expect_message</span>(<span class="kw">hello</span>())</a>
 <a class="sourceLine" id="cb614-5" data-line-number="5">})</a></code></pre></div>
-<pre><code>## 
-##  ----- 
-## Hello world from Anna! 
-##  ------ 
-##     \   
-##      \
-##   &gt;&lt;((((º&gt;  &gt;&lt;((((º&gt;  &gt;&lt;((((º&gt;  &gt;&lt;((((º&gt;  &gt;&lt;((((º&gt;
-##       Kiyoko Gotanda
-## </code></pre>
+<pre><code>##              ------ 
+##           Hello world from Anna! 
+##              ------ 
+##                  \   
+##                   \  
+##                    \
+##                       . .     
+##                       |\|\_   
+##                       /  @ \  
+##                      /  _-_/° 
+##    \\\\\\\\\       /   / \    
+##   ////////////   /  \ / ||    
+##  \\\\\\\\\\\\\\ /   /\\ \\    
+## ////////////////   /  \\ \\   
+##  \\\\\\\\\\\\\/   /  / `` ``  
+##      /////////   \  /  \      
+##  ML     \\\\\\___/_/___/</code></pre>
 <pre><code>## Error: Test failed: &#39;hello works&#39;
 ## * &lt;text&gt;:4: `hello()` did not produce any messages.</code></pre>
 <p>Now let’s test our package</p>
