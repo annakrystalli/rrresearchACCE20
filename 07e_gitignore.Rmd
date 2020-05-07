@@ -1,0 +1,19 @@
+# `.gitignore`
+
+This file should contain details of files to be ignored by version control and be saved in the root directory as:
+
+## **`.gitignore`**
+
+Your file should contain:
+
+```
+.Rproj.user
+.Rhistory
+.RData
+.Rbuildignore
+.DS_Store
+
+attic/*
+data-raw/*
+!data-raw/individual.R
+```
