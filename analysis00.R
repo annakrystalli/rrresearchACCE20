@@ -29,7 +29,7 @@ analysis_df %>%
                         names_to = "var",
                         values_to = "value") %>%
     ggplot(aes(x = log(value), y = growth_form, colour = growth_form, fill = growth_form)) +
-    geom_violin(alpha = 0.5, trim = T) +
+    geom_violin(alpha = 0.5, trim = T, show.legend = FALSE) +
     geom_boxplot(alpha = 0.7, show.legend = FALSE) +
     facet_grid(~var)
 
