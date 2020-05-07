@@ -49,11 +49,6 @@ knitr::include_graphics("assets/pgls.png")
 
 Allows us to combine **tools, processes** and **outputs** into interactive **evidence streams** that are easily shareable, particularly through the web.
 
-```{r, echo=FALSE}
-knitr::include_url("assets/cheatsheets/rmarkdown-2.0.pdf")
-```
-
-
 
 #### A researchers perspective on Rmarkdown
 
