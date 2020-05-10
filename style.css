@@ -18,3 +18,12 @@
 h1 {font-family: "Julius Sans One";
   color: #0d3530;
 }
+
+.sched-card {
+  background-color: #e5fffc; 
+  padding: 8px 8px 8px 8px; 
+  margin: 8px 8px 8px 8px; 
+  border: 1px solid #23434f; 
+  border-radius: 20px;
+  font-size: 0.85em;
+}
