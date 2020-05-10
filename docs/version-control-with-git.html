@@ -340,9 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a><ul>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html#software-requirements"><i class="fa fa-check"></i>Software Requirements</a></li>
 </ul></li>
@@ -518,21 +516,21 @@ Figure 2: Image: xkcd CC BY-NC 2.5
 <h3>Configure git</h3>
 <p>First, <code>git</code> needs to know who you are so your commits can be attributed to you. <strong><code>usethis</code></strong> to the rescue again!</p>
 <p><strong>Check your configuration</strong></p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb560-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb561-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>()</a></code></pre></div>
 <p><strong>Set your configuration</strong></p>
 <p>Use your github username and and the email you used to sign-up on GitHub</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb561-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>(</a>
-<a class="sourceLine" id="cb561-2" data-line-number="2">    <span class="dt">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</a>
-<a class="sourceLine" id="cb561-3" data-line-number="3">    <span class="dt">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb562-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git_config</span>(</a>
+<a class="sourceLine" id="cb562-2" data-line-number="2">    <span class="dt">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</a>
+<a class="sourceLine" id="cb562-3" data-line-number="3">    <span class="dt">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</a></code></pre></div>
 </div>
 <div id="set-up-github-pat" class="section level3">
 <h3>Set up GITHUB PAT</h3>
 <p>To authenticate with GitHub, you’ll also need a Personal Authorisation Token (PAT).</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb562-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">browse_github_pat</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb563-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">browse_github_pat</span>()</a></code></pre></div>
 <p>will open up the GitHub panel to generate your PAT.</p>
 <p><img src="assets/browse_github.png" height="300px"></p>
 <p>Copy it and paste it into your <code>.Renviron</code> file as system variable <code>GITHUB_PAT</code>.</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb563-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb564-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</a></code></pre></div>
 <p>Use <code>edit_r_environ()</code> to open and edit your <code>.Renviron</code> file</p>
 <p><img src="assets/GITHUB_PAT.png" width="90%" /></p>
 </div>
@@ -545,34 +543,34 @@ Figure 2: Image: xkcd CC BY-NC 2.5
 <div class="alert alert-warning">
 <p>This will try to <strong>commit everything in the repo so far in one go!</strong> Override that behaviour by selecting a negative response when asked.</p>
 </div>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb564-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb565-1" data-line-number="1">✔ Initialising Git repo</a>
-<a class="sourceLine" id="cb565-2" data-line-number="2">✔ Adding <span class="st">&#39;.Rhistory&#39;</span>, <span class="st">&#39;.RData&#39;</span> to <span class="st">&#39;.gitignore&#39;</span></a>
-<a class="sourceLine" id="cb565-3" data-line-number="3">There are <span class="dv">10</span> uncommitted files<span class="op">:</span></a>
-<a class="sourceLine" id="cb565-4" data-line-number="4"><span class="er">*</span><span class="st"> &#39;.DS_Store&#39;</span></a>
-<a class="sourceLine" id="cb565-5" data-line-number="5"><span class="op">*</span><span class="st"> &#39;.gitignore&#39;</span></a>
-<a class="sourceLine" id="cb565-6" data-line-number="6"><span class="op">*</span><span class="st"> &#39;.Rbuildignore&#39;</span></a>
-<a class="sourceLine" id="cb565-7" data-line-number="7"><span class="op">*</span><span class="st"> &#39;analysis.R&#39;</span></a>
-<a class="sourceLine" id="cb565-8" data-line-number="8"><span class="op">*</span><span class="st"> &#39;data-raw/&#39;</span></a>
-<a class="sourceLine" id="cb565-9" data-line-number="9"><span class="op">*</span><span class="st"> &#39;data/&#39;</span></a>
-<a class="sourceLine" id="cb565-10" data-line-number="10"><span class="op">*</span><span class="st"> &#39;index.html&#39;</span></a>
-<a class="sourceLine" id="cb565-11" data-line-number="11"><span class="op">*</span><span class="st"> &#39;index.Rmd&#39;</span></a>
-<a class="sourceLine" id="cb565-12" data-line-number="12"><span class="op">*</span><span class="st"> &#39;R/&#39;</span></a>
-<a class="sourceLine" id="cb565-13" data-line-number="13"><span class="op">*</span><span class="st"> &#39;wood-survey.Rproj&#39;</span></a>
-<a class="sourceLine" id="cb565-14" data-line-number="14">Is it ok to commit them?</a>
-<a class="sourceLine" id="cb565-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb565-16" data-line-number="16"><span class="dv">1</span><span class="op">:</span><span class="st"> </span>Negative</a>
-<a class="sourceLine" id="cb565-17" data-line-number="17"><span class="dv">2</span><span class="op">:</span><span class="st"> </span>Nope</a>
-<a class="sourceLine" id="cb565-18" data-line-number="18"><span class="dv">3</span><span class="op">:</span><span class="st"> </span>I agree</a>
-<a class="sourceLine" id="cb565-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb565-20" data-line-number="20">Selection<span class="op">:</span><span class="st"> </span></a></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb565-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb566-1" data-line-number="1">✔ Initialising Git repo</a>
+<a class="sourceLine" id="cb566-2" data-line-number="2">✔ Adding <span class="st">&#39;.Rhistory&#39;</span>, <span class="st">&#39;.RData&#39;</span> to <span class="st">&#39;.gitignore&#39;</span></a>
+<a class="sourceLine" id="cb566-3" data-line-number="3">There are <span class="dv">10</span> uncommitted files<span class="op">:</span></a>
+<a class="sourceLine" id="cb566-4" data-line-number="4"><span class="er">*</span><span class="st"> &#39;.DS_Store&#39;</span></a>
+<a class="sourceLine" id="cb566-5" data-line-number="5"><span class="op">*</span><span class="st"> &#39;.gitignore&#39;</span></a>
+<a class="sourceLine" id="cb566-6" data-line-number="6"><span class="op">*</span><span class="st"> &#39;.Rbuildignore&#39;</span></a>
+<a class="sourceLine" id="cb566-7" data-line-number="7"><span class="op">*</span><span class="st"> &#39;analysis.R&#39;</span></a>
+<a class="sourceLine" id="cb566-8" data-line-number="8"><span class="op">*</span><span class="st"> &#39;data-raw/&#39;</span></a>
+<a class="sourceLine" id="cb566-9" data-line-number="9"><span class="op">*</span><span class="st"> &#39;data/&#39;</span></a>
+<a class="sourceLine" id="cb566-10" data-line-number="10"><span class="op">*</span><span class="st"> &#39;index.html&#39;</span></a>
+<a class="sourceLine" id="cb566-11" data-line-number="11"><span class="op">*</span><span class="st"> &#39;index.Rmd&#39;</span></a>
+<a class="sourceLine" id="cb566-12" data-line-number="12"><span class="op">*</span><span class="st"> &#39;R/&#39;</span></a>
+<a class="sourceLine" id="cb566-13" data-line-number="13"><span class="op">*</span><span class="st"> &#39;wood-survey.Rproj&#39;</span></a>
+<a class="sourceLine" id="cb566-14" data-line-number="14">Is it ok to commit them?</a>
+<a class="sourceLine" id="cb566-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb566-16" data-line-number="16"><span class="dv">1</span><span class="op">:</span><span class="st"> </span>Negative</a>
+<a class="sourceLine" id="cb566-17" data-line-number="17"><span class="dv">2</span><span class="op">:</span><span class="st"> </span>Nope</a>
+<a class="sourceLine" id="cb566-18" data-line-number="18"><span class="dv">3</span><span class="op">:</span><span class="st"> </span>I agree</a>
+<a class="sourceLine" id="cb566-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb566-20" data-line-number="20">Selection<span class="op">:</span><span class="st"> </span></a></code></pre></div>
 <p>Next allow Rstudio to restart when asked:</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb566-1" data-line-number="1">● A restart of RStudio is required to activate the Git pane</a>
-<a class="sourceLine" id="cb566-2" data-line-number="2">Restart now?</a>
-<a class="sourceLine" id="cb566-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb566-4" data-line-number="4"><span class="dv">1</span><span class="op">:</span><span class="st"> </span>Absolutely</a>
-<a class="sourceLine" id="cb566-5" data-line-number="5"><span class="dv">2</span><span class="op">:</span><span class="st"> </span>Absolutely not</a>
-<a class="sourceLine" id="cb566-6" data-line-number="6"><span class="dv">3</span><span class="op">:</span><span class="st"> </span>Negative</a></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" data-line-number="1">● A restart of RStudio is required to activate the Git pane</a>
+<a class="sourceLine" id="cb567-2" data-line-number="2">Restart now?</a>
+<a class="sourceLine" id="cb567-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb567-4" data-line-number="4"><span class="dv">1</span><span class="op">:</span><span class="st"> </span>Absolutely</a>
+<a class="sourceLine" id="cb567-5" data-line-number="5"><span class="dv">2</span><span class="op">:</span><span class="st"> </span>Absolutely not</a>
+<a class="sourceLine" id="cb567-6" data-line-number="6"><span class="dv">3</span><span class="op">:</span><span class="st"> </span>Negative</a></code></pre></div>
 </div>
 <div id="committing-files" class="section level3">
 <h3>Committing files</h3>
@@ -594,7 +592,7 @@ Figure 2: Image: xkcd CC BY-NC 2.5
 <h3>Create a README</h3>
 <p>Our repository also needs a <code>README</code>. We only need a simple plain markdown (<code>.md</code>) file for our README.</p>
 <p>We can create a template using <code>usethis::use_readme_md()</code></p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_readme_md</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb568-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_readme_md</span>()</a></code></pre></div>
 <div id="edit-readme" class="section level4">
 <h4>Edit README</h4>
 <p>Adapt the template, adding a short description about your project.</p>
@@ -606,16 +604,16 @@ Figure 2: Image: xkcd CC BY-NC 2.5
 <div id="create-repository-on-github" class="section level2">
 <h2>Create repository on GitHub</h2>
 <p>Now that we have set up a <code>GITHUP_PAT</code>, we can use function <code>usethis::use_github()</code> to create a GitHub repository for our project:</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb568-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb569-1" data-line-number="1">✔ Checking that current branch is <span class="st">&#39;master&#39;</span></a>
-<a class="sourceLine" id="cb569-2" data-line-number="2">● Check title and description</a>
-<a class="sourceLine" id="cb569-3" data-line-number="3">  Name<span class="op">:</span><span class="st">        </span>wood<span class="op">-</span>survey</a>
-<a class="sourceLine" id="cb569-4" data-line-number="4">  Description<span class="op">:</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb569-5" data-line-number="5">Are title and description ok?</a>
-<a class="sourceLine" id="cb569-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb569-7" data-line-number="7"><span class="dv">1</span><span class="op">:</span><span class="st"> </span>No</a>
-<a class="sourceLine" id="cb569-8" data-line-number="8"><span class="dv">2</span><span class="op">:</span><span class="st"> </span>Yes</a>
-<a class="sourceLine" id="cb569-9" data-line-number="9"><span class="dv">3</span><span class="op">:</span><span class="st"> </span>Nope</a></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb569-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_github</span>(<span class="dt">protocol =</span> <span class="st">&quot;https&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb570-1" data-line-number="1">✔ Checking that current branch is <span class="st">&#39;master&#39;</span></a>
+<a class="sourceLine" id="cb570-2" data-line-number="2">● Check title and description</a>
+<a class="sourceLine" id="cb570-3" data-line-number="3">  Name<span class="op">:</span><span class="st">        </span>wood<span class="op">-</span>survey</a>
+<a class="sourceLine" id="cb570-4" data-line-number="4">  Description<span class="op">:</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb570-5" data-line-number="5">Are title and description ok?</a>
+<a class="sourceLine" id="cb570-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb570-7" data-line-number="7"><span class="dv">1</span><span class="op">:</span><span class="st"> </span>No</a>
+<a class="sourceLine" id="cb570-8" data-line-number="8"><span class="dv">2</span><span class="op">:</span><span class="st"> </span>Yes</a>
+<a class="sourceLine" id="cb570-9" data-line-number="9"><span class="dv">3</span><span class="op">:</span><span class="st"> </span>Nope</a></code></pre></div>
 <p>Answer affirmatively for the process to continue. Once the repo is created and any commmited files pushed, the repo is launched in the browser:</p>
 <p><img src="assets/use-github.png" width="90%" /></p>
 </div>

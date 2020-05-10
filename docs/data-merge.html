@@ -340,9 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a><ul>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html#software-requirements"><i class="fa fa-check"></i>Software Requirements</a></li>
 </ul></li>
@@ -388,14 +386,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Join Basics</h2>
 <p>There are a number of joins we can perform with <code>dplyr</code>.</p>
 <p>Let’s have a look at a few of them with a simple example using some <code>dplyr</code> in-built data:</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" data-line-number="1">band_members</a></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1">band_members</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   name  band   
 ##   &lt;chr&gt; &lt;chr&gt;  
 ## 1 Mick  Stones 
 ## 2 John  Beatles
 ## 3 Paul  Beatles</code></pre>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1">band_instruments</a></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1">band_instruments</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   name  plays 
 ##   &lt;chr&gt; &lt;chr&gt; 
@@ -403,7 +401,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 Paul  bass  
 ## 3 Keith guitar</code></pre>
 <p>The only variable shared between the two tables is <code>name</code> so this is the only variable we can perform joins over. By default, any <code>*_join</code> function will try to merge on the values of any matched columns in the tables being merged.</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(band_instruments)</a></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(band_instruments)</a></code></pre></div>
 <pre><code>## Joining, by = &quot;name&quot;</code></pre>
 <pre><code>## # A tibble: 2 x 3
 ##   name  band    plays 
@@ -412,7 +410,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 Paul  Beatles bass</code></pre>
 <p><code>inner_join</code> has merged all three unique columns across the two tables into a single tibble.
 It has only kept the rows in which <code>name</code> values had a match in both tables. In this case only data about <code>John</code> and <code>Paul</code> was contained in both tables.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(band_instruments)</a></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(band_instruments)</a></code></pre></div>
 <pre><code>## Joining, by = &quot;name&quot;</code></pre>
 <pre><code>## # A tibble: 3 x 3
 ##   name  band    plays 
@@ -421,7 +419,7 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 ## 2 John  Beatles guitar
 ## 3 Paul  Beatles bass</code></pre>
 <p><code>left_join</code> joins on the <code>names</code> in the left hand table and appends any rows from the right hand table in which <code>name</code> match. In this case, there is no data for <code>Keith</code> in <code>band_members</code> so he is ignored completely. There is also no match for <code>Mick</code> in <code>band_instruments</code> so <code>NA</code> is returned for <code>plays</code> instead.</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(band_instruments)</a></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(band_instruments)</a></code></pre></div>
 <pre><code>## Joining, by = &quot;name&quot;</code></pre>
 <pre><code>## # A tibble: 3 x 3
 ##   name  band    plays 
@@ -430,7 +428,7 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 ## 2 Paul  Beatles bass  
 ## 3 Keith &lt;NA&gt;    guitar</code></pre>
 <p><code>right_join</code> on the other hand joins on the <code>name</code> in the right hand table. In this case, <code>Mick</code> is dropped completely <code>Keith</code> gets <code>NA</code> for band.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(band_instruments)</a></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1">band_members <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(band_instruments)</a></code></pre></div>
 <pre><code>## Joining, by = &quot;name&quot;</code></pre>
 <pre><code>## # A tibble: 4 x 3
 ##   name  band    plays 
@@ -446,9 +444,9 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 <div id="join-vst_mappingandtagging.csv-data" class="section level3">
 <h3>Join <code>vst_mappingandtagging.csv</code> data</h3>
 <p>Let’s start by merging data from <code>vst_mappingandtagging.csv</code>. Let’s read the data in.</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" data-line-number="1">maptag &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" data-line-number="1">maptag &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>))</a></code></pre></div>
 <p>This data set contains taxonomic and within-plot location metadata on individuals collected during mapping and tagging. There is one row per individual in the data set.</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" data-line-number="1"><span class="kw">names</span>(maptag)</a></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1"><span class="kw">names</span>(maptag)</a></code></pre></div>
 <pre><code>## [1] &quot;uid&quot;            &quot;eventID&quot;        &quot;pointID&quot;        &quot;stemDistance&quot;  
 ## [5] &quot;stemAzimuth&quot;    &quot;individualID&quot;   &quot;taxonID&quot;        &quot;scientificName&quot;
 ## [9] &quot;taxonRank&quot;</code></pre>
@@ -465,8 +463,8 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 <div id="default-left_join" class="section level4">
 <h4>Default <code>left_join</code></h4>
 <p>Because we want to match the rest of the tables to our individual data, we use <code>left_join()</code> and supply <code>individual</code> as the first argument and <code>maptag</code> as the second.</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb329-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) </a></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb330-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) </a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;uid&quot;, &quot;eventID&quot;, &quot;individualID&quot;)</code></pre>
 <pre><code>## # A tibble: 14,961 x 18
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
@@ -489,9 +487,9 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 <p>Looks successful right? How do we really know nothing has gone wrong though? Remember, to successfully merge the tables, the data in the columns the tables are being joined on need to have corresponding values across all columns to be linked successfully, otherwise it will return <code>NA</code>s. So, although our code ran successfully, it may well not have found any matching rows in <code>maptag</code> to merge into <code>individual</code>.</p>
 <p>To check whether things have worked, we can start with inspecting the output for the columns of interest, in this case the <code>maptag</code> columns we are trying to join into <code>individual</code>.</p>
 <p>When working interactively and testing out pipes, you can pipe objects into <code>View()</code> for quick inspection. If you provide a character string as an argument, it is used as a name for the data view tab it launches</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb332-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb332-3" data-line-number="3"><span class="st">  </span><span class="kw">View</span>(<span class="st">&quot;default&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb333-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb333-3" data-line-number="3"><span class="st">  </span><span class="kw">View</span>(<span class="st">&quot;default&quot;</span>)</a></code></pre></div>
 <p><img src="assets/view_default_join.png" width="688" /></p>
 <p>Clearly this has not worked! We need to start digging into why but we don’t want to have to keep manually checking whether it worked or not. Enter <strong>DEFENSIVE PROGRAMMING</strong>.</p>
 </div>
@@ -500,9 +498,9 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 <p>As I mentioned in the Data Management Basics slides, <a href="https://github.com/ropensci/assertr"><code>assertr</code></a> is a useful package for including validation checks in our data pipelines.</p>
 <p>In our case, we can use <code>assertr</code> function <code>assert</code> to check that certain columns of interest (<code>stemDistance</code>, <code>stemAzimuth</code>, <code>pointID</code>) are joined successfully (i.e. there re no <code>NA</code> values). Note that this only works because I know for a fact that there is data avaliable for all individuals.</p>
 <p>There may be situations in which <code>NA</code>s are valid missing data, in which case this would not be an appropriate test.</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb333-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb333-3" data-line-number="3"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na,  stemDistance, stemAzimuth, pointID)</a></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb334-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb334-3" data-line-number="3"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na,  stemDistance, stemAzimuth, pointID)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;uid&quot;, &quot;eventID&quot;, &quot;individualID&quot;)</code></pre>
 <pre><code>## Column &#39;stemDistance&#39; violates assertion &#39;not_na&#39; 14961 times
 ##     verb redux_fn predicate       column index value
@@ -539,10 +537,10 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 <h4>Debugging hidden mismatches:</h4>
 <p>I’ve shown the most minimal implementation in which <code>dplyr</code> does a lot of the guessing for us and tries to join on all matched columns. But often, that can generate table mismatches</p>
 <p>We know that the only column we are interested in matching on is <code>individualID</code>. We want to get the mapping associated with each individual, regardless of when the mapping was collected. We can be specific about which variables we want to join on through argument <code>by</code>.</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb337-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, </a>
-<a class="sourceLine" id="cb337-3" data-line-number="3">                   <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb337-4" data-line-number="4"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na, stemDistance, stemAzimuth, pointID)</a></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb338-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, </a>
+<a class="sourceLine" id="cb338-3" data-line-number="3">                   <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb338-4" data-line-number="4"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na, stemDistance, stemAzimuth, pointID)</a></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 20
 ##    uid.x namedLocation date       eventID.x domainID siteID plotID individualID
 ##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -565,12 +563,12 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 <p>That’s because those columns are also present in both our tables but we are not explicitly joining them. They are retained and each suffixed with <code>.x</code> &amp; <code>.y</code> by default, to make them unique.</p>
 <p>So, what about these duplicate columns. Do we need them?</p>
 <p>With respect to <code>eventID</code>, we’re not really interested in the mapping <code>eventID</code>s so we can just drop that column from <code>maptag</code>.</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">maptag &lt;-<span class="st"> </span><span class="kw">select</span>(maptag, <span class="op">-</span>eventID)</a>
-<a class="sourceLine" id="cb339-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb339-3" data-line-number="3">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb339-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, </a>
-<a class="sourceLine" id="cb339-5" data-line-number="5">                   <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb339-6" data-line-number="6"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na, stemDistance, stemAzimuth, pointID)</a></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1">maptag &lt;-<span class="st"> </span><span class="kw">select</span>(maptag, <span class="op">-</span>eventID)</a>
+<a class="sourceLine" id="cb340-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb340-3" data-line-number="3">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb340-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, </a>
+<a class="sourceLine" id="cb340-5" data-line-number="5">                   <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb340-6" data-line-number="6"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na, stemDistance, stemAzimuth, pointID)</a></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 19
 ##    uid.x namedLocation date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -590,11 +588,11 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 ## #   scientificName &lt;chr&gt;, taxonRank &lt;chr&gt;</code></pre>
 <p>On the other hand, <code>&quot;uid</code> contains unique identifiers for each observation in their respective table and could be useful metadata to store, enabling us to trace the provenance of individual values to the original data. So rather than remove them, let’s retain both <code>uid</code>, one for each table.</p>
 <p>We can give more informative suffixes using argument <code>suffix</code>. In our case, I want the <code>individual</code> column to stay as <code>uid</code> and the <code>maptag</code> column to get the suffix <code>_map</code>.</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb341-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, </a>
-<a class="sourceLine" id="cb341-3" data-line-number="3">                   <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>,</a>
-<a class="sourceLine" id="cb341-4" data-line-number="4">                   <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb341-5" data-line-number="5"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na, stemDistance, stemAzimuth, pointID)</a></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb342-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, </a>
+<a class="sourceLine" id="cb342-3" data-line-number="3">                   <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>,</a>
+<a class="sourceLine" id="cb342-4" data-line-number="4">                   <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb342-5" data-line-number="5"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na, stemDistance, stemAzimuth, pointID)</a></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 19
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -617,8 +615,8 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 <div id="join-vst_perplotperyear.csv" class="section level4">
 <h4>Join <code>vst_perplotperyear.csv</code></h4>
 <p>Now let’s carry on and join the perplot data. First let’s read it in.</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" data-line-number="1">perplot &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_perplotperyear.csv&quot;</span>))</a>
-<a class="sourceLine" id="cb343-2" data-line-number="2"><span class="kw">names</span>(perplot)</a></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" data-line-number="1">perplot &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;vst_perplotperyear.csv&quot;</span>))</a>
+<a class="sourceLine" id="cb344-2" data-line-number="2"><span class="kw">names</span>(perplot)</a></code></pre></div>
 <pre><code>##  [1] &quot;uid&quot;                  &quot;plotID&quot;               &quot;plotType&quot;            
 ##  [4] &quot;nlcdClass&quot;            &quot;decimalLatitude&quot;      &quot;decimalLongitude&quot;    
 ##  [7] &quot;geodeticDatum&quot;        &quot;easting&quot;              &quot;northing&quot;            
@@ -626,16 +624,16 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 ## [13] &quot;eventID&quot;</code></pre>
 <p>Similarly to <code>maptag</code>, we want to exclude <code>eventID</code> and suffix the <code>uid</code> column. This time, however, we will be joining by <code>plotID</code></p>
 <p>Let’s also move our validation test to the end and add the new columns we want to check to it, i.e. <code>stemDistance</code>, <code>stemAzimuth</code>, <code>pointID</code>.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1">perplot &lt;-<span class="st"> </span>perplot <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>eventID)</a>
-<a class="sourceLine" id="cb345-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb345-3" data-line-number="3">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb345-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, </a>
-<a class="sourceLine" id="cb345-5" data-line-number="5">                   <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>,</a>
-<a class="sourceLine" id="cb345-6" data-line-number="6">                   <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb345-7" data-line-number="7"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(perplot, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;plotID&quot;</span>), </a>
-<a class="sourceLine" id="cb345-8" data-line-number="8">                   <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb345-9" data-line-number="9"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na,  decimalLatitude,</a>
-<a class="sourceLine" id="cb345-10" data-line-number="10">                  decimalLongitude, plotID, stemDistance, stemAzimuth, pointID)</a></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1">perplot &lt;-<span class="st"> </span>perplot <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>eventID)</a>
+<a class="sourceLine" id="cb346-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb346-3" data-line-number="3">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb346-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, </a>
+<a class="sourceLine" id="cb346-5" data-line-number="5">                   <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>,</a>
+<a class="sourceLine" id="cb346-6" data-line-number="6">                   <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb346-7" data-line-number="7"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(perplot, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;plotID&quot;</span>), </a>
+<a class="sourceLine" id="cb346-8" data-line-number="8">                   <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb346-9" data-line-number="9"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na,  decimalLatitude,</a>
+<a class="sourceLine" id="cb346-10" data-line-number="10">                  decimalLongitude, plotID, stemDistance, stemAzimuth, pointID)</a></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 30
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -659,14 +657,14 @@ It has only kept the rows in which <code>name</code> values had a match in both 
 <p>Awesome!! It’s worked!</p>
 <p>Now that we are happy with our data we can use a new operator, the <strong>assignment pipe (<code>%&lt;&gt;%</code>)</strong>.</p>
 <p>This allows us to both pipe an object forward into an expression and also update it with the resulting value.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1">individual <span class="op">%&lt;&gt;%</span></a>
-<a class="sourceLine" id="cb347-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, </a>
-<a class="sourceLine" id="cb347-3" data-line-number="3">                   <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>,</a>
-<a class="sourceLine" id="cb347-4" data-line-number="4">                   <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb347-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(perplot, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;plotID&quot;</span>), </a>
-<a class="sourceLine" id="cb347-6" data-line-number="6">                   <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb347-7" data-line-number="7"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na,  decimalLatitude,</a>
-<a class="sourceLine" id="cb347-8" data-line-number="8">                  decimalLongitude, plotID, stemDistance, stemAzimuth, pointID)</a></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1">individual <span class="op">%&lt;&gt;%</span></a>
+<a class="sourceLine" id="cb348-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(maptag, </a>
+<a class="sourceLine" id="cb348-3" data-line-number="3">                   <span class="dt">by =</span> <span class="st">&quot;individualID&quot;</span>,</a>
+<a class="sourceLine" id="cb348-4" data-line-number="4">                   <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb348-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(perplot, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;plotID&quot;</span>), </a>
+<a class="sourceLine" id="cb348-6" data-line-number="6">                   <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb348-7" data-line-number="7"><span class="st">  </span>assertr<span class="op">::</span><span class="kw">assert</span>(assertr<span class="op">::</span>not_na,  decimalLatitude,</a>
+<a class="sourceLine" id="cb348-8" data-line-number="8">                  decimalLongitude, plotID, stemDistance, stemAzimuth, pointID)</a></code></pre></div>
 <p>We can now move on to geolocate our individuals!</p>
 
 </div>

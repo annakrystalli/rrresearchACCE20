@@ -340,9 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a><ul>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html#software-requirements"><i class="fa fa-check"></i>Software Requirements</a></li>
 </ul></li>
@@ -538,17 +536,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </iframe>
 </div>
 <p>Let’s load the library and create an empty plot:</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb431-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb431-3" data-line-number="3"><span class="kw">ggplot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb432-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb432-3" data-line-number="3"><span class="kw">ggplot</span>()</a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-263-1.png" width="672" /></p>
 </div>
 <div id="specifying-the-data" class="section level4">
 <h4>Specifying the data</h4>
 <p>Next thing we need to do is specify the data.</p>
 <p>The first argument to <code>ggplot()</code> is the data we want to use for plotting, usually a data.frame or tibble. We can pipe that in to <code>ggplot()</code>.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb432-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb433-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>()</a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-264-1.png" width="672" /></p>
 </div>
 <div id="mapping-to-aesthetics-with-aes" class="section level4">
@@ -562,8 +560,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mapping-variables-to-axes-x-and-y." class="section level5">
 <h5>Mapping variables to axes <code>x</code> and <code>y</code>.</h5>
 <p>In our case, we want to map variable <code>mpg</code> to aesthetic <code>x</code> (the x axis) and variable <code>hp</code> to aesthetic <code>y</code> (the y axis).</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb433-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp))</a></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb434-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp))</a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-266-1.png" width="672" /></p>
 </div>
 </div>
@@ -590,9 +588,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="plotting-a-scatterplot" class="section level5">
 <h5>Plotting a scatterplot</h5>
 <p>To visualise the relationship between the data points in our two variables, and given both are numeric, we can plot them as points on a scatterplot using <code>geom_point()</code>.</p>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb434-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb434-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb435-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb435-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-268-1.png" width="672" /></p>
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_point.html" width="70%" height="400px">
 </iframe>
@@ -608,16 +606,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>size</code>: mapping to the size of points.</li>
 </ul>
 <p>Let’s now map the number of cylinders <code>cyl</code> to the <code>colour</code> of points.</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb435-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">colour =</span> cyl)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb435-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb436-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">colour =</span> cyl)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb436-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-270-1.png" width="672" /></p>
 <p>Now each point is coloured according to the value of <code>cyl</code>.</p>
 <p>Because <code>cyl</code> is numeric, the default behaviour of R is to present it on a continuous scale, hence the colour gradient legend.</p>
 <p>If we want to present <code>cyl</code> as a categorical variable, we can override that behaviour by turning it into a factor using <code>factor()</code></p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb436-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">colour =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb436-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>() </a></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb437-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">colour =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb437-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>() </a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-271-1.png" width="672" /></p>
 </div>
 <div id="adding-a-plot-theme" class="section level4">
@@ -626,10 +624,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://ggplot2.tidyverse.org/reference/theme.html" width="70%" height="400px">
 </iframe>
 <p><code>ggplot2</code> also has a number of in built themes. Let’s just use one of those.</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb437-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">fill =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb437-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb437-4" data-line-number="4"><span class="st">    </span><span class="kw">theme_minimal</span>() </a></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" data-line-number="1">mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb438-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> hp, <span class="dt">fill =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb438-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb438-4" data-line-number="4"><span class="st">    </span><span class="kw">theme_minimal</span>() </a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-273-1.png" width="672" /></p>
 </div>
 </div>
@@ -641,10 +639,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s also say that, from previous knowledge, we expect that the relationship may vary according to the <code>growth_form</code></p>
 <p>So lets use data visualisation to explore the properties and relationships between the three variables.</p>
 <p>Start by loading the <code>ggplot2</code> as well as package <code>magrittr</code> so we have access to the pipe. Let’s read in the data and also narrow it down to our variables of interest using <code>dplyr::select()</code></p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb438-2" data-line-number="2"><span class="kw">library</span>(magrittr)</a>
-<a class="sourceLine" id="cb438-3" data-line-number="3">individual &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb438-4" data-line-number="4"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">select</span>(stem_diameter, height, growth_form)</a></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb439-2" data-line-number="2"><span class="kw">library</span>(magrittr)</a>
+<a class="sourceLine" id="cb439-3" data-line-number="3">individual &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb439-4" data-line-number="4"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">select</span>(stem_diameter, height, growth_form)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   .default = col_character(),
@@ -670,7 +668,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exploratory-data-analysis" class="section level3">
 <h3>Exploratory Data Analysis</h3>
 <p>Before we start exploring the relationship between variables, it’s important to understand the statistical properties of the underlying data. Statistical summaries such as the output of <code>summary()</code> are a good starting point.</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" data-line-number="1"><span class="kw">summary</span>(individual)</a></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb442-1" data-line-number="1"><span class="kw">summary</span>(individual)</a></code></pre></div>
 <pre><code>##  stem_diameter        height       growth_form       
 ##  Min.   :  1.00   Min.   :  0.30   Length:14961      
 ##  1st Qu.: 11.60   1st Qu.:  5.30   Class :character  
@@ -689,16 +687,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Lets start with <code>stem_diameter</code> which is a numeric variable. As such we can use <code>geom_density</code> to plot the distribution of the data.</p>
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_density.html" width="70%" height="400px">
 </iframe>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb443-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> stem_diameter)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb443-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb444-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb444-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> stem_diameter)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb444-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-277-1.png" width="672" /></p>
 <p>The distribution across all our data looks quite skewed towards lower values and a lomg tail of larger values and even shows a small dip in a certain range of <code>stem_diameter</code>.</p>
 <p>Many statistical tests assume normality of the data and a common tranformation to such skewed numeric data might be to log them. <code>ggplot</code> allows us to perform such tranformations during plotting and prints it as part of the variable axes label.</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb445-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb445-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb446-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb446-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb446-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-278-1.png" width="672" /></p>
 <p>Still rather wonky and may well violate assumptions of statistical tests down the line but it is slightly better than before so just for demonstration purposes, let’s carry own presenting our data on a log scale.</p>
@@ -707,17 +705,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>One thing that can make such plots visually more appealing is to fill in the area under the distribution curve.</p>
 <p>This also gives us the opportunity to dig into what exactly the aesthetic mapping in <code>aes()</code> is doing.</p>
 <p>Let’s say we wanted to fill in the area with the colour <code>grey</code>. Our first instinct might me to use <code>aes()</code> in <code>ggplot()</code> and map aesthetic <code>fill</code> to the name of the colour <code>&quot;grey&quot;</code>.</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb447-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb447-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb448-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb448-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-279-1.png" width="672" /></p>
 <p>But this has unexpected results! This happens because we are supplying the colour name within <code>aes()</code>. <code>aes()</code> is for mapping variables to aesthetics and expects a variable name in our data or a vector of values.</p>
 <p>Here we are giving it a single character value which it converts to a factor. It then uses it’s default function for creating categorical colour scales to assign the first colour in that scale (red) to our single factor level <code>&quot;grey&quot;</code>. The important point here is that R is not interpretting <code>&quot;grey&quot;</code> as a colour, but as a categorical variable, as it did for <code>factor(cyl)</code>.</p>
 <p>To specify explicitly the fill colour of our density geom, we instead supply it as an <strong>argument to our <code>geom_density()</code> function, outside of <code>aes()</code></strong>. Let’s change both the <code>colour</code> of the line and <code>fill</code> to <code>&quot;grey&quot;</code>.</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb449-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb449-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb450-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb450-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb450-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-280-1.png" width="672" /></p>
 </div>
@@ -725,15 +723,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="distribution-of-height" class="section level5">
 <h5>Distribution of <code>height</code></h5>
 <p>We can similarly create a density plot for <code>height</code></p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb451-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> height)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb451-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb452-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb452-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> height)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb452-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1711 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-281-1.png" width="672" /></p>
 <p>It’s also a bit skewed so lets go ahead and work with <code>log()</code> values again.</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb453-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb453-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb454-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb454-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb454-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1711 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-282-1.png" width="672" /></p>
 </div>
@@ -744,36 +742,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_bar.html" width="70%" height="400px">
 </iframe>
 <p>Let’s also map colour aesthetics to growth form.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb455-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb455-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" data-line-number="1">individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb456-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb456-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>()</a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
 <p>We can see that there are very few entries for <code>liana</code> and also a whole bunch of <code>NA</code>s in <code>growth_form</code>. So let’s remove any such rows from our data by using <code>dplyr::filter()</code>. Let’s assign this new data to a new <code>analysis_df</code> and work with that from now on.</p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" data-line-number="1">analysis_df &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb456-2" data-line-number="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(growth_form), growth_form <span class="op">!=</span><span class="st"> &quot;liana&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" data-line-number="1">analysis_df &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb457-2" data-line-number="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(growth_form), growth_form <span class="op">!=</span><span class="st"> &quot;liana&quot;</span>) </a></code></pre></div>
 <p>Let’s also order our bars in order of ascending counts. The simplest way to do this is to convert <code>growth_form</code> to a factor and specify the ordering of the factor levels.</p>
 <p>To do that let’s create a vector of <code>growth_form</code> unique values, ordered according to their counts in the raw data.</p>
 <p>We can do this by using <code>table</code> to get the counts, <code>order</code> to order them in ascending order and <code>names</code> to extract the names!</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" data-line-number="1">gf_levels &lt;-<span class="st"> </span><span class="kw">table</span>(analysis_df<span class="op">$</span>growth_form) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb457-2" data-line-number="2"><span class="st">    </span><span class="kw">sort</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb457-3" data-line-number="3"><span class="st">    </span><span class="kw">names</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" data-line-number="1">gf_levels &lt;-<span class="st"> </span><span class="kw">table</span>(analysis_df<span class="op">$</span>growth_form) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb458-2" data-line-number="2"><span class="st">    </span><span class="kw">sort</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb458-3" data-line-number="3"><span class="st">    </span><span class="kw">names</span>()</a></code></pre></div>
 <p>We can then specify the level order when we mutate <code>growth_form</code> to a factor using <code>gf_levels</code> through argument <code>levels</code> in <code>factor</code>.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" data-line-number="1">analysis_df <span class="op">%&lt;&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb458-2" data-line-number="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">growth_form =</span> <span class="kw">factor</span>(growth_form, </a>
-<a class="sourceLine" id="cb458-3" data-line-number="3">                                       <span class="dt">levels =</span> gf_levels))</a></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" data-line-number="1">analysis_df <span class="op">%&lt;&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb459-2" data-line-number="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">growth_form =</span> <span class="kw">factor</span>(growth_form, </a>
+<a class="sourceLine" id="cb459-3" data-line-number="3">                                       <span class="dt">levels =</span> gf_levels))</a></code></pre></div>
 <p><strong>Let’s move those data preparation steps to <code>analysis.R</code></strong></p>
 <p>Let’s have a look at our barplot now:</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb459-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb459-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb460-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb460-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb460-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>()</a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
 <p>The order of the levels in <code>growth_form</code> now dictates the order in which the bars are plotted!</p>
 <p>Finally, let’s just add a few extra touches to make the plot even more visually clear.</p>
 <p>Let’s flip the axis by mapping <code>growth_form</code> to <code>y</code>, that prevents <code>growth_form</code> axes labels from overlapping.</p>
 <p>Let’s also remove the superfluous legend and reduce the opacity of our bars so we can see the scales through them</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb460-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb460-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb460-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb461-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb461-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
 <p>That’s better.</p>
 <p><strong>Let’s keep this plot and move it to our analysis script as fig 1</strong>.</p>
@@ -787,34 +785,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The grammar of graphics allows to easily plot the same properties of interest across groups dictated by other aesthetics.</p>
 <p>Let’s explore what this means by focusing on the distribution of <code>stem_diameter</code> across the <code>growth_form</code> categories in our <code>sketchbook.R</code>.</p>
 <p>We can plot out a separate density curve for each growth form by mapping categorical variable <code>grow_form</code> to <code>aes()</code> argument <code>group</code>.</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb461-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">group =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb461-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb462-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb462-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">group =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb462-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
 <p>Now we have separate distribution curves for each <code>growth_form</code>!</p>
 <p>This first pass is not however visually easy to interpret. Let’s assign <code>growth_form</code> to some additional aesthetics to make the visual encoding clearer.</p>
 <p>We can in fact get rid of the <code>group</code> argument and use <code>fill</code> and <code>colour</code> instead. The grouping behaviour is equivalent.</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb463-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb463-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb464-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb464-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb464-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
 <p>To make things even clearer we can supply additional argument to <code>geom_density</code>.</p>
 <p>Let’s decrease the opacity of each density geom and trim it to the ranges of values across each <code>growth_form</code>.</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb465-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb465-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb466-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb466-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-292-1.png" width="672" /></p>
 <p>That’s a lot clearer, and now we can see that overall the distribution of <code>log(stem_diameter)</code> across growth forms follows a broably bimodal distribution. However, the distributions across each growth formal appear more normal.</p>
 <p>To allow us to focus more on the individual distributions, we can use <code>facet_wrap()</code> and formula <code>~growth_form</code> to create individual panels for each growth form on a grid:</p>
 <iframe src="https://ggplot2.tidyverse.org/reference/facet_wrap.html" width="70%" height="400px">
 </iframe>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb467-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb467-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb467-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>growth_form)</a></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb468-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb468-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb468-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb468-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>growth_form)</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-294-1.png" width="672" /></p>
 <div id="encoding-multiple-distribution-with-violin-plots" class="section level5">
@@ -823,9 +821,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_violin.html" width="70%" height="400px">
 </iframe>
 <p>Let’s straight away add some colour aesthetics also.</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb469-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb469-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb469-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb470-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb470-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb470-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T)</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_ydensity).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-296-1.png" width="672" /></p>
 </div>
@@ -835,10 +833,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" width="70%" height="400px">
 </iframe>
 <p>Let’s also suppress the legend for the box plot layer and reduce the opacity.</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb471-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb471-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T) <span class="op">+</span></a>
-<a class="sourceLine" id="cb471-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb472-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb472-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb472-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T) <span class="op">+</span></a>
+<a class="sourceLine" id="cb472-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_ydensity).</code></pre>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-298-1.png" width="672" /></p>
@@ -855,10 +853,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://tidyr.tidyverse.org/reference/pivot_longer.html" width="70%" height="400px">
 </iframe>
 <p><code>pivot_longer()</code> “lengthens” data, increasing the number of rows and decreasing the number of columns. We use it to stack the values of <code>stem_diameter</code> and <code>height</code> into a column called <code>value</code> and store the original column names which define the variable each value relates to in a new column <code>var</code>. The values of <code>growth_form</code> are duplicated and stacked.</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb474-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb474-2" data-line-number="2"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
-<a class="sourceLine" id="cb474-3" data-line-number="3">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
-<a class="sourceLine" id="cb474-4" data-line-number="4">                        <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb475-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb475-2" data-line-number="2"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
+<a class="sourceLine" id="cb475-3" data-line-number="3">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
+<a class="sourceLine" id="cb475-4" data-line-number="4">                        <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 27,776 x 3
 ##    growth_form      var           value
 ##    &lt;fct&gt;            &lt;chr&gt;         &lt;dbl&gt;
@@ -879,14 +877,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="figure-2-data-characteristics-of-our-raw-data" class="section level4">
 <h4>Figure 2: Data characteristics of our raw data</h4>
 <p>Let’s add the pivot as a step in our plotting pipe</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb476-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb476-2" data-line-number="2"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
-<a class="sourceLine" id="cb476-3" data-line-number="3">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
-<a class="sourceLine" id="cb476-4" data-line-number="4">                        <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb476-5" data-line-number="5"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(value), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-6" data-line-number="6"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T) <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-7" data-line-number="7"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-8" data-line-number="8"><span class="st">    </span><span class="kw">facet_grid</span>(<span class="op">~</span>var)</a></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb477-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb477-2" data-line-number="2"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
+<a class="sourceLine" id="cb477-3" data-line-number="3">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
+<a class="sourceLine" id="cb477-4" data-line-number="4">                        <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb477-5" data-line-number="5"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(value), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb477-6" data-line-number="6"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T) <span class="op">+</span></a>
+<a class="sourceLine" id="cb477-7" data-line-number="7"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb477-8" data-line-number="8"><span class="st">    </span><span class="kw">facet_grid</span>(<span class="op">~</span>var)</a></code></pre></div>
 <pre><code>## Warning: Removed 2388 rows containing non-finite values (stat_ydensity).</code></pre>
 <pre><code>## Warning: Removed 2388 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-301-1.png" width="672" /></p>
@@ -904,8 +902,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fitting-a-linear-model" class="section level5">
 <h5>Fitting a linear model</h5>
 <p>We specify our model through a formula <code>log(stem_diameter) ~ log(height)</code>. This translates to log stem diameter as a function of height where <code>stem_diameter</code> is the response variable and <code>height</code> the predictor.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" data-line-number="1">lm_overall &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height), analysis_df)</a>
-<a class="sourceLine" id="cb479-2" data-line-number="2">lm_overall</a></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb480-1" data-line-number="1">lm_overall &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height), analysis_df)</a>
+<a class="sourceLine" id="cb480-2" data-line-number="2">lm_overall</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(stem_diameter) ~ log(height), data = analysis_df)
@@ -915,16 +913,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##      0.5609       0.9439</code></pre>
 <p>By default <code>lm</code> prints a rather terse summary of the model.</p>
 <p>An easy way to print nice and tidy outputs of most models in R is by using functions from package <code>broom</code>.</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" data-line-number="1">lm_overall <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb481-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb482-1" data-line-number="1">lm_overall <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb482-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 11
 ##   r.squared adj.r.squared sigma statistic p.value    df logLik    AIC    BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     0.679         0.679 0.487    24613.       0     2 -8132. 16271. 16293.
 ## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
 <p>Glance accepts a model object and returns a tibble with exactly one row of model summaries. The summaries are typically goodness of fit measures, p-values for hypothesis tests on residuals, or model convergence information.</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb483-1" data-line-number="1">lm_overall <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb483-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb484-1" data-line-number="1">lm_overall <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb484-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 5
 ##   term        estimate std.error statistic   p.value
 ##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
@@ -936,10 +934,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h5>Visualising our overall model</h5>
 <p>To plot the relationship that the <code>lm</code> has fit, we plot a scatterplot using <code>geom_point()</code> and map <code>log(height)</code> to <code>x</code> (the predictor) and <code>log(stem_diameter)</code> to <code>y</code> (the response).</p>
 <p>We can also add a line to our plot using <code>geom_smooth()</code>. This plots a smooth over the data by default but can use method <code>lm</code> to plot lines using a linear model.</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb485-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb485-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb486-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb486-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb486-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb486-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing missing values (geom_point).</code></pre>
@@ -950,18 +948,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4>Including an interaction with <code>growth_form</code></h4>
 <p>Inspecting the plot we can clearly see sub groups in our data. We already know that both our variables have very different distributions across <code>growth_form</code>. So let’s see if our model improves if we include <code>growth_form</code> in our model specification.</p>
 <p>Growth form is a categorical variable so when we include it in our regression, <code>lm</code> will fit separate coefficients for our model at every level of the factor. To include it, we add it to the predictor side of our formula. If we include it as an additive effect through <code>+</code>, only the intercept will vary across factor levels. If we fit it as an interaction using <code>*</code> both the slope and intercept are allowed to vary.</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb489-1" data-line-number="1">lm_growth &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height) <span class="op">*</span><span class="st"> </span>growth_form, analysis_df) </a></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" data-line-number="1">lm_growth &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height) <span class="op">*</span><span class="st"> </span>growth_form, analysis_df) </a></code></pre></div>
 <p>We can again examine our model using <code>broom</code></p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" data-line-number="1">lm_growth <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb490-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb491-1" data-line-number="1">lm_growth <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb491-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 11
 ##   r.squared adj.r.squared sigma statistic p.value    df logLik    AIC    BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     0.799         0.799 0.386     4195.       0    12 -5418. 10862. 10957.
 ## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
 <p>We can see that model coverage as indicated by <code>r.squared</code> is now higher and the <code>p.value</code> is still significant</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" data-line-number="1">lm_growth <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb492-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb493-1" data-line-number="1">lm_growth <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb493-2" data-line-number="2"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 5
 ##    term                                    estimate std.error statistic  p.value
 ##    &lt;chr&gt;                                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
@@ -985,10 +983,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="visualising-our-model" class="section level3">
 <h3>Visualising our model</h3>
 <p>To include the interaction with <code>growth_form</code> we apply a grouping to our scatterplot through aesthetic <code>colour</code>.</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb494-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb494-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb494-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb494-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" data-line-number="1">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb495-2" data-line-number="2"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb495-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb495-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </a></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing missing values (geom_point).</code></pre>
@@ -998,66 +996,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Lets add all our models and plots to our <code>analysis.R</code> script.</strong></p>
 <p><strong>Lets also add comment sections with machine readable names to our <code>analysis.R</code> script.</strong></p>
 <p><strong>Your <code>analysis.R</code> script should now look like this.</strong></p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb498-1" data-line-number="1"><span class="co">#  analysis-setup  </span></a>
-<a class="sourceLine" id="cb498-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb498-3" data-line-number="3"><span class="kw">library</span>(magrittr)</a>
-<a class="sourceLine" id="cb498-4" data-line-number="4">individual &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">select</span>(stem_diameter, height, growth_form)</a>
-<a class="sourceLine" id="cb498-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb498-7" data-line-number="7"><span class="co">#  analysis-filter-data  </span></a>
-<a class="sourceLine" id="cb498-8" data-line-number="8">analysis_df &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-9" data-line-number="9"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(growth_form), </a>
-<a class="sourceLine" id="cb498-10" data-line-number="10">                  growth_form <span class="op">!=</span><span class="st"> &quot;liana&quot;</span>) </a>
-<a class="sourceLine" id="cb498-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb498-12" data-line-number="12"><span class="co">#  analysis-set-factor-levels  </span></a>
-<a class="sourceLine" id="cb498-13" data-line-number="13">gf_levels &lt;-<span class="st"> </span><span class="kw">table</span>(analysis_df<span class="op">$</span>growth_form) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb498-14" data-line-number="14"><span class="st">    </span><span class="kw">sort</span>(<span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb498-15" data-line-number="15"><span class="st">    </span><span class="kw">names</span>()</a>
-<a class="sourceLine" id="cb498-16" data-line-number="16">analysis_df <span class="op">%&lt;&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb498-17" data-line-number="17"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">growth_form =</span> <span class="kw">factor</span>(growth_form, </a>
-<a class="sourceLine" id="cb498-18" data-line-number="18">                                       <span class="dt">levels =</span> gf_levels))</a>
-<a class="sourceLine" id="cb498-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb498-20" data-line-number="20"><span class="co">#  analysis-fig1-barplot </span></a>
-<a class="sourceLine" id="cb498-21" data-line-number="21">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-22" data-line-number="22"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, </a>
-<a class="sourceLine" id="cb498-23" data-line-number="23">           <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb498-24" data-line-number="24"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb498-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb498-26" data-line-number="26"><span class="co">#  analysis-fg2-violinplots </span></a>
-<a class="sourceLine" id="cb498-27" data-line-number="27">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-28" data-line-number="28"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
-<a class="sourceLine" id="cb498-29" data-line-number="29">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
-<a class="sourceLine" id="cb498-30" data-line-number="30">                        <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-31" data-line-number="31"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(value), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb498-32" data-line-number="32"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb498-33" data-line-number="33"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb498-34" data-line-number="34"><span class="st">    </span><span class="kw">facet_grid</span>(<span class="op">~</span>var)</a>
-<a class="sourceLine" id="cb498-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb498-36" data-line-number="36"><span class="co">#  analysis-lm-overall</span></a>
-<a class="sourceLine" id="cb498-37" data-line-number="37">lm_overall &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height), analysis_df) </a>
-<a class="sourceLine" id="cb498-38" data-line-number="38">lm_overall <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-39" data-line-number="39"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a>
-<a class="sourceLine" id="cb498-40" data-line-number="40">lm_overall <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-41" data-line-number="41"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a>
-<a class="sourceLine" id="cb498-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb498-43" data-line-number="43"><span class="co"># analysis-lm-fig3-overall </span></a>
-<a class="sourceLine" id="cb498-44" data-line-number="44">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-45" data-line-number="45"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb498-46" data-line-number="46"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb498-47" data-line-number="47"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb498-48" data-line-number="48"></a>
-<a class="sourceLine" id="cb498-49" data-line-number="49"><span class="co">#  analysis-lm-growth</span></a>
-<a class="sourceLine" id="cb498-50" data-line-number="50">lm_growth &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height) <span class="op">*</span><span class="st"> </span>growth_form, analysis_df) </a>
-<a class="sourceLine" id="cb498-51" data-line-number="51">lm_growth <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-52" data-line-number="52"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a>
-<a class="sourceLine" id="cb498-53" data-line-number="53">lm_growth <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-54" data-line-number="54"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a>
-<a class="sourceLine" id="cb498-55" data-line-number="55"></a>
-<a class="sourceLine" id="cb498-56" data-line-number="56"><span class="co"># analysis-lm-fig4-growth </span></a>
-<a class="sourceLine" id="cb498-57" data-line-number="57">analysis_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb498-58" data-line-number="58"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb498-59" data-line-number="59"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb498-60" data-line-number="60"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb499-1" data-line-number="1"><span class="co">#  analysis-setup  </span></a>
+<a class="sourceLine" id="cb499-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb499-3" data-line-number="3"><span class="kw">library</span>(magrittr)</a>
+<a class="sourceLine" id="cb499-4" data-line-number="4">individual &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">select</span>(stem_diameter, height, growth_form)</a>
+<a class="sourceLine" id="cb499-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb499-7" data-line-number="7"><span class="co">#  analysis-filter-data  </span></a>
+<a class="sourceLine" id="cb499-8" data-line-number="8">analysis_df &lt;-<span class="st"> </span>individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-9" data-line-number="9"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(growth_form), </a>
+<a class="sourceLine" id="cb499-10" data-line-number="10">                  growth_form <span class="op">!=</span><span class="st"> &quot;liana&quot;</span>) </a>
+<a class="sourceLine" id="cb499-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb499-12" data-line-number="12"><span class="co">#  analysis-set-factor-levels  </span></a>
+<a class="sourceLine" id="cb499-13" data-line-number="13">gf_levels &lt;-<span class="st"> </span><span class="kw">table</span>(analysis_df<span class="op">$</span>growth_form) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb499-14" data-line-number="14"><span class="st">    </span><span class="kw">sort</span>(<span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb499-15" data-line-number="15"><span class="st">    </span><span class="kw">names</span>()</a>
+<a class="sourceLine" id="cb499-16" data-line-number="16">analysis_df <span class="op">%&lt;&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb499-17" data-line-number="17"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">growth_form =</span> <span class="kw">factor</span>(growth_form, </a>
+<a class="sourceLine" id="cb499-18" data-line-number="18">                                       <span class="dt">levels =</span> gf_levels))</a>
+<a class="sourceLine" id="cb499-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb499-20" data-line-number="20"><span class="co">#  analysis-fig1-barplot </span></a>
+<a class="sourceLine" id="cb499-21" data-line-number="21">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-22" data-line-number="22"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, </a>
+<a class="sourceLine" id="cb499-23" data-line-number="23">           <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb499-24" data-line-number="24"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb499-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb499-26" data-line-number="26"><span class="co">#  analysis-fg2-violinplots </span></a>
+<a class="sourceLine" id="cb499-27" data-line-number="27">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-28" data-line-number="28"><span class="st">    </span>tidyr<span class="op">::</span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(stem_diameter, height), </a>
+<a class="sourceLine" id="cb499-29" data-line-number="29">                        <span class="dt">names_to =</span> <span class="st">&quot;var&quot;</span>,</a>
+<a class="sourceLine" id="cb499-30" data-line-number="30">                        <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-31" data-line-number="31"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(value), <span class="dt">y =</span> growth_form, <span class="dt">colour =</span> growth_form, <span class="dt">fill =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb499-32" data-line-number="32"><span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">trim =</span> T, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb499-33" data-line-number="33"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb499-34" data-line-number="34"><span class="st">    </span><span class="kw">facet_grid</span>(<span class="op">~</span>var)</a>
+<a class="sourceLine" id="cb499-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb499-36" data-line-number="36"><span class="co">#  analysis-lm-overall</span></a>
+<a class="sourceLine" id="cb499-37" data-line-number="37">lm_overall &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height), analysis_df) </a>
+<a class="sourceLine" id="cb499-38" data-line-number="38">lm_overall <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-39" data-line-number="39"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a>
+<a class="sourceLine" id="cb499-40" data-line-number="40">lm_overall <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-41" data-line-number="41"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a>
+<a class="sourceLine" id="cb499-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb499-43" data-line-number="43"><span class="co"># analysis-lm-fig3-overall </span></a>
+<a class="sourceLine" id="cb499-44" data-line-number="44">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-45" data-line-number="45"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb499-46" data-line-number="46"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb499-47" data-line-number="47"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb499-48" data-line-number="48"></a>
+<a class="sourceLine" id="cb499-49" data-line-number="49"><span class="co">#  analysis-lm-growth</span></a>
+<a class="sourceLine" id="cb499-50" data-line-number="50">lm_growth &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(stem_diameter) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height) <span class="op">*</span><span class="st"> </span>growth_form, analysis_df) </a>
+<a class="sourceLine" id="cb499-51" data-line-number="51">lm_growth <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-52" data-line-number="52"><span class="st">    </span>broom<span class="op">::</span><span class="kw">glance</span>()</a>
+<a class="sourceLine" id="cb499-53" data-line-number="53">lm_growth <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-54" data-line-number="54"><span class="st">    </span>broom<span class="op">::</span><span class="kw">tidy</span>()</a>
+<a class="sourceLine" id="cb499-55" data-line-number="55"></a>
+<a class="sourceLine" id="cb499-56" data-line-number="56"><span class="co"># analysis-lm-fig4-growth </span></a>
+<a class="sourceLine" id="cb499-57" data-line-number="57">analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb499-58" data-line-number="58"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(stem_diameter), <span class="dt">colour =</span> growth_form)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb499-59" data-line-number="59"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb499-60" data-line-number="60"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </a></code></pre></div>
 
 </div>
 </div>

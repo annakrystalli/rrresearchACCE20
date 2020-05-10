@@ -340,9 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a><ul>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html#software-requirements"><i class="fa fa-check"></i>Software Requirements</a></li>
 </ul></li>
@@ -389,7 +387,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Tidy data where rows are sigle observations and columns the variables observed.</li>
 <li>Piping the outputs of tidyverse functions as inputs to subsequent functions.</li>
 </ul>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;tibble&quot;</span>, <span class="st">&quot;dplyr&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;tibble&quot;</span>, <span class="st">&quot;dplyr&quot;</span>))</a></code></pre></div>
 <hr />
 </div>
 </div>
@@ -411,8 +409,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="coercing-data.frames" class="section level4">
 <h4>Coercing data.frames</h4>
 <p>You can coerce a data.frame to a tibble</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">tree_tbl &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>(trees)</a>
-<a class="sourceLine" id="cb228-2" data-line-number="2">tree_tbl</a></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1">tree_tbl &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>(trees)</a>
+<a class="sourceLine" id="cb229-2" data-line-number="2">tree_tbl</a></code></pre></div>
 <pre><code>## # A tibble: 31 x 3
 ##    Girth Height Volume
 ##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -432,11 +430,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="creating-new-tibbles" class="section level4">
 <h4>Creating new tibbles</h4>
 <p>You can create a new tibble from individual vectors with <code>tibble()</code>. <code>tibble()</code> will automatically recycle inputs of length 1, and allows you to refer to variables that you just created:</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1">tibble<span class="op">::</span><span class="kw">tibble</span>(</a>
-<a class="sourceLine" id="cb230-2" data-line-number="2">    <span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, </a>
-<a class="sourceLine" id="cb230-3" data-line-number="3">    <span class="dt">y =</span> <span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb230-4" data-line-number="4">    <span class="dt">z =</span> x <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb230-5" data-line-number="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1">tibble<span class="op">::</span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb231-2" data-line-number="2">    <span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, </a>
+<a class="sourceLine" id="cb231-3" data-line-number="3">    <span class="dt">y =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb231-4" data-line-number="4">    <span class="dt">z =</span> x <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb231-5" data-line-number="5">)</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 3
 ##       x     y     z
 ##   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -457,12 +455,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="subsetting-using-the-tidyverse" class="section level3">
 <h3>Subsetting using the tidyverse</h3>
 <p>You can also subset <code>tibbles</code> using tidyverse functions from package <code>dplyr</code>. <code>dplyr</code> verbs are inspired by SQL vocabulary and designed to be more intuitive.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <p>The first argument of the main <code>dplyr</code> functions is a <code>tibble</code> (or data.frame)</p>
 <div id="filtering-rows-with-filter" class="section level4">
 <h4>Filtering rows with <code>filter()</code></h4>
 <p><code>filter()</code> allows us to subset observations (rows) based on their values. The first argument is the name of the data frame. The second and subsequent arguments are the expressions that filter the data frame.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1"><span class="kw">filter</span>(tree_tbl, Girth <span class="op">&gt;</span><span class="st"> </span><span class="dv">14</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="kw">filter</span>(tree_tbl, Girth <span class="op">&gt;</span><span class="st"> </span><span class="dv">14</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 3
 ##    Girth Height Volume
 ##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -481,12 +479,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="slicing-rows-with-slice" class="section level4">
 <h4>Slicing rows with <code>slice()</code></h4>
 <p>Using <code>slice()</code> is similar to subsetting using element indices in that we provide element indices to select rows.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1"><span class="kw">slice</span>(tree_tbl, <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="kw">slice</span>(tree_tbl, <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   Girth Height Volume
 ##   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1   8.6     65   10.3</code></pre>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1"><span class="kw">slice</span>(tree_tbl, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1"><span class="kw">slice</span>(tree_tbl, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##   Girth Height Volume
 ##   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -499,7 +497,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4>Selecting columns with <code>select()</code></h4>
 <p><code>select()</code> allows us to subset columns in tibbles using operations based on the names of the variables.</p>
 <p>In <code>dplyr</code> we use <strong>unquoted column names</strong> (ie <code>Volume</code> rather than <code>&quot;Volume&quot;</code>).</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1"><span class="kw">select</span>(tree_tbl, Height, Volume)</a></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1"><span class="kw">select</span>(tree_tbl, Height, Volume)</a></code></pre></div>
 <pre><code>## # A tibble: 31 x 2
 ##    Height Volume
 ##     &lt;dbl&gt;  &lt;dbl&gt;
@@ -515,7 +513,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10     75   19.9
 ## # … with 21 more rows</code></pre>
 <p>Behind the scenes, <code>select</code> matches any variable arguments to column names creating a vector of column indices. This is then used to subset the <code>tibble</code>. As such we can create ranges of variables using their names and <code>:</code></p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1"><span class="kw">select</span>(tree_tbl, Height<span class="op">:</span>Volume)</a></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1"><span class="kw">select</span>(tree_tbl, Height<span class="op">:</span>Volume)</a></code></pre></div>
 <pre><code>## # A tibble: 31 x 2
 ##    Height Volume
 ##     &lt;dbl&gt;  &lt;dbl&gt;
@@ -531,7 +529,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10     75   19.9
 ## # … with 21 more rows</code></pre>
 <p>There’s also a number of helper functions to make selections easier. For example, we can use <code>one_of()</code> to provide a character vector of column names to select.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1"><span class="kw">select</span>(tree_tbl, <span class="kw">one_of</span>(<span class="kw">c</span>(<span class="st">&quot;Height&quot;</span>, <span class="st">&quot;Volume&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1"><span class="kw">select</span>(tree_tbl, <span class="kw">one_of</span>(<span class="kw">c</span>(<span class="st">&quot;Height&quot;</span>, <span class="st">&quot;Volume&quot;</span>)))</a></code></pre></div>
 <pre><code>## # A tibble: 31 x 2
 ##    Height Volume
 ##     &lt;dbl&gt;  &lt;dbl&gt;
@@ -562,9 +560,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Pipes take the output of the evaluation of the preceeding code and pipe it as the first argument to the subsequent expression.</p>
 </div>
 <p>Suppose we want to get the first two rows and only columns <code>Girth</code> and <code>Volume</code>. We can chain the two operations together using the pipe.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">tree_tbl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-2" data-line-number="2"><span class="st">    </span><span class="kw">select</span>(Girth, Volume) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-3" data-line-number="3"><span class="st">    </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1">tree_tbl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb246-2" data-line-number="2"><span class="st">    </span><span class="kw">select</span>(Girth, Volume) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb246-3" data-line-number="3"><span class="st">    </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   Girth Volume
 ##   &lt;dbl&gt;  &lt;dbl&gt;
@@ -572,8 +570,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2   8.6   10.3</code></pre>
 <p>This is form is very understandable because it focusses on intuitive verbs, not nouns. You can read this series of function compositions like it’s a set of imperative actions.</p>
 <p>As mentioned, the default behaviour of the pipe is to pipe objects as the first argument of the next expression. However, we can pipe the object into a different argument using the <code>.</code> operator.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">tree_tbl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb247-2" data-line-number="2"><span class="st">    </span><span class="kw">lm</span>(Girth <span class="op">~</span><span class="st"> </span>Height, <span class="dt">data =</span> .)</a></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1">tree_tbl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb248-2" data-line-number="2"><span class="st">    </span><span class="kw">lm</span>(Girth <span class="op">~</span><span class="st"> </span>Height, <span class="dt">data =</span> .)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Girth ~ Height, data = .)

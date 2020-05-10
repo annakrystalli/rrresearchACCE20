@@ -340,9 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a><ul>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html#software-requirements"><i class="fa fa-check"></i>Software Requirements</a></li>
 </ul></li>
@@ -396,37 +394,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Setting up a <code>data-raw/</code> directory</h2>
 <p>We <strong>start by creating a <code>data-raw</code> directory</strong> in the root of our project. We can use <code>usethis</code> function <code>usethis::use_data_raw()</code>. This creates the <code>data-raw</code> directory and an <code>.R</code> script within where we can save code that turns raw data into analytical data in the <code>data/</code> folder.</p>
 <p>We can supply a name for the analytical dataset we’ll be creating in our script which automatically names the <code>.R</code> script for easy provenance tracking. In this case, we’ll be calling it <code>individual.csv</code> so let’s use <code>&quot;individual&quot;</code> for our name.</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_data_raw</span>(<span class="dt">name =</span> <span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">✔ Setting active project to <span class="st">&#39;/Users/Anna/Desktop/wood-survey&#39;</span></a>
-<a class="sourceLine" id="cb251-2" data-line-number="2">✔ Creating <span class="st">&#39;data-raw/&#39;</span></a>
-<a class="sourceLine" id="cb251-3" data-line-number="3">✔ Adding <span class="st">&#39;^data-raw$&#39;</span> to <span class="st">&#39;.Rbuildignore&#39;</span></a>
-<a class="sourceLine" id="cb251-4" data-line-number="4">✔ Writing <span class="st">&#39;data-raw/individual.R&#39;</span></a>
-<a class="sourceLine" id="cb251-5" data-line-number="5">● Modify <span class="st">&#39;data-raw/individual.R&#39;</span></a>
-<a class="sourceLine" id="cb251-6" data-line-number="6">● Finish the data preparation script <span class="cf">in</span> <span class="st">&#39;data-raw/individual.R&#39;</span></a>
-<a class="sourceLine" id="cb251-7" data-line-number="7">● Use <span class="st">`</span><span class="dt">usethis::use_data()</span><span class="st">`</span> to add prepared data to package</a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_data_raw</span>(<span class="dt">name =</span> <span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1">✔ Setting active project to <span class="st">&#39;/Users/Anna/Desktop/wood-survey&#39;</span></a>
+<a class="sourceLine" id="cb252-2" data-line-number="2">✔ Creating <span class="st">&#39;data-raw/&#39;</span></a>
+<a class="sourceLine" id="cb252-3" data-line-number="3">✔ Adding <span class="st">&#39;^data-raw$&#39;</span> to <span class="st">&#39;.Rbuildignore&#39;</span></a>
+<a class="sourceLine" id="cb252-4" data-line-number="4">✔ Writing <span class="st">&#39;data-raw/individual.R&#39;</span></a>
+<a class="sourceLine" id="cb252-5" data-line-number="5">● Modify <span class="st">&#39;data-raw/individual.R&#39;</span></a>
+<a class="sourceLine" id="cb252-6" data-line-number="6">● Finish the data preparation script <span class="cf">in</span> <span class="st">&#39;data-raw/individual.R&#39;</span></a>
+<a class="sourceLine" id="cb252-7" data-line-number="7">● Use <span class="st">`</span><span class="dt">usethis::use_data()</span><span class="st">`</span> to add prepared data to package</a></code></pre></div>
 <p>The <strong><code>data-raw/individual.R</code></strong> script created contains:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1"><span class="co">## code to prepare `individual` dataset goes here</span></a>
-<a class="sourceLine" id="cb252-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb252-3" data-line-number="3">usethis<span class="op">::</span><span class="kw">use_data</span>(<span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="co">## code to prepare `individual` dataset goes here</span></a>
+<a class="sourceLine" id="cb253-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb253-3" data-line-number="3">usethis<span class="op">::</span><span class="kw">use_data</span>(<span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
 <p>We will use this file to perform the necessary preprocessing on our raw data.</p>
 <div id="download-data" class="section level3">
 <h3>Download data</h3>
 <p>Now that we’ve got our <code>data-raw</code> folder, let’s download our data into it using function <code>usethis::use_course()</code> and supplying it with the url to the materials repository (bit.ly/wood-survey-data) and the path to the directory we want the materials saved into (<code>&quot;data-raw&quot;</code>).</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_course</span>(<span class="st">&quot;bit.ly/wood-survey-data&quot;</span>,</a>
-<a class="sourceLine" id="cb253-2" data-line-number="2">           <span class="dt">destdir =</span> <span class="st">&quot;data-raw&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb254"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb254-1" data-line-number="1">✔ <span class="ex">Downloading</span> from <span class="st">&#39;https://github.com/annakrystalli/wood-survey-data/archive/master.zip&#39;</span></a>
-<a class="sourceLine" id="cb254-2" data-line-number="2"><span class="ex">Downloaded</span>: 0.03 MB  </a>
-<a class="sourceLine" id="cb254-3" data-line-number="3">✔ <span class="ex">Download</span> stored in <span class="st">&#39;data-raw/wood-survey-data-master.zip&#39;</span></a>
-<a class="sourceLine" id="cb254-4" data-line-number="4">✔ <span class="ex">Unpacking</span> ZIP file into <span class="st">&#39;wood-survey-data-master/&#39;</span> (13 files extracted)</a>
-<a class="sourceLine" id="cb254-5" data-line-number="5"><span class="ex">Shall</span> we delete the ZIP file (<span class="st">&#39;wood-survey-data-master.zip&#39;</span>)<span class="ex">?</span></a>
-<a class="sourceLine" id="cb254-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb254-7" data-line-number="7"><span class="ex">1</span>: Negative</a>
-<a class="sourceLine" id="cb254-8" data-line-number="8"><span class="ex">2</span>: Absolutely not</a>
-<a class="sourceLine" id="cb254-9" data-line-number="9"><span class="ex">3</span>: I agree</a>
-<a class="sourceLine" id="cb254-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb254-11" data-line-number="11"><span class="ex">Selection</span>: 3</a>
-<a class="sourceLine" id="cb254-12" data-line-number="12">✔ <span class="ex">Deleting</span> <span class="st">&#39;wood-survey-data-master.zip&#39;</span></a>
-<a class="sourceLine" id="cb254-13" data-line-number="13">✔ <span class="ex">Opening</span> <span class="st">&#39;wood-survey-data-master/&#39;</span> in the file manager</a></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_course</span>(<span class="st">&quot;bit.ly/wood-survey-data&quot;</span>,</a>
+<a class="sourceLine" id="cb254-2" data-line-number="2">           <span class="dt">destdir =</span> <span class="st">&quot;data-raw&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb255-1" data-line-number="1">✔ <span class="ex">Downloading</span> from <span class="st">&#39;https://github.com/annakrystalli/wood-survey-data/archive/master.zip&#39;</span></a>
+<a class="sourceLine" id="cb255-2" data-line-number="2"><span class="ex">Downloaded</span>: 0.03 MB  </a>
+<a class="sourceLine" id="cb255-3" data-line-number="3">✔ <span class="ex">Download</span> stored in <span class="st">&#39;data-raw/wood-survey-data-master.zip&#39;</span></a>
+<a class="sourceLine" id="cb255-4" data-line-number="4">✔ <span class="ex">Unpacking</span> ZIP file into <span class="st">&#39;wood-survey-data-master/&#39;</span> (13 files extracted)</a>
+<a class="sourceLine" id="cb255-5" data-line-number="5"><span class="ex">Shall</span> we delete the ZIP file (<span class="st">&#39;wood-survey-data-master.zip&#39;</span>)<span class="ex">?</span></a>
+<a class="sourceLine" id="cb255-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb255-7" data-line-number="7"><span class="ex">1</span>: Negative</a>
+<a class="sourceLine" id="cb255-8" data-line-number="8"><span class="ex">2</span>: Absolutely not</a>
+<a class="sourceLine" id="cb255-9" data-line-number="9"><span class="ex">3</span>: I agree</a>
+<a class="sourceLine" id="cb255-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb255-11" data-line-number="11"><span class="ex">Selection</span>: 3</a>
+<a class="sourceLine" id="cb255-12" data-line-number="12">✔ <span class="ex">Deleting</span> <span class="st">&#39;wood-survey-data-master.zip&#39;</span></a>
+<a class="sourceLine" id="cb255-13" data-line-number="13">✔ <span class="ex">Opening</span> <span class="st">&#39;wood-survey-data-master/&#39;</span> in the file manager</a></code></pre></div>
 </div>
 </div>
 <div id="neon-data" class="section level2">
@@ -499,17 +497,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <p>Let’s start by creating a path to the downloaded data directory using <code>here</code>.</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">raw_data_path &lt;-<span class="st"> </span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</a>
-<a class="sourceLine" id="cb257-2" data-line-number="2">raw_data_path</a></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1">raw_data_path &lt;-<span class="st"> </span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</a>
+<a class="sourceLine" id="cb258-2" data-line-number="2">raw_data_path</a></code></pre></div>
 <pre><code>## [1] &quot;/Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20/data-raw/wood-survey-data-master&quot;</code></pre>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1"><span class="st">&quot;/Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="st">&quot;/Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master&quot;</span></a></code></pre></div>
 <p>We can use <code>raw_data_path</code> as our basis for specifying paths to files within it. There’s a number of ways we can do this in R but I wanted to introduce you to package <code>fs</code>. It has a nice interface and extensive functionality.</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1">fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1">fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</a></code></pre></div>
 <pre><code>## /Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20/data-raw/wood-survey-data-master/individual</code></pre>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1"><span class="op">/</span>Users<span class="op">/</span>Anna<span class="op">/</span>Desktop<span class="op">/</span>wood<span class="op">-</span>survey<span class="op">/</span>data<span class="op">-</span>raw<span class="op">/</span>wood<span class="op">-</span>survey<span class="op">-</span>data<span class="op">-</span>master<span class="op">/</span>individual</a></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="op">/</span>Users<span class="op">/</span>Anna<span class="op">/</span>Desktop<span class="op">/</span>wood<span class="op">-</span>survey<span class="op">/</span>data<span class="op">-</span>raw<span class="op">/</span>wood<span class="op">-</span>survey<span class="op">-</span>data<span class="op">-</span>master<span class="op">/</span>individual</a></code></pre></div>
 <p>Let’s now use function <code>dir_ls</code> to get a character vector of paths to all the individual files in directory <code>individual</code>.</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1">individual_paths &lt;-<span class="st"> </span>fs<span class="op">::</span><span class="kw">dir_ls</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>))</a>
-<a class="sourceLine" id="cb263-2" data-line-number="2"><span class="kw">head</span>(individual_paths)</a></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">individual_paths &lt;-<span class="st"> </span>fs<span class="op">::</span><span class="kw">dir_ls</span>(fs<span class="op">::</span><span class="kw">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>))</a>
+<a class="sourceLine" id="cb264-2" data-line-number="2"><span class="kw">head</span>(individual_paths)</a></code></pre></div>
 <pre><code>## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T172340Z.csv
 ## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T144119Z.csv
 ## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-08.basic.20190806T143255Z.csv
@@ -517,10 +515,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-10.basic.20190806T144133Z.csv
 ## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2017-07.basic.20190806T144111Z.csv</code></pre>
 <p>We can check how many files we’ve got:</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1"><span class="kw">length</span>(individual_paths)</a></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1"><span class="kw">length</span>(individual_paths)</a></code></pre></div>
 <pre><code>## [1] 67</code></pre>
 <p>We can now use this vector of paths to read in files. Let’s read the first file in and check it out. We use function <code>read_csv()</code> from <code>readr</code> package which reads comma delimited files into tibbles.</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1">indiv_df &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(individual_paths[<span class="dv">1</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1">indiv_df &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(individual_paths[<span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   uid = col_character(),
@@ -536,7 +534,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   measurementHeight = col_double(),
 ##   height = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1">indiv_df</a></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1">indiv_df</a></code></pre></div>
 <pre><code>## # A tibble: 376 x 12
 ##    uid   namedLocation date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt; &lt;chr&gt;         &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -557,9 +555,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="basic-checks" class="section level2">
 <h2>Basic checks</h2>
 <p>Let’s perform some of the basic checks we learnt before we proceed.</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1"><span class="kw">View</span>(indiv_df)</a></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1"><span class="kw">View</span>(indiv_df)</a></code></pre></div>
 <p><img src="assets/indiv_df.png" width="857" /></p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1"><span class="kw">names</span>(indiv_df)</a></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1"><span class="kw">names</span>(indiv_df)</a></code></pre></div>
 <pre><code>##  [1] &quot;uid&quot;               &quot;namedLocation&quot;     &quot;date&quot;             
 ##  [4] &quot;eventID&quot;           &quot;domainID&quot;          &quot;siteID&quot;           
 ##  [7] &quot;plotID&quot;            &quot;individualID&quot;      &quot;growthForm&quot;       

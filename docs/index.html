@@ -340,9 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a><ul>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html#software-requirements"><i class="fa fa-check"></i>Software Requirements</a></li>
 </ul></li>
@@ -399,9 +397,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Introduction</li>
 </ul>
-</div>
-<div id="basics" class="section level3">
-<h3>Basics</h3>
+<div style="display: flex;">
+<div class="sched-card">
+<h3 id="basics">Basics</h3>
 <ul>
 <li>Intro to R &amp; Rstudio</li>
 <li>R basics</li>
@@ -410,52 +408,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The tidyverse way</li>
 <li>Data management basics</li>
 </ul>
-</div>
-<div id="project-management" class="section level3">
-<h3>Project Management</h3>
+<h3 id="project-management">Project Management</h3>
 <ul>
 <li>Projects in Rstudio</li>
 <li>Good File Naming</li>
 <li>Paths and projects structure</li>
 </ul>
 </div>
-<div id="data-munging" class="section level3">
-<h3>Data Munging</h3>
+<div class="sched-card">
+<h3 id="data-munging">Data Munging</h3>
 <ul>
 <li>Iteration</li>
-<li>Combining tables</li>
+<li>Merging data</li>
 <li>Functions</li>
-<li>Research Data Management - Metadata</li>
-<li>Literate Programming with Rmarkdown</li>
-<li>Version Control with Git</li>
 </ul>
-</div>
-<div id="metadata" class="section level3">
-<h3>Metadata</h3>
+<h3 id="metadata">Metadata</h3>
 <ul>
 <li>Intro to metadata</li>
 <li>Creating metadata with <code>dataspice</code></li>
 </ul>
 </div>
-<div id="analysing-presenting-data" class="section level3">
-<h3>Analysing &amp; presenting data</h3>
+<div class="sched-card">
+<h3 id="analysing-presenting-data">Analysing &amp; Presenting data</h3>
 <ul>
 <li>Plotting basics</li>
 <li>Literate programming</li>
 </ul>
-</div>
-<div id="version-control" class="section level3">
-<h3>Version Control</h3>
+<h3 id="version-control">Version Control</h3>
 <ul>
 <li>Version control with Git</li>
 <li>Collaboration through GitHub</li>
 </ul>
 </div>
 </div>
+</div>
+</div>
 <div id="optional" class="section level2">
 <h2>Optional</h2>
 <div id="packaging-code" class="section level3">
-<h3>Packaging code</h3>
+<h3>Packaging Code</h3>
 <ul>
 <li>Writing &amp; documenting functions</li>
 <li>Capturing metadata incl. dependencies</li>
@@ -468,6 +459,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <hr />
 <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<hr />
+</div>
+<div id="sources-of-materials" class="section level4">
+<h4>Sources of Materials</h4>
+<p>The first few chapters of the <strong>Basics</strong> section were heavily sourced and adapted from <a href="http://swcarpentry.github.io/r-novice-gapminder/"><strong>“Software Carpentry: R for Reproducible Scientific Analysis.”</strong></a> <strong><em>Thomas Wright and Naupaka Zimmerman (eds): Version 2016.06, June 2016</em></strong> <a href="https://github.com/swcarpentry/r-novice-gapminder" class="uri">https://github.com/swcarpentry/r-novice-gapminder</a>, <a href="https://doi.org/10.5281/zenodo.57520"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.57520.svg" alt="DOI" /></a>.</p>
+<ul>
+<li>Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–2020 by <a href="https://carpentries.org/">The Carpentries</a>.</li>
+</ul>
+<p><br></p>
+<p>The <strong>Good File Naming</strong> chapter was heavily sourced from <a href="https://datacarpentry.org/rr-organization1/"><strong>“File organization for reproducible research.”</strong></a> <strong><em>Data Carpentry Reproducible Research Committee. 2016</em></strong>.</p>
+<ul>
+<li>Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–2020 by <a href="https://carpentries.org/">The Carpentries</a>. <a href="https://datacarpentry.org/rr-organization1/"></a></li>
+</ul>
+<p><br></p>
+<p>Small sections in the <strong>Data Munging</strong> section where inspired by text in the online version of <a href="https://r4ds.had.co.nz/"><strong>“R 4 Data Science”</strong></a>, <strong><em>Garrett Grolemund &amp; Hadley Wickham</em></strong>.</p>
+<ul>
+<li>Licensed under the <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0</a> License.</li>
+</ul>
+<p><br></p>
+<p><strong>Images</strong> contained throughout the materials and watermarked with <strong><em>Scriberia</em></strong> were sourced from <strong>“Illustrations from the Turing Way book dashes”</strong>, <a href="https://doi.org/10.5281/zenodo.3332808"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3332808.svg" alt="DOI" /></a>. Images were created by <a href="https://www.scriberia.co.uk/"><strong>Scriberia</strong></a> for The <a href="https://the-turing-way.netlify.app/introduction/introduction"><strong>Turing Way</strong></a> community.</p>
+<ul>
+<li>Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> by <a href="https://the-turing-way.netlify.app/introduction/introduction">The Turing Way</a>.</li>
+</ul>
+<p><br></p>
+<p><strong>Data</strong> for the the main practical parts of the course were sourced from the <a href="https://data.neonscience.org/data-products/explore"><strong>NEON Data Portal</strong></a>, provided by the <strong>National Ecological Observatory Network</strong>. 2019 Provisional data downloaded from <a href="http://data.neonscience.org" class="uri">http://data.neonscience.org</a> on 2019-08-06. Battelle, Boulder, CO, USA.</p>
+<ul>
+<li><strong>Data Products:</strong> NEON.DOM.SITE.DP1.10098.001</li>
+<li><strong>Name:</strong> Woody plant vegetation structure</li>
+<li><strong>Description:</strong> Structure measurements, including height, canopy diameter, and stem diameter, as well as mapped position of individual woody plants</li>
+<li><strong>Query information:</strong>
+<ul>
+<li><strong>Start Date-Time for Queried Data:</strong> 2018-08-15 16:00 (UTC)</li>
+<li><strong>End Date-Time for Queried Data:</strong> 2018-08-29 16:00 (UTC)</li>
+<li><strong>Domains:</strong> D01:D9</li>
+</ul></li>
+<li><a href="https://www.neonscience.org/data/about-data/data-policies"><strong>LICENSE</strong></a></li>
+<li><strong>Disclaimer</strong></li>
+</ul>
+<pre><code> THE NEON DATA PRODUCTS ARE PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE NEON DATA PRODUCTS BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE NEON DATA PRODUCTS.</code></pre>
+<p><br></p>
+<p><strong>Materials</strong> for the <strong>Research Compendium</strong> section were sourced from <strong><em>Carl Boettiger. (2018, April 17).</em></strong> <strong>cboettig/noise-phenomena: Supplement to: “From noise to knowledge: how randomness generates novel phenomena and reveals information”</strong> <a href="https://doi.org/10.5281/zenodo.1219780"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1219780.svg" alt="DOI" /></a>, accompanying the publication: Carl Boettiger <a href="https://orcid.org/0000-0002-1642-628X"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" /></a>. <em>From noise to knowledge: how randomness generates novel phenomena and reveals information</em>. Published in <em>Ecology Letters</em>, 22 May 2018 <a href="https://doi.org/10.1111/ele.13085" class="uri">https://doi.org/10.1111/ele.13085</a>.</p>
 
 </div>
 </div>

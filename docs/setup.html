@@ -340,9 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a><ul>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html#software-requirements"><i class="fa fa-check"></i>Software Requirements</a></li>
 </ul></li>
@@ -534,8 +532,8 @@ install it via your distro’s package manager. For Debian/Ubuntu run
 <div id="research-compendium-exercise" class="section level3">
 <h3>Research Compendium Exercise</h3>
 <p>For the final practical sessions, we will need to use LaTeX. If you don’t have LaTeX installed, consider installing <code>TinyTeX</code>, a custom LaTeX distribution based on TeX Live that is small in size but functions well in most cases, especially for R users.</p>
-<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb705-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</a>
-<a class="sourceLine" id="cb705-2" data-line-number="2">tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb706-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</a>
+<a class="sourceLine" id="cb706-2" data-line-number="2">tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</a></code></pre></div>
 <p>Check <a href="https://yihui.name/tinytex/">docs</a> before before installing.</p>
 <div id="devtools-requirements" class="section level4">
 <h4><code>devtools</code> requirements</h4>
@@ -544,7 +542,25 @@ install it via your distro’s package manager. For Debian/Ubuntu run
 </div>
 <div id="install-r-dependecies" class="section level3">
 <h3>Install R dependecies</h3>
-<p>To be able to run materials locally, you will also need to install all the required R packages. Run the code in <a href="https://github.com/annakrystalli/rrresearchACCE20/blob/master/.binder/install.R"><code>install.R</code></a></p>
+<p>To be able to run materials locally, you will also need to install all the required R packages. Run the following code:</p>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb707-1" data-line-number="1">dependencies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;bookdown&quot;</span>,</a>
+<a class="sourceLine" id="cb707-2" data-line-number="2">                  <span class="st">&quot;DT&quot;</span>, <span class="st">&quot;skimr&quot;</span>,  <span class="st">&quot;gapminder&quot;</span>, <span class="st">&quot;plotly&quot;</span>, <span class="st">&quot;here&quot;</span>,  <span class="st">&quot;reprex&quot;</span>,</a>
+<a class="sourceLine" id="cb707-3" data-line-number="3">                  <span class="st">&quot;usethis&quot;</span>, <span class="st">&quot;cowsay&quot;</span>, <span class="st">&quot;testthat&quot;</span>, <span class="st">&quot;ggthemes&quot;</span>, <span class="st">&quot;fs&quot;</span>, </a>
+<a class="sourceLine" id="cb707-4" data-line-number="4">                  <span class="st">&quot;jsonlite&quot;</span>, <span class="st">&quot;listviewer&quot;</span>,</a>
+<a class="sourceLine" id="cb707-5" data-line-number="5">                  <span class="st">&quot;checkmate&quot;</span>, <span class="st">&quot;assertr&quot;</span>, <span class="st">&quot;vroom&quot;</span>, <span class="st">&quot;data.table&quot;</span>, <span class="st">&quot;sloop&quot;</span>,</a>
+<a class="sourceLine" id="cb707-6" data-line-number="6">                  <span class="st">&quot;geosphere&quot;</span>, <span class="st">&quot;raster&quot;</span>, <span class="st">&quot;spData&quot;</span>, <span class="st">&quot;tmap&quot;</span>, <span class="st">&quot;leaflet&quot;</span>, <span class="st">&quot;sf&quot;</span>)</a>
+<a class="sourceLine" id="cb707-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb707-8" data-line-number="8"><span class="co"># install CRAN dependencies</span></a>
+<a class="sourceLine" id="cb707-9" data-line-number="9"><span class="kw">install.packages</span>(dependencies)</a>
+<a class="sourceLine" id="cb707-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb707-11" data-line-number="11"><span class="co"># install github dependencies</span></a>
+<a class="sourceLine" id="cb707-12" data-line-number="12">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;hadley/emo&quot;</span>)</a>
+<a class="sourceLine" id="cb707-13" data-line-number="13">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;benmarwick/rrtools&quot;</span>)</a>
+<a class="sourceLine" id="cb707-14" data-line-number="14">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ropenscilabs/dataspice&quot;</span>)</a>
+<a class="sourceLine" id="cb707-15" data-line-number="15">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;karthik/holepunch&quot;</span>)</a>
+<a class="sourceLine" id="cb707-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb707-17" data-line-number="17"><span class="co"># install tinytex</span></a>
+<a class="sourceLine" id="cb707-18" data-line-number="18">tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</a></code></pre></div>
 </div>
 <div id="faqs" class="section level3">
 <h3>FAQs</h3>
