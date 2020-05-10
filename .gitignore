@@ -6,3 +6,4 @@ slides/*
 !slides/*.Rmd
 .DS_Store
 assets/*
+vst_individuals.csv
