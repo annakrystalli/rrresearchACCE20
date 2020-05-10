@@ -155,7 +155,15 @@ You might also need a set of **development tools** to install and run `devtools`
 
 ### Install R dependecies
 
-To be able to run materials locally, you will also need to install all the required R packages.  Run the code in [`install.R`](https://github.com/annakrystalli/rrresearchACCE20/blob/master/.binder/install.R)
+To be able to run materials locally, you will also need to install all the required R packages.  Run the following code:
+
+
+```{r, eval=FALSE, code=readLines("install.R")}
+
+```
+
+
+
 
 ### FAQs
 
