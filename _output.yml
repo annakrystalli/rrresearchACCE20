@@ -12,6 +12,10 @@ bookdown::gitbook:
     download: ["pdf", "epub"]
     toolbar:
       position: fixed
+    sharing:
+      facebook: no
+      github: yes
+      twitter: yes
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
