@@ -1,0 +1,56 @@
+Type: Compendium
+Package: rrresearchACCE20 
+Title: Reproducible Research Data & Project Management in R
+Version: 0.0.1
+Authors@R: 
+    person(given = "Anna",
+           family = "Krystalli",
+           role = c("aut", "cre"),
+           email = "annakrystalli@googlemail.com",
+           comment = c(ORCID = "0000-0002-2378-4915"))
+Description: Materials for the ACCE DTP course on Reproducible Research Data & Project Management in R
+License: CCBY-4.0
+Depends: 
+    assertr,
+    bookdown,
+    broom,
+    checkmate,
+    cowsay,
+    dataspice,
+    devtools,
+    dplyr,
+    DT,
+    emo,
+    fs,
+    gapminder,
+    geosphere,
+    ggplot2,
+    ggthemes,
+    glue,
+    here,
+    icon,
+    janitor,
+    jsonlite,
+    knitr,
+    listviewer,
+    magrittr,
+    plotly,
+    purrr,
+    readr,
+    reprex,
+    rmarkdown,
+    rrtools,
+    skimr,
+    sloop,
+    testthat,
+    tibble,
+    tidyr,
+    tinytex,
+    usethis
+Remotes: 
+    benmarwick/rrtools,
+    hadley/emo,
+    mitchelloharawild/icon
+Encoding: UTF-8
+LazyData: true
+Date: 2020-05-10
