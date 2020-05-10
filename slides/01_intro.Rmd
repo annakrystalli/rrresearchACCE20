@@ -1,4 +1,5 @@
 ---
+title: "Welcome & Introduction"
 output:
   xaringan::moon_reader:
     css: ["default", "assets/css/little_ak.css", "assets/css/little_ak-fonts.css"]
@@ -156,10 +157,8 @@ _Nielsen, Michael. Reinventing Discovery: The New Era of Networked Science. Prin
 
 ### Key to next generation networked science
 
-.center[![](assets/www.jpg)]
 
-
-```{r, echo=FALSE, out.height="70%"}
+```{r, echo=FALSE, out.width="70%"}
 knitr:::include_graphics("assets/www.jpg")
 ```
 
@@ -181,12 +180,15 @@ class: top, right, inverse
 > So how far have we come?
 
 ---
+class: inverse
 
 ## gapminder.org: today
 
 #### liberating stories from data
 
-<iframe src="https://www.gapminder.org/tools/?embedded=true#$chart-type=bubbles" style="width: 100%; height: 450px; margin: 0 0 0 0; border: 1px solid grey;" allowfullscreen></iframe>
+### www.gapminder.org
+
+
 
 ---
 
@@ -295,6 +297,7 @@ knitr::include_graphics("assets/img/beer_messy_tidy.png")
 ---
 
 ## The concept of a Research Compendium
+.pull-left[
 
 >“
 ...We introduce the concept of a compendium
@@ -303,6 +306,9 @@ that make up the document and its computations (i.e. text, code, data, ...), and
 collection."
 
 [_Gentleman and Temple Lang, 2004_](https://biostats.bepress.com/bioconductor/paper2/)
+]
+
+.pull-right[
 
 .centre[
 ```{r, echo=FALSE, out.width="50%"}
@@ -311,15 +317,24 @@ knitr::include_graphics("assets/ResearchCompendium.jpg")
 
 ]
 
+]
+
 ---
 
-![](assets/reproducible-data-analysis-02.png)
+```{r, echo=FALSE, out.width="90%"}
+knitr::include_graphics("assets/reproducible-data-analysis-02.png")
+```
+
+
 
 [_Kartik Ram: rstudio::conf 2019 talk_](https://github.com/karthik/rstudio2019)
 
 ---
 
-![](assets/reproducible-data-analysis-04.png)
+```{r, echo=FALSE, out.width="90%"}
+knitr::include_graphics("assets/reproducible-data-analysis-04.png")
+```
+
 
 [_Kartik Ram: rstudio::conf 2019 talk_](https://github.com/karthik/rstudio2019)
 
