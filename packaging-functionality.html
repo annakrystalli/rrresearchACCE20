@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Packaging functionality | Reproducible Research Data &amp; Project Management in R</title>
+  <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Packaging functionality | Reproducible Research Data &amp; Project Management in R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
+  
+  <meta property="og:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
+  <meta name="github-repo" content="annakrystalli/rrresearchACCE20" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Packaging functionality | Reproducible Research Data &amp; Project Management in R" />
+  
+  <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
+  
+
+<meta name="author" content="Course Instructor: Anna Krystalli" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="additional.html"/>
+<link rel="next" href="creating-a-research-compendium-with-rrtools.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/jsoneditor-5.25.6/jsoneditor.min.css" rel="stylesheet" />
+<script src="libs/jsoneditor-5.25.6/jsoneditor.min.js"></script>
+<script src="libs/jsonedit-binding-3.0.0/jsonedit.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Reproducible Research Data & Project Management in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Course description</a></li>
+<li class="chapter" data-level="" data-path="welcome-slides.html"><a href="welcome-slides.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="part"><span><b>I Basics</b></span></li>
+<li class="chapter" data-level="" data-path="rstudio-basics.html"><a href="rstudio-basics.html"><i class="fa fa-check"></i>Intro to R &amp; Rstudio</a></li>
+<li class="chapter" data-level="" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i>R Basics</a></li>
+<li class="chapter" data-level="" data-path="data-types-structures-and-classes.html"><a href="data-types-structures-and-classes.html"><i class="fa fa-check"></i>Data types, structures and classes</a></li>
+<li class="chapter" data-level="" data-path="indexing-and-subsetting.html"><a href="indexing-and-subsetting.html"><i class="fa fa-check"></i>Indexing and subsetting</a></li>
+<li class="chapter" data-level="" data-path="the-tidyverse-way.html"><a href="the-tidyverse-way.html"><i class="fa fa-check"></i>The tidyverse way</a></li>
+<li class="chapter" data-level="" data-path="rdm-intro-view.html"><a href="rdm-intro-view.html"><i class="fa fa-check"></i>Data management Basics</a></li>
+<li class="part"><span><b>II Project Management</b></span></li>
+<li class="chapter" data-level="" data-path="projects-in-rstudio.html"><a href="projects-in-rstudio.html"><i class="fa fa-check"></i>Projects in Rstudio</a></li>
+<li class="chapter" data-level="" data-path="filenaming-view.html"><a href="filenaming-view.html"><i class="fa fa-check"></i>Good File Naming</a></li>
+<li class="chapter" data-level="" data-path="path-proj-str.html"><a href="path-proj-str.html"><i class="fa fa-check"></i>Paths and Project structure</a></li>
+<li class="part"><span><b>III Data Munging</b></span></li>
+<li class="chapter" data-level="" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i>Iteration</a></li>
+<li class="chapter" data-level="" data-path="data-merge.html"><a href="data-merge.html"><i class="fa fa-check"></i>Merging data</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i>Functions</a></li>
+<li class="part"><span><b>IV Working with metadata</b></span></li>
+<li class="chapter" data-level="" data-path="metadata-slides.html"><a href="metadata-slides.html"><i class="fa fa-check"></i>Metadata</a></li>
+<li><a href="dataspice.html#dataspice">Creating metadata with <code>dataspice</code></a></li>
+<li class="part"><span><b>V Analysing and presenting analyses</b></span></li>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i>Plotting with ggplot2</a></li>
+<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html"><i class="fa fa-check"></i>Literate Programming in rmarkdown</a></li>
+<li class="part"><span><b>VI Version Control</b></span></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html"><i class="fa fa-check"></i>Version Control with Git</a></li>
+<li class="chapter" data-level="" data-path="collaborative-github.html"><a href="collaborative-github.html"><i class="fa fa-check"></i>Collaborative GitHub</a></li>
+<li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a></li>
+<li class="part"><span><b>VII Closing</b></span></li>
+<li class="chapter" data-level="" data-path="closing-remarks.html"><a href="closing-remarks.html"><i class="fa fa-check"></i>Closing Remarks</a></li>
+<li class="part"><span><b>VIII Additonal materials</b></span></li>
+<li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html"><i class="fa fa-check"></i>Packaging functionality</a></li>
+<li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html"><i class="fa fa-check"></i>Creating a research compendium with rrtools</a></li>
+<li class="part"><span><b>IX APPENDIX</b></span></li>
+<li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a></li>
+<li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
+<li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
+<li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a></li>
+<li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a></li>
+<li class="divider"></li>
+<li><a href="https://annakrystalli.me/rrreasearchACCE2020" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Reproducible Research Data &amp; Project Management in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="packaging-functionality" class="section level1">
+<h1>Packaging functionality</h1>
+<div id="r-package-structure" class="section level2">
+<h2>R Package Structure</h2>
+<p>Used to share functionality with the R community</p>
+<ul>
+<li><p>Useful <strong>conventions</strong></p></li>
+<li><p>Useful <strong>software development tools</strong></p></li>
+<li><p>Easy <strong>publishing</strong> through GitHub</p></li>
+</ul>
+</div>
+<div id="r-package-conventions" class="section level2">
+<h2>R Package conventions:</h2>
+<ul>
+<li><p><strong>metadata</strong>: in the <strong><code>DESCRIPTION</code> file</strong></p></li>
+<li><p><strong>functions</strong> in <strong><code>.R</code> scripts</strong> in the <strong><code>R/</code> folder</strong></p></li>
+<li><p><strong>tests</strong> in the <strong><code>tests/</code> folder</strong></p></li>
+<li><p><strong>Documentation:</strong></p>
+<ul>
+<li><em>functions</em> using <strong>Roxygen notation</strong></li>
+<li><em>workflows</em> using <strong><code>.Rmd</code> documents</strong> in the <strong><code>vignettes/</code></strong> folder</li>
+</ul></li>
+</ul>
+</div>
+<div id="software-engineering-approach" class="section level2">
+<h2>Software Engineering approach</h2>
+<p>Following conventions allows us to <strong>make use of automated tools</strong> for:</p>
+<ul>
+<li><p><strong>Checking</strong> and <strong>testing code</strong></p></li>
+<li><p><strong>Producing documentation</strong> for code and workflows</p></li>
+<li><p><strong>Publishing, distributing</strong> and <strong>citing</strong> code</p></li>
+</ul>
+</div>
+<div id="anatomy-of-an-r-package" class="section level2">
+<h2>Anatomy of an R package</h2>
+<p>Let’s use <a href="https://github.com/ropenscilabs/pkgreviewr"><code>pkgreviewr</code></a>, a package I authored to help automate some aspects of the rOpenSci review process, as an example to examine some elements of what makes a package:</p>
+</div>
+<div id="description-file" class="section level2">
+<h2><code>DESCRIPTION</code> file</h2>
+<p>Capture metadata around the package
+- Functionality description
+- Creators
+- License</p>
+<pre><code>Package: pkgreviewr
+Type: Package
+Title: rOpenSci package review project template
+Version: 0.1.1
+Authors@R: c(person(&quot;Anna&quot;, &quot;Krystalli&quot;, email = &quot;annakrystalli@googlemail.com&quot;,
+                  role = c(&quot;aut&quot;, &quot;cre&quot;)),
+             person(&quot;Maëlle&quot;, &quot;Salmon&quot;, email = &quot;maelle.salmon@yahoo.se&quot;, role = &quot;aut&quot;))
+Description: Creates files and collects materials necessary to complete an rOpenSci package review. 
+    Review files are prepopulated with review package specific metadata. Review package source code is
+    also cloned for local testing and inspection.
+License: GPL-3 + file LICENSE
+URL: https://github.com/ropenscilabs/pkgreviewr
+BugReports: https://github.com/ropenscilabs/pkgreviewr/issues
+Encoding: UTF-8
+LazyData: true
+Imports:
+    devtools,
+    git2r (&gt;= 0.23.0),
+    usethis (&gt;= 1.2.0),
+    here,
+    reprex,
+    gh,
+    base64enc,
+    whoami,
+    magrittr,
+    covr,
+    goodpractice,
+    assertthat,
+    httr,
+    rstudioapi,
+    clipr,
+    clisymbols,
+    crayon,
+    dplyr,
+    glue,
+    fs,
+    urltools,
+    shiny
+Suggests: 
+    testthat,
+    mockery,
+    knitr,
+    rmarkdown
+RoxygenNote: 6.1.1
+Remotes: 
+    ropensci/git2r
+VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
+</code></pre>
+<div id="citation" class="section level3">
+<h3>citation</h3>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="packaging-functionality.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;geosphere&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## To cite package &#39;geosphere&#39; in publications use:
+## 
+##   Robert J. Hijmans (2019). geosphere: Spherical Trigonometry. R
+##   package version 1.5-10. https://CRAN.R-project.org/package=geosphere
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Manual{,
+##     title = {geosphere: Spherical Trigonometry},
+##     author = {Robert J. Hijmans},
+##     year = {2019},
+##     note = {R package version 1.5-10},
+##     url = {https://CRAN.R-project.org/package=geosphere},
+##   }</code></pre>
+</div>
+</div>
+<div id="dependency-management" class="section level2">
+<h2>Dependency management</h2>
+<p>It’s the job of the DESCRIPTION to <strong>list the packages that your package needs to work</strong>.</p>
+<pre><code>Imports:
+    devtools,
+    git2r (&gt;= 0.23.0),
+    usethis (&gt;= 1.2.0),
+    here,
+    reprex,
+    gh,
+    base64enc,
+    whoami,
+    magrittr,
+    covr,
+    goodpractice,
+    assertthat,
+    httr,
+    rstudioapi,
+    clipr,
+    clisymbols,
+    crayon,
+    dplyr,
+    glue,
+    fs,
+    urltools,
+    shiny</code></pre>
+<p>Imports are necessary dependencies for the functions in your package to work</p>
+<pre><code>Suggests: 
+    testthat,
+    mockery,
+    knitr,
+    rmarkdown</code></pre>
+<p>Suggests are dependencies that are not necessary for the functions in your package but might be neccessary to run all the vignettes or tests in your package</p>
+</div>
+<div id="r-1" class="section level2">
+<h2><code>R/</code></h2>
+<ul>
+<li>Keep all functions in R scripts in <code>R/</code> folder</li>
+</ul>
+<pre><code>.
+├── github.R
+├── pkgreview.R
+├── pkgreviewr-package.R
+├── render-templates.R
+├── rmd-utils.R
+├── style.R
+└── utils.R
+
+0 directories, 7 files</code></pre>
+<div id="example-function-script" class="section level3">
+<h3>example function script</h3>
+<p>Create a new function <code>.R</code> file in the <code>R/</code> folder</p>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="packaging-functionality.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
+<span id="cb576-2"><a href="packaging-functionality.html#cb576-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_r</span>(<span class="st">&quot;add&quot;</span>)</span></code></pre></div>
+<pre><code>R
+└── add.R
+
+0 directories, 1 files</code></pre>
+</div>
+</div>
+<div id="document-functions-with-roxygen" class="section level2">
+<h2>Document functions with <code>Roxygen</code></h2>
+<ul>
+<li>Document functions with <strong>Roxygen</strong> notation</li>
+<li>Automatically create help files on build</li>
+</ul>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="packaging-functionality.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Add together two numbers.</span></span>
+<span id="cb578-2"><a href="packaging-functionality.html#cb578-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb578-3"><a href="packaging-functionality.html#cb578-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A number.</span></span>
+<span id="cb578-4"><a href="packaging-functionality.html#cb578-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y A number.</span></span>
+<span id="cb578-5"><a href="packaging-functionality.html#cb578-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return The sum of x and y.</span></span>
+<span id="cb578-6"><a href="packaging-functionality.html#cb578-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb578-7"><a href="packaging-functionality.html#cb578-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; add(1, 1)</span></span>
+<span id="cb578-8"><a href="packaging-functionality.html#cb578-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; add(10, 1)</span></span>
+<span id="cb578-9"><a href="packaging-functionality.html#cb578-9" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb578-10"><a href="packaging-functionality.html#cb578-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb578-11"><a href="packaging-functionality.html#cb578-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="tests" class="section level2">
+<h2><code>tests/</code></h2>
+<p>Tests provide confidence in what the code is doing.</p>
+<p><em>Contents of <code>pkgreviewr</code> test folder</em></p>
+<pre><code>.
+├── testthat
+│   ├── setup.R
+│   ├── test-create-pkgreview.R
+│   ├── test-gh-calls.R
+│   ├── test-render-templates.R
+│   └── test-setup.R
+└── testthat.R
+
+1 directory, 6 files</code></pre>
+<div id="example-test" class="section level3">
+<h3>Example test</h3>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="packaging-functionality.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_test</span>(<span class="st">&quot;add&quot;</span>)</span></code></pre></div>
+<pre><code>tests
+├── testthat
+│   ├── test-add.R
+└── testthat.R</code></pre>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="packaging-functionality.html#cb582-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;test-add&quot;</span>)</span>
+<span id="cb582-2"><a href="packaging-functionality.html#cb582-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb582-3"><a href="packaging-functionality.html#cb582-3" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;add works&quot;</span>, {</span>
+<span id="cb582-4"><a href="packaging-functionality.html#cb582-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">add</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">4</span>)</span>
+<span id="cb582-5"><a href="packaging-functionality.html#cb582-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<p>The <strong>R package structure</strong> can help with providing a logical organisation of files, by <strong>providing a set of standard locations for certain types of files</strong>.</p>
+<p>To work with packages in RStudio we use the <strong>Build pane</strong>, which includes a variety of tools for <strong>building, documenting and testing packages</strong>. This will appear if Rstudio recognises the project as an R package.</p>
+<p><img src="assets/build-panel.png" height="200px"></p>
+<p><img src="assets/reproducible-data-analysis-19.jpg" /></p>
+</div>
+</div>
+<div id="create-your-first-package" class="section level2">
+<h2>💻Create your first package</h2>
+<p>Let’s go ahead and create our first package! We do that as we would any project, but this time we select <strong><code>R package</code></strong> instead of <code>New Project</code>. Call your package <code>mypackage</code>.</p>
+<div class="alert alert-info">
+<strong>File &gt; New Project… &gt; New Directory &gt; R package &gt; mypackage </strong>
+</div>
+<p>Your new project should have the following structure. The build pane should also be visible.</p>
+<pre><code>.
+├── DESCRIPTION
+├── NAMESPACE
+├── R
+│   └── hello.R
+├── man
+│   └── hello.Rd
+└── mypackage.Rproj
+
+2 directories, 5 files</code></pre>
+</div>
+<div id="functions-in-the-r-dir" class="section level2">
+<h2>🚦 Functions in the <strong><code>R/</code></strong> dir</h2>
+<p>Let’s inspect <strong><code>hello.R</code></strong></p>
+<p>it contains a function that takes now arguments and prints <code>hello world</code> to the console when called. The comments above are just that, comments and don’t serve any functional purpose.</p>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="packaging-functionality.html#cb584-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hello, world!</span></span>
+<span id="cb584-2"><a href="packaging-functionality.html#cb584-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb584-3"><a href="packaging-functionality.html#cb584-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This is an example function named &#39;hello&#39; </span></span>
+<span id="cb584-4"><a href="packaging-functionality.html#cb584-4" aria-hidden="true" tabindex="-1"></a><span class="co"># which prints &#39;Hello, world!&#39;.</span></span>
+<span id="cb584-5"><a href="packaging-functionality.html#cb584-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb584-6"><a href="packaging-functionality.html#cb584-6" aria-hidden="true" tabindex="-1"></a><span class="co"># You can learn more about package authoring with RStudio at:</span></span>
+<span id="cb584-7"><a href="packaging-functionality.html#cb584-7" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb584-8"><a href="packaging-functionality.html#cb584-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   http://r-pkgs.had.co.nz/</span></span>
+<span id="cb584-9"><a href="packaging-functionality.html#cb584-9" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb584-10"><a href="packaging-functionality.html#cb584-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Some useful keyboard shortcuts for package authoring:</span></span>
+<span id="cb584-11"><a href="packaging-functionality.html#cb584-11" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb584-12"><a href="packaging-functionality.html#cb584-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   Build and Reload Package:  &#39;Cmd + Shift + B&#39;</span></span>
+<span id="cb584-13"><a href="packaging-functionality.html#cb584-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   Check Package:             &#39;Cmd + Shift + E&#39;</span></span>
+<span id="cb584-14"><a href="packaging-functionality.html#cb584-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   Test Package:              &#39;Cmd + Shift + T&#39;</span></span>
+<span id="cb584-15"><a href="packaging-functionality.html#cb584-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb584-16"><a href="packaging-functionality.html#cb584-16" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb584-17"><a href="packaging-functionality.html#cb584-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span>
+<span id="cb584-18"><a href="packaging-functionality.html#cb584-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="install-package." class="section level3">
+<h3>Install package.</h3>
+<p>You can install a package locally from it’s source code with function <code>install()</code></p>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="packaging-functionality.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb585-2"><a href="packaging-functionality.html#cb585-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install</span>(<span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<p>You can now load it like any other package…</p>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="packaging-functionality.html#cb586-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;mypackage&quot;</span>)</span></code></pre></div>
+<p>And use your function!</p>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="packaging-functionality.html#cb587-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;Hello, world!&quot;</code></pre>
+<hr />
+</div>
+</div>
+<div id="roxygen-documentation" class="section level2">
+<h2>🚦 Roxygen documentation</h2>
+<p><a href="http://r-pkgs.had.co.nz/man.html"><code>Roxygen2</code></a> allows you to write specially-structured comments preceeding each function definition to document:</p>
+<ul>
+<li>the inputs and outputs</li>
+<li>a description of what it does</li>
+<li>an example of how to use it</li>
+</ul>
+<p>These are processed automatically to produce <code>.Rd</code> help files for your functions and control which functions are exported to the package <code>NAMESPACE</code>.</p>
+<p>Let’s document our example function. First, clear the demo comments above the function and all contents of the example<code>NAMESPACE</code>. Also delete the file in the <code>man</code> folder.</p>
+<div id="insert-roxygen-skeleton" class="section level3">
+<h3>Insert Roxygen skeleton</h3>
+<p>You can insert a Roxygen skeleton by placing the curson with a function and clicking:</p>
+<blockquote>
+<p><strong>Code &gt; Insert Roxygen Skeleton</strong></p>
+</blockquote>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="packaging-functionality.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Title</span></span>
+<span id="cb589-2"><a href="packaging-functionality.html#cb589-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb589-3"><a href="packaging-functionality.html#cb589-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return</span></span>
+<span id="cb589-4"><a href="packaging-functionality.html#cb589-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb589-5"><a href="packaging-functionality.html#cb589-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb589-6"><a href="packaging-functionality.html#cb589-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb589-7"><a href="packaging-functionality.html#cb589-7" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb589-8"><a href="packaging-functionality.html#cb589-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span>
+<span id="cb589-9"><a href="packaging-functionality.html#cb589-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="roxygen-basics" class="section level4">
+<h4>Roxygen basics</h4>
+<ul>
+<li><p><code>roxygen</code> notation indicated by <strong>beginning line with <code>#'</code></strong>.</p></li>
+<li><p><strong>First line</strong> will be the <strong>title</strong> for the function.</p></li>
+<li><p>After title, include a blank <code>#'</code> line and then write a <strong>longer description.</strong></p></li>
+<li><p><code>@param argument_name</code> <strong>description of the argument.</strong></p></li>
+<li><p><code>@return</code> description of <strong>what the function returns.</strong></p></li>
+<li><p><code>@export</code> tells <code>Roxygen2</code> to <strong>add this function to the <code>NAMESPACE</code></strong> file, so that it will be <strong>accessible to users.</strong></p></li>
+<li><p><code>@examples</code> allows to include example of how to use a function</p></li>
+</ul>
+</div>
+</div>
+<div id="complete-roxygen-documentation" class="section level3">
+<h3>Complete Roxygen documentation</h3>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="packaging-functionality.html#cb590-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World! </span></span>
+<span id="cb590-2"><a href="packaging-functionality.html#cb590-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb590-3"><a href="packaging-functionality.html#cb590-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print hello greeting</span></span>
+<span id="cb590-4"><a href="packaging-functionality.html#cb590-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console</span></span>
+<span id="cb590-5"><a href="packaging-functionality.html#cb590-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb590-6"><a href="packaging-functionality.html#cb590-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb590-7"><a href="packaging-functionality.html#cb590-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb590-8"><a href="packaging-functionality.html#cb590-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
+<span id="cb590-9"><a href="packaging-functionality.html#cb590-9" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb590-10"><a href="packaging-functionality.html#cb590-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span>
+<span id="cb590-11"><a href="packaging-functionality.html#cb590-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="autogenerate-documentation" class="section level3">
+<h3>Autogenerate documentation</h3>
+<p>Use function <code>devtools::document()</code> to create documentation. This re-creates a <code>hello.Rd</code> helpfile in the <code>man/</code> folder and populates the <code>NAMESPACE</code> with our functions</p>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="packaging-functionality.html#cb591-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">document</span>()</span></code></pre></div>
+<p>Click <strong>Install and Restart</strong> to re-install the package and make the documentation available.</p>
+<p><img src="assets/roxygen-done.png" /></p>
+<p>You can configure your build tools in the <strong>Global Options</strong> to automatically build documentation every time you <strong>Install &amp; Rebuild</strong></p>
+<p><img src="assets/conf-build-tools.png" /></p>
+</div>
+</div>
+<div id="personalise-function" class="section level2">
+<h2>🚦 Personalise function</h2>
+<p>Let’s go a step further and customise our function so that the greeting is from ourselves!</p>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="packaging-functionality.html#cb592-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World!</span></span>
+<span id="cb592-2"><a href="packaging-functionality.html#cb592-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb592-3"><a href="packaging-functionality.html#cb592-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print hello greeting</span></span>
+<span id="cb592-4"><a href="packaging-functionality.html#cb592-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console from me</span></span>
+<span id="cb592-5"><a href="packaging-functionality.html#cb592-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb592-6"><a href="packaging-functionality.html#cb592-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb592-7"><a href="packaging-functionality.html#cb592-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb592-8"><a href="packaging-functionality.html#cb592-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
+<span id="cb592-9"><a href="packaging-functionality.html#cb592-9" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb592-10"><a href="packaging-functionality.html#cb592-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world from Anna&quot;</span>)</span>
+<span id="cb592-11"><a href="packaging-functionality.html#cb592-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="add-some-fun" class="section level2">
+<h2>Add some fun!</h2>
+<p>Programming is most useful for having fun. So let’s make our function extra fun!</p>
+<p>We’ll use package <code>cowsay</code></p>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="packaging-functionality.html#cb593-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;cowsay&quot;</span>)</span></code></pre></div>
+<p>which has a single function <code>say</code>, which does this…</p>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="packaging-functionality.html#cb594-1" aria-hidden="true" tabindex="-1"></a>cowsay<span class="sc">::</span><span class="fu">say</span>(<span class="st">&quot;Say whaaaaaat?&quot;</span>, <span class="at">by =</span> <span class="st">&quot;shark&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  -------------- 
+## Say whaaaaaat? 
+##  --------------
+##     \
+##       \
+##         \
+##               /&quot;&quot;-._
+##               .       &#39;-,
+##                :          &#39;&#39;,
+##                 ;      *     &#39;.
+##                  &#39; *         () &#39;.
+##                    \               \
+##                     \      _.---.._ &#39;.
+##                     :  .&#39; _.--&#39;&#39;-&#39;&#39;  \ ,&#39;
+##         .._           &#39;/.&#39;             . ;
+##         ; `-.          ,                \&#39;
+##          ;   `,         ;              ._\
+##           ;    \     _,-&#39;                &#39;&#39;--._
+##           :    \_,-&#39;                          &#39;-._
+##           \ ,-&#39;                       .          &#39;-._
+##           .&#39;         __.-&#39;&#39;;            \...,__       &#39;.
+##         .&#39;      _,-&#39;        \              \   &#39;&#39;--.,__  &#39;\
+##         /    _,--&#39; ;         \              ;           \^.}
+##         ;_,-&#39; )     \  )\      )            ;
+##              /       \/  \_.,-&#39;             ;
+##             /                              ;
+##          ,-&#39;  _,-&#39;&#39;&#39;-.    ,-.,            ;      PFA
+##       ,-&#39; _.-&#39;        \  /    |/&#39;-._...--&#39;
+##      :--``             )/
+##   &#39;
+## </code></pre>
+<p>😜</p>
+<p>So let’s create a function that randomly chooses one of the animals available in <code>cowsay</code> to deliver the greeting, and also allow the user to customise who the recipient of the greeting is</p>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="packaging-functionality.html#cb596-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World!</span></span>
+<span id="cb596-2"><a href="packaging-functionality.html#cb596-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb596-3"><a href="packaging-functionality.html#cb596-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print personalised hello greeting from me.</span></span>
+<span id="cb596-4"><a href="packaging-functionality.html#cb596-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb596-5"><a href="packaging-functionality.html#cb596-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param name character string. Your name!</span></span>
+<span id="cb596-6"><a href="packaging-functionality.html#cb596-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb596-7"><a href="packaging-functionality.html#cb596-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console</span></span>
+<span id="cb596-8"><a href="packaging-functionality.html#cb596-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb596-9"><a href="packaging-functionality.html#cb596-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb596-10"><a href="packaging-functionality.html#cb596-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb596-11"><a href="packaging-functionality.html#cb596-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
+<span id="cb596-12"><a href="packaging-functionality.html#cb596-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello(&quot;Lucy Elen&quot;)</span></span>
+<span id="cb596-13"><a href="packaging-functionality.html#cb596-13" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb596-14"><a href="packaging-functionality.html#cb596-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb596-15"><a href="packaging-functionality.html#cb596-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create greeting</span></span>
+<span id="cb596-16"><a href="packaging-functionality.html#cb596-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">is.null</span>(name)){name <span class="ot">&lt;-</span> <span class="st">&quot;world&quot;</span>}</span>
+<span id="cb596-17"><a href="packaging-functionality.html#cb596-17" aria-hidden="true" tabindex="-1"></a>    greeting <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, name, <span class="st">&quot;from Anna!&quot;</span>)</span>
+<span id="cb596-18"><a href="packaging-functionality.html#cb596-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb596-19"><a href="packaging-functionality.html#cb596-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># randomly sample an animal</span></span>
+<span id="cb596-20"><a href="packaging-functionality.html#cb596-20" aria-hidden="true" tabindex="-1"></a>    animal_names <span class="ot">&lt;-</span> <span class="fu">names</span>(cowsay<span class="sc">::</span>animals)</span>
+<span id="cb596-21"><a href="packaging-functionality.html#cb596-21" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(animal_names), <span class="dv">1</span>)</span>
+<span id="cb596-22"><a href="packaging-functionality.html#cb596-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb596-23"><a href="packaging-functionality.html#cb596-23" aria-hidden="true" tabindex="-1"></a>    cowsay<span class="sc">::</span><span class="fu">say</span>(greeting, animal_names[i])</span>
+<span id="cb596-24"><a href="packaging-functionality.html#cb596-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Document, Install and restart to load our changes</p>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="packaging-functionality.html#cb597-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  ----- 
+## Hello y&#39;all from Anna! 
+##  ------ 
+##     \   
+##      \
+##      _[_]_
+##       (&quot;)
+##   &gt;--( : )--&lt;
+##     (__:__) [nosig]
+## </code></pre>
+</div>
+<div id="check-package-integrity" class="section level2">
+<h2>🚦 Check package integrity</h2>
+<p>An <strong>important part of the package development process is <code>R CMD check</code></strong>. <code>R CMD check</code> automatically <strong>checks your code</strong> and can <strong>automatically detects many common problems</strong> that we’d otherwise discover the hard way.</p>
+<p>To check our package, we can:</p>
+<ul>
+<li><p>use <code>devtools::check()</code></p></li>
+<li><p>press Ctrl/Cmd + Shift + E</p></li>
+<li><p>click on the ✅<strong>Check</strong> tab in the <strong>Build</strong> panel.</p></li>
+</ul>
+<p>This:</p>
+<ul>
+<li><p><strong>Ensures that the documentation is up-to-date</strong> by running
+<code>devtools::document()</code>.</p></li>
+<li><p><strong>Bundles the package</strong> before checking it.</p></li>
+</ul>
+<p>More info on <a href="http://r-pkgs.had.co.nz/check.html">checks</a> here.</p>
+<p><br></p>
+<p>Both these run <code>R CMD check</code> which <strong>return three types of messages</strong>:</p>
+<ul>
+<li><p><strong>ERRORs</strong>: Severe problems that you should fix regardless of whether or not you’re submitting to CRAN.</p></li>
+<li><p><strong>WARNINGs</strong>: Likely problems that you must fix if you’re planning to submit to CRAN (and a good idea to look into even if you’re not).</p></li>
+<li><p><strong>NOTEs</strong>: Mild problems. If you are submitting to CRAN, you should strive to eliminate all NOTEs, even if they are false positives.</p></li>
+</ul>
+<p>Let’s <strong>Check</strong> our package:</p>
+<p>Click on the <strong>Check</strong> button (📋 ✅)</p>
+<pre><code>   
+── R CMD check results ──────────────────────────────────── mypackage 0.1.0 ────
+Duration: 8.4s
+
+❯ checking DESCRIPTION meta-information ... WARNING
+  Non-standard license specification:
+    What license is it under?
+  Standardizable: FALSE
+
+❯ checking dependencies in R code ... WARNING
+  &#39;::&#39; or &#39;:::&#39; import not declared from: ‘cowsay’
+
+0 errors ✔ | 2 warnings ✖ | 0 notes ✔
+Error: R CMD check found WARNINGs
+Execution halted
+
+Exited with status 1.</code></pre>
+<p>Aha, so our checks have thrown up some warnings! First, it’s telling us we haven’t added a <code>LICENSE</code>. It’s also telling us that we have a dependency (import) from package <code>cowsay</code> which we haven’t documented in the <code>DESCRIPTION</code> file. <code>usethis</code> to the rescue!</p>
+</div>
+<div id="add-dependencies" class="section level2">
+<h2>🚦 Add dependencies</h2>
+<p>Add <code>cowsay</code> as a dependency.</p>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="packaging-functionality.html#cb600-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(<span class="st">&quot;cowsay&quot;</span>)</span></code></pre></div>
+<pre><code>✔ Setting active project to &#39;/Users/Anna/Desktop/mypackage&#39;
+✔ Adding &#39;cowsay&#39; to Imports field in DESCRIPTION
+● Refer to functions with `cowsay::fun()`</code></pre>
+</div>
+<div id="add-license" class="section level2">
+<h2>Add License</h2>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="packaging-functionality.html#cb602-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_mit_license</span>()</span></code></pre></div>
+<p><img src="assets/clear-checks.png" /></p>
+<p>Check again…All should be good!</p>
+<pre><code>── R CMD check results ──────────────────────────────────── mypackage 0.1.0 ────
+Duration: 9.3s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+R CMD check succeeded</code></pre>
+<hr />
+</div>
+<div id="add-test" class="section level2">
+<h2>🚦 Add Test</h2>
+<p><strong>Testing is a vital part of package development</strong>. It ensures that our code does what you want it to do.</p>
+<p>Once you’re set up with a testing framework, the workflow is simple:</p>
+<ol style="list-style-type: decimal">
+<li><p>Modify your code or tests.</p></li>
+<li><p>Test your package with Ctrl/Cmd + Shift + T or <code>devtools::test()</code>.</p></li>
+<li><p>Repeat until all tests pass.</p></li>
+</ol>
+</div>
+<div id="create-test-file" class="section level2">
+<h2>create test file</h2>
+<p>To create a new test file (and the testing framework if required), use function
+<code>usethis::use_test()</code>. It’s good practice to name the test files after the <code>.R</code> files containing the functions being tested.</p>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="packaging-functionality.html#cb604-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_test</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="packaging-functionality.html#cb605-1" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">&#39;/Users/Anna/Documents/workflows/workshops/materials/mypackage&#39;</span></span>
+<span id="cb605-2"><a href="packaging-functionality.html#cb605-2" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">&#39;testthat&#39;</span> to Suggests field <span class="cf">in</span> DESCRIPTION</span>
+<span id="cb605-3"><a href="packaging-functionality.html#cb605-3" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">&#39;tests/testthat/&#39;</span></span>
+<span id="cb605-4"><a href="packaging-functionality.html#cb605-4" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">&#39;tests/testthat.R&#39;</span></span>
+<span id="cb605-5"><a href="packaging-functionality.html#cb605-5" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">&#39;tests/testthat/test-hello.R&#39;</span></span>
+<span id="cb605-6"><a href="packaging-functionality.html#cb605-6" aria-hidden="true" tabindex="-1"></a>● Modify <span class="st">&#39;tests/testthat/test-hello.R&#39;</span></span></code></pre></div>
+<p>This just created the following folders and files</p>
+<pre><code>tests
+├── testthat
+│   └── test-hello.R
+└── testthat.R
+
+1 directory, 2 files</code></pre>
+<p>It also added <code>testthat</code> to the suggested packages in the <code>DESCRIPTION</code> file.</p>
+<pre><code>Suggests: 
+    testthat</code></pre>
+<p>That’s because you don’t need test that to run the functions in <code>mypackage</code>, but you do
+if you want to run the tests.</p>
+<p>When the tests are run (either through running <code>devtools::test()</code>, clicking on <strong>More &gt; Test Package</strong> in the Build panel or <code>Cmd/Ctrl + Shift + T</code>), the code in each test script in directory <code>testthat</code> is run.</p>
+<p><strong><code>test-hello.R</code></strong></p>
+<p>Let’s load the library so we can explore the <code>testthat</code> testing framework</p>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="packaging-functionality.html#cb608-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span></code></pre></div>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="packaging-functionality.html#cb609-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;test-hello&quot;</span>)</span>
+<span id="cb609-2"><a href="packaging-functionality.html#cb609-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb609-3"><a href="packaging-functionality.html#cb609-3" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
+<span id="cb609-4"><a href="packaging-functionality.html#cb609-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb609-5"><a href="packaging-functionality.html#cb609-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## Test passed 🎊</code></pre>
+<p>If the test doesn’t pass it throws an error</p>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="packaging-functionality.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;test-hello&quot;</span>)</span>
+<span id="cb611-2"><a href="packaging-functionality.html#cb611-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb611-3"><a href="packaging-functionality.html#cb611-3" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
+<span id="cb611-4"><a href="packaging-functionality.html#cb611-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb611-5"><a href="packaging-functionality.html#cb611-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## ── Failure (&lt;text&gt;:4:3): multiplication works ──────────────────────────────────
+## 2 * 2 not equal to 5.
+## 1/1 mismatches
+## [1] 4 - 5 == -1</code></pre>
+</div>
+<div id="write-test" class="section level2">
+<h2>Write test</h2>
+<p>Let’s write a simple test to check that we are getting an expected output type. The first thing to note, looking at the <code>say()</code> documentation is that it takes an argument <code>type</code> which allows us to specify the output we want. It defaults <code>message</code> which means the output of the function is returned as a message.</p>
+<p>We can therefore use <code>testthat::expect_message()</code></p>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="packaging-functionality.html#cb613-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;test-hello&quot;</span>)</span>
+<span id="cb613-2"><a href="packaging-functionality.html#cb613-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb613-3"><a href="packaging-functionality.html#cb613-3" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;hello works&quot;</span>, {</span>
+<span id="cb613-4"><a href="packaging-functionality.html#cb613-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_message</span>(<span class="fu">hello</span>())</span>
+<span id="cb613-5"><a href="packaging-functionality.html#cb613-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## 
+##  ----- 
+## Hello world from Anna! 
+##  ------ 
+##     \   
+##      \  
+##       \
+##        /\___/\
+##        {o}{o}|
+##        \ v  /|
+##        |    \ \
+##         \___/_/       [ab] 
+##           | | 
+## ── Failure (&lt;text&gt;:4:3): hello works ───────────────────────────────────────────
+## `hello()` did not produce any messages.</code></pre>
+<p>Now let’s test our package</p>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="packaging-functionality.html#cb615-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code></pre></div>
+<p>Success!</p>
+<pre><code>==&gt; devtools::test()
+
+Loading mypackage
+Testing mypackage
+✔ | OK F W S | Context
+✔ |  1       | test-hello
+
+══ Results ════════════════════════════════════════════════════════
+OK:       1
+Failed:   0
+Warnings: 0
+Skipped:  0</code></pre>
+</div>
+<div id="complete-package-metadata" class="section level2">
+<h2>🚦 Complete package metadata</h2>
+<p>Let’s head to the <code>DESCRIPTION</code> file and complete the details.</p>
+</div>
+<div id="authors" class="section level2">
+<h2>Authors</h2>
+<p>First let’s complete the authors. Remove the current author and maintainer lines and replace it with the following line:</p>
+<pre><code>Authors@R: person(&quot;First&quot;, &quot;Last&quot;, email = &quot;first.last@example.com&quot;, role = c(&quot;aut&quot;, &quot;cre&quot;))</code></pre>
+<p>completed with your own details</p>
+</div>
+<div id="add-a-title-and-description" class="section level2">
+<h2>Add a title and description</h2>
+<p>Complete the title and description fields with appropriate details. If you want to form a paragraph of text, make sure do indent the hanging lines by 4 spaces (one tab). And make sure that your Description field <strong>ends in a full-stop</strong>.</p>
+</div>
+<div id="add-a-date" class="section level2">
+<h2>Add a date</h2>
+<p>Use today’s date in ISO format, ie <code>2019-04-10</code>. This will populate a citation entry for us.</p>
+<div id="completed-description" class="section level3">
+<h3>Completed <code>DESCRIPTION</code></h3>
+<p>The complete <code>DESCRIPTION</code> file should look something like this:</p>
+<pre><code>Package: mypackage
+Type: Package
+Title: Customised greetings from me!
+Version: 0.1.0
+Authors@R: person(&quot;Anna&quot;, &quot;Krystalli&quot;, 
+  email = &quot;annakrystalli@googlemail.com&quot;, 
+  role = c(&quot;aut&quot;, &quot;cre&quot;))
+Description: Prints a customised greeting from myself, 
+    delivered by a friend.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports: 
+    cowsay
+Suggests: 
+    testthat
+Date: 2019-04-10</code></pre>
+<p>Check your package. If all is good, document, install and restart!</p>
+<p>Now, check you’re package’s citation:</p>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="packaging-functionality.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;mypackage&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## To cite package &#39;mypackage&#39; in publications use:
+## 
+##   Anna Krystalli (2019). mypackage: Customised greetings from me!. R
+##   package version 0.1.0.
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Manual{,
+##     title = {mypackage: Customised greetings from me!},
+##     author = {Anna Krystalli},
+##     year = {2019},
+##     note = {R package version 0.1.0},
+##   }</code></pre>
+</div>
+</div>
+<div id="create-readme" class="section level2">
+<h2>🚦 Create README</h2>
+<p>The final document you will need for your package is a <code>README</code>.</p>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="packaging-functionality.html#cb621-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code></pre></div>
+<pre><code>✔ Writing &#39;README.Rmd&#39;
+✔ Adding &#39;^README\\.Rmd$&#39; to &#39;.Rbuildignore&#39;
+● Modify &#39;README.Rmd&#39;
+✔ Writing &#39;.git/hooks/pre-commit&#39;</code></pre>
+<p>Because it’s an <code>.Rmd</code> but GitHub can only display an <code>md</code> document as it’s landing page, this is a special <code>.Rmd</code> that renders to a markdown document rather than <code>html</code>. The function adds a check to <code>.git</code> to ensure you commit an up to date version on the <code>md</code> when you commit changes to the <code>.Rmd</code>.</p>
+<p>Complete the README, including an example.</p>
+</div>
+<div id="commit-and-push-to-github" class="section level2">
+<h2>Commit and push to GitHub</h2>
+<p>Now you have everything you need to share your package on GitHub so commit and push it up.</p>
+<p>Anyone will be able to install it using, eg:</p>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="packaging-functionality.html#cb623-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;annakrystalli/mypackage&quot;</span>)</span></code></pre></div>
+</div>
+<div id="create-documentation-site" class="section level2">
+<h2>🚦 Create documentation site</h2>
+<p>You can use package <code>pkgdown</code> to create an online site for your documentation:</p>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="packaging-functionality.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pkgdown&quot;</span>)</span>
+<span id="cb624-2"><a href="packaging-functionality.html#cb624-2" aria-hidden="true" tabindex="-1"></a>pkgdown<span class="sc">::</span><span class="fu">build_site</span>()</span></code></pre></div>
+<pre><code>══ Building pkgdown site ════════════════════════════════════════════
+Reading from: &#39;/Users/Anna/Documents/workflows/dummy/mypackage&#39;
+Writing to:   &#39;/Users/Anna/Documents/workflows/dummy/mypackage/docs&#39;
+── Initialising site ────────────────────────────────────────────────
+Copying &#39;../../../../../../Library/Frameworks/R.framework/Versions/3.5/Resources/library/pkgdown/assets/docsearch.css&#39; to &#39;docsearch.css&#39;
+Copying &#39;../../../../../../Library/Frameworks/R.framework/Versions/3.5/Resources/library/pkgdown/assets/docsearch.js&#39; to &#39;docsearch.js&#39;
+Copying &#39;../../../../../../Library/Frameworks/R.framework/Versions/3.5/Resources/library/pkgdown/assets/link.svg&#39; to &#39;link.svg&#39;
+Copying &#39;../../../../../../Library/Frameworks/R.framework/Versions/3.5/Resources/library/pkgdown/assets/pkgdown.css&#39; to &#39;pkgdown.css&#39;
+Copying &#39;../../../../../../Library/Frameworks/R.framework/Versions/3.5/Resources/library/pkgdown/assets/pkgdown.js&#39; to &#39;pkgdown.js&#39;
+── Building home ────────────────────────────────────────────────────
+Writing &#39;authors.html&#39;
+Reading &#39;LICENSE.md&#39;
+Writing &#39;LICENSE.html&#39;
+Writing &#39;LICENSE-text.html&#39;
+Reading &#39;README.Rmd&#39;
+Writing &#39;index.html&#39;
+── Building function reference ──────────────────────────────────────
+Updating mypackage documentation
+Writing NAMESPACE
+Loading mypackage
+Writing NAMESPACE
+Writing &#39;reference/index.html&#39;
+Loading mypackage
+Reading &#39;man/hello.Rd&#39;
+Writing &#39;reference/hello.html&#39;
+══ DONE ═════════════════════════════════════════════════════════════
+── Previewing site ──────────────────────────────────────────────────</code></pre>
+<p>This creates html documentation for our package in the <code>docs/</code> folder.</p>
+<ul>
+<li>Commit and push the <code>docs/</code> folder to GitHub</li>
+<li>Make the site live by enabling gh-pages. Set it to serve content from the <code>docs</code> folder.</li>
+</ul>
+<p>Your package is now installable from GitHub, has online documentation and should have this final structure:</p>
+<pre><code>.
+├── DESCRIPTION
+├── LICENSE
+├── LICENSE.md
+├── NAMESPACE
+├── R
+│   └── hello.R
+├── README.Rmd
+├── README.md
+├── docs
+│   ├── LICENSE-text.html
+│   ├── LICENSE.html
+│   ├── authors.html
+│   ├── docsearch.css
+│   ├── docsearch.js
+│   ├── index.html
+│   ├── link.svg
+│   ├── pkgdown.css
+│   ├── pkgdown.js
+│   ├── pkgdown.yml
+│   └── reference
+│       ├── hello.html
+│       └── index.html
+├── man
+│   └── hello.Rd
+├── mypackage.Rproj
+└── tests
+    ├── testthat
+    │   └── test-hello.R
+    └── testthat.R
+
+6 directories, 23 files</code></pre>
+<p>Check out my complete example <a href="https://github.com/annakrystalli/mypackage-demo">here</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="additional.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="creating-a-research-compendium-with-rrtools.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rrresearchACCE20.pdf", "rrresearchACCE20.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

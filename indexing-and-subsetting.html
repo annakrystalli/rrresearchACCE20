@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Indexing and subsetting | Reproducible Research Data &amp; Project Management in R</title>
+  <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Indexing and subsetting | Reproducible Research Data &amp; Project Management in R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
+  
+  <meta property="og:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
+  <meta name="github-repo" content="annakrystalli/rrresearchACCE20" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Indexing and subsetting | Reproducible Research Data &amp; Project Management in R" />
+  
+  <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
+  
+
+<meta name="author" content="Course Instructor: Anna Krystalli" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-types-structures-and-classes.html"/>
+<link rel="next" href="the-tidyverse-way.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/jsoneditor-5.25.6/jsoneditor.min.css" rel="stylesheet" />
+<script src="libs/jsoneditor-5.25.6/jsoneditor.min.js"></script>
+<script src="libs/jsonedit-binding-3.0.0/jsonedit.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Reproducible Research Data & Project Management in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Course description</a></li>
+<li class="chapter" data-level="" data-path="welcome-slides.html"><a href="welcome-slides.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="part"><span><b>I Basics</b></span></li>
+<li class="chapter" data-level="" data-path="rstudio-basics.html"><a href="rstudio-basics.html"><i class="fa fa-check"></i>Intro to R &amp; Rstudio</a></li>
+<li class="chapter" data-level="" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i>R Basics</a></li>
+<li class="chapter" data-level="" data-path="data-types-structures-and-classes.html"><a href="data-types-structures-and-classes.html"><i class="fa fa-check"></i>Data types, structures and classes</a></li>
+<li class="chapter" data-level="" data-path="indexing-and-subsetting.html"><a href="indexing-and-subsetting.html"><i class="fa fa-check"></i>Indexing and subsetting</a></li>
+<li class="chapter" data-level="" data-path="the-tidyverse-way.html"><a href="the-tidyverse-way.html"><i class="fa fa-check"></i>The tidyverse way</a></li>
+<li class="chapter" data-level="" data-path="rdm-intro-view.html"><a href="rdm-intro-view.html"><i class="fa fa-check"></i>Data management Basics</a></li>
+<li class="part"><span><b>II Project Management</b></span></li>
+<li class="chapter" data-level="" data-path="projects-in-rstudio.html"><a href="projects-in-rstudio.html"><i class="fa fa-check"></i>Projects in Rstudio</a></li>
+<li class="chapter" data-level="" data-path="filenaming-view.html"><a href="filenaming-view.html"><i class="fa fa-check"></i>Good File Naming</a></li>
+<li class="chapter" data-level="" data-path="path-proj-str.html"><a href="path-proj-str.html"><i class="fa fa-check"></i>Paths and Project structure</a></li>
+<li class="part"><span><b>III Data Munging</b></span></li>
+<li class="chapter" data-level="" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i>Iteration</a></li>
+<li class="chapter" data-level="" data-path="data-merge.html"><a href="data-merge.html"><i class="fa fa-check"></i>Merging data</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i>Functions</a></li>
+<li class="part"><span><b>IV Working with metadata</b></span></li>
+<li class="chapter" data-level="" data-path="metadata-slides.html"><a href="metadata-slides.html"><i class="fa fa-check"></i>Metadata</a></li>
+<li><a href="dataspice.html#dataspice">Creating metadata with <code>dataspice</code></a></li>
+<li class="part"><span><b>V Analysing and presenting analyses</b></span></li>
+<li class="chapter" data-level="" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i>Plotting with ggplot2</a></li>
+<li class="chapter" data-level="" data-path="literate-programming-in-rmarkdown.html"><a href="literate-programming-in-rmarkdown.html"><i class="fa fa-check"></i>Literate Programming in rmarkdown</a></li>
+<li class="part"><span><b>VI Version Control</b></span></li>
+<li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html"><i class="fa fa-check"></i>Version Control with Git</a></li>
+<li class="chapter" data-level="" data-path="collaborative-github.html"><a href="collaborative-github.html"><i class="fa fa-check"></i>Collaborative GitHub</a></li>
+<li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a></li>
+<li class="part"><span><b>VII Closing</b></span></li>
+<li class="chapter" data-level="" data-path="closing-remarks.html"><a href="closing-remarks.html"><i class="fa fa-check"></i>Closing Remarks</a></li>
+<li class="part"><span><b>VIII Additonal materials</b></span></li>
+<li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html"><i class="fa fa-check"></i>Packaging functionality</a></li>
+<li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html"><i class="fa fa-check"></i>Creating a research compendium with rrtools</a></li>
+<li class="part"><span><b>IX APPENDIX</b></span></li>
+<li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a></li>
+<li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
+<li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
+<li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a></li>
+<li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a></li>
+<li class="divider"></li>
+<li><a href="https://annakrystalli.me/rrreasearchACCE2020" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Reproducible Research Data &amp; Project Management in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="indexing-and-subsetting" class="section level1">
+<h1>Indexing and subsetting</h1>
+<blockquote>
+<p>R has many powerful subset operators. Mastering them will allow you to
+easily perform complex operations on any kind of dataset.</p>
+</blockquote>
+<p>There many different ways we can subset any kind of object, and three
+different subsetting operators for the different data structures.</p>
+<div id="subsetting-vectors" class="section level2">
+<h2>Subsetting vectors</h2>
+<p>Let’s start by examining subsetting in the simplest data structure, the vector.</p>
+<blockquote>
+<p>Subsetting a vector always returns another vector.</p>
+</blockquote>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="indexing-and-subsetting.html#cb140-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">7</span></span>
+<span id="cb140-2"><a href="indexing-and-subsetting.html#cb140-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 4 5 6 7</code></pre>
+<div id="subsetting-using-and-elements-indices" class="section level3">
+<h3>Subsetting using <code>[</code> and elements indices</h3>
+<div id="extracting-single-elements" class="section level4">
+<h4>Extracting single elements</h4>
+<p>To extract elements of a vector we can use the square bracket operator (<code>[</code>) and the target element index, starting from one:</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="indexing-and-subsetting.html#cb142-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="indexing-and-subsetting.html#cb144-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p>It may look different, but the square brackets operator is a function and means “get me the nth element”.</p>
+<p>If we ask for an index beyond the length of the vector, R will return a missing value:</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="indexing-and-subsetting.html#cb146-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">6</span>]</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>If we ask for the 0th element, we get an empty vector:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="indexing-and-subsetting.html#cb148-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>]</span></code></pre></div>
+<pre><code>## integer(0)</code></pre>
+</div>
+<div id="extracting-multiple-elements" class="section level4">
+<h4>Extracting multiple elements</h4>
+<p>We can also ask for multiple elements at once:</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="indexing-and-subsetting.html#cb150-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<pre><code>## [1] 4 6</code></pre>
+<p>Or slices of the vector:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="indexing-and-subsetting.html#cb152-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] 5 6 7</code></pre>
+<p>We can ask for the same element multiple times:</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="indexing-and-subsetting.html#cb154-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>)]</span></code></pre></div>
+<pre><code>## [1] 4 4 6</code></pre>
+</div>
+<div id="excluding-and-removing-elements" class="section level4">
+<h4>Excluding and removing elements</h4>
+<p>If we use a negative number as the index of a vector, R will return
+every element <em>except</em> for the one specified:</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="indexing-and-subsetting.html#cb156-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span><span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 4 6 7</code></pre>
+<p>We can skip multiple elements:</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="indexing-and-subsetting.html#cb158-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">5</span>)]  <span class="co"># or x[-c(1,5)]</span></span></code></pre></div>
+<pre><code>## [1] 5 6 7</code></pre>
+<div class="alert alert-warning">
+<p>In general, e aware that the result of subsetting using indices could change if the vector is reordered.</p>
+</div>
+</div>
+</div>
+<div id="subsetting-using-element-names" class="section level3">
+<h3>Subsetting using element names</h3>
+<p>If the vector has a name attribute, we can subset the vector more precisely using the element’s name</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="indexing-and-subsetting.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</span>
+<span id="cb160-2"><a href="indexing-and-subsetting.html#cb160-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-3"><a href="indexing-and-subsetting.html#cb160-3" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>)]</span></code></pre></div>
+<pre><code>## a c 
+## 4 6</code></pre>
+<div class="alert alert-success">
+<p>Subsetting using names in the most robust way to extract elements. The
+position of various elements can often change when chaining together
+subsetting operations, but the names will always remain the same!</p>
+</div>
+</div>
+<div id="subsetting-using-logical-vectors" class="section level3">
+<h3>Subsetting using logical vectors</h3>
+<p>We can also use any logical vector to subset:</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="indexing-and-subsetting.html#cb162-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>)]</span></code></pre></div>
+<pre><code>## c d 
+## 6 7</code></pre>
+<p>Since comparison operators (e.g. <code>&gt;</code>, <code>&lt;</code>, <code>==</code>) evaluate to logical vectors, we can also
+use them to succinctly subset vectors: the following statement gives
+the same result as the previous one.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="indexing-and-subsetting.html#cb164-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">5</span>]</span></code></pre></div>
+<pre><code>## c d 
+## 6 7</code></pre>
+<p>Breaking it down, this statement first evaluates <code>x &gt; 5</code>, generating
+a logical vector <code>c(FALSE, FALSE, TRUE, TRUE)</code>, and then
+selects the elements of <code>x</code> corresponding to the <code>TRUE</code> values.</p>
+<p>We can use <code>==</code> to mimic the previous method of indexing by name
+(remember you have to use <code>==</code> rather than <code>=</code> for comparisons):</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="indexing-and-subsetting.html#cb166-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">names</span>(x) <span class="sc">==</span> <span class="st">&quot;a&quot;</span>]</span></code></pre></div>
+<pre><code>## a 
+## 4</code></pre>
+<div class="alert alert-warning">
+<p>Avoid using <code>==</code> to compare numbers! See <a href="https://dplyr.tidyverse.org/reference/near.html">function <code>dplyr::near()</code></a> instead.</p>
+</div>
+<p>We also might want to subset using a vector of potential values, that might not necessarily have matches in <code>x</code>.</p>
+<p>In this case we can use <code>%in%</code></p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="indexing-and-subsetting.html#cb168-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">names</span>(x) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;e&quot;</span>)]</span></code></pre></div>
+<pre><code>## a c 
+## 4 6</code></pre>
+<div id="excluding-named-elements" class="section level4">
+<h4>Excluding named elements</h4>
+<p>Excluding or removing named elements is a little harder.</p>
+<p>If we try to skip one named element by negating the string, R complains (slightly obscurely) that it doesn’t know how to take the negative of a string:</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="indexing-and-subsetting.html#cb170-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span><span class="st">&quot;a&quot;</span>]</span></code></pre></div>
+<pre><code>## Error in -&quot;a&quot;: invalid argument to unary operator</code></pre>
+<p>However, we can use the <code>!=</code> (not-equals) operator to construct a logical vector that will do what we want:</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="indexing-and-subsetting.html#cb172-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">names</span>(x) <span class="sc">!=</span> <span class="st">&quot;a&quot;</span>]</span></code></pre></div>
+<pre><code>## b c d 
+## 5 6 7</code></pre>
+<p>Excluding multiple named indices requires a different tactic through.</p>
+<p>Suppose we want to drop the <code>"a"</code> and <code>"c"</code> elements, so we try this:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="indexing-and-subsetting.html#cb174-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">names</span>(x) <span class="sc">!=</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>)]</span></code></pre></div>
+<pre><code>## b c d 
+## 5 6 7</code></pre>
+<p>R did <em>something</em>, but it gave us a warning that we ought to pay attention to - and it apparently <em>gave us the wrong answer</em> (the <code>"c"</code> element is still included in the vector)!</p>
+<p>This happens because we are trying to compare two vectors (<code>names(x)</code> and <code>c("a","c")</code>) and comparison operators are automatically vectorised in such a case. So in effect, R is comparing <code>"a"</code> in <code>names(x)</code> to <code>"a"</code> in <code>c("a","c")</code> and returning <code>FALSE</code> (ie <code>"a" != "a" = FALSE</code>), then <code>"b"</code> in <code>names(x)</code> to <code>"c"</code> in <code>c("a","c")</code> and returning <code>TRUE</code>. What happens with <code>"c"</code> in <code>names(x)</code> is R recuycles the comparison vector <code>c("a","c")</code> and starts again with <code>"a"</code>. <code>"c"</code> is not equal to <code>"a"</code> so <code>"a" != "c"</code> returns <code>TRUE</code> and the element is kept.</p>
+<p>On the other hand this works, but only by chance:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="indexing-and-subsetting.html#cb176-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">names</span>(x) <span class="sc">!=</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>)]</span></code></pre></div>
+<pre><code>## c d 
+## 6 7</code></pre>
+<p>To perform such a subset robustly, we need to combine <code>%in%</code> and <code>!</code>.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="indexing-and-subsetting.html#cb178-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">!</span><span class="fu">names</span>(x) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>)]</span></code></pre></div>
+<pre><code>## b d 
+## 5 7</code></pre>
+<p>This checks whether names of <code>x</code> take any value of the values in <code>c("a","c")</code>, returning the elements where the condition is <code>TRUE</code>. The <code>!</code> then negates the selection, returning only the elements whose names are not contained in <code>c("a","c")</code>.</p>
+</div>
+</div>
+</div>
+<div id="matrix-subsetting" class="section level2">
+<h2>Matrix subsetting</h2>
+<blockquote>
+<p>As matrices are just 2d vectors, all the subsetting operations using the <code>[</code> can also be applied to matrices.</p>
+</blockquote>
+<div id="subsetting-using-element-indices" class="section level3">
+<h3>Subsetting using element indices</h3>
+<p>Let’s create a matrix</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="indexing-and-subsetting.html#cb180-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">ncol=</span><span class="dv">4</span>, <span class="at">nrow=</span><span class="dv">3</span>)</span>
+<span id="cb180-2"><a href="indexing-and-subsetting.html#cb180-2" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12</code></pre>
+<div class="alert alert-info">
+<p>Indexing matrices with <code>[</code> takes two arguments: <strong>the first expression is applied to the rows, the second
+to the columns:</strong></p>
+</div>
+<p>Say we want the <strong>2 and 3rd rows</strong> of the <strong>last and first column</strong> (in that order) of our matrix. We can use all the subsetting we learned for vectors and apply them to each dimension of our matrix.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="indexing-and-subsetting.html#cb182-1" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>)]</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]   11    2
+## [2,]   12    3</code></pre>
+<div id="subsetting-whole-rows-or-columns" class="section level4">
+<h4>Subsetting whole rows or columns</h4>
+<p>We can leave the first or second arguments blank to retrieve all the
+rows or columns respectively:</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="indexing-and-subsetting.html#cb184-1" aria-hidden="true" tabindex="-1"></a>m[, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    4    7
+## [2,]    5    8
+## [3,]    6    9</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="indexing-and-subsetting.html#cb186-1" aria-hidden="true" tabindex="-1"></a>m[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),]</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    2    5    8   11
+## [2,]    3    6    9   12</code></pre>
+<p>If we only access one row or column, R will automatically convert the result
+to a vector:</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="indexing-and-subsetting.html#cb188-1" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">3</span>,]</span></code></pre></div>
+<pre><code>## [1]  3  6  9 12</code></pre>
+<p>If we want to keep the output as a matrix, we need to specify a <em>third</em> argument;
+<code>drop = FALSE</code>:</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="indexing-and-subsetting.html#cb190-1" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">3</span>, , drop<span class="ot">=</span><span class="cn">FALSE</span>]</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    3    6    9   12</code></pre>
+<div class="alert alert-info">
+<p>Tip: Higher dimensional arrays</p>
+<p>When dealing with multi-dimensional arrays, each argument to <code>[</code> corresponds to a dimension. For example, a 3D array, the first three arguments correspond to the rows, columns, and depth dimension.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="subsetting-lists" class="section level2">
+<h2>Subsetting lists</h2>
+<blockquote>
+<p>There are three functions used to subset lists and extract individual elements: <code>[</code>, <code>[[</code>, and <code>$</code>.</p>
+</blockquote>
+<div id="subsetting-list-elements" class="section level3">
+<h3>Subsetting list elements</h3>
+<p>Using <code>[</code> will always return a list. If you want to <em>subset</em> a list, but not
+<em>extract</em> an element, then you will likely use <code>[</code>.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="indexing-and-subsetting.html#cb192-1" aria-hidden="true" tabindex="-1"></a>xlist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="st">&quot;ACCE DTP&quot;</span>, <span class="at">b =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">data =</span> <span class="fu">head</span>(iris))</span></code></pre></div>
+<div id="subsetting-by-element-indices" class="section level4">
+<h4>Subsetting by element indices</h4>
+<p>As with vectors, we can use element indices and <code>[</code> to subset lists.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="indexing-and-subsetting.html#cb193-1" aria-hidden="true" tabindex="-1"></a>xlist[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## $a
+## [1] &quot;ACCE DTP&quot;</code></pre>
+<p>This returns a <em>list with one element</em>.</p>
+<p>We can use multiple indices to subset multiple list elements:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="indexing-and-subsetting.html#cb195-1" aria-hidden="true" tabindex="-1"></a>xlist[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## $a
+## [1] &quot;ACCE DTP&quot;
+## 
+## $b
+##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+<div id="subsetting-by-name" class="section level4">
+<h4>Subsetting by name</h4>
+<p>We can also use names:</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="indexing-and-subsetting.html#cb197-1" aria-hidden="true" tabindex="-1"></a>xlist[<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)]</span></code></pre></div>
+<pre><code>## $a
+## [1] &quot;ACCE DTP&quot;
+## 
+## $b
+##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>It is accessing the list as if it were a vector and returning a list.</p>
+<p>Comparison operations involving the contents of list elements however won’t work as they are not accessible at the level of <code>[</code> indexing.</p>
+</div>
+</div>
+<div id="extracting-individual-elements" class="section level3">
+<h3>Extracting individual elements</h3>
+<blockquote>
+<p>Extracting individual elements allow us to access the objects contained in a list, which can be any type of object. Hence the result depends on the object each element contains.</p>
+</blockquote>
+<p>To extract individual elements of a list, we use the double-square bracket function: <code>[[</code>.</p>
+<div id="extracting-by-element-index" class="section level4">
+<h4>Extracting by element index</h4>
+<p>Again we can use element indices to extract the object contained in an element.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="indexing-and-subsetting.html#cb199-1" aria-hidden="true" tabindex="-1"></a>xlist[[<span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>Notice that now the result is a vector, not a list, which is what the second element contained.</p>
+<p>You can’t extract more than one element at once:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="indexing-and-subsetting.html#cb201-1" aria-hidden="true" tabindex="-1"></a>xlist[[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>## Error in xlist[[1:2]]: subscript out of bounds</code></pre>
+<p>Nor use it to skip elements:</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="indexing-and-subsetting.html#cb203-1" aria-hidden="true" tabindex="-1"></a>xlist[[<span class="sc">-</span><span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## Error in xlist[[-1]]: invalid negative subscript in get1index &lt;real&gt;</code></pre>
+</div>
+<div id="extracting-by-element-name" class="section level4">
+<h4>Extracting by element name</h4>
+<p>We can however use single names to extract elements:</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="indexing-and-subsetting.html#cb205-1" aria-hidden="true" tabindex="-1"></a>xlist[[<span class="st">&quot;a&quot;</span>]]</span></code></pre></div>
+<pre><code>## [1] &quot;ACCE DTP&quot;</code></pre>
+<div id="the-operator" class="section level5">
+<h5>The <code>$</code> operator</h5>
+<p>The <code>$</code> operator is a shorthand way for extracting single elements by name:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="indexing-and-subsetting.html#cb207-1" aria-hidden="true" tabindex="-1"></a>xlist<span class="sc">$</span>data</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+<div id="chlg-list-subset" class="section level5">
+<h5>List subsetting challenge</h5>
+<p>Given the following list:</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="indexing-and-subsetting.html#cb209-1" aria-hidden="true" tabindex="-1"></a>xlist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="st">&quot;ACCE DTP&quot;</span>, <span class="at">b =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">data =</span> <span class="fu">head</span>(iris))</span></code></pre></div>
+<p>and using your knowledge of both list and vector subsetting, extract the number 2 from xlist.</p>
+<p><em>Hint: the number 2 is contained within the “b” item in the list.</em></p>
+<p><a href="solutions.html#csol-list-subset">Solution</a></p>
+</div>
+</div>
+</div>
+</div>
+<div id="subsetting-data.frames" class="section level2">
+<h2>Subsetting data.frames</h2>
+<blockquote>
+<p>Data frames are lists underneath the hood, so similar rules
+apply subsetting rules apply. However they are also two dimensional objects.</p>
+</blockquote>
+<div id="subsetting-data.frames-as-a-list" class="section level3">
+<h3>Subsetting data.frames as a list</h3>
+<div id="using-to-subset" class="section level4">
+<h4>Using <code>[</code> to subset</h4>
+<p>Using the <strong><code>[</code> operator with one argument</strong> will act the same way as for lists, where each list
+element corresponds to a column. The resulting object will be a data.frame:</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="indexing-and-subsetting.html#cb210-1" aria-hidden="true" tabindex="-1"></a>trees[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##    Girth
+## 1    8.3
+## 2    8.6
+## 3    8.8
+## 4   10.5
+## 5   10.7
+## 6   10.8
+## 7   11.0
+## 8   11.0
+## 9   11.1
+## 10  11.2
+## 11  11.3
+## 12  11.4
+## 13  11.4
+## 14  11.7
+## 15  12.0
+## 16  12.9
+## 17  12.9
+## 18  13.3
+## 19  13.7
+## 20  13.8
+## 21  14.0
+## 22  14.2
+## 23  14.5
+## 24  16.0
+## 25  16.3
+## 26  17.3
+## 27  17.5
+## 28  17.9
+## 29  18.0
+## 30  18.0
+## 31  20.6</code></pre>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="indexing-and-subsetting.html#cb212-1" aria-hidden="true" tabindex="-1"></a>trees[<span class="st">&quot;Girth&quot;</span>]</span></code></pre></div>
+<pre><code>##    Girth
+## 1    8.3
+## 2    8.6
+## 3    8.8
+## 4   10.5
+## 5   10.7
+## 6   10.8
+## 7   11.0
+## 8   11.0
+## 9   11.1
+## 10  11.2
+## 11  11.3
+## 12  11.4
+## 13  11.4
+## 14  11.7
+## 15  12.0
+## 16  12.9
+## 17  12.9
+## 18  13.3
+## 19  13.7
+## 20  13.8
+## 21  14.0
+## 22  14.2
+## 23  14.5
+## 24  16.0
+## 25  16.3
+## 26  17.3
+## 27  17.5
+## 28  17.9
+## 29  18.0
+## 30  18.0
+## 31  20.6</code></pre>
+</div>
+<div id="using-to-extract" class="section level4">
+<h4>Using <code>[[</code> to extract</h4>
+<p>Similarly, <code>[[</code> will act to extract <em>a single column</em> as a vector:</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="indexing-and-subsetting.html#cb214-1" aria-hidden="true" tabindex="-1"></a>trees[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>##  [1]  8.3  8.6  8.8 10.5 10.7 10.8 11.0 11.0 11.1 11.2 11.3 11.4 11.4 11.7 12.0
+## [16] 12.9 12.9 13.3 13.7 13.8 14.0 14.2 14.5 16.0 16.3 17.3 17.5 17.9 18.0 18.0
+## [31] 20.6</code></pre>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="indexing-and-subsetting.html#cb216-1" aria-hidden="true" tabindex="-1"></a>trees[[<span class="st">&quot;Girth&quot;</span>]]</span></code></pre></div>
+<pre><code>##  [1]  8.3  8.6  8.8 10.5 10.7 10.8 11.0 11.0 11.1 11.2 11.3 11.4 11.4 11.7 12.0
+## [16] 12.9 12.9 13.3 13.7 13.8 14.0 14.2 14.5 16.0 16.3 17.3 17.5 17.9 18.0 18.0
+## [31] 20.6</code></pre>
+<p>And <code>$</code> provides a convenient shorthand to extract columns by name:</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="indexing-and-subsetting.html#cb218-1" aria-hidden="true" tabindex="-1"></a>trees<span class="sc">$</span>Girth</span></code></pre></div>
+<pre><code>##  [1]  8.3  8.6  8.8 10.5 10.7 10.8 11.0 11.0 11.1 11.2 11.3 11.4 11.4 11.7 12.0
+## [16] 12.9 12.9 13.3 13.7 13.8 14.0 14.2 14.5 16.0 16.3 17.3 17.5 17.9 18.0 18.0
+## [31] 20.6</code></pre>
+</div>
+</div>
+<div id="subsetting-data.frames-as-a-matrix" class="section level3">
+<h3>Subsetting data.frames as a matrix</h3>
+<p>With two arguments, <code>[</code> behaves the same way as for matrices:</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="indexing-and-subsetting.html#cb220-1" aria-hidden="true" tabindex="-1"></a>trees[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="st">&quot;Girth&quot;</span>, <span class="st">&quot;Volume&quot;</span>)]</span></code></pre></div>
+<pre><code>##   Girth Volume
+## 1   8.3   10.3
+## 2   8.6   10.3
+## 3   8.8   10.2
+## 4  10.5   16.4
+## 5  10.7   18.8</code></pre>
+<p>If we subset a single row, the result will be a data.frame (because
+the elements are mixed types):</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="indexing-and-subsetting.html#cb222-1" aria-hidden="true" tabindex="-1"></a>trees[<span class="dv">3</span>,]</span></code></pre></div>
+<pre><code>##   Girth Height Volume
+## 3   8.8     63   10.2</code></pre>
+<p>But for a single column the result will be a vector.</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="indexing-and-subsetting.html#cb224-1" aria-hidden="true" tabindex="-1"></a>trees[, <span class="st">&quot;Girth&quot;</span>]</span></code></pre></div>
+<pre><code>##  [1]  8.3  8.6  8.8 10.5 10.7 10.8 11.0 11.0 11.1 11.2 11.3 11.4 11.4 11.7 12.0
+## [16] 12.9 12.9 13.3 13.7 13.8 14.0 14.2 14.5 16.0 16.3 17.3 17.5 17.9 18.0 18.0
+## [31] 20.6</code></pre>
+<p>This can be changed with the third argument, <code>drop = FALSE</code>).</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="indexing-and-subsetting.html#cb226-1" aria-hidden="true" tabindex="-1"></a>trees[, <span class="st">&quot;Girth&quot;</span>, drop<span class="ot">=</span><span class="cn">FALSE</span>]</span></code></pre></div>
+<pre><code>##    Girth
+## 1    8.3
+## 2    8.6
+## 3    8.8
+## 4   10.5
+## 5   10.7
+## 6   10.8
+## 7   11.0
+## 8   11.0
+## 9   11.1
+## 10  11.2
+## 11  11.3
+## 12  11.4
+## 13  11.4
+## 14  11.7
+## 15  12.0
+## 16  12.9
+## 17  12.9
+## 18  13.3
+## 19  13.7
+## 20  13.8
+## 21  14.0
+## 22  14.2
+## 23  14.5
+## 24  16.0
+## 25  16.3
+## 26  17.3
+## 27  17.5
+## 28  17.9
+## 29  18.0
+## 30  18.0
+## 31  20.6</code></pre>
+</div>
+</div>
+<div id="advanced-r-cheat-sheet" class="section level2">
+<h2>Advanced R Cheat Sheet</h2>
+<div class="figure"><span id="fig:unnamed-chunk-109"></span>
+<iframe src="https://rstudio.com/wp-content/uploads/2016/02/advancedR.pdf" width="672" height="400px">
+</iframe>
+<p class="caption">
+Figure 1: Environments, data Structures, Functions, Subsetting and more by Arianne Colton and Sean Chen
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-types-structures-and-classes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-tidyverse-way.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rrresearchACCE20.pdf", "rrresearchACCE20.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
