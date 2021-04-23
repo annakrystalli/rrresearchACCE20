@@ -88,7 +88,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 
 <div class="alert alert-warning">
 
-In general, e aware that the result of subsetting using indices could change if the vector is reordered. 
+In general, be aware that the result of subsetting using indices could change if the vector is reordered. 
 
 </div>
 
@@ -183,7 +183,7 @@ x[names(x) != c("a","c")]
 
 R did *something*, but it gave us a warning that we ought to pay attention to - and it apparently *gave us the wrong answer* (the `"c"` element is still included in the vector)!
 
-This happens because we are trying to compare two vectors (`names(x)` and `c("a","c")`) and comparison operators are automatically vectorised in such a case. So in effect, R is comparing `"a"` in `names(x)` to `"a"` in `c("a","c")` and returning `FALSE` (ie `"a" != "a" = FALSE`), then `"b"` in `names(x)` to `"c"` in `c("a","c")` and returning `TRUE`. What happens with `"c"` in `names(x)` is R recuycles the comparison vector `c("a","c")` and starts again with `"a"`. `"c"` is not equal to `"a"` so `"a" != "c"` returns `TRUE` and the element is kept.
+This happens because we are trying to compare two vectors (`names(x)` and `c("a","c")`) and comparison operators are automatically vectorised in such a case. So in effect, R is comparing `"a"` in `names(x)` to `"a"` in `c("a","c")` and returning `FALSE` (ie `"a" != "a" = FALSE`), then `"b"` in `names(x)` to `"c"` in `c("a","c")` and returning `TRUE`. What happens with `"c"` in `names(x)` is R recycles the comparison vector `c("a","c")` and starts again with `"a"`. `"c"` is not equal to `"a"` so `"a" != "c"` returns `TRUE` and the element is kept.
 
 On the other hand this works, but only by chance:
 ```{r}
