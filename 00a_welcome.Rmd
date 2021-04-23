@@ -5,7 +5,7 @@
 slide_page <- function(slidedeck_name = "03_filenaming.html", site = "https://annakrystalli.me/rrresearchACCE20"){
     
     url <- glue::glue("{site}/slides/{slidedeck_name}")   
-    cat(paste0("[",icon::fontawesome('eye'), " View Slides](", url, "){target='blank'} <br><br>"))
+    cat(paste0("[",icons::fontawesome('eye'), " View Slides](", url, "){target='blank'} <br><br>"))
     
     knitr::include_url(glue::glue("slides/{slidedeck_name}"))
 }

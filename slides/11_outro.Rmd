@@ -33,10 +33,10 @@ class: top, left, inverse
 
 <br>
 
-**`r glue::glue('{icon::fontawesome("calendar")} {params$date}')`**
+**`r glue::glue('{icons::fontawesome("calendar")} {params$date}')`**
 <br>
 
-**`r glue::glue('{icon::fontawesome("map-pin")} {params$location}')`** 
+**`r glue::glue('{icons::fontawesome("map-pin")} {params$location}')`** 
 ]
 
 ---
