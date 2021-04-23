@@ -48,7 +48,8 @@ Imports:
     tidyr,
     tinytex,
     usethis,
-    mypackage
+    mypackage,
+    styler
 Remotes: 
     benmarwick/rrtools,
     hadley/emo,
