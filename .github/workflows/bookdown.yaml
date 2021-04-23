@@ -57,7 +57,7 @@ jobs:
               
               output_format_obj <- xaringan::moon_reader(
                   css = c("default",  "assets/css/little_ak.css", "assets/css/little_ak-fonts.css"),
-                  lib_dir = here::here(output_dir, "slides", "libs"),
+                  lib_dir = fs::path(output_dir, "slides", "libs"),
                   seal = FALSE,
                   nature = list(beforeInit = "https://platform.twitter.com/widgets.js",
                                 highlightStyle= "github",
@@ -67,7 +67,7 @@ jobs:
               
               
               rmarkdown::render(input = input_path,
-                                output_dir = here::here(output_dir, "slides"),
+                                output_dir = fs::path(output_dir, "slides"),
                                 output_format = output_format_obj,
                                 params = list(course_title = "Reproducible Research Data and Project Management in R",
                                               date = "Apr-May 2021",
