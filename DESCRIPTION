@@ -10,7 +10,8 @@ Authors@R:
            comment = c(ORCID = "0000-0002-2378-4915"))
 Description: Materials for the ACCE DTP course on Reproducible Research Data & Project Management in R
 License: CCBY-4.0
-Depends: 
+Imports: 
+    xaringan,
     assertr,
     bookdown,
     broom,
