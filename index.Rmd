@@ -10,7 +10,7 @@ output:
   bookdown::gitbook:
     number_sections: false
     css: style.css
-    toc_depth: 2
+    toc_depth: 1
   bookdown::html_book:
     number_sections: false
     theme: cerulean
@@ -54,73 +54,91 @@ By the end of the workshop, participants will be able to:
 
 ## Course Outline
 
+
+<div class="row">
+<div class="col-md-4 email-sched-card">
+
+#### `r icons::fontawesome("calendar")` Day 1: 30th April 
+##### `r icons::fontawesome("clock")` 10:00 - 16:30
+##### OPTIONAL
 ### Welcome
 
-- Introduction
+**Basics**
 
-:::: {style="display: flex;"}
-
-::: {class="sched-card"}
-
-### Basics
 - Intro to R & Rstudio
 - R basics
 - Data types, structures & classes
 - Indexing and Subsetting
 - The tidyverse way
-- Data management basics
 
-### Project Management
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4 email-sched-card">
+
+#### `r icons::fontawesome("calendar")` Day 2: 4th May 
+##### `r icons::fontawesome("clock")` 09:00 - 17:00
+
+
+
+**Project Management**
+
+- Data management basics
 - Projects in Rstudio
 - Good File Naming
 - Paths and projects structure
 
+**Data Munging**
 
-:::
-
-::: {class="sched-card"}
-
-### Data Munging
 - Iteration
 - Merging data
 - Functions
 
-### Metadata
+
+</div>
+<div class="col-md-4 email-sched-card">
+
+#### `r icons::fontawesome("calendar")` Day 3: 5th May 
+##### `r icons::fontawesome("clock")` 09:00 - 17:00
+
+
+
+**Metadata**
+
 - Intro to metadata
-- Creating metadata with `dataspice`
+- Creating metadata with dataspice
 
+**Analysing & Presenting data**
 
-:::
-
-::: {class="sched-card"}
-
-### Analysing & Presenting data
 - Plotting basics
 - Literate programming
 
-### Version Control
+</div>
+<div class="col-md-4 email-sched-card">
 
-- Version control with Git 
+#### `r icons::fontawesome("calendar")` Day 4: 7th May 
+##### `r icons::fontawesome("clock")` 09:00 - 17:00
+
+
+
+**Version Control**
+
+- Version control with Git
 - Collaboration through GitHub
 
+**Packaging Code**
 
-:::
-
-::::
-
-
-## Optional
-
-### Packaging Code
 - Writing & documenting functions
 - Capturing metadata incl. dependencies
 - Checking & Testing functions
 
-#### Putting it all together: a Research Compendium
+**Putting it all together: Research Compendia**
 
 - Creating a research compendium
 
-
+</div>
+</div>
 
 ***
 
