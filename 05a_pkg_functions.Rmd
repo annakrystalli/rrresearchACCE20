@@ -110,7 +110,7 @@ Roxygen: list(markdown = TRUE)
 ### citation
 
 ```{r}
-citation("pkgreviewr")
+citation("geosphere")
 ```
 
 
