@@ -49,6 +49,7 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           icons::download_fontawesome()
         shell: Rscript {0}
+  
         
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
@@ -79,4 +80,9 @@ jobs:
        env:
           EMAIL: ${{ secrets.EMAIL }}               # must be a verified email
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }} # https://github.com/settings/tokens
-          BUILD_DIR: _book/            
+       with:
+          email: ${{ secrets.EMAIL }} 
+          build_dir: _book/ 
+          cname: annakrystalli.me
+       
+       
