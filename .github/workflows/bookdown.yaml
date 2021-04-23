@@ -7,52 +7,53 @@ on:
 name: bookdown
 
 jobs:
-  build:
-    runs-on: macOS-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v1
-
-      - name: Install pandoc
-        run: |
-          brew install pandoc
-          
-      - name: Query dependencies
-        run: |
-          install.packages('remotes')
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
-        shell: Rscript {0}
-
-      - name: Restore R package cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: r-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: r-${{ hashFiles('.github/R-version') }}-1-
-
-      - name: Cache bookdown results
-        uses: actions/cache@v2
-        with:
-          path: _bookdown_files
-          key: bookdown-${{ hashFiles('**/*Rmd') }}
-          restore-keys: bookdown-
-
-      - name: Install packages
-        run: |
-          R -e 'remotes::install_deps(dependencies = TRUE)'
-          R -e 'icons::download_fontawesome()`
-      - name: Build site
-        run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
-      - uses: actions/upload-artifact@v1
-        with:
-          name: _book
-          path: _book/
+  bookdown:
+    build:
+      runs-on: macOS-latest
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      steps:
+        - name: Checkout repo
+          uses: actions/checkout@v2
+  
+        - name: Setup R
+          uses: r-lib/actions/setup-r@v1
+  
+        - name: Install pandoc
+          run: |
+            brew install pandoc
+            
+        - name: Query dependencies
+          run: |
+            install.packages('remotes')
+            saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+            writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+          shell: Rscript {0}
+  
+        - name: Restore R package cache
+          uses: actions/cache@v2
+          with:
+            path: ${{ env.R_LIBS_USER }}
+            key: r-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+            restore-keys: r-${{ hashFiles('.github/R-version') }}-1-
+  
+        - name: Cache bookdown results
+          uses: actions/cache@v2
+          with:
+            path: _bookdown_files
+            key: bookdown-${{ hashFiles('**/*Rmd') }}
+            restore-keys: bookdown-
+  
+        - name: Install packages
+          run: |
+            R -e 'remotes::install_deps(dependencies = TRUE)'
+            R -e 'icons::download_fontawesome()`
+        - name: Build site
+          run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+        - uses: actions/upload-artifact@v1
+          with:
+            name: _book
+            path: _book/
 
 # Need to first create an empty gh-pages branch
 # see https://pkgdown.r-lib.org/reference/deploy_site_github.html
