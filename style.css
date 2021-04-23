@@ -27,3 +27,24 @@ h1 {font-family: "Julius Sans One";
   border-radius: 20px;
   font-size: 0.85em;
 }
+
+.email-sched-card {
+  background-color: #D3D3D3; 
+  padding: 8px 8px 8px 8px; 
+  margin: 8px 8px 8px 8px; 
+  border: 1px solid #23434f; 
+  border-radius: 20px;
+  font-size: 1em;
+}
+
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.row > [class*='col-'] {
+	 display: flex;
+	 flex-direction: column;
+}
