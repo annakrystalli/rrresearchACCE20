@@ -8,10 +8,10 @@ name: bookdown
 
 jobs:
   bookdown:
-    build:
-      runs-on: macOS-latest
-      env:
-        GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    name: Render-Book
+    runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       steps:
         - name: Checkout repo
           uses: actions/checkout@v2
