@@ -28,7 +28,7 @@ Depends:
     ggthemes,
     glue,
     here,
-    icon,
+    icons,
     janitor,
     jsonlite,
     knitr,
@@ -46,11 +46,13 @@ Depends:
     tibble,
     tidyr,
     tinytex,
-    usethis
+    usethis,
+    mypackage
 Remotes: 
     benmarwick/rrtools,
     hadley/emo,
-    mitchelloharawild/icon
+    mitchelloharawild/icons,
+    annakrystalli/mypackage-demo
 Encoding: UTF-8
 LazyData: true
 Date: 2020-05-10
