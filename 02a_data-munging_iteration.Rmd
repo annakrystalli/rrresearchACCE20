@@ -112,8 +112,8 @@ basename(individual_paths[1])
 ```
 
 ```{r, echo=FALSE}
-individual_paths_proj[1]
-basename(individual_paths_proj[1])
+desktop_indiv_paths[1]
+basename(desktop_indiv_paths[1])
 ```
 
 

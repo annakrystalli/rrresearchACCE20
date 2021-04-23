@@ -146,7 +146,7 @@ The important files for the analysis we want to perform are
 
 <div class="alert alert-secondary"> 
 
-`r icon::fontawesome("tasks")`  As our first challenge, we are going to combined all the files in `individual/` into a single analytical data file!
+`r icons::fontawesome("tasks")`  As our first challenge, we are going to combined all the files in `individual/` into a single analytical data file!
 
 </div>
 
@@ -189,8 +189,8 @@ head(individual_paths)
 
 ```{r, echo=FALSE}
 individual_paths <- fs::dir_ls(fs::path(raw_data_path, "individual"))
-individual_paths_proj <- fs::path("~/Desktop", "wood-survey", "data-raw", "wood-survey-data-master", "individual")
-head(fs::dir_ls(individual_paths_proj))
+load("data-raw/desktop_indiv_paths.RData")
+head(desktop_indiv_paths)
 ```
 
 We can check how many files we've got:
