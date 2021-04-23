@@ -46,8 +46,10 @@ jobs:
   
       - name: Install packages
         run: |
-          R -e 'remotes::install_deps(dependencies = TRUE)'
-          R -e 'icons::download_fontawesome()`
+          remotes::install_deps(dependencies = TRUE)
+          icons::download_fontawesome()
+        shell: Rscript {0}
+        
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
       - uses: actions/upload-artifact@v1
