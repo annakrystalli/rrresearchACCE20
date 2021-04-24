@@ -18,6 +18,9 @@ render_slides <- function(input_path, output_dir){
                                     hackpad_url = "https://bit.ly/acce20-notepad",
                                     bitly_url= "http://bit.ly/ACCE-book"))
 }
+    
+    fs::dir_create(fs::path(output_dir, 'slides'))
+
     fs::dir_copy(fs::path("slides", "assets"), 
                  fs::path(output_dir, "slides", "assets"),
                  overwrite = TRUE)
