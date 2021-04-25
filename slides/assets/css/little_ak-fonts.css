@@ -1,0 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Julius+Sans+One&family=Lato');
+
+body { 
+    font-family: 'Lato', sans-serif; 
+    letter-spacing: .5px;
+}
+
+h2, h3 { 
+    font-family: 'Lato', arial; 
+    letter-spacing: .3px;
+}
+.remark-code, .remark-inline-code { 
+    font-family: 'Inconsolata',  monospace; 
+    color: #88398A;
+}
+
+.remark-inline-code { 
+    background-color: #F5F5F5
+}
+
+h1 {font-family: "Julius Sans One", helvetica;
+  color: #0d3530;
+}
