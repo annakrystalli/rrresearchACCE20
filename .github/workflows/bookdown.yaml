@@ -52,7 +52,7 @@ jobs:
   
       - name: Render Slides
         run : |
-            source(render_slides.R)
+            source('render_slides.R')
         shell: Rscript {0}
         
       - name: Build site
