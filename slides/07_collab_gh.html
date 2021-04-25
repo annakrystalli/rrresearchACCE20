@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Collaborative Github in Rstudio</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/little_ak.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/little_ak-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: top, left, inverse
+
+
+## ACCE DTP 
+
+### _Reproducible Research Data and Project Management in R_
+
+***
+
+.bottom[
+# Collaborative `Github` in `Rstudio`
+
+&lt;br&gt;
+
+**&lt;svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;path d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"&gt;&lt;/path&gt;
+&lt;/svg&gt; Apr-May 2021**
+&lt;br&gt;
+
+**&lt;svg viewBox="0 0 288 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;path d="M112 316.94v156.69l22.02 33.02c4.75 7.12 15.22 7.12 19.97 0L176 473.63V316.94c-10.39 1.92-21.06 3.06-32 3.06s-21.61-1.14-32-3.06zM144 0C64.47 0 0 64.47 0 144s64.47 144 144 144 144-64.47 144-144S223.53 0 144 0zm0 76c-37.5 0-68 30.5-68 68 0 6.62-5.38 12-12 12s-12-5.38-12-12c0-50.73 41.28-92 92-92 6.62 0 12 5.38 12 12s-5.38 12-12 12z"&gt;&lt;/path&gt;
+&lt;/svg&gt; Online** 
+]
+
+---
+ 
+# Session Roadmap
+
+&lt;br&gt;
+
+### 1 Introductions 
+
+
+#### - **get to know github** 
+
+  - github as a computational research tool
+
+---
+
+# Session Roadmap
+
+&lt;br&gt;
+
+### 2 Get stuck in
+
+
+#### - [Collaborative github through rstudio](https://nhm-stars.github.io/materials/day04/evolottery.html) #EvoLottery (40 mins)
+  - In this exercise, each participant will fork a github repo, and contribute a file required to simulate the **evolutionary trajectory of an imaginary species' body size**.
+  
+  - We'll use github to collate all species files and plot them all up together at the end! We'll also **discover the skull and beak shapes** associated with each simulated species size.
+
+
+---
+
+class: top, right, inverse
+
+# introductions: **get to know github** 
+
+***
+
+## **GitHub features**
+
+
+---
+
+
+#### Back up and sync through the cloud
+
+&lt;div class="figure"&gt;
+&lt;img src="assets/remotes.png" alt="Image: Jessica Lord, 2013 BSD" width="90%" /&gt;
+&lt;p class="caption"&gt;Image: Jessica Lord, 2013 BSD&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+
+#### Fork and contribute to other's work 
+
+
+
+&lt;div class="figure"&gt;
+&lt;img src="assets/clone.png" alt="Image: Jessica Lord, 2013 BSD" width="90%" /&gt;
+&lt;p class="caption"&gt;Image: Jessica Lord, 2013 BSD&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+
+## **GitHub for science**
+
+***
+
+
+&gt; - ideal for managing the full suite of research outputs such as datasets, statistical code, figures, lab notes, and manuscripts.
+
+&gt; - supports peer review, commenting, and discussion. 
+
+&gt; - Diverse range of efforts, from individual to large bioinformatics projects, laboratory repositories, as well as global collaborations have found a home on GitHub
+
+&lt;br&gt;
+
+
+---
+
+### remote repositories
+
+centralising information e.g. [**weecology** / ***"Nine simple ways to make it easier to (re)use your data" paper***](http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/0) | [Repo](https://github.com/weecology/data-sharing-paper)
+
+&lt;img src="assets/repo-1.png" width="80%" /&gt;
+
+
+---
+
+### commits
+
+traceability
+
+#### [Repo](https://github.com/ropensci/rfishbase/commits/master)
+
+&lt;img src="assets/commits-1.png" width="90%" /&gt;
+
+&lt;br&gt;
+
+---
+
+### issues
+
+project management
+
+
+#### [Repo](https://github.com/weecology/data-sharing-paper/issues)
+
+&lt;img src="assets/issues-1.png" width="90%" /&gt;
+
+&lt;br&gt;
+---
+
+### graphs 
+
+#### project &amp; team tracking: 
+Tracking contributors [Repo](https://github.com/weecology/data-sharing-paper/graphs/contributors)
+
+&lt;img src="assets/track-1.png" width="80%" /&gt;
+
+---
+tracking commits
+
+#### [Repo](https://github.com/weecology/data-sharing-paper/network)
+
+&lt;img src="assets/track-2.png" width="90%" /&gt;
+
+&lt;br&gt;
+---
+
+
+class: center, middle, invert
+
+## **entire process of project evolution reproducible**
+
+***
+
+&lt;br&gt;
+
+
+---
+
+class: top, right, inverse
+
+## **Practical: Github &amp; Rstudio for collaborative coding**
+
+***
+
+---
+
+### **#EvoLottery**
+
+**Beak and skull shapes in birds of prey (“raptors”) are strongly coupled and largely controlled by size.** 
+
+
+  - In this exercise, each participant will **fork a github repo**, and **contribute a file** required to simulate the *evolutionary trajectory of an imaginary species' body size*.
+
+
+  - We'll use **github** to **collate all species files** and **plot** them all up together at the end! We'll also **discover the skull and beak shapes** associated with each simulated species size.
+
+### [**Enter Practical**](evolottery.html)
+
+### See [**Collaborative plot**](https://rse.shef.ac.uk/collaborative_github_exercise/plot_trait_evolution.html)
+
+
+---
+
+
+
+## Get back [home](http://annakrystalli.me/rrresearchACCE20/)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

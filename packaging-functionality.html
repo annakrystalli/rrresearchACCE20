@@ -631,12 +631,22 @@ Roxygen: list(markdown = TRUE)
 ## Hello y&#39;all from Anna! 
 ##  ------ 
 ##     \   
-##      \
-##      _[_]_
-##       (&quot;)
-##   &gt;--( : )--&lt;
-##     (__:__) [nosig]
-## </code></pre>
+##      \  
+##       \
+##                 ________
+##            __--´      ° `--__
+##        __-´     °      °     `-__
+##      (´    °    °          °     `)
+##      (° °|    |°         ° |    | )
+##       `&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;`|&#39;&#39;&#39;&#39;&#39;|´&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;´
+##                  |     |
+##                  |:::::|
+##                /:|:::::|:\
+##               /::|:::::|::\
+##                  |     |
+##                  |^   ^|
+##                  |  _  | [FK]
+##                  |_____|</code></pre>
 </div>
 <div id="check-package-integrity" class="section level2">
 <h2>🚦 Check package integrity</h2>
@@ -767,19 +777,14 @@ if you want to run the tests.</p>
 <span id="cb613-4"><a href="packaging-functionality.html#cb613-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_message</span>(<span class="fu">hello</span>())</span>
 <span id="cb613-5"><a href="packaging-functionality.html#cb613-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## 
-##  ----- 
+##  -------------- 
 ## Hello world from Anna! 
-##  ------ 
-##     \   
-##      \  
-##       \
-##        /\___/\
-##        {o}{o}|
-##        \ v  /|
-##        |    \ \
-##         \___/_/       [ab] 
-##           | | 
-## ── Failure (&lt;text&gt;:4:3): hello works ───────────────────────────────────────────
+##  --------------
+## (\__/) ||
+## (•ㅅ•) ||
+## /   づ
+##           [nosig]
+##     ── Failure (&lt;text&gt;:4:3): hello works ───────────────────────────────────────────
 ## `hello()` did not produce any messages.</code></pre>
 <p>Now let’s test our package</p>
 <div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="packaging-functionality.html#cb615-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code></pre></div>
