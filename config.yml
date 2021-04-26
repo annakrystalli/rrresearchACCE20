@@ -1,6 +1,6 @@
 default:
   course_title: "Reproducible Research Data and Project Management in R"
-  hackpad_url: "http://bit.ly/acce21-notepad""
+  hackpad_url: "http://bit.ly/acce21-notepad"
   course_dates: "April-May 2021"
   location: "Online"
   book_url: "http://annakrystalli.me/rrresearchACCE20/"
