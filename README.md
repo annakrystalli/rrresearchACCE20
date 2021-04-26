@@ -2,6 +2,7 @@
 
 <!-- badges: start -->
 [![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/annakrystalli/rrresearchACCE20/master?urlpath=rstudio)
+[![bookdown](https://github.com/annakrystalli/rrresearchACCE20/workflows/bookdown/badge.svg)](https://github.com/annakrystalli/rrresearchACCE20/actions/workflows/bookdown.yaml)
 <!-- badges: end -->
 
 ## Course Description
