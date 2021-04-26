@@ -2,8 +2,12 @@
 .RData
 .Rproj.user
 attic/*
-slides/*
-!slides/*.Rmd
+slides/*.html
+slides/libs/*
+slides/*_files/*
+slides/render.R
 .DS_Store
-assets/*
 vst_individuals.csv
+docs/*
+**/R-CMD-check.yaml
+.binder/install.R
