@@ -3,7 +3,7 @@ default:
   hackpad_url: "http://bit.ly/acce21-notepad"
   course_instructor: "Dr Anna Krystalli"
   github_repo: "https://github.com/annakrystalli/rrresearchACCE20"
-  escaped_url: "https\\://annakrystalli.me/rrresearchACCE20"
+  escaped_url: "https://annakrystalli.me/rrresearchACCE20"
   course_dates: "April-May 2021"
   location: "Online"
   book_url: "https://annakrystalli.me/rrresearchACCE20/"
