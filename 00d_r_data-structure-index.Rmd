@@ -153,9 +153,9 @@ str(sequence_example)
 ```
 
 The somewhat cryptic output from this command indicates the basic data type
-found in this vector - in this case `chr`, character; an indication of the
+found in this vector - in this case `int`, integer; an indication of the
 number of things in the vector - actually, the indexes of the vector, in this
-case `[1:3]`; and a few examples of what's actually in the vector - in this case
+case `[1:10]`; and a few examples of what's actually in the vector - in this case
 empty character strings. If we similarly do
 
 
