@@ -1,5 +1,5 @@
 --- 
-title: "`r config::get("course_title")`"
+title: "`r config::get('course_title')`"
 author: "Course Instructor: Anna Krystalli"
 date: "Mar-Apr 2020"
 url: 'https\://annakrystalli.me/rrresearchACCE20'
