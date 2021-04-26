@@ -51,7 +51,8 @@ Imports:
     tinytex,
     usethis,
     mypackage,
-    styler
+    styler,
+    config
 Remotes: 
     benmarwick/rrtools,
     hadley/emo,

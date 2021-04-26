@@ -1,4 +1,4 @@
-output_dir <- fs::path_abs("_book")
+output_dir <- fs::path_abs(config::get("output_dir"))
 render_slides <- function(input_path, output_dir){
     output_format_obj <- xaringan::moon_reader(
         css = c("default",  "assets/css/little_ak.css", "assets/css/little_ak-fonts.css"),
@@ -15,7 +15,7 @@ render_slides <- function(input_path, output_dir){
                                     date = "Apr-May 2021",
                                     location = "Online",
                                     book_url = "http://annakrystalli.me/rrresearchACCE20/",
-                                    hackpad_url = "https://bit.ly/acce20-notepad",
+                                    hackpad_url = "http://bit.ly/acce21-notepad",
                                     bitly_url= "http://bit.ly/ACCE-book"))
 }
     
