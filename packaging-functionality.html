@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Packaging functionality | Reproducible Research Data &amp; Project Management in R</title>
+  <title>Packaging functionality | Reproducible Research Data and Project Management in R</title>
   <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Packaging functionality | Reproducible Research Data &amp; Project Management in R" />
+  <meta property="og:title" content="Packaging functionality | Reproducible Research Data and Project Management in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="annakrystalli/rrresearchACCE20" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Packaging functionality | Reproducible Research Data &amp; Project Management in R" />
+  <meta name="twitter:title" content="Packaging functionality | Reproducible Research Data and Project Management in R" />
   
   <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   
@@ -199,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Reproducible Research Data &amp; Project Management in R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Reproducible Research Data and Project Management in R</a>
           </h1>
         </div>
 
@@ -627,19 +627,21 @@ Roxygen: list(markdown = TRUE)
 <p>Document, Install and restart to load our changes</p>
 <div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="packaging-functionality.html#cb597-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-##  ----- 
+##  -------------- 
 ## Hello y&#39;all from Anna! 
-##  ------ 
-##     \   
-##      \
-##               |
-##               |
-##               |
-##              __
-##           | /  \ |
-##          \_\\  //_/
-##           .&#39;/()\&#39;.
-##            \\  //  [nosig]
+##  --------------
+##     \
+##       \
+##         \
+##         /\_/\         _
+##        /``   \       / )
+##        |n n   |__   ( (
+##       =(Y =.‛`   `\  \ \
+##       {`&quot;`        \  ) )
+##       {       /    |/ /
+##        \\   ,(     / /
+##         ) ) /-‛\  ,_.‛
+##   jgs  (,(,/ ((,,/
 ## </code></pre>
 </div>
 <div id="check-package-integrity" class="section level2">
@@ -749,7 +751,7 @@ if you want to run the tests.</p>
 <span id="cb609-3"><a href="packaging-functionality.html#cb609-3" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb609-4"><a href="packaging-functionality.html#cb609-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
 <span id="cb609-5"><a href="packaging-functionality.html#cb609-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## Test passed 😸</code></pre>
+<pre><code>## Test passed 🎉</code></pre>
 <p>If the test doesn’t pass it throws an error</p>
 <div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="packaging-functionality.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;test-hello&quot;</span>)</span>
 <span id="cb611-2"><a href="packaging-functionality.html#cb611-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -773,21 +775,27 @@ if you want to run the tests.</p>
 <pre><code>## 
 ##  ----- 
 ## Hello world from Anna! 
-##  ------ 
-##     \   
-##      \  
-##       \
-##        \   _,
-##       -==&lt;&#39; `
-##           ) /
-##          / (_.
-##         |  ,-,`\
-##          \\   \ \
-##           `\,  \ \
-##            ||\  \`|,
-##  jgs      _|| `=`-&#39;
-##          ~~`~`
-## ── Failure (&lt;text&gt;:4:3): hello works ───────────────────────────────────────────
+##  ------
+##     \          ,&#39;``.._   ,&#39;``.
+##      \        :,--._:)\,:,._,.:
+##       \       :`--,&#39;&#39;   :`...&#39;;\
+##                `,&#39;       `---&#39;  `.
+##                /                 :
+##               /                   \
+##             ,&#39;                     :\.___,-.
+##            `...,---&#39;``````-..._    |:       \
+##              (                 )   ;:    )   \  _,-.
+##               `.              (   //          `&#39;    \
+##                :               `.//  )      )     , ;
+##              ,-|`.            _,&#39;/       )    ) ,&#39; ,&#39;
+##             (  :`.`-..____..=:.-&#39;:     .     _,&#39; ,&#39;
+##              `,&#39;\ ``--....-)=&#39;    `._,  \  ,&#39;) _ &#39;``._
+##           _.-/ _ `.       (_)      /     )&#39; ; / \ \`-.&#39;
+##          `--(   `-:`.     `&#39; ___..&#39;  _,-&#39;   |/   `.)
+##              `-. `.`.``-----``--,  .&#39;
+##                |/`.\`&#39;        ,&#39;,&#39;); SSt
+##                    `         (/  (/
+##   ── Failure (&lt;text&gt;:4:3): hello works ───────────────────────────────────────────
 ## `hello()` did not produce any messages.</code></pre>
 <p>Now let’s test our package</p>
 <div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="packaging-functionality.html#cb615-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code></pre></div>
