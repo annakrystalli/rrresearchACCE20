@@ -11,12 +11,12 @@ render_slides <- function(input_path, output_dir){
     rmarkdown::render(input = input_path,
                       output_dir = fs::path(output_dir, "slides"),
                       output_format = output_format_obj,
-                      params = list(course_title = "Reproducible Research Data and Project Management in R",
-                                    date = "Apr-May 2021",
-                                    location = "Online",
-                                    book_url = "http://annakrystalli.me/rrresearchACCE20/",
-                                    hackpad_url = "http://bit.ly/acce21-notepad",
-                                    bitly_url= "http://bit.ly/ACCE-book"))
+                      params = list(course_title = config::get("course_title"),
+                                    date = config::get("course_dates"),
+                                    location = config::get("location"),
+                                    book_url = config::get("book_url"),
+                                    hackpad_url = config::get("hackpad_url"),
+                                    bitly_url= config::get("bitly_url")))
 }
     
     fs::dir_create(fs::path(output_dir, 'slides'))
