@@ -1,9 +1,9 @@
 --- 
 title: "`r config::get('course_title')`"
-author: "Course Instructor: Anna Krystalli"
-date: "Mar-Apr 2020"
-url: 'https\://annakrystalli.me/rrresearchACCE20'
-github-repo: "annakrystalli/rrresearchACCE20"
+author: "Course Instructor: `r config::get('course_instructor')`"
+date: "`r config::get('course_dates')`"
+url: "`r config::get('escaped_url')`"
+github-repo: "`r config::get('github_repo')`"
 site: bookdown::bookdown_site
 in_header:
 output:

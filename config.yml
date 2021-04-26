@@ -1,8 +1,11 @@
 default:
   course_title: "Reproducible Research Data and Project Management in R"
   hackpad_url: "http://bit.ly/acce21-notepad"
+  course_instructor: "Dr Anna Krystalli"
+  github_repo: "https://github.com/annakrystalli/rrresearchACCE20"
+  escaped_url: "https\://annakrystalli.me/rrresearchACCE20"
   course_dates: "April-May 2021"
   location: "Online"
-  book_url: "http://annakrystalli.me/rrresearchACCE20/"
+  book_url: "https://annakrystalli.me/rrresearchACCE20/"
   bitly_url: "http://bit.ly/ACCE-book"
   output_dir: "_book"
