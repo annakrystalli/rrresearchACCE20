@@ -1,0 +1,53 @@
+# `mypackage` `README.Rmd`
+
+This `README.Rmd` in `mypackage` should contain a description of the package, instructions on how to install it and an example.
+
+**`README.Rmd`**
+
+Your script should contain:
+
+````
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}`r ''`
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# mypackage
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of mypackage is to print a personalised greeting from me!
+
+## Installation
+
+You can install the development version of mypackage from GitHub with:
+
+```{r}`r ''`
+devtools::install_github("annakrystalli/mypackage")
+```
+
+## Example
+
+This is a basic example which shows you how to print a generic greeting:
+
+```{r example}`r ''`
+library(mypackage)
+hello()
+```
+
+This is a basic example which shows you how to print a personalised greeting:
+```{r}`r ''`
+hello("Lucy Elen")
+```
+
+````
