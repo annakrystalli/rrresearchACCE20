@@ -270,9 +270,36 @@ To work with packages in RStudio we use the **Build pane**, which includes a var
 
 ## `r emo::ji("computer")`Create your first package
 
-Let's go ahead and create our first package! We do that as we would any project, but this time we select **`R package`** instead of `New Project`. Call your package `mypackage`.
+Let's go ahead and create our first package! 
+
+We can do that as we would any project, but this time we would select **`R package`** instead of `New Project` and call our new package `mypackage`.
 
 <div class="alert alert-info"><strong>File > New Project... > New Directory > R package > mypackage </strong></div>
+
+Otherwise, we can use function `usethis::create_package("mypackage")` to create a new package. The argument we provide is the path to here we want our new package created, the last element being the package name. 
+
+To do this in Rstudio (which is a bit fiddlier) we will create a general project in which we will create our package project. In general, creating a project within a project is bad practice and you should avoid this wehn wourking locally, but given the more restrictive nature of working in Rstudio cloud, we will break this general best prectice rule.
+
+
+### Create a general Rstudio Project
+
+- In your own personal workspace, click on the **New Project** button.
+- Rename the project to **ACCE-projects**
+- Install required dependencies using the code below:
+
+
+```{r, eval=FALSE, code=readLines("install_rstudio-projects.R")}
+
+```
+
+### Create package
+
+Create your package development project within the **ACCE-projects** project:
+
+```{r, eval=FALSE}
+usethis::create_package("mypackage")
+```
+
 
 Your new project should have the following structure. The build pane should also be visible.
 
@@ -281,51 +308,84 @@ Your new project should have the following structure. The build pane should also
 ├── DESCRIPTION
 ├── NAMESPACE
 ├── R
-│   └── hello.R
-├── man
-│   └── hello.Rd
 └── mypackage.Rproj
-
-2 directories, 5 files
+```
+```{r}
+knitr::include_graphics("assets/r_package_rstudio-cloud.png")
 ```
 
+### Install dependencies
+
+We will again need to install required dependencies for package development in our new package project. Install them by running the following code:
+
+
+```{r, eval=FALSE, code=readLines("install_package-dev.R")}
+
+```
 
 ## `r emo::ji("vertical_traffic_light")` Functions in the **`R/`** dir
 
-Let's inspect **`hello.R`**
+### Create function script and first function
 
-it contains a function that takes now arguments and prints `hello world` to the console when called. The comments above are just that, comments and don't serve any functional purpose.
+Let's create a script and write our first function:
+
+```{r, eval=FALSE}
+usethis::use_r("hello")
+```
+
+```r
+✓ Setting active project to '/cloud/project/mypackage'
+• Modify 'R/hello.R'
+• Call `use_test()` to create a matching test file
+```
 
 ```{r}
-# Hello, world!
-#
-# This is an example function named 'hello' 
-# which prints 'Hello, world!'.
-#
-# You can learn more about package authoring with RStudio at:
-#
-#   http://r-pkgs.had.co.nz/
-#
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Build and Reload Package:  'Cmd + Shift + B'
-#   Check Package:             'Cmd + Shift + E'
-#   Test Package:              'Cmd + Shift + T'
+knitr::include_graphics("assets/r_hello.png")
+```
 
+In the opened `hello.R` script, let's write our first function:
+
+```{r, eval=TRUE}
 hello <- function() {
   print("Hello, world!")
 }
-
 ```
+
+It's a function that takes no arguments and prints `Hello, world!` to the console when called. 
 
 
 ### Install package.
 
-You can install a package locally from it's source code with function `install()`
+You can install a package locally from it's source code with function `devtools::install()`
 
 ```{r, eval=FALSE}
-library(devtools)
-install(".")
+devtools::install()
+```
+
+```
+✓  checking for file ‘/cloud/project/mypackage/DESCRIPTION’ ...
+─  preparing ‘mypackage’:
+✓  checking DESCRIPTION meta-information ...
+─  checking for LF line-endings in source and make files and shell scripts
+─  checking for empty or unneeded directories
+─  building ‘mypackage_0.0.0.9000.tar.gz’
+   
+Running /opt/R/4.0.3/lib/R/bin/R CMD INSTALL \
+  /tmp/RtmpVciSpz/mypackage_0.0.0.9000.tar.gz \
+  --install-tests 
+* installing to library ‘/home/rstudio-user/R/x86_64-pc-linux-gnu-library/4.0’
+* installing *source* package ‘mypackage’ ...
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+No man pages found in package  ‘mypackage’ 
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (mypackage)
 ```
 
 You can now load it like any other package...
@@ -334,17 +394,32 @@ You can now load it like any other package...
 library("mypackage")
 ```
 
-And use your function!
+Let's try using our function
 
-```{r}
+```{r, eval=FALSE}
 hello()
 ```
 
+Oooops? Our function doesn't seem to be available! `r emo::ji("thinking")`
+
+Let's try something  else:
+
+```{r, eval=FALSE}
+mypackage:::hello()
+```
+
+```{r, echo=FALSE}
+hello()
+```
 
 ```{r, echo=FALSE}
 rm(hello)
 ```
 
+
+So what's happened here? Although the  package contains our function, we have not **exported** to make available to a user. Currently it is contained as an **internal function**. Hence we can access it with the notation for internal functions (`:::`) but not directly when we load the package!
+
+To export the function, we will need to add a tag to tell R to do so using a special documentation notation called **Roxygen**!
 
 ***
 
@@ -356,10 +431,11 @@ rm(hello)
 - the inputs and outputs
 - a description of what it does
 - an example of how to use it
+- whether to export the function
 
 These are processed automatically to produce `.Rd` help files for your functions and control which functions are exported to the package `NAMESPACE`.
 
-Let's document our example function. First, clear the demo comments above the function and all contents of the example`NAMESPACE`. Also delete the file in the `man` folder.
+Let's document our example function.
 
 ### Insert Roxygen skeleton
 
@@ -578,7 +654,7 @@ usethis::use_package("cowsay")
 ## Add License
 
 ```{r, eval = FALSE}
-usethis::use_mit_license()
+usethis::use_mit_license("Anna Krystalli")
 ```
 
 ![](assets/clear-checks.png)
@@ -766,9 +842,26 @@ Check your package. If all is good, document, install and restart!
 
 Now, check you're package's citation:
 
-```{r}
+```{r, eval=FALSE}
 citation("mypackage")
 ```
+
+```
+To cite package ‘mypackage’ in publications use:
+
+  Anna Krystalli (2021). mypackage: Customised greetings from me!. R
+  package version 0.1.0.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {mypackage: Customised greetings from me!},
+    author = {Anna Krystalli},
+    year = {2021},
+    note = {R package version 0.1.0},
+  }
+```
+
 
 ## `r emo::ji("vertical_traffic_light")` Create README
 
