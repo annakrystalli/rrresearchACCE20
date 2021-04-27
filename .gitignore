@@ -11,3 +11,4 @@ vst_individuals.csv
 docs/*
 **/R-CMD-check.yaml
 .binder/install.R
+_book/*
