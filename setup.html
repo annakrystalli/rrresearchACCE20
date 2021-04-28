@@ -184,6 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
+<li><a href="mypackage-readme-rmd.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a></li>
 <li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a></li>
@@ -374,8 +375,8 @@ install it via your distro’s package manager. For Debian/Ubuntu run
 <div id="research-compendium-exercise" class="section level3">
 <h3>Research Compendium Exercise</h3>
 <p>For the final practical sessions, we will need to use LaTeX. If you don’t have LaTeX installed, consider installing <code>TinyTeX</code>, a custom LaTeX distribution based on TeX Live that is small in size but functions well in most cases, especially for R users.</p>
-<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="setup.html#cb701-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</span>
-<span id="cb701-2"><a href="setup.html#cb701-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="setup.html#cb722-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</span>
+<span id="cb722-2"><a href="setup.html#cb722-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
 <p>Check <a href="https://yihui.name/tinytex/">docs</a> before before installing.</p>
 <div id="devtools-requirements" class="section level4">
 <h4><code>devtools</code> requirements</h4>
@@ -385,24 +386,43 @@ install it via your distro’s package manager. For Debian/Ubuntu run
 <div id="install-r-dependecies" class="section level3">
 <h3>Install R dependecies</h3>
 <p>To be able to run materials locally, you will also need to install all the required R packages. Run the following code:</p>
-<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="setup.html#cb702-1" aria-hidden="true" tabindex="-1"></a>dependencies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;bookdown&quot;</span>,</span>
-<span id="cb702-2"><a href="setup.html#cb702-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;DT&quot;</span>, <span class="st">&quot;skimr&quot;</span>,  <span class="st">&quot;gapminder&quot;</span>, <span class="st">&quot;plotly&quot;</span>, <span class="st">&quot;here&quot;</span>,  <span class="st">&quot;reprex&quot;</span>,</span>
-<span id="cb702-3"><a href="setup.html#cb702-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;usethis&quot;</span>, <span class="st">&quot;cowsay&quot;</span>, <span class="st">&quot;testthat&quot;</span>, <span class="st">&quot;ggthemes&quot;</span>, <span class="st">&quot;fs&quot;</span>, </span>
-<span id="cb702-4"><a href="setup.html#cb702-4" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;jsonlite&quot;</span>, <span class="st">&quot;listviewer&quot;</span>,</span>
-<span id="cb702-5"><a href="setup.html#cb702-5" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;checkmate&quot;</span>, <span class="st">&quot;assertr&quot;</span>, <span class="st">&quot;vroom&quot;</span>, <span class="st">&quot;data.table&quot;</span>, <span class="st">&quot;sloop&quot;</span>,</span>
-<span id="cb702-6"><a href="setup.html#cb702-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;geosphere&quot;</span>, <span class="st">&quot;raster&quot;</span>, <span class="st">&quot;spData&quot;</span>, <span class="st">&quot;tmap&quot;</span>, <span class="st">&quot;leaflet&quot;</span>, <span class="st">&quot;sf&quot;</span>)</span>
-<span id="cb702-7"><a href="setup.html#cb702-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb702-8"><a href="setup.html#cb702-8" aria-hidden="true" tabindex="-1"></a><span class="co"># install CRAN dependencies</span></span>
-<span id="cb702-9"><a href="setup.html#cb702-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(dependencies)</span>
-<span id="cb702-10"><a href="setup.html#cb702-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb702-11"><a href="setup.html#cb702-11" aria-hidden="true" tabindex="-1"></a><span class="co"># install github dependencies</span></span>
-<span id="cb702-12"><a href="setup.html#cb702-12" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;hadley/emo&quot;</span>)</span>
-<span id="cb702-13"><a href="setup.html#cb702-13" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;benmarwick/rrtools&quot;</span>)</span>
-<span id="cb702-14"><a href="setup.html#cb702-14" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ropenscilabs/dataspice&quot;</span>)</span>
-<span id="cb702-15"><a href="setup.html#cb702-15" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;karthik/holepunch&quot;</span>)</span>
-<span id="cb702-16"><a href="setup.html#cb702-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb702-17"><a href="setup.html#cb702-17" aria-hidden="true" tabindex="-1"></a><span class="co"># install tinytex</span></span>
-<span id="cb702-18"><a href="setup.html#cb702-18" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="setup.html#cb723-1" aria-hidden="true" tabindex="-1"></a>dependencies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;assertr&quot;</span>, <span class="st">&quot;checkmate&quot;</span>, <span class="st">&quot;cowsay&quot;</span>, <span class="st">&quot;data.table&quot;</span>, </span>
+<span id="cb723-2"><a href="setup.html#cb723-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;dataspice&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;DT&quot;</span>, <span class="st">&quot;fs&quot;</span>, <span class="st">&quot;gapminder&quot;</span>, <span class="st">&quot;geosphere&quot;</span>, </span>
+<span id="cb723-3"><a href="setup.html#cb723-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;ggthemes&quot;</span>, <span class="st">&quot;gitcreds&quot;</span>, <span class="st">&quot;glue&quot;</span>, <span class="st">&quot;here&quot;</span>, <span class="st">&quot;janitor&quot;</span>, <span class="st">&quot;jsonlite&quot;</span>, </span>
+<span id="cb723-4"><a href="setup.html#cb723-4" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;leaflet&quot;</span>, <span class="st">&quot;listviewer&quot;</span>, <span class="st">&quot;magrittr&quot;</span>, <span class="st">&quot;plotly&quot;</span>, <span class="st">&quot;raster&quot;</span>, </span>
+<span id="cb723-5"><a href="setup.html#cb723-5" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;reprex&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, <span class="st">&quot;sf&quot;</span>, <span class="st">&quot;skimr&quot;</span>, <span class="st">&quot;sloop&quot;</span>, </span>
+<span id="cb723-6"><a href="setup.html#cb723-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;spData&quot;</span>, <span class="st">&quot;stringr&quot;</span>, <span class="st">&quot;testthat&quot;</span>, <span class="st">&quot;tidyr&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;tmap&quot;</span>, </span>
+<span id="cb723-7"><a href="setup.html#cb723-7" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;usethis&quot;</span>, <span class="st">&quot;vroom&quot;</span>)</span>
+<span id="cb723-8"><a href="setup.html#cb723-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb723-9"><a href="setup.html#cb723-9" aria-hidden="true" tabindex="-1"></a><span class="co"># install CRAN dependencies</span></span>
+<span id="cb723-10"><a href="setup.html#cb723-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(dependencies)</span>
+<span id="cb723-11"><a href="setup.html#cb723-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb723-12"><a href="setup.html#cb723-12" aria-hidden="true" tabindex="-1"></a><span class="co"># install github dependencies</span></span>
+<span id="cb723-13"><a href="setup.html#cb723-13" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;hadley/emo&quot;</span>)</span></code></pre></div>
+<div id="package-development-section" class="section level4">
+<h4>Package Development section</h4>
+<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="setup.html#cb724-1" aria-hidden="true" tabindex="-1"></a>dependencies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cowsay&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, <span class="st">&quot;pkgdown&quot;</span>, <span class="st">&quot;testthat&quot;</span>, </span>
+<span id="cb724-2"><a href="setup.html#cb724-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;usethis&quot;</span>)</span>
+<span id="cb724-3"><a href="setup.html#cb724-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb724-4"><a href="setup.html#cb724-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install CRAN dependencies</span></span>
+<span id="cb724-5"><a href="setup.html#cb724-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(dependencies)</span></code></pre></div>
+</div>
+<div id="research-compendium-with-rrtools-section" class="section level4">
+<h4>Research Compendium with <code>rrtools</code> section</h4>
+<div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="setup.html#cb725-1" aria-hidden="true" tabindex="-1"></a>dependencies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;assertr&quot;</span>, <span class="st">&quot;bookdown&quot;</span>, <span class="st">&quot;citr&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;devtools&quot;</span>,  <span class="st">&quot;readr&quot;</span>, </span>
+<span id="cb725-2"><a href="setup.html#cb725-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;ggthemes&quot;</span>, <span class="st">&quot;gitcreds&quot;</span>, <span class="st">&quot;here&quot;</span>, <span class="st">&quot;rticles&quot;</span>, <span class="st">&quot;knitr&quot;</span>, </span>
+<span id="cb725-3"><a href="setup.html#cb725-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;reprex&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, <span class="st">&quot;testthat&quot;</span>, <span class="st">&quot;tibble&quot;</span>, <span class="st">&quot;usethis&quot;</span>)</span>
+<span id="cb725-4"><a href="setup.html#cb725-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb725-5"><a href="setup.html#cb725-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install CRAN dependencies</span></span>
+<span id="cb725-6"><a href="setup.html#cb725-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(dependencies)</span>
+<span id="cb725-7"><a href="setup.html#cb725-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb725-8"><a href="setup.html#cb725-8" aria-hidden="true" tabindex="-1"></a><span class="co"># install github dependencies</span></span>
+<span id="cb725-9"><a href="setup.html#cb725-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;benmarwick/rrtools&quot;</span>)</span>
+<span id="cb725-10"><a href="setup.html#cb725-10" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;karthik/holepunch&quot;</span>)</span>
+<span id="cb725-11"><a href="setup.html#cb725-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb725-12"><a href="setup.html#cb725-12" aria-hidden="true" tabindex="-1"></a><span class="co"># install tinytex</span></span>
+<span id="cb725-13"><a href="setup.html#cb725-13" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+</div>
 </div>
 <div id="faqs" class="section level3">
 <h3>FAQs</h3>

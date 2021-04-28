@@ -184,6 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
+<li><a href="mypackage-readme-rmd.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a></li>
 <li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a></li>
@@ -212,27 +213,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This file should contain your function and be saved at:</p>
 <p><strong><code>R/geolocate.R</code></strong></p>
 <p>Create the file using:</p>
-<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="geolocate-r.html#cb696-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">&quot;geolocate&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="geolocate-r.html#cb716-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">&quot;geolocate&quot;</span>)</span></code></pre></div>
 <p>Your script should contain:</p>
-<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="geolocate-r.html#cb697-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function</span></span>
-<span id="cb697-2"><a href="geolocate-r.html#cb697-2" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude,</span>
-<span id="cb697-3"><a href="geolocate-r.html#cb697-3" aria-hidden="true" tabindex="-1"></a>                              stemAzimuth, stemDistance) {</span>
-<span id="cb697-4"><a href="geolocate-r.html#cb697-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check inputs are correct type (numeric)</span></span>
-<span id="cb697-5"><a href="geolocate-r.html#cb697-5" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLatitude)</span>
-<span id="cb697-6"><a href="geolocate-r.html#cb697-6" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
-<span id="cb697-7"><a href="geolocate-r.html#cb697-7" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemAzimuth)</span>
-<span id="cb697-8"><a href="geolocate-r.html#cb697-8" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemDistance)</span>
-<span id="cb697-9"><a href="geolocate-r.html#cb697-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb697-10"><a href="geolocate-r.html#cb697-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb697-11"><a href="geolocate-r.html#cb697-11" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude),</span>
-<span id="cb697-12"><a href="geolocate-r.html#cb697-12" aria-hidden="true" tabindex="-1"></a>                                <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
-<span id="cb697-13"><a href="geolocate-r.html#cb697-13" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
-<span id="cb697-14"><a href="geolocate-r.html#cb697-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb697-15"><a href="geolocate-r.html#cb697-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check output for NAs</span></span>
-<span id="cb697-16"><a href="geolocate-r.html#cb697-16" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_false</span>(<span class="fu">any</span>(<span class="fu">is.na</span>(out)))</span>
-<span id="cb697-17"><a href="geolocate-r.html#cb697-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb697-18"><a href="geolocate-r.html#cb697-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(out)</span>
-<span id="cb697-19"><a href="geolocate-r.html#cb697-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="geolocate-r.html#cb717-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function</span></span>
+<span id="cb717-2"><a href="geolocate-r.html#cb717-2" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude,</span>
+<span id="cb717-3"><a href="geolocate-r.html#cb717-3" aria-hidden="true" tabindex="-1"></a>                              stemAzimuth, stemDistance) {</span>
+<span id="cb717-4"><a href="geolocate-r.html#cb717-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check inputs are correct type (numeric)</span></span>
+<span id="cb717-5"><a href="geolocate-r.html#cb717-5" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLatitude)</span>
+<span id="cb717-6"><a href="geolocate-r.html#cb717-6" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
+<span id="cb717-7"><a href="geolocate-r.html#cb717-7" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemAzimuth)</span>
+<span id="cb717-8"><a href="geolocate-r.html#cb717-8" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemDistance)</span>
+<span id="cb717-9"><a href="geolocate-r.html#cb717-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb717-10"><a href="geolocate-r.html#cb717-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb717-11"><a href="geolocate-r.html#cb717-11" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude),</span>
+<span id="cb717-12"><a href="geolocate-r.html#cb717-12" aria-hidden="true" tabindex="-1"></a>                                <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
+<span id="cb717-13"><a href="geolocate-r.html#cb717-13" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
+<span id="cb717-14"><a href="geolocate-r.html#cb717-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb717-15"><a href="geolocate-r.html#cb717-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check output for NAs</span></span>
+<span id="cb717-16"><a href="geolocate-r.html#cb717-16" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_false</span>(<span class="fu">any</span>(<span class="fu">is.na</span>(out)))</span>
+<span id="cb717-17"><a href="geolocate-r.html#cb717-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb717-18"><a href="geolocate-r.html#cb717-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(out)</span>
+<span id="cb717-19"><a href="geolocate-r.html#cb717-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
             </section>

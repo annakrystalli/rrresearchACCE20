@@ -184,6 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
+<li><a href="mypackage-readme-rmd.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a></li>
 <li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a></li>
@@ -213,64 +214,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This file should contain your processing workflow and be saved at:</p>
 <p><strong><code>data-raw/individual.R</code></strong></p>
 <p>Create the file using:</p>
-<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="appendix.html#cb694-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data_raw</span>(<span class="st">&quot;individual&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="appendix.html#cb714-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data_raw</span>(<span class="st">&quot;individual&quot;</span>)</span></code></pre></div>
 <p>Your script should contain:</p>
-<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="appendix.html#cb695-1" aria-hidden="true" tabindex="-1"></a><span class="do">## code to prepare `individual` dataset goes here</span></span>
-<span id="cb695-2"><a href="appendix.html#cb695-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb695-3"><a href="appendix.html#cb695-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocate.R&quot;</span>))</span>
-<span id="cb695-4"><a href="appendix.html#cb695-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-5"><a href="appendix.html#cb695-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in and compile all individual data</span></span>
-<span id="cb695-6"><a href="appendix.html#cb695-6" aria-hidden="true" tabindex="-1"></a>raw_data_path <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</span>
-<span id="cb695-7"><a href="appendix.html#cb695-7" aria-hidden="true" tabindex="-1"></a>individual_path <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</span>
-<span id="cb695-8"><a href="appendix.html#cb695-8" aria-hidden="true" tabindex="-1"></a>individual_paths <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(individual_path)</span>
-<span id="cb695-9"><a href="appendix.html#cb695-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-10"><a href="appendix.html#cb695-10" aria-hidden="true" tabindex="-1"></a><span class="co"># read in all tables into one</span></span>
-<span id="cb695-11"><a href="appendix.html#cb695-11" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
-<span id="cb695-12"><a href="appendix.html#cb695-12" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> .x,</span>
-<span id="cb695-13"><a href="appendix.html#cb695-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb695-14"><a href="appendix.html#cb695-14" aria-hidden="true" tabindex="-1"></a>    readr<span class="sc">::</span><span class="fu">type_convert</span>()</span>
-<span id="cb695-15"><a href="appendix.html#cb695-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-16"><a href="appendix.html#cb695-16" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb695-17"><a href="appendix.html#cb695-17" aria-hidden="true" tabindex="-1"></a>    readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="at">path =</span> fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;vst_individuals.csv&quot;</span>))</span>
-<span id="cb695-18"><a href="appendix.html#cb695-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-19"><a href="appendix.html#cb695-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-20"><a href="appendix.html#cb695-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-21"><a href="appendix.html#cb695-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine NEON data tables</span></span>
-<span id="cb695-22"><a href="appendix.html#cb695-22" aria-hidden="true" tabindex="-1"></a><span class="co"># read in additonal table</span></span>
-<span id="cb695-23"><a href="appendix.html#cb695-23" aria-hidden="true" tabindex="-1"></a>maptag <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, </span>
-<span id="cb695-24"><a href="appendix.html#cb695-24" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb695-25"><a href="appendix.html#cb695-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>eventID)</span>
-<span id="cb695-26"><a href="appendix.html#cb695-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-27"><a href="appendix.html#cb695-27" aria-hidden="true" tabindex="-1"></a>perplot <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, </span>
-<span id="cb695-28"><a href="appendix.html#cb695-28" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;vst_perplotperyear.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb695-29"><a href="appendix.html#cb695-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>eventID)</span>
-<span id="cb695-30"><a href="appendix.html#cb695-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-31"><a href="appendix.html#cb695-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-32"><a href="appendix.html#cb695-32" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&lt;&gt;%</span></span>
-<span id="cb695-33"><a href="appendix.html#cb695-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(maptag, <span class="at">by =</span> <span class="st">&quot;individualID&quot;</span>,</span>
-<span id="cb695-34"><a href="appendix.html#cb695-34" aria-hidden="true" tabindex="-1"></a>              <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb695-35"><a href="appendix.html#cb695-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(perplot, <span class="at">by =</span> <span class="st">&quot;plotID&quot;</span>,</span>
-<span id="cb695-36"><a href="appendix.html#cb695-36" aria-hidden="true" tabindex="-1"></a>              <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb695-37"><a href="appendix.html#cb695-37" aria-hidden="true" tabindex="-1"></a>    assertr<span class="sc">::</span><span class="fu">assert</span>(assertr<span class="sc">::</span>not_na, stemDistance, stemAzimuth, pointID,</span>
-<span id="cb695-38"><a href="appendix.html#cb695-38" aria-hidden="true" tabindex="-1"></a>                    decimalLongitude, decimalLatitude, plotID)</span>
-<span id="cb695-39"><a href="appendix.html#cb695-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-40"><a href="appendix.html#cb695-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Geolocate individuals_functions ----</span></span>
-<span id="cb695-41"><a href="appendix.html#cb695-41" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> individual <span class="sc">%&gt;%</span></span>
-<span id="cb695-42"><a href="appendix.html#cb695-42" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stemLat =</span> <span class="fu">get_stem_location</span>(<span class="at">decimalLongitude =</span> decimalLongitude,</span>
-<span id="cb695-43"><a href="appendix.html#cb695-43" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">decimalLatitude =</span> decimalLatitude,</span>
-<span id="cb695-44"><a href="appendix.html#cb695-44" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">stemAzimuth =</span> stemAzimuth,</span>
-<span id="cb695-45"><a href="appendix.html#cb695-45" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">stemDistance =</span> stemDistance)<span class="sc">$</span>lat,</span>
-<span id="cb695-46"><a href="appendix.html#cb695-46" aria-hidden="true" tabindex="-1"></a>                  <span class="at">stemLon =</span> <span class="fu">get_stem_location</span>(<span class="at">decimalLongitude =</span> decimalLongitude,</span>
-<span id="cb695-47"><a href="appendix.html#cb695-47" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">decimalLatitude =</span> decimalLatitude,</span>
-<span id="cb695-48"><a href="appendix.html#cb695-48" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">stemAzimuth =</span> stemAzimuth,</span>
-<span id="cb695-49"><a href="appendix.html#cb695-49" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">stemDistance =</span> stemDistance)<span class="sc">$</span>lon) <span class="sc">%&gt;%</span></span>
-<span id="cb695-50"><a href="appendix.html#cb695-50" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb695-51"><a href="appendix.html#cb695-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-52"><a href="appendix.html#cb695-52" aria-hidden="true" tabindex="-1"></a><span class="co"># create data directory</span></span>
-<span id="cb695-53"><a href="appendix.html#cb695-53" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>))</span>
-<span id="cb695-54"><a href="appendix.html#cb695-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb695-55"><a href="appendix.html#cb695-55" aria-hidden="true" tabindex="-1"></a><span class="co"># write out analytic file</span></span>
-<span id="cb695-56"><a href="appendix.html#cb695-56" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(individual, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="appendix.html#cb715-1" aria-hidden="true" tabindex="-1"></a><span class="do">## code to prepare `individual` dataset goes here</span></span>
+<span id="cb715-2"><a href="appendix.html#cb715-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb715-3"><a href="appendix.html#cb715-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocate.R&quot;</span>))</span>
+<span id="cb715-4"><a href="appendix.html#cb715-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-5"><a href="appendix.html#cb715-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in and compile all individual data</span></span>
+<span id="cb715-6"><a href="appendix.html#cb715-6" aria-hidden="true" tabindex="-1"></a>raw_data_path <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</span>
+<span id="cb715-7"><a href="appendix.html#cb715-7" aria-hidden="true" tabindex="-1"></a>individual_path <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</span>
+<span id="cb715-8"><a href="appendix.html#cb715-8" aria-hidden="true" tabindex="-1"></a>individual_paths <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(individual_path)</span>
+<span id="cb715-9"><a href="appendix.html#cb715-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-10"><a href="appendix.html#cb715-10" aria-hidden="true" tabindex="-1"></a><span class="co"># read in all tables into one</span></span>
+<span id="cb715-11"><a href="appendix.html#cb715-11" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
+<span id="cb715-12"><a href="appendix.html#cb715-12" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> .x,</span>
+<span id="cb715-13"><a href="appendix.html#cb715-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb715-14"><a href="appendix.html#cb715-14" aria-hidden="true" tabindex="-1"></a>    readr<span class="sc">::</span><span class="fu">type_convert</span>()</span>
+<span id="cb715-15"><a href="appendix.html#cb715-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-16"><a href="appendix.html#cb715-16" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb715-17"><a href="appendix.html#cb715-17" aria-hidden="true" tabindex="-1"></a>    readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="at">path =</span> fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;vst_individuals.csv&quot;</span>))</span>
+<span id="cb715-18"><a href="appendix.html#cb715-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-19"><a href="appendix.html#cb715-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-20"><a href="appendix.html#cb715-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-21"><a href="appendix.html#cb715-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine NEON data tables</span></span>
+<span id="cb715-22"><a href="appendix.html#cb715-22" aria-hidden="true" tabindex="-1"></a><span class="co"># read in additonal table</span></span>
+<span id="cb715-23"><a href="appendix.html#cb715-23" aria-hidden="true" tabindex="-1"></a>maptag <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, </span>
+<span id="cb715-24"><a href="appendix.html#cb715-24" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb715-25"><a href="appendix.html#cb715-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>eventID)</span>
+<span id="cb715-26"><a href="appendix.html#cb715-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-27"><a href="appendix.html#cb715-27" aria-hidden="true" tabindex="-1"></a>perplot <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, </span>
+<span id="cb715-28"><a href="appendix.html#cb715-28" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;vst_perplotperyear.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb715-29"><a href="appendix.html#cb715-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>eventID)</span>
+<span id="cb715-30"><a href="appendix.html#cb715-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-31"><a href="appendix.html#cb715-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-32"><a href="appendix.html#cb715-32" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&lt;&gt;%</span></span>
+<span id="cb715-33"><a href="appendix.html#cb715-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(maptag, <span class="at">by =</span> <span class="st">&quot;individualID&quot;</span>,</span>
+<span id="cb715-34"><a href="appendix.html#cb715-34" aria-hidden="true" tabindex="-1"></a>              <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb715-35"><a href="appendix.html#cb715-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(perplot, <span class="at">by =</span> <span class="st">&quot;plotID&quot;</span>,</span>
+<span id="cb715-36"><a href="appendix.html#cb715-36" aria-hidden="true" tabindex="-1"></a>              <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb715-37"><a href="appendix.html#cb715-37" aria-hidden="true" tabindex="-1"></a>    assertr<span class="sc">::</span><span class="fu">assert</span>(assertr<span class="sc">::</span>not_na, stemDistance, stemAzimuth, pointID,</span>
+<span id="cb715-38"><a href="appendix.html#cb715-38" aria-hidden="true" tabindex="-1"></a>                    decimalLongitude, decimalLatitude, plotID)</span>
+<span id="cb715-39"><a href="appendix.html#cb715-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-40"><a href="appendix.html#cb715-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Geolocate individuals_functions ----</span></span>
+<span id="cb715-41"><a href="appendix.html#cb715-41" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> individual <span class="sc">%&gt;%</span></span>
+<span id="cb715-42"><a href="appendix.html#cb715-42" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stemLat =</span> <span class="fu">get_stem_location</span>(<span class="at">decimalLongitude =</span> decimalLongitude,</span>
+<span id="cb715-43"><a href="appendix.html#cb715-43" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">decimalLatitude =</span> decimalLatitude,</span>
+<span id="cb715-44"><a href="appendix.html#cb715-44" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">stemAzimuth =</span> stemAzimuth,</span>
+<span id="cb715-45"><a href="appendix.html#cb715-45" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">stemDistance =</span> stemDistance)<span class="sc">$</span>lat,</span>
+<span id="cb715-46"><a href="appendix.html#cb715-46" aria-hidden="true" tabindex="-1"></a>                  <span class="at">stemLon =</span> <span class="fu">get_stem_location</span>(<span class="at">decimalLongitude =</span> decimalLongitude,</span>
+<span id="cb715-47"><a href="appendix.html#cb715-47" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">decimalLatitude =</span> decimalLatitude,</span>
+<span id="cb715-48"><a href="appendix.html#cb715-48" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">stemAzimuth =</span> stemAzimuth,</span>
+<span id="cb715-49"><a href="appendix.html#cb715-49" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">stemDistance =</span> stemDistance)<span class="sc">$</span>lon) <span class="sc">%&gt;%</span></span>
+<span id="cb715-50"><a href="appendix.html#cb715-50" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb715-51"><a href="appendix.html#cb715-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-52"><a href="appendix.html#cb715-52" aria-hidden="true" tabindex="-1"></a><span class="co"># create data directory</span></span>
+<span id="cb715-53"><a href="appendix.html#cb715-53" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>))</span>
+<span id="cb715-54"><a href="appendix.html#cb715-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-55"><a href="appendix.html#cb715-55" aria-hidden="true" tabindex="-1"></a><span class="co"># write out analytic file</span></span>
+<span id="cb715-56"><a href="appendix.html#cb715-56" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(individual, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</span></code></pre></div>
 
 </div>
             </section>

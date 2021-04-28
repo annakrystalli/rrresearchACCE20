@@ -184,6 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
+<li><a href="mypackage-readme-rmd.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a></li>
 <li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a></li>
@@ -367,14 +368,66 @@ Figure 2: Image: xkcd CC BY-NC 2.5
 </div>
 <div id="set-up-github-pat" class="section level3">
 <h3>Set up GITHUB PAT</h3>
-<p>To authenticate with GitHub, you’ll also need a Personal Authorisation Token (PAT).</p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="version-control-with-git.html#cb560-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">browse_github_pat</span>()</span></code></pre></div>
+<p>To authenticate with GitHub, you’ll also need a Personal Authorisation Token (PAT). Password-based authentication for Git is deprecated, i.e. you really should <em>not</em> be sending your username and password every time you push or pull.
+Here, I’m referring to the username and password you would use to login to GitHub in the browser.</p>
+<p>What should you do instead?</p>
+<p>Get a <strong>personal access token</strong> (PAT) and use that as your credential for HTTPS operations.
+(The PAT will actually be sent as the password and the username is somewhat artificial, consulted only for credential lookup.)</p>
+<div id="how-to-get-a-pat" class="section level4">
+<h4>How to get a PAT?</h4>
+<p>GitHub offers instructions for <a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token">creating a personal access token</a>.</p>
+<p>The usethis package has a helper function that takes you to the web form to create a PAT, with the added benefit that it pre-selects the recommended scopes:</p>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="version-control-with-git.html#cb560-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code></pre></div>
+<pre><code>● Call `gitcreds::gitcreds_set()` to register this token in the local Git credential store
+  It is also a great idea to store this token in any password-management software that you use
+✓ Opening URL &#39;https://github.com/settings/tokens/new?scopes=repo,user,gist,workflow&amp;description=R:GITHUB_PAT&#39;</code></pre>
 <p>will open up the GitHub panel to generate your PAT.</p>
 <p><img src="assets/browse_github.png" height="300px"></p>
+<p>Once you are happy with the selected scopes, click “Generate token”.
+As the page says, you must <strong>store this token somewhere</strong>, because you’ll never be able to see it again, once you leave that page or close the window.</p>
+<p>Do not ever hard-wire your PAT into your code!
+A PAT should always be retrieved implicitly, for example, from the Git credential store or from an environment variable.</p>
+</div>
+<div id="store-your-credential" class="section level4">
+<h4>Store your credential</h4>
+<p>Below, we will add your PAT to our <code>.Renviron</code> file as well as the Git credential store as a semi-persistent convenience, sort of like “remember me” on a website. But, just like logging into websites, it is entirely possible that your PAT will somehow be forgotten from the credential store and you will need to re-enter it.</p>
+<p>If you goof this up, i.e. generate a PAT but fail to capture it on your system, you’ll have to generate another one. This is not the end of the world, but you should delete the “lost” PAT on GitHub. If you aren’t disciplined about labelling PATs and deleting lost PATs, you will find yourself in an unsettling situation where you can’t be sure which PAT(s) are in use. When logged into your GitHub account, you can manage your PATs here:</p>
+<div id="store-in-.renviron" class="section level5">
+<h5>Store in <code>.Renviron</code></h5>
 <p>Copy it and paste it into your <code>.Renviron</code> file as system variable <code>GITHUB_PAT</code>.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="version-control-with-git.html#cb561-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="version-control-with-git.html#cb562-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div>
 <p>Use <code>edit_r_environ()</code> to open and edit your <code>.Renviron</code> file</p>
 <p><img src="assets/GITHUB_PAT.png" width="90%" /></p>
+<p>Add to the file and save.</p>
+</div>
+<div id="cache-with-gitcreds-package" class="section level5">
+<h5>Cache with <code>gitcreds</code> package</h5>
+<p>As of November 2020, there are two R packages for accessing the Git credential store:</p>
+<ul>
+<li><a href="https://r-lib.github.io/gitcreds/">gitcreds</a></li>
+<li><a href="https://docs.ropensci.org/credentials/">credentials</a></li>
+</ul>
+<p>It is likely that these packages will eventually combine into one and, even now, they are largely interoperable.
+You don’t need to follow the instructions for both packages – pick one!</p>
+<p>We will use the <code>gitcreds</code> package here.</p>
+<p>If you don’t have gitcreds installed, install via <code>install.packages("gitcreds")</code>.</p>
+<p>Then call <code>gitcreds::gitcreds_set()</code>:</p>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="version-control-with-git.html#cb563-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code></pre></div>
+<p><code>gitcreds::gitcreds_set()</code> is a very handy function, since it reports any current credential, allows you to see it, allows you to keep or replace an existing credential, and can also store a credential for the first time.</p>
+<p>Respond to the prompt with your personal access token (PAT).</p>
+<p>You can check that you’ve stored a credential with <code>gitcreds_get()</code>:</p>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="version-control-with-git.html#cb564-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_get</span>()</span>
+<span id="cb564-2"><a href="version-control-with-git.html#cb564-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;gitcreds&gt;</span></span>
+<span id="cb564-3"><a href="version-control-with-git.html#cb564-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   protocol: https</span></span>
+<span id="cb564-4"><a href="version-control-with-git.html#cb564-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   host    : github.com</span></span>
+<span id="cb564-5"><a href="version-control-with-git.html#cb564-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   username: PersonalAccessToken</span></span>
+<span id="cb564-6"><a href="version-control-with-git.html#cb564-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   password: &lt;-- hidden --&gt;</span></span></code></pre></div>
+</div>
+<div id="todo-store-your-pat-with-a-password-manager" class="section level5">
+<h5>TODO store your PAT with a password manager</h5>
+<p><strong>Treat this PAT like a password!</strong> Currently, we’ve only store a copyable form of the PAT in our <code>.Renviron</code> file. If you use a password management app, such as 1Password or LastPass (which you should), it is highly recommended to add this PAT to your entry for GitHub.</p>
+</div>
+</div>
 </div>
 </div>
 <div id="version-controlling-projects" class="section level2">
@@ -385,34 +438,34 @@ Figure 2: Image: xkcd CC BY-NC 2.5
 <div class="alert alert-warning">
 <p>This will try to <strong>commit everything in the repo so far in one go!</strong> Override that behaviour by selecting a negative response when asked.</p>
 </div>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="version-control-with-git.html#cb562-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="version-control-with-git.html#cb563-1" aria-hidden="true" tabindex="-1"></a>✔ Initialising Git repo</span>
-<span id="cb563-2"><a href="version-control-with-git.html#cb563-2" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">&#39;.Rhistory&#39;</span>, <span class="st">&#39;.RData&#39;</span> to <span class="st">&#39;.gitignore&#39;</span></span>
-<span id="cb563-3"><a href="version-control-with-git.html#cb563-3" aria-hidden="true" tabindex="-1"></a>There are <span class="dv">10</span> uncommitted files<span class="sc">:</span></span>
-<span id="cb563-4"><a href="version-control-with-git.html#cb563-4" aria-hidden="true" tabindex="-1"></a><span class="er">*</span> <span class="st">&#39;.DS_Store&#39;</span></span>
-<span id="cb563-5"><a href="version-control-with-git.html#cb563-5" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;.gitignore&#39;</span></span>
-<span id="cb563-6"><a href="version-control-with-git.html#cb563-6" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;.Rbuildignore&#39;</span></span>
-<span id="cb563-7"><a href="version-control-with-git.html#cb563-7" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;analysis.R&#39;</span></span>
-<span id="cb563-8"><a href="version-control-with-git.html#cb563-8" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;data-raw/&#39;</span></span>
-<span id="cb563-9"><a href="version-control-with-git.html#cb563-9" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;data/&#39;</span></span>
-<span id="cb563-10"><a href="version-control-with-git.html#cb563-10" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;index.html&#39;</span></span>
-<span id="cb563-11"><a href="version-control-with-git.html#cb563-11" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;index.Rmd&#39;</span></span>
-<span id="cb563-12"><a href="version-control-with-git.html#cb563-12" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;R/&#39;</span></span>
-<span id="cb563-13"><a href="version-control-with-git.html#cb563-13" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;wood-survey.Rproj&#39;</span></span>
-<span id="cb563-14"><a href="version-control-with-git.html#cb563-14" aria-hidden="true" tabindex="-1"></a>Is it ok to commit them?</span>
-<span id="cb563-15"><a href="version-control-with-git.html#cb563-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb563-16"><a href="version-control-with-git.html#cb563-16" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span> Negative</span>
-<span id="cb563-17"><a href="version-control-with-git.html#cb563-17" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span> Nope</span>
-<span id="cb563-18"><a href="version-control-with-git.html#cb563-18" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">:</span> I agree</span>
-<span id="cb563-19"><a href="version-control-with-git.html#cb563-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb563-20"><a href="version-control-with-git.html#cb563-20" aria-hidden="true" tabindex="-1"></a>Selection<span class="sc">:</span> </span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="version-control-with-git.html#cb565-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="version-control-with-git.html#cb566-1" aria-hidden="true" tabindex="-1"></a>✔ Initialising Git repo</span>
+<span id="cb566-2"><a href="version-control-with-git.html#cb566-2" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">&#39;.Rhistory&#39;</span>, <span class="st">&#39;.RData&#39;</span> to <span class="st">&#39;.gitignore&#39;</span></span>
+<span id="cb566-3"><a href="version-control-with-git.html#cb566-3" aria-hidden="true" tabindex="-1"></a>There are <span class="dv">10</span> uncommitted files<span class="sc">:</span></span>
+<span id="cb566-4"><a href="version-control-with-git.html#cb566-4" aria-hidden="true" tabindex="-1"></a><span class="er">*</span> <span class="st">&#39;.DS_Store&#39;</span></span>
+<span id="cb566-5"><a href="version-control-with-git.html#cb566-5" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;.gitignore&#39;</span></span>
+<span id="cb566-6"><a href="version-control-with-git.html#cb566-6" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;.Rbuildignore&#39;</span></span>
+<span id="cb566-7"><a href="version-control-with-git.html#cb566-7" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;analysis.R&#39;</span></span>
+<span id="cb566-8"><a href="version-control-with-git.html#cb566-8" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;data-raw/&#39;</span></span>
+<span id="cb566-9"><a href="version-control-with-git.html#cb566-9" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;data/&#39;</span></span>
+<span id="cb566-10"><a href="version-control-with-git.html#cb566-10" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;index.html&#39;</span></span>
+<span id="cb566-11"><a href="version-control-with-git.html#cb566-11" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;index.Rmd&#39;</span></span>
+<span id="cb566-12"><a href="version-control-with-git.html#cb566-12" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;R/&#39;</span></span>
+<span id="cb566-13"><a href="version-control-with-git.html#cb566-13" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="st">&#39;wood-survey.Rproj&#39;</span></span>
+<span id="cb566-14"><a href="version-control-with-git.html#cb566-14" aria-hidden="true" tabindex="-1"></a>Is it ok to commit them?</span>
+<span id="cb566-15"><a href="version-control-with-git.html#cb566-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb566-16"><a href="version-control-with-git.html#cb566-16" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span> Negative</span>
+<span id="cb566-17"><a href="version-control-with-git.html#cb566-17" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span> Nope</span>
+<span id="cb566-18"><a href="version-control-with-git.html#cb566-18" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">:</span> I agree</span>
+<span id="cb566-19"><a href="version-control-with-git.html#cb566-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb566-20"><a href="version-control-with-git.html#cb566-20" aria-hidden="true" tabindex="-1"></a>Selection<span class="sc">:</span> </span></code></pre></div>
 <p>Next allow Rstudio to restart when asked:</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="version-control-with-git.html#cb564-1" aria-hidden="true" tabindex="-1"></a>● A restart of RStudio is required to activate the Git pane</span>
-<span id="cb564-2"><a href="version-control-with-git.html#cb564-2" aria-hidden="true" tabindex="-1"></a>Restart now?</span>
-<span id="cb564-3"><a href="version-control-with-git.html#cb564-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb564-4"><a href="version-control-with-git.html#cb564-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span> Absolutely</span>
-<span id="cb564-5"><a href="version-control-with-git.html#cb564-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span> Absolutely not</span>
-<span id="cb564-6"><a href="version-control-with-git.html#cb564-6" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">:</span> Negative</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="version-control-with-git.html#cb567-1" aria-hidden="true" tabindex="-1"></a>● A restart of RStudio is required to activate the Git pane</span>
+<span id="cb567-2"><a href="version-control-with-git.html#cb567-2" aria-hidden="true" tabindex="-1"></a>Restart now?</span>
+<span id="cb567-3"><a href="version-control-with-git.html#cb567-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb567-4"><a href="version-control-with-git.html#cb567-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span> Absolutely</span>
+<span id="cb567-5"><a href="version-control-with-git.html#cb567-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span> Absolutely not</span>
+<span id="cb567-6"><a href="version-control-with-git.html#cb567-6" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">:</span> Negative</span></code></pre></div>
 </div>
 <div id="committing-files" class="section level3">
 <h3>Committing files</h3>
@@ -434,7 +487,7 @@ Figure 2: Image: xkcd CC BY-NC 2.5
 <h3>Create a README</h3>
 <p>Our repository also needs a <code>README</code>. We only need a simple plain markdown (<code>.md</code>) file for our README.</p>
 <p>We can create a template using <code>usethis::use_readme_md()</code></p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="version-control-with-git.html#cb565-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_md</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="version-control-with-git.html#cb568-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_md</span>()</span></code></pre></div>
 <div id="edit-readme" class="section level4">
 <h4>Edit README</h4>
 <p>Adapt the template, adding a short description about your project.</p>
@@ -446,16 +499,16 @@ Figure 2: Image: xkcd CC BY-NC 2.5
 <div id="create-repository-on-github" class="section level2">
 <h2>Create repository on GitHub</h2>
 <p>Now that we have set up a <code>GITHUP_PAT</code>, we can use function <code>usethis::use_github()</code> to create a GitHub repository for our project:</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="version-control-with-git.html#cb566-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="at">protocol =</span> <span class="st">&quot;https&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="version-control-with-git.html#cb567-1" aria-hidden="true" tabindex="-1"></a>✔ Checking that current branch is <span class="st">&#39;master&#39;</span></span>
-<span id="cb567-2"><a href="version-control-with-git.html#cb567-2" aria-hidden="true" tabindex="-1"></a>● Check title and description</span>
-<span id="cb567-3"><a href="version-control-with-git.html#cb567-3" aria-hidden="true" tabindex="-1"></a>  Name<span class="sc">:</span>        wood<span class="sc">-</span>survey</span>
-<span id="cb567-4"><a href="version-control-with-git.html#cb567-4" aria-hidden="true" tabindex="-1"></a>  Description<span class="sc">:</span> </span>
-<span id="cb567-5"><a href="version-control-with-git.html#cb567-5" aria-hidden="true" tabindex="-1"></a>Are title and description ok?</span>
-<span id="cb567-6"><a href="version-control-with-git.html#cb567-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb567-7"><a href="version-control-with-git.html#cb567-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span> No</span>
-<span id="cb567-8"><a href="version-control-with-git.html#cb567-8" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span> Yes</span>
-<span id="cb567-9"><a href="version-control-with-git.html#cb567-9" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">:</span> Nope</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="version-control-with-git.html#cb569-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="at">protocol =</span> <span class="st">&quot;https&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="version-control-with-git.html#cb570-1" aria-hidden="true" tabindex="-1"></a>✔ Checking that current branch is <span class="st">&#39;master&#39;</span></span>
+<span id="cb570-2"><a href="version-control-with-git.html#cb570-2" aria-hidden="true" tabindex="-1"></a>● Check title and description</span>
+<span id="cb570-3"><a href="version-control-with-git.html#cb570-3" aria-hidden="true" tabindex="-1"></a>  Name<span class="sc">:</span>        wood<span class="sc">-</span>survey</span>
+<span id="cb570-4"><a href="version-control-with-git.html#cb570-4" aria-hidden="true" tabindex="-1"></a>  Description<span class="sc">:</span> </span>
+<span id="cb570-5"><a href="version-control-with-git.html#cb570-5" aria-hidden="true" tabindex="-1"></a>Are title and description ok?</span>
+<span id="cb570-6"><a href="version-control-with-git.html#cb570-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb570-7"><a href="version-control-with-git.html#cb570-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span> No</span>
+<span id="cb570-8"><a href="version-control-with-git.html#cb570-8" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span> Yes</span>
+<span id="cb570-9"><a href="version-control-with-git.html#cb570-9" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">:</span> Nope</span></code></pre></div>
 <p>Answer affirmatively for the process to continue. Once the repo is created and any commmited files pushed, the repo is launched in the browser:</p>
 <p><img src="assets/use-github.png" width="90%" /></p>
 </div>

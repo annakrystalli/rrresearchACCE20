@@ -184,6 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
+<li><a href="mypackage-readme-rmd.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a></li>
 <li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a></li>
@@ -242,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="anatomy-of-an-r-package" class="section level2">
 <h2>Anatomy of an R package</h2>
-<p>Let’s use <a href="https://github.com/ropenscilabs/pkgreviewr"><code>pkgreviewr</code></a>, a package I authored to help automate some aspects of the rOpenSci review process, as an example to examine some elements of what makes a package:</p>
+<p>Let’s use <a href="https://github.com/ropensci-org/pkgreviewr"><code>pkgreviewr</code></a>, a package I authored to help automate some aspects of the rOpenSci review process, as an example to examine some elements of what makes a package:</p>
 </div>
 <div id="description-file" class="section level2">
 <h2><code>DESCRIPTION</code> file</h2>
@@ -301,21 +302,22 @@ Roxygen: list(markdown = TRUE)
 </code></pre>
 <div id="citation" class="section level3">
 <h3>citation</h3>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="packaging-functionality.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;geosphere&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="packaging-functionality.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;pkgreviewr&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## To cite package &#39;geosphere&#39; in publications use:
+## To cite package &#39;pkgreviewr&#39; in publications use:
 ## 
-##   Robert J. Hijmans (2019). geosphere: Spherical Trigonometry. R
-##   package version 1.5-10. https://CRAN.R-project.org/package=geosphere
+##   Anna Krystalli and Maëlle Salmon (2021). pkgreviewr: rOpenSci package
+##   review project template. R package version 0.2.0.
+##   https://github.com/ropenscilabs/pkgreviewr
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
 ##   @Manual{,
-##     title = {geosphere: Spherical Trigonometry},
-##     author = {Robert J. Hijmans},
-##     year = {2019},
-##     note = {R package version 1.5-10},
-##     url = {https://CRAN.R-project.org/package=geosphere},
+##     title = {pkgreviewr: rOpenSci package review project template},
+##     author = {Anna Krystalli and Maëlle Salmon},
+##     year = {2021},
+##     note = {R package version 0.2.0},
+##     url = {https://github.com/ropenscilabs/pkgreviewr},
 ##   }</code></pre>
 </div>
 </div>
@@ -371,8 +373,8 @@ Roxygen: list(markdown = TRUE)
 <div id="example-function-script" class="section level3">
 <h3>example function script</h3>
 <p>Create a new function <code>.R</code> file in the <code>R/</code> folder</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="packaging-functionality.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
-<span id="cb576-2"><a href="packaging-functionality.html#cb576-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_r</span>(<span class="st">&quot;add&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="packaging-functionality.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
+<span id="cb579-2"><a href="packaging-functionality.html#cb579-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_r</span>(<span class="st">&quot;add&quot;</span>)</span></code></pre></div>
 <pre><code>R
 └── add.R
 
@@ -385,17 +387,17 @@ Roxygen: list(markdown = TRUE)
 <li>Document functions with <strong>Roxygen</strong> notation</li>
 <li>Automatically create help files on build</li>
 </ul>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="packaging-functionality.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Add together two numbers.</span></span>
-<span id="cb578-2"><a href="packaging-functionality.html#cb578-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
-<span id="cb578-3"><a href="packaging-functionality.html#cb578-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A number.</span></span>
-<span id="cb578-4"><a href="packaging-functionality.html#cb578-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y A number.</span></span>
-<span id="cb578-5"><a href="packaging-functionality.html#cb578-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return The sum of x and y.</span></span>
-<span id="cb578-6"><a href="packaging-functionality.html#cb578-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
-<span id="cb578-7"><a href="packaging-functionality.html#cb578-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; add(1, 1)</span></span>
-<span id="cb578-8"><a href="packaging-functionality.html#cb578-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; add(10, 1)</span></span>
-<span id="cb578-9"><a href="packaging-functionality.html#cb578-9" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb578-10"><a href="packaging-functionality.html#cb578-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
-<span id="cb578-11"><a href="packaging-functionality.html#cb578-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="packaging-functionality.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Add together two numbers.</span></span>
+<span id="cb581-2"><a href="packaging-functionality.html#cb581-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb581-3"><a href="packaging-functionality.html#cb581-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A number.</span></span>
+<span id="cb581-4"><a href="packaging-functionality.html#cb581-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y A number.</span></span>
+<span id="cb581-5"><a href="packaging-functionality.html#cb581-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return The sum of x and y.</span></span>
+<span id="cb581-6"><a href="packaging-functionality.html#cb581-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb581-7"><a href="packaging-functionality.html#cb581-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; add(1, 1)</span></span>
+<span id="cb581-8"><a href="packaging-functionality.html#cb581-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; add(10, 1)</span></span>
+<span id="cb581-9"><a href="packaging-functionality.html#cb581-9" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb581-10"><a href="packaging-functionality.html#cb581-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb581-11"><a href="packaging-functionality.html#cb581-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="tests" class="section level2">
 <h2><code>tests/</code></h2>
@@ -413,16 +415,14 @@ Roxygen: list(markdown = TRUE)
 1 directory, 6 files</code></pre>
 <div id="example-test" class="section level3">
 <h3>Example test</h3>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="packaging-functionality.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_test</span>(<span class="st">&quot;add&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="packaging-functionality.html#cb583-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_test</span>(<span class="st">&quot;add&quot;</span>)</span></code></pre></div>
 <pre><code>tests
 ├── testthat
 │   ├── test-add.R
 └── testthat.R</code></pre>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="packaging-functionality.html#cb582-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;test-add&quot;</span>)</span>
-<span id="cb582-2"><a href="packaging-functionality.html#cb582-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb582-3"><a href="packaging-functionality.html#cb582-3" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;add works&quot;</span>, {</span>
-<span id="cb582-4"><a href="packaging-functionality.html#cb582-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">add</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">4</span>)</span>
-<span id="cb582-5"><a href="packaging-functionality.html#cb582-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="packaging-functionality.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;add works&quot;</span>, {</span>
+<span id="cb585-2"><a href="packaging-functionality.html#cb585-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">add</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">4</span>)</span>
+<span id="cb585-3"><a href="packaging-functionality.html#cb585-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <p>The <strong>R package structure</strong> can help with providing a logical organisation of files, by <strong>providing a set of standard locations for certain types of files</strong>.</p>
 <p>To work with packages in RStudio we use the <strong>Build pane</strong>, which includes a variety of tools for <strong>building, documenting and testing packages</strong>. This will appear if Rstudio recognises the project as an R package.</p>
 <p><img src="assets/build-panel.png" height="200px"></p>
@@ -431,54 +431,114 @@ Roxygen: list(markdown = TRUE)
 </div>
 <div id="create-your-first-package" class="section level2">
 <h2>💻Create your first package</h2>
-<p>Let’s go ahead and create our first package! We do that as we would any project, but this time we select <strong><code>R package</code></strong> instead of <code>New Project</code>. Call your package <code>mypackage</code>.</p>
+<p>Let’s go ahead and create our first package!</p>
+<p>We can do that as we would any project, but this time we would select <strong><code>R package</code></strong> instead of <code>New Project</code> and call our new package <code>mypackage</code>.</p>
 <div class="alert alert-info">
 <strong>File &gt; New Project… &gt; New Directory &gt; R package &gt; mypackage </strong>
 </div>
+<p>Otherwise, we can use function <code>usethis::create_package("mypackage")</code> to create a new package. The argument we provide is the path to here we want our new package created, the last element being the package name.</p>
+<p>To do this in Rstudio (which is a bit fiddlier) we will create a general project in which we will create our package project. In general, creating a project within a project is bad practice and you should avoid this wehn wourking locally, but given the more restrictive nature of working in Rstudio cloud, we will break this general best prectice rule.</p>
+<div id="create-a-general-rstudio-project" class="section level3">
+<h3>Create a general Rstudio Project</h3>
+<ul>
+<li>In your own personal workspace, click on the <strong>New Project</strong> button.</li>
+<li>Rename the project to <strong>ACCE-projects</strong></li>
+<li>Install required dependencies using the code below:</li>
+</ul>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="packaging-functionality.html#cb586-1" aria-hidden="true" tabindex="-1"></a>dependencies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;remotes&quot;</span>, <span class="st">&quot;usethis&quot;</span>)</span>
+<span id="cb586-2"><a href="packaging-functionality.html#cb586-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb586-3"><a href="packaging-functionality.html#cb586-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install CRAN dependencies</span></span>
+<span id="cb586-4"><a href="packaging-functionality.html#cb586-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(dependencies)</span>
+<span id="cb586-5"><a href="packaging-functionality.html#cb586-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb586-6"><a href="packaging-functionality.html#cb586-6" aria-hidden="true" tabindex="-1"></a><span class="co"># install github dependencies</span></span>
+<span id="cb586-7"><a href="packaging-functionality.html#cb586-7" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;benmarwick/rrtools&quot;</span>)</span></code></pre></div>
+</div>
+<div id="create-package" class="section level3">
+<h3>Create package</h3>
+<p>Create your package development project within the <strong>ACCE-projects</strong> project:</p>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="packaging-functionality.html#cb587-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">&quot;mypackage&quot;</span>)</span></code></pre></div>
 <p>Your new project should have the following structure. The build pane should also be visible.</p>
 <pre><code>.
 ├── DESCRIPTION
 ├── NAMESPACE
 ├── R
-│   └── hello.R
-├── man
-│   └── hello.Rd
-└── mypackage.Rproj
-
-2 directories, 5 files</code></pre>
+└── mypackage.Rproj</code></pre>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="packaging-functionality.html#cb589-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;assets/r_package_rstudio-cloud.png&quot;</span>)</span></code></pre></div>
+<p><img src="assets/r_package_rstudio-cloud.png" /><!-- --></p>
+</div>
+<div id="install-dependencies" class="section level3">
+<h3>Install dependencies</h3>
+<p>We will again need to install required dependencies for package development in our new package project. Install them by running the following code:</p>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="packaging-functionality.html#cb590-1" aria-hidden="true" tabindex="-1"></a>dependencies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cowsay&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, <span class="st">&quot;pkgdown&quot;</span>, <span class="st">&quot;testthat&quot;</span>, </span>
+<span id="cb590-2"><a href="packaging-functionality.html#cb590-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;usethis&quot;</span>)</span>
+<span id="cb590-3"><a href="packaging-functionality.html#cb590-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb590-4"><a href="packaging-functionality.html#cb590-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install CRAN dependencies</span></span>
+<span id="cb590-5"><a href="packaging-functionality.html#cb590-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(dependencies)</span></code></pre></div>
+</div>
+</div>
+<div id="initialise-git-and-commit-files." class="section level2">
+<h2>Initialise git and commit files.</h2>
+<p>Let’s also initalise our project as a git repository and commit our initial files. We’ll need to configure git again as this is a new Rstudio cloud project.</p>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="packaging-functionality.html#cb591-1" aria-hidden="true" tabindex="-1"></a><span class="co"># configure git</span></span>
+<span id="cb591-2"><a href="packaging-functionality.html#cb591-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</span>
+<span id="cb591-3"><a href="packaging-functionality.html#cb591-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</span>
+<span id="cb591-4"><a href="packaging-functionality.html#cb591-4" aria-hidden="true" tabindex="-1"></a><span class="co"># intialise git and commit</span></span>
+<span id="cb591-5"><a href="packaging-functionality.html#cb591-5" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code></pre></div>
 </div>
 <div id="functions-in-the-r-dir" class="section level2">
 <h2>🚦 Functions in the <strong><code>R/</code></strong> dir</h2>
-<p>Let’s inspect <strong><code>hello.R</code></strong></p>
-<p>it contains a function that takes now arguments and prints <code>hello world</code> to the console when called. The comments above are just that, comments and don’t serve any functional purpose.</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="packaging-functionality.html#cb584-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hello, world!</span></span>
-<span id="cb584-2"><a href="packaging-functionality.html#cb584-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb584-3"><a href="packaging-functionality.html#cb584-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This is an example function named &#39;hello&#39; </span></span>
-<span id="cb584-4"><a href="packaging-functionality.html#cb584-4" aria-hidden="true" tabindex="-1"></a><span class="co"># which prints &#39;Hello, world!&#39;.</span></span>
-<span id="cb584-5"><a href="packaging-functionality.html#cb584-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb584-6"><a href="packaging-functionality.html#cb584-6" aria-hidden="true" tabindex="-1"></a><span class="co"># You can learn more about package authoring with RStudio at:</span></span>
-<span id="cb584-7"><a href="packaging-functionality.html#cb584-7" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb584-8"><a href="packaging-functionality.html#cb584-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   http://r-pkgs.had.co.nz/</span></span>
-<span id="cb584-9"><a href="packaging-functionality.html#cb584-9" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb584-10"><a href="packaging-functionality.html#cb584-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Some useful keyboard shortcuts for package authoring:</span></span>
-<span id="cb584-11"><a href="packaging-functionality.html#cb584-11" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb584-12"><a href="packaging-functionality.html#cb584-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   Build and Reload Package:  &#39;Cmd + Shift + B&#39;</span></span>
-<span id="cb584-13"><a href="packaging-functionality.html#cb584-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   Check Package:             &#39;Cmd + Shift + E&#39;</span></span>
-<span id="cb584-14"><a href="packaging-functionality.html#cb584-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   Test Package:              &#39;Cmd + Shift + T&#39;</span></span>
-<span id="cb584-15"><a href="packaging-functionality.html#cb584-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb584-16"><a href="packaging-functionality.html#cb584-16" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb584-17"><a href="packaging-functionality.html#cb584-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span>
-<span id="cb584-18"><a href="packaging-functionality.html#cb584-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="create-function-script-and-first-function" class="section level3">
+<h3>Create function script and first function</h3>
+<p>Let’s create a script and write our first function:</p>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="packaging-functionality.html#cb592-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="packaging-functionality.html#cb593-1" aria-hidden="true" tabindex="-1"></a>✓ Setting active project to <span class="st">&#39;/cloud/project/mypackage&#39;</span></span>
+<span id="cb593-2"><a href="packaging-functionality.html#cb593-2" aria-hidden="true" tabindex="-1"></a>• Modify <span class="st">&#39;R/hello.R&#39;</span></span>
+<span id="cb593-3"><a href="packaging-functionality.html#cb593-3" aria-hidden="true" tabindex="-1"></a>• Call <span class="st">`</span><span class="at">use_test()</span><span class="st">`</span> to create a matching test file</span></code></pre></div>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="packaging-functionality.html#cb594-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;assets/r_hello.png&quot;</span>)</span></code></pre></div>
+<p><img src="assets/r_hello.png" /><!-- --></p>
+<p>In the opened <code>hello.R</code> script, let’s write our first function:</p>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="packaging-functionality.html#cb595-1" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb595-2"><a href="packaging-functionality.html#cb595-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span>
+<span id="cb595-3"><a href="packaging-functionality.html#cb595-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>It’s a function that takes no arguments and prints <code>Hello, world!</code> to the console when called.</p>
+</div>
 <div id="install-package." class="section level3">
 <h3>Install package.</h3>
-<p>You can install a package locally from it’s source code with function <code>install()</code></p>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="packaging-functionality.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb585-2"><a href="packaging-functionality.html#cb585-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install</span>(<span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<p>You can install a package locally from it’s source code with function <code>devtools::install()</code></p>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="packaging-functionality.html#cb596-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install</span>()</span></code></pre></div>
+<pre><code>✓  checking for file ‘/cloud/project/mypackage/DESCRIPTION’ ...
+─  preparing ‘mypackage’:
+✓  checking DESCRIPTION meta-information ...
+─  checking for LF line-endings in source and make files and shell scripts
+─  checking for empty or unneeded directories
+─  building ‘mypackage_0.0.0.9000.tar.gz’
+   
+Running /opt/R/4.0.3/lib/R/bin/R CMD INSTALL \
+  /tmp/RtmpVciSpz/mypackage_0.0.0.9000.tar.gz \
+  --install-tests 
+* installing to library ‘/home/rstudio-user/R/x86_64-pc-linux-gnu-library/4.0’
+* installing *source* package ‘mypackage’ ...
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+No man pages found in package  ‘mypackage’ 
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (mypackage)</code></pre>
 <p>You can now load it like any other package…</p>
-<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="packaging-functionality.html#cb586-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;mypackage&quot;</span>)</span></code></pre></div>
-<p>And use your function!</p>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="packaging-functionality.html#cb587-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="packaging-functionality.html#cb598-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;mypackage&quot;</span>)</span></code></pre></div>
+<p>Let’s try using our function</p>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="packaging-functionality.html#cb599-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>()</span></code></pre></div>
+<p>Oooops? Our function doesn’t seem to be available! 🤔</p>
+<p>Let’s try something else:</p>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="packaging-functionality.html#cb600-1" aria-hidden="true" tabindex="-1"></a>mypackage<span class="sc">:::</span><span class="fu">hello</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Hello, world!&quot;</code></pre>
+<p>So what’s happened here? Although the package contains our function, we have not <strong>exported</strong> to make available to a user. Currently it is contained as an <strong>internal function</strong>. Hence we can access it with the notation for internal functions (<code>:::</code>) but not directly when we load the package!</p>
+<p>To export the function, we will need to add a tag to tell R to do so using a special documentation notation called <strong>Roxygen</strong>!</p>
 <hr />
 </div>
 </div>
@@ -489,24 +549,25 @@ Roxygen: list(markdown = TRUE)
 <li>the inputs and outputs</li>
 <li>a description of what it does</li>
 <li>an example of how to use it</li>
+<li>whether to export the function</li>
 </ul>
 <p>These are processed automatically to produce <code>.Rd</code> help files for your functions and control which functions are exported to the package <code>NAMESPACE</code>.</p>
-<p>Let’s document our example function. First, clear the demo comments above the function and all contents of the example<code>NAMESPACE</code>. Also delete the file in the <code>man</code> folder.</p>
+<p>Let’s document our example function.</p>
 <div id="insert-roxygen-skeleton" class="section level3">
 <h3>Insert Roxygen skeleton</h3>
 <p>You can insert a Roxygen skeleton by placing the curson with a function and clicking:</p>
 <blockquote>
 <p><strong>Code &gt; Insert Roxygen Skeleton</strong></p>
 </blockquote>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="packaging-functionality.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Title</span></span>
-<span id="cb589-2"><a href="packaging-functionality.html#cb589-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb589-3"><a href="packaging-functionality.html#cb589-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return</span></span>
-<span id="cb589-4"><a href="packaging-functionality.html#cb589-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
-<span id="cb589-5"><a href="packaging-functionality.html#cb589-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb589-6"><a href="packaging-functionality.html#cb589-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
-<span id="cb589-7"><a href="packaging-functionality.html#cb589-7" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb589-8"><a href="packaging-functionality.html#cb589-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span>
-<span id="cb589-9"><a href="packaging-functionality.html#cb589-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="packaging-functionality.html#cb602-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Title</span></span>
+<span id="cb602-2"><a href="packaging-functionality.html#cb602-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb602-3"><a href="packaging-functionality.html#cb602-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return</span></span>
+<span id="cb602-4"><a href="packaging-functionality.html#cb602-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb602-5"><a href="packaging-functionality.html#cb602-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb602-6"><a href="packaging-functionality.html#cb602-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb602-7"><a href="packaging-functionality.html#cb602-7" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb602-8"><a href="packaging-functionality.html#cb602-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span>
+<span id="cb602-9"><a href="packaging-functionality.html#cb602-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div id="roxygen-basics" class="section level4">
 <h4>Roxygen basics</h4>
 <ul>
@@ -522,50 +583,52 @@ Roxygen: list(markdown = TRUE)
 </div>
 <div id="complete-roxygen-documentation" class="section level3">
 <h3>Complete Roxygen documentation</h3>
-<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="packaging-functionality.html#cb590-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World! </span></span>
-<span id="cb590-2"><a href="packaging-functionality.html#cb590-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb590-3"><a href="packaging-functionality.html#cb590-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print hello greeting</span></span>
-<span id="cb590-4"><a href="packaging-functionality.html#cb590-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console</span></span>
-<span id="cb590-5"><a href="packaging-functionality.html#cb590-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
-<span id="cb590-6"><a href="packaging-functionality.html#cb590-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb590-7"><a href="packaging-functionality.html#cb590-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
-<span id="cb590-8"><a href="packaging-functionality.html#cb590-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
-<span id="cb590-9"><a href="packaging-functionality.html#cb590-9" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb590-10"><a href="packaging-functionality.html#cb590-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span>
-<span id="cb590-11"><a href="packaging-functionality.html#cb590-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="packaging-functionality.html#cb603-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World! </span></span>
+<span id="cb603-2"><a href="packaging-functionality.html#cb603-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb603-3"><a href="packaging-functionality.html#cb603-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print hello greeting</span></span>
+<span id="cb603-4"><a href="packaging-functionality.html#cb603-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console</span></span>
+<span id="cb603-5"><a href="packaging-functionality.html#cb603-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb603-6"><a href="packaging-functionality.html#cb603-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb603-7"><a href="packaging-functionality.html#cb603-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb603-8"><a href="packaging-functionality.html#cb603-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
+<span id="cb603-9"><a href="packaging-functionality.html#cb603-9" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb603-10"><a href="packaging-functionality.html#cb603-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span>
+<span id="cb603-11"><a href="packaging-functionality.html#cb603-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="autogenerate-documentation" class="section level3">
 <h3>Autogenerate documentation</h3>
 <p>Use function <code>devtools::document()</code> to create documentation. This re-creates a <code>hello.Rd</code> helpfile in the <code>man/</code> folder and populates the <code>NAMESPACE</code> with our functions</p>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="packaging-functionality.html#cb591-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">document</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="packaging-functionality.html#cb604-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">document</span>()</span></code></pre></div>
 <p>Click <strong>Install and Restart</strong> to re-install the package and make the documentation available.</p>
+<p><img src="assets/rsc_build-package.png" /><!-- --></p>
 <p><img src="assets/roxygen-done.png" /></p>
 <p>You can configure your build tools in the <strong>Global Options</strong> to automatically build documentation every time you <strong>Install &amp; Rebuild</strong></p>
-<p><img src="assets/conf-build-tools.png" /></p>
+<p><img src="assets/conf-build-tools.png" />
+Now clicking <strong>Install &amp; Restart</strong> will also build your docs in the <code>man/</code> folder for you.</p>
 </div>
 </div>
 <div id="personalise-function" class="section level2">
 <h2>🚦 Personalise function</h2>
 <p>Let’s go a step further and customise our function so that the greeting is from ourselves!</p>
-<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="packaging-functionality.html#cb592-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World!</span></span>
-<span id="cb592-2"><a href="packaging-functionality.html#cb592-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb592-3"><a href="packaging-functionality.html#cb592-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print hello greeting</span></span>
-<span id="cb592-4"><a href="packaging-functionality.html#cb592-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console from me</span></span>
-<span id="cb592-5"><a href="packaging-functionality.html#cb592-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
-<span id="cb592-6"><a href="packaging-functionality.html#cb592-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb592-7"><a href="packaging-functionality.html#cb592-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
-<span id="cb592-8"><a href="packaging-functionality.html#cb592-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
-<span id="cb592-9"><a href="packaging-functionality.html#cb592-9" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb592-10"><a href="packaging-functionality.html#cb592-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world from Anna&quot;</span>)</span>
-<span id="cb592-11"><a href="packaging-functionality.html#cb592-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="packaging-functionality.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World!</span></span>
+<span id="cb605-2"><a href="packaging-functionality.html#cb605-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb605-3"><a href="packaging-functionality.html#cb605-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print hello greeting</span></span>
+<span id="cb605-4"><a href="packaging-functionality.html#cb605-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console from me</span></span>
+<span id="cb605-5"><a href="packaging-functionality.html#cb605-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb605-6"><a href="packaging-functionality.html#cb605-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb605-7"><a href="packaging-functionality.html#cb605-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb605-8"><a href="packaging-functionality.html#cb605-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
+<span id="cb605-9"><a href="packaging-functionality.html#cb605-9" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb605-10"><a href="packaging-functionality.html#cb605-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, world from Anna&quot;</span>)</span>
+<span id="cb605-11"><a href="packaging-functionality.html#cb605-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="add-some-fun" class="section level2">
 <h2>Add some fun!</h2>
 <p>Programming is most useful for having fun. So let’s make our function extra fun!</p>
 <p>We’ll use package <code>cowsay</code></p>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="packaging-functionality.html#cb593-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;cowsay&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="packaging-functionality.html#cb606-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;cowsay&quot;</span>)</span></code></pre></div>
 <p>which has a single function <code>say</code>, which does this…</p>
-<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="packaging-functionality.html#cb594-1" aria-hidden="true" tabindex="-1"></a>cowsay<span class="sc">::</span><span class="fu">say</span>(<span class="st">&quot;Say whaaaaaat?&quot;</span>, <span class="at">by =</span> <span class="st">&quot;shark&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="packaging-functionality.html#cb607-1" aria-hidden="true" tabindex="-1"></a>cowsay<span class="sc">::</span><span class="fu">say</span>(<span class="st">&quot;Say whaaaaaat?&quot;</span>, <span class="at">by =</span> <span class="st">&quot;shark&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  -------------- 
 ## Say whaaaaaat? 
@@ -600,53 +663,42 @@ Roxygen: list(markdown = TRUE)
 ## </code></pre>
 <p>😜</p>
 <p>So let’s create a function that randomly chooses one of the animals available in <code>cowsay</code> to deliver the greeting, and also allow the user to customise who the recipient of the greeting is</p>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="packaging-functionality.html#cb596-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World!</span></span>
-<span id="cb596-2"><a href="packaging-functionality.html#cb596-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb596-3"><a href="packaging-functionality.html#cb596-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print personalised hello greeting from me.</span></span>
-<span id="cb596-4"><a href="packaging-functionality.html#cb596-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb596-5"><a href="packaging-functionality.html#cb596-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param name character string. Your name!</span></span>
-<span id="cb596-6"><a href="packaging-functionality.html#cb596-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb596-7"><a href="packaging-functionality.html#cb596-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console</span></span>
-<span id="cb596-8"><a href="packaging-functionality.html#cb596-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
-<span id="cb596-9"><a href="packaging-functionality.html#cb596-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb596-10"><a href="packaging-functionality.html#cb596-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
-<span id="cb596-11"><a href="packaging-functionality.html#cb596-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
-<span id="cb596-12"><a href="packaging-functionality.html#cb596-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello(&quot;Lucy Elen&quot;)</span></span>
-<span id="cb596-13"><a href="packaging-functionality.html#cb596-13" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="cn">NULL</span>) {</span>
-<span id="cb596-14"><a href="packaging-functionality.html#cb596-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb596-15"><a href="packaging-functionality.html#cb596-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create greeting</span></span>
-<span id="cb596-16"><a href="packaging-functionality.html#cb596-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">is.null</span>(name)){name <span class="ot">&lt;-</span> <span class="st">&quot;world&quot;</span>}</span>
-<span id="cb596-17"><a href="packaging-functionality.html#cb596-17" aria-hidden="true" tabindex="-1"></a>    greeting <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, name, <span class="st">&quot;from Anna!&quot;</span>)</span>
-<span id="cb596-18"><a href="packaging-functionality.html#cb596-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb596-19"><a href="packaging-functionality.html#cb596-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># randomly sample an animal</span></span>
-<span id="cb596-20"><a href="packaging-functionality.html#cb596-20" aria-hidden="true" tabindex="-1"></a>    animal_names <span class="ot">&lt;-</span> <span class="fu">names</span>(cowsay<span class="sc">::</span>animals)</span>
-<span id="cb596-21"><a href="packaging-functionality.html#cb596-21" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(animal_names), <span class="dv">1</span>)</span>
-<span id="cb596-22"><a href="packaging-functionality.html#cb596-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb596-23"><a href="packaging-functionality.html#cb596-23" aria-hidden="true" tabindex="-1"></a>    cowsay<span class="sc">::</span><span class="fu">say</span>(greeting, animal_names[i])</span>
-<span id="cb596-24"><a href="packaging-functionality.html#cb596-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="packaging-functionality.html#cb609-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World!</span></span>
+<span id="cb609-2"><a href="packaging-functionality.html#cb609-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb609-3"><a href="packaging-functionality.html#cb609-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print personalised hello greeting from me.</span></span>
+<span id="cb609-4"><a href="packaging-functionality.html#cb609-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb609-5"><a href="packaging-functionality.html#cb609-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param name character string. Your name!</span></span>
+<span id="cb609-6"><a href="packaging-functionality.html#cb609-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb609-7"><a href="packaging-functionality.html#cb609-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console</span></span>
+<span id="cb609-8"><a href="packaging-functionality.html#cb609-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb609-9"><a href="packaging-functionality.html#cb609-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb609-10"><a href="packaging-functionality.html#cb609-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb609-11"><a href="packaging-functionality.html#cb609-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
+<span id="cb609-12"><a href="packaging-functionality.html#cb609-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello(&quot;Lucy Elen&quot;)</span></span>
+<span id="cb609-13"><a href="packaging-functionality.html#cb609-13" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb609-14"><a href="packaging-functionality.html#cb609-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb609-15"><a href="packaging-functionality.html#cb609-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create greeting</span></span>
+<span id="cb609-16"><a href="packaging-functionality.html#cb609-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">is.null</span>(name)){name <span class="ot">&lt;-</span> <span class="st">&quot;world&quot;</span>}</span>
+<span id="cb609-17"><a href="packaging-functionality.html#cb609-17" aria-hidden="true" tabindex="-1"></a>    greeting <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, name, <span class="st">&quot;from Anna!&quot;</span>)</span>
+<span id="cb609-18"><a href="packaging-functionality.html#cb609-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb609-19"><a href="packaging-functionality.html#cb609-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># randomly sample an animal</span></span>
+<span id="cb609-20"><a href="packaging-functionality.html#cb609-20" aria-hidden="true" tabindex="-1"></a>    animal_names <span class="ot">&lt;-</span> <span class="fu">names</span>(cowsay<span class="sc">::</span>animals)</span>
+<span id="cb609-21"><a href="packaging-functionality.html#cb609-21" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(animal_names), <span class="dv">1</span>)</span>
+<span id="cb609-22"><a href="packaging-functionality.html#cb609-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb609-23"><a href="packaging-functionality.html#cb609-23" aria-hidden="true" tabindex="-1"></a>    cowsay<span class="sc">::</span><span class="fu">say</span>(greeting, animal_names[i])</span>
+<span id="cb609-24"><a href="packaging-functionality.html#cb609-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Document, Install and restart to load our changes</p>
-<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="packaging-functionality.html#cb597-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="packaging-functionality.html#cb610-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  ----- 
 ## Hello y&#39;all from Anna! 
 ##  ------ 
-##     \   
-##      \
-##                 \`*-.
-##                  )  _`-.
-##                 .  : `. .
-##                 : _   &#39;  \
-##                 ; *` _.   `*-._
-##                 `-.-&#39;          `-.
-##                   ;       `       `.
-##                   :.       .       \
-##                   .\  .   :   .-&#39;   .
-##                   &#39;  `+.;  ;  &#39;      :
-##                   :  &#39;  |    ;       ;-.
-##                   ; &#39;   : :`-:     _.`* ;
-##                .*&#39; /  .*&#39; ; .*`- +&#39;  `*&#39;
-##      [bug]     `*-*   `*-*  `*-*&#39;
-## </code></pre>
+##     \   ^__^ 
+##      \  (oo)\ ________ 
+##         (__)\         )\ /\ 
+##              ||------w|
+##              ||      ||</code></pre>
+<p>Let’s commit our current files and changes.</p>
 </div>
 <div id="check-package-integrity" class="section level2">
 <h2>🚦 Check package integrity</h2>
@@ -695,14 +747,14 @@ Exited with status 1.</code></pre>
 <div id="add-dependencies" class="section level2">
 <h2>🚦 Add dependencies</h2>
 <p>Add <code>cowsay</code> as a dependency.</p>
-<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="packaging-functionality.html#cb600-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(<span class="st">&quot;cowsay&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="packaging-functionality.html#cb613-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(<span class="st">&quot;cowsay&quot;</span>)</span></code></pre></div>
 <pre><code>✔ Setting active project to &#39;/Users/Anna/Desktop/mypackage&#39;
 ✔ Adding &#39;cowsay&#39; to Imports field in DESCRIPTION
 ● Refer to functions with `cowsay::fun()`</code></pre>
 </div>
 <div id="add-license" class="section level2">
 <h2>Add License</h2>
-<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="packaging-functionality.html#cb602-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_mit_license</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="packaging-functionality.html#cb615-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_mit_license</span>(<span class="st">&quot;Anna Krystalli&quot;</span>)</span></code></pre></div>
 <p><img src="assets/clear-checks.png" /></p>
 <p>Check again…All should be good!</p>
 <pre><code>── R CMD check results ──────────────────────────────────── mypackage 0.1.0 ────
@@ -711,6 +763,7 @@ Duration: 9.3s
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
 R CMD check succeeded</code></pre>
+<p>Let’s commit our current files and changes.</p>
 <hr />
 </div>
 <div id="add-test" class="section level2">
@@ -727,13 +780,13 @@ R CMD check succeeded</code></pre>
 <h2>create test file</h2>
 <p>To create a new test file (and the testing framework if required), use function
 <code>usethis::use_test()</code>. It’s good practice to name the test files after the <code>.R</code> files containing the functions being tested.</p>
-<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="packaging-functionality.html#cb604-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_test</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="packaging-functionality.html#cb605-1" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">&#39;/Users/Anna/Documents/workflows/workshops/materials/mypackage&#39;</span></span>
-<span id="cb605-2"><a href="packaging-functionality.html#cb605-2" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">&#39;testthat&#39;</span> to Suggests field <span class="cf">in</span> DESCRIPTION</span>
-<span id="cb605-3"><a href="packaging-functionality.html#cb605-3" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">&#39;tests/testthat/&#39;</span></span>
-<span id="cb605-4"><a href="packaging-functionality.html#cb605-4" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">&#39;tests/testthat.R&#39;</span></span>
-<span id="cb605-5"><a href="packaging-functionality.html#cb605-5" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">&#39;tests/testthat/test-hello.R&#39;</span></span>
-<span id="cb605-6"><a href="packaging-functionality.html#cb605-6" aria-hidden="true" tabindex="-1"></a>● Modify <span class="st">&#39;tests/testthat/test-hello.R&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="packaging-functionality.html#cb617-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_test</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="packaging-functionality.html#cb618-1" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">&#39;/Users/Anna/Documents/workflows/workshops/materials/mypackage&#39;</span></span>
+<span id="cb618-2"><a href="packaging-functionality.html#cb618-2" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">&#39;testthat&#39;</span> to Suggests field <span class="cf">in</span> DESCRIPTION</span>
+<span id="cb618-3"><a href="packaging-functionality.html#cb618-3" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">&#39;tests/testthat/&#39;</span></span>
+<span id="cb618-4"><a href="packaging-functionality.html#cb618-4" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">&#39;tests/testthat.R&#39;</span></span>
+<span id="cb618-5"><a href="packaging-functionality.html#cb618-5" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">&#39;tests/testthat/test-hello.R&#39;</span></span>
+<span id="cb618-6"><a href="packaging-functionality.html#cb618-6" aria-hidden="true" tabindex="-1"></a>● Modify <span class="st">&#39;tests/testthat/test-hello.R&#39;</span></span></code></pre></div>
 <p>This just created the following folders and files</p>
 <pre><code>tests
 ├── testthat
@@ -749,54 +802,44 @@ if you want to run the tests.</p>
 <p>When the tests are run (either through running <code>devtools::test()</code>, clicking on <strong>More &gt; Test Package</strong> in the Build panel or <code>Cmd/Ctrl + Shift + T</code>), the code in each test script in directory <code>testthat</code> is run.</p>
 <p><strong><code>test-hello.R</code></strong></p>
 <p>Let’s load the library so we can explore the <code>testthat</code> testing framework</p>
-<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="packaging-functionality.html#cb608-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span></code></pre></div>
-<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="packaging-functionality.html#cb609-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;test-hello&quot;</span>)</span>
-<span id="cb609-2"><a href="packaging-functionality.html#cb609-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb609-3"><a href="packaging-functionality.html#cb609-3" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
-<span id="cb609-4"><a href="packaging-functionality.html#cb609-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb609-5"><a href="packaging-functionality.html#cb609-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## Test passed 😸</code></pre>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="packaging-functionality.html#cb621-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span></code></pre></div>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="packaging-functionality.html#cb622-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
+<span id="cb622-2"><a href="packaging-functionality.html#cb622-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb622-3"><a href="packaging-functionality.html#cb622-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## Test passed 😀</code></pre>
 <p>If the test doesn’t pass it throws an error</p>
-<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="packaging-functionality.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;test-hello&quot;</span>)</span>
-<span id="cb611-2"><a href="packaging-functionality.html#cb611-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb611-3"><a href="packaging-functionality.html#cb611-3" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
-<span id="cb611-4"><a href="packaging-functionality.html#cb611-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="cb611-5"><a href="packaging-functionality.html#cb611-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## ── Failure (&lt;text&gt;:4:3): multiplication works ──────────────────────────────────
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="packaging-functionality.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
+<span id="cb624-2"><a href="packaging-functionality.html#cb624-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb624-3"><a href="packaging-functionality.html#cb624-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## ── Failure (&lt;text&gt;:2:3): multiplication works ──────────────────────────────────
 ## 2 * 2 not equal to 5.
 ## 1/1 mismatches
 ## [1] 4 - 5 == -1</code></pre>
 </div>
 <div id="write-test" class="section level2">
 <h2>Write test</h2>
-<p>Let’s write a simple test to check that we are getting an expected output type. The first thing to note, looking at the <code>say()</code> documentation is that it takes an argument <code>type</code> which allows us to specify the output we want. It defaults <code>message</code> which means the output of the function is returned as a message.</p>
-<p>We can therefore use <code>testthat::expect_message()</code></p>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="packaging-functionality.html#cb613-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;test-hello&quot;</span>)</span>
-<span id="cb613-2"><a href="packaging-functionality.html#cb613-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb613-3"><a href="packaging-functionality.html#cb613-3" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;hello works&quot;</span>, {</span>
-<span id="cb613-4"><a href="packaging-functionality.html#cb613-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_message</span>(<span class="fu">hello</span>())</span>
-<span id="cb613-5"><a href="packaging-functionality.html#cb613-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<p>Let’s write a simple test to check that we are getting an expected output type. The first thing to note, looking at the <code>say()</code> documentation is that it takes an argument <code>type</code> which allows us to specify the output we want. It defaults to <code>NULL</code> which means the output of the function is just sent to the console without producing an assignable output.</p>
+<p>We can therefore use <code>testthat::expect_null()</code>. We’ll also suppress the printed output of the function so that we don’t pollute our testing logs.</p>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="packaging-functionality.html#cb626-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;hello works&quot;</span>, {</span>
+<span id="cb626-2"><a href="packaging-functionality.html#cb626-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_null</span>(<span class="fu">suppressMessages</span>(<span class="fu">hello</span>()))</span>
+<span id="cb626-3"><a href="packaging-functionality.html#cb626-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## 
-##  -------------- 
+##  ----- 
 ## Hello world from Anna! 
-##  --------------
-##     \
-##       \
-##         \
-##             |\___/|
-##           ==) ^Y^ (==
-##             \  ^  /
-##              )=*=(
-##             /     \
-##             |     |
-##            /| | | |\
-##            \| | |_|/\
-##       jgs  //_// ___/
-##                \_)
-##   ── Failure (&lt;text&gt;:4:3): hello works ───────────────────────────────────────────
-## `hello()` did not produce any messages.</code></pre>
+##  ------ 
+##     \   
+##      \
+##               |
+##               |
+##               |
+##              __
+##           | /  \ |
+##          \_\\  //_/
+##           .&#39;/()\&#39;.
+##            \\  //  [nosig]
+##   Test passed 🎉</code></pre>
 <p>Now let’s test our package</p>
-<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="packaging-functionality.html#cb615-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="packaging-functionality.html#cb628-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code></pre></div>
 <p>Success!</p>
 <pre><code>==&gt; devtools::test()
 
@@ -810,6 +853,21 @@ OK:       1
 Failed:   0
 Warnings: 0
 Skipped:  0</code></pre>
+<p>Let’s commit our current files and changes.</p>
+</div>
+<div id="create-readme" class="section level2">
+<h2>🚦 Create README</h2>
+<p>The final document you will need for your package is a <code>README</code>.</p>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="packaging-functionality.html#cb630-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code></pre></div>
+<pre><code>✔ Writing &#39;README.Rmd&#39;
+✔ Adding &#39;^README\\.Rmd$&#39; to &#39;.Rbuildignore&#39;
+● Modify &#39;README.Rmd&#39;
+✔ Writing &#39;.git/hooks/pre-commit&#39;</code></pre>
+<p>Because it’s an <code>.Rmd</code> but GitHub can only display an <code>md</code> document as it’s landing page, this is a special <code>.Rmd</code> that renders to a markdown document rather than <code>html</code>. The function adds a check to <code>.git</code> to ensure you commit an up to date version on the <code>md</code> when you commit changes to the <code>.Rmd</code>.</p>
+<p>Complete the README, including an example. Here’s what mine looks like:</p>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="packaging-functionality.html#cb632-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;assets/mypackage-readme.png&quot;</span>)</span></code></pre></div>
+<p><img src="assets/mypackage-readme.png" /><!-- --></p>
+<p>Let’s commit our current files and changes.</p>
 </div>
 <div id="complete-package-metadata" class="section level2">
 <h2>🚦 Complete package metadata</h2>
@@ -827,12 +885,11 @@ Skipped:  0</code></pre>
 </div>
 <div id="add-a-date" class="section level2">
 <h2>Add a date</h2>
-<p>Use today’s date in ISO format, ie <code>2019-04-10</code>. This will populate a citation entry for us.</p>
+<p>Use today’s date in ISO format, ie <strong>2021-04-07</strong>. This will populate a citation entry for us.</p>
 <div id="completed-description" class="section level3">
 <h3>Completed <code>DESCRIPTION</code></h3>
 <p>The complete <code>DESCRIPTION</code> file should look something like this:</p>
 <pre><code>Package: mypackage
-Type: Package
 Title: Customised greetings from me!
 Version: 0.1.0
 Authors@R: person(&quot;Anna&quot;, &quot;Krystalli&quot;, 
@@ -843,53 +900,110 @@ Description: Prints a customised greeting from myself,
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
 Imports: 
     cowsay
 Suggests: 
-    testthat
-Date: 2019-04-10</code></pre>
+    testthat (&gt;= 3.0.0)
+Config/testthat/edition: 3
+URL: https://github.com/annakrystalli/mypackage
+BugReports: https://github.com/annakrystalli/mypackage/issues
+Date: 2021-05-07</code></pre>
 <p>Check your package. If all is good, document, install and restart!</p>
 <p>Now, check you’re package’s citation:</p>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="packaging-functionality.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;mypackage&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## To cite package &#39;mypackage&#39; in publications use:
-## 
-##   Anna Krystalli (2019). mypackage: Customised greetings from me!. R
-##   package version 0.1.0.
-## 
-## A BibTeX entry for LaTeX users is
-## 
-##   @Manual{,
-##     title = {mypackage: Customised greetings from me!},
-##     author = {Anna Krystalli},
-##     year = {2019},
-##     note = {R package version 0.1.0},
-##   }</code></pre>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="packaging-functionality.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;mypackage&quot;</span>)</span></code></pre></div>
+<pre><code>To cite package ‘mypackage’ in publications use:
+
+  Anna Krystalli (2021). mypackage: Customised greetings from me!. R
+  package version 0.1.0.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {mypackage: Customised greetings from me!},
+    author = {Anna Krystalli},
+    year = {2021},
+    note = {R package version 0.1.0},
+  }</code></pre>
+<p>Let’s commit our current files and changes.</p>
 </div>
 </div>
-<div id="create-readme" class="section level2">
-<h2>🚦 Create README</h2>
-<p>The final document you will need for your package is a <code>README</code>.</p>
-<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="packaging-functionality.html#cb621-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code></pre></div>
-<pre><code>✔ Writing &#39;README.Rmd&#39;
-✔ Adding &#39;^README\\.Rmd$&#39; to &#39;.Rbuildignore&#39;
-● Modify &#39;README.Rmd&#39;
-✔ Writing &#39;.git/hooks/pre-commit&#39;</code></pre>
-<p>Because it’s an <code>.Rmd</code> but GitHub can only display an <code>md</code> document as it’s landing page, this is a special <code>.Rmd</code> that renders to a markdown document rather than <code>html</code>. The function adds a check to <code>.git</code> to ensure you commit an up to date version on the <code>md</code> when you commit changes to the <code>.Rmd</code>.</p>
-<p>Complete the README, including an example.</p>
-</div>
-<div id="commit-and-push-to-github" class="section level2">
-<h2>Commit and push to GitHub</h2>
-<p>Now you have everything you need to share your package on GitHub so commit and push it up.</p>
+<div id="create-github-repo-and-push-to-github" class="section level2">
+<h2>Create GitHub repo and push to GitHub</h2>
+<p>Now you have everything you need to share your package on GitHub so create a GitHub repository and push our local content up to it.</p>
+<p>You will need to set up <code>gitcreds</code> again in this new project!</p>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="packaging-functionality.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="co"># configure GitHub PAT credentials</span></span>
+<span id="cb637-2"><a href="packaging-functionality.html#cb637-2" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span>
+<span id="cb637-3"><a href="packaging-functionality.html#cb637-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb637-4"><a href="packaging-functionality.html#cb637-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create GitHub repository and push</span></span>
+<span id="cb637-5"><a href="packaging-functionality.html#cb637-5" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="at">protocol =</span> <span class="st">&quot;https&quot;</span>)</span></code></pre></div>
 <p>Anyone will be able to install it using, eg:</p>
-<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="packaging-functionality.html#cb623-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;annakrystalli/mypackage&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="packaging-functionality.html#cb638-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;annakrystalli/mypackage&quot;</span>)</span></code></pre></div>
+<p>Add the link to your package repo in the <a href="http://bit.ly/acce21-notepad">hackpad</a>. Visit someone else’s package repo, follow the instructions to install, load it and receive a personalised greeting from the author!</p>
+</div>
+<div id="setup-continuous-integration-with-github-actions" class="section level2">
+<h2>Setup Continuous Integration with GitHub Actions</h2>
+<p>Continuous integration (CI) is the practice of automating the integration of code changes from multiple contributors into a single software project. Automated tools are used to assert the new code’s correctness before integration. In our case this is what are tests are for. And GitHub Actions allows us to do this all within GitHub!</p>
+<p>Once the appropriate CI workflow is set up, it will automatically run our tests for us every time we push new code to GitHub or when a new pull request is made. This way we can (try to) ensure we don’t merge new code into our code base that introduces bugs (cause our tests to fail). Obviously, our ability to screen for breaking changes is only as good as our testing framework! But atleast we can get GitHub to run our tests for us!</p>
+<p>To run CI workflows through GitHub Actions, we specify the actions or jobs we want the CI system in a <code>.yaml</code> file that lives in <code>.github/workflows/</code> folder in the root of our package/project. This can be quite complicated for complex projects as you have to effectively specify instructions for GitHub to recreate a computational environment to run the tests in. The <code>.yaml</code> format can also be fiddly, with indents having special meaning. However for a simple projects like ours, there is a <code>usethis</code> functions that can create and appropriate <code>.yaml</code> for us that works right out of the box!</p>
+<p>Let’s try it out:</p>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="packaging-functionality.html#cb639-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github_action_check_release</span>()</span></code></pre></div>
+<pre><code>✓ Creating &#39;.github/&#39;
+✓ Adding &#39;^\\.github$&#39; to &#39;.Rbuildignore&#39;
+✓ Adding &#39;*.html&#39; to &#39;.github/.gitignore&#39;
+✓ Creating &#39;.github/workflows/&#39;
+✓ Writing &#39;.github/workflows/R-CMD-check.yaml&#39;
+• Learn more at &lt;https://github.com/r-lib/actions/blob/master/examples/README.md✓ Adding R-CMD-check badge to &#39;README.Rmd&#39;
+• Re-knit &#39;README.Rmd&#39;</code></pre>
+<p>This workflow installs the latest release of R on macOS and runs R CMD check via the <code>rcmdcheck</code> package.</p>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="packaging-functionality.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For help debugging build failures open an issue on the RStudio community with the &#39;github-actions&#39; tag.</span></span>
+<span id="cb641-2"><a href="packaging-functionality.html#cb641-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://community.rstudio.com/new-topic?category=Package%20development&amp;tags=github-actions</span></span>
+<span id="cb641-3"><a href="packaging-functionality.html#cb641-3" aria-hidden="true" tabindex="-1"></a>on<span class="sc">:</span></span>
+<span id="cb641-4"><a href="packaging-functionality.html#cb641-4" aria-hidden="true" tabindex="-1"></a>  push<span class="sc">:</span></span>
+<span id="cb641-5"><a href="packaging-functionality.html#cb641-5" aria-hidden="true" tabindex="-1"></a>    branches<span class="sc">:</span></span>
+<span id="cb641-6"><a href="packaging-functionality.html#cb641-6" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> main</span>
+<span id="cb641-7"><a href="packaging-functionality.html#cb641-7" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> master</span>
+<span id="cb641-8"><a href="packaging-functionality.html#cb641-8" aria-hidden="true" tabindex="-1"></a>  pull_request<span class="sc">:</span></span>
+<span id="cb641-9"><a href="packaging-functionality.html#cb641-9" aria-hidden="true" tabindex="-1"></a>    branches<span class="sc">:</span></span>
+<span id="cb641-10"><a href="packaging-functionality.html#cb641-10" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> main</span>
+<span id="cb641-11"><a href="packaging-functionality.html#cb641-11" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> master</span>
+<span id="cb641-12"><a href="packaging-functionality.html#cb641-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb641-13"><a href="packaging-functionality.html#cb641-13" aria-hidden="true" tabindex="-1"></a>name<span class="sc">:</span> R<span class="sc">-</span>CMD<span class="sc">-</span>check</span>
+<span id="cb641-14"><a href="packaging-functionality.html#cb641-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb641-15"><a href="packaging-functionality.html#cb641-15" aria-hidden="true" tabindex="-1"></a>jobs<span class="sc">:</span></span>
+<span id="cb641-16"><a href="packaging-functionality.html#cb641-16" aria-hidden="true" tabindex="-1"></a>  R<span class="sc">-</span>CMD<span class="sc">-</span>check<span class="sc">:</span></span>
+<span id="cb641-17"><a href="packaging-functionality.html#cb641-17" aria-hidden="true" tabindex="-1"></a>    runs<span class="sc">-</span>on<span class="sc">:</span> macOS<span class="sc">-</span>latest</span>
+<span id="cb641-18"><a href="packaging-functionality.html#cb641-18" aria-hidden="true" tabindex="-1"></a>    env<span class="sc">:</span></span>
+<span id="cb641-19"><a href="packaging-functionality.html#cb641-19" aria-hidden="true" tabindex="-1"></a>      GITHUB_PAT<span class="sc">:</span> <span class="er">$</span>{{ secrets.GITHUB_TOKEN }}</span>
+<span id="cb641-20"><a href="packaging-functionality.html#cb641-20" aria-hidden="true" tabindex="-1"></a>    steps<span class="sc">:</span></span>
+<span id="cb641-21"><a href="packaging-functionality.html#cb641-21" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> uses<span class="sc">:</span> actions<span class="sc">/</span>checkout<span class="sc">@</span>v2</span>
+<span id="cb641-22"><a href="packaging-functionality.html#cb641-22" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> uses<span class="sc">:</span> r<span class="sc">-</span>lib<span class="sc">/</span>actions<span class="sc">/</span>setup<span class="sc">-</span>r<span class="sc">@</span>v1</span>
+<span id="cb641-23"><a href="packaging-functionality.html#cb641-23" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> name<span class="sc">:</span> Install dependencies</span>
+<span id="cb641-24"><a href="packaging-functionality.html#cb641-24" aria-hidden="true" tabindex="-1"></a>        run<span class="sc">:</span> <span class="er">|</span></span>
+<span id="cb641-25"><a href="packaging-functionality.html#cb641-25" aria-hidden="true" tabindex="-1"></a>          <span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;remotes&quot;</span>, <span class="st">&quot;rcmdcheck&quot;</span>))</span>
+<span id="cb641-26"><a href="packaging-functionality.html#cb641-26" aria-hidden="true" tabindex="-1"></a>          remotes<span class="sc">::</span><span class="fu">install_deps</span>(<span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb641-27"><a href="packaging-functionality.html#cb641-27" aria-hidden="true" tabindex="-1"></a>        shell<span class="sc">:</span> Rscript {<span class="dv">0</span>}</span>
+<span id="cb641-28"><a href="packaging-functionality.html#cb641-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> name<span class="sc">:</span> Check</span>
+<span id="cb641-29"><a href="packaging-functionality.html#cb641-29" aria-hidden="true" tabindex="-1"></a>        run<span class="sc">:</span> <span class="er">|</span></span>
+<span id="cb641-30"><a href="packaging-functionality.html#cb641-30" aria-hidden="true" tabindex="-1"></a>          <span class="fu">options</span>(<span class="at">crayon.enabled =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb641-31"><a href="packaging-functionality.html#cb641-31" aria-hidden="true" tabindex="-1"></a>          rcmdcheck<span class="sc">::</span><span class="fu">rcmdcheck</span>(<span class="at">args =</span> <span class="st">&quot;--no-manual&quot;</span>, <span class="at">error_on =</span> <span class="st">&quot;error&quot;</span>)</span>
+<span id="cb641-32"><a href="packaging-functionality.html#cb641-32" aria-hidden="true" tabindex="-1"></a>        shell<span class="sc">:</span> Rscript {<span class="dv">0</span>}</span></code></pre></div>
+<ul>
+<li>Re-knit <code>README.Rmd</code> to include GitHub Actions badge.</li>
+<li>Commit the whole <code>.github</code> folder as well as <code>README.Rmd</code> &amp; <code>README.md</code></li>
+<li>Push to GitHub</li>
+</ul>
+<p>This will activate the <code>R-CMD-CHECK</code> GitHub Actions workflow and begin running it.</p>
+<p>To see details and the status of GitHub Actions workflows, click on the <strong><svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M371.7 238l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256z"></path></svg> Actions</strong> tab and select the workflow to view. If our test passes, the run will show as successful ✅ and so will the badge in our README. If there are any problems, error messages will appear in the logs.</p>
+<p><img src="assets/ga-r-cmd-check-success.png" /><!-- --></p>
 </div>
 <div id="create-documentation-site" class="section level2">
 <h2>🚦 Create documentation site</h2>
-<p>You can use package <code>pkgdown</code> to create an online site for your documentation:</p>
-<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="packaging-functionality.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pkgdown&quot;</span>)</span>
-<span id="cb624-2"><a href="packaging-functionality.html#cb624-2" aria-hidden="true" tabindex="-1"></a>pkgdown<span class="sc">::</span><span class="fu">build_site</span>()</span></code></pre></div>
+<p>While the README is a great first step for documenting your package, there is an easy way to create a full website which makes the documentation of each exported function avaliable online and where you could include additional, more detailed vignettes.</p>
+<p>You can use package <code>pkgdown</code> to create an online site for your documentation. It effectively recycles the documentation you have already created for your functions, information in your README and DESCRIPTION file and presents it in a standardised website form.</p>
+<p>Let’s create such a site for our package.</p>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="packaging-functionality.html#cb642-1" aria-hidden="true" tabindex="-1"></a>pkgdown<span class="sc">::</span><span class="fu">build_site</span>()</span></code></pre></div>
 <pre><code>══ Building pkgdown site ════════════════════════════════════════════
 Reading from: &#39;/Users/Anna/Documents/workflows/dummy/mypackage&#39;
 Writing to:   &#39;/Users/Anna/Documents/workflows/dummy/mypackage/docs&#39;
@@ -917,46 +1031,75 @@ Reading &#39;man/hello.Rd&#39;
 Writing &#39;reference/hello.html&#39;
 ══ DONE ═════════════════════════════════════════════════════════════
 ── Previewing site ──────────────────────────────────────────────────</code></pre>
-<p>This creates html documentation for our package in the <code>docs/</code> folder.</p>
-<ul>
-<li>Commit and push the <code>docs/</code> folder to GitHub</li>
-<li>Make the site live by enabling gh-pages. Set it to serve content from the <code>docs</code> folder.</li>
-</ul>
-<p>Your package is now installable from GitHub, has online documentation and should have this final structure:</p>
-<pre><code>.
-├── DESCRIPTION
-├── LICENSE
-├── LICENSE.md
-├── NAMESPACE
-├── R
-│   └── hello.R
-├── README.Rmd
-├── README.md
-├── docs
-│   ├── LICENSE-text.html
-│   ├── LICENSE.html
-│   ├── authors.html
-│   ├── docsearch.css
-│   ├── docsearch.js
-│   ├── index.html
-│   ├── link.svg
-│   ├── pkgdown.css
-│   ├── pkgdown.js
-│   ├── pkgdown.yml
-│   └── reference
-│       ├── hello.html
-│       └── index.html
-├── man
-│   └── hello.Rd
-├── mypackage.Rproj
-└── tests
-    ├── testthat
-    │   └── test-hello.R
-    └── testthat.R
-
-6 directories, 23 files</code></pre>
+<p>This creates html documentation for our package in the <code>docs/</code> folder and presents you with a preview to the site.</p>
+<p>Now, you could push this <code>docs/</code> folder to GitHub and serve through GitHub Pages, but you would need to rebuild, commit and push these docs anytime there was a change in the package documentation.</p>
+<p>Instead what we could do is get our CI system (GitHub Actions) to build our docs for us automatically every time there is a push or pull request to our repository!! So let’s try this approach!</p>
+<p>First, let’s tell git to ignore local copies of the docs in our <code>docs/</code> folder by adding <code>docs/*</code> to our <code>.gitignore</code> file. This way, we can still build and preview our site locally if we want but we won’t commit it to our<code>master</code> or <code>main</code> branch.</p>
+<p>Then, we can deploy another GitHub Actions template, provided by <code>usethis</code> that again will work right out the box!</p>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="packaging-functionality.html#cb644-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github_action</span>(<span class="st">&quot;pkgdown&quot;</span>)</span></code></pre></div>
+<pre><code>✓ Setting active project to &#39;/cloud/project/mypackage&#39;
+✓ Writing &#39;.github/workflows/pkgdown.yaml&#39;
+• Learn more at &lt;https://github.com/r-lib/actions/blob/master/examples/README.md&gt;</code></pre>
+<p>This creates another file in <code>.github/workflows/</code> called <code>pkgdown.yaml</code>. The workflow installs the package, building all documentation, installs <code>pkgdown</code> and uses it to build the site. It then commits the build site to a separate <code>gh-pages</code> site.</p>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="packaging-functionality.html#cb646-1" aria-hidden="true" tabindex="-1"></a>on<span class="sc">:</span></span>
+<span id="cb646-2"><a href="packaging-functionality.html#cb646-2" aria-hidden="true" tabindex="-1"></a>  push<span class="sc">:</span></span>
+<span id="cb646-3"><a href="packaging-functionality.html#cb646-3" aria-hidden="true" tabindex="-1"></a>    branches<span class="sc">:</span></span>
+<span id="cb646-4"><a href="packaging-functionality.html#cb646-4" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> main</span>
+<span id="cb646-5"><a href="packaging-functionality.html#cb646-5" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> master</span>
+<span id="cb646-6"><a href="packaging-functionality.html#cb646-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-7"><a href="packaging-functionality.html#cb646-7" aria-hidden="true" tabindex="-1"></a>name<span class="sc">:</span> pkgdown</span>
+<span id="cb646-8"><a href="packaging-functionality.html#cb646-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-9"><a href="packaging-functionality.html#cb646-9" aria-hidden="true" tabindex="-1"></a>jobs<span class="sc">:</span></span>
+<span id="cb646-10"><a href="packaging-functionality.html#cb646-10" aria-hidden="true" tabindex="-1"></a>  pkgdown<span class="sc">:</span></span>
+<span id="cb646-11"><a href="packaging-functionality.html#cb646-11" aria-hidden="true" tabindex="-1"></a>    runs<span class="sc">-</span>on<span class="sc">:</span> macOS<span class="sc">-</span>latest</span>
+<span id="cb646-12"><a href="packaging-functionality.html#cb646-12" aria-hidden="true" tabindex="-1"></a>    env<span class="sc">:</span></span>
+<span id="cb646-13"><a href="packaging-functionality.html#cb646-13" aria-hidden="true" tabindex="-1"></a>      GITHUB_PAT<span class="sc">:</span> <span class="er">$</span>{{ secrets.GITHUB_TOKEN }}</span>
+<span id="cb646-14"><a href="packaging-functionality.html#cb646-14" aria-hidden="true" tabindex="-1"></a>    steps<span class="sc">:</span></span>
+<span id="cb646-15"><a href="packaging-functionality.html#cb646-15" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> uses<span class="sc">:</span> actions<span class="sc">/</span>checkout<span class="sc">@</span>v2</span>
+<span id="cb646-16"><a href="packaging-functionality.html#cb646-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-17"><a href="packaging-functionality.html#cb646-17" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> uses<span class="sc">:</span> r<span class="sc">-</span>lib<span class="sc">/</span>actions<span class="sc">/</span>setup<span class="sc">-</span>r<span class="sc">@</span>v1</span>
+<span id="cb646-18"><a href="packaging-functionality.html#cb646-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-19"><a href="packaging-functionality.html#cb646-19" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> uses<span class="sc">:</span> r<span class="sc">-</span>lib<span class="sc">/</span>actions<span class="sc">/</span>setup<span class="sc">-</span>pandoc<span class="sc">@</span>v1</span>
+<span id="cb646-20"><a href="packaging-functionality.html#cb646-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-21"><a href="packaging-functionality.html#cb646-21" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> name<span class="sc">:</span> Query dependencies</span>
+<span id="cb646-22"><a href="packaging-functionality.html#cb646-22" aria-hidden="true" tabindex="-1"></a>        run<span class="sc">:</span> <span class="er">|</span></span>
+<span id="cb646-23"><a href="packaging-functionality.html#cb646-23" aria-hidden="true" tabindex="-1"></a>          <span class="fu">install.packages</span>(<span class="st">&#39;remotes&#39;</span>)</span>
+<span id="cb646-24"><a href="packaging-functionality.html#cb646-24" aria-hidden="true" tabindex="-1"></a>          <span class="fu">saveRDS</span>(remotes<span class="sc">::</span><span class="fu">dev_package_deps</span>(<span class="at">dependencies =</span> <span class="cn">TRUE</span>), <span class="st">&quot;.github/depends.Rds&quot;</span>, <span class="at">version =</span> <span class="dv">2</span>)</span>
+<span id="cb646-25"><a href="packaging-functionality.html#cb646-25" aria-hidden="true" tabindex="-1"></a>          <span class="fu">writeLines</span>(<span class="fu">sprintf</span>(<span class="st">&quot;R-%i.%i&quot;</span>, <span class="fu">getRversion</span>()<span class="sc">$</span>major, <span class="fu">getRversion</span>()<span class="sc">$</span>minor), <span class="st">&quot;.github/R-version&quot;</span>)</span>
+<span id="cb646-26"><a href="packaging-functionality.html#cb646-26" aria-hidden="true" tabindex="-1"></a>        shell<span class="sc">:</span> Rscript {<span class="dv">0</span>}</span>
+<span id="cb646-27"><a href="packaging-functionality.html#cb646-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-28"><a href="packaging-functionality.html#cb646-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> name<span class="sc">:</span> Restore R package cache</span>
+<span id="cb646-29"><a href="packaging-functionality.html#cb646-29" aria-hidden="true" tabindex="-1"></a>        uses<span class="sc">:</span> actions<span class="sc">/</span>cache<span class="sc">@</span>v2</span>
+<span id="cb646-30"><a href="packaging-functionality.html#cb646-30" aria-hidden="true" tabindex="-1"></a>        with<span class="sc">:</span></span>
+<span id="cb646-31"><a href="packaging-functionality.html#cb646-31" aria-hidden="true" tabindex="-1"></a>          path<span class="sc">:</span> <span class="er">$</span>{{ env.R_LIBS_USER }}</span>
+<span id="cb646-32"><a href="packaging-functionality.html#cb646-32" aria-hidden="true" tabindex="-1"></a>          key<span class="sc">:</span> <span class="er">$</span>{{ runner.os }}<span class="sc">-</span><span class="er">$</span>{{ <span class="fu">hashFiles</span>(<span class="st">&#39;.github/R-version&#39;</span>) }}<span class="sc">-</span><span class="dv">1</span><span class="sc">-</span><span class="er">$</span>{{ <span class="fu">hashFiles</span>(<span class="st">&#39;.github/depends.Rds&#39;</span>) }}</span>
+<span id="cb646-33"><a href="packaging-functionality.html#cb646-33" aria-hidden="true" tabindex="-1"></a>          restore<span class="sc">-</span>keys<span class="sc">:</span> <span class="er">$</span>{{ runner.os }}<span class="sc">-</span><span class="er">$</span>{{ <span class="fu">hashFiles</span>(<span class="st">&#39;.github/R-version&#39;</span>) }}<span class="sc">-</span><span class="dv">1</span><span class="sc">-</span></span>
+<span id="cb646-34"><a href="packaging-functionality.html#cb646-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-35"><a href="packaging-functionality.html#cb646-35" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> name<span class="sc">:</span> Install dependencies</span>
+<span id="cb646-36"><a href="packaging-functionality.html#cb646-36" aria-hidden="true" tabindex="-1"></a>        run<span class="sc">:</span> <span class="er">|</span></span>
+<span id="cb646-37"><a href="packaging-functionality.html#cb646-37" aria-hidden="true" tabindex="-1"></a>          remotes<span class="sc">::</span><span class="fu">install_deps</span>(<span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb646-38"><a href="packaging-functionality.html#cb646-38" aria-hidden="true" tabindex="-1"></a>          <span class="fu">install.packages</span>(<span class="st">&quot;pkgdown&quot;</span>, <span class="at">type =</span> <span class="st">&quot;binary&quot;</span>)</span>
+<span id="cb646-39"><a href="packaging-functionality.html#cb646-39" aria-hidden="true" tabindex="-1"></a>        shell<span class="sc">:</span> Rscript {<span class="dv">0</span>}</span>
+<span id="cb646-40"><a href="packaging-functionality.html#cb646-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-41"><a href="packaging-functionality.html#cb646-41" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> name<span class="sc">:</span> Install package</span>
+<span id="cb646-42"><a href="packaging-functionality.html#cb646-42" aria-hidden="true" tabindex="-1"></a>        run<span class="sc">:</span> R CMD INSTALL .</span>
+<span id="cb646-43"><a href="packaging-functionality.html#cb646-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-44"><a href="packaging-functionality.html#cb646-44" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> name<span class="sc">:</span> Deploy package</span>
+<span id="cb646-45"><a href="packaging-functionality.html#cb646-45" aria-hidden="true" tabindex="-1"></a>        run<span class="sc">:</span> <span class="er">|</span></span>
+<span id="cb646-46"><a href="packaging-functionality.html#cb646-46" aria-hidden="true" tabindex="-1"></a>          git config <span class="sc">--</span>local user.email <span class="st">&quot;actions@github.com&quot;</span></span>
+<span id="cb646-47"><a href="packaging-functionality.html#cb646-47" aria-hidden="true" tabindex="-1"></a>          git config <span class="sc">--</span>local user.name <span class="st">&quot;GitHub Actions&quot;</span></span>
+<span id="cb646-48"><a href="packaging-functionality.html#cb646-48" aria-hidden="true" tabindex="-1"></a>          Rscript <span class="sc">-</span>e <span class="st">&#39;pkgdown::deploy_to_branch(new_process = FALSE)&#39;</span></span></code></pre></div>
+<p>Coomit the file and push it up to GitHub to activate. Once the workflow completes successfully, you will find the html for your documentation for you site in a new <code>gh-pages</code> branch!</p>
+<div id="enable-gh-pages-1" class="section level3">
+<h3>Enable <code>gh-pages</code></h3>
+<p>To serve our new site, we need to enable GitHub Pages and set the source directory to the root of the <code>gh-pages</code> branch. To do so we go to <strong><svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"></path></svg> Settings</strong> and click on <strong>Pages</strong> on the navigation bar on the left. Also remember to click on <strong>Enforce HTTPS</strong>.</p>
+<p><img src="assets/pkgdown-gh-pages.png" /><!-- --></p>
+<p>Once set, the URL at which your pkdown docs are being served will appear. You can copy that and add it to your repo details.</p>
+<p><img src="assets/mypackage_pkgdown.png" /><!-- --></p>
+<p><img src="assets/mypackage_pkgdown_fn-ref.png" /><!-- --></p>
 <p>Check out my complete example <a href="https://github.com/annakrystalli/mypackage-demo">here</a></p>
 
+</div>
 </div>
 </div>
             </section>
