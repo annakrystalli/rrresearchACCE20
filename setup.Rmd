@@ -164,6 +164,18 @@ To be able to run materials locally, you will also need to install all the requi
 
 
 
+#### Package Development section
+
+```{r, eval=FALSE, code=readLines("install_package-dev.R")}
+
+```
+
+#### Research Compendium with `rrtools` section
+
+```{r, eval=FALSE, code=readLines("install_rrtools.R")}
+
+```
+
 
 ### FAQs
 
