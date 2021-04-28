@@ -274,16 +274,22 @@ We can do that as we would any project, but this time we would select **`R packa
 
 <div class="alert alert-info"><strong>File > New Project... > New Directory > R package > mypackage </strong></div>
 
-Otherwise, we can use function `usethis::create_package("mypackage")` to create a new package. The argument we provide is the path to here we want our new package created, the last element being the package name. 
+Otherwise, we can **use function `usethis::create_package("mypackage")`** to create a new package. The argument we provide is the path to here we want our new package created, the **last element being the package name**. Note that there are [restrictions on what characters can be used in a package name](https://r-pkgs.org/workflows101.html#naming).
 
-To do this in Rstudio (which is a bit fiddlier) we will create a general project in which we will create our package project. In general, creating a project within a project is bad practice and you should avoid this wehn wourking locally, but given the more restrictive nature of working in Rstudio cloud, we will break this general best prectice rule.
+To do this in Rstudio (which is a bit fiddlier) we will create a general project in which we will create our package project. In general, creating a project within a project is bad practice and you should avoid this when working locally, but given the more restrictive nature of working in Rstudio cloud, we will break this general best practice rule.
 
 
-### Create a general Rstudio Project
+### Copy **package-dev** Project
 
-- In your own personal workspace, click on the **New Project** button.
-- Rename the project to **ACCE-projects**
-- Install required dependencies using the code below:
+In our shared space click on the `r icons::fontawesome("plus-square")` copy button next to the **package-dev** Project.
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/copy-pkgdev.proj.png")
+```
+
+Click on `r icons::fontawesome("plus-square")` **Save a permanent copy**. You now have a personal copy of the project.
+
+Install required dependencies using the code below:
 
 
 ```{r, eval=FALSE, code=readLines("install_rstudio-projects.R")}
@@ -312,18 +318,9 @@ Your new project should have the following structure. The build pane should also
 knitr::include_graphics("assets/r_package_rstudio-cloud.png")
 ```
 
-### Install dependencies
-
-We will again need to install required dependencies for package development in our new package project. Install them by running the following code:
-
-
-```{r, eval=FALSE, code=readLines("install_package-dev.R")}
-
-```
-
 ## Initialise git and commit files.
 
-Let's also initalise our project as a git repository and commit our initial files. We'll need to configure git again as this is a new Rstudio cloud project.
+Let's also initialise our project as a git repository and commit our initial files. We'll need to configure git again as this is a new Rstudio cloud project.
 
 ```{r, eval=FALSE}
 # configure git
@@ -351,7 +348,7 @@ usethis::use_r("hello")
 • Call `use_test()` to create a matching test file
 ```
 
-```{r}
+```{r, echo=FALSE}
 knitr::include_graphics("assets/r_hello.png")
 ```
 
@@ -509,7 +506,7 @@ Use function `devtools::document()` to create documentation. This re-creates a `
 devtools::document()
 ```
 
-Click **Install and Restart** to re-install the package and make the documentation available.
+Click **`r icons::fontawesome("hammer")` Install and Restart** to re-install the package and make the documentation available.
 
 
 ```{r, echo=FALSE}
@@ -519,10 +516,10 @@ knitr::include_graphics("assets/rsc_build-package.png")
 
 ![](assets/roxygen-done.png)
 
-You can configure your build tools in the **Global Options** to automatically build documentation every time you **Install & Rebuild**
+You can configure your build tools in the **Global Options** (accessed through the build panel under **More > Configure Build Tools**) to automatically build documentation every time you click **`r icons::fontawesome("hammer")` Install & Rebuild**
 
 ![](assets/conf-build-tools.png)
-Now clicking **Install & Restart** will also build your docs in the `man/` folder for you.
+Now clicking **`r icons::fontawesome("hammer")` Install & Restart** will also build your docs in the `man/` folder for you.
 
 ## `r emo::ji("vertical_traffic_light")` Personalise function
 
@@ -670,6 +667,7 @@ usethis::use_package("cowsay")
 ✔ Adding 'cowsay' to Imports field in DESCRIPTION
 ● Refer to functions with `cowsay::fun()`
 ```
+
 
 ## Add License
 
