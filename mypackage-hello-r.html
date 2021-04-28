@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Closing Remarks | Reproducible Research Data and Project Management in R</title>
+  <title>mypackage hello.R | Reproducible Research Data and Project Management in R</title>
   <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Closing Remarks | Reproducible Research Data and Project Management in R" />
+  <meta property="og:title" content="mypackage hello.R | Reproducible Research Data and Project Management in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="https://github.com/annakrystalli/rrresearchACCE20" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Closing Remarks | Reproducible Research Data and Project Management in R" />
+  <meta name="twitter:title" content="mypackage hello.R | Reproducible Research Data and Project Management in R" />
   
   <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="closing.html"/>
-<link rel="next" href="additional.html"/>
+<link rel="prev" href="gitignore.html"/>
+<link rel="next" href="mypackage-readme-rmd.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -210,11 +210,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="closing-remarks" class="section level1">
-<h1>Closing Remarks</h1>
-<p><a href="https://annakrystalli.me/rrresearchACCE20/slides/11_outro.html" target="blank"><svg viewBox="0 0 576 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg">
-<path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"></path>
-</svg> View Slides</a> <br><br><iframe src="slides/11_outro.html" width="672" height="400px"></iframe></p>
+<div id="mypackage-hello.r" class="section level1">
+<h1><code>mypackage</code> <code>hello.R</code></h1>
+<p><code>hello.R</code> in <code>mypackage</code> should contain the<code>hello</code> function definition, documented with Roxygen documentation.</p>
+<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="mypackage-hello-r.html#cb719-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World!</span></span>
+<span id="cb719-2"><a href="mypackage-hello-r.html#cb719-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb719-3"><a href="mypackage-hello-r.html#cb719-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print personalised hello greeting from me.</span></span>
+<span id="cb719-4"><a href="mypackage-hello-r.html#cb719-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb719-5"><a href="mypackage-hello-r.html#cb719-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param name character string. Your name!</span></span>
+<span id="cb719-6"><a href="mypackage-hello-r.html#cb719-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb719-7"><a href="mypackage-hello-r.html#cb719-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console</span></span>
+<span id="cb719-8"><a href="mypackage-hello-r.html#cb719-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb719-9"><a href="mypackage-hello-r.html#cb719-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb719-10"><a href="mypackage-hello-r.html#cb719-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb719-11"><a href="mypackage-hello-r.html#cb719-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
+<span id="cb719-12"><a href="mypackage-hello-r.html#cb719-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello(&quot;Lucy Elen&quot;)</span></span>
+<span id="cb719-13"><a href="mypackage-hello-r.html#cb719-13" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb719-14"><a href="mypackage-hello-r.html#cb719-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb719-15"><a href="mypackage-hello-r.html#cb719-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create greeting</span></span>
+<span id="cb719-16"><a href="mypackage-hello-r.html#cb719-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">is.null</span>(name)){name <span class="ot">&lt;-</span> <span class="st">&quot;world&quot;</span>}</span>
+<span id="cb719-17"><a href="mypackage-hello-r.html#cb719-17" aria-hidden="true" tabindex="-1"></a>    greeting <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, name, <span class="st">&quot;from Anna!&quot;</span>)</span>
+<span id="cb719-18"><a href="mypackage-hello-r.html#cb719-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb719-19"><a href="mypackage-hello-r.html#cb719-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># randomly sample an animal</span></span>
+<span id="cb719-20"><a href="mypackage-hello-r.html#cb719-20" aria-hidden="true" tabindex="-1"></a>    animal_names <span class="ot">&lt;-</span> <span class="fu">names</span>(cowsay<span class="sc">::</span>animals)</span>
+<span id="cb719-21"><a href="mypackage-hello-r.html#cb719-21" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(animal_names), <span class="dv">1</span>)</span>
+<span id="cb719-22"><a href="mypackage-hello-r.html#cb719-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb719-23"><a href="mypackage-hello-r.html#cb719-23" aria-hidden="true" tabindex="-1"></a>    cowsay<span class="sc">::</span><span class="fu">say</span>(greeting, animal_names[i])</span>
+<span id="cb719-24"><a href="mypackage-hello-r.html#cb719-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb719-25"><a href="mypackage-hello-r.html#cb719-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb719-26"><a href="mypackage-hello-r.html#cb719-26" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;!--</span>chapter<span class="sc">:</span>end<span class="sc">:</span>07f_mypackage_hello.Rmd<span class="sc">-</span><span class="ot">-&gt;</span></span>
+<span id="cb719-27"><a href="mypackage-hello-r.html#cb719-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb719-28"><a href="mypackage-hello-r.html#cb719-28" aria-hidden="true" tabindex="-1"></a><span class="co"># `mypackage` `test-hello.R`</span></span>
+<span id="cb719-29"><a href="mypackage-hello-r.html#cb719-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb719-30"><a href="mypackage-hello-r.html#cb719-30" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">test-hello.R</span><span class="st">`</span> <span class="cf">in</span> <span class="st">`</span><span class="at">mypackage</span><span class="st">`</span> should contain the test <span class="cf">for</span> the <span class="st">`</span><span class="at">hello</span><span class="st">`</span> function.</span></code></pre></div>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="mypackage-hello-r.html#cb720-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;hello works&quot;</span>, {</span>
+<span id="cb720-2"><a href="mypackage-hello-r.html#cb720-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_null</span>(<span class="fu">suppressMessages</span>(<span class="fu">hello</span>()))</span>
+<span id="cb720-3"><a href="mypackage-hello-r.html#cb720-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 
 </div>
             </section>
@@ -222,8 +253,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="closing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="additional.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gitignore.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mypackage-readme-rmd.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
