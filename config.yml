@@ -9,3 +9,4 @@ default:
   book_url: "https://annakrystalli.me/rrresearchACCE20/"
   bitly_url: "http://bit.ly/ACCE-book"
   output_dir: "_book"
+  pkgdev_date_iso: "2021-04-07"

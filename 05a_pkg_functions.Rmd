@@ -43,7 +43,7 @@ Following conventions allows us to **make use of automated tools** for:
 
 ## Anatomy of an R package
 
-Let's use [`pkgreviewr`](https://github.com/ropenscilabs/pkgreviewr), a package I authored to help automate some aspects of the rOpenSci review process, as an example to examine some elements of what makes a package:
+Let's use [`pkgreviewr`](https://github.com/ropensci-org/pkgreviewr), a package I authored to help automate some aspects of the rOpenSci review process, as an example to examine some elements of what makes a package:
 
 ## `DESCRIPTION` file
 
@@ -110,7 +110,7 @@ Roxygen: list(markdown = TRUE)
 ### citation
 
 ```{r}
-citation("geosphere")
+citation("pkgreviewr")
 ```
 
 
@@ -251,8 +251,6 @@ tests
 ```
 
 ```{r, eval=FALSE}
-context("test-add")
-
 test_that("add works", {
   expect_equal(add(2, 2), 4)
 })
@@ -322,6 +320,20 @@ We will again need to install required dependencies for package development in o
 ```{r, eval=FALSE, code=readLines("install_package-dev.R")}
 
 ```
+
+## Initialise git and commit files.
+
+Let's also initalise our project as a git repository and commit our initial files. We'll need to configure git again as this is a new Rstudio cloud project.
+
+```{r, eval=FALSE}
+# configure git
+use_git_config(user.name = "Jane",
+               user.email = "jane@example.org")
+# intialise git and commit
+usethis::use_git()
+```
+
+
 
 ## `r emo::ji("vertical_traffic_light")` Functions in the **`R/`** dir
 
@@ -499,11 +511,18 @@ devtools::document()
 
 Click **Install and Restart** to re-install the package and make the documentation available.
 
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/rsc_build-package.png")
+```
+
+
 ![](assets/roxygen-done.png)
 
 You can configure your build tools in the **Global Options** to automatically build documentation every time you **Install & Rebuild**
 
 ![](assets/conf-build-tools.png)
+Now clicking **Install & Restart** will also build your docs in the `man/` folder for you.
 
 ## `r emo::ji("vertical_traffic_light")` Personalise function
 
@@ -577,6 +596,7 @@ Document, Install and restart to load our changes
 hello("y'all")
 ```
 
+Let's commit our current files and changes.
 
 ## `r emo::ji("vertical_traffic_light")` Check package integrity
 
@@ -671,6 +691,8 @@ Duration: 9.3s
 R CMD check succeeded
 ```
 
+Let's commit our current files and changes.
+
 ***
 
 ## `r emo::ji("vertical_traffic_light")` Add Test
@@ -733,8 +755,6 @@ library(testthat)
 
 
 ```{r}
-context("test-hello")
-
 test_that("multiplication works", {
   expect_equal(2 * 2, 4)
 })
@@ -745,8 +765,6 @@ test_that("multiplication works", {
 If the test doesn't pass it throws an error
 
 ```{r, error=TRUE}
-context("test-hello")
-
 test_that("multiplication works", {
   expect_equal(2 * 2, 5)
 })
@@ -755,15 +773,13 @@ test_that("multiplication works", {
 
 ## Write test
 
-Let's write a simple test to check that we are getting an expected output type. The first thing to note, looking at the `say()` documentation is that it takes an argument `type` which allows us to specify the output we want. It defaults `message` which means the output of the function is returned as a message.
+Let's write a simple test to check that we are getting an expected output type. The first thing to note, looking at the `say()` documentation is that it takes an argument `type` which allows us to specify the output we want. It defaults to `NULL` which means the output of the function is just sent to the console without  producing an assignable output.
 
-We can therefore use `testthat::expect_message()`
+We can therefore use `testthat::expect_null()`. We'll also suppress the printed output of the function so that we don't pollute our testing logs.
 
 ```{r, error=TRUE}
-context("test-hello")
-
 test_that("hello works", {
-  expect_message(hello())
+  expect_null(suppressMessages(hello()))
 })
 
 ```
@@ -790,6 +806,34 @@ Failed:   0
 Warnings: 0
 Skipped:  0
 ```
+
+Let's commit our current files and changes.
+
+## `r emo::ji("vertical_traffic_light")` Create README
+
+The final document you will need for your package is a `README`.
+
+```{r, eval=FALSE}
+usethis::use_readme_rmd()
+```
+
+```
+✔ Writing 'README.Rmd'
+✔ Adding '^README\\.Rmd$' to '.Rbuildignore'
+● Modify 'README.Rmd'
+✔ Writing '.git/hooks/pre-commit'
+```
+
+Because it's an `.Rmd` but GitHub can only display an `md` document as it's landing page, this is a special `.Rmd` that renders to a markdown document rather than `html`.  The function adds a check to `.git` to ensure you commit an up to date version on the `md` when you commit changes to the `.Rmd`.
+
+Complete the README, including an example. Here's what mine looks like:
+
+```{r}
+knitr::include_graphics("assets/mypackage-readme.png")
+```
+
+Let's commit our current files and changes.
+
 ## `r emo::ji("vertical_traffic_light")` Complete package metadata
 
 
@@ -811,7 +855,7 @@ Complete the title and description fields with appropriate details. If you want 
 
 ## Add a date
 
-Use today's date in ISO format, ie `2019-04-10`. This will populate a citation entry for us.
+Use today's date in ISO format, ie **`r config::get('pkgdev_date_iso')`**. This will populate a citation entry for us.
 
 ### Completed `DESCRIPTION`
 
@@ -819,7 +863,6 @@ The complete `DESCRIPTION` file should look something like this:
 
 ```
 Package: mypackage
-Type: Package
 Title: Customised greetings from me!
 Version: 0.1.0
 Authors@R: person("Anna", "Krystalli", 
@@ -830,12 +873,16 @@ Description: Prints a customised greeting from myself,
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
 Imports: 
     cowsay
 Suggests: 
-    testthat
-Date: 2019-04-10
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+URL: https://github.com/annakrystalli/mypackage
+BugReports: https://github.com/annakrystalli/mypackage/issues
+Date: 2021-05-07
 ```
 
 Check your package. If all is good, document, install and restart!
@@ -861,43 +908,88 @@ A BibTeX entry for LaTeX users is
     note = {R package version 0.1.0},
   }
 ```
+Let's commit our current files and changes.
 
+## Create GitHub repo and push to GitHub
 
-## `r emo::ji("vertical_traffic_light")` Create README
+Now you have everything you need to share your package on GitHub so create a GitHub repository and push our local content up to it. 
 
-The final document you will need for your package is a `README`.
+You will need to set up `gitcreds` again in this new project!
 
 ```{r, eval=FALSE}
-usethis::use_readme_rmd()
+# configure GitHub PAT credentials
+gitcreds::gitcreds_set()
+
+# create GitHub repository and push
+usethis::use_github(protocol = "https")
 ```
-
-```
-✔ Writing 'README.Rmd'
-✔ Adding '^README\\.Rmd$' to '.Rbuildignore'
-● Modify 'README.Rmd'
-✔ Writing '.git/hooks/pre-commit'
-```
-
-Because it's an `.Rmd` but GitHub can only display an `md` document as it's landing page, this is a special `.Rmd` that renders to a markdown document rather than `html`.  The function adds a check to `.git` to ensure you commit an up to date version on the `md` when you commit changes to the `.Rmd`.
-
-Complete the README, including an example.
-
-## Commit and push to GitHub
-
-Now you have everything you need to share your package on GitHub so commit and push it up.
-
 Anyone will be able to install it using, eg:
 
 ```{r, eval=FALSE}
 devtools::install_github("annakrystalli/mypackage")
 ```
 
-## `r emo::ji("vertical_traffic_light")` Create documentation site
+Add the link to your package repo in the [hackpad](`r config::get("hackpad_url")`). Visit someone else's package repo, follow the instructions to install, load it and receive a personalised greeting from the author!
 
-You can use package `pkgdown` to create an online site for your documentation:
+## Setup Continuous Integration with  GitHub Actions
+
+Continuous integration (CI) is the practice of automating the integration of code changes from multiple contributors into a single software project.  Automated tools are used to assert the new code’s correctness before integration. In our case this is what are tests are for. And GitHub Actions allows us to do this all within GitHub!
+
+Once the appropriate CI workflow is set up, it will automatically run our tests for us every time we push new code to GitHub or when a new pull request is made. This way we can (try to) ensure we don't merge new code into our code base that introduces bugs (cause our tests to fail). Obviously, our ability to screen for breaking changes is only as good as our testing framework! But atleast we can get GitHub to run our tests for us!
+
+To run CI workflows through GitHub Actions, we specify the actions or jobs we want the CI system in a `.yaml` file that lives in `.github/workflows/` folder in the root of our package/project. This can be quite complicated for complex projects as you have to effectively specify instructions for GitHub to recreate a computational environment to run the tests in. The `.yaml` format can also be fiddly, with indents having special meaning. However for a simple projects like ours, there is a `usethis` functions that can create and appropriate `.yaml` for us that works right out of the box!
+
+Let's try it out:
 
 ```{r, eval=FALSE}
-install.packages("pkgdown")
+usethis::use_github_action_check_release()
+```
+
+```
+✓ Creating '.github/'
+✓ Adding '^\\.github$' to '.Rbuildignore'
+✓ Adding '*.html' to '.github/.gitignore'
+✓ Creating '.github/workflows/'
+✓ Writing '.github/workflows/R-CMD-check.yaml'
+• Learn more at <https://github.com/r-lib/actions/blob/master/examples/README.md✓ Adding R-CMD-check badge to 'README.Rmd'
+• Re-knit 'README.Rmd'
+```
+
+This workflow installs the latest release of R on macOS and runs R CMD check via the `rcmdcheck` package.
+
+```{r, eval=FALSE, code=readLines("https://raw.githubusercontent.com/r-lib/actions/master/examples/check-release.yaml"), results="asis"}
+
+```
+
+
+
+- Re-knit  `README.Rmd` to include GitHub Actions badge.
+- Commit the whole `.github` folder as well as `README.Rmd` & `README.md`
+- Push to GitHub
+
+This will activate the `R-CMD-CHECK` GitHub Actions workflow and begin running it. 
+
+To see details and the status of GitHub Actions workflows, click on the **`r icons::fontawesome("play-circle")` Actions** tab and select the workflow to view. If our test passes, the run will show as successful `r emo::ji("white_check_mark")` and so will the badge in our README. If there are any problems, error messages will appear in the logs.
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/ga-r-cmd-check-success.png")
+```
+
+
+
+
+
+## `r emo::ji("vertical_traffic_light")` Create documentation site
+
+
+While the README is a great first step for documenting your package, there is an easy way to create a full website which makes the documentation of each exported function avaliable online and where you could include additional, more detailed vignettes.
+
+You can use package `pkgdown` to create an online site for your documentation. It effectively recycles the documentation you have already created for your functions, information in your README and DESCRIPTION file and presents it in a standardised website form.
+
+Let's create such a site for our package.
+
+
+```{r, eval=FALSE}
 pkgdown::build_site()
 ```
 
@@ -931,47 +1023,52 @@ Writing 'reference/hello.html'
 ── Previewing site ──────────────────────────────────────────────────
 ```
 
-This creates html documentation for our package in the `docs/` folder. 
+This creates html documentation for our package in the `docs/` folder and presents you with a preview to the site. 
 
-- Commit and push the `docs/` folder to GitHub
-- Make the site live by enabling gh-pages. Set it to serve content from the `docs` folder.
+Now, you could push this `docs/` folder to GitHub and serve through GitHub Pages, but you would need to rebuild, commit and push these docs anytime there was a change in the package documentation.
+
+Instead what we could do is get our CI system (GitHub Actions) to build our docs for us automatically every time there is a push or pull request to our repository!! So let's try this approach!
+
+First, let's tell git to ignore local copies of the docs in our `docs/` folder by adding `docs/*` to our `.gitignore` file. This way, we can still build and preview our site locally if we want but we won't commit it to our`master` or  `main` branch.
+
+Then, we can deploy another GitHub Actions template, provided by `usethis` that again will work right out the box!
+
+```{r, eval=FALSE}
+usethis::use_github_action("pkgdown")
+```
+```
+✓ Setting active project to '/cloud/project/mypackage'
+✓ Writing '.github/workflows/pkgdown.yaml'
+• Learn more at <https://github.com/r-lib/actions/blob/master/examples/README.md>
+```
+
+This creates another file in `.github/workflows/` called `pkgdown.yaml`. The workflow installs the package, building all documentation, installs `pkgdown` and uses it to build the site. It then commits the build site to a separate `gh-pages` site.
 
 
-
-Your package is now installable from GitHub, has online documentation and should have this final structure:
+```{r, eval=FALSE, code=readLines("https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml"), results="asis"}
 
 ```
-.
-├── DESCRIPTION
-├── LICENSE
-├── LICENSE.md
-├── NAMESPACE
-├── R
-│   └── hello.R
-├── README.Rmd
-├── README.md
-├── docs
-│   ├── LICENSE-text.html
-│   ├── LICENSE.html
-│   ├── authors.html
-│   ├── docsearch.css
-│   ├── docsearch.js
-│   ├── index.html
-│   ├── link.svg
-│   ├── pkgdown.css
-│   ├── pkgdown.js
-│   ├── pkgdown.yml
-│   └── reference
-│       ├── hello.html
-│       └── index.html
-├── man
-│   └── hello.Rd
-├── mypackage.Rproj
-└── tests
-    ├── testthat
-    │   └── test-hello.R
-    └── testthat.R
 
-6 directories, 23 files
+Coomit the file and push it up to GitHub to activate. Once the workflow completes successfully, you will find the html for your documentation for you site in a new `gh-pages` branch!
+
+### Enable `gh-pages`
+
+To serve our new site, we need to enable GitHub Pages and set the source directory to the root of the `gh-pages` branch. To do so we go to **`r icons::fontawesome("cog")` Settings** and click on **Pages** on the navigation bar on the left. Also remember to click on **Enforce HTTPS**.
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/pkgdown-gh-pages.png")
 ```
+
+Once set, the URL at which your pkdown docs are being served will appear. You can copy that and add it to your repo details. 
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/mypackage_pkgdown.png")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/mypackage_pkgdown_fn-ref.png")
+```
+
+
 Check out my complete example [here](https://github.com/annakrystalli/mypackage-demo)
