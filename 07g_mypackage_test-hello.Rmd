@@ -1,0 +1,9 @@
+# `mypackage` `test-hello.R`
+
+`test-hello.R` in `mypackage` should contain the test for the `hello` function.
+
+```{r, eval=FALSE}
+test_that("hello works", {
+  expect_null(suppressMessages(hello()))
+})
+```
