@@ -229,19 +229,48 @@ usethis::use_git_config(
 ###  Set up GITHUB PAT
 
 
-To authenticate with GitHub, you'll also need a Personal Authorisation Token (PAT).
+To authenticate with GitHub, you'll also need a Personal Authorisation Token (PAT). Password-based authentication for Git is deprecated, i.e. you really should _not_ be sending your username and password every time you push or pull.
+Here, I'm referring to the username and password you would use to login to GitHub in the browser.
+
+What should you do instead?
+
+Get a **personal access token** (PAT) and use that as your credential for HTTPS operations.
+(The PAT will actually be sent as the password and the username is somewhat artificial, consulted only for credential lookup.)
+
+#### How to get a PAT?
+
+GitHub offers instructions for [creating a personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).
+
+The usethis package has a helper function that takes you to the web form to create a PAT, with the added benefit that it pre-selects the recommended scopes:
 
 ```{r, eval=F}
-usethis::browse_github_pat()
+usethis::create_github_token()
 ```
 
+```
+● Call `gitcreds::gitcreds_set()` to register this token in the local Git credential store
+  It is also a great idea to store this token in any password-management software that you use
+✓ Opening URL 'https://github.com/settings/tokens/new?scopes=repo,user,gist,workflow&description=R:GITHUB_PAT'
+```
 will open up the GitHub panel to generate your PAT. 
 
 
 <img src="assets/browse_github.png" height="300px">
 
 
+Once you are happy with the selected scopes, click "Generate token".
+As the page says, you must **store this token somewhere**, because you'll never be able to see it again, once you leave that page or close the window.
 
+Do not ever hard-wire your PAT into your code!
+A PAT should always be retrieved implicitly, for example, from the Git credential store or from an environment variable.
+
+#### Store your credential
+
+Below, we will add your PAT to our `.Renviron` file as well as the Git credential store as a semi-persistent convenience, sort of like “remember me” on a website. But, just like logging into websites, it is entirely possible that your PAT will somehow be forgotten from the credential store and you will need to re-enter it.
+
+If you goof this up, i.e. generate a PAT but fail to capture it on your system, you’ll have to generate another one. This is not the end of the world, but you should delete the “lost” PAT on GitHub. If you aren’t disciplined about labelling PATs and deleting lost PATs, you will find yourself in an unsettling situation where you can’t be sure which PAT(s) are in use. When logged into your GitHub account, you can manage your PATs here:
+
+##### Store in `.Renviron`
 
 Copy it and paste it into your `.Renviron` file as system variable `GITHUB_PAT`.
 
@@ -255,7 +284,46 @@ Use `edit_r_environ()` to open and edit your `.Renviron` file
 knitr::include_graphics("assets/GITHUB_PAT.png")
 ```
 
+Add to the file and save.
 
+##### Cache with `gitcreds` package
+
+As of November 2020, there are two R packages for accessing the Git credential store:
+
+  * [gitcreds](https://r-lib.github.io/gitcreds/)
+  * [credentials](https://docs.ropensci.org/credentials/)
+    
+It is likely that these packages will eventually combine into one and, even now, they are largely interoperable.
+You don't need to follow the instructions for both packages -- pick one!
+
+We will use the `gitcreds` package here.
+
+If you don't have gitcreds installed, install via `install.packages("gitcreds")`.
+
+Then call `gitcreds::gitcreds_set()`:
+
+```{r eval = FALSE}
+gitcreds::gitcreds_set()
+```
+
+`gitcreds::gitcreds_set()` is a very handy function, since it reports any current credential, allows you to see it, allows you to keep or replace an existing credential, and can also store a credential for the first time.
+
+Respond to the prompt with your personal access token (PAT).
+
+You can check that you've stored a credential with `gitcreds_get()`:
+
+```{r eval = FALSE}
+gitcreds::gitcreds_get()
+#> <gitcreds>
+#>   protocol: https
+#>   host    : github.com
+#>   username: PersonalAccessToken
+#>   password: <-- hidden -->
+```
+
+##### TODO store your PAT with a password manager
+
+**Treat this PAT like a password!** Currently, we've only store a copyable form of the PAT in our `.Renviron` file. If you use a password management app, such as 1Password or LastPass (which you should), it is highly recommended to add this PAT to your entry for GitHub.
 
 ## Version Controlling projects
 
