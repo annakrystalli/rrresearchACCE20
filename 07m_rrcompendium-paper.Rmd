@@ -4,7 +4,7 @@ This `paper.Rmd` in `rrcompendium` should contain our paper
 
 **`paper.Rmd`**
 
-The completed `.Rmd` file should look like [this]()
+The completed `.Rmd` file should look like [this](https://github.com/annakrystalli/rrresearchACCE20/blob/master/appendices/rrcompendium-paper.Rmd)
 
 and the rendered version like this:
 
