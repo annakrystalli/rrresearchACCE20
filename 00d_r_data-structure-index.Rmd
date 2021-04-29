@@ -40,7 +40,7 @@ Arrays can take values of any base data type and span any number of dimensions. 
 
 To better understand the importance of data types and coersion, let's meet a special case of an array, the **vector**. 
 
-To create a new vector use function `vector()`. You can specify the length of the vector with argument `length` and the base data type through 
+To create a new vector use function `vector()`. You can specify the length of the vector with argument `length` and the base data type through argument `mode`.
 
 ```{r}
 my_vector <- vector(length = 3)
