@@ -187,6 +187,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="mypackage-hello-r.html#mypackage-hello.r"><code>mypackage</code> <code>hello.R</code></a></li>
 <li><a href="mypackage-readme-rmd.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
 <li><a href="mypackage-description.html#mypackage-description"><code>mypackage</code> <code>DESCRIPTION</code></a></li>
+<li><a href="rrcompendium-description.html#rrcompendium-description"><code>rrcompendium</code> <code>DESCRIPTION</code></a></li>
+<li><a href="rrcompendium-readme-rmd.html#rrcompendium-readme.rmd"><code>rrcompendium</code> <code>README.Rmd</code></a></li>
+<li><a href="rrcompendium-paper-rmd-yaml-header.html#rrcompendium-paper.rmd-yaml-header"><code>rrcompendium</code> <code>paper.Rmd</code> YAML header</a></li>
+<li><a href="rrcompendium-paper-rmd.html#rrcompendium-paper.rmd"><code>rrcompendium</code> <code>paper.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a></li>
 <li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a></li>
@@ -215,66 +219,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This R script should contain your analysis and be saved in the root directory as:</p>
 <p><strong><code>analysis.R</code></strong></p>
 <p>Your script should contain:</p>
-<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="analysis-r-1.html#cb716-1" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-setup  </span></span>
-<span id="cb716-2"><a href="analysis-r-1.html#cb716-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb716-3"><a href="analysis-r-1.html#cb716-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb716-4"><a href="analysis-r-1.html#cb716-4" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb716-5"><a href="analysis-r-1.html#cb716-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(stem_diameter, height, growth_form)</span>
-<span id="cb716-6"><a href="analysis-r-1.html#cb716-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb716-7"><a href="analysis-r-1.html#cb716-7" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-filter-data  </span></span>
-<span id="cb716-8"><a href="analysis-r-1.html#cb716-8" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="ot">&lt;-</span> individual <span class="sc">%&gt;%</span></span>
-<span id="cb716-9"><a href="analysis-r-1.html#cb716-9" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth_form), </span>
-<span id="cb716-10"><a href="analysis-r-1.html#cb716-10" aria-hidden="true" tabindex="-1"></a>                  growth_form <span class="sc">!=</span> <span class="st">&quot;liana&quot;</span>) </span>
-<span id="cb716-11"><a href="analysis-r-1.html#cb716-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb716-12"><a href="analysis-r-1.html#cb716-12" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-set-factor-levels  </span></span>
-<span id="cb716-13"><a href="analysis-r-1.html#cb716-13" aria-hidden="true" tabindex="-1"></a>gf_levels <span class="ot">&lt;-</span> <span class="fu">table</span>(analysis_df<span class="sc">$</span>growth_form) <span class="sc">%&gt;%</span> </span>
-<span id="cb716-14"><a href="analysis-r-1.html#cb716-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb716-15"><a href="analysis-r-1.html#cb716-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>()</span>
-<span id="cb716-16"><a href="analysis-r-1.html#cb716-16" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&lt;&gt;%</span> </span>
-<span id="cb716-17"><a href="analysis-r-1.html#cb716-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">growth_form =</span> <span class="fu">factor</span>(growth_form, </span>
-<span id="cb716-18"><a href="analysis-r-1.html#cb716-18" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">levels =</span> gf_levels))</span>
-<span id="cb716-19"><a href="analysis-r-1.html#cb716-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb716-20"><a href="analysis-r-1.html#cb716-20" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-fig1-barplot </span></span>
-<span id="cb716-21"><a href="analysis-r-1.html#cb716-21" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb716-22"><a href="analysis-r-1.html#cb716-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, </span>
-<span id="cb716-23"><a href="analysis-r-1.html#cb716-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb716-24"><a href="analysis-r-1.html#cb716-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb716-25"><a href="analysis-r-1.html#cb716-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb716-26"><a href="analysis-r-1.html#cb716-26" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-fg2-violinplots </span></span>
-<span id="cb716-27"><a href="analysis-r-1.html#cb716-27" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb716-28"><a href="analysis-r-1.html#cb716-28" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(stem_diameter, height), </span>
-<span id="cb716-29"><a href="analysis-r-1.html#cb716-29" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="st">&quot;var&quot;</span>,</span>
-<span id="cb716-30"><a href="analysis-r-1.html#cb716-30" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb716-31"><a href="analysis-r-1.html#cb716-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(value), <span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb716-32"><a href="analysis-r-1.html#cb716-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> T, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb716-33"><a href="analysis-r-1.html#cb716-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb716-34"><a href="analysis-r-1.html#cb716-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span>var)</span>
-<span id="cb716-35"><a href="analysis-r-1.html#cb716-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb716-36"><a href="analysis-r-1.html#cb716-36" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr analysis-lm-overall</span></span>
-<span id="cb716-37"><a href="analysis-r-1.html#cb716-37" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height), analysis_df) </span>
-<span id="cb716-38"><a href="analysis-r-1.html#cb716-38" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
-<span id="cb716-39"><a href="analysis-r-1.html#cb716-39" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span>
-<span id="cb716-40"><a href="analysis-r-1.html#cb716-40" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
-<span id="cb716-41"><a href="analysis-r-1.html#cb716-41" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
-<span id="cb716-42"><a href="analysis-r-1.html#cb716-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb716-43"><a href="analysis-r-1.html#cb716-43" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr analysis-lm-fig3-overall </span></span>
-<span id="cb716-44"><a href="analysis-r-1.html#cb716-44" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb716-45"><a href="analysis-r-1.html#cb716-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter))) <span class="sc">+</span></span>
-<span id="cb716-46"><a href="analysis-r-1.html#cb716-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb716-47"><a href="analysis-r-1.html#cb716-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span>
-<span id="cb716-48"><a href="analysis-r-1.html#cb716-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb716-49"><a href="analysis-r-1.html#cb716-49" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-lm-growth</span></span>
-<span id="cb716-50"><a href="analysis-r-1.html#cb716-50" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height) <span class="sc">*</span> growth_form, analysis_df) </span>
-<span id="cb716-51"><a href="analysis-r-1.html#cb716-51" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
-<span id="cb716-52"><a href="analysis-r-1.html#cb716-52" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span>
-<span id="cb716-53"><a href="analysis-r-1.html#cb716-53" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
-<span id="cb716-54"><a href="analysis-r-1.html#cb716-54" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
-<span id="cb716-55"><a href="analysis-r-1.html#cb716-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb716-56"><a href="analysis-r-1.html#cb716-56" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr analysis-lm-fig4-growth </span></span>
-<span id="cb716-57"><a href="analysis-r-1.html#cb716-57" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb716-58"><a href="analysis-r-1.html#cb716-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb716-59"><a href="analysis-r-1.html#cb716-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb716-60"><a href="analysis-r-1.html#cb716-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="analysis-r-1.html#cb717-1" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-setup  </span></span>
+<span id="cb717-2"><a href="analysis-r-1.html#cb717-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb717-3"><a href="analysis-r-1.html#cb717-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb717-4"><a href="analysis-r-1.html#cb717-4" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb717-5"><a href="analysis-r-1.html#cb717-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(stem_diameter, height, growth_form)</span>
+<span id="cb717-6"><a href="analysis-r-1.html#cb717-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb717-7"><a href="analysis-r-1.html#cb717-7" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-filter-data  </span></span>
+<span id="cb717-8"><a href="analysis-r-1.html#cb717-8" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="ot">&lt;-</span> individual <span class="sc">%&gt;%</span></span>
+<span id="cb717-9"><a href="analysis-r-1.html#cb717-9" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth_form), </span>
+<span id="cb717-10"><a href="analysis-r-1.html#cb717-10" aria-hidden="true" tabindex="-1"></a>                  growth_form <span class="sc">!=</span> <span class="st">&quot;liana&quot;</span>) </span>
+<span id="cb717-11"><a href="analysis-r-1.html#cb717-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb717-12"><a href="analysis-r-1.html#cb717-12" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-set-factor-levels  </span></span>
+<span id="cb717-13"><a href="analysis-r-1.html#cb717-13" aria-hidden="true" tabindex="-1"></a>gf_levels <span class="ot">&lt;-</span> <span class="fu">table</span>(analysis_df<span class="sc">$</span>growth_form) <span class="sc">%&gt;%</span> </span>
+<span id="cb717-14"><a href="analysis-r-1.html#cb717-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb717-15"><a href="analysis-r-1.html#cb717-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>()</span>
+<span id="cb717-16"><a href="analysis-r-1.html#cb717-16" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb717-17"><a href="analysis-r-1.html#cb717-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">growth_form =</span> <span class="fu">factor</span>(growth_form, </span>
+<span id="cb717-18"><a href="analysis-r-1.html#cb717-18" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">levels =</span> gf_levels))</span>
+<span id="cb717-19"><a href="analysis-r-1.html#cb717-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb717-20"><a href="analysis-r-1.html#cb717-20" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-fig1-barplot </span></span>
+<span id="cb717-21"><a href="analysis-r-1.html#cb717-21" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb717-22"><a href="analysis-r-1.html#cb717-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, </span>
+<span id="cb717-23"><a href="analysis-r-1.html#cb717-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb717-24"><a href="analysis-r-1.html#cb717-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb717-25"><a href="analysis-r-1.html#cb717-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb717-26"><a href="analysis-r-1.html#cb717-26" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-fg2-violinplots </span></span>
+<span id="cb717-27"><a href="analysis-r-1.html#cb717-27" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb717-28"><a href="analysis-r-1.html#cb717-28" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(stem_diameter, height), </span>
+<span id="cb717-29"><a href="analysis-r-1.html#cb717-29" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="st">&quot;var&quot;</span>,</span>
+<span id="cb717-30"><a href="analysis-r-1.html#cb717-30" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb717-31"><a href="analysis-r-1.html#cb717-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(value), <span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb717-32"><a href="analysis-r-1.html#cb717-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> T, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb717-33"><a href="analysis-r-1.html#cb717-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb717-34"><a href="analysis-r-1.html#cb717-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span>var)</span>
+<span id="cb717-35"><a href="analysis-r-1.html#cb717-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb717-36"><a href="analysis-r-1.html#cb717-36" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr analysis-lm-overall</span></span>
+<span id="cb717-37"><a href="analysis-r-1.html#cb717-37" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height), analysis_df) </span>
+<span id="cb717-38"><a href="analysis-r-1.html#cb717-38" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
+<span id="cb717-39"><a href="analysis-r-1.html#cb717-39" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span>
+<span id="cb717-40"><a href="analysis-r-1.html#cb717-40" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
+<span id="cb717-41"><a href="analysis-r-1.html#cb717-41" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb717-42"><a href="analysis-r-1.html#cb717-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb717-43"><a href="analysis-r-1.html#cb717-43" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr analysis-lm-fig3-overall </span></span>
+<span id="cb717-44"><a href="analysis-r-1.html#cb717-44" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb717-45"><a href="analysis-r-1.html#cb717-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter))) <span class="sc">+</span></span>
+<span id="cb717-46"><a href="analysis-r-1.html#cb717-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb717-47"><a href="analysis-r-1.html#cb717-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb717-48"><a href="analysis-r-1.html#cb717-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb717-49"><a href="analysis-r-1.html#cb717-49" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr  analysis-lm-growth</span></span>
+<span id="cb717-50"><a href="analysis-r-1.html#cb717-50" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height) <span class="sc">*</span> growth_form, analysis_df) </span>
+<span id="cb717-51"><a href="analysis-r-1.html#cb717-51" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
+<span id="cb717-52"><a href="analysis-r-1.html#cb717-52" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span>
+<span id="cb717-53"><a href="analysis-r-1.html#cb717-53" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
+<span id="cb717-54"><a href="analysis-r-1.html#cb717-54" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb717-55"><a href="analysis-r-1.html#cb717-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb717-56"><a href="analysis-r-1.html#cb717-56" aria-hidden="true" tabindex="-1"></a><span class="do">## @knitr analysis-lm-fig4-growth </span></span>
+<span id="cb717-57"><a href="analysis-r-1.html#cb717-57" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb717-58"><a href="analysis-r-1.html#cb717-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb717-59"><a href="analysis-r-1.html#cb717-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb717-60"><a href="analysis-r-1.html#cb717-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
 
 </div>
             </section>

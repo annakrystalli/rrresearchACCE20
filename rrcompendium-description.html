@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Data management Basics | Reproducible Research Data and Project Management in R</title>
+  <title>rrcompendium DESCRIPTION | Reproducible Research Data and Project Management in R</title>
   <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Data management Basics | Reproducible Research Data and Project Management in R" />
+  <meta property="og:title" content="rrcompendium DESCRIPTION | Reproducible Research Data and Project Management in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="https://github.com/annakrystalli/rrresearchACCE20" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Data management Basics | Reproducible Research Data and Project Management in R" />
+  <meta name="twitter:title" content="rrcompendium DESCRIPTION | Reproducible Research Data and Project Management in R" />
   
   <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="the-tidyverse-way.html"/>
-<link rel="next" href="proj-management.html"/>
+<link rel="prev" href="mypackage-description.html"/>
+<link rel="next" href="rrcompendium-readme-rmd.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -214,11 +214,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rdm-intro-view" class="section level1">
-<h1>Data management Basics</h1>
-<p><a href="https://annakrystalli.me/rrresearchACCE20/slides/02_RDM_intro.html" target="blank"><svg viewBox="0 0 576 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg">
-<path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"></path>
-</svg> View Slides</a> <br><br><iframe src="slides/02_RDM_intro.html" width="672" height="400px"></iframe></p>
+<div id="rrcompendium-description" class="section level1">
+<h1><code>rrcompendium</code> <code>DESCRIPTION</code></h1>
+<p>The <code>DESCRIPTION</code> file contains metadata about your compendium, including dependencies</p>
+<p>It should look a bit like this:</p>
+<p>Your script should contain:</p>
+<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="rrcompendium-description.html#cb724-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> rrcompendium</span>
+<span id="cb724-2"><a href="rrcompendium-description.html#cb724-2" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> Partial Reproduction of Boettiger Ecology Letters <span class="dv">2018</span>;<span class="dv">21</span><span class="sc">:</span>1255–<span class="dv">1267</span> </span>
+<span id="cb724-3"><a href="rrcompendium-description.html#cb724-3" aria-hidden="true" tabindex="-1"></a>    with rrtools</span>
+<span id="cb724-4"><a href="rrcompendium-description.html#cb724-4" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
+<span id="cb724-5"><a href="rrcompendium-description.html#cb724-5" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> </span>
+<span id="cb724-6"><a href="rrcompendium-description.html#cb724-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">person</span>(<span class="at">given =</span> <span class="st">&quot;Anna&quot;</span>,</span>
+<span id="cb724-7"><a href="rrcompendium-description.html#cb724-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">&quot;Krystalli&quot;</span>,</span>
+<span id="cb724-8"><a href="rrcompendium-description.html#cb724-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>),</span>
+<span id="cb724-9"><a href="rrcompendium-description.html#cb724-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">email =</span> <span class="st">&quot;annakrystalli@googlemail.com&quot;</span>)</span>
+<span id="cb724-10"><a href="rrcompendium-description.html#cb724-10" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> This repository contains the research compendium of the partial </span>
+<span id="cb724-11"><a href="rrcompendium-description.html#cb724-11" aria-hidden="true" tabindex="-1"></a>    reproduction of Boettiger Ecology Letters <span class="dv">2018</span>;<span class="dv">21</span><span class="sc">:</span>1255–<span class="fl">1267.</span> The compendium </span>
+<span id="cb724-12"><a href="rrcompendium-description.html#cb724-12" aria-hidden="true" tabindex="-1"></a>    contains all data, code, and text associated with this sub<span class="sc">-</span>section of the </span>
+<span id="cb724-13"><a href="rrcompendium-description.html#cb724-13" aria-hidden="true" tabindex="-1"></a>    analysis.</span>
+<span id="cb724-14"><a href="rrcompendium-description.html#cb724-14" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
+<span id="cb724-15"><a href="rrcompendium-description.html#cb724-15" aria-hidden="true" tabindex="-1"></a>ByteCompile<span class="sc">:</span> true</span>
+<span id="cb724-16"><a href="rrcompendium-description.html#cb724-16" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb724-17"><a href="rrcompendium-description.html#cb724-17" aria-hidden="true" tabindex="-1"></a>LazyData<span class="sc">:</span> true</span>
+<span id="cb724-18"><a href="rrcompendium-description.html#cb724-18" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb724-19"><a href="rrcompendium-description.html#cb724-19" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">1.1</span></span>
+<span id="cb724-20"><a href="rrcompendium-description.html#cb724-20" aria-hidden="true" tabindex="-1"></a>Imports<span class="sc">:</span> bookdown,</span>
+<span id="cb724-21"><a href="rrcompendium-description.html#cb724-21" aria-hidden="true" tabindex="-1"></a>    here</span>
+<span id="cb724-22"><a href="rrcompendium-description.html#cb724-22" aria-hidden="true" tabindex="-1"></a>Suggests<span class="sc">:</span> devtools,</span>
+<span id="cb724-23"><a href="rrcompendium-description.html#cb724-23" aria-hidden="true" tabindex="-1"></a>    git2r</span></code></pre></div>
 
 </div>
             </section>
@@ -226,8 +249,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="the-tidyverse-way.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="proj-management.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mypackage-description.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rrcompendium-readme-rmd.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

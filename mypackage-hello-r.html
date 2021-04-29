@@ -187,6 +187,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="mypackage-hello-r.html#mypackage-hello.r"><code>mypackage</code> <code>hello.R</code></a></li>
 <li><a href="mypackage-readme-rmd.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
 <li><a href="mypackage-description.html#mypackage-description"><code>mypackage</code> <code>DESCRIPTION</code></a></li>
+<li><a href="rrcompendium-description.html#rrcompendium-description"><code>rrcompendium</code> <code>DESCRIPTION</code></a></li>
+<li><a href="rrcompendium-readme-rmd.html#rrcompendium-readme.rmd"><code>rrcompendium</code> <code>README.Rmd</code></a></li>
+<li><a href="rrcompendium-paper-rmd-yaml-header.html#rrcompendium-paper.rmd-yaml-header"><code>rrcompendium</code> <code>paper.Rmd</code> YAML header</a></li>
+<li><a href="rrcompendium-paper-rmd.html#rrcompendium-paper.rmd"><code>rrcompendium</code> <code>paper.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a></li>
 <li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a></li>
@@ -213,39 +217,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mypackage-hello.r" class="section level1">
 <h1><code>mypackage</code> <code>hello.R</code></h1>
 <p><code>hello.R</code> in <code>mypackage</code> should contain the<code>hello</code> function definition, documented with Roxygen documentation.</p>
-<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="mypackage-hello-r.html#cb719-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World!</span></span>
-<span id="cb719-2"><a href="mypackage-hello-r.html#cb719-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb719-3"><a href="mypackage-hello-r.html#cb719-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print personalised hello greeting from me.</span></span>
-<span id="cb719-4"><a href="mypackage-hello-r.html#cb719-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb719-5"><a href="mypackage-hello-r.html#cb719-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param name character string. Your name!</span></span>
-<span id="cb719-6"><a href="mypackage-hello-r.html#cb719-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb719-7"><a href="mypackage-hello-r.html#cb719-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console</span></span>
-<span id="cb719-8"><a href="mypackage-hello-r.html#cb719-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
-<span id="cb719-9"><a href="mypackage-hello-r.html#cb719-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb719-10"><a href="mypackage-hello-r.html#cb719-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
-<span id="cb719-11"><a href="mypackage-hello-r.html#cb719-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
-<span id="cb719-12"><a href="mypackage-hello-r.html#cb719-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello(&quot;Lucy Elen&quot;)</span></span>
-<span id="cb719-13"><a href="mypackage-hello-r.html#cb719-13" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="cn">NULL</span>) {</span>
-<span id="cb719-14"><a href="mypackage-hello-r.html#cb719-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb719-15"><a href="mypackage-hello-r.html#cb719-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create greeting</span></span>
-<span id="cb719-16"><a href="mypackage-hello-r.html#cb719-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">is.null</span>(name)){name <span class="ot">&lt;-</span> <span class="st">&quot;world&quot;</span>}</span>
-<span id="cb719-17"><a href="mypackage-hello-r.html#cb719-17" aria-hidden="true" tabindex="-1"></a>    greeting <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, name, <span class="st">&quot;from Anna!&quot;</span>)</span>
-<span id="cb719-18"><a href="mypackage-hello-r.html#cb719-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb719-19"><a href="mypackage-hello-r.html#cb719-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># randomly sample an animal</span></span>
-<span id="cb719-20"><a href="mypackage-hello-r.html#cb719-20" aria-hidden="true" tabindex="-1"></a>    animal_names <span class="ot">&lt;-</span> <span class="fu">names</span>(cowsay<span class="sc">::</span>animals)</span>
-<span id="cb719-21"><a href="mypackage-hello-r.html#cb719-21" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(animal_names), <span class="dv">1</span>)</span>
-<span id="cb719-22"><a href="mypackage-hello-r.html#cb719-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb719-23"><a href="mypackage-hello-r.html#cb719-23" aria-hidden="true" tabindex="-1"></a>    cowsay<span class="sc">::</span><span class="fu">say</span>(greeting, animal_names[i])</span>
-<span id="cb719-24"><a href="mypackage-hello-r.html#cb719-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb719-25"><a href="mypackage-hello-r.html#cb719-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb719-26"><a href="mypackage-hello-r.html#cb719-26" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;!--</span>chapter<span class="sc">:</span>end<span class="sc">:</span>07f_mypackage_hello.Rmd<span class="sc">-</span><span class="ot">-&gt;</span></span>
-<span id="cb719-27"><a href="mypackage-hello-r.html#cb719-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb719-28"><a href="mypackage-hello-r.html#cb719-28" aria-hidden="true" tabindex="-1"></a><span class="co"># `mypackage` `test-hello.R`</span></span>
-<span id="cb719-29"><a href="mypackage-hello-r.html#cb719-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb719-30"><a href="mypackage-hello-r.html#cb719-30" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">test-hello.R</span><span class="st">`</span> <span class="cf">in</span> <span class="st">`</span><span class="at">mypackage</span><span class="st">`</span> should contain the test <span class="cf">for</span> the <span class="st">`</span><span class="at">hello</span><span class="st">`</span> function.</span></code></pre></div>
-<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="mypackage-hello-r.html#cb720-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;hello works&quot;</span>, {</span>
-<span id="cb720-2"><a href="mypackage-hello-r.html#cb720-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_null</span>(<span class="fu">suppressMessages</span>(<span class="fu">hello</span>()))</span>
-<span id="cb720-3"><a href="mypackage-hello-r.html#cb720-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="mypackage-hello-r.html#cb720-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Hello World!</span></span>
+<span id="cb720-2"><a href="mypackage-hello-r.html#cb720-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb720-3"><a href="mypackage-hello-r.html#cb720-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print personalised hello greeting from me.</span></span>
+<span id="cb720-4"><a href="mypackage-hello-r.html#cb720-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb720-5"><a href="mypackage-hello-r.html#cb720-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param name character string. Your name!</span></span>
+<span id="cb720-6"><a href="mypackage-hello-r.html#cb720-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb720-7"><a href="mypackage-hello-r.html#cb720-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return prints hello greeting to console</span></span>
+<span id="cb720-8"><a href="mypackage-hello-r.html#cb720-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb720-9"><a href="mypackage-hello-r.html#cb720-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb720-10"><a href="mypackage-hello-r.html#cb720-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb720-11"><a href="mypackage-hello-r.html#cb720-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello()</span></span>
+<span id="cb720-12"><a href="mypackage-hello-r.html#cb720-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; hello(&quot;Lucy Elen&quot;)</span></span>
+<span id="cb720-13"><a href="mypackage-hello-r.html#cb720-13" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb720-14"><a href="mypackage-hello-r.html#cb720-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb720-15"><a href="mypackage-hello-r.html#cb720-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create greeting</span></span>
+<span id="cb720-16"><a href="mypackage-hello-r.html#cb720-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">is.null</span>(name)){name <span class="ot">&lt;-</span> <span class="st">&quot;world&quot;</span>}</span>
+<span id="cb720-17"><a href="mypackage-hello-r.html#cb720-17" aria-hidden="true" tabindex="-1"></a>    greeting <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, name, <span class="st">&quot;from Anna!&quot;</span>)</span>
+<span id="cb720-18"><a href="mypackage-hello-r.html#cb720-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb720-19"><a href="mypackage-hello-r.html#cb720-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># randomly sample an animal</span></span>
+<span id="cb720-20"><a href="mypackage-hello-r.html#cb720-20" aria-hidden="true" tabindex="-1"></a>    animal_names <span class="ot">&lt;-</span> <span class="fu">names</span>(cowsay<span class="sc">::</span>animals)</span>
+<span id="cb720-21"><a href="mypackage-hello-r.html#cb720-21" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(animal_names), <span class="dv">1</span>)</span>
+<span id="cb720-22"><a href="mypackage-hello-r.html#cb720-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb720-23"><a href="mypackage-hello-r.html#cb720-23" aria-hidden="true" tabindex="-1"></a>    cowsay<span class="sc">::</span><span class="fu">say</span>(greeting, animal_names[i])</span>
+<span id="cb720-24"><a href="mypackage-hello-r.html#cb720-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb720-25"><a href="mypackage-hello-r.html#cb720-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb720-26"><a href="mypackage-hello-r.html#cb720-26" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;!--</span>chapter<span class="sc">:</span>end<span class="sc">:</span>07f_mypackage_hello.Rmd<span class="sc">-</span><span class="ot">-&gt;</span></span>
+<span id="cb720-27"><a href="mypackage-hello-r.html#cb720-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb720-28"><a href="mypackage-hello-r.html#cb720-28" aria-hidden="true" tabindex="-1"></a><span class="co"># `mypackage` `test-hello.R`</span></span>
+<span id="cb720-29"><a href="mypackage-hello-r.html#cb720-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb720-30"><a href="mypackage-hello-r.html#cb720-30" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">test-hello.R</span><span class="st">`</span> <span class="cf">in</span> <span class="st">`</span><span class="at">mypackage</span><span class="st">`</span> should contain the test <span class="cf">for</span> the <span class="st">`</span><span class="at">hello</span><span class="st">`</span> function.</span></code></pre></div>
+<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="mypackage-hello-r.html#cb721-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;hello works&quot;</span>, {</span>
+<span id="cb721-2"><a href="mypackage-hello-r.html#cb721-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_null</span>(<span class="fu">suppressMessages</span>(<span class="fu">hello</span>()))</span>
+<span id="cb721-3"><a href="mypackage-hello-r.html#cb721-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 
 </div>
             </section>

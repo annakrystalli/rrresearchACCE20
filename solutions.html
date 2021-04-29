@@ -187,6 +187,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="mypackage-hello-r.html#mypackage-hello.r"><code>mypackage</code> <code>hello.R</code></a></li>
 <li><a href="mypackage-readme-rmd.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
 <li><a href="mypackage-description.html#mypackage-description"><code>mypackage</code> <code>DESCRIPTION</code></a></li>
+<li><a href="rrcompendium-description.html#rrcompendium-description"><code>rrcompendium</code> <code>DESCRIPTION</code></a></li>
+<li><a href="rrcompendium-readme-rmd.html#rrcompendium-readme.rmd"><code>rrcompendium</code> <code>README.Rmd</code></a></li>
+<li><a href="rrcompendium-paper-rmd-yaml-header.html#rrcompendium-paper.rmd-yaml-header"><code>rrcompendium</code> <code>paper.Rmd</code> YAML header</a></li>
+<li><a href="rrcompendium-paper-rmd.html#rrcompendium-paper.rmd"><code>rrcompendium</code> <code>paper.Rmd</code></a></li>
 <li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Software Setup</a></li>
 <li class="chapter" data-level="" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i>Solutions</a></li>
@@ -214,27 +218,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Solutions</h1>
 <div id="list-subsetting-challenge" class="section level3">
 <h3><a href="indexing-and-subsetting.html#chlg-list-subset" id="csol-list-subset">List subsetting challenge</a></h3>
-<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="solutions.html#cb727-1" aria-hidden="true" tabindex="-1"></a>xlist<span class="sc">$</span>b[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="solutions.html#cb730-1" aria-hidden="true" tabindex="-1"></a>xlist<span class="sc">$</span>b[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="solutions.html#cb729-1" aria-hidden="true" tabindex="-1"></a>xlist[[<span class="dv">2</span>]][<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="solutions.html#cb732-1" aria-hidden="true" tabindex="-1"></a>xlist[[<span class="dv">2</span>]][<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="solutions.html#cb731-1" aria-hidden="true" tabindex="-1"></a>xlist[[<span class="st">&quot;b&quot;</span>]][<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="solutions.html#cb734-1" aria-hidden="true" tabindex="-1"></a>xlist[[<span class="st">&quot;b&quot;</span>]][<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 </div>
 <div id="finding-column-name-matches-in-two-tables" class="section level3">
 <h3><a href="data-merge.html#chlg-col-matches" id="csol-col-matches">Finding column name matches in two tables</a></h3>
-<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="solutions.html#cb733-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(individual)[<span class="fu">names</span>(individual) <span class="sc">%in%</span> <span class="fu">names</span>(maptag)]</span></code></pre></div>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="solutions.html#cb736-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(individual)[<span class="fu">names</span>(individual) <span class="sc">%in%</span> <span class="fu">names</span>(maptag)]</span></code></pre></div>
 <pre><code>## [1] &quot;uid&quot;          &quot;eventID&quot;      &quot;individualID&quot;</code></pre>
 </div>
 <div id="dataspice-mega-challenge" class="section level3">
 <h3><a href="dataspice.html#chlg-mega" id="csol-mega">dataspice mega challenge!</a></h3>
-<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="solutions.html#cb735-1" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>,</span>
-<span id="cb735-2"><a href="solutions.html#cb735-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&quot;NEON_vst_variables.csv&quot;</span>),</span>
-<span id="cb735-3"><a href="solutions.html#cb735-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb735-4"><a href="solutions.html#cb735-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">fieldName =</span> janitor<span class="sc">::</span><span class="fu">make_clean_names</span>(fieldName)) <span class="sc">%&gt;%</span></span>
-<span id="cb735-5"><a href="solutions.html#cb735-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(fieldName, description, units)</span></code></pre></div>
-<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="solutions.html#cb736-1" aria-hidden="true" tabindex="-1"></a>attributes <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;metadata&quot;</span>, <span class="st">&quot;attributes.csv&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb736-2"><a href="solutions.html#cb736-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>description, <span class="sc">-</span>unitText)</span></code></pre></div>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="solutions.html#cb738-1" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>,</span>
+<span id="cb738-2"><a href="solutions.html#cb738-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&quot;NEON_vst_variables.csv&quot;</span>),</span>
+<span id="cb738-3"><a href="solutions.html#cb738-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb738-4"><a href="solutions.html#cb738-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">fieldName =</span> janitor<span class="sc">::</span><span class="fu">make_clean_names</span>(fieldName)) <span class="sc">%&gt;%</span></span>
+<span id="cb738-5"><a href="solutions.html#cb738-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(fieldName, description, units)</span></code></pre></div>
+<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="solutions.html#cb739-1" aria-hidden="true" tabindex="-1"></a>attributes <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;metadata&quot;</span>, <span class="st">&quot;attributes.csv&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb739-2"><a href="solutions.html#cb739-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>description, <span class="sc">-</span>unitText)</span></code></pre></div>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -243,10 +247,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   description = col_logical(),
 ##   unitText = col_logical()
 ## )</code></pre>
-<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="solutions.html#cb738-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">left_join</span>(attributes, variables, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;variableName&quot;</span> <span class="ot">=</span> <span class="st">&quot;fieldName&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb738-2"><a href="solutions.html#cb738-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">unitText =</span> <span class="st">&quot;units&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb738-3"><a href="solutions.html#cb738-3" aria-hidden="true" tabindex="-1"></a>    readr<span class="sc">::</span><span class="fu">write_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;metadata&quot;</span>, <span class="st">&quot;attributes.csv&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="solutions.html#cb739-1" aria-hidden="true" tabindex="-1"></a><span class="fu">edit_attributes</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb741-1"><a href="solutions.html#cb741-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">left_join</span>(attributes, variables, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;variableName&quot;</span> <span class="ot">=</span> <span class="st">&quot;fieldName&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb741-2"><a href="solutions.html#cb741-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">unitText =</span> <span class="st">&quot;units&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb741-3"><a href="solutions.html#cb741-3" aria-hidden="true" tabindex="-1"></a>    readr<span class="sc">::</span><span class="fu">write_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;metadata&quot;</span>, <span class="st">&quot;attributes.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb742-1"><a href="solutions.html#cb742-1" aria-hidden="true" tabindex="-1"></a><span class="fu">edit_attributes</span>()</span></code></pre></div>
 
 </div>
 </div>
