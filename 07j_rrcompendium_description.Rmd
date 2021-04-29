@@ -1,0 +1,12 @@
+# `rrcompendium` `DESCRIPTION`
+
+The `DESCRIPTION` file contains metadata about your compendium, including dependencies
+
+It should look a bit like this:
+
+
+Your script should contain:
+
+```{r, eval=FALSE, code=readLines("rrcompendium-DESCRIPTION")}
+
+```
