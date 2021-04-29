@@ -8,7 +8,7 @@ The completed `.Rmd` file should look like [this](https://github.com/annakrystal
 
 and the rendered version like this:
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, out.height="800", out.width="600"}
 knitr::include_graphics("appendices/paper.pdf")
 ```
 
