@@ -276,7 +276,7 @@ We can do that as we would any project, but this time we would select **`R packa
 
 Otherwise, we can **use function `usethis::create_package("mypackage")`** to create a new package. The argument we provide is the path to here we want our new package created, the **last element being the package name**. Note that there are [restrictions on what characters can be used in a package name](https://r-pkgs.org/workflows101.html#naming).
 
-To do this in Rstudio (which is a bit fiddlier) we will create a general project in which we will create our package project. In general, creating a project within a project is bad practice and you should avoid this when working locally, but given the more restrictive nature of working in Rstudio cloud, we will break this general best practice rule.
+To do this in Rstudio Cloud (which is a bit fiddlier) we will create a general project in which we will create our package project. In general, creating a project within a project is bad practice and you should avoid this when working locally, but given the more restrictive nature of working in Rstudio cloud, we will break this general best practice rule.
 
 
 ### Copy **package-dev** Project
@@ -284,17 +284,11 @@ To do this in Rstudio (which is a bit fiddlier) we will create a general project
 In our shared space click on the `r icons::fontawesome("plus-square")` copy button next to the **package-dev** Project.
 
 ```{r, echo=FALSE}
-knitr::include_graphics("assets/copy-pkgdev.proj.png")
+knitr::include_graphics("assets/copy-pkgdev-proj.png")
 ```
 
 Click on `r icons::fontawesome("plus-square")` **Save a permanent copy**. You now have a personal copy of the project.
 
-Install required dependencies using the code below:
-
-
-```{r, eval=FALSE, code=readLines("install_rstudio-projects.R")}
-
-```
 
 ### Create package
 
