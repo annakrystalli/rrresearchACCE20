@@ -772,10 +772,12 @@ If creation of the repo was successfull you should see the following console out
 
 You're Github repository README should look like this on the site:
 
----
+
+```{r, echo=FALSE}
+knitr::include_graphics("assets/README-webshot.png")
+```
 
 
-![](assets/README-webshot.png)
 
 
 ---
