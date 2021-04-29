@@ -1,0 +1,12 @@
+# `rrcompendium` `paper.Rmd` YAML header
+
+The `rrcompendium` `paper.Rmd` YAML header contains metadata about your paper, including LATEX document seetings
+
+
+
+
+```{yaml, eval=FALSE, code=readLines("appendices/rrcompendium.yaml")}
+
+```
+
+It should look a bit like this and be followed by a `\newpage` LaTEX page breaking request

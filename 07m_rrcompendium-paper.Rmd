@@ -1,0 +1,14 @@
+# `rrcompendium` `paper.Rmd`
+
+This `paper.Rmd` in `rrcompendium` should contain our paper
+
+**`paper.Rmd`**
+
+The completed `.Rmd` file should look like [this]()
+
+and the rendered version like this:
+
+```{r, echo=FALSE}
+knitr::include_graphics("appendices/paper.pdf")
+```
+

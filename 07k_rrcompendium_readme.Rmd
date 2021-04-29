@@ -1,0 +1,7 @@
+# `rrcompendium` `README.Rmd`
+
+This `README.Rmd` in `rrcompendium` should contain the title of the compendium, a description, instructions on how to install and reproduce it and details of licensing and how to cite it.
+
+**`README.Rmd`**
+
+The completed file should look like [this]()
