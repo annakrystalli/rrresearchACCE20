@@ -1,13 +1,15 @@
-dependencies <- c("assertr", "bookdown", "citr", "dplyr", "devtools",  "readr", 
-                  "ggplot2", "ggthemes", "gitcreds", "here", "rticles", "knitr", 
-                  "reprex", "rmarkdown", "testthat", "tibble", "usethis")
+# install rrtools
+install.packages("devtools")
+devtools::install_github("benmarwick/rrtools")
+
+# install github dependencies
+dependencies <- c("dplyr", "ggplot2", "ggthemes", "gitcreds", "rticles", "Cairo")
 
 # install CRAN dependencies
 install.packages(dependencies)
 
-# install github dependencies
-devtools::install_github("benmarwick/rrtools")
-devtools::install_github("karthik/holepunch")
+#install github dependencies
+devtools::install_github("crsh/citr")
 
 # install tinytex
 tinytex::install_tinytex()
