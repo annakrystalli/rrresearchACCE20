@@ -1,0 +1,22 @@
+---
+title: "From noise to knowledge: how randomness generates novel phenomena and reveals information"
+author:
+  - name: "Carl Boettiger"
+    affiliation: a
+    email: "cboettig@berkeley.edu"
+address:
+  - code: a
+    address: "Dept of Environmental Science, Policy, and Management, University of California Berkeley, Berkeley CA 94720-3114, USA"
+bibliography: refs.bib
+layout:  3p # review = doublespace, 3p = singlespace, 5p = two-column
+preamble: |
+  \usepackage[nomarkers]{endfloat}
+  \linenumbers
+  \usepackage{setspace}
+  \doublespacing
+abstract: |
+
+  Noise, as the term itself suggests, is most often seen a nuisance to ecological insight, a inconvenient reality that must be acknowledged, a haystack that must be stripped away to reveal the processes of interest underneath. Yet despite this well-earned reputation, noise is often interesting in its own right: noise can induce novel phenomena that could not be understood from some underlying determinstic model alone.  Nor is all noise the same, and close examination of differences in frequency, color or magnitude can reveal insights that would otherwise be inaccessible.  Yet with each aspect of stochasticity leading to some new or unexpected behavior, the time is right to move beyond the familiar refrain of "everything is important" [@Bjornstad2001].  Stochastic phenomena can suggest new ways of inferring process from pattern, and thus spark more dialog between theory and empirical perspectives that best advances the field as a whole. I highlight a few compelling examples, while observing that the study of stochastic phenomena are only beginning to make this translation into empirical inference.  There are rich opportunities at this interface in the years ahead.  
+output: rticles::elsevier_article
+---
+
