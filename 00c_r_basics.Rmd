@@ -36,7 +36,7 @@ a command you can hit `Esc` and RStudio will give you back the `>` prompt.
 
 ## Working in scripts
 
-> To make code and workflow reproducible and easy to re-run, it's better to **save code in a script** and use the script editor to edit it. This way, there is a complete record of te analysis.
+> To make code and workflow reproducible and easy to re-run, it's better to **save code in a script** and use the script editor to edit it. This way, there is a complete record of the analysis.
 
 ### Creating a new script
 
@@ -223,7 +223,9 @@ different conventions for long variable names, these include
   * **snake_case: underscores\_between_words**
 
 
-While I suggest you use snake_case, ultimately what you use is up to you, but **be consistent**.
+While I suggest you use snake_case, ultimately what you use is up to you, but **be consistent**. 
+
+Even more important is that **variable names are descriptive enough** of what they contain. So long and descriptive is better than shorter and cryptic.
 
 
 ## Comparing things
