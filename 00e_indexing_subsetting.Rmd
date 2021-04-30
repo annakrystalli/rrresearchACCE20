@@ -4,7 +4,7 @@
 > R has many powerful subset operators. Mastering them will allow you to
 easily perform complex operations on any kind of dataset.
 
-There many different ways we can subset any kind of object, and three
+There are many different ways we can subset any kind of object, and three
 different subsetting operators for the different data structures.
 
 
@@ -23,7 +23,7 @@ x
 
 #### Extracting single elements
 
-To extract elements of a vector we can use the square bracket operator (`[`) and the target element index, starting from one:
+To extract elements of a vector we can use the square bracket operator (`[`) and the target element index,**starting from one** (as R is a 1 indexed language):
 
 ```{r}
 x[1]
@@ -35,7 +35,7 @@ x[4]
 
 It may look different, but the square brackets operator is a function and means "get me the nth element".
 
-If we ask for an index beyond the length of the vector, R will return a missing value:
+If we ask for an index beyond the length of the vector, R will return a missing value (`NA`):
 ```{r}
 x[6]
 ```
@@ -144,7 +144,7 @@ x[names(x) == "a"]
 
 <div class="alert alert-warning">
 
-Avoid using `==` to compare numbers! See [function `dplyr::near()`](https://dplyr.tidyverse.org/reference/near.html) instead.
+Avoid using `==` to compare numbers unless they are integers! See [function `dplyr::near()`](https://dplyr.tidyverse.org/reference/near.html) instead.
 
 </div>
 
@@ -431,7 +431,7 @@ trees[, "Girth", drop=FALSE]
 
 ## Advanced R Cheat Sheet
 
-```{r, echo=FALSE, fig.cap="Environments, data Structures, Functions, Subsetting and more by Arianne Colton and Sean Chen"}
-knitr::include_url("https://rstudio.com/wp-content/uploads/2016/02/advancedR.pdf")
+```{r, echo=FALSE}
+knitr::include_graphics("assets/cheatsheets/advancedR.pdf")
 ```
 
