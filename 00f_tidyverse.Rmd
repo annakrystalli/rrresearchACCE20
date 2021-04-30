@@ -157,10 +157,10 @@ tree_tbl %>%
     slice(1:2)
 ```
 
-This is form is very understandable because it focusses on intuitive verbs, not nouns. You can read this series of function compositions like it’s a set of imperative actions.
+This form is very understandable because it focuses on intuitive verbs, not nouns. You can read this series of function compositions like it’s a set of imperative actions.
 
 
-As mentioned, the default behaviour of the pipe is to pipe objects as the first argument of the next expression. However, we can pipe the object into a different argument using the `.` operator.
+As mentioned, the **default behaviour** of the pipe is to pipe objects through **as the first argument** of the next expression. However, we can **pipe the object into a different argument using the `.` operator**.
 
 ```{r}
 tree_tbl %>%
@@ -170,7 +170,7 @@ tree_tbl %>%
 
 _Note: The pipe, `%>%`, comes from the `magrittr` package by Stefan Milton Bache. Packages in the tidyverse load `%>%` for you automatically, so you don’t usually load `magrittr` explicitly._
 
-## Advanced R Cheat Sheet
+## Data Transformation with `dplyr` Cheat Sheet 
 
 ```{r, echo=FALSE}
 knitr::include_graphics("assets/cheatsheets/data-transformation.pdf")
