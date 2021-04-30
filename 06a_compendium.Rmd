@@ -729,7 +729,13 @@ Remember to knit your `README.Rmd` to it's `.md` version.
 
 Next, we'll **create a GitHub repository to share our compendium**. We'll make use of our `GITHUB_PAT` and go for `https` authentication. We can do this with function:
 
+You will need to set up `gitcreds` again in this new project!
+
 ```{r, eval=FALSE}
+# configure GitHub PAT credentials
+gitcreds::gitcreds_set()
+
+# create GitHub repository and push
 usethis::use_github(protocol = "https")
 ```
 
