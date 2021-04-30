@@ -42,6 +42,7 @@ To better understand the importance of data types and coersion, let's meet a spe
 
 To create a new vector use function `vector()`. You can specify the length of the vector with argument `length` and the base data type through argument `mode`.
 
+
 ```{r}
 my_vector <- vector(length = 3)
 my_vector
@@ -50,21 +51,20 @@ my_vector
 A vector in R is essentially an ordered list of things, with the special
 condition that *everything in the vector must be the same basic data type*. 
 
+If you don't choose the datatype, it'll default to `logical`. 
+
 ```{r}
 typeof(my_vector)
 ```
 
-If you don't choose the datatype, it'll default to `logical`; or, you can declare
-an empty vector of whatever type you like.
-
-
+Otherwise, you can declare an empty vector of whatever type you like using argument `mode`.
 ```{r}
 another_vector <- vector(mode='character', length=3)
 another_vector
 ```
 
 
-You can also make series of numbers:
+You can also create a vector of a series of numbers:
 
 ```{r}
 1:10
@@ -156,7 +156,7 @@ The somewhat cryptic output from this command indicates the basic data type
 found in this vector - in this case `int`, integer; an indication of the
 number of things in the vector - actually, the indexes of the vector, in this
 case `[1:10]`; and a few examples of what's actually in the vector - in this case
-empty character strings. If we similarly do
+ascending integers. 
 
 
 Finally, you can give names to elements in your vector:
@@ -175,7 +175,7 @@ names(my_example)
 > Matrices are 2 dimensional arrays 
 
 
-The dimensions are defined by the number of rows and columns.
+The lengths of each dimension are defined by the number of rows and columns.
 
 We can declare a matrix full of zeros:
 
@@ -185,7 +185,7 @@ matrix_example
 ```
 
 
-We can get the dimensions of a matrix (or any array with dimensions > 1).
+We can get the number of dimensions of a matrix (or of any array with dimensions > 1) and their length.
 
 ```{r}
 dim(matrix_example)
@@ -196,7 +196,7 @@ dim(matrix_example)
 
 > Lists can store objects of any data type and class
 
-Another key data structure is the `list`. List are the most flexible data structure because each element can hold any object, of any datat type and dimension, including other lists.
+Another key data structure is the `list`. List are the most flexible data structure because each element can hold any object, of any data type and dimension, including other lists.
 
 Create lists using `list()` or coerce other objects using `as.list()`. 
 ```{r}
@@ -236,7 +236,7 @@ Such objects have a class attribute (base types can have a class attribute too),
 
 > The most important S3 object class in R is the data.frame. Data.frames are special types of lists.
 
-Data.frames are special types of lists where each element is a vector, each of equal length. So each column of a data.frame contains values of consistent data type but the data type can vary between columns (ie along rows).
+Data.frames are special types of lists where each element is a vector, each of equal length. So each column of a data.frame contains values of consistent data type but the data type can vary between columns (i.e. along rows).
 
 ```{r}
 df <- data.frame(id = 1:3, 
@@ -279,7 +279,7 @@ head(df, 1)
 tail(df, 1)
 ```
 
-Importantly, we can disply the structure of a data.frame
+Importantly, we can display the structure of a data.frame.
 
 ```{r}
 str(df)
@@ -287,7 +287,7 @@ str(df)
 
 ### A note on factors
 
-Note that the default behaviour of `data.frame()` is to covert character vectors to factors. Factors are another important data structure for handling categorical data, which have particular statistical properties. They can be useful during modeling and plotting but in the interest of time we will not be discuss them further here.
+Note that the default behaviour of `data.frame()` USED TO BE  to covert character vectors to factors (this default changed as of R 4.0.0). Factors are another important data structure for handling categorical data, which have particular statistical properties. They can be useful during modelling and plotting but in the interest of time we will not be discuss them further here.
 
 You can suppress R default behaviour using:
 
