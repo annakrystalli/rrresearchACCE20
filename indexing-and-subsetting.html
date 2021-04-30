@@ -220,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>R has many powerful subset operators. Mastering them will allow you to
 easily perform complex operations on any kind of dataset.</p>
 </blockquote>
-<p>There many different ways we can subset any kind of object, and three
+<p>There are many different ways we can subset any kind of object, and three
 different subsetting operators for the different data structures.</p>
 <div id="subsetting-vectors" class="section level2">
 <h2>Subsetting vectors</h2>
@@ -235,13 +235,13 @@ different subsetting operators for the different data structures.</p>
 <h3>Subsetting using <code>[</code> and elements indices</h3>
 <div id="extracting-single-elements" class="section level4">
 <h4>Extracting single elements</h4>
-<p>To extract elements of a vector we can use the square bracket operator (<code>[</code>) and the target element index, starting from one:</p>
+<p>To extract elements of a vector we can use the square bracket operator (<code>[</code>) and the target element index,<strong>starting from one</strong> (as R is a 1 indexed language):</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="indexing-and-subsetting.html#cb142-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="indexing-and-subsetting.html#cb144-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">4</span>]</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 <p>It may look different, but the square brackets operator is a function and means “get me the nth element”.</p>
-<p>If we ask for an index beyond the length of the vector, R will return a missing value:</p>
+<p>If we ask for an index beyond the length of the vector, R will return a missing value (<code>NA</code>):</p>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="indexing-and-subsetting.html#cb146-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">6</span>]</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>If we ask for the 0th element, we get an empty vector:</p>
@@ -309,7 +309,7 @@ selects the elements of <code>x</code> corresponding to the <code>TRUE</code> va
 <pre><code>## a 
 ## 4</code></pre>
 <div class="alert alert-warning">
-<p>Avoid using <code>==</code> to compare numbers! See <a href="https://dplyr.tidyverse.org/reference/near.html">function <code>dplyr::near()</code></a> instead.</p>
+<p>Avoid using <code>==</code> to compare numbers unless they are integers! See <a href="https://dplyr.tidyverse.org/reference/near.html">function <code>dplyr::near()</code></a> instead.</p>
 </div>
 <p>We also might want to subset using a vector of potential values, that might not necessarily have matches in <code>x</code>.</p>
 <p>In this case we can use <code>%in%</code></p>
@@ -637,13 +637,7 @@ the elements are mixed types):</p>
 </div>
 <div id="advanced-r-cheat-sheet" class="section level2">
 <h2>Advanced R Cheat Sheet</h2>
-<div class="figure"><span id="fig:unnamed-chunk-109"></span>
-<iframe src="https://rstudio.com/wp-content/uploads/2016/02/advancedR.pdf" width="672" height="400px">
-</iframe>
-<p class="caption">
-Figure 1: Environments, data Structures, Functions, Subsetting and more by Arianne Colton and Sean Chen
-</p>
-</div>
+<p><embed src="assets/cheatsheets/advancedR.pdf" /><!-- --></p>
 
 </div>
 </div>

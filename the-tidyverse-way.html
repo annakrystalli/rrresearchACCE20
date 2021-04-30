@@ -419,8 +419,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   &lt;dbl&gt;  &lt;dbl&gt;
 ## 1   8.3   10.3
 ## 2   8.6   10.3</code></pre>
-<p>This is form is very understandable because it focusses on intuitive verbs, not nouns. You can read this series of function compositions like it’s a set of imperative actions.</p>
-<p>As mentioned, the default behaviour of the pipe is to pipe objects as the first argument of the next expression. However, we can pipe the object into a different argument using the <code>.</code> operator.</p>
+<p>This form is very understandable because it focuses on intuitive verbs, not nouns. You can read this series of function compositions like it’s a set of imperative actions.</p>
+<p>As mentioned, the <strong>default behaviour</strong> of the pipe is to pipe objects through <strong>as the first argument</strong> of the next expression. However, we can <strong>pipe the object into a different argument using the <code>.</code> operator</strong>.</p>
 <div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="the-tidyverse-way.html#cb248-1" aria-hidden="true" tabindex="-1"></a>tree_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb248-2"><a href="the-tidyverse-way.html#cb248-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(Girth <span class="sc">~</span> Height, <span class="at">data =</span> .)</span></code></pre></div>
 <pre><code>## 
@@ -432,8 +432,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     -6.1884       0.2557</code></pre>
 <p><em>Note: The pipe, <code>%&gt;%</code>, comes from the <code>magrittr</code> package by Stefan Milton Bache. Packages in the tidyverse load <code>%&gt;%</code> for you automatically, so you don’t usually load <code>magrittr</code> explicitly.</em></p>
 </div>
-<div id="advanced-r-cheat-sheet-1" class="section level2">
-<h2>Advanced R Cheat Sheet</h2>
+<div id="data-transformation-with-dplyr-cheat-sheet" class="section level2">
+<h2>Data Transformation with <code>dplyr</code> Cheat Sheet</h2>
 <p><embed src="assets/cheatsheets/data-transformation.pdf" /><!-- --></p>
 
 </div>

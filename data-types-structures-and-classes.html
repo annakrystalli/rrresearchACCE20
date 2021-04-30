@@ -265,14 +265,14 @@ basic data types.</p>
 <pre><code>## [1] FALSE FALSE FALSE</code></pre>
 <p>A vector in R is essentially an ordered list of things, with the special
 condition that <em>everything in the vector must be the same basic data type</em>.</p>
+<p>If you don’t choose the datatype, it’ll default to <code>logical</code>.</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-types-structures-and-classes.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(my_vector)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<p>If you don’t choose the datatype, it’ll default to <code>logical</code>; or, you can declare
-an empty vector of whatever type you like.</p>
+<p>Otherwise, you can declare an empty vector of whatever type you like using argument <code>mode</code>.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-types-structures-and-classes.html#cb63-1" aria-hidden="true" tabindex="-1"></a>another_vector <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode=</span><span class="st">&#39;character&#39;</span>, <span class="at">length=</span><span class="dv">3</span>)</span>
 <span id="cb63-2"><a href="data-types-structures-and-classes.html#cb63-2" aria-hidden="true" tabindex="-1"></a>another_vector</span></code></pre></div>
 <pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
-<p>You can also make series of numbers:</p>
+<p>You can also create a vector of a series of numbers:</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-types-structures-and-classes.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data-types-structures-and-classes.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>)</span></code></pre></div>
@@ -351,7 +351,7 @@ your columns of data.frames, or you will get nasty surprises!</p>
 found in this vector - in this case <code>int</code>, integer; an indication of the
 number of things in the vector - actually, the indexes of the vector, in this
 case <code>[1:10]</code>; and a few examples of what’s actually in the vector - in this case
-empty character strings. If we similarly do</p>
+ascending integers.</p>
 <p>Finally, you can give names to elements in your vector:</p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="data-types-structures-and-classes.html#cb104-1" aria-hidden="true" tabindex="-1"></a>my_example <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">8</span></span>
 <span id="cb104-2"><a href="data-types-structures-and-classes.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my_example) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</span>
@@ -367,7 +367,7 @@ empty character strings. If we similarly do</p>
 <blockquote>
 <p>Matrices are 2 dimensional arrays</p>
 </blockquote>
-<p>The dimensions are defined by the number of rows and columns.</p>
+<p>The lengths of each dimension are defined by the number of rows and columns.</p>
 <p>We can declare a matrix full of zeros:</p>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="data-types-structures-and-classes.html#cb108-1" aria-hidden="true" tabindex="-1"></a>matrix_example <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">ncol=</span><span class="dv">6</span>, <span class="at">nrow=</span><span class="dv">3</span>)</span>
 <span id="cb108-2"><a href="data-types-structures-and-classes.html#cb108-2" aria-hidden="true" tabindex="-1"></a>matrix_example</span></code></pre></div>
@@ -375,7 +375,7 @@ empty character strings. If we similarly do</p>
 ## [1,]    0    0    0    0    0    0
 ## [2,]    0    0    0    0    0    0
 ## [3,]    0    0    0    0    0    0</code></pre>
-<p>We can get the dimensions of a matrix (or any array with dimensions &gt; 1).</p>
+<p>We can get the number of dimensions of a matrix (or of any array with dimensions &gt; 1) and their length.</p>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="data-types-structures-and-classes.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(matrix_example)</span></code></pre></div>
 <pre><code>## [1] 3 6</code></pre>
 </div>
@@ -385,7 +385,7 @@ empty character strings. If we similarly do</p>
 <blockquote>
 <p>Lists can store objects of any data type and class</p>
 </blockquote>
-<p>Another key data structure is the <code>list</code>. List are the most flexible data structure because each element can hold any object, of any datat type and dimension, including other lists.</p>
+<p>Another key data structure is the <code>list</code>. List are the most flexible data structure because each element can hold any object, of any data type and dimension, including other lists.</p>
 <p>Create lists using <code>list()</code> or coerce other objects using <code>as.list()</code>.</p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="data-types-structures-and-classes.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [[1]]
@@ -437,7 +437,7 @@ empty character strings. If we similarly do</p>
 <blockquote>
 <p>The most important S3 object class in R is the data.frame. Data.frames are special types of lists.</p>
 </blockquote>
-<p>Data.frames are special types of lists where each element is a vector, each of equal length. So each column of a data.frame contains values of consistent data type but the data type can vary between columns (ie along rows).</p>
+<p>Data.frames are special types of lists where each element is a vector, each of equal length. So each column of a data.frame contains values of consistent data type but the data type can vary between columns (i.e. along rows).</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="data-types-structures-and-classes.html#cb120-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
 <span id="cb120-2"><a href="data-types-structures-and-classes.html#cb120-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">treatment =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;b&quot;</span>), </span>
 <span id="cb120-3"><a href="data-types-structures-and-classes.html#cb120-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">complete =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
@@ -468,7 +468,7 @@ empty character strings. If we similarly do</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-types-structures-and-classes.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df, <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##   id treatment complete
 ## 3  3         b    FALSE</code></pre>
-<p>Importantly, we can disply the structure of a data.frame</p>
+<p>Importantly, we can display the structure of a data.frame.</p>
 <div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="data-types-structures-and-classes.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
 ##  $ id       : int  1 2 3
@@ -477,7 +477,7 @@ empty character strings. If we similarly do</p>
 </div>
 <div id="a-note-on-factors" class="section level3">
 <h3>A note on factors</h3>
-<p>Note that the default behaviour of <code>data.frame()</code> is to covert character vectors to factors. Factors are another important data structure for handling categorical data, which have particular statistical properties. They can be useful during modeling and plotting but in the interest of time we will not be discuss them further here.</p>
+<p>Note that the default behaviour of <code>data.frame()</code> USED TO BE to covert character vectors to factors (this default changed as of R 4.0.0). Factors are another important data structure for handling categorical data, which have particular statistical properties. They can be useful during modelling and plotting but in the interest of time we will not be discuss them further here.</p>
 <p>You can suppress R default behaviour using:</p>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-types-structures-and-classes.html#cb138-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
 <span id="cb138-2"><a href="data-types-structures-and-classes.html#cb138-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">treatment =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;b&quot;</span>), </span>

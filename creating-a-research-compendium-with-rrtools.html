@@ -811,7 +811,12 @@ compendium</li>
 <div id="create-github-repository" class="section level2">
 <h2>🚦 Create GitHub repository</h2>
 <p>Next, we’ll <strong>create a GitHub repository to share our compendium</strong>. We’ll make use of our <code>GITHUB_PAT</code> and go for <code>https</code> authentication. We can do this with function:</p>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="creating-a-research-compendium-with-rrtools.html#cb673-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="at">protocol =</span> <span class="st">&quot;https&quot;</span>)</span></code></pre></div>
+<p>You will need to set up <code>gitcreds</code> again in this new project!</p>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="creating-a-research-compendium-with-rrtools.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="co"># configure GitHub PAT credentials</span></span>
+<span id="cb673-2"><a href="creating-a-research-compendium-with-rrtools.html#cb673-2" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span>
+<span id="cb673-3"><a href="creating-a-research-compendium-with-rrtools.html#cb673-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb673-4"><a href="creating-a-research-compendium-with-rrtools.html#cb673-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create GitHub repository and push</span></span>
+<span id="cb673-5"><a href="creating-a-research-compendium-with-rrtools.html#cb673-5" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="at">protocol =</span> <span class="st">&quot;https&quot;</span>)</span></code></pre></div>
 <pre><code>✔ Setting active project to &#39;/Users/Anna/Documents/workflows/rrcompendium&#39;
 ● Check title and description
   Name:        rrcompendium
@@ -1058,7 +1063,7 @@ abstract: |
   It consists of two paragraphs.
 
 journal: &quot;An awesome journal&quot;
-date: &quot;2021-04-29&quot;
+date: &quot;2021-04-30&quot;
 bibliography: mybibfile.bib
 #linenumbers: true
 #numbersections: true
