@@ -70,12 +70,11 @@ class: top, left, inverse
     
 - **Editor [rOpenSci](http://onboarding.ropensci.org/)**
 
-- **Co-organiser:** [Sheffield R Users group](https://www.meetup.com/SheffieldR-Sheffield-R-Users-Group/)
 
 --
 ## Course support
 
-Also here: **Bob Turner**, fellow Sheffield RSE
+Also here: **David Wilby** & **Bob Turner**, fellow Sheffield RSEs
 
 ---
 class: inverse
