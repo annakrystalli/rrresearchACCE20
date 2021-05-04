@@ -179,7 +179,7 @@ raw_data_path
 
 We can use `raw_data_path` as our basis for specifying paths to files within it. There's a number of ways we can do this in R but I wanted to introduce you to package `fs`. It has a nice interface and extensive functionality.
 
-```{r}
+```{r, eval=FALSE}
 fs::path(raw_data_path, "individual")
 ```
 
