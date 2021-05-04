@@ -58,6 +58,11 @@ We will use this file to perform the necessary preprocessing on our raw data.
 fs::dir_delete(here::here("data-raw", "wood-survey-data-master")) 
 ```
 
+However, in the mean time we will also be experimenting with code and copying code over to our `individual.R` script when we are happy with it. so let's create a new R script to work in.
+
+**File > New File > R script**
+
+Let's save this file in a new folder called **`attic/`** and save it as file `development.R`.
 
 ### Download data
 
@@ -162,11 +167,14 @@ First let's investigate our data. We want to access the files so we need to give
 Let's start by creating a path to the downloaded data directory using `here`. 
 ```{r}
 raw_data_path <- here::here("data-raw", "wood-survey-data-master")
+
+```
+```{r, eval=FALSE}
 raw_data_path
 ```
 
 ```r
-"/Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master"
+[1] "/cloud/project/data-raw/wood-survey-data-master"
 ```
 
 We can use `raw_data_path` as our basis for specifying paths to files within it. There's a number of ways we can do this in R but I wanted to introduce you to package `fs`. It has a nice interface and extensive functionality.
@@ -176,7 +184,7 @@ fs::path(raw_data_path, "individual")
 ```
 
 ```r
-/Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual
+/cloud/project/data-raw/wood-survey-data-master/individual
 ```
 
 
