@@ -235,9 +235,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="simple-loop" class="section level3">
 <h3>Simple loop</h3>
 <p>Here’s an example of a simple loop. During each iteration, it prints a message to the console, reporting the value of <code>i</code>.</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="iteration.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb277-2"><a href="iteration.html#cb277-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;i is &quot;</span>, i))</span>
-<span id="cb277-3"><a href="iteration.html#cb277-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="iteration.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb276-2"><a href="iteration.html#cb276-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;i is &quot;</span>, i))</span>
+<span id="cb276-3"><a href="iteration.html#cb276-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;i is 1&quot;
 ## [1] &quot;i is 2&quot;
 ## [1] &quot;i is 3&quot;
@@ -262,9 +262,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The previous loop we saw didn’t generate any new objects, it just printed output to the console. We, however, need to store the output of each iteration (the tibble we’ve just read in).</p>
 <p>It’s important for efficiency to allocate sufficient space for the output before starting a <code>for</code> loop. Growing the <code>for</code> loop at each iteration, using <code>c()</code> for example, will be very slow.</p>
 <p>Let’s create an output vector to store the tibbles containing the read in data. We want it to be a list because we’ll be storing heterogeneous objects (tibbles) in each element.</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="iteration.html#cb279-1" aria-hidden="true" tabindex="-1"></a>indiv_df_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(individual_paths))</span>
-<span id="cb279-2"><a href="iteration.html#cb279-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb279-3"><a href="iteration.html#cb279-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(indiv_df_list)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="iteration.html#cb278-1" aria-hidden="true" tabindex="-1"></a>indiv_df_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(individual_paths))</span>
+<span id="cb278-2"><a href="iteration.html#cb278-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb278-3"><a href="iteration.html#cb278-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(indiv_df_list)</span></code></pre></div>
 <pre><code>## [[1]]
 ## NULL
 ## 
@@ -287,17 +287,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="looping-over-indices" class="section level4">
 <h4>Looping over indices</h4>
 <p>Next, we need a sequence of indices as long as the input vector (<code>individual_paths</code>). We can use <code>seq_along()</code> to create our index vector:</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="iteration.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_along</span>(individual_paths)</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="iteration.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_along</span>(individual_paths)</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 ## [26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
 ## [51] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67</code></pre>
 <p>Now we’re ready to write our <code>for</code> loop.</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="iteration.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(individual_paths)){</span>
-<span id="cb283-2"><a href="iteration.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  indiv_df_list[[i]] <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(individual_paths[[i]])</span>
-<span id="cb283-3"><a href="iteration.html#cb283-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="iteration.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(individual_paths)){</span>
+<span id="cb282-2"><a href="iteration.html#cb282-2" aria-hidden="true" tabindex="-1"></a>  indiv_df_list[[i]] <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(individual_paths[[i]])</span>
+<span id="cb282-3"><a href="iteration.html#cb282-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>At each step of the iteration, the file specified in the <code>i</code>th element of <code>individual_paths</code> is read in and assigned to th <code>i</code>th element of our output list.</p>
 <p>We can extract individual tibbles using <code>[[</code> sub-setting to inspect:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="iteration.html#cb284-1" aria-hidden="true" tabindex="-1"></a>indiv_df_list[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="iteration.html#cb283-1" aria-hidden="true" tabindex="-1"></a>indiv_df_list[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## # A tibble: 376 x 12
 ##    uid     namedLocation  date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt;   &lt;chr&gt;          &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -313,7 +313,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 ef16cb… BART_044.base… 2015-08-26 vst_BA… D01      BART   BART_… NEON.PLA.D0…
 ## # … with 366 more rows, and 4 more variables: growthForm &lt;chr&gt;,
 ## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="iteration.html#cb286-1" aria-hidden="true" tabindex="-1"></a>indiv_df_list[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="iteration.html#cb285-1" aria-hidden="true" tabindex="-1"></a>indiv_df_list[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## # A tibble: 714 x 12
 ##    uid     namedLocation  date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt;   &lt;chr&gt;          &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -334,17 +334,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="looping-over-objects" class="section level5">
 <h5>Looping over objects</h5>
 <p>We can also loop over objects instead of indices.</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="iteration.html#cb288-1" aria-hidden="true" tabindex="-1"></a>indiv_df_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(individual_paths))</span>
-<span id="cb288-2"><a href="iteration.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(indiv_df_list) <span class="ot">&lt;-</span> <span class="fu">basename</span>(individual_paths)</span>
-<span id="cb288-3"><a href="iteration.html#cb288-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb288-4"><a href="iteration.html#cb288-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(path <span class="cf">in</span> individual_paths){</span>
-<span id="cb288-5"><a href="iteration.html#cb288-5" aria-hidden="true" tabindex="-1"></a>  indiv_df_list[[<span class="fu">basename</span>(path)]] <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(path)</span>
-<span id="cb288-6"><a href="iteration.html#cb288-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="iteration.html#cb287-1" aria-hidden="true" tabindex="-1"></a>indiv_df_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(individual_paths))</span>
+<span id="cb287-2"><a href="iteration.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(indiv_df_list) <span class="ot">&lt;-</span> <span class="fu">basename</span>(individual_paths)</span>
+<span id="cb287-3"><a href="iteration.html#cb287-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb287-4"><a href="iteration.html#cb287-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(path <span class="cf">in</span> individual_paths){</span>
+<span id="cb287-5"><a href="iteration.html#cb287-5" aria-hidden="true" tabindex="-1"></a>  indiv_df_list[[<span class="fu">basename</span>(path)]] <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(path)</span>
+<span id="cb287-6"><a href="iteration.html#cb287-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>In this case, we supply the paths themselves as the input to our loop and these are passed as-is to <code>read_csv()</code>.</p>
 <p>This time we don’t have our element indices to index the elements of the output list each tibble should be stored in. To get around this we assign names to each element and index the output list by name.</p>
 <p>I’ve chosen to use the <code>basename</code> (actual file name) of each path as a name, which I can get through <code>basename()</code>.</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="iteration.html#cb289-1" aria-hidden="true" tabindex="-1"></a>individual_paths[<span class="dv">1</span>]</span>
-<span id="cb289-2"><a href="iteration.html#cb289-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basename</span>(individual_paths[<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="iteration.html#cb288-1" aria-hidden="true" tabindex="-1"></a>individual_paths[<span class="dv">1</span>]</span>
+<span id="cb288-2"><a href="iteration.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basename</span>(individual_paths[<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T172340Z.csv</code></pre>
 <pre><code>## [1] &quot;NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T172340Z.csv&quot;</code></pre>
 </div>
@@ -355,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="base-r" class="section level5">
 <h5>Base R</h5>
 <p>One first approach we might think of is to use base function <code>rbind()</code>. This takes any number of tibbles as arguments and binds them all together.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="iteration.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(indiv_df_list) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="iteration.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(indiv_df_list) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T172340Z.csv
 ## indiv_df_list List,12                                                                              
 ##               NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T144119Z.csv
@@ -492,7 +492,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## indiv_df_list List,12</code></pre>
 <p>Hmm, that doesn’t seem to have done what we want. That’s because <code>rbind</code> expects multiple tibbles as inputs and we’re giving it a single list. We somehow want to extract the contents of each element of <code>indiv_df_list</code> and pass them all to <code>rbind</code>.</p>
 <p>For this we can use <code>do.call</code>.<code>do.call</code> takes a function or the name of a function we want to execute as it’s first argument, <code>what</code>. The second argument of <code>do.call</code>, <code>args</code> is a <strong>list</strong> of arguments we want to pass to the function specified in <code>what</code>. When <code>do.call</code> is executed, it extracts the elements of <code>args</code> and passes them as arguments to <code>what</code>.</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="iteration.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">do.call</span>(<span class="at">what =</span> <span class="st">&quot;rbind&quot;</span>, <span class="at">args =</span> indiv_df_list)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="iteration.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">do.call</span>(<span class="at">what =</span> <span class="st">&quot;rbind&quot;</span>, <span class="at">args =</span> indiv_df_list)</span></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 12
 ##    uid     namedLocation  date       eventID domainID siteID plotID individualID
 ##  * &lt;chr&gt;   &lt;chr&gt;          &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -515,7 +515,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>There are also ways to do this using the tidyverse.</p>
 <p><strong><code>purrr::reduce</code></strong></p>
 <p><code>reduce</code> from package <code>purrr</code> combines the elements of a vector or list into a single object according to the function supplied to <code>.f</code>.</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="iteration.html#cb296-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">reduce</span>(indiv_df_list, <span class="at">.f =</span> rbind)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="iteration.html#cb295-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">reduce</span>(indiv_df_list, <span class="at">.f =</span> rbind)</span></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 12
 ##    uid     namedLocation  date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt;   &lt;chr&gt;          &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -533,7 +533,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   stemDiameter &lt;dbl&gt;, measurementHeight &lt;dbl&gt;, height &lt;dbl&gt;</code></pre>
 <p><strong><code>dplyr::bind_rows</code></strong></p>
 <p><code>bind_rows</code> offers a shortcut to reducing a list of tibbles.</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="iteration.html#cb298-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(indiv_df_list)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="iteration.html#cb297-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(indiv_df_list)</span></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 12
 ##    uid     namedLocation  date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt;   &lt;chr&gt;          &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -573,23 +573,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="map" class="section level4">
 <h4><code>map</code></h4>
 <p>The basic <code>purrr</code> function is <code>map()</code> and it allows us to pass the elements of an input vector or list to a single argument of a function we want to repeat. It also has a handy shortcut for specifying the argument to pass the input object to.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="iteration.html#cb300-1" aria-hidden="true" tabindex="-1"></a>indiv_df_list <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(individual_paths,</span>
-<span id="cb300-2"><a href="iteration.html#cb300-2" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> .x))</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="iteration.html#cb299-1" aria-hidden="true" tabindex="-1"></a>indiv_df_list <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(individual_paths,</span>
+<span id="cb299-2"><a href="iteration.html#cb299-2" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> .x))</span></code></pre></div>
 <p>The first argument to <code>map</code> is the input vector of paths we want to iterate over. The next argument is a formula specifying the function we want to repeat as well as which argument the input is passed to.</p>
 <p>Here we’re saying that we want to repeatedly run <code>read_csv</code> and we indicate the argument we want the input passed to (<code>file</code>) by <code>.x</code>. Note as well the <code>~</code> notation before the function definition which is shorthand for <code>.f =</code>.</p>
 </div>
 <div id="map_df" class="section level4">
 <h4><code>map_df</code></h4>
 <p>Just like our loop, <code>map</code> returns an output list.</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="iteration.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(indiv_df_list)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="iteration.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(indiv_df_list)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>We would therefore need to combine them together in another step.</p>
 <p>However, one of the great things about <code>purrr</code> functions is that you can specify what you expect the output of the mapped function to be. THere are functions that take advantage of that knowledge and bind or format the outputs appropriately.</p>
 <p>Because we know the output of <code>read_csv()</code> is a tibble, we can use <code>map_df()</code> instead of <code>map()</code>.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="iteration.html#cb303-1" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
-<span id="cb303-2"><a href="iteration.html#cb303-2" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(.x))</span>
-<span id="cb303-3"><a href="iteration.html#cb303-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb303-4"><a href="iteration.html#cb303-4" aria-hidden="true" tabindex="-1"></a>individual</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="iteration.html#cb302-1" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
+<span id="cb302-2"><a href="iteration.html#cb302-2" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(.x))</span>
+<span id="cb302-3"><a href="iteration.html#cb302-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-4"><a href="iteration.html#cb302-4" aria-hidden="true" tabindex="-1"></a>individual</span></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 12
 ##    uid     namedLocation  date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt;   &lt;chr&gt;          &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -613,11 +613,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The elegant code above mean that <code>type_convert()</code> is for every file that is loaded, ie 67 times.</p>
 <p>A more efficent way of implementing this to set all columns as character on-read and then run <code>type_convert</code> ourselves, only once, and only after our data have been combined into a single tibble.</p>
 <p>We can set all columns to character by default by providing column formating function <code>readr::cols(.default = "c"))</code> as the <code>read_csv</code> <code>col_types</code> argument.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="iteration.html#cb305-1" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
-<span id="cb305-2"><a href="iteration.html#cb305-2" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(.x, <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb305-3"><a href="iteration.html#cb305-3" aria-hidden="true" tabindex="-1"></a>            readr<span class="sc">::</span><span class="fu">type_convert</span>()</span>
-<span id="cb305-4"><a href="iteration.html#cb305-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb305-5"><a href="iteration.html#cb305-5" aria-hidden="true" tabindex="-1"></a>individual  </span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="iteration.html#cb304-1" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
+<span id="cb304-2"><a href="iteration.html#cb304-2" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(.x, <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb304-3"><a href="iteration.html#cb304-3" aria-hidden="true" tabindex="-1"></a>            readr<span class="sc">::</span><span class="fu">type_convert</span>()</span>
+<span id="cb304-4"><a href="iteration.html#cb304-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb304-5"><a href="iteration.html#cb304-5" aria-hidden="true" tabindex="-1"></a>individual  </span></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 12
 ##    uid     namedLocation  date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt;   &lt;chr&gt;          &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -640,28 +640,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Learn more about <a href="http://adv-r.had.co.nz/Performance.html">perfomance and efficency</a> in general.</p>
 <div id="simple-benchmark" class="section level5">
 <h5>simple benchmark</h5>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="iteration.html#cb307-1" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>({</span>
-<span id="cb307-2"><a href="iteration.html#cb307-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tidyverse</span></span>
-<span id="cb307-3"><a href="iteration.html#cb307-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
-<span id="cb307-4"><a href="iteration.html#cb307-4" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(.x))},</span>
-<span id="cb307-5"><a href="iteration.html#cb307-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tidyverse + read in as character</span></span>
-<span id="cb307-6"><a href="iteration.html#cb307-6" aria-hidden="true" tabindex="-1"></a>  {purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
-<span id="cb307-7"><a href="iteration.html#cb307-7" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(.x, <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb307-8"><a href="iteration.html#cb307-8" aria-hidden="true" tabindex="-1"></a>            readr<span class="sc">::</span><span class="fu">type_convert</span>()},</span>
-<span id="cb307-9"><a href="iteration.html#cb307-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># vroom package</span></span>
-<span id="cb307-10"><a href="iteration.html#cb307-10" aria-hidden="true" tabindex="-1"></a>  {vroom<span class="sc">::</span><span class="fu">vroom</span>(individual_paths)},</span>
-<span id="cb307-11"><a href="iteration.html#cb307-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># data.table</span></span>
-<span id="cb307-12"><a href="iteration.html#cb307-12" aria-hidden="true" tabindex="-1"></a>  {<span class="fu">lapply</span>(individual_paths, data.table<span class="sc">::</span>fread, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb307-13"><a href="iteration.html#cb307-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">do.call</span>(<span class="st">&quot;rbind&quot;</span>, .)},</span>
-<span id="cb307-14"><a href="iteration.html#cb307-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># purrr + data.table</span></span>
-<span id="cb307-15"><a href="iteration.html#cb307-15" aria-hidden="true" tabindex="-1"></a>  {purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths, data.table<span class="sc">::</span>fread, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>)},</span>
-<span id="cb307-16"><a href="iteration.html#cb307-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">20</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="iteration.html#cb308-1" aria-hidden="true" tabindex="-1"></a>       min        lq      mean    median        uq       max neval</span>
-<span id="cb308-2"><a href="iteration.html#cb308-2" aria-hidden="true" tabindex="-1"></a> <span class="fl">372.77828</span> <span class="fl">389.98348</span> <span class="fl">416.70189</span> <span class="fl">395.01877</span> <span class="fl">437.90033</span> <span class="fl">512.19128</span>    <span class="dv">20</span></span>
-<span id="cb308-3"><a href="iteration.html#cb308-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">150.52621</span> <span class="fl">164.60759</span> <span class="fl">190.92799</span> <span class="fl">175.99858</span> <span class="fl">192.44910</span> <span class="fl">322.73216</span>    <span class="dv">20</span></span>
-<span id="cb308-4"><a href="iteration.html#cb308-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">265.06628</span> <span class="fl">272.09506</span> <span class="fl">307.39295</span> <span class="fl">285.53955</span> <span class="fl">320.84952</span> <span class="fl">518.55182</span>    <span class="dv">20</span></span>
-<span id="cb308-5"><a href="iteration.html#cb308-5" aria-hidden="true" tabindex="-1"></a>  <span class="fl">50.09148</span>  <span class="fl">53.22408</span>  <span class="fl">72.28593</span>  <span class="fl">58.26753</span>  <span class="fl">63.00565</span> <span class="fl">182.50278</span>    <span class="dv">20</span></span>
-<span id="cb308-6"><a href="iteration.html#cb308-6" aria-hidden="true" tabindex="-1"></a>  <span class="fl">57.48761</span>  <span class="fl">58.76176</span>  <span class="fl">63.39054</span>  <span class="fl">63.31130</span>  <span class="fl">66.08371</span>  <span class="fl">75.92438</span>    <span class="dv">20</span></span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="iteration.html#cb306-1" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>({</span>
+<span id="cb306-2"><a href="iteration.html#cb306-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tidyverse</span></span>
+<span id="cb306-3"><a href="iteration.html#cb306-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
+<span id="cb306-4"><a href="iteration.html#cb306-4" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(.x))},</span>
+<span id="cb306-5"><a href="iteration.html#cb306-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tidyverse + read in as character</span></span>
+<span id="cb306-6"><a href="iteration.html#cb306-6" aria-hidden="true" tabindex="-1"></a>  {purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
+<span id="cb306-7"><a href="iteration.html#cb306-7" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(.x, <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb306-8"><a href="iteration.html#cb306-8" aria-hidden="true" tabindex="-1"></a>            readr<span class="sc">::</span><span class="fu">type_convert</span>()},</span>
+<span id="cb306-9"><a href="iteration.html#cb306-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># vroom package</span></span>
+<span id="cb306-10"><a href="iteration.html#cb306-10" aria-hidden="true" tabindex="-1"></a>  {vroom<span class="sc">::</span><span class="fu">vroom</span>(individual_paths)},</span>
+<span id="cb306-11"><a href="iteration.html#cb306-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># data.table</span></span>
+<span id="cb306-12"><a href="iteration.html#cb306-12" aria-hidden="true" tabindex="-1"></a>  {<span class="fu">lapply</span>(individual_paths, data.table<span class="sc">::</span>fread, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb306-13"><a href="iteration.html#cb306-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">do.call</span>(<span class="st">&quot;rbind&quot;</span>, .)},</span>
+<span id="cb306-14"><a href="iteration.html#cb306-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># purrr + data.table</span></span>
+<span id="cb306-15"><a href="iteration.html#cb306-15" aria-hidden="true" tabindex="-1"></a>  {purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths, data.table<span class="sc">::</span>fread, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>)},</span>
+<span id="cb306-16"><a href="iteration.html#cb306-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="iteration.html#cb307-1" aria-hidden="true" tabindex="-1"></a>       min        lq      mean    median        uq       max neval</span>
+<span id="cb307-2"><a href="iteration.html#cb307-2" aria-hidden="true" tabindex="-1"></a> <span class="fl">372.77828</span> <span class="fl">389.98348</span> <span class="fl">416.70189</span> <span class="fl">395.01877</span> <span class="fl">437.90033</span> <span class="fl">512.19128</span>    <span class="dv">20</span></span>
+<span id="cb307-3"><a href="iteration.html#cb307-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">150.52621</span> <span class="fl">164.60759</span> <span class="fl">190.92799</span> <span class="fl">175.99858</span> <span class="fl">192.44910</span> <span class="fl">322.73216</span>    <span class="dv">20</span></span>
+<span id="cb307-4"><a href="iteration.html#cb307-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">265.06628</span> <span class="fl">272.09506</span> <span class="fl">307.39295</span> <span class="fl">285.53955</span> <span class="fl">320.84952</span> <span class="fl">518.55182</span>    <span class="dv">20</span></span>
+<span id="cb307-5"><a href="iteration.html#cb307-5" aria-hidden="true" tabindex="-1"></a>  <span class="fl">50.09148</span>  <span class="fl">53.22408</span>  <span class="fl">72.28593</span>  <span class="fl">58.26753</span>  <span class="fl">63.00565</span> <span class="fl">182.50278</span>    <span class="dv">20</span></span>
+<span id="cb307-6"><a href="iteration.html#cb307-6" aria-hidden="true" tabindex="-1"></a>  <span class="fl">57.48761</span>  <span class="fl">58.76176</span>  <span class="fl">63.39054</span>  <span class="fl">63.31130</span>  <span class="fl">66.08371</span>  <span class="fl">75.92438</span>    <span class="dv">20</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -671,8 +671,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Remember the other two files included in our raw data, <code>vst_mappingandtagging.csv</code>, and <code>vst_perplotperyear.csv</code>? Well the truth is they also came in multiple files which I put together in pretty much the same way as you just did!</p>
 <p>So for posterity, let’s save this file out too. This isn’t our finished analytic data set, we still have some processing to do. So let’s just save it at <code>raw_data_path</code>, along with the other files.</p>
 <p>To write out a csv file we use <code>readr::write_csv()</code></p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="iteration.html#cb309-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb309-2"><a href="iteration.html#cb309-2" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="fu">file.path</span>(raw_data_path, <span class="st">&quot;vst_individual.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="iteration.html#cb308-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb308-2"><a href="iteration.html#cb308-2" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="fu">file.path</span>(raw_data_path, <span class="st">&quot;vst_individual.csv&quot;</span>))</span></code></pre></div>
 <hr />
 <p>Learn more about iteration and the family of <code>purrr</code> functions in the <a href="https://r4ds.had.co.nz/iteration.html">iteration chapter</a> in R for data science</p>
 

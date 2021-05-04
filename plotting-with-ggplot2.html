@@ -385,17 +385,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </iframe>
 </div>
 <p>Let’s load the library and create an empty plot:</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="plotting-with-ggplot2.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb430-2"><a href="plotting-with-ggplot2.html#cb430-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-3"><a href="plotting-with-ggplot2.html#cb430-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="plotting-with-ggplot2.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb429-2"><a href="plotting-with-ggplot2.html#cb429-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb429-3"><a href="plotting-with-ggplot2.html#cb429-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()</span></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-263-1.png" width="672" /></p>
 </div>
 <div id="specifying-the-data" class="section level4">
 <h4>Specifying the data</h4>
 <p>Next thing we need to do is specify the data.</p>
 <p>The first argument to <code>ggplot()</code> is the data we want to use for plotting, usually a data.frame or tibble. We can pipe that in to <code>ggplot()</code>.</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="plotting-with-ggplot2.html#cb431-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb431-2"><a href="plotting-with-ggplot2.html#cb431-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="plotting-with-ggplot2.html#cb430-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb430-2"><a href="plotting-with-ggplot2.html#cb430-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()</span></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-264-1.png" width="672" /></p>
 </div>
 <div id="mapping-to-aesthetics-with-aes" class="section level4">
@@ -409,8 +409,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mapping-variables-to-axes-x-and-y." class="section level5">
 <h5>Mapping variables to axes <code>x</code> and <code>y</code>.</h5>
 <p>In our case, we want to map variable <code>mpg</code> to aesthetic <code>x</code> (the x axis) and variable <code>hp</code> to aesthetic <code>y</code> (the y axis).</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="plotting-with-ggplot2.html#cb432-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb432-2"><a href="plotting-with-ggplot2.html#cb432-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp))</span></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="plotting-with-ggplot2.html#cb431-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb431-2"><a href="plotting-with-ggplot2.html#cb431-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp))</span></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-266-1.png" width="672" /></p>
 </div>
 </div>
@@ -437,9 +437,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="plotting-a-scatterplot" class="section level5">
 <h5>Plotting a scatterplot</h5>
 <p>To visualise the relationship between the data points in our two variables, and given both are numeric, we can plot them as points on a scatterplot using <code>geom_point()</code>.</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="plotting-with-ggplot2.html#cb433-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb433-2"><a href="plotting-with-ggplot2.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp)) <span class="sc">+</span></span>
-<span id="cb433-3"><a href="plotting-with-ggplot2.html#cb433-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="plotting-with-ggplot2.html#cb432-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb432-2"><a href="plotting-with-ggplot2.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp)) <span class="sc">+</span></span>
+<span id="cb432-3"><a href="plotting-with-ggplot2.html#cb432-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-268-1.png" width="672" /></p>
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_point.html" width="70%" height="400px">
 </iframe>
@@ -455,16 +455,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>size</code>: mapping to the size of points.</li>
 </ul>
 <p>Let’s now map the number of cylinders <code>cyl</code> to the <code>colour</code> of points.</p>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="plotting-with-ggplot2.html#cb434-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb434-2"><a href="plotting-with-ggplot2.html#cb434-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp, <span class="at">colour =</span> cyl)) <span class="sc">+</span></span>
-<span id="cb434-3"><a href="plotting-with-ggplot2.html#cb434-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="plotting-with-ggplot2.html#cb433-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb433-2"><a href="plotting-with-ggplot2.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp, <span class="at">colour =</span> cyl)) <span class="sc">+</span></span>
+<span id="cb433-3"><a href="plotting-with-ggplot2.html#cb433-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-270-1.png" width="672" /></p>
 <p>Now each point is coloured according to the value of <code>cyl</code>.</p>
 <p>Because <code>cyl</code> is numeric, the default behaviour of R is to present it on a continuous scale, hence the colour gradient legend.</p>
 <p>If we want to present <code>cyl</code> as a categorical variable, we can override that behaviour by turning it into a factor using <code>factor()</code></p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="plotting-with-ggplot2.html#cb435-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb435-2"><a href="plotting-with-ggplot2.html#cb435-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp, <span class="at">colour =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
-<span id="cb435-3"><a href="plotting-with-ggplot2.html#cb435-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="plotting-with-ggplot2.html#cb434-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb434-2"><a href="plotting-with-ggplot2.html#cb434-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp, <span class="at">colour =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
+<span id="cb434-3"><a href="plotting-with-ggplot2.html#cb434-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() </span></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-271-1.png" width="672" /></p>
 </div>
 <div id="adding-a-plot-theme" class="section level4">
@@ -473,10 +473,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://ggplot2.tidyverse.org/reference/theme.html" width="70%" height="400px">
 </iframe>
 <p><code>ggplot2</code> also has a number of in built themes. Let’s just use one of those.</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="plotting-with-ggplot2.html#cb436-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb436-2"><a href="plotting-with-ggplot2.html#cb436-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp, <span class="at">fill =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
-<span id="cb436-3"><a href="plotting-with-ggplot2.html#cb436-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb436-4"><a href="plotting-with-ggplot2.html#cb436-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="plotting-with-ggplot2.html#cb435-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb435-2"><a href="plotting-with-ggplot2.html#cb435-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp, <span class="at">fill =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
+<span id="cb435-3"><a href="plotting-with-ggplot2.html#cb435-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb435-4"><a href="plotting-with-ggplot2.html#cb435-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() </span></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-273-1.png" width="672" /></p>
 </div>
 </div>
@@ -488,10 +488,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s also say that, from previous knowledge, we expect that the relationship may vary according to the <code>growth_form</code></p>
 <p>So lets use data visualisation to explore the properties and relationships between the three variables.</p>
 <p>Start by loading the <code>ggplot2</code> as well as package <code>magrittr</code> so we have access to the pipe. Let’s read in the data and also narrow it down to our variables of interest using <code>dplyr::select()</code></p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="plotting-with-ggplot2.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb437-2"><a href="plotting-with-ggplot2.html#cb437-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb437-3"><a href="plotting-with-ggplot2.html#cb437-3" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb437-4"><a href="plotting-with-ggplot2.html#cb437-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(stem_diameter, height, growth_form)</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="plotting-with-ggplot2.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb436-2"><a href="plotting-with-ggplot2.html#cb436-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb436-3"><a href="plotting-with-ggplot2.html#cb436-3" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb436-4"><a href="plotting-with-ggplot2.html#cb436-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(stem_diameter, height, growth_form)</span></code></pre></div>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -518,7 +518,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exploratory-data-analysis" class="section level3">
 <h3>Exploratory Data Analysis</h3>
 <p>Before we start exploring the relationship between variables, it’s important to understand the statistical properties of the underlying data. Statistical summaries such as the output of <code>summary()</code> are a good starting point.</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="plotting-with-ggplot2.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(individual)</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="plotting-with-ggplot2.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(individual)</span></code></pre></div>
 <pre><code>##  stem_diameter        height       growth_form       
 ##  Min.   :  1.00   Min.   :  0.30   Length:14961      
 ##  1st Qu.: 11.60   1st Qu.:  5.30   Class :character  
@@ -537,16 +537,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Lets start with <code>stem_diameter</code> which is a numeric variable. As such we can use <code>geom_density</code> to plot the distribution of the data.</p>
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_density.html" width="70%" height="400px">
 </iframe>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="plotting-with-ggplot2.html#cb441-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb441-2"><a href="plotting-with-ggplot2.html#cb441-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stem_diameter)) <span class="sc">+</span></span>
-<span id="cb441-3"><a href="plotting-with-ggplot2.html#cb441-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="plotting-with-ggplot2.html#cb440-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb440-2"><a href="plotting-with-ggplot2.html#cb440-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stem_diameter)) <span class="sc">+</span></span>
+<span id="cb440-3"><a href="plotting-with-ggplot2.html#cb440-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-277-1.png" width="672" /></p>
 <p>The distribution across all our data looks quite skewed towards lower values and a lomg tail of larger values and even shows a small dip in a certain range of <code>stem_diameter</code>.</p>
 <p>Many statistical tests assume normality of the data and a common tranformation to such skewed numeric data might be to log them. <code>ggplot</code> allows us to perform such tranformations during plotting and prints it as part of the variable axes label.</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="plotting-with-ggplot2.html#cb443-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb443-2"><a href="plotting-with-ggplot2.html#cb443-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter))) <span class="sc">+</span></span>
-<span id="cb443-3"><a href="plotting-with-ggplot2.html#cb443-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="plotting-with-ggplot2.html#cb442-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb442-2"><a href="plotting-with-ggplot2.html#cb442-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter))) <span class="sc">+</span></span>
+<span id="cb442-3"><a href="plotting-with-ggplot2.html#cb442-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-278-1.png" width="672" /></p>
 <p>Still rather wonky and may well violate assumptions of statistical tests down the line but it is slightly better than before so just for demonstration purposes, let’s carry own presenting our data on a log scale.</p>
@@ -555,17 +555,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>One thing that can make such plots visually more appealing is to fill in the area under the distribution curve.</p>
 <p>This also gives us the opportunity to dig into what exactly the aesthetic mapping in <code>aes()</code> is doing.</p>
 <p>Let’s say we wanted to fill in the area with the colour <code>grey</code>. Our first instinct might me to use <code>aes()</code> in <code>ggplot()</code> and map aesthetic <code>fill</code> to the name of the colour <code>"grey"</code>.</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="plotting-with-ggplot2.html#cb445-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb445-2"><a href="plotting-with-ggplot2.html#cb445-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb445-3"><a href="plotting-with-ggplot2.html#cb445-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="plotting-with-ggplot2.html#cb444-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb444-2"><a href="plotting-with-ggplot2.html#cb444-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb444-3"><a href="plotting-with-ggplot2.html#cb444-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-279-1.png" width="672" /></p>
 <p>But this has unexpected results! This happens because we are supplying the colour name within <code>aes()</code>. <code>aes()</code> is for mapping variables to aesthetics and expects a variable name in our data or a vector of values.</p>
 <p>Here we are giving it a single character value which it converts to a factor. It then uses it’s default function for creating categorical colour scales to assign the first colour in that scale (red) to our single factor level <code>"grey"</code>. The important point here is that R is not interpretting <code>"grey"</code> as a colour, but as a categorical variable, as it did for <code>factor(cyl)</code>.</p>
 <p>To specify explicitly the fill colour of our density geom, we instead supply it as an <strong>argument to our <code>geom_density()</code> function, outside of <code>aes()</code></strong>. Let’s change both the <code>colour</code> of the line and <code>fill</code> to <code>"grey"</code>.</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="plotting-with-ggplot2.html#cb447-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb447-2"><a href="plotting-with-ggplot2.html#cb447-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter))) <span class="sc">+</span></span>
-<span id="cb447-3"><a href="plotting-with-ggplot2.html#cb447-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="plotting-with-ggplot2.html#cb446-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb446-2"><a href="plotting-with-ggplot2.html#cb446-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter))) <span class="sc">+</span></span>
+<span id="cb446-3"><a href="plotting-with-ggplot2.html#cb446-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1346 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-280-1.png" width="672" /></p>
 </div>
@@ -573,15 +573,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="distribution-of-height" class="section level5">
 <h5>Distribution of <code>height</code></h5>
 <p>We can similarly create a density plot for <code>height</code></p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="plotting-with-ggplot2.html#cb449-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb449-2"><a href="plotting-with-ggplot2.html#cb449-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
-<span id="cb449-3"><a href="plotting-with-ggplot2.html#cb449-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="plotting-with-ggplot2.html#cb448-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb448-2"><a href="plotting-with-ggplot2.html#cb448-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
+<span id="cb448-3"><a href="plotting-with-ggplot2.html#cb448-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1711 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-281-1.png" width="672" /></p>
 <p>It’s also a bit skewed so lets go ahead and work with <code>log()</code> values again.</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="plotting-with-ggplot2.html#cb451-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb451-2"><a href="plotting-with-ggplot2.html#cb451-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height))) <span class="sc">+</span></span>
-<span id="cb451-3"><a href="plotting-with-ggplot2.html#cb451-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="plotting-with-ggplot2.html#cb450-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb450-2"><a href="plotting-with-ggplot2.html#cb450-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height))) <span class="sc">+</span></span>
+<span id="cb450-3"><a href="plotting-with-ggplot2.html#cb450-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">colour =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1711 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-282-1.png" width="672" /></p>
 </div>
@@ -592,36 +592,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_bar.html" width="70%" height="400px">
 </iframe>
 <p>Let’s also map colour aesthetics to growth form.</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="plotting-with-ggplot2.html#cb453-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb453-2"><a href="plotting-with-ggplot2.html#cb453-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb453-3"><a href="plotting-with-ggplot2.html#cb453-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="plotting-with-ggplot2.html#cb452-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb452-2"><a href="plotting-with-ggplot2.html#cb452-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb452-3"><a href="plotting-with-ggplot2.html#cb452-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
 <p>We can see that there are very few entries for <code>liana</code> and also a whole bunch of <code>NA</code>s in <code>growth_form</code>. So let’s remove any such rows from our data by using <code>dplyr::filter()</code>. Let’s assign this new data to a new <code>analysis_df</code> and work with that from now on.</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="plotting-with-ggplot2.html#cb454-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="ot">&lt;-</span> individual <span class="sc">%&gt;%</span></span>
-<span id="cb454-2"><a href="plotting-with-ggplot2.html#cb454-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth_form), growth_form <span class="sc">!=</span> <span class="st">&quot;liana&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="plotting-with-ggplot2.html#cb453-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="ot">&lt;-</span> individual <span class="sc">%&gt;%</span></span>
+<span id="cb453-2"><a href="plotting-with-ggplot2.html#cb453-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth_form), growth_form <span class="sc">!=</span> <span class="st">&quot;liana&quot;</span>) </span></code></pre></div>
 <p>Let’s also order our bars in order of ascending counts. The simplest way to do this is to convert <code>growth_form</code> to a factor and specify the ordering of the factor levels.</p>
 <p>To do that let’s create a vector of <code>growth_form</code> unique values, ordered according to their counts in the raw data.</p>
 <p>We can do this by using <code>table</code> to get the counts, <code>order</code> to order them in ascending order and <code>names</code> to extract the names!</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="plotting-with-ggplot2.html#cb455-1" aria-hidden="true" tabindex="-1"></a>gf_levels <span class="ot">&lt;-</span> <span class="fu">table</span>(analysis_df<span class="sc">$</span>growth_form) <span class="sc">%&gt;%</span> </span>
-<span id="cb455-2"><a href="plotting-with-ggplot2.html#cb455-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb455-3"><a href="plotting-with-ggplot2.html#cb455-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="plotting-with-ggplot2.html#cb454-1" aria-hidden="true" tabindex="-1"></a>gf_levels <span class="ot">&lt;-</span> <span class="fu">table</span>(analysis_df<span class="sc">$</span>growth_form) <span class="sc">%&gt;%</span> </span>
+<span id="cb454-2"><a href="plotting-with-ggplot2.html#cb454-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb454-3"><a href="plotting-with-ggplot2.html#cb454-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>()</span></code></pre></div>
 <p>We can then specify the level order when we mutate <code>growth_form</code> to a factor using <code>gf_levels</code> through argument <code>levels</code> in <code>factor</code>.</p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="plotting-with-ggplot2.html#cb456-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&lt;&gt;%</span> </span>
-<span id="cb456-2"><a href="plotting-with-ggplot2.html#cb456-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">growth_form =</span> <span class="fu">factor</span>(growth_form, </span>
-<span id="cb456-3"><a href="plotting-with-ggplot2.html#cb456-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">levels =</span> gf_levels))</span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="plotting-with-ggplot2.html#cb455-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb455-2"><a href="plotting-with-ggplot2.html#cb455-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">growth_form =</span> <span class="fu">factor</span>(growth_form, </span>
+<span id="cb455-3"><a href="plotting-with-ggplot2.html#cb455-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">levels =</span> gf_levels))</span></code></pre></div>
 <p><strong>Let’s move those data preparation steps to <code>analysis.R</code></strong></p>
 <p>Let’s have a look at our barplot now:</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="plotting-with-ggplot2.html#cb457-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb457-2"><a href="plotting-with-ggplot2.html#cb457-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb457-3"><a href="plotting-with-ggplot2.html#cb457-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="plotting-with-ggplot2.html#cb456-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb456-2"><a href="plotting-with-ggplot2.html#cb456-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb456-3"><a href="plotting-with-ggplot2.html#cb456-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
 <p>The order of the levels in <code>growth_form</code> now dictates the order in which the bars are plotted!</p>
 <p>Finally, let’s just add a few extra touches to make the plot even more visually clear.</p>
 <p>Let’s flip the axis by mapping <code>growth_form</code> to <code>y</code>, that prevents <code>growth_form</code> axes labels from overlapping.</p>
 <p>Let’s also remove the superfluous legend and reduce the opacity of our bars so we can see the scales through them</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="plotting-with-ggplot2.html#cb458-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb458-2"><a href="plotting-with-ggplot2.html#cb458-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb458-3"><a href="plotting-with-ggplot2.html#cb458-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="plotting-with-ggplot2.html#cb457-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb457-2"><a href="plotting-with-ggplot2.html#cb457-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb457-3"><a href="plotting-with-ggplot2.html#cb457-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
 <p>That’s better.</p>
 <p><strong>Let’s keep this plot and move it to our analysis script as fig 1</strong>.</p>
@@ -635,34 +635,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The grammar of graphics allows to easily plot the same properties of interest across groups dictated by other aesthetics.</p>
 <p>Let’s explore what this means by focusing on the distribution of <code>stem_diameter</code> across the <code>growth_form</code> categories in our <code>sketchbook.R</code>.</p>
 <p>We can plot out a separate density curve for each growth form by mapping categorical variable <code>grow_form</code> to <code>aes()</code> argument <code>group</code>.</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="plotting-with-ggplot2.html#cb459-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb459-2"><a href="plotting-with-ggplot2.html#cb459-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">group =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb459-3"><a href="plotting-with-ggplot2.html#cb459-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="plotting-with-ggplot2.html#cb458-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb458-2"><a href="plotting-with-ggplot2.html#cb458-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">group =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb458-3"><a href="plotting-with-ggplot2.html#cb458-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
 <p>Now we have separate distribution curves for each <code>growth_form</code>!</p>
 <p>This first pass is not however visually easy to interpret. Let’s assign <code>growth_form</code> to some additional aesthetics to make the visual encoding clearer.</p>
 <p>We can in fact get rid of the <code>group</code> argument and use <code>fill</code> and <code>colour</code> instead. The grouping behaviour is equivalent.</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="plotting-with-ggplot2.html#cb461-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb461-2"><a href="plotting-with-ggplot2.html#cb461-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb461-3"><a href="plotting-with-ggplot2.html#cb461-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="plotting-with-ggplot2.html#cb460-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb460-2"><a href="plotting-with-ggplot2.html#cb460-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb460-3"><a href="plotting-with-ggplot2.html#cb460-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
 <p>To make things even clearer we can supply additional argument to <code>geom_density</code>.</p>
 <p>Let’s decrease the opacity of each density geom and trim it to the ranges of values across each <code>growth_form</code>.</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="plotting-with-ggplot2.html#cb463-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb463-2"><a href="plotting-with-ggplot2.html#cb463-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb463-3"><a href="plotting-with-ggplot2.html#cb463-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="plotting-with-ggplot2.html#cb462-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb462-2"><a href="plotting-with-ggplot2.html#cb462-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb462-3"><a href="plotting-with-ggplot2.html#cb462-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-292-1.png" width="672" /></p>
 <p>That’s a lot clearer, and now we can see that overall the distribution of <code>log(stem_diameter)</code> across growth forms follows a broably bimodal distribution. However, the distributions across each growth formal appear more normal.</p>
 <p>To allow us to focus more on the individual distributions, we can use <code>facet_wrap()</code> and formula <code>~growth_form</code> to create individual panels for each growth form on a grid:</p>
 <iframe src="https://ggplot2.tidyverse.org/reference/facet_wrap.html" width="70%" height="400px">
 </iframe>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="plotting-with-ggplot2.html#cb465-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb465-2"><a href="plotting-with-ggplot2.html#cb465-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb465-3"><a href="plotting-with-ggplot2.html#cb465-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb465-4"><a href="plotting-with-ggplot2.html#cb465-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>growth_form)</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="plotting-with-ggplot2.html#cb464-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb464-2"><a href="plotting-with-ggplot2.html#cb464-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb464-3"><a href="plotting-with-ggplot2.html#cb464-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb464-4"><a href="plotting-with-ggplot2.html#cb464-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>growth_form)</span></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-294-1.png" width="672" /></p>
 <div id="encoding-multiple-distribution-with-violin-plots" class="section level5">
@@ -671,9 +671,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_violin.html" width="70%" height="400px">
 </iframe>
 <p>Let’s straight away add some colour aesthetics also.</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="plotting-with-ggplot2.html#cb467-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb467-2"><a href="plotting-with-ggplot2.html#cb467-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb467-3"><a href="plotting-with-ggplot2.html#cb467-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="plotting-with-ggplot2.html#cb466-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb466-2"><a href="plotting-with-ggplot2.html#cb466-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb466-3"><a href="plotting-with-ggplot2.html#cb466-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> T)</span></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_ydensity).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-296-1.png" width="672" /></p>
 </div>
@@ -683,10 +683,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" width="70%" height="400px">
 </iframe>
 <p>Let’s also suppress the legend for the box plot layer and reduce the opacity.</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="plotting-with-ggplot2.html#cb469-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb469-2"><a href="plotting-with-ggplot2.html#cb469-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb469-3"><a href="plotting-with-ggplot2.html#cb469-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> T) <span class="sc">+</span></span>
-<span id="cb469-4"><a href="plotting-with-ggplot2.html#cb469-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="plotting-with-ggplot2.html#cb468-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb468-2"><a href="plotting-with-ggplot2.html#cb468-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(stem_diameter), <span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb468-3"><a href="plotting-with-ggplot2.html#cb468-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> T) <span class="sc">+</span></span>
+<span id="cb468-4"><a href="plotting-with-ggplot2.html#cb468-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_ydensity).</code></pre>
 <pre><code>## Warning: Removed 1031 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-298-1.png" width="672" /></p>
@@ -703,10 +703,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://tidyr.tidyverse.org/reference/pivot_longer.html" width="70%" height="400px">
 </iframe>
 <p><code>pivot_longer()</code> “lengthens” data, increasing the number of rows and decreasing the number of columns. We use it to stack the values of <code>stem_diameter</code> and <code>height</code> into a column called <code>value</code> and store the original column names which define the variable each value relates to in a new column <code>var</code>. The values of <code>growth_form</code> are duplicated and stacked.</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="plotting-with-ggplot2.html#cb472-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb472-2"><a href="plotting-with-ggplot2.html#cb472-2" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(stem_diameter, height), </span>
-<span id="cb472-3"><a href="plotting-with-ggplot2.html#cb472-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="st">&quot;var&quot;</span>,</span>
-<span id="cb472-4"><a href="plotting-with-ggplot2.html#cb472-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="plotting-with-ggplot2.html#cb471-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb471-2"><a href="plotting-with-ggplot2.html#cb471-2" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(stem_diameter, height), </span>
+<span id="cb471-3"><a href="plotting-with-ggplot2.html#cb471-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="st">&quot;var&quot;</span>,</span>
+<span id="cb471-4"><a href="plotting-with-ggplot2.html#cb471-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 27,776 x 3
 ##    growth_form      var           value
 ##    &lt;fct&gt;            &lt;chr&gt;         &lt;dbl&gt;
@@ -727,14 +727,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="figure-2-data-characteristics-of-our-raw-data" class="section level4">
 <h4>Figure 2: Data characteristics of our raw data</h4>
 <p>Let’s add the pivot as a step in our plotting pipe</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="plotting-with-ggplot2.html#cb474-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb474-2"><a href="plotting-with-ggplot2.html#cb474-2" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(stem_diameter, height), </span>
-<span id="cb474-3"><a href="plotting-with-ggplot2.html#cb474-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="st">&quot;var&quot;</span>,</span>
-<span id="cb474-4"><a href="plotting-with-ggplot2.html#cb474-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb474-5"><a href="plotting-with-ggplot2.html#cb474-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(value), <span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb474-6"><a href="plotting-with-ggplot2.html#cb474-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> T) <span class="sc">+</span></span>
-<span id="cb474-7"><a href="plotting-with-ggplot2.html#cb474-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb474-8"><a href="plotting-with-ggplot2.html#cb474-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span>var)</span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="plotting-with-ggplot2.html#cb473-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb473-2"><a href="plotting-with-ggplot2.html#cb473-2" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(stem_diameter, height), </span>
+<span id="cb473-3"><a href="plotting-with-ggplot2.html#cb473-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="st">&quot;var&quot;</span>,</span>
+<span id="cb473-4"><a href="plotting-with-ggplot2.html#cb473-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb473-5"><a href="plotting-with-ggplot2.html#cb473-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(value), <span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb473-6"><a href="plotting-with-ggplot2.html#cb473-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> T) <span class="sc">+</span></span>
+<span id="cb473-7"><a href="plotting-with-ggplot2.html#cb473-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb473-8"><a href="plotting-with-ggplot2.html#cb473-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span>var)</span></code></pre></div>
 <pre><code>## Warning: Removed 2388 rows containing non-finite values (stat_ydensity).</code></pre>
 <pre><code>## Warning: Removed 2388 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-301-1.png" width="672" /></p>
@@ -752,8 +752,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fitting-a-linear-model" class="section level5">
 <h5>Fitting a linear model</h5>
 <p>We specify our model through a formula <code>log(stem_diameter) ~ log(height)</code>. This translates to log stem diameter as a function of height where <code>stem_diameter</code> is the response variable and <code>height</code> the predictor.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="plotting-with-ggplot2.html#cb477-1" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height), analysis_df)</span>
-<span id="cb477-2"><a href="plotting-with-ggplot2.html#cb477-2" aria-hidden="true" tabindex="-1"></a>lm_overall</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="plotting-with-ggplot2.html#cb476-1" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height), analysis_df)</span>
+<span id="cb476-2"><a href="plotting-with-ggplot2.html#cb476-2" aria-hidden="true" tabindex="-1"></a>lm_overall</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(stem_diameter) ~ log(height), data = analysis_df)
@@ -763,16 +763,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##      0.5609       0.9439</code></pre>
 <p>By default <code>lm</code> prints a rather terse summary of the model.</p>
 <p>An easy way to print nice and tidy outputs of most models in R is by using functions from package <code>broom</code>.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="plotting-with-ggplot2.html#cb479-1" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
-<span id="cb479-2"><a href="plotting-with-ggplot2.html#cb479-2" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="plotting-with-ggplot2.html#cb478-1" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
+<span id="cb478-2"><a href="plotting-with-ggplot2.html#cb478-2" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 12
 ##   r.squared adj.r.squared sigma statistic p.value    df logLik    AIC    BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     0.679         0.679 0.487    24613.       0     1 -8132. 16271. 16293.
 ## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
 <p>Glance accepts a model object and returns a tibble with exactly one row of model summaries. The summaries are typically goodness of fit measures, p-values for hypothesis tests on residuals, or model convergence information.</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="plotting-with-ggplot2.html#cb481-1" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
-<span id="cb481-2"><a href="plotting-with-ggplot2.html#cb481-2" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="plotting-with-ggplot2.html#cb480-1" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
+<span id="cb480-2"><a href="plotting-with-ggplot2.html#cb480-2" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 5
 ##   term        estimate std.error statistic   p.value
 ##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
@@ -784,10 +784,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h5>Visualising our overall model</h5>
 <p>To plot the relationship that the <code>lm</code> has fit, we plot a scatterplot using <code>geom_point()</code> and map <code>log(height)</code> to <code>x</code> (the predictor) and <code>log(stem_diameter)</code> to <code>y</code> (the response).</p>
 <p>We can also add a line to our plot using <code>geom_smooth()</code>. This plots a smooth over the data by default but can use method <code>lm</code> to plot lines using a linear model.</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="plotting-with-ggplot2.html#cb483-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb483-2"><a href="plotting-with-ggplot2.html#cb483-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter))) <span class="sc">+</span></span>
-<span id="cb483-3"><a href="plotting-with-ggplot2.html#cb483-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb483-4"><a href="plotting-with-ggplot2.html#cb483-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="plotting-with-ggplot2.html#cb482-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb482-2"><a href="plotting-with-ggplot2.html#cb482-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter))) <span class="sc">+</span></span>
+<span id="cb482-3"><a href="plotting-with-ggplot2.html#cb482-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb482-4"><a href="plotting-with-ggplot2.html#cb482-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing missing values (geom_point).</code></pre>
@@ -798,18 +798,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4>Including an interaction with <code>growth_form</code></h4>
 <p>Inspecting the plot we can clearly see sub groups in our data. We already know that both our variables have very different distributions across <code>growth_form</code>. So let’s see if our model improves if we include <code>growth_form</code> in our model specification.</p>
 <p>Growth form is a categorical variable so when we include it in our regression, <code>lm</code> will fit separate coefficients for our model at every level of the factor. To include it, we add it to the predictor side of our formula. If we include it as an additive effect through <code>+</code>, only the intercept will vary across factor levels. If we fit it as an interaction using <code>*</code> both the slope and intercept are allowed to vary.</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="plotting-with-ggplot2.html#cb487-1" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height) <span class="sc">*</span> growth_form, analysis_df) </span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="plotting-with-ggplot2.html#cb486-1" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height) <span class="sc">*</span> growth_form, analysis_df) </span></code></pre></div>
 <p>We can again examine our model using <code>broom</code></p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="plotting-with-ggplot2.html#cb488-1" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
-<span id="cb488-2"><a href="plotting-with-ggplot2.html#cb488-2" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="plotting-with-ggplot2.html#cb487-1" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
+<span id="cb487-2"><a href="plotting-with-ggplot2.html#cb487-2" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 12
 ##   r.squared adj.r.squared sigma statistic p.value    df logLik    AIC    BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     0.799         0.799 0.386     4195.       0    11 -5418. 10862. 10957.
 ## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
 <p>We can see that model coverage as indicated by <code>r.squared</code> is now higher and the <code>p.value</code> is still significant</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="plotting-with-ggplot2.html#cb490-1" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
-<span id="cb490-2"><a href="plotting-with-ggplot2.html#cb490-2" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="plotting-with-ggplot2.html#cb489-1" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
+<span id="cb489-2"><a href="plotting-with-ggplot2.html#cb489-2" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 12 x 5
 ##    term                                    estimate std.error statistic  p.value
 ##    &lt;chr&gt;                                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
@@ -833,10 +833,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="visualising-our-model" class="section level3">
 <h3>Visualising our model</h3>
 <p>To include the interaction with <code>growth_form</code> we apply a grouping to our scatterplot through aesthetic <code>colour</code>.</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="plotting-with-ggplot2.html#cb492-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb492-2"><a href="plotting-with-ggplot2.html#cb492-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb492-3"><a href="plotting-with-ggplot2.html#cb492-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb492-4"><a href="plotting-with-ggplot2.html#cb492-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="plotting-with-ggplot2.html#cb491-1" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb491-2"><a href="plotting-with-ggplot2.html#cb491-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb491-3"><a href="plotting-with-ggplot2.html#cb491-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb491-4"><a href="plotting-with-ggplot2.html#cb491-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 2262 rows containing missing values (geom_point).</code></pre>
@@ -846,66 +846,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Lets add all our models and plots to our <code>analysis.R</code> script.</strong></p>
 <p><strong>Lets also add comment sections with machine readable names to our <code>analysis.R</code> script.</strong></p>
 <p><strong>Your <code>analysis.R</code> script should now look like this.</strong></p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="plotting-with-ggplot2.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-setup  </span></span>
-<span id="cb496-2"><a href="plotting-with-ggplot2.html#cb496-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb496-3"><a href="plotting-with-ggplot2.html#cb496-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb496-4"><a href="plotting-with-ggplot2.html#cb496-4" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb496-5"><a href="plotting-with-ggplot2.html#cb496-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(stem_diameter, height, growth_form)</span>
-<span id="cb496-6"><a href="plotting-with-ggplot2.html#cb496-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-7"><a href="plotting-with-ggplot2.html#cb496-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-filter-data  </span></span>
-<span id="cb496-8"><a href="plotting-with-ggplot2.html#cb496-8" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="ot">&lt;-</span> individual <span class="sc">%&gt;%</span></span>
-<span id="cb496-9"><a href="plotting-with-ggplot2.html#cb496-9" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth_form), </span>
-<span id="cb496-10"><a href="plotting-with-ggplot2.html#cb496-10" aria-hidden="true" tabindex="-1"></a>                  growth_form <span class="sc">!=</span> <span class="st">&quot;liana&quot;</span>) </span>
-<span id="cb496-11"><a href="plotting-with-ggplot2.html#cb496-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-12"><a href="plotting-with-ggplot2.html#cb496-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-set-factor-levels  </span></span>
-<span id="cb496-13"><a href="plotting-with-ggplot2.html#cb496-13" aria-hidden="true" tabindex="-1"></a>gf_levels <span class="ot">&lt;-</span> <span class="fu">table</span>(analysis_df<span class="sc">$</span>growth_form) <span class="sc">%&gt;%</span> </span>
-<span id="cb496-14"><a href="plotting-with-ggplot2.html#cb496-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb496-15"><a href="plotting-with-ggplot2.html#cb496-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>()</span>
-<span id="cb496-16"><a href="plotting-with-ggplot2.html#cb496-16" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&lt;&gt;%</span> </span>
-<span id="cb496-17"><a href="plotting-with-ggplot2.html#cb496-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">growth_form =</span> <span class="fu">factor</span>(growth_form, </span>
-<span id="cb496-18"><a href="plotting-with-ggplot2.html#cb496-18" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">levels =</span> gf_levels))</span>
-<span id="cb496-19"><a href="plotting-with-ggplot2.html#cb496-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-20"><a href="plotting-with-ggplot2.html#cb496-20" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-fig1-barplot </span></span>
-<span id="cb496-21"><a href="plotting-with-ggplot2.html#cb496-21" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb496-22"><a href="plotting-with-ggplot2.html#cb496-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, </span>
-<span id="cb496-23"><a href="plotting-with-ggplot2.html#cb496-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb496-24"><a href="plotting-with-ggplot2.html#cb496-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb496-25"><a href="plotting-with-ggplot2.html#cb496-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-26"><a href="plotting-with-ggplot2.html#cb496-26" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-fg2-violinplots </span></span>
-<span id="cb496-27"><a href="plotting-with-ggplot2.html#cb496-27" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb496-28"><a href="plotting-with-ggplot2.html#cb496-28" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(stem_diameter, height), </span>
-<span id="cb496-29"><a href="plotting-with-ggplot2.html#cb496-29" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="st">&quot;var&quot;</span>,</span>
-<span id="cb496-30"><a href="plotting-with-ggplot2.html#cb496-30" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb496-31"><a href="plotting-with-ggplot2.html#cb496-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(value), <span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb496-32"><a href="plotting-with-ggplot2.html#cb496-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> T, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb496-33"><a href="plotting-with-ggplot2.html#cb496-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb496-34"><a href="plotting-with-ggplot2.html#cb496-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span>var)</span>
-<span id="cb496-35"><a href="plotting-with-ggplot2.html#cb496-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-36"><a href="plotting-with-ggplot2.html#cb496-36" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-lm-overall</span></span>
-<span id="cb496-37"><a href="plotting-with-ggplot2.html#cb496-37" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height), analysis_df) </span>
-<span id="cb496-38"><a href="plotting-with-ggplot2.html#cb496-38" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
-<span id="cb496-39"><a href="plotting-with-ggplot2.html#cb496-39" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span>
-<span id="cb496-40"><a href="plotting-with-ggplot2.html#cb496-40" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
-<span id="cb496-41"><a href="plotting-with-ggplot2.html#cb496-41" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
-<span id="cb496-42"><a href="plotting-with-ggplot2.html#cb496-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-43"><a href="plotting-with-ggplot2.html#cb496-43" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis-lm-fig3-overall </span></span>
-<span id="cb496-44"><a href="plotting-with-ggplot2.html#cb496-44" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb496-45"><a href="plotting-with-ggplot2.html#cb496-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter))) <span class="sc">+</span></span>
-<span id="cb496-46"><a href="plotting-with-ggplot2.html#cb496-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb496-47"><a href="plotting-with-ggplot2.html#cb496-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span>
-<span id="cb496-48"><a href="plotting-with-ggplot2.html#cb496-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-49"><a href="plotting-with-ggplot2.html#cb496-49" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-lm-growth</span></span>
-<span id="cb496-50"><a href="plotting-with-ggplot2.html#cb496-50" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height) <span class="sc">*</span> growth_form, analysis_df) </span>
-<span id="cb496-51"><a href="plotting-with-ggplot2.html#cb496-51" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
-<span id="cb496-52"><a href="plotting-with-ggplot2.html#cb496-52" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span>
-<span id="cb496-53"><a href="plotting-with-ggplot2.html#cb496-53" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
-<span id="cb496-54"><a href="plotting-with-ggplot2.html#cb496-54" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
-<span id="cb496-55"><a href="plotting-with-ggplot2.html#cb496-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-56"><a href="plotting-with-ggplot2.html#cb496-56" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis-lm-fig4-growth </span></span>
-<span id="cb496-57"><a href="plotting-with-ggplot2.html#cb496-57" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
-<span id="cb496-58"><a href="plotting-with-ggplot2.html#cb496-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form)) <span class="sc">+</span></span>
-<span id="cb496-59"><a href="plotting-with-ggplot2.html#cb496-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb496-60"><a href="plotting-with-ggplot2.html#cb496-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="plotting-with-ggplot2.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-setup  </span></span>
+<span id="cb495-2"><a href="plotting-with-ggplot2.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb495-3"><a href="plotting-with-ggplot2.html#cb495-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb495-4"><a href="plotting-with-ggplot2.html#cb495-4" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb495-5"><a href="plotting-with-ggplot2.html#cb495-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(stem_diameter, height, growth_form)</span>
+<span id="cb495-6"><a href="plotting-with-ggplot2.html#cb495-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-7"><a href="plotting-with-ggplot2.html#cb495-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-filter-data  </span></span>
+<span id="cb495-8"><a href="plotting-with-ggplot2.html#cb495-8" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="ot">&lt;-</span> individual <span class="sc">%&gt;%</span></span>
+<span id="cb495-9"><a href="plotting-with-ggplot2.html#cb495-9" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth_form), </span>
+<span id="cb495-10"><a href="plotting-with-ggplot2.html#cb495-10" aria-hidden="true" tabindex="-1"></a>                  growth_form <span class="sc">!=</span> <span class="st">&quot;liana&quot;</span>) </span>
+<span id="cb495-11"><a href="plotting-with-ggplot2.html#cb495-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-12"><a href="plotting-with-ggplot2.html#cb495-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-set-factor-levels  </span></span>
+<span id="cb495-13"><a href="plotting-with-ggplot2.html#cb495-13" aria-hidden="true" tabindex="-1"></a>gf_levels <span class="ot">&lt;-</span> <span class="fu">table</span>(analysis_df<span class="sc">$</span>growth_form) <span class="sc">%&gt;%</span> </span>
+<span id="cb495-14"><a href="plotting-with-ggplot2.html#cb495-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb495-15"><a href="plotting-with-ggplot2.html#cb495-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>()</span>
+<span id="cb495-16"><a href="plotting-with-ggplot2.html#cb495-16" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb495-17"><a href="plotting-with-ggplot2.html#cb495-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">growth_form =</span> <span class="fu">factor</span>(growth_form, </span>
+<span id="cb495-18"><a href="plotting-with-ggplot2.html#cb495-18" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">levels =</span> gf_levels))</span>
+<span id="cb495-19"><a href="plotting-with-ggplot2.html#cb495-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-20"><a href="plotting-with-ggplot2.html#cb495-20" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-fig1-barplot </span></span>
+<span id="cb495-21"><a href="plotting-with-ggplot2.html#cb495-21" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb495-22"><a href="plotting-with-ggplot2.html#cb495-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, </span>
+<span id="cb495-23"><a href="plotting-with-ggplot2.html#cb495-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb495-24"><a href="plotting-with-ggplot2.html#cb495-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb495-25"><a href="plotting-with-ggplot2.html#cb495-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-26"><a href="plotting-with-ggplot2.html#cb495-26" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-fg2-violinplots </span></span>
+<span id="cb495-27"><a href="plotting-with-ggplot2.html#cb495-27" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb495-28"><a href="plotting-with-ggplot2.html#cb495-28" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(stem_diameter, height), </span>
+<span id="cb495-29"><a href="plotting-with-ggplot2.html#cb495-29" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="st">&quot;var&quot;</span>,</span>
+<span id="cb495-30"><a href="plotting-with-ggplot2.html#cb495-30" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb495-31"><a href="plotting-with-ggplot2.html#cb495-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(value), <span class="at">y =</span> growth_form, <span class="at">colour =</span> growth_form, <span class="at">fill =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb495-32"><a href="plotting-with-ggplot2.html#cb495-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">trim =</span> T, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb495-33"><a href="plotting-with-ggplot2.html#cb495-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb495-34"><a href="plotting-with-ggplot2.html#cb495-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span>var)</span>
+<span id="cb495-35"><a href="plotting-with-ggplot2.html#cb495-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-36"><a href="plotting-with-ggplot2.html#cb495-36" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-lm-overall</span></span>
+<span id="cb495-37"><a href="plotting-with-ggplot2.html#cb495-37" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height), analysis_df) </span>
+<span id="cb495-38"><a href="plotting-with-ggplot2.html#cb495-38" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
+<span id="cb495-39"><a href="plotting-with-ggplot2.html#cb495-39" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span>
+<span id="cb495-40"><a href="plotting-with-ggplot2.html#cb495-40" aria-hidden="true" tabindex="-1"></a>lm_overall <span class="sc">%&gt;%</span></span>
+<span id="cb495-41"><a href="plotting-with-ggplot2.html#cb495-41" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb495-42"><a href="plotting-with-ggplot2.html#cb495-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-43"><a href="plotting-with-ggplot2.html#cb495-43" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis-lm-fig3-overall </span></span>
+<span id="cb495-44"><a href="plotting-with-ggplot2.html#cb495-44" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb495-45"><a href="plotting-with-ggplot2.html#cb495-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter))) <span class="sc">+</span></span>
+<span id="cb495-46"><a href="plotting-with-ggplot2.html#cb495-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb495-47"><a href="plotting-with-ggplot2.html#cb495-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb495-48"><a href="plotting-with-ggplot2.html#cb495-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-49"><a href="plotting-with-ggplot2.html#cb495-49" aria-hidden="true" tabindex="-1"></a><span class="co">#  analysis-lm-growth</span></span>
+<span id="cb495-50"><a href="plotting-with-ggplot2.html#cb495-50" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(stem_diameter) <span class="sc">~</span> <span class="fu">log</span>(height) <span class="sc">*</span> growth_form, analysis_df) </span>
+<span id="cb495-51"><a href="plotting-with-ggplot2.html#cb495-51" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
+<span id="cb495-52"><a href="plotting-with-ggplot2.html#cb495-52" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">glance</span>()</span>
+<span id="cb495-53"><a href="plotting-with-ggplot2.html#cb495-53" aria-hidden="true" tabindex="-1"></a>lm_growth <span class="sc">%&gt;%</span></span>
+<span id="cb495-54"><a href="plotting-with-ggplot2.html#cb495-54" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb495-55"><a href="plotting-with-ggplot2.html#cb495-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-56"><a href="plotting-with-ggplot2.html#cb495-56" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis-lm-fig4-growth </span></span>
+<span id="cb495-57"><a href="plotting-with-ggplot2.html#cb495-57" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="sc">%&gt;%</span></span>
+<span id="cb495-58"><a href="plotting-with-ggplot2.html#cb495-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(height), <span class="at">y =</span> <span class="fu">log</span>(stem_diameter), <span class="at">colour =</span> growth_form)) <span class="sc">+</span></span>
+<span id="cb495-59"><a href="plotting-with-ggplot2.html#cb495-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb495-60"><a href="plotting-with-ggplot2.html#cb495-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
 
 </div>
 </div>

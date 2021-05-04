@@ -241,9 +241,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="elements-of-a-function" class="section level2">
 <h2>Elements of a function</h2>
 <p>Here’s a simple skeleton of a function.</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="functions.html#cb349-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="cf">function</span>(variables) {</span>
-<span id="cb349-2"><a href="functions.html#cb349-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb349-3"><a href="functions.html#cb349-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="functions.html#cb348-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="cf">function</span>(variables) {</span>
+<span id="cb348-2"><a href="functions.html#cb348-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb348-3"><a href="functions.html#cb348-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div id="function-name" class="section level3">
 <h3>Function name</h3>
 <p>This can be any valid variable name, but you should avoid using names that are used elsewhere in R, such as <code>dir</code>, <code>function</code>, <code>plot</code>, etc</p>
@@ -270,13 +270,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="simple-example" class="section level3">
 <h3>Simple example</h3>
 <p>Let’s write a simple function that takes two arguments <code>x</code> and <code>y</code> and adds them together.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="functions.html#cb350-1" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb350-2"><a href="functions.html#cb350-2" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">+</span> y</span>
-<span id="cb350-3"><a href="functions.html#cb350-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="functions.html#cb349-1" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb349-2"><a href="functions.html#cb349-2" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">+</span> y</span>
+<span id="cb349-3"><a href="functions.html#cb349-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s test it.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="functions.html#cb351-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb351-2"><a href="functions.html#cb351-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb351-3"><a href="functions.html#cb351-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="functions.html#cb350-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb350-2"><a href="functions.html#cb350-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb350-3"><a href="functions.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(x, y)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>Cool it works!</p>
 </div>
@@ -284,11 +284,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Return value</h3>
 <p>By default, the output of the last line of the code is evaluated is the value that will be returned by the function.</p>
 <p>We can override that default by using <code>return</code> to explicitly specify what is returned.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="functions.html#cb353-1" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb353-2"><a href="functions.html#cb353-2" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">+</span> y</span>
-<span id="cb353-3"><a href="functions.html#cb353-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb353-4"><a href="functions.html#cb353-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="functions.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="functions.html#cb352-1" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb352-2"><a href="functions.html#cb352-2" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">+</span> y</span>
+<span id="cb352-3"><a href="functions.html#cb352-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb352-4"><a href="functions.html#cb352-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="functions.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(x, y)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>It is not necessary that a function return anything, for example a function that makes a plot might not return anything, whereas a function that does a mathematical operation might return a number, or a list.</p>
 </div>
@@ -303,12 +303,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Objects required by the function will be sought first in the <strong><em>local environment</em></strong>. If an argument specified in the function is missing, it will return an error, even if such an object exists in the global environment.</p>
 <p>Objects required by computation but not specified as function arguments will be sought in the containing environment iteratively until it reaches the <strong><em>global environment</em></strong>. This can be a source of bugs when developing with an untidy global environment.</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="functions.html#cb356-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb356-2"><a href="functions.html#cb356-2" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="cf">function</span>(a){a <span class="sc">+</span> b}</span>
-<span id="cb356-3"><a href="functions.html#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f2</span>(<span class="at">a =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="functions.html#cb355-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb355-2"><a href="functions.html#cb355-2" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="cf">function</span>(a){a <span class="sc">+</span> b}</span>
+<span id="cb355-3"><a href="functions.html#cb355-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f2</span>(<span class="at">a =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="functions.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(b) <span class="co"># remove object b</span></span>
-<span id="cb358-2"><a href="functions.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f2</span>(<span class="at">a =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="functions.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(b) <span class="co"># remove object b</span></span>
+<span id="cb357-2"><a href="functions.html#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f2</span>(<span class="at">a =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## Error in f2(a = 10): object &#39;b&#39; not found</code></pre>
 <p>Solution: always make sure any required variables are passed as arguments to your functions.</p>
 </div>
@@ -323,28 +323,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Storing functions in scripts.</h3>
 <p>It’s best to store functions in separate scripts in the <code>R/</code> directory.</p>
 <p>We can use function <code>usethis::use_r()</code> to create scripts in <code>R/</code>. Let’s create a new one to start working on our function.</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="functions.html#cb360-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">&quot;geolocate&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="functions.html#cb361-1" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">&#39;/Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20&#39;</span></span>
-<span id="cb361-2"><a href="functions.html#cb361-2" aria-hidden="true" tabindex="-1"></a>● Modify <span class="st">&#39;R/geolocate.R&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="functions.html#cb359-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">&quot;geolocate&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="functions.html#cb360-1" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">&#39;/Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20&#39;</span></span>
+<span id="cb360-2"><a href="functions.html#cb360-2" aria-hidden="true" tabindex="-1"></a>● Modify <span class="st">&#39;R/geolocate.R&#39;</span></span></code></pre></div>
 <p>This creates the required <code>R/</code> directory, creates a new R script named <code>geolocation.R</code> within it and launches it for editing all in one go! Nice.</p>
 </div>
 </div>
 <div id="experimenting" class="section level2">
 <h2>Experimenting</h2>
 <p>Now before we begin writing our function, let’s test <code>destPoint</code> out. To do that, let’s subset a single row from <code>individual</code> and use it to test out the function. We need to supply a vector of length two, containing the starting longitude and latitude to argument <code>p</code>. We pass <code>stemAzimuth</code> to argument <code>b</code> (for bearing) and <code>stemDistance</code> to argument <code>d</code> (for distance).</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="functions.html#cb362-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> individual[<span class="dv">1</span>,]</span>
-<span id="cb362-2"><a href="functions.html#cb362-2" aria-hidden="true" tabindex="-1"></a>geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">c</span>(x<span class="sc">$</span>decimalLongitude, x<span class="sc">$</span>decimalLatitude), </span>
-<span id="cb362-3"><a href="functions.html#cb362-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">b =</span> x<span class="sc">$</span>stemAzimuth, <span class="at">d =</span> x<span class="sc">$</span>stemDistance)</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="functions.html#cb361-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> individual[<span class="dv">1</span>,]</span>
+<span id="cb361-2"><a href="functions.html#cb361-2" aria-hidden="true" tabindex="-1"></a>geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">c</span>(x<span class="sc">$</span>decimalLongitude, x<span class="sc">$</span>decimalLatitude), </span>
+<span id="cb361-3"><a href="functions.html#cb361-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">b =</span> x<span class="sc">$</span>stemAzimuth, <span class="at">d =</span> x<span class="sc">$</span>stemDistance)</span></code></pre></div>
 <pre><code>##            lon      lat
 ## [1,] -71.28333 44.06151</code></pre>
 <p>This looks like it’s working nicely. Let’s also check that it vectorises easily, i.e. that if we give it vectors of values instead of single ones that it works properly.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="functions.html#cb364-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> individual[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span>
-<span id="cb364-2"><a href="functions.html#cb364-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-3"><a href="functions.html#cb364-3" aria-hidden="true" tabindex="-1"></a>geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">c</span>(x<span class="sc">$</span>decimalLongitude, x<span class="sc">$</span>decimalLatitude), </span>
-<span id="cb364-4"><a href="functions.html#cb364-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">b =</span> x<span class="sc">$</span>stemAzimuth, <span class="at">d =</span> x<span class="sc">$</span>stemDistance)</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="functions.html#cb363-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> individual[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span>
+<span id="cb363-2"><a href="functions.html#cb363-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb363-3"><a href="functions.html#cb363-3" aria-hidden="true" tabindex="-1"></a>geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">c</span>(x<span class="sc">$</span>decimalLongitude, x<span class="sc">$</span>decimalLatitude), </span>
+<span id="cb363-4"><a href="functions.html#cb363-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">b =</span> x<span class="sc">$</span>stemAzimuth, <span class="at">d =</span> x<span class="sc">$</span>stemDistance)</span></code></pre></div>
 <pre><code>## Error in .pointsToMatrix(p): Wrong length for a vector, should be 2</code></pre>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="functions.html#cb366-1" aria-hidden="true" tabindex="-1"></a>geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(x<span class="sc">$</span>decimalLongitude, x<span class="sc">$</span>decimalLatitude), </span>
-<span id="cb366-2"><a href="functions.html#cb366-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">b =</span> x<span class="sc">$</span>stemAzimuth, <span class="at">d =</span> x<span class="sc">$</span>stemDistance)</span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="functions.html#cb365-1" aria-hidden="true" tabindex="-1"></a>geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(x<span class="sc">$</span>decimalLongitude, x<span class="sc">$</span>decimalLatitude), </span>
+<span id="cb365-2"><a href="functions.html#cb365-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">b =</span> x<span class="sc">$</span>stemAzimuth, <span class="at">d =</span> x<span class="sc">$</span>stemDistance)</span></code></pre></div>
 <pre><code>##            lon      lat
 ## [1,] -71.28333 44.06151
 ## [2,] -71.28325 44.06165
@@ -358,36 +358,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Developing our function</h2>
 <p>Let’s start by using a handy feature in Rstudio, code snippets. Code snippets are text macros that are used for quickly inserting common snippets of code.</p>
 <p>The fun snippet inserts an R function definition. To invoke it start typing <code>fun</code> until the auto-complete drop-down pops up.</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="functions.html#cb368-1" aria-hidden="true" tabindex="-1"></a>fun</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="functions.html#cb367-1" aria-hidden="true" tabindex="-1"></a>fun</span></code></pre></div>
 <p><img src="assets/snippet_fun.png" /><!-- --></p>
 <p>Select <code>fun</code> and hit Return / Enter.</p>
 <p>You end up with this handy function skeleton. Now, let’s start populating it with our own function.</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="functions.html#cb369-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="cf">function</span>(variables) {</span>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="functions.html#cb368-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="cf">function</span>(variables) {</span>
+<span id="cb368-2"><a href="functions.html#cb368-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb368-3"><a href="functions.html#cb368-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>First lets start with a descriptive name:</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="functions.html#cb369-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(variables) {</span>
 <span id="cb369-2"><a href="functions.html#cb369-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb369-3"><a href="functions.html#cb369-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>First lets start with a descriptive name:</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="functions.html#cb370-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(variables) {</span>
-<span id="cb370-2"><a href="functions.html#cb370-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb370-3"><a href="functions.html#cb370-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s add our arguments:</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="functions.html#cb371-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
-<span id="cb371-2"><a href="functions.html#cb371-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb371-3"><a href="functions.html#cb371-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="functions.html#cb370-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
+<span id="cb370-2"><a href="functions.html#cb370-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb370-3"><a href="functions.html#cb370-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Finally, let’s populate the body our our function:</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="functions.html#cb371-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
+<span id="cb371-2"><a href="functions.html#cb371-2" aria-hidden="true" tabindex="-1"></a>    geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude), </span>
+<span id="cb371-3"><a href="functions.html#cb371-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance)</span>
+<span id="cb371-4"><a href="functions.html#cb371-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Let’s also convert the output to a tibble, for better printing.</p>
 <div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="functions.html#cb372-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
 <span id="cb372-2"><a href="functions.html#cb372-2" aria-hidden="true" tabindex="-1"></a>    geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude), </span>
-<span id="cb372-3"><a href="functions.html#cb372-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance)</span>
-<span id="cb372-4"><a href="functions.html#cb372-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Let’s also convert the output to a tibble, for better printing.</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="functions.html#cb373-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
-<span id="cb373-2"><a href="functions.html#cb373-2" aria-hidden="true" tabindex="-1"></a>    geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude), </span>
-<span id="cb373-3"><a href="functions.html#cb373-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
-<span id="cb373-4"><a href="functions.html#cb373-4" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
-<span id="cb373-5"><a href="functions.html#cb373-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb372-3"><a href="functions.html#cb372-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
+<span id="cb372-4"><a href="functions.html#cb372-4" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
+<span id="cb372-5"><a href="functions.html#cb372-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now let’s test it out with vectors from <code>individual</code>.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="functions.html#cb374-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">get_stem_location</span>(x<span class="sc">$</span>decimalLongitude, x<span class="sc">$</span>decimalLatitude, </span>
-<span id="cb374-2"><a href="functions.html#cb374-2" aria-hidden="true" tabindex="-1"></a>                  x<span class="sc">$</span>stemAzimuth, x<span class="sc">$</span>stemDistance)</span>
-<span id="cb374-3"><a href="functions.html#cb374-3" aria-hidden="true" tabindex="-1"></a>test</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="functions.html#cb373-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">get_stem_location</span>(x<span class="sc">$</span>decimalLongitude, x<span class="sc">$</span>decimalLatitude, </span>
+<span id="cb373-2"><a href="functions.html#cb373-2" aria-hidden="true" tabindex="-1"></a>                  x<span class="sc">$</span>stemAzimuth, x<span class="sc">$</span>stemDistance)</span>
+<span id="cb373-3"><a href="functions.html#cb373-3" aria-hidden="true" tabindex="-1"></a>test</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##     lon   lat
 ##   &lt;dbl&gt; &lt;dbl&gt;
@@ -403,41 +403,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can write smart checks using the suite of functions in package <code>checkmate</code>.</p>
 <p>One such function is <code>assert_numeric()</code></p>
 <p>This checks whether the the object we give it is numeric. If the check is not successful, it returns the object invisibly. If the check is not successful, it throws an error.</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="functions.html#cb376-1" aria-hidden="true" tabindex="-1"></a>checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(x<span class="sc">$</span>decimalLatitude)</span>
-<span id="cb376-2"><a href="functions.html#cb376-2" aria-hidden="true" tabindex="-1"></a>checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(x<span class="sc">$</span>uid)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="functions.html#cb375-1" aria-hidden="true" tabindex="-1"></a>checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(x<span class="sc">$</span>decimalLatitude)</span>
+<span id="cb375-2"><a href="functions.html#cb375-2" aria-hidden="true" tabindex="-1"></a>checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(x<span class="sc">$</span>uid)</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): Assertion on &#39;x$uid&#39; failed: Must be of type &#39;numeric&#39;, not &#39;character&#39;.</code></pre>
 <p>There are two other versions, <code>test_numeric</code> which returns <code>FALSE</code> if the check is not successful, and <code>check_numeric</code> which returns a string with the error message. We want to throw an error and stop execution so we use <code>assert_numeric</code>.</p>
 <p>Let’s add a validation check for each argument in our function.</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="functions.html#cb378-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
-<span id="cb378-2"><a href="functions.html#cb378-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb378-3"><a href="functions.html#cb378-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># validation checks</span></span>
-<span id="cb378-4"><a href="functions.html#cb378-4" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
-<span id="cb378-5"><a href="functions.html#cb378-5" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLatitude)</span>
-<span id="cb378-6"><a href="functions.html#cb378-6" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemAzimuth)</span>
-<span id="cb378-7"><a href="functions.html#cb378-7" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemDistance)</span>
-<span id="cb378-8"><a href="functions.html#cb378-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb378-9"><a href="functions.html#cb378-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb378-10"><a href="functions.html#cb378-10" aria-hidden="true" tabindex="-1"></a>    geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude), </span>
-<span id="cb378-11"><a href="functions.html#cb378-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
-<span id="cb378-12"><a href="functions.html#cb378-12" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
-<span id="cb378-13"><a href="functions.html#cb378-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="functions.html#cb377-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
+<span id="cb377-2"><a href="functions.html#cb377-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb377-3"><a href="functions.html#cb377-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># validation checks</span></span>
+<span id="cb377-4"><a href="functions.html#cb377-4" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
+<span id="cb377-5"><a href="functions.html#cb377-5" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLatitude)</span>
+<span id="cb377-6"><a href="functions.html#cb377-6" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemAzimuth)</span>
+<span id="cb377-7"><a href="functions.html#cb377-7" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemDistance)</span>
+<span id="cb377-8"><a href="functions.html#cb377-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb377-9"><a href="functions.html#cb377-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb377-10"><a href="functions.html#cb377-10" aria-hidden="true" tabindex="-1"></a>    geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude), </span>
+<span id="cb377-11"><a href="functions.html#cb377-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
+<span id="cb377-12"><a href="functions.html#cb377-12" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
+<span id="cb377-13"><a href="functions.html#cb377-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s also add a check to our output. Let’s throw a warning if there are any <code>NA</code> values in our output.</p>
 <p>First we store our output so we can evaluate it.</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="functions.html#cb379-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
-<span id="cb379-2"><a href="functions.html#cb379-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># validation checks</span></span>
-<span id="cb379-3"><a href="functions.html#cb379-3" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
-<span id="cb379-4"><a href="functions.html#cb379-4" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLatitude)</span>
-<span id="cb379-5"><a href="functions.html#cb379-5" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemAzimuth)</span>
-<span id="cb379-6"><a href="functions.html#cb379-6" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemDistance)</span>
-<span id="cb379-7"><a href="functions.html#cb379-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb379-8"><a href="functions.html#cb379-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb379-9"><a href="functions.html#cb379-9" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude), </span>
-<span id="cb379-10"><a href="functions.html#cb379-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
-<span id="cb379-11"><a href="functions.html#cb379-11" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
-<span id="cb379-12"><a href="functions.html#cb379-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="functions.html#cb378-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
+<span id="cb378-2"><a href="functions.html#cb378-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># validation checks</span></span>
+<span id="cb378-3"><a href="functions.html#cb378-3" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
+<span id="cb378-4"><a href="functions.html#cb378-4" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLatitude)</span>
+<span id="cb378-5"><a href="functions.html#cb378-5" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemAzimuth)</span>
+<span id="cb378-6"><a href="functions.html#cb378-6" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemDistance)</span>
+<span id="cb378-7"><a href="functions.html#cb378-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb378-8"><a href="functions.html#cb378-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb378-9"><a href="functions.html#cb378-9" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude), </span>
+<span id="cb378-10"><a href="functions.html#cb378-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
+<span id="cb378-11"><a href="functions.html#cb378-11" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
+<span id="cb378-12"><a href="functions.html#cb378-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Next we can add our check:</p>
 <p>We can check the whole tibble for <code>NA</code>s in one go. We get a 2 dimensional matrix of logical values.</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="functions.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(test) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="functions.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(test) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##        lon   lat
 ## [1,] FALSE FALSE
 ## [2,] FALSE FALSE
@@ -445,9 +445,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [4,] FALSE FALSE
 ## [5,] FALSE FALSE</code></pre>
 <p>We can then wrap the output of that in <code>any()</code> which tests whether there are any <code>TRUE</code> values in a logical array.</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="functions.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(test))</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="functions.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(test))</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Let’s apply that to our function.</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="functions.html#cb383-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
+<span id="cb383-2"><a href="functions.html#cb383-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># validation checks</span></span>
+<span id="cb383-3"><a href="functions.html#cb383-3" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
+<span id="cb383-4"><a href="functions.html#cb383-4" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLatitude)</span>
+<span id="cb383-5"><a href="functions.html#cb383-5" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemAzimuth)</span>
+<span id="cb383-6"><a href="functions.html#cb383-6" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemDistance)</span>
+<span id="cb383-7"><a href="functions.html#cb383-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb383-8"><a href="functions.html#cb383-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb383-9"><a href="functions.html#cb383-9" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude), </span>
+<span id="cb383-10"><a href="functions.html#cb383-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
+<span id="cb383-11"><a href="functions.html#cb383-11" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
+<span id="cb383-12"><a href="functions.html#cb383-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb383-13"><a href="functions.html#cb383-13" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_false</span>(<span class="fu">any</span>(<span class="fu">is.na</span>(out)))</span>
+<span id="cb383-14"><a href="functions.html#cb383-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Lastly, we need to return our actual output!</p>
 <div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="functions.html#cb384-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
 <span id="cb384-2"><a href="functions.html#cb384-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># validation checks</span></span>
 <span id="cb384-3"><a href="functions.html#cb384-3" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
@@ -461,27 +476,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb384-11"><a href="functions.html#cb384-11" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
 <span id="cb384-12"><a href="functions.html#cb384-12" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb384-13"><a href="functions.html#cb384-13" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_false</span>(<span class="fu">any</span>(<span class="fu">is.na</span>(out)))</span>
-<span id="cb384-14"><a href="functions.html#cb384-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Lastly, we need to return our actual output!</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="functions.html#cb385-1" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude, stemAzimuth, stemDistance){</span>
-<span id="cb385-2"><a href="functions.html#cb385-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># validation checks</span></span>
-<span id="cb385-3"><a href="functions.html#cb385-3" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
-<span id="cb385-4"><a href="functions.html#cb385-4" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLatitude)</span>
-<span id="cb385-5"><a href="functions.html#cb385-5" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemAzimuth)</span>
-<span id="cb385-6"><a href="functions.html#cb385-6" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemDistance)</span>
-<span id="cb385-7"><a href="functions.html#cb385-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb385-8"><a href="functions.html#cb385-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb385-9"><a href="functions.html#cb385-9" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude), </span>
-<span id="cb385-10"><a href="functions.html#cb385-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
-<span id="cb385-11"><a href="functions.html#cb385-11" aria-hidden="true" tabindex="-1"></a>        tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
-<span id="cb385-12"><a href="functions.html#cb385-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb385-13"><a href="functions.html#cb385-13" aria-hidden="true" tabindex="-1"></a>    checkmate<span class="sc">::</span><span class="fu">assert_false</span>(<span class="fu">any</span>(<span class="fu">is.na</span>(out)))</span>
-<span id="cb385-14"><a href="functions.html#cb385-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb385-15"><a href="functions.html#cb385-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(out)</span>
-<span id="cb385-16"><a href="functions.html#cb385-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb384-14"><a href="functions.html#cb384-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb384-15"><a href="functions.html#cb384-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(out)</span>
+<span id="cb384-16"><a href="functions.html#cb384-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s test it again:</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="functions.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_stem_location</span>(x<span class="sc">$</span>decimalLongitude, x<span class="sc">$</span>decimalLatitude, </span>
-<span id="cb386-2"><a href="functions.html#cb386-2" aria-hidden="true" tabindex="-1"></a>                  x<span class="sc">$</span>stemAzimuth, x<span class="sc">$</span>stemDistance)</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="functions.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_stem_location</span>(x<span class="sc">$</span>decimalLongitude, x<span class="sc">$</span>decimalLatitude, </span>
+<span id="cb385-2"><a href="functions.html#cb385-2" aria-hidden="true" tabindex="-1"></a>                  x<span class="sc">$</span>stemAzimuth, x<span class="sc">$</span>stemDistance)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##     lon   lat
 ##   &lt;dbl&gt; &lt;dbl&gt;
@@ -496,13 +496,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="making-new-variables" class="section level3">
 <h3>Making new variables</h3>
 <p>Let’s move back to our <code>individual.R</code> script. At the top of our script, let’s add the code to source our function so it’s available during preprocessing:</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="functions.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocation.R&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="functions.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocation.R&quot;</span>))</span></code></pre></div>
 <p>Now we want to use data in <code>individual</code> to geolocate our individulas while at the same time creating new columns <code>stemLat</code> and <code>stemLon</code></p>
 <p>For this we use <code>dplyr::mutate()</code>:</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="functions.html#cb389-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stemLat =</span> <span class="fu">get_stem_location</span>(decimalLongitude, decimalLatitude, </span>
-<span id="cb389-2"><a href="functions.html#cb389-2" aria-hidden="true" tabindex="-1"></a>                                                         stemAzimuth, stemDistance)<span class="sc">$</span>lat, </span>
-<span id="cb389-3"><a href="functions.html#cb389-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">stemLon =</span> <span class="fu">get_stem_location</span>(decimalLongitude, decimalLatitude, </span>
-<span id="cb389-4"><a href="functions.html#cb389-4" aria-hidden="true" tabindex="-1"></a>                                                         stemAzimuth, stemDistance)<span class="sc">$</span>lon)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="functions.html#cb388-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stemLat =</span> <span class="fu">get_stem_location</span>(decimalLongitude, decimalLatitude, </span>
+<span id="cb388-2"><a href="functions.html#cb388-2" aria-hidden="true" tabindex="-1"></a>                                                         stemAzimuth, stemDistance)<span class="sc">$</span>lat, </span>
+<span id="cb388-3"><a href="functions.html#cb388-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">stemLon =</span> <span class="fu">get_stem_location</span>(decimalLongitude, decimalLatitude, </span>
+<span id="cb388-4"><a href="functions.html#cb388-4" aria-hidden="true" tabindex="-1"></a>                                                         stemAzimuth, stemDistance)<span class="sc">$</span>lon)</span></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 32
 ##    uid     namedLocation  date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt;   &lt;chr&gt;          &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -526,13 +526,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We also need to extract the appropriate coordinate for each column. We do that by using the <code>$</code> subsetting operation after we call <code>get_stem_location()</code>.</p>
 <p>It works! We’re almost done with our data munging!</p>
 <p>Lets use the assignment pipe again now that we are happy.</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="functions.html#cb391-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&lt;&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stemLat =</span> <span class="fu">get_stem_location</span>(decimalLongitude, decimalLatitude, </span>
-<span id="cb391-2"><a href="functions.html#cb391-2" aria-hidden="true" tabindex="-1"></a>                                                         stemAzimuth, stemDistance)<span class="sc">$</span>lat, </span>
-<span id="cb391-3"><a href="functions.html#cb391-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">stemLon =</span> <span class="fu">get_stem_location</span>(decimalLongitude, decimalLatitude, </span>
-<span id="cb391-4"><a href="functions.html#cb391-4" aria-hidden="true" tabindex="-1"></a>                                                         stemAzimuth, stemDistance)<span class="sc">$</span>lon)</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="functions.html#cb390-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&lt;&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stemLat =</span> <span class="fu">get_stem_location</span>(decimalLongitude, decimalLatitude, </span>
+<span id="cb390-2"><a href="functions.html#cb390-2" aria-hidden="true" tabindex="-1"></a>                                                         stemAzimuth, stemDistance)<span class="sc">$</span>lat, </span>
+<span id="cb390-3"><a href="functions.html#cb390-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">stemLon =</span> <span class="fu">get_stem_location</span>(decimalLongitude, decimalLatitude, </span>
+<span id="cb390-4"><a href="functions.html#cb390-4" aria-hidden="true" tabindex="-1"></a>                                                         stemAzimuth, stemDistance)<span class="sc">$</span>lon)</span></code></pre></div>
 <p>Let’s do a couple last sanity checks:</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="functions.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(individual)</span></code></pre></div>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="functions.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(individual)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="functions.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(individual)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="functions.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(individual)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,32] [14,961 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ uid                 : chr [1:14961] &quot;a36a162d-ed1f-4f80-ae45-88e973855c68&quot; &quot;68dc7adf-48e2-4f7a-9272-9a468fde6d55&quot; &quot;a8951ab9-4462-48dd-ab9e-7b89e24f2e03&quot; &quot;eb348eaf-3969-46a4-ac3b-523c3548efeb&quot; ...
 ##  $ namedLocation       : chr [1:14961] &quot;BART_037.basePlot.vst&quot; &quot;BART_037.basePlot.vst&quot; &quot;BART_044.basePlot.vst&quot; &quot;BART_044.basePlot.vst&quot; ...
@@ -573,16 +573,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Saving analytical data</h2>
 <p>At the bottom of <code>individual.R</code> there is some template code, <code>usethis::use_data("individual")</code>.</p>
 <p>This functions invokes functionality to store an r object as an <code>.Rdata</code> object (ie as a tibble not a <code>csv</code>) in the <code>data</code> directory. This is the standard way to store exported data in packages but does not apply to our non-package project so won’t work.</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="functions.html#cb395-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(<span class="st">&quot;individual&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="functions.html#cb394-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(<span class="st">&quot;individual&quot;</span>)</span></code></pre></div>
 <pre><code>## ✔ Setting active project to &#39;/Users/runner/work/rrresearchACCE20/rrresearchACCE20&#39;</code></pre>
 <pre><code>## Error: Can only save existing named objects.</code></pre>
 <p>Let’s just get rid of it and instead, save our analytic data as a csv in our <code>data</code> directory.</p>
 <p>Frist lets create a data directory (you can do this in the console)</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="functions.html#cb398-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="functions.html#cb397-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
 <p>Now were ready to write or data out. Before we do so, I will add one last touch. Before I do so, I would like to get rid of a pet hate of mine, and thats camelCase variable names!</p>
 <p>I use a handy function in package <code>janitor</code>, !</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="functions.html#cb399-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb399-2"><a href="functions.html#cb399-2" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="functions.html#cb398-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb398-2"><a href="functions.html#cb398-2" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 14,961 x 32
 ##    uid           named_location   date       event_id  domain_id site_id plot_id
 ##    &lt;chr&gt;         &lt;chr&gt;            &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;  
@@ -606,90 +606,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   elevation_uncertainty &lt;dbl&gt;, stem_lat &lt;dbl&gt;, stem_lon &lt;dbl&gt;</code></pre>
 <p>This turns all the column names to my beloved snake case!</p>
 <p>Now, with that final tweek, we are ready to save our data.</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="functions.html#cb401-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb401-2"><a href="functions.html#cb401-2" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb401-3"><a href="functions.html#cb401-3" aria-hidden="true" tabindex="-1"></a>    readr<span class="sc">::</span><span class="fu">write_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="functions.html#cb400-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb400-2"><a href="functions.html#cb400-2" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb400-3"><a href="functions.html#cb400-3" aria-hidden="true" tabindex="-1"></a>    readr<span class="sc">::</span><span class="fu">write_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</span></code></pre></div>
 </div>
 <div id="final-processing-script" class="section level2">
 <h2>Final processing script:</h2>
 <p><strong><code>data-raw/individual.R</code></strong></p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="functions.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="do">## code to prepare `individual` dataset goes here</span></span>
-<span id="cb402-2"><a href="functions.html#cb402-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb402-3"><a href="functions.html#cb402-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocate.R&quot;</span>))</span>
-<span id="cb402-4"><a href="functions.html#cb402-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-5"><a href="functions.html#cb402-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in and compile all individual data</span></span>
-<span id="cb402-6"><a href="functions.html#cb402-6" aria-hidden="true" tabindex="-1"></a>raw_data_path <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</span>
-<span id="cb402-7"><a href="functions.html#cb402-7" aria-hidden="true" tabindex="-1"></a>individual_path <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</span>
-<span id="cb402-8"><a href="functions.html#cb402-8" aria-hidden="true" tabindex="-1"></a>individual_paths <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(individual_path)</span>
-<span id="cb402-9"><a href="functions.html#cb402-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-10"><a href="functions.html#cb402-10" aria-hidden="true" tabindex="-1"></a><span class="co"># read in all tables into one</span></span>
-<span id="cb402-11"><a href="functions.html#cb402-11" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
-<span id="cb402-12"><a href="functions.html#cb402-12" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> .x,</span>
-<span id="cb402-13"><a href="functions.html#cb402-13" aria-hidden="true" tabindex="-1"></a>                               <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb402-14"><a href="functions.html#cb402-14" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">type_convert</span>()</span>
-<span id="cb402-15"><a href="functions.html#cb402-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-16"><a href="functions.html#cb402-16" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
-<span id="cb402-17"><a href="functions.html#cb402-17" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="at">path =</span> fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;vst_individuals.csv&quot;</span>))</span>
-<span id="cb402-18"><a href="functions.html#cb402-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-19"><a href="functions.html#cb402-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-20"><a href="functions.html#cb402-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-21"><a href="functions.html#cb402-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine NEON data tables</span></span>
-<span id="cb402-22"><a href="functions.html#cb402-22" aria-hidden="true" tabindex="-1"></a><span class="co"># read in additonal table</span></span>
-<span id="cb402-23"><a href="functions.html#cb402-23" aria-hidden="true" tabindex="-1"></a>maptag <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, </span>
-<span id="cb402-24"><a href="functions.html#cb402-24" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb402-25"><a href="functions.html#cb402-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>eventID)</span>
-<span id="cb402-26"><a href="functions.html#cb402-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-27"><a href="functions.html#cb402-27" aria-hidden="true" tabindex="-1"></a>perplot <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, </span>
-<span id="cb402-28"><a href="functions.html#cb402-28" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;vst_perplotperyear.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb402-29"><a href="functions.html#cb402-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>eventID)</span>
-<span id="cb402-30"><a href="functions.html#cb402-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-31"><a href="functions.html#cb402-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-32"><a href="functions.html#cb402-32" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&lt;&gt;%</span></span>
-<span id="cb402-33"><a href="functions.html#cb402-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(maptag, <span class="at">by =</span> <span class="st">&quot;individualID&quot;</span>,</span>
-<span id="cb402-34"><a href="functions.html#cb402-34" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb402-35"><a href="functions.html#cb402-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(perplot, <span class="at">by =</span> <span class="st">&quot;plotID&quot;</span>,</span>
-<span id="cb402-36"><a href="functions.html#cb402-36" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb402-37"><a href="functions.html#cb402-37" aria-hidden="true" tabindex="-1"></a>  assertr<span class="sc">::</span><span class="fu">assert</span>(assertr<span class="sc">::</span>not_na, stemDistance, stemAzimuth, pointID,</span>
-<span id="cb402-38"><a href="functions.html#cb402-38" aria-hidden="true" tabindex="-1"></a>                  decimalLongitude, decimalLatitude, plotID)</span>
-<span id="cb402-39"><a href="functions.html#cb402-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-40"><a href="functions.html#cb402-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Geolocate individuals_functions ----</span></span>
-<span id="cb402-41"><a href="functions.html#cb402-41" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> individual <span class="sc">%&gt;%</span></span>
-<span id="cb402-42"><a href="functions.html#cb402-42" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stemLat =</span> <span class="fu">get_stem_location</span>(<span class="at">decimalLongitude =</span> decimalLongitude,</span>
-<span id="cb402-43"><a href="functions.html#cb402-43" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">decimalLatitude =</span> decimalLatitude,</span>
-<span id="cb402-44"><a href="functions.html#cb402-44" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">stemAzimuth =</span> stemAzimuth,</span>
-<span id="cb402-45"><a href="functions.html#cb402-45" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">stemDistance =</span> stemDistance)<span class="sc">$</span>lat,</span>
-<span id="cb402-46"><a href="functions.html#cb402-46" aria-hidden="true" tabindex="-1"></a>                <span class="at">stemLon =</span> <span class="fu">get_stem_location</span>(<span class="at">decimalLongitude =</span> decimalLongitude,</span>
-<span id="cb402-47"><a href="functions.html#cb402-47" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">decimalLatitude =</span> decimalLatitude,</span>
-<span id="cb402-48"><a href="functions.html#cb402-48" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">stemAzimuth =</span> stemAzimuth,</span>
-<span id="cb402-49"><a href="functions.html#cb402-49" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">stemDistance =</span> stemDistance)<span class="sc">$</span>lon) <span class="sc">%&gt;%</span></span>
-<span id="cb402-50"><a href="functions.html#cb402-50" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb402-51"><a href="functions.html#cb402-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-52"><a href="functions.html#cb402-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-53"><a href="functions.html#cb402-53" aria-hidden="true" tabindex="-1"></a><span class="co"># write out analytic file</span></span>
-<span id="cb402-54"><a href="functions.html#cb402-54" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(individual, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="functions.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="do">## code to prepare `individual` dataset goes here</span></span>
+<span id="cb401-2"><a href="functions.html#cb401-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb401-3"><a href="functions.html#cb401-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocate.R&quot;</span>))</span>
+<span id="cb401-4"><a href="functions.html#cb401-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-5"><a href="functions.html#cb401-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in and compile all individual data</span></span>
+<span id="cb401-6"><a href="functions.html#cb401-6" aria-hidden="true" tabindex="-1"></a>raw_data_path <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</span>
+<span id="cb401-7"><a href="functions.html#cb401-7" aria-hidden="true" tabindex="-1"></a>individual_path <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</span>
+<span id="cb401-8"><a href="functions.html#cb401-8" aria-hidden="true" tabindex="-1"></a>individual_paths <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(individual_path)</span>
+<span id="cb401-9"><a href="functions.html#cb401-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-10"><a href="functions.html#cb401-10" aria-hidden="true" tabindex="-1"></a><span class="co"># read in all tables into one</span></span>
+<span id="cb401-11"><a href="functions.html#cb401-11" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(individual_paths,</span>
+<span id="cb401-12"><a href="functions.html#cb401-12" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> .x,</span>
+<span id="cb401-13"><a href="functions.html#cb401-13" aria-hidden="true" tabindex="-1"></a>                               <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb401-14"><a href="functions.html#cb401-14" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">type_convert</span>()</span>
+<span id="cb401-15"><a href="functions.html#cb401-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-16"><a href="functions.html#cb401-16" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span></span>
+<span id="cb401-17"><a href="functions.html#cb401-17" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="at">path =</span> fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;vst_individuals.csv&quot;</span>))</span>
+<span id="cb401-18"><a href="functions.html#cb401-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-19"><a href="functions.html#cb401-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-20"><a href="functions.html#cb401-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-21"><a href="functions.html#cb401-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine NEON data tables</span></span>
+<span id="cb401-22"><a href="functions.html#cb401-22" aria-hidden="true" tabindex="-1"></a><span class="co"># read in additonal table</span></span>
+<span id="cb401-23"><a href="functions.html#cb401-23" aria-hidden="true" tabindex="-1"></a>maptag <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, </span>
+<span id="cb401-24"><a href="functions.html#cb401-24" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;vst_mappingandtagging.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb401-25"><a href="functions.html#cb401-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>eventID)</span>
+<span id="cb401-26"><a href="functions.html#cb401-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-27"><a href="functions.html#cb401-27" aria-hidden="true" tabindex="-1"></a>perplot <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, </span>
+<span id="cb401-28"><a href="functions.html#cb401-28" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;vst_perplotperyear.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb401-29"><a href="functions.html#cb401-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>eventID)</span>
+<span id="cb401-30"><a href="functions.html#cb401-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-31"><a href="functions.html#cb401-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-32"><a href="functions.html#cb401-32" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&lt;&gt;%</span></span>
+<span id="cb401-33"><a href="functions.html#cb401-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(maptag, <span class="at">by =</span> <span class="st">&quot;individualID&quot;</span>,</span>
+<span id="cb401-34"><a href="functions.html#cb401-34" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_map&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb401-35"><a href="functions.html#cb401-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(perplot, <span class="at">by =</span> <span class="st">&quot;plotID&quot;</span>,</span>
+<span id="cb401-36"><a href="functions.html#cb401-36" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_ppl&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb401-37"><a href="functions.html#cb401-37" aria-hidden="true" tabindex="-1"></a>  assertr<span class="sc">::</span><span class="fu">assert</span>(assertr<span class="sc">::</span>not_na, stemDistance, stemAzimuth, pointID,</span>
+<span id="cb401-38"><a href="functions.html#cb401-38" aria-hidden="true" tabindex="-1"></a>                  decimalLongitude, decimalLatitude, plotID)</span>
+<span id="cb401-39"><a href="functions.html#cb401-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-40"><a href="functions.html#cb401-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Geolocate individuals_functions ----</span></span>
+<span id="cb401-41"><a href="functions.html#cb401-41" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> individual <span class="sc">%&gt;%</span></span>
+<span id="cb401-42"><a href="functions.html#cb401-42" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stemLat =</span> <span class="fu">get_stem_location</span>(<span class="at">decimalLongitude =</span> decimalLongitude,</span>
+<span id="cb401-43"><a href="functions.html#cb401-43" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">decimalLatitude =</span> decimalLatitude,</span>
+<span id="cb401-44"><a href="functions.html#cb401-44" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">stemAzimuth =</span> stemAzimuth,</span>
+<span id="cb401-45"><a href="functions.html#cb401-45" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">stemDistance =</span> stemDistance)<span class="sc">$</span>lat,</span>
+<span id="cb401-46"><a href="functions.html#cb401-46" aria-hidden="true" tabindex="-1"></a>                <span class="at">stemLon =</span> <span class="fu">get_stem_location</span>(<span class="at">decimalLongitude =</span> decimalLongitude,</span>
+<span id="cb401-47"><a href="functions.html#cb401-47" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">decimalLatitude =</span> decimalLatitude,</span>
+<span id="cb401-48"><a href="functions.html#cb401-48" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">stemAzimuth =</span> stemAzimuth,</span>
+<span id="cb401-49"><a href="functions.html#cb401-49" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">stemDistance =</span> stemDistance)<span class="sc">$</span>lon) <span class="sc">%&gt;%</span></span>
+<span id="cb401-50"><a href="functions.html#cb401-50" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb401-51"><a href="functions.html#cb401-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-52"><a href="functions.html#cb401-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-53"><a href="functions.html#cb401-53" aria-hidden="true" tabindex="-1"></a><span class="co"># write out analytic file</span></span>
+<span id="cb401-54"><a href="functions.html#cb401-54" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(individual, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;individual.csv&quot;</span>))</span></code></pre></div>
 </div>
 <div id="final-function" class="section level2">
 <h2>Final function</h2>
 <p><strong><code>R/geolocate.R</code></strong></p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="functions.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function</span></span>
-<span id="cb403-2"><a href="functions.html#cb403-2" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude,</span>
-<span id="cb403-3"><a href="functions.html#cb403-3" aria-hidden="true" tabindex="-1"></a>                              stemAzimuth, stemDistance) {</span>
-<span id="cb403-4"><a href="functions.html#cb403-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># check inputs are correct type (numeric)</span></span>
-<span id="cb403-5"><a href="functions.html#cb403-5" aria-hidden="true" tabindex="-1"></a>  checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLatitude)</span>
-<span id="cb403-6"><a href="functions.html#cb403-6" aria-hidden="true" tabindex="-1"></a>  checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
-<span id="cb403-7"><a href="functions.html#cb403-7" aria-hidden="true" tabindex="-1"></a>  checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemAzimuth)</span>
-<span id="cb403-8"><a href="functions.html#cb403-8" aria-hidden="true" tabindex="-1"></a>  checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemDistance)</span>
-<span id="cb403-9"><a href="functions.html#cb403-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb403-10"><a href="functions.html#cb403-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb403-11"><a href="functions.html#cb403-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude),</span>
-<span id="cb403-12"><a href="functions.html#cb403-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
-<span id="cb403-13"><a href="functions.html#cb403-13" aria-hidden="true" tabindex="-1"></a>    tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
-<span id="cb403-14"><a href="functions.html#cb403-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb403-15"><a href="functions.html#cb403-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># check output for NAs</span></span>
-<span id="cb403-16"><a href="functions.html#cb403-16" aria-hidden="true" tabindex="-1"></a>  checkmate<span class="sc">::</span><span class="fu">assert_false</span>(<span class="fu">any</span>(<span class="fu">is.na</span>(out)))</span>
-<span id="cb403-17"><a href="functions.html#cb403-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb403-18"><a href="functions.html#cb403-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb403-19"><a href="functions.html#cb403-19" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="functions.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function</span></span>
+<span id="cb402-2"><a href="functions.html#cb402-2" aria-hidden="true" tabindex="-1"></a>get_stem_location <span class="ot">&lt;-</span> <span class="cf">function</span>(decimalLongitude, decimalLatitude,</span>
+<span id="cb402-3"><a href="functions.html#cb402-3" aria-hidden="true" tabindex="-1"></a>                              stemAzimuth, stemDistance) {</span>
+<span id="cb402-4"><a href="functions.html#cb402-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># check inputs are correct type (numeric)</span></span>
+<span id="cb402-5"><a href="functions.html#cb402-5" aria-hidden="true" tabindex="-1"></a>  checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLatitude)</span>
+<span id="cb402-6"><a href="functions.html#cb402-6" aria-hidden="true" tabindex="-1"></a>  checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(decimalLongitude)</span>
+<span id="cb402-7"><a href="functions.html#cb402-7" aria-hidden="true" tabindex="-1"></a>  checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemAzimuth)</span>
+<span id="cb402-8"><a href="functions.html#cb402-8" aria-hidden="true" tabindex="-1"></a>  checkmate<span class="sc">::</span><span class="fu">assert_numeric</span>(stemDistance)</span>
+<span id="cb402-9"><a href="functions.html#cb402-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb402-10"><a href="functions.html#cb402-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb402-11"><a href="functions.html#cb402-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> geosphere<span class="sc">::</span><span class="fu">destPoint</span>(<span class="at">p =</span> <span class="fu">cbind</span>(decimalLongitude, decimalLatitude),</span>
+<span id="cb402-12"><a href="functions.html#cb402-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">b =</span> stemAzimuth, <span class="at">d =</span> stemDistance) <span class="sc">%&gt;%</span></span>
+<span id="cb402-13"><a href="functions.html#cb402-13" aria-hidden="true" tabindex="-1"></a>    tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
+<span id="cb402-14"><a href="functions.html#cb402-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb402-15"><a href="functions.html#cb402-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># check output for NAs</span></span>
+<span id="cb402-16"><a href="functions.html#cb402-16" aria-hidden="true" tabindex="-1"></a>  checkmate<span class="sc">::</span><span class="fu">assert_false</span>(<span class="fu">any</span>(<span class="fu">is.na</span>(out)))</span>
+<span id="cb402-17"><a href="functions.html#cb402-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb402-18"><a href="functions.html#cb402-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb402-19"><a href="functions.html#cb402-19" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 
 </div>
 </div>

@@ -354,11 +354,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="path-proj-str.html#cb260-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;/cloud/project/data-raw/wood-survey-data-master&quot;</span></span></code></pre></div>
 <p>We can use <code>raw_data_path</code> as our basis for specifying paths to files within it. There’s a number of ways we can do this in R but I wanted to introduce you to package <code>fs</code>. It has a nice interface and extensive functionality.</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="path-proj-str.html#cb261-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</span></code></pre></div>
-<pre><code>## /Users/runner/work/rrresearchACCE20/rrresearchACCE20/data-raw/wood-survey-data-master/individual</code></pre>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="path-proj-str.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span>cloud<span class="sc">/</span>project<span class="sc">/</span>data<span class="sc">-</span>raw<span class="sc">/</span>wood<span class="sc">-</span>survey<span class="sc">-</span>data<span class="sc">-</span>master<span class="sc">/</span>individual</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="path-proj-str.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span>cloud<span class="sc">/</span>project<span class="sc">/</span>data<span class="sc">-</span>raw<span class="sc">/</span>wood<span class="sc">-</span>survey<span class="sc">-</span>data<span class="sc">-</span>master<span class="sc">/</span>individual</span></code></pre></div>
 <p>Let’s now use function <code>dir_ls</code> to get a character vector of paths to all the individual files in directory <code>individual</code>.</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="path-proj-str.html#cb264-1" aria-hidden="true" tabindex="-1"></a>individual_paths <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>))</span>
-<span id="cb264-2"><a href="path-proj-str.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(individual_paths)</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="path-proj-str.html#cb263-1" aria-hidden="true" tabindex="-1"></a>individual_paths <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>))</span>
+<span id="cb263-2"><a href="path-proj-str.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(individual_paths)</span></code></pre></div>
 <pre><code>## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T172340Z.csv
 ## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T144119Z.csv
 ## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-08.basic.20190806T143255Z.csv
@@ -366,10 +365,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-10.basic.20190806T144133Z.csv
 ## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2017-07.basic.20190806T144111Z.csv</code></pre>
 <p>We can check how many files we’ve got:</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="path-proj-str.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(individual_paths)</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="path-proj-str.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(individual_paths)</span></code></pre></div>
 <pre><code>## [1] 67</code></pre>
 <p>We can now use this vector of paths to read in files. Let’s read the first file in and check it out. We use function <code>read_csv()</code> from <code>readr</code> package which reads comma delimited files into tibbles.</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="path-proj-str.html#cb268-1" aria-hidden="true" tabindex="-1"></a>indiv_df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(individual_paths[<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="path-proj-str.html#cb267-1" aria-hidden="true" tabindex="-1"></a>indiv_df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(individual_paths[<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -386,7 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   measurementHeight = col_double(),
 ##   height = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="path-proj-str.html#cb270-1" aria-hidden="true" tabindex="-1"></a>indiv_df</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="path-proj-str.html#cb269-1" aria-hidden="true" tabindex="-1"></a>indiv_df</span></code></pre></div>
 <pre><code>## # A tibble: 376 x 12
 ##    uid     namedLocation  date       eventID domainID siteID plotID individualID
 ##    &lt;chr&gt;   &lt;chr&gt;          &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       
@@ -407,9 +406,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="basic-checks" class="section level2">
 <h2>Basic checks</h2>
 <p>Let’s perform some of the basic checks we learnt before we proceed.</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="path-proj-str.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(indiv_df)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="path-proj-str.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(indiv_df)</span></code></pre></div>
 <p><img src="assets/indiv_df.png" /><!-- --></p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="path-proj-str.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(indiv_df)</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="path-proj-str.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(indiv_df)</span></code></pre></div>
 <pre><code>##  [1] &quot;uid&quot;               &quot;namedLocation&quot;     &quot;date&quot;             
 ##  [4] &quot;eventID&quot;           &quot;domainID&quot;          &quot;siteID&quot;           
 ##  [7] &quot;plotID&quot;            &quot;individualID&quot;      &quot;growthForm&quot;       
