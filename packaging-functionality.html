@@ -677,16 +677,25 @@ Now clicking <strong><svg viewBox="0 0 576 512" style="height:1em;position:relat
 <p>Document, Install and restart to load our changes</p>
 <div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="packaging-functionality.html#cb607-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-##  -------------- 
+##  ------------- 
 ## Hello y&#39;all from Anna! 
-##  --------------
-##     \
-##       \
-##          /\ /\
-##          (O o)
-##         =(:^:)=
-##            U      [nosig]
-## </code></pre>
+##  -------------- 
+##               \   
+##                \  
+##                 \
+##                .--.
+##               /} p \             /}
+##              `~)-) /           /` }
+##               ( / /          /`}.&#39; }
+##                / / .-&#39;&quot;&quot;-.  / &#39; }-&#39;}
+##               / (.&#39;       \/ &#39;.&#39;}_.}
+##              |            `}   .}._}
+##              |     .-=-&#39;;   } &#39; }_.}
+##              \    `.-=-;&#39;  } &#39;.}.-}
+##               &#39;.   -=-&#39;    ;,}._.}
+##                 `-,_  __.&#39;` &#39;-._}
+##               jgs   `|||
+##                    .==&#39;=,</code></pre>
 <p>Let’s commit our current files and changes.</p>
 </div>
 <div id="check-package-integrity" class="section level2">
@@ -795,7 +804,7 @@ if you want to run the tests.</p>
 <div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="packaging-functionality.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb619-2"><a href="packaging-functionality.html#cb619-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
 <span id="cb619-3"><a href="packaging-functionality.html#cb619-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## Test passed 🥳</code></pre>
+<pre><code>## Test passed 🎊</code></pre>
 <p>If the test doesn’t pass it throws an error</p>
 <div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="packaging-functionality.html#cb621-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb621-2"><a href="packaging-functionality.html#cb621-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">5</span>)</span>
@@ -813,22 +822,26 @@ if you want to run the tests.</p>
 <span id="cb623-2"><a href="packaging-functionality.html#cb623-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_null</span>(<span class="fu">suppressMessages</span>(<span class="fu">hello</span>()))</span>
 <span id="cb623-3"><a href="packaging-functionality.html#cb623-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## 
-##  -------------- 
+##  ------------- 
 ## Hello world from Anna! 
-##  --------------
-##     \
-##       \
-##         \
-##           _____
-##        .&#39;` ,-. `&#39;.
-##       /   ([ ])   \
-##      /.-&quot;&quot;`(`)`&quot;&quot;-.\
-##       &lt;&#39;```(.)```&#39;&gt;
-##       &lt;&#39;```(.)```&#39;&gt;
-##        &lt;&#39;``(.)``&#39;&gt;
-##    sk   &lt;``\_/``&gt;
-##          `&#39;---&#39;`
-##   Test passed 😸</code></pre>
+##  -------------- 
+##               \   
+##                \  
+##                 \
+## 
+##                   .=&quot;=.
+##                 _/.-.-.\_     _
+##                ( ( o o ) )    ))
+##                 |/  &quot;  \|    //
+##                  \&#39;---&#39;/    //
+##            jgs   /`&quot;&quot;&quot;`\\  ((
+##                 / /_,_\ \\  \\
+##                 \_\_&#39;__/  \  ))
+##                 /`  /`~\   |//
+##                /   /    \  /
+##           ,--`,--&#39;\/\    /
+##           &#39;-- &quot;--&#39;  &#39;--&#39;
+## Test passed 🌈</code></pre>
 <p>Now let’s test our package</p>
 <div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="packaging-functionality.html#cb625-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code></pre></div>
 <p>Success!</p>

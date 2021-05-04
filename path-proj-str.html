@@ -256,6 +256,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb253-2"><a href="path-proj-str.html#cb253-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb253-3"><a href="path-proj-str.html#cb253-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(<span class="st">&quot;individual&quot;</span>)</span></code></pre></div>
 <p>We will use this file to perform the necessary preprocessing on our raw data.</p>
+<p>However, in the mean time we will also be experimenting with code and copying code over to our <code>individual.R</code> script when we are happy with it. so let’s create a new R script to work in.</p>
+<p><strong>File &gt; New File &gt; R script</strong></p>
+<p>Let’s save this file in a new folder called <strong><code>attic/</code></strong> and save it as file <code>development.R</code>.</p>
 <div id="download-data" class="section level3">
 <h3>Download data</h3>
 <p>Now that we’ve got our <code>data-raw</code> folder, let’s download our data into it using function <code>usethis::use_course()</code> and supplying it with the url to the materials repository (bit.ly/wood-survey-data) and the path to the directory we want the materials saved into (<code>"data-raw"</code>).</p>
@@ -346,23 +349,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <p>Let’s start by creating a path to the downloaded data directory using <code>here</code>.</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="path-proj-str.html#cb258-1" aria-hidden="true" tabindex="-1"></a>raw_data_path <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</span>
-<span id="cb258-2"><a href="path-proj-str.html#cb258-2" aria-hidden="true" tabindex="-1"></a>raw_data_path</span></code></pre></div>
-<pre><code>## [1] &quot;/Users/runner/work/rrresearchACCE20/rrresearchACCE20/data-raw/wood-survey-data-master&quot;</code></pre>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="path-proj-str.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;/Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="path-proj-str.html#cb258-1" aria-hidden="true" tabindex="-1"></a>raw_data_path <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;wood-survey-data-master&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="path-proj-str.html#cb259-1" aria-hidden="true" tabindex="-1"></a>raw_data_path</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="path-proj-str.html#cb260-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;/cloud/project/data-raw/wood-survey-data-master&quot;</span></span></code></pre></div>
 <p>We can use <code>raw_data_path</code> as our basis for specifying paths to files within it. There’s a number of ways we can do this in R but I wanted to introduce you to package <code>fs</code>. It has a nice interface and extensive functionality.</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="path-proj-str.html#cb261-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>)</span></code></pre></div>
 <pre><code>## /Users/runner/work/rrresearchACCE20/rrresearchACCE20/data-raw/wood-survey-data-master/individual</code></pre>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="path-proj-str.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span>Users<span class="sc">/</span>Anna<span class="sc">/</span>Desktop<span class="sc">/</span>wood<span class="sc">-</span>survey<span class="sc">/</span>data<span class="sc">-</span>raw<span class="sc">/</span>wood<span class="sc">-</span>survey<span class="sc">-</span>data<span class="sc">-</span>master<span class="sc">/</span>individual</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="path-proj-str.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span>cloud<span class="sc">/</span>project<span class="sc">/</span>data<span class="sc">-</span>raw<span class="sc">/</span>wood<span class="sc">-</span>survey<span class="sc">-</span>data<span class="sc">-</span>master<span class="sc">/</span>individual</span></code></pre></div>
 <p>Let’s now use function <code>dir_ls</code> to get a character vector of paths to all the individual files in directory <code>individual</code>.</p>
 <div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="path-proj-str.html#cb264-1" aria-hidden="true" tabindex="-1"></a>individual_paths <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(fs<span class="sc">::</span><span class="fu">path</span>(raw_data_path, <span class="st">&quot;individual&quot;</span>))</span>
 <span id="cb264-2"><a href="path-proj-str.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(individual_paths)</span></code></pre></div>
-<pre><code>## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T172340Z.csv
-## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T144119Z.csv
-## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-08.basic.20190806T143255Z.csv
-## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-09.basic.20190806T143433Z.csv
-## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-10.basic.20190806T144133Z.csv
-## /Users/Anna/Desktop/wood-survey/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2017-07.basic.20190806T144111Z.csv</code></pre>
+<pre><code>## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-08.basic.20190806T172340Z.csv
+## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2015-09.basic.20190806T144119Z.csv
+## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-08.basic.20190806T143255Z.csv
+## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-09.basic.20190806T143433Z.csv
+## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2016-10.basic.20190806T144133Z.csv
+## /cloud/project/data-raw/wood-survey-data-master/individual/NEON.D01.BART.DP1.10098.001.vst_apparentindividual.2017-07.basic.20190806T144111Z.csv</code></pre>
 <p>We can check how many files we’ve got:</p>
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="path-proj-str.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(individual_paths)</span></code></pre></div>
 <pre><code>## [1] 67</code></pre>
