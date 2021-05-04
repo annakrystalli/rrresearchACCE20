@@ -64,18 +64,10 @@ In there you will find a project called **wood-survey**. Click on **+ Copy** to 
 knitr::include_graphics("assets/rsc_copy_proj.png", error = FALSE)
 ```
 
-Once the project has been created you need to give it a name. Stick to **wood-survey**
+You now have your own copy of the project.
 ```{r, echo=FALSE}
-knitr::include_graphics("assets/rsc_new_proj_name.png", error = FALSE)
+knitr::include_graphics("assets/rsc_new_proj_name_wd.png", error = FALSE)
 ```
-
-You now have your own version of the project.
-
-```{r, echo=FALSE}
-knitr::include_graphics("assets/rsc_open_project.png", error = FALSE)
-```
-
-
 
 
 ### Creating projects locally 
