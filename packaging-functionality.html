@@ -180,6 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html"><i class="fa fa-check"></i>Packaging functionality</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html"><i class="fa fa-check"></i>Creating a research compendium with rrtools</a></li>
 <li class="part"><span><b>IX APPENDIX</b></span></li>
+<li><a href="individual-r.html#individual.r"><code>individual.R</code></a></li>
 <li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a></li>
 <li><a href="analysis-r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
 <li><a href="index-rmd.html#index.rmd"><code>index.Rmd</code></a></li>
@@ -677,15 +678,18 @@ Now clicking <strong><svg viewBox="0 0 576 512" style="height:1em;position:relat
 <p>Document, Install and restart to load our changes</p>
 <div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="packaging-functionality.html#cb606-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-##  ----- 
+##  -------------- 
 ## Hello y&#39;all from Anna! 
-##  ------ 
-##     \   
-##      \
-##      _[_]_
-##       (&quot;)
-##   &gt;--( : )--&lt;
-##     (__:__) [nosig]
+##  --------------
+##     \
+##       \
+##         \
+##                         ,/|         _.--‛‛^``-...___.._.,;
+##                       /, \‛.     _-‛          ,--,,,--‛‛‛
+##                      {  \    `_-‛‛       ‛    /}‛
+## Jill                    `;;‛             ;   ; ;
+##                   ._.--‛‛     ._,,, _..‛  .;.‛
+##                   (,_....----‛‛‛     (,..--‛‛
 ## </code></pre>
 <p>Let’s commit our current files and changes.</p>
 </div>
@@ -795,7 +799,7 @@ if you want to run the tests.</p>
 <div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="packaging-functionality.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb618-2"><a href="packaging-functionality.html#cb618-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
 <span id="cb618-3"><a href="packaging-functionality.html#cb618-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## Test passed 🌈</code></pre>
+<pre><code>## Test passed 😀</code></pre>
 <p>If the test doesn’t pass it throws an error</p>
 <div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="packaging-functionality.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb620-2"><a href="packaging-functionality.html#cb620-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">5</span>)</span>
@@ -813,29 +817,22 @@ if you want to run the tests.</p>
 <span id="cb622-2"><a href="packaging-functionality.html#cb622-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_null</span>(<span class="fu">suppressMessages</span>(<span class="fu">hello</span>()))</span>
 <span id="cb622-3"><a href="packaging-functionality.html#cb622-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## 
-##  ----- 
+##  -------------- 
 ## Hello world from Anna! 
-##  ------ 
-##     \   
-##      \  
+##  --------------
+##     \
 ##       \
-##        ,
-##     _,,)\.~,,._
-##      (()`  ``)\))),,_
-##       |     \ &#39;&#39;((\)))),,_          ____
-##       |6`   |   &#39;&#39;((\())) &quot;-.____.-&quot;    `-.-,
-##       |    .&#39;\    &#39;&#39;))))&#39;                  \)))
-##       |   |   `.     &#39;&#39;                     ((((
-##       \, _)     \/                          |))))
-##        `&#39;        |                          (((((
-##                  \                  |       ))))))
-##                   `|    |           ,\     /((((((
-##                    |   / `-.______.&lt;  \   |  )))))
-##                    |   |  /         `. \  \  ((((
-##                    |  / \ |           `.\  | (((
-##                    \  | | |             )| |  ))
-##                     | | | |             || |  &#39;   [endless.horse]
-##                     | | | |             || |Test passed 😸</code></pre>
+##         \
+##           _____
+##        .&#39;` ,-. `&#39;.
+##       /   ([ ])   \
+##      /.-&quot;&quot;`(`)`&quot;&quot;-.\
+##       &lt;&#39;```(.)```&#39;&gt;
+##       &lt;&#39;```(.)```&#39;&gt;
+##        &lt;&#39;``(.)``&#39;&gt;
+##    sk   &lt;``\_/``&gt;
+##          `&#39;---&#39;`
+##   Test passed 🥇</code></pre>
 <p>Now let’s test our package</p>
 <div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="packaging-functionality.html#cb624-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code></pre></div>
 <p>Success!</p>
