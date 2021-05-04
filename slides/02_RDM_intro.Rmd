@@ -361,10 +361,10 @@ _Photo by Jon Moore on Unsplash_
 
 ---
 
-## **Know your masters** 
+## **Know your main copies** 
 
 .pull-left[
-- identify the `master` copy of files
+- identify the `main` copy of files
 - keep it safe and and accessible
 - consider version control
 - consider centralising
