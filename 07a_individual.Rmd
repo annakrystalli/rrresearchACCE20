@@ -1,6 +1,6 @@
 # (PART) APPENDIX {#appendix} 
 
-`individual.R`
+# `individual.R`
 
 
 This file should contain your processing workflow and be saved at:
