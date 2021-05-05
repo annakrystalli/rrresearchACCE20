@@ -684,12 +684,15 @@ Now clicking <strong><svg viewBox="0 0 576 512" style="height:1em;position:relat
 ##     \
 ##       \
 ##         \
-##                         ,/|         _.--‛‛^``-...___.._.,;
-##                       /, \‛.     _-‛          ,--,,,--‛‛‛
-##                      {  \    `_-‛‛       ‛    /}‛
-## Jill                    `;;‛             ;   ; ;
-##                   ._.--‛‛     ._,,, _..‛  .;.‛
-##                   (,_....----‛‛‛     (,..--‛‛
+##           _____
+##        .&#39;` ,-. `&#39;.
+##       /   ([ ])   \
+##      /.-&quot;&quot;`(`)`&quot;&quot;-.\
+##       &lt;&#39;```(.)```&#39;&gt;
+##       &lt;&#39;```(.)```&#39;&gt;
+##        &lt;&#39;``(.)``&#39;&gt;
+##    sk   &lt;``\_/``&gt;
+##          `&#39;---&#39;`
 ## </code></pre>
 <p>Let’s commit our current files and changes.</p>
 </div>
@@ -799,7 +802,7 @@ if you want to run the tests.</p>
 <div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="packaging-functionality.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb618-2"><a href="packaging-functionality.html#cb618-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
 <span id="cb618-3"><a href="packaging-functionality.html#cb618-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## Test passed 😀</code></pre>
+<pre><code>## Test passed 🎊</code></pre>
 <p>If the test doesn’t pass it throws an error</p>
 <div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="packaging-functionality.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb620-2"><a href="packaging-functionality.html#cb620-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">5</span>)</span>
@@ -823,16 +826,13 @@ if you want to run the tests.</p>
 ##     \
 ##       \
 ##         \
-##           _____
-##        .&#39;` ,-. `&#39;.
-##       /   ([ ])   \
-##      /.-&quot;&quot;`(`)`&quot;&quot;-.\
-##       &lt;&#39;```(.)```&#39;&gt;
-##       &lt;&#39;```(.)```&#39;&gt;
-##        &lt;&#39;``(.)``&#39;&gt;
-##    sk   &lt;``\_/``&gt;
-##          `&#39;---&#39;`
-##   Test passed 🥇</code></pre>
+##                         ,/|         _.--‛‛^``-...___.._.,;
+##                       /, \‛.     _-‛          ,--,,,--‛‛‛
+##                      {  \    `_-‛‛       ‛    /}‛
+## Jill                    `;;‛             ;   ; ;
+##                   ._.--‛‛     ._,,, _..‛  .;.‛
+##                   (,_....----‛‛‛     (,..--‛‛
+##   Test passed 🎊</code></pre>
 <p>Now let’s test our package</p>
 <div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="packaging-functionality.html#cb624-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code></pre></div>
 <p>Success!</p>

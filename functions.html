@@ -327,7 +327,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="functions.html#cb359-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">&quot;geolocate&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="functions.html#cb360-1" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">&#39;/Users/Anna/Documents/workflows/workshops/books/rrresearchACCE20&#39;</span></span>
 <span id="cb360-2"><a href="functions.html#cb360-2" aria-hidden="true" tabindex="-1"></a>● Modify <span class="st">&#39;R/geolocate.R&#39;</span></span></code></pre></div>
-<p>This creates the required <code>R/</code> directory, creates a new R script named <code>geolocation.R</code> within it and launches it for editing all in one go! Nice.</p>
+<p>This creates the required <code>R/</code> directory, creates a new R script named <code>geolocate.R</code> within it and launches it for editing all in one go! Nice.</p>
 </div>
 </div>
 <div id="experimenting" class="section level2">
@@ -497,7 +497,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="making-new-variables" class="section level3">
 <h3>Making new variables</h3>
 <p>Let’s move back to our <code>individual.R</code> script. At the top of our script, let’s add the code to source our function so it’s available during preprocessing:</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="functions.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocation.R&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="functions.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;geolocate.R&quot;</span>))</span></code></pre></div>
 <p>Now we want to use data in <code>individual</code> to geolocate our individulas while at the same time creating new columns <code>stemLat</code> and <code>stemLon</code></p>
 <p>For this we use <code>dplyr::mutate()</code>:</p>
 <div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="functions.html#cb388-1" aria-hidden="true" tabindex="-1"></a>individual <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stemLat =</span> <span class="fu">get_stem_location</span>(decimalLongitude, decimalLatitude, </span>
