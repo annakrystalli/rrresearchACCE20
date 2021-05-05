@@ -68,7 +68,7 @@ Now we're ready to write our `for` loop.
 
 ```{r, message=FALSE}
 for(i in seq_along(individual_paths)){
-  indiv_df_list[[i]] <- readr::read_csv(individual_paths[[i]])
+  indiv_df_list[[i]] <- readr::read_csv(individual_paths[i])
 }
 ```
 
