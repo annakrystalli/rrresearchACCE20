@@ -341,7 +341,7 @@ The goal of this section is to provide a **practical exercise in creating metada
 
 
 ```{r, out.width="100%", echo=FALSE}
-knitr::include_graphics("https://github.com/ropenscilabs/dataspice/raw/master/man/figures/dataspice_workflow.png")
+knitr::include_graphics("https://github.com/ropenscilabs/dataspice/raw/main/man/figures/dataspice_workflow.png")
 ```
 
 
