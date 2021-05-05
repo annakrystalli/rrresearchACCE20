@@ -232,7 +232,7 @@ But! It also contains `description` and `units` columns! Just what we need!
 
 You will need to save your merged table to `data/metadata/attributes.csv`.
 
-Have a look at `janitor::make_clean_names()` and see if you can combine it with any other functions you've learned to mutate the values of columns to get round the camelCase names in `variables`.
+Have a look at `janitor::make_clean_names()` and see if you can combine it with any other functions you've learned to mutate the values of columns to get round the camelCase names in `variables`. You'll need to have a good look at the `by` argument in the [`*_join` family](https://dplyr.tidyverse.org/reference/join.html) to figure out how to join by columns that contain the data you want to join by but have different names. You also will find `dplyr` function [`rename`](https://dplyr.tidyverse.org/reference/rename.html) useful!
 
 Once you've completed your merge and saved it, use `dataspice::edit_attributes()` to fill in the final details for the few variables we created.
 
