@@ -153,7 +153,7 @@ usethis::use_r("geolocate")
 ● Modify 'R/geolocate.R'
 ```
 
-This creates the required `R/` directory, creates a new R script named `geolocation.R` within it and launches it for editing all in one go! Nice.
+This creates the required `R/` directory, creates a new R script named `geolocate.R` within it and launches it for editing all in one go! Nice.
 
 ## Experimenting
 
@@ -382,7 +382,7 @@ Our function is now ready to be sourced into our last preprocessing stage, addin
 Let's move back to our `individual.R` script. At the top of our script, let's add the code to source our function so it's available during preprocessing:
 
 ```{r}
-source(here::here("R", "geolocation.R"))
+source(here::here("R", "geolocate.R"))
 ```
 
 
