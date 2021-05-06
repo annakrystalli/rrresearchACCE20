@@ -18,5 +18,5 @@ And the rendered version should look a bit like this:
 
 
 ```{r, echo=FALSE, message=FALSE}
-knitr::include_url(here::here("appendices","mypackage-readme.html"))
+knitr::include_url("appendices/mypackage-readme.html")
 ```

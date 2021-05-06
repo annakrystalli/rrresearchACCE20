@@ -17,6 +17,6 @@ And the rendered version should look a bit like this:
 
 
 ```{r, echo=FALSE, message=FALSE}
-knitr::include_url(here::here("appendices","rrcompendium-readme.html"))
+knitr::include_url("appendices/rrcompendium-readme.html")
 ```
 

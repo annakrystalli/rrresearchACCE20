@@ -4,7 +4,15 @@ This `paper.Rmd` in `rrcompendium` should contain our paper
 
 **`paper.Rmd`**
 
-The completed `.Rmd` file should look like [this](https://github.com/annakrystalli/rrresearchACCE20/blob/master/appendices/rrcompendium-paper.Rmd)
+
+The completed file should look like this:
+
+
+```{r echo=FALSE, message=TRUE, comment=""}
+
+message(readr::read_file(here::here("appendices","rrcompendium-paper.Rmd")))
+
+```
 
 and the rendered version like this:
 
