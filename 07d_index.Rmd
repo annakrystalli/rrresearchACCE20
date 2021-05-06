@@ -9,12 +9,12 @@ My final `index.Rmd` looks like this:
 
 ```{r echo=FALSE, message=TRUE, comment=""}
 
-message(readr::read_file(here::here("demos","index.Rmd")))
+message(readr::read_file(here::here("appendices","index.Rmd")))
 
 ```
 
 and renders to:
 
 ```{r, echo=FALSE, message=FALSE}
-knitr::include_url("demos/index.html")
+knitr::include_url("appendices/index.html")
 ```

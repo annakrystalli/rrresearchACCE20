@@ -6,7 +6,7 @@ This R script should contain your analysis and be saved in the root directory as
 
 Your script should contain:
 
-```{r, eval=FALSE, code=readLines("analysis.R")}
+```{r, eval=FALSE, code=readLines("appendices/analysis.R")}
 
 ```
 

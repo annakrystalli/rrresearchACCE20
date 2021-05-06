@@ -823,7 +823,7 @@ For this exercise we'll create a **Data** section, load our data in and present 
 
 - Annotate each chunk with the special comment `## @knitr` followed by a space and the unique code chunk name.
 - When finished, your script should look like:
-  ```{r code=readLines("analysis.R"), eval=FALSE}
+  ```{r code=readLines("appendices/analysis.R"), eval=FALSE}
   ```
 
 ### Create a **Data** section and 
@@ -907,14 +907,14 @@ My final `index.Rmd` looks like this:
 
 ```{r echo=FALSE, message=TRUE, comment=""}
 
-message(readr::read_file(here::here("demos","index.Rmd")))
+message(readr::read_file(here::here("appendices","index.Rmd")))
 
 ```
 
 and renders to:
 
 ```{r, echo=FALSE, message=FALSE}
-knitr::include_url("demos/index.html")
+knitr::include_url("appendices/index.html")
 ```
 
 <div class="alert alert-success">

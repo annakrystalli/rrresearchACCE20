@@ -7,6 +7,6 @@ It should look a bit like this:
 
 Your script should contain:
 
-```{r, eval=FALSE, code=readLines("mypackage-DESCRIPTION")}
+```{r, eval=FALSE, code=readLines("appendices/mypackage-DESCRIPTION")}
 
 ```

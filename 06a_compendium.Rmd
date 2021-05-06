@@ -582,7 +582,7 @@ We've finished updating our `DESCRIPTION` file! `r emo::ji("tada")`
 
 It should look a bit like this:
 
-```{r, eval=FALSE, code=readLines("rrcompendium-DESCRIPTION")}
+```{r, eval=FALSE, code=readLines("appendices/rrcompendium-DESCRIPTION")}
 
 ```
 

@@ -819,7 +819,7 @@ _NOTE: the geom_smooth method of plotting model lines is not ideal and you will 
 
 **Your `analysis.R` script should now look like this.**
 
-```{r, code = readLines("analysis00.R"), eval=FALSE}
+```{r, code = readLines("appendices/analysis00.R"), eval=FALSE}
 
 ```
 
