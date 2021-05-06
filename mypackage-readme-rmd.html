@@ -219,7 +219,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><code>mypackage</code> <code>README.Rmd</code></h1>
 <p>This <code>README.Rmd</code> in <code>mypackage</code> should contain a description of the package, instructions on how to install it and an example.</p>
 <p><strong><code>README.Rmd</code></strong></p>
-<p>Your script should contain:</p>
+<p>The completed file should look like this:</p>
 <pre><code>---
 output: github_document
 ---
@@ -245,7 +245,7 @@ The goal of mypackage is to print a personalised greeting from me!
 
 You can install the development version of mypackage from GitHub with:
 
-```{r}
+```{r, eval=FALSE}
 devtools::install_github(&quot;annakrystalli/mypackage&quot;)
 ```
 
@@ -261,8 +261,10 @@ hello()
 This is a basic example which shows you how to print a personalised greeting:
 ```{r}
 hello(&quot;Lucy Elen&quot;)
-```
-</code></pre>
+```</code></pre>
+<p>And the rendered version should look a bit like this:</p>
+<iframe src="appendices/mypackage-readme.html" width="672" height="400px">
+</iframe>
 
 </div>
             </section>

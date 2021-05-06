@@ -219,7 +219,167 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><code>rrcompendium</code> <code>paper.Rmd</code></h1>
 <p>This <code>paper.Rmd</code> in <code>rrcompendium</code> should contain our paper</p>
 <p><strong><code>paper.Rmd</code></strong></p>
-<p>The completed <code>.Rmd</code> file should look like <a href="https://github.com/annakrystalli/rrresearchACCE20/blob/master/appendices/rrcompendium-paper.Rmd">this</a></p>
+<p>The completed file should look like this:</p>
+<pre><code>---
+title: &quot;From noise to knowledge: how randomness generates novel phenomena and reveals information&quot;
+author:
+  - name: &quot;Carl Boettiger&quot;
+    affiliation: a
+    email: &quot;cboettig@berkeley.edu&quot;
+address:
+  - code: a
+    address: &quot;Dept of Environmental Science, Policy, and Management, University of California Berkeley, Berkeley CA 94720-3114, USA&quot;
+bibliography: refs.bib
+layout:  3p # review = doublespace, 3p = singlespace, 5p = two-column
+preamble: |
+  \usepackage[nomarkers]{endfloat}
+  \linenumbers
+  \usepackage{setspace}
+  \doublespacing
+abstract: |
+
+  Noise, as the term itself suggests, is most often seen a nuisance to ecological insight, a inconvenient reality that must be acknowledged, a haystack that must be stripped away to reveal the processes of interest underneath. Yet despite this well-earned reputation, noise is often interesting in its own right: noise can induce novel phenomena that could not be understood from some underlying determinstic model alone.  Nor is all noise the same, and close examination of differences in frequency, color or magnitude can reveal insights that would otherwise be inaccessible.  Yet with each aspect of stochasticity leading to some new or unexpected behavior, the time is right to move beyond the familiar refrain of &quot;everything is important&quot; [@Bjornstad2001].  Stochastic phenomena can suggest new ways of inferring process from pattern, and thus spark more dialog between theory and empirical perspectives that best advances the field as a whole. I highlight a few compelling examples, while observing that the study of stochastic phenomena are only beginning to make this translation into empirical inference.  There are rich opportunities at this interface in the years ahead.  
+output: rticles::elsevier_article
+---
+
+\newpage
+
+```{r libraries, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, 
+                      dev=&quot;cairo_pdf&quot;, fig.width=7, fig.height=3.5)
+
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(ggthemes)
+```
+
+```{r set-theme}
+theme_set(theme_grey())
+```
+
+
+
+# Introduction: Noise the nuisance
+
+To many, stochasticity, or more simply, noise,
+is just that -- something which obscures patterns we are trying to infer [@Knape2011]; and an ever richer batteries of statistical methods are developed largely in an attempt to strip away this undesirable randomness to reveal the patterns beneath [@Coulson2001].  Over the past several decades, literature in stochasticity has transitioned from thinking of stochasticity in such terms; where noise is a nuisance that obscures the deterministic skeleton of the underlying mechanisms, to the recognition that stochasticity can itself be a mechanism for driving many interesting phenomena [@Coulson2004].  Yet this transition from *noise the nuisance* to *noise the creator* of ecological phenomena has had, with a few notable exceptions, relatively little impact in broader thinking about stochasticity.  One of the most provocative of those exceptions has turned the classical notion of noise the nuisance on its head: recognizing that noise driven phenomena can become a tool to reveal underlying processes: to become *noise the informer*.  Here I argue that this third shift in perspective offers an opportunity to better bridge the divide between respective primarily theoretical and primarily empirical communities by seeing noise not as mathematical curiosity or statistical bugbear, but as a source for new opportunities for inference. 
+
+
+In arguing for this shift, it essential to recognize this is a call for a bigger tent, not for the rejection of previous paradigms.  What I will characterize as &#39;noise the nuisance&#39; reflects a predominately statistical approach, in which noise, almost by definition, represents all the processes we are not interested in that create additional variation which might obscure the pattern of interest.  By contrast, an extensive literature has long explored how noise itself can create patterns and explain processes from population cycling to coexistence.  These broad categories should be seen as a spectrum and not be mistaken for either a sharp dichotomy nor a reference to a strictly empirical-theoretical divide.  Each paradigm expands upon rather than rejects the previous notion of noise: the recognition that noise can create novel phenomena does not mean that noise cannot also obscure the signal of some process of interest.  Likewise, seeking to use noise as a novel source of information about underlying processes will be informed by both previous paradigms, as our discussion will illustrate.
+
+Numerical simulations permit poking and prodding investigation unencumbered by either experimental design or mathematical formalism.
+
+The code and data for the simulations in this paper are maintained at &lt;https://github.com/cboettig/noise-phenomena&gt;. 
+
+To emphasize the underlying trend in the changing roles in which we
+see and understand noisy processes, I will also restrict my focus 
+to relatively simple models primarily from population ecology context.
+Simplicity not only makes examples (in equations and in code) more
+tractable but also allows us to focus on aspects that are germane to many
+contexts rather than unique to particular complexities [@Levins1966; @Bartlett1960].
+
+Nevertheless, that complexity matters -- few themes have been better 
+emphasized in the theoretical literature [@Bjornstad2001].  Both
+the foundational literature and recent research continue to echo the
+theme of understanding the impact different real world complexities
+have in stochastic dynamics.  As such, we will 
+rely on both textbooks and recent reviews to provide a proper treatment
+of these issues, and focus on broader trends.
+
+This review is structured into three sections: Origins of noise, emergent
+phenomena, and noise-driven inference.  The first section lays the conceptual groundwork we will need, while also highlighting a shift to more and more mechanistically rooted descriptions of noise.  We will see where the common formulation of &quot;deterministic skeleton plus noise term&quot; comes from, how it  is best justified, and when it breaks down.  The second section introduces *noise the creator*, showing examples of ecological phenomena generated by stochasticity.  These examples will be familiar to most specialists but illustrate a different way of thinking than held by most ecologists, where noise is only a nuisance to be filtered or averaged out.  The third and final section, *noise the informer*, turns these examples back-to-front, asking what noise can tell us about a system: such as its underlying resilience or stability, or the approach of a catastrophic shift. Examples are fewer here, and have largely yet to benefit from the introduction of either the rigorous theorems or more complex models so plentiful in the previous sections.  Yet the promise of prediction, of early warning signs before tipping points, have spurred broad interest in such noise-based inference. This review is a call to both deepen the connection to mechanism and better formalize this thinking, but also look more broadly into other ways in which noisy phenomena can help inform and predict underlying processes.
+
+
+## Demographic stochasticity
+
+Demographic stochasticity refers to fluctuations in population sizes
+or densities that arise from the fundamentally discrete nature of
+individual birth and death events.  Demographic stochasticity is a
+particularly instructive case for illustrating a mechanism for how
+noise arises as an aggregate description from a lower-level mechanistic
+process.  We summarize the myriad lower-level processes that
+mechanistically lead to the event of a &#39;birth&#39; in the population
+as a probability: In a population of $N$ identical individuals at
+time $t$, a birth occurs with probability $b_t(N_t)$ (_i.e._ a rate
+that can depend on the population size, $N$), which increases the
+population size to $N+1$. Similarly, death events occur with probability
+$d_t(N_t)$, decreasing the population size by one individual, to $N-1$.  Assuming
+each of these events are independent, this is a state-dependent
+Poisson process. The change in the probability of being in state
+$N$ is given by the sum over the ways to enter the state, minus the
+ways to leave the state: a simple expression of probability balance
+known as the master equation [@vanKampen2007].  Note that in general
+this approach is equally applicable to stochastic transitions of any sort,
+not just step sizes of +/- 1 and not just birth and death events, but
+can include transitions between stage classes or trait values, including
+mutations to continuously-valued traits in evolutionary dynamics [e.g. @Boettiger2010]. 
+
+
+The @Gillespie1977 provides an exact algorithmcfor simulating demographic stochasticity at an individual level.
+
+The algorithm is a simple and direct implementation of the master equation, progressing in random step sizes determined by the waiting time until the next event. Free from both the approximations and mathematical complexity, the Gillespie algorithm is an interesting example of where we rely on a numerical implementation to check the accuracy of an analytic approximation, even in the case of simple models such as we will discuss.  Though the  algorithm is often maligned as numerically demanding, it can be run much more effectively even on large models on today&#39;s computers than when it was first developed in the 70s, and remains an underutilized approach for writing simple and approximation-free^[that is, free from the approximation made by SDE models as we see in the van Kampen example.  All models are, of course, only approximations.] stochastic ecological models. 
+
+
+As our objective is to tie the origins of noise more closely to biological
+processes, it will be helpful to make the notion of a master equation concrete
+with a specific example.  We will focus on the classic case of @Levins1969 patch model,
+to illustrate the Gillespie algorithm and the van Kampen system size expansion
+
+\begin{align}
+\frac{\mathrm{d} n}{\mathrm{d} t} = \underbrace{c n \left(1 - \frac{n}{N}\right)}_{\textrm{birth}} - \underbrace{e n}_{\textrm{death}}, \label{levins}
+\end{align}
+
+where $n$ individuals compete for a
+finite number of suitable habitats $N$.  Individuals die a constant
+rate $e$, and produce offspring at a constant rate $c$ who then
+have a probability of colonizing an open patch that is simply
+proportional to the fraction of available patches, $1 - n/N$. 
+
+
+Figure 1 shows the results of two exact SSA simulations of the classic patch model of @Levins1969. 
+
+
+&lt;!-- Figure 1: Gillespie simulations --&gt;
+```{r figure1, fig.cap=&quot;Population dynamics from a Gillespie simulation of the Levins model with large (N=1000, panel A) and small (N=100, panel B) number of sites (blue) show relatively weaker effects of demographic noise in the bigger system. Models are otherwise identical, with e = 0.2 and c = 1 (code in appendix A). Theoretical predictions for mean and plus/minus one standard deviation shown in horizontal re dashed lines.&quot;}
+# create colour palette
+colours &lt;- ptol_pal()(2)
+# load-data
+data &lt;- read_csv(here::here(&quot;analysis&quot;, &quot;data&quot;,&quot;raw_data&quot;, &quot;gillespie.csv&quot;), 
+                  col_types = &quot;cdiddd&quot;) 
+# recode-data
+data &lt;- data %&gt;% 
+  mutate(system_size = recode(system_size, 
+                              large = &quot;A. 1000 total sites&quot;, 
+                              small = &quot;B. 100 total sites&quot;)) 
+
+# plot-gillespie
+data %&gt;% 
+    ggplot(aes(x = time)) + 
+    geom_hline(aes(yintercept = mean), lty=2, col=colours[2]) + 
+    geom_hline(aes(yintercept = minus_sd), lty=2, col=colours[2]) + 
+    geom_hline(aes(yintercept = plus_sd), lty=2, col=colours[2]) + 
+    geom_line(aes(y = n), col=colours[1]) +
+    facet_wrap(~system_size, scales = &quot;free_y&quot;) 
+```
+
+
+
+# Conclusions
+
+This review has explored three paradigms in how noise is viewed throughout theecological literature, which I have dubbed respectively: noise the *nuisance*, noise the *creator*, and noise the *informer*.  Noise can be seen as a nuisance almost by definition: in examining the origins of noise, we have seen how stochasticity is introduced not because ecological processes are random in some fundamental sense, but rather, because those processes are influenced by a complex combination of forces we do not model explicitly.  In this view, noise captures all that additional variation that is separate from the process of interest, and a rich array of statistical methods allow us to separate the one from the other in observations and experiments.  By examining the origins of noise, we have seen that despite the complex ways in this noise can enter a model, that a Gaussian white-noise approximation [@vanKampen2007; @Black2012] is often appropriate given a limit of a large system size -- a fact often invokedn implicitly but rarely derived explicitly from the theorems of @Kurtz1978 and others. 
+
+In this context, noise does not act to create phenomena of interest directly. The sudden transitions we seek to anticipate are still explained by the deterministic part of the model -- bifurcations. But nor is noise a nuisance that merely cloaks this deterministic skeleton from plain view: rather, it becomes a novel source of information that would be inaccessible from a purely deterministic approach.  I believe more examples of how noise can inform on underlying processes is possible, but will require greater dialog between these world views.  
+
+
+# Acknowledgements
+
+The author acknowledges feedback and advice from the editor,
+Tim Coulson and two anonymous reviewers. This work was supported in
+part by  USDA National Institute of Food and Agriculture, Hatch
+project CA-B-INS-0162-H.
+
+# References</code></pre>
 <p>and the rendered version like this:</p>
 <embed src="appendices/paper.pdf" width="600" height="800" type="application/pdf" />
 
