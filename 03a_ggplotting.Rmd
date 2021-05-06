@@ -391,9 +391,9 @@ Start by loading the `ggplot2` as well as package `magrittr` so we have access t
 
 ```{r}
 library(ggplot2)
-library(magrittr)
+library(dplyr)
 individual <- readr::read_csv(here::here("data", "individual.csv")) %>%
-    dplyr::select(stem_diameter, height, growth_form)
+    select(stem_diameter, height, growth_form)
 ```
 
 **Let's also create a new `.R` script and save it as `analysis.R` in the root of our project.**
@@ -513,7 +513,7 @@ We can see that there are very few entries for `liana` and also a whole bunch of
 
 ```{r}
 analysis_df <- individual %>%
-    dplyr::filter(!is.na(growth_form), growth_form != "liana") 
+    filter(!is.na(growth_form), growth_form != "liana") 
 ```
 
 Let's also order our bars in order of ascending counts. The simplest way to do this is to convert `growth_form` to a factor and specify the ordering of the factor levels.
@@ -533,7 +533,7 @@ We can then specify the level order when we mutate `growth_form` to a factor usi
 
 ```{r}
 analysis_df %<>% 
-    dplyr::mutate(growth_form = factor(growth_form, 
+    mutate(growth_form = factor(growth_form, 
                                        levels = gf_levels))
 ```
 
