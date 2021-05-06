@@ -276,7 +276,7 @@ In our `rrtools` project, these packages should be pre-installed and be availabl
 
 However, if you are working locally, you would need to **install the following packages starting with `rrtools`** (if you haven't got devtools installed, you'll need to before you can install `rrtools` from GitHub). 
 
-```{r, eval=FALSE, code=readLines("install_rrtools.R")}
+```{r, eval=FALSE, code=readLines("setup/install_rrtools.R")}
 
 ```
 

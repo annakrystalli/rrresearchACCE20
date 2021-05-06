@@ -84,4 +84,4 @@ In general, do not use such hard code paths in repeatable scripts. They might no
 
 </div>
 
-You will also need to run the `install.R` script. See the [setup instructions](#setup) for more details.
+You will also need to run the `setup/install.R` script. See the [setup instructions](#setup) for more details.

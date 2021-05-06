@@ -158,7 +158,7 @@ You might also need a set of **development tools** to install and run `devtools`
 To be able to run materials locally, you will also need to install all the required R packages.  Run the following code:
 
 
-```{r, eval=FALSE, code=readLines("install.R")}
+```{r, eval=FALSE, code=readLines("setup/install.R")}
 
 ```
 
@@ -166,13 +166,13 @@ To be able to run materials locally, you will also need to install all the requi
 
 #### Package Development section
 
-```{r, eval=FALSE, code=readLines("install_package-dev.R")}
+```{r, eval=FALSE, code=readLines("setup/install_package-dev.R")}
 
 ```
 
 #### Research Compendium with `rrtools` section
 
-```{r, eval=FALSE, code=readLines("install_rrtools.R")}
+```{r, eval=FALSE, code=readLines("setup/install_rrtools.R")}
 
 ```
 
