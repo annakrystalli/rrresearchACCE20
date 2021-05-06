@@ -4,50 +4,19 @@ This `README.Rmd` in `mypackage` should contain a description of the package, in
 
 **`README.Rmd`**
 
-Your script should contain:
 
-````
----
-output: github_document
----
+The completed file should look like this:
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}`r ''`
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
-# mypackage
+```{r echo=FALSE, message=TRUE, comment=""}
 
-<!-- badges: start -->
-<!-- badges: end -->
+message(readr::read_file(here::here("appendices","mypackage-readme.Rmd")))
 
-The goal of mypackage is to print a personalised greeting from me!
-
-## Installation
-
-You can install the development version of mypackage from GitHub with:
-
-```{r}`r ''`
-devtools::install_github("annakrystalli/mypackage")
 ```
 
-## Example
+And the rendered version should look a bit like this:
 
-This is a basic example which shows you how to print a generic greeting:
 
-```{r example}`r ''`
-library(mypackage)
-hello()
+```{r, echo=FALSE, message=FALSE}
+knitr::include_url(here::here("appendices","mypackage-readme.html"))
 ```
-
-This is a basic example which shows you how to print a personalised greeting:
-```{r}`r ''`
-hello("Lucy Elen")
-```
-
-````

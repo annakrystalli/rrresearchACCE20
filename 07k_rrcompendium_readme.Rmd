@@ -4,12 +4,19 @@ This `README.Rmd` in `rrcompendium` should contain the title of the compendium, 
 
 **`README.Rmd`**
 
-The completed file should look like [this](https://github.com/annakrystalli/rrresearchACCE20/blob/master/appendices/rrcompendium-readme.Rmd)
+The completed file should look like this:
+
+
+```{r echo=FALSE, message=TRUE, comment=""}
+
+message(readr::read_file(here::here("appendices","rrcompendium-readme.Rmd")))
+
+```
 
 And the rendered version should look a bit like this:
 
 
-```{r, echo=FALSE}
-knitr::include_graphics("assets/README-webshot.png")
+```{r, echo=FALSE, message=FALSE}
+knitr::include_url(here::here("appendices","rrcompendium-readme.html"))
 ```
 

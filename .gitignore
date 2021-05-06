@@ -13,4 +13,5 @@ docs/*
 .binder/install.R
 _book/*
 _bookdown_files/*
-
+appendices/*.md
+appendices/rrcompendium-code-chunks.Rmd
