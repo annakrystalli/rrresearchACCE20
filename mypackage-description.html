@@ -174,11 +174,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html"><i class="fa fa-check"></i>Version Control with Git</a></li>
 <li class="chapter" data-level="" data-path="collaborative-github.html"><a href="collaborative-github.html"><i class="fa fa-check"></i>Collaborative GitHub</a></li>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a></li>
-<li class="part"><span><b>VII Closing</b></span></li>
-<li class="chapter" data-level="" data-path="closing-remarks.html"><a href="closing-remarks.html"><i class="fa fa-check"></i>Closing Remarks</a></li>
-<li class="part"><span><b>VIII Additonal materials</b></span></li>
+<li class="part"><span><b>VII Packaging Research Projects</b></span></li>
+<li class="chapter" data-level="" data-path="managing-dependencies.html"><a href="managing-dependencies.html"><i class="fa fa-check"></i>Managing Dependencies</a></li>
 <li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html"><i class="fa fa-check"></i>Packaging functionality</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html"><i class="fa fa-check"></i>Creating a research compendium with rrtools</a></li>
+<li class="part"><span><b>VIII Closing</b></span></li>
+<li class="chapter" data-level="" data-path="closing-remarks.html"><a href="closing-remarks.html"><i class="fa fa-check"></i>Closing Remarks</a></li>
 <li class="part"><span><b>IX APPENDIX</b></span></li>
 <li><a href="individual-r.html#individual.r"><code>individual.R</code></a></li>
 <li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a></li>
@@ -220,27 +221,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The <code>DESCRIPTION</code> file contains metadata about your package, including dependencies</p>
 <p>It should look a bit like this:</p>
 <p>Your script should contain:</p>
-<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="mypackage-description.html#cb722-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> mypackage</span>
-<span id="cb722-2"><a href="mypackage-description.html#cb722-2" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> Customised greetings from me<span class="sc">!</span></span>
-<span id="cb722-3"><a href="mypackage-description.html#cb722-3" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="fl">1.0</span></span>
-<span id="cb722-4"><a href="mypackage-description.html#cb722-4" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> <span class="fu">person</span>(<span class="st">&quot;Anna&quot;</span>, <span class="st">&quot;Krystalli&quot;</span>, </span>
-<span id="cb722-5"><a href="mypackage-description.html#cb722-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">email =</span> <span class="st">&quot;annakrystalli@googlemail.com&quot;</span>, </span>
-<span id="cb722-6"><a href="mypackage-description.html#cb722-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>))</span>
-<span id="cb722-7"><a href="mypackage-description.html#cb722-7" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> Prints a customised greeting from myself, </span>
-<span id="cb722-8"><a href="mypackage-description.html#cb722-8" aria-hidden="true" tabindex="-1"></a>    delivered by a friend.</span>
-<span id="cb722-9"><a href="mypackage-description.html#cb722-9" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
-<span id="cb722-10"><a href="mypackage-description.html#cb722-10" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
-<span id="cb722-11"><a href="mypackage-description.html#cb722-11" aria-hidden="true" tabindex="-1"></a>LazyData<span class="sc">:</span> true</span>
-<span id="cb722-12"><a href="mypackage-description.html#cb722-12" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb722-13"><a href="mypackage-description.html#cb722-13" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">1.1</span></span>
-<span id="cb722-14"><a href="mypackage-description.html#cb722-14" aria-hidden="true" tabindex="-1"></a>Imports<span class="sc">:</span> </span>
-<span id="cb722-15"><a href="mypackage-description.html#cb722-15" aria-hidden="true" tabindex="-1"></a>    cowsay</span>
-<span id="cb722-16"><a href="mypackage-description.html#cb722-16" aria-hidden="true" tabindex="-1"></a>Suggests<span class="sc">:</span> </span>
-<span id="cb722-17"><a href="mypackage-description.html#cb722-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">testthat</span> (<span class="sc">&gt;=</span> <span class="dv">3</span>.<span class="fl">0.0</span>)</span>
-<span id="cb722-18"><a href="mypackage-description.html#cb722-18" aria-hidden="true" tabindex="-1"></a>Config<span class="sc">/</span>testthat<span class="sc">/</span>edition<span class="sc">:</span> <span class="dv">3</span></span>
-<span id="cb722-19"><a href="mypackage-description.html#cb722-19" aria-hidden="true" tabindex="-1"></a>URL<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>annakrystalli<span class="sc">/</span>mypackage</span>
-<span id="cb722-20"><a href="mypackage-description.html#cb722-20" aria-hidden="true" tabindex="-1"></a>BugReports<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>annakrystalli<span class="sc">/</span>mypackage<span class="sc">/</span>issues</span>
-<span id="cb722-21"><a href="mypackage-description.html#cb722-21" aria-hidden="true" tabindex="-1"></a>Date<span class="sc">:</span> <span class="dv">2021-05-07</span></span></code></pre></div>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="mypackage-description.html#cb726-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> mypackage</span>
+<span id="cb726-2"><a href="mypackage-description.html#cb726-2" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> Customised greetings from me<span class="sc">!</span></span>
+<span id="cb726-3"><a href="mypackage-description.html#cb726-3" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="fl">1.0</span></span>
+<span id="cb726-4"><a href="mypackage-description.html#cb726-4" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> <span class="fu">person</span>(<span class="st">&quot;Anna&quot;</span>, <span class="st">&quot;Krystalli&quot;</span>, </span>
+<span id="cb726-5"><a href="mypackage-description.html#cb726-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">email =</span> <span class="st">&quot;annakrystalli@googlemail.com&quot;</span>, </span>
+<span id="cb726-6"><a href="mypackage-description.html#cb726-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>))</span>
+<span id="cb726-7"><a href="mypackage-description.html#cb726-7" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> Prints a customised greeting from myself, </span>
+<span id="cb726-8"><a href="mypackage-description.html#cb726-8" aria-hidden="true" tabindex="-1"></a>    delivered by a friend.</span>
+<span id="cb726-9"><a href="mypackage-description.html#cb726-9" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
+<span id="cb726-10"><a href="mypackage-description.html#cb726-10" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb726-11"><a href="mypackage-description.html#cb726-11" aria-hidden="true" tabindex="-1"></a>LazyData<span class="sc">:</span> true</span>
+<span id="cb726-12"><a href="mypackage-description.html#cb726-12" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb726-13"><a href="mypackage-description.html#cb726-13" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">1.1</span></span>
+<span id="cb726-14"><a href="mypackage-description.html#cb726-14" aria-hidden="true" tabindex="-1"></a>Imports<span class="sc">:</span> </span>
+<span id="cb726-15"><a href="mypackage-description.html#cb726-15" aria-hidden="true" tabindex="-1"></a>    cowsay</span>
+<span id="cb726-16"><a href="mypackage-description.html#cb726-16" aria-hidden="true" tabindex="-1"></a>Suggests<span class="sc">:</span> </span>
+<span id="cb726-17"><a href="mypackage-description.html#cb726-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">testthat</span> (<span class="sc">&gt;=</span> <span class="dv">3</span>.<span class="fl">0.0</span>)</span>
+<span id="cb726-18"><a href="mypackage-description.html#cb726-18" aria-hidden="true" tabindex="-1"></a>Config<span class="sc">/</span>testthat<span class="sc">/</span>edition<span class="sc">:</span> <span class="dv">3</span></span>
+<span id="cb726-19"><a href="mypackage-description.html#cb726-19" aria-hidden="true" tabindex="-1"></a>URL<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>annakrystalli<span class="sc">/</span>mypackage</span>
+<span id="cb726-20"><a href="mypackage-description.html#cb726-20" aria-hidden="true" tabindex="-1"></a>BugReports<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>annakrystalli<span class="sc">/</span>mypackage<span class="sc">/</span>issues</span>
+<span id="cb726-21"><a href="mypackage-description.html#cb726-21" aria-hidden="true" tabindex="-1"></a>Date<span class="sc">:</span> <span class="dv">2021-05-07</span></span></code></pre></div>
 
 </div>
             </section>

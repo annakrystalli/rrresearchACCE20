@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="packaging-functionality.html"/>
-<link rel="next" href="appendix.html"/>
+<link rel="next" href="closing.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -174,11 +174,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="version-control-with-git.html"><a href="version-control-with-git.html"><i class="fa fa-check"></i>Version Control with Git</a></li>
 <li class="chapter" data-level="" data-path="collaborative-github.html"><a href="collaborative-github.html"><i class="fa fa-check"></i>Collaborative GitHub</a></li>
 <li><a href="practical-github-rstudio-for-collaborative-coding.html#practical-github-rstudio-for-collaborative-coding">Practical: <code>GitHub</code> &amp; <code>Rstudio</code> for collaborative coding</a></li>
-<li class="part"><span><b>VII Closing</b></span></li>
-<li class="chapter" data-level="" data-path="closing-remarks.html"><a href="closing-remarks.html"><i class="fa fa-check"></i>Closing Remarks</a></li>
-<li class="part"><span><b>VIII Additonal materials</b></span></li>
+<li class="part"><span><b>VII Packaging Research Projects</b></span></li>
+<li class="chapter" data-level="" data-path="managing-dependencies.html"><a href="managing-dependencies.html"><i class="fa fa-check"></i>Managing Dependencies</a></li>
 <li class="chapter" data-level="" data-path="packaging-functionality.html"><a href="packaging-functionality.html"><i class="fa fa-check"></i>Packaging functionality</a></li>
 <li class="chapter" data-level="" data-path="creating-a-research-compendium-with-rrtools.html"><a href="creating-a-research-compendium-with-rrtools.html"><i class="fa fa-check"></i>Creating a research compendium with rrtools</a></li>
+<li class="part"><span><b>VIII Closing</b></span></li>
+<li class="chapter" data-level="" data-path="closing-remarks.html"><a href="closing-remarks.html"><i class="fa fa-check"></i>Closing Remarks</a></li>
 <li class="part"><span><b>IX APPENDIX</b></span></li>
 <li><a href="individual-r.html#individual.r"><code>individual.R</code></a></li>
 <li><a href="geolocate-r.html#geolocate.r"><code>geolocate.R</code></a></li>
@@ -312,7 +313,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>pkg <code>here</code></h3>
 <p>Use function <code>here::here("path", "to", "file")</code> to create robust paths <strong>relative to the project root</strong>.</p>
 <p>eg</p>
-<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="creating-a-research-compendium-with-rrtools.html#cb643-1" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;path&quot;</span>, <span class="st">&quot;to&quot;</span>, <span class="st">&quot;file&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="creating-a-research-compendium-with-rrtools.html#cb647-1" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;path&quot;</span>, <span class="st">&quot;to&quot;</span>, <span class="st">&quot;file&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/runner/work/rrresearchACCE20/rrresearchACCE20/path/to/file&quot;</code></pre>
 <hr />
 </div>
@@ -455,21 +456,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Install packages</h3>
 <p>In our <code>rrtools</code> project, these packages should be pre-installed and be available to the research compendium we’ll create inside.</p>
 <p>However, if you are working locally, you would need to <strong>install the following packages starting with <code>rrtools</code></strong> (if you haven’t got devtools installed, you’ll need to before you can install <code>rrtools</code> from GitHub).</p>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="creating-a-research-compendium-with-rrtools.html#cb645-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install rrtools</span></span>
-<span id="cb645-2"><a href="creating-a-research-compendium-with-rrtools.html#cb645-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb645-3"><a href="creating-a-research-compendium-with-rrtools.html#cb645-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;benmarwick/rrtools&quot;</span>)</span>
-<span id="cb645-4"><a href="creating-a-research-compendium-with-rrtools.html#cb645-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb645-5"><a href="creating-a-research-compendium-with-rrtools.html#cb645-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install github dependencies</span></span>
-<span id="cb645-6"><a href="creating-a-research-compendium-with-rrtools.html#cb645-6" aria-hidden="true" tabindex="-1"></a>dependencies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;ggthemes&quot;</span>, <span class="st">&quot;gitcreds&quot;</span>, <span class="st">&quot;rticles&quot;</span>, <span class="st">&quot;Cairo&quot;</span>)</span>
-<span id="cb645-7"><a href="creating-a-research-compendium-with-rrtools.html#cb645-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb645-8"><a href="creating-a-research-compendium-with-rrtools.html#cb645-8" aria-hidden="true" tabindex="-1"></a><span class="co"># install CRAN dependencies</span></span>
-<span id="cb645-9"><a href="creating-a-research-compendium-with-rrtools.html#cb645-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(dependencies)</span>
-<span id="cb645-10"><a href="creating-a-research-compendium-with-rrtools.html#cb645-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb645-11"><a href="creating-a-research-compendium-with-rrtools.html#cb645-11" aria-hidden="true" tabindex="-1"></a><span class="co">#install github dependencies</span></span>
-<span id="cb645-12"><a href="creating-a-research-compendium-with-rrtools.html#cb645-12" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;crsh/citr&quot;</span>)</span>
-<span id="cb645-13"><a href="creating-a-research-compendium-with-rrtools.html#cb645-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb645-14"><a href="creating-a-research-compendium-with-rrtools.html#cb645-14" aria-hidden="true" tabindex="-1"></a><span class="co"># install tinytex</span></span>
-<span id="cb645-15"><a href="creating-a-research-compendium-with-rrtools.html#cb645-15" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="creating-a-research-compendium-with-rrtools.html#cb649-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install rrtools</span></span>
+<span id="cb649-2"><a href="creating-a-research-compendium-with-rrtools.html#cb649-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb649-3"><a href="creating-a-research-compendium-with-rrtools.html#cb649-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;benmarwick/rrtools&quot;</span>)</span>
+<span id="cb649-4"><a href="creating-a-research-compendium-with-rrtools.html#cb649-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb649-5"><a href="creating-a-research-compendium-with-rrtools.html#cb649-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install github dependencies</span></span>
+<span id="cb649-6"><a href="creating-a-research-compendium-with-rrtools.html#cb649-6" aria-hidden="true" tabindex="-1"></a>dependencies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;ggthemes&quot;</span>, <span class="st">&quot;gitcreds&quot;</span>, <span class="st">&quot;rticles&quot;</span>, <span class="st">&quot;Cairo&quot;</span>)</span>
+<span id="cb649-7"><a href="creating-a-research-compendium-with-rrtools.html#cb649-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb649-8"><a href="creating-a-research-compendium-with-rrtools.html#cb649-8" aria-hidden="true" tabindex="-1"></a><span class="co"># install CRAN dependencies</span></span>
+<span id="cb649-9"><a href="creating-a-research-compendium-with-rrtools.html#cb649-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(dependencies)</span>
+<span id="cb649-10"><a href="creating-a-research-compendium-with-rrtools.html#cb649-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb649-11"><a href="creating-a-research-compendium-with-rrtools.html#cb649-11" aria-hidden="true" tabindex="-1"></a><span class="co">#install github dependencies</span></span>
+<span id="cb649-12"><a href="creating-a-research-compendium-with-rrtools.html#cb649-12" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;crsh/citr&quot;</span>)</span>
+<span id="cb649-13"><a href="creating-a-research-compendium-with-rrtools.html#cb649-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb649-14"><a href="creating-a-research-compendium-with-rrtools.html#cb649-14" aria-hidden="true" tabindex="-1"></a><span class="co"># install tinytex</span></span>
+<span id="cb649-15"><a href="creating-a-research-compendium-with-rrtools.html#cb649-15" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
 <p>Installing <code>rrtools</code> <strong>imports many of the packages we’ll need today</strong> (eg, have a look at the imports section of the <a href="https://github.com/benmarwick/rrtools/blob/master/DESCRIPTION"><code>DESCRIPTION</code></a> file).</p>
 <pre><code>Imports: devtools, git2r, whisker, rstudioapi, rmarkdown, curl, RCurl, jsonlite, methods, httr,          usethis, clisymbols, crayon, glue, bookdown, here</code></pre>
 <p>We also <strong>install some additional packages</strong> we’ll need for the workshop.</p>
@@ -484,17 +485,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="load-library" class="section level3">
 <h3>load library</h3>
 <p>First we need to load <code>rrtools</code></p>
-<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="creating-a-research-compendium-with-rrtools.html#cb647-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rrtools) </span></code></pre></div>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="creating-a-research-compendium-with-rrtools.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rrtools) </span></code></pre></div>
 <pre><code>## ✖ Git is installed on this computer, but not configured for use. For more information on configuring and using Git, see http://happygitwithr.com/</code></pre>
 <p>This performs a quick check to <strong>confirm you have Git installed and configured</strong></p>
 <p>If you do, you should see the following output in the console.</p>
-<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="creating-a-research-compendium-with-rrtools.html#cb649-1" aria-hidden="true" tabindex="-1"></a>✔ Git is installed on this computer, your username is annakrystalli</span></code></pre></div>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="creating-a-research-compendium-with-rrtools.html#cb653-1" aria-hidden="true" tabindex="-1"></a>✔ Git is installed on this computer, your username is annakrystalli</span></code></pre></div>
 </div>
 <div id="create-compendium-1" class="section level3">
 <h3>create compendium</h3>
 <p>Now we’re ready to <strong>create our compendium</strong>. We use function <strong><code>rrtools::create_compendium</code></strong> and supply it with a path at which our compendium will be created. The final part of our path becomes the compendium name. Because the function effectively creates a package, only a <strong>single string of lowercase alpha characters is accepted as a name</strong>. so let’s go for <code>rrcompendium</code> as the final part of our path.</p>
 <p>To <strong>create <code>rrcompendium</code> in our project, I use:</strong></p>
-<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="creating-a-research-compendium-with-rrtools.html#cb650-1" aria-hidden="true" tabindex="-1"></a>rrtools<span class="sc">::</span><span class="fu">create_compendium</span>(<span class="st">&quot;rrcompendium&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="creating-a-research-compendium-with-rrtools.html#cb654-1" aria-hidden="true" tabindex="-1"></a>rrtools<span class="sc">::</span><span class="fu">create_compendium</span>(<span class="st">&quot;rrcompendium&quot;</span>)</span></code></pre></div>
 <p>If the call was successfull you should see the following console output:</p>
 <pre><code>✓ Setting active project to &#39;/cloud/project/rrcompendium&#39;
 ✓ Writing &#39;LICENSE&#39;
@@ -550,11 +551,11 @@ Or run the rrtools configuration addin: rrtools.addin::rrtools_assistant() https
 <div id="initiate-git" class="section level3">
 <h3>Initiate <code>git</code></h3>
 <p>Let’s initialise our compendium with <code>.git</code>. We’ll need to configure git again as this is a new Rstudio cloud project.</p>
-<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="creating-a-research-compendium-with-rrtools.html#cb652-1" aria-hidden="true" tabindex="-1"></a><span class="co"># configure git</span></span>
-<span id="cb652-2"><a href="creating-a-research-compendium-with-rrtools.html#cb652-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</span>
-<span id="cb652-3"><a href="creating-a-research-compendium-with-rrtools.html#cb652-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</span>
-<span id="cb652-4"><a href="creating-a-research-compendium-with-rrtools.html#cb652-4" aria-hidden="true" tabindex="-1"></a><span class="co"># intialise git and commit</span></span>
-<span id="cb652-5"><a href="creating-a-research-compendium-with-rrtools.html#cb652-5" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="creating-a-research-compendium-with-rrtools.html#cb656-1" aria-hidden="true" tabindex="-1"></a><span class="co"># configure git</span></span>
+<span id="cb656-2"><a href="creating-a-research-compendium-with-rrtools.html#cb656-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</span>
+<span id="cb656-3"><a href="creating-a-research-compendium-with-rrtools.html#cb656-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</span>
+<span id="cb656-4"><a href="creating-a-research-compendium-with-rrtools.html#cb656-4" aria-hidden="true" tabindex="-1"></a><span class="co"># intialise git and commit</span></span>
+<span id="cb656-5"><a href="creating-a-research-compendium-with-rrtools.html#cb656-5" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code></pre></div>
 <p><strong>N.B. Beware, if you are working locally, you may have ended up with two Rstudio sessions of <code>rrcompendium</code>.</strong> Make sure to only have one session of a single project at one time to avoid problems.</p>
 <p><br></p>
 </div>
@@ -581,11 +582,11 @@ Or run the rrtools configuration addin: rrtools.addin::rrtools_assistant() https
 <h5>Carl Boettiger <a href="https://orcid.org/0000-0002-1642-628X"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" /></a>. <em>From noise to knowledge: how randomness generates novel phenomena and reveals information</em>. Published in <em>Ecology Letters</em>, 22 May 2018 <a href="https://doi.org/10.1111/ele.13085" class="uri">https://doi.org/10.1111/ele.13085</a></h5>
 <p><img src="assets/Boettiger-2018.png" heigth="250px" width="400px"></p>
 <p>Let’s first create a folder to dowload the materials into. It’s sometimes useful to have a folder to hold materials that are not formally part of the project (i.e. we will not commit these files to git). I like to call such folders <code>attic</code>, so let’s create such a folder</p>
-<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="creating-a-research-compendium-with-rrtools.html#cb654-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;attic&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="creating-a-research-compendium-with-rrtools.html#cb658-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;attic&quot;</span>)</span></code></pre></div>
 <p>Let’s also add the <code>attic/</code> dir to <code>.gitignore</code> by adding the following text to it (remember to include a new line at the end of the file)</p>
 <pre><code>attic/*</code></pre>
 <p>You can <strong>download the materials using <code>usethis::use_course()</code></strong> and supplying a path to a destination folder to argument <code>destdir</code>. Let’s download everything into the <code>attic/</code> folder.</p>
-<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="creating-a-research-compendium-with-rrtools.html#cb656-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_course</span>(<span class="at">url =</span> <span class="st">&quot;bit.ly/rrtools_wks&quot;</span>, <span class="at">destdir =</span> <span class="st">&quot;attic&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="creating-a-research-compendium-with-rrtools.html#cb660-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_course</span>(<span class="at">url =</span> <span class="st">&quot;bit.ly/rrtools_wks&quot;</span>, <span class="at">destdir =</span> <span class="st">&quot;attic&quot;</span>)</span></code></pre></div>
 <p>This will <strong>download</strong> everything we need from a GitHub repository as a <code>.zip</code> file, <strong>unzip</strong> it and launch it in a <strong>new Rstudio session</strong> for us to explore.</p>
 <p><br></p>
 </div>
@@ -664,7 +665,7 @@ Suggests: devtools,
 <div id="license" class="section level3">
 <h3>License</h3>
 <p>Finally, let’s <strong>create a new license for the material we create</strong>. We’ll use an <a href="https://opensource.org/licenses/MIT"><strong>MIT license</strong></a>. Note however that <strong>his only covers the code</strong>. We can do this with:</p>
-<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="creating-a-research-compendium-with-rrtools.html#cb662-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_mit_license</span>(<span class="st">&quot;Anna Krystalli&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="creating-a-research-compendium-with-rrtools.html#cb666-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_mit_license</span>(<span class="st">&quot;Anna Krystalli&quot;</span>)</span></code></pre></div>
 <pre><code>✔ Setting License field in DESCRIPTION to &#39;MIT + file LICENSE&#39;
 ✔ Writing &#39;LICENSE.md&#39;
 ✔ Adding &#39;^LICENSE\\.md$&#39; to &#39;.Rbuildignore&#39;</code></pre>
@@ -676,29 +677,29 @@ Suggests: devtools,
 <h3>Recap</h3>
 <p>We’ve finished updating our <code>DESCRIPTION</code> file! 🎉</p>
 <p>It should look a bit like this:</p>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="creating-a-research-compendium-with-rrtools.html#cb665-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> rrcompendium</span>
-<span id="cb665-2"><a href="creating-a-research-compendium-with-rrtools.html#cb665-2" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> Partial Reproduction of Boettiger Ecology Letters <span class="dv">2018</span>;<span class="dv">21</span><span class="sc">:</span>1255–<span class="dv">1267</span> </span>
-<span id="cb665-3"><a href="creating-a-research-compendium-with-rrtools.html#cb665-3" aria-hidden="true" tabindex="-1"></a>    with rrtools</span>
-<span id="cb665-4"><a href="creating-a-research-compendium-with-rrtools.html#cb665-4" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
-<span id="cb665-5"><a href="creating-a-research-compendium-with-rrtools.html#cb665-5" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> </span>
-<span id="cb665-6"><a href="creating-a-research-compendium-with-rrtools.html#cb665-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">person</span>(<span class="at">given =</span> <span class="st">&quot;Anna&quot;</span>,</span>
-<span id="cb665-7"><a href="creating-a-research-compendium-with-rrtools.html#cb665-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">&quot;Krystalli&quot;</span>,</span>
-<span id="cb665-8"><a href="creating-a-research-compendium-with-rrtools.html#cb665-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>),</span>
-<span id="cb665-9"><a href="creating-a-research-compendium-with-rrtools.html#cb665-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">email =</span> <span class="st">&quot;annakrystalli@googlemail.com&quot;</span>)</span>
-<span id="cb665-10"><a href="creating-a-research-compendium-with-rrtools.html#cb665-10" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> This repository contains the research compendium of the partial </span>
-<span id="cb665-11"><a href="creating-a-research-compendium-with-rrtools.html#cb665-11" aria-hidden="true" tabindex="-1"></a>    reproduction of Boettiger Ecology Letters <span class="dv">2018</span>;<span class="dv">21</span><span class="sc">:</span>1255–<span class="fl">1267.</span> The compendium </span>
-<span id="cb665-12"><a href="creating-a-research-compendium-with-rrtools.html#cb665-12" aria-hidden="true" tabindex="-1"></a>    contains all data, code, and text associated with this sub<span class="sc">-</span>section of the </span>
-<span id="cb665-13"><a href="creating-a-research-compendium-with-rrtools.html#cb665-13" aria-hidden="true" tabindex="-1"></a>    analysis.</span>
-<span id="cb665-14"><a href="creating-a-research-compendium-with-rrtools.html#cb665-14" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
-<span id="cb665-15"><a href="creating-a-research-compendium-with-rrtools.html#cb665-15" aria-hidden="true" tabindex="-1"></a>ByteCompile<span class="sc">:</span> true</span>
-<span id="cb665-16"><a href="creating-a-research-compendium-with-rrtools.html#cb665-16" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
-<span id="cb665-17"><a href="creating-a-research-compendium-with-rrtools.html#cb665-17" aria-hidden="true" tabindex="-1"></a>LazyData<span class="sc">:</span> true</span>
-<span id="cb665-18"><a href="creating-a-research-compendium-with-rrtools.html#cb665-18" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb665-19"><a href="creating-a-research-compendium-with-rrtools.html#cb665-19" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">1.1</span></span>
-<span id="cb665-20"><a href="creating-a-research-compendium-with-rrtools.html#cb665-20" aria-hidden="true" tabindex="-1"></a>Imports<span class="sc">:</span> bookdown,</span>
-<span id="cb665-21"><a href="creating-a-research-compendium-with-rrtools.html#cb665-21" aria-hidden="true" tabindex="-1"></a>    here</span>
-<span id="cb665-22"><a href="creating-a-research-compendium-with-rrtools.html#cb665-22" aria-hidden="true" tabindex="-1"></a>Suggests<span class="sc">:</span> devtools,</span>
-<span id="cb665-23"><a href="creating-a-research-compendium-with-rrtools.html#cb665-23" aria-hidden="true" tabindex="-1"></a>    git2r</span></code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="creating-a-research-compendium-with-rrtools.html#cb669-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> rrcompendium</span>
+<span id="cb669-2"><a href="creating-a-research-compendium-with-rrtools.html#cb669-2" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> Partial Reproduction of Boettiger Ecology Letters <span class="dv">2018</span>;<span class="dv">21</span><span class="sc">:</span>1255–<span class="dv">1267</span> </span>
+<span id="cb669-3"><a href="creating-a-research-compendium-with-rrtools.html#cb669-3" aria-hidden="true" tabindex="-1"></a>    with rrtools</span>
+<span id="cb669-4"><a href="creating-a-research-compendium-with-rrtools.html#cb669-4" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
+<span id="cb669-5"><a href="creating-a-research-compendium-with-rrtools.html#cb669-5" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> </span>
+<span id="cb669-6"><a href="creating-a-research-compendium-with-rrtools.html#cb669-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">person</span>(<span class="at">given =</span> <span class="st">&quot;Anna&quot;</span>,</span>
+<span id="cb669-7"><a href="creating-a-research-compendium-with-rrtools.html#cb669-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">&quot;Krystalli&quot;</span>,</span>
+<span id="cb669-8"><a href="creating-a-research-compendium-with-rrtools.html#cb669-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>),</span>
+<span id="cb669-9"><a href="creating-a-research-compendium-with-rrtools.html#cb669-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">email =</span> <span class="st">&quot;annakrystalli@googlemail.com&quot;</span>)</span>
+<span id="cb669-10"><a href="creating-a-research-compendium-with-rrtools.html#cb669-10" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> This repository contains the research compendium of the partial </span>
+<span id="cb669-11"><a href="creating-a-research-compendium-with-rrtools.html#cb669-11" aria-hidden="true" tabindex="-1"></a>    reproduction of Boettiger Ecology Letters <span class="dv">2018</span>;<span class="dv">21</span><span class="sc">:</span>1255–<span class="fl">1267.</span> The compendium </span>
+<span id="cb669-12"><a href="creating-a-research-compendium-with-rrtools.html#cb669-12" aria-hidden="true" tabindex="-1"></a>    contains all data, code, and text associated with this sub<span class="sc">-</span>section of the </span>
+<span id="cb669-13"><a href="creating-a-research-compendium-with-rrtools.html#cb669-13" aria-hidden="true" tabindex="-1"></a>    analysis.</span>
+<span id="cb669-14"><a href="creating-a-research-compendium-with-rrtools.html#cb669-14" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
+<span id="cb669-15"><a href="creating-a-research-compendium-with-rrtools.html#cb669-15" aria-hidden="true" tabindex="-1"></a>ByteCompile<span class="sc">:</span> true</span>
+<span id="cb669-16"><a href="creating-a-research-compendium-with-rrtools.html#cb669-16" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb669-17"><a href="creating-a-research-compendium-with-rrtools.html#cb669-17" aria-hidden="true" tabindex="-1"></a>LazyData<span class="sc">:</span> true</span>
+<span id="cb669-18"><a href="creating-a-research-compendium-with-rrtools.html#cb669-18" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb669-19"><a href="creating-a-research-compendium-with-rrtools.html#cb669-19" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">1.1</span></span>
+<span id="cb669-20"><a href="creating-a-research-compendium-with-rrtools.html#cb669-20" aria-hidden="true" tabindex="-1"></a>Imports<span class="sc">:</span> bookdown,</span>
+<span id="cb669-21"><a href="creating-a-research-compendium-with-rrtools.html#cb669-21" aria-hidden="true" tabindex="-1"></a>    here</span>
+<span id="cb669-22"><a href="creating-a-research-compendium-with-rrtools.html#cb669-22" aria-hidden="true" tabindex="-1"></a>Suggests<span class="sc">:</span> devtools,</span>
+<span id="cb669-23"><a href="creating-a-research-compendium-with-rrtools.html#cb669-23" aria-hidden="true" tabindex="-1"></a>    git2r</span></code></pre></div>
 <p>and your project folder should contain:</p>
 <pre><code>├── CONDUCT.md
 ├── CONTRIBUTING.md
@@ -748,7 +749,7 @@ Suggests: devtools,
 <p>Every GitHub repository needs a <code>README</code> landing page.</p>
 <p>When we intialised our research compendium, <strong>an <code>rrtools</code> <code>README</code> template</strong> was created.</p>
 <p>You can always re-create one with:</p>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="creating-a-research-compendium-with-rrtools.html#cb667-1" aria-hidden="true" tabindex="-1"></a>rrtools<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="creating-a-research-compendium-with-rrtools.html#cb671-1" aria-hidden="true" tabindex="-1"></a>rrtools<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code></pre></div>
 <pre><code>
 ✔ Creating &#39;README.Rmd&#39; from template.
 ✔ Adding &#39;README.Rmd&#39; to `.Rbuildignore`.
@@ -785,7 +786,7 @@ compendium</li>
 <div id="add-title" class="section level3">
 <h3>add title</h3>
 <p>In the first code chunk, assign the title to the <code>title</code> object:</p>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="creating-a-research-compendium-with-rrtools.html#cb669-1" aria-hidden="true" tabindex="-1"></a>Title <span class="ot">&lt;-</span> <span class="st">&quot;Partial Reproduction of Boettiger Ecology Letters 2018;21:1255–1267 with rrtools&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="creating-a-research-compendium-with-rrtools.html#cb673-1" aria-hidden="true" tabindex="-1"></a>Title <span class="ot">&lt;-</span> <span class="st">&quot;Partial Reproduction of Boettiger Ecology Letters 2018;21:1255–1267 with rrtools&quot;</span></span></code></pre></div>
 </div>
 <div id="edit-author-details" class="section level3">
 <h3>edit author details</h3>
@@ -813,11 +814,11 @@ compendium</li>
 <h2>🚦 Create GitHub repository</h2>
 <p>Next, we’ll <strong>create a GitHub repository to share our compendium</strong>. We’ll make use of our <code>GITHUB_PAT</code> and go for <code>https</code> authentication. We can do this with function:</p>
 <p>You will need to set up <code>gitcreds</code> again in this new project!</p>
-<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="creating-a-research-compendium-with-rrtools.html#cb672-1" aria-hidden="true" tabindex="-1"></a><span class="co"># configure GitHub PAT credentials</span></span>
-<span id="cb672-2"><a href="creating-a-research-compendium-with-rrtools.html#cb672-2" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span>
-<span id="cb672-3"><a href="creating-a-research-compendium-with-rrtools.html#cb672-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb672-4"><a href="creating-a-research-compendium-with-rrtools.html#cb672-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create GitHub repository and push</span></span>
-<span id="cb672-5"><a href="creating-a-research-compendium-with-rrtools.html#cb672-5" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="at">protocol =</span> <span class="st">&quot;https&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="creating-a-research-compendium-with-rrtools.html#cb676-1" aria-hidden="true" tabindex="-1"></a><span class="co"># configure GitHub PAT credentials</span></span>
+<span id="cb676-2"><a href="creating-a-research-compendium-with-rrtools.html#cb676-2" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span>
+<span id="cb676-3"><a href="creating-a-research-compendium-with-rrtools.html#cb676-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb676-4"><a href="creating-a-research-compendium-with-rrtools.html#cb676-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create GitHub repository and push</span></span>
+<span id="cb676-5"><a href="creating-a-research-compendium-with-rrtools.html#cb676-5" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="at">protocol =</span> <span class="st">&quot;https&quot;</span>)</span></code></pre></div>
 <pre><code>✔ Setting active project to &#39;/Users/Anna/Documents/workflows/rrcompendium&#39;
 ● Check title and description
   Name:        rrcompendium
@@ -867,7 +868,7 @@ compendium</li>
 <li><p><code>vignettes</code> to create a <code>vignettes/</code> directory (and automatically update the <code>DESCRIPTION</code>).</p></li>
 </ul>
 <p>The default is a top-level <code>analysis/</code>.</p>
-<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="creating-a-research-compendium-with-rrtools.html#cb676-1" aria-hidden="true" tabindex="-1"></a>rrtools<span class="sc">::</span><span class="fu">use_analysis</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="creating-a-research-compendium-with-rrtools.html#cb680-1" aria-hidden="true" tabindex="-1"></a>rrtools<span class="sc">::</span><span class="fu">use_analysis</span>()</span></code></pre></div>
 <pre><code>✔ Adding bookdown to Imports
 ✔ Creating &#39;analysis&#39; directory and contents
 ✔ Creating &#39;analysis&#39;
@@ -938,8 +939,8 @@ Note that:
 <h3>Copy data to <code>data/</code></h3>
 <p>To begin, let’s <strong>copy <code>gillespie.csv</code></strong> from the course materials you downloaded in <code>rrtools-wkshp-materials-master/</code> <strong>to the subfolder <code>analysis/data/raw_data/</code></strong> in <code>rrcompendium</code></p>
 <p>We can do this programmatically with:</p>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="creating-a-research-compendium-with-rrtools.html#cb679-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">file_copy</span>(<span class="st">&quot;attic/rrtools-wkshp-materials-master/gillespie.csv&quot;</span>, </span>
-<span id="cb679-2"><a href="creating-a-research-compendium-with-rrtools.html#cb679-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;analysis/data/raw_data/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="creating-a-research-compendium-with-rrtools.html#cb683-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">file_copy</span>(<span class="st">&quot;attic/rrtools-wkshp-materials-master/gillespie.csv&quot;</span>, </span>
+<span id="cb683-2"><a href="creating-a-research-compendium-with-rrtools.html#cb683-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;analysis/data/raw_data/&quot;</span>)</span></code></pre></div>
 <p>Your data folder should now look like this:</p>
 <pre><code>analysis/data
 ├── DO-NOT-EDIT-ANY-FILES-IN-HERE-BY-HAND
@@ -953,30 +954,30 @@ Note that:
 <p>Let’s also <strong>open <code>analysis.R</code></strong> in the course materials and run the code. The script has some <strong>initial setup</strong>, then <strong>loads the data</strong>, <strong>recodes one of the columns</strong> for plotting and then <strong>plots the results</strong> of the simulation, which <strong>generates figure 1 in <a href="https://github.com/annakrystalli/rrtools-wkshp-materials/blob/master/paper.pdf"><code>paper.pdf</code></a></strong>.</p>
 <div id="analysis.r" class="section level4">
 <h4><code>analysis.R</code></h4>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="creating-a-research-compendium-with-rrtools.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb681-2"><a href="creating-a-research-compendium-with-rrtools.html#cb681-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb681-3"><a href="creating-a-research-compendium-with-rrtools.html#cb681-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb681-4"><a href="creating-a-research-compendium-with-rrtools.html#cb681-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb681-5"><a href="creating-a-research-compendium-with-rrtools.html#cb681-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>())</span></code></pre></div>
-<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="creating-a-research-compendium-with-rrtools.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load-data</span></span>
-<span id="cb682-2"><a href="creating-a-research-compendium-with-rrtools.html#cb682-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="at">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="creating-a-research-compendium-with-rrtools.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create colour palette</span></span>
-<span id="cb683-2"><a href="creating-a-research-compendium-with-rrtools.html#cb683-2" aria-hidden="true" tabindex="-1"></a>colours <span class="ot">&lt;-</span> <span class="fu">ptol_pal</span>()(<span class="dv">2</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="creating-a-research-compendium-with-rrtools.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recode-data</span></span>
-<span id="cb684-2"><a href="creating-a-research-compendium-with-rrtools.html#cb684-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb684-3"><a href="creating-a-research-compendium-with-rrtools.html#cb684-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">system_size =</span> <span class="fu">recode</span>(system_size, </span>
-<span id="cb684-4"><a href="creating-a-research-compendium-with-rrtools.html#cb684-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, </span>
-<span id="cb684-5"><a href="creating-a-research-compendium-with-rrtools.html#cb684-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">small =</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </span>
-<span id="cb684-6"><a href="creating-a-research-compendium-with-rrtools.html#cb684-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb684-7"><a href="creating-a-research-compendium-with-rrtools.html#cb684-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot-gillespie</span></span>
-<span id="cb684-8"><a href="creating-a-research-compendium-with-rrtools.html#cb684-8" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb684-9"><a href="creating-a-research-compendium-with-rrtools.html#cb684-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time)) <span class="sc">+</span> </span>
-<span id="cb684-10"><a href="creating-a-research-compendium-with-rrtools.html#cb684-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> mean), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
-<span id="cb684-11"><a href="creating-a-research-compendium-with-rrtools.html#cb684-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> minus_sd), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
-<span id="cb684-12"><a href="creating-a-research-compendium-with-rrtools.html#cb684-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> plus_sd), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
-<span id="cb684-13"><a href="creating-a-research-compendium-with-rrtools.html#cb684-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> n), <span class="at">col=</span>colours[<span class="dv">1</span>]) <span class="sc">+</span></span>
-<span id="cb684-14"><a href="creating-a-research-compendium-with-rrtools.html#cb684-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>system_size, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) </span></code></pre></div>
-<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-473-1.png" width="672" /></p>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="creating-a-research-compendium-with-rrtools.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb685-2"><a href="creating-a-research-compendium-with-rrtools.html#cb685-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb685-3"><a href="creating-a-research-compendium-with-rrtools.html#cb685-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb685-4"><a href="creating-a-research-compendium-with-rrtools.html#cb685-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb685-5"><a href="creating-a-research-compendium-with-rrtools.html#cb685-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="creating-a-research-compendium-with-rrtools.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load-data</span></span>
+<span id="cb686-2"><a href="creating-a-research-compendium-with-rrtools.html#cb686-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="at">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="creating-a-research-compendium-with-rrtools.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create colour palette</span></span>
+<span id="cb687-2"><a href="creating-a-research-compendium-with-rrtools.html#cb687-2" aria-hidden="true" tabindex="-1"></a>colours <span class="ot">&lt;-</span> <span class="fu">ptol_pal</span>()(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="creating-a-research-compendium-with-rrtools.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recode-data</span></span>
+<span id="cb688-2"><a href="creating-a-research-compendium-with-rrtools.html#cb688-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb688-3"><a href="creating-a-research-compendium-with-rrtools.html#cb688-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">system_size =</span> <span class="fu">recode</span>(system_size, </span>
+<span id="cb688-4"><a href="creating-a-research-compendium-with-rrtools.html#cb688-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, </span>
+<span id="cb688-5"><a href="creating-a-research-compendium-with-rrtools.html#cb688-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">small =</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </span>
+<span id="cb688-6"><a href="creating-a-research-compendium-with-rrtools.html#cb688-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb688-7"><a href="creating-a-research-compendium-with-rrtools.html#cb688-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot-gillespie</span></span>
+<span id="cb688-8"><a href="creating-a-research-compendium-with-rrtools.html#cb688-8" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb688-9"><a href="creating-a-research-compendium-with-rrtools.html#cb688-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time)) <span class="sc">+</span> </span>
+<span id="cb688-10"><a href="creating-a-research-compendium-with-rrtools.html#cb688-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> mean), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb688-11"><a href="creating-a-research-compendium-with-rrtools.html#cb688-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> minus_sd), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb688-12"><a href="creating-a-research-compendium-with-rrtools.html#cb688-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> plus_sd), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb688-13"><a href="creating-a-research-compendium-with-rrtools.html#cb688-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> n), <span class="at">col=</span>colours[<span class="dv">1</span>]) <span class="sc">+</span></span>
+<span id="cb688-14"><a href="creating-a-research-compendium-with-rrtools.html#cb688-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>system_size, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) </span></code></pre></div>
+<p><img src="rrresearchACCE20_files/figure-html/unnamed-chunk-478-1.png" width="672" /></p>
 <hr />
 </div>
 </div>
@@ -988,7 +989,7 @@ Note that:
 <h3>delete <code>paper/</code> subdirectory</h3>
 <p>First, let’s <strong>delete the current <code>analysis/paper</code> folder</strong> as we’re going to create a new folder and <code>paper.Rmd</code> template.</p>
 <p>We can do this programmatically with:</p>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="creating-a-research-compendium-with-rrtools.html#cb685-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_delete</span>(<span class="st">&quot;analysis/paper&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="creating-a-research-compendium-with-rrtools.html#cb689-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_delete</span>(<span class="st">&quot;analysis/paper&quot;</span>)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="create-new-paper-template" class="section level3">
@@ -1001,10 +1002,10 @@ Note that:
 <li><strong>Name:</strong> paper</li>
 <li><strong>Location:</strong> <code>rrcompendium/analysis</code></li>
 </ul>
-<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="creating-a-research-compendium-with-rrtools.html#cb686-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;assets/rticle.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="creating-a-research-compendium-with-rrtools.html#cb690-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;assets/rticle.png&quot;</span>)</span></code></pre></div>
 <p><img src="assets/rticle.png" /><!-- --></p>
 <p>Or we can use <code>rmarkdown::draft()</code> to create articles:</p>
-<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="creating-a-research-compendium-with-rrtools.html#cb687-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">draft</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;analysis&quot;</span>,<span class="st">&quot;paper.Rmd&quot;</span>), <span class="at">template =</span> <span class="st">&quot;elsevier&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rticles&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="creating-a-research-compendium-with-rrtools.html#cb691-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">draft</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;analysis&quot;</span>,<span class="st">&quot;paper.Rmd&quot;</span>), <span class="at">template =</span> <span class="st">&quot;elsevier&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rticles&quot;</span>)</span></code></pre></div>
 <p>Both these functions create the following files in a new directory <code>analysis/paper</code>.</p>
 <pre><code>analysis/paper
 ├── elsarticle.cls
@@ -1064,7 +1065,7 @@ abstract: |
   It consists of two paragraphs.
 
 journal: &quot;An awesome journal&quot;
-date: &quot;2021-05-06&quot;
+date: &quot;2021-05-07&quot;
 bibliography: mybibfile.bib
 #linenumbers: true
 #numbersections: true
@@ -1104,7 +1105,7 @@ output: rticles::elsevier_article
 <h3>bibliography</h3>
 <p>Before specifying the bibliography, we need to <strong>copy the <code>refs.bib</code></strong> file associated with <code>paper.pdf</code> from the course materials and <strong>save it in our <code>analysis/paper</code></strong> subdirectory.</p>
 <p>We can do this programmatically with:</p>
-<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="creating-a-research-compendium-with-rrtools.html#cb693-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">file_copy</span>(<span class="st">&quot;attic/rrtools-wkshp-materials-master/refs.bib&quot;</span>, <span class="st">&quot;analysis/paper/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="creating-a-research-compendium-with-rrtools.html#cb697-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">file_copy</span>(<span class="st">&quot;attic/rrtools-wkshp-materials-master/refs.bib&quot;</span>, <span class="st">&quot;analysis/paper/&quot;</span>)</span></code></pre></div>
 <p>Next we can set the <code>refs.bib</code> as the source for our paper’s bibliography:</p>
 <pre><code>bibliography: refs.bib</code></pre>
 <p><br></p>
@@ -1147,27 +1148,27 @@ output: rticles::elsevier_article
 <pre><code>output: rticles::elsevier_article</code></pre>
 <p><br></p>
 <p>At this point, your YAML header should look like this:</p>
-<div class="sourceCode" id="cb699"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb699-1"><a href="creating-a-research-compendium-with-rrtools.html#cb699-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb699-2"><a href="creating-a-research-compendium-with-rrtools.html#cb699-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;From noise to knowledge: how randomness generates novel phenomena and reveals information&quot;</span></span>
-<span id="cb699-3"><a href="creating-a-research-compendium-with-rrtools.html#cb699-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span></span>
-<span id="cb699-4"><a href="creating-a-research-compendium-with-rrtools.html#cb699-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Carl Boettiger&quot;</span></span>
-<span id="cb699-5"><a href="creating-a-research-compendium-with-rrtools.html#cb699-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">affiliation</span><span class="kw">:</span><span class="at"> a</span></span>
-<span id="cb699-6"><a href="creating-a-research-compendium-with-rrtools.html#cb699-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">email</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;cboettig@berkeley.edu&quot;</span></span>
-<span id="cb699-7"><a href="creating-a-research-compendium-with-rrtools.html#cb699-7" aria-hidden="true" tabindex="-1"></a><span class="fu">address</span><span class="kw">:</span></span>
-<span id="cb699-8"><a href="creating-a-research-compendium-with-rrtools.html#cb699-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">code</span><span class="kw">:</span><span class="at"> a</span></span>
-<span id="cb699-9"><a href="creating-a-research-compendium-with-rrtools.html#cb699-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">address</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Dept of Environmental Science, Policy, and Management, University of California Berkeley, Berkeley CA 94720-3114, USA&quot;</span></span>
-<span id="cb699-10"><a href="creating-a-research-compendium-with-rrtools.html#cb699-10" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> refs.bib</span></span>
-<span id="cb699-11"><a href="creating-a-research-compendium-with-rrtools.html#cb699-11" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span><span class="kw">:</span><span class="at">  3p</span><span class="co"> # review = doublespace, 3p = singlespace, 5p = two-column</span></span>
-<span id="cb699-12"><a href="creating-a-research-compendium-with-rrtools.html#cb699-12" aria-hidden="true" tabindex="-1"></a><span class="fu">preamble</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb699-13"><a href="creating-a-research-compendium-with-rrtools.html#cb699-13" aria-hidden="true" tabindex="-1"></a>  \usepackage[nomarkers]{endfloat}</span>
-<span id="cb699-14"><a href="creating-a-research-compendium-with-rrtools.html#cb699-14" aria-hidden="true" tabindex="-1"></a>  \linenumbers</span>
-<span id="cb699-15"><a href="creating-a-research-compendium-with-rrtools.html#cb699-15" aria-hidden="true" tabindex="-1"></a>  \usepackage{setspace}</span>
-<span id="cb699-16"><a href="creating-a-research-compendium-with-rrtools.html#cb699-16" aria-hidden="true" tabindex="-1"></a>  \doublespacing</span>
-<span id="cb699-17"><a href="creating-a-research-compendium-with-rrtools.html#cb699-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abstract</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb699-18"><a href="creating-a-research-compendium-with-rrtools.html#cb699-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb699-19"><a href="creating-a-research-compendium-with-rrtools.html#cb699-19" aria-hidden="true" tabindex="-1"></a>  Noise, as the term itself suggests, is most often seen a nuisance to ecological insight, a inconvenient reality that must be acknowledged, a haystack that must be stripped away to reveal the processes of interest underneath. Yet despite this well-earned reputation, noise is often interesting in its own right: noise can induce novel phenomena that could not be understood from some underlying determinstic model alone.  Nor is all noise the same, and close examination of differences in frequency, color or magnitude can reveal insights that would otherwise be inaccessible.  Yet with each aspect of stochasticity leading to some new or unexpected behavior, the time is right to move beyond the familiar refrain of &quot;everything is important&quot; [@Bjornstad2001].  Stochastic phenomena can suggest new ways of inferring process from pattern, and thus spark more dialog between theory and empirical perspectives that best advances the field as a whole. I highlight a few compelling examples, while observing that the study of stochastic phenomena are only beginning to make this translation into empirical inference.  There are rich opportunities at this interface in the years ahead.  </span>
-<span id="cb699-20"><a href="creating-a-research-compendium-with-rrtools.html#cb699-20" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> rticles::elsevier_article</span></span>
-<span id="cb699-21"><a href="creating-a-research-compendium-with-rrtools.html#cb699-21" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb703"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb703-1"><a href="creating-a-research-compendium-with-rrtools.html#cb703-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb703-2"><a href="creating-a-research-compendium-with-rrtools.html#cb703-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;From noise to knowledge: how randomness generates novel phenomena and reveals information&quot;</span></span>
+<span id="cb703-3"><a href="creating-a-research-compendium-with-rrtools.html#cb703-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span></span>
+<span id="cb703-4"><a href="creating-a-research-compendium-with-rrtools.html#cb703-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Carl Boettiger&quot;</span></span>
+<span id="cb703-5"><a href="creating-a-research-compendium-with-rrtools.html#cb703-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">affiliation</span><span class="kw">:</span><span class="at"> a</span></span>
+<span id="cb703-6"><a href="creating-a-research-compendium-with-rrtools.html#cb703-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">email</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;cboettig@berkeley.edu&quot;</span></span>
+<span id="cb703-7"><a href="creating-a-research-compendium-with-rrtools.html#cb703-7" aria-hidden="true" tabindex="-1"></a><span class="fu">address</span><span class="kw">:</span></span>
+<span id="cb703-8"><a href="creating-a-research-compendium-with-rrtools.html#cb703-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">code</span><span class="kw">:</span><span class="at"> a</span></span>
+<span id="cb703-9"><a href="creating-a-research-compendium-with-rrtools.html#cb703-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">address</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Dept of Environmental Science, Policy, and Management, University of California Berkeley, Berkeley CA 94720-3114, USA&quot;</span></span>
+<span id="cb703-10"><a href="creating-a-research-compendium-with-rrtools.html#cb703-10" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> refs.bib</span></span>
+<span id="cb703-11"><a href="creating-a-research-compendium-with-rrtools.html#cb703-11" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span><span class="kw">:</span><span class="at">  3p</span><span class="co"> # review = doublespace, 3p = singlespace, 5p = two-column</span></span>
+<span id="cb703-12"><a href="creating-a-research-compendium-with-rrtools.html#cb703-12" aria-hidden="true" tabindex="-1"></a><span class="fu">preamble</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb703-13"><a href="creating-a-research-compendium-with-rrtools.html#cb703-13" aria-hidden="true" tabindex="-1"></a>  \usepackage[nomarkers]{endfloat}</span>
+<span id="cb703-14"><a href="creating-a-research-compendium-with-rrtools.html#cb703-14" aria-hidden="true" tabindex="-1"></a>  \linenumbers</span>
+<span id="cb703-15"><a href="creating-a-research-compendium-with-rrtools.html#cb703-15" aria-hidden="true" tabindex="-1"></a>  \usepackage{setspace}</span>
+<span id="cb703-16"><a href="creating-a-research-compendium-with-rrtools.html#cb703-16" aria-hidden="true" tabindex="-1"></a>  \doublespacing</span>
+<span id="cb703-17"><a href="creating-a-research-compendium-with-rrtools.html#cb703-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abstract</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb703-18"><a href="creating-a-research-compendium-with-rrtools.html#cb703-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb703-19"><a href="creating-a-research-compendium-with-rrtools.html#cb703-19" aria-hidden="true" tabindex="-1"></a>  Noise, as the term itself suggests, is most often seen a nuisance to ecological insight, a inconvenient reality that must be acknowledged, a haystack that must be stripped away to reveal the processes of interest underneath. Yet despite this well-earned reputation, noise is often interesting in its own right: noise can induce novel phenomena that could not be understood from some underlying determinstic model alone.  Nor is all noise the same, and close examination of differences in frequency, color or magnitude can reveal insights that would otherwise be inaccessible.  Yet with each aspect of stochasticity leading to some new or unexpected behavior, the time is right to move beyond the familiar refrain of &quot;everything is important&quot; [@Bjornstad2001].  Stochastic phenomena can suggest new ways of inferring process from pattern, and thus spark more dialog between theory and empirical perspectives that best advances the field as a whole. I highlight a few compelling examples, while observing that the study of stochastic phenomena are only beginning to make this translation into empirical inference.  There are rich opportunities at this interface in the years ahead.  </span>
+<span id="cb703-20"><a href="creating-a-research-compendium-with-rrtools.html#cb703-20" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> rticles::elsevier_article</span></span>
+<span id="cb703-21"><a href="creating-a-research-compendium-with-rrtools.html#cb703-21" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -1276,8 +1277,8 @@ project CA-B-INS-0162-H.
 <div id="set-document-chunk-options" class="section level4">
 <h4>set document chunk options</h4>
 <p>Now, let’s set some <code>knitr</code> options for the whole document by adding the following code to our <code>libraries</code> chunk:</p>
-<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="creating-a-research-compendium-with-rrtools.html#cb704-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, </span>
-<span id="cb704-2"><a href="creating-a-research-compendium-with-rrtools.html#cb704-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="at">fig.width=</span><span class="dv">7</span>, <span class="at">fig.height=</span><span class="fl">3.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="creating-a-research-compendium-with-rrtools.html#cb708-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, </span>
+<span id="cb708-2"><a href="creating-a-research-compendium-with-rrtools.html#cb708-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="at">fig.width=</span><span class="dv">7</span>, <span class="at">fig.height=</span><span class="fl">3.5</span>)</span></code></pre></div>
 <p>We’re setting default chunk options to:</p>
 <ul>
 <li><code>echo = FALSE</code></li>
@@ -1296,21 +1297,21 @@ project CA-B-INS-0162-H.
 <div id="add-libraries" class="section level3">
 <h3>add libraries</h3>
 <p>Copy and paste the <strong>code for loading all the libraries from <code>analysis.R</code></strong>. Add library <code>rrcompendium</code> so we can access function <code>recode_system_size</code>. The <code>libraries</code> chunk should now look like so:</p>
-<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="creating-a-research-compendium-with-rrtools.html#cb705-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, </span>
-<span id="cb705-2"><a href="creating-a-research-compendium-with-rrtools.html#cb705-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="at">fig.width=</span><span class="dv">7</span>, <span class="at">fig.height=</span><span class="fl">3.5</span>)</span>
-<span id="cb705-3"><a href="creating-a-research-compendium-with-rrtools.html#cb705-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb705-4"><a href="creating-a-research-compendium-with-rrtools.html#cb705-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb705-5"><a href="creating-a-research-compendium-with-rrtools.html#cb705-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb705-6"><a href="creating-a-research-compendium-with-rrtools.html#cb705-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb705-7"><a href="creating-a-research-compendium-with-rrtools.html#cb705-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb705-8"><a href="creating-a-research-compendium-with-rrtools.html#cb705-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rrcompendium)</span></code></pre></div>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="creating-a-research-compendium-with-rrtools.html#cb709-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, </span>
+<span id="cb709-2"><a href="creating-a-research-compendium-with-rrtools.html#cb709-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">dev=</span><span class="st">&quot;cairo_pdf&quot;</span>, <span class="at">fig.width=</span><span class="dv">7</span>, <span class="at">fig.height=</span><span class="fl">3.5</span>)</span>
+<span id="cb709-3"><a href="creating-a-research-compendium-with-rrtools.html#cb709-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb709-4"><a href="creating-a-research-compendium-with-rrtools.html#cb709-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb709-5"><a href="creating-a-research-compendium-with-rrtools.html#cb709-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb709-6"><a href="creating-a-research-compendium-with-rrtools.html#cb709-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb709-7"><a href="creating-a-research-compendium-with-rrtools.html#cb709-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb709-8"><a href="creating-a-research-compendium-with-rrtools.html#cb709-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rrcompendium)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="add-set-theme-chunk" class="section level3">
 <h3>Add <code>set-theme</code> chunk</h3>
 <p>Right below the <code>libraries</code> chunk, <strong>insert a new chunk and call it <code>set-theme</code></strong></p>
 <p>Copy the <strong>code to set the plot theme</strong> and pasted into the <code>set-theme</code> code:</p>
-<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="creating-a-research-compendium-with-rrtools.html#cb706-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="creating-a-research-compendium-with-rrtools.html#cb710-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>())</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="add-figure1-chunk" class="section level3">
@@ -1319,24 +1320,24 @@ project CA-B-INS-0162-H.
 <div id="add-code-1" class="section level4">
 <h4>Add code</h4>
 <p>Copy and <strong>paste the remaining code into a new chunk which will create figure 1</strong>.</p>
-<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="creating-a-research-compendium-with-rrtools.html#cb707-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create colour palette</span></span>
-<span id="cb707-2"><a href="creating-a-research-compendium-with-rrtools.html#cb707-2" aria-hidden="true" tabindex="-1"></a>colours <span class="ot">&lt;-</span> <span class="fu">ptol_pal</span>()(<span class="dv">2</span>)</span>
-<span id="cb707-3"><a href="creating-a-research-compendium-with-rrtools.html#cb707-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb707-4"><a href="creating-a-research-compendium-with-rrtools.html#cb707-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load-data</span></span>
-<span id="cb707-5"><a href="creating-a-research-compendium-with-rrtools.html#cb707-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="at">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)  </span>
-<span id="cb707-6"><a href="creating-a-research-compendium-with-rrtools.html#cb707-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb707-7"><a href="creating-a-research-compendium-with-rrtools.html#cb707-7" aria-hidden="true" tabindex="-1"></a><span class="co"># recode-data</span></span>
-<span id="cb707-8"><a href="creating-a-research-compendium-with-rrtools.html#cb707-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb707-9"><a href="creating-a-research-compendium-with-rrtools.html#cb707-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">system_size =</span> <span class="fu">recode</span>(system_size, <span class="at">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, <span class="at">small=</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </span>
-<span id="cb707-10"><a href="creating-a-research-compendium-with-rrtools.html#cb707-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb707-11"><a href="creating-a-research-compendium-with-rrtools.html#cb707-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plot-gillespie</span></span>
-<span id="cb707-12"><a href="creating-a-research-compendium-with-rrtools.html#cb707-12" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb707-13"><a href="creating-a-research-compendium-with-rrtools.html#cb707-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time)) <span class="sc">+</span> </span>
-<span id="cb707-14"><a href="creating-a-research-compendium-with-rrtools.html#cb707-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> mean), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
-<span id="cb707-15"><a href="creating-a-research-compendium-with-rrtools.html#cb707-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> minus_sd), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
-<span id="cb707-16"><a href="creating-a-research-compendium-with-rrtools.html#cb707-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> plus_sd), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
-<span id="cb707-17"><a href="creating-a-research-compendium-with-rrtools.html#cb707-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> n), <span class="at">col=</span>colours[<span class="dv">1</span>]) <span class="sc">+</span></span>
-<span id="cb707-18"><a href="creating-a-research-compendium-with-rrtools.html#cb707-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>system_size, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="creating-a-research-compendium-with-rrtools.html#cb711-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create colour palette</span></span>
+<span id="cb711-2"><a href="creating-a-research-compendium-with-rrtools.html#cb711-2" aria-hidden="true" tabindex="-1"></a>colours <span class="ot">&lt;-</span> <span class="fu">ptol_pal</span>()(<span class="dv">2</span>)</span>
+<span id="cb711-3"><a href="creating-a-research-compendium-with-rrtools.html#cb711-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb711-4"><a href="creating-a-research-compendium-with-rrtools.html#cb711-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load-data</span></span>
+<span id="cb711-5"><a href="creating-a-research-compendium-with-rrtools.html#cb711-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;gillespie.csv&quot;</span>), <span class="at">col_types =</span> <span class="st">&quot;cdiddd&quot;</span>)  </span>
+<span id="cb711-6"><a href="creating-a-research-compendium-with-rrtools.html#cb711-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb711-7"><a href="creating-a-research-compendium-with-rrtools.html#cb711-7" aria-hidden="true" tabindex="-1"></a><span class="co"># recode-data</span></span>
+<span id="cb711-8"><a href="creating-a-research-compendium-with-rrtools.html#cb711-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb711-9"><a href="creating-a-research-compendium-with-rrtools.html#cb711-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">system_size =</span> <span class="fu">recode</span>(system_size, <span class="at">large =</span> <span class="st">&quot;A. 1000 total sites&quot;</span>, <span class="at">small=</span> <span class="st">&quot;B. 100 total sites&quot;</span>)) </span>
+<span id="cb711-10"><a href="creating-a-research-compendium-with-rrtools.html#cb711-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb711-11"><a href="creating-a-research-compendium-with-rrtools.html#cb711-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plot-gillespie</span></span>
+<span id="cb711-12"><a href="creating-a-research-compendium-with-rrtools.html#cb711-12" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb711-13"><a href="creating-a-research-compendium-with-rrtools.html#cb711-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time)) <span class="sc">+</span> </span>
+<span id="cb711-14"><a href="creating-a-research-compendium-with-rrtools.html#cb711-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> mean), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb711-15"><a href="creating-a-research-compendium-with-rrtools.html#cb711-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> minus_sd), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb711-16"><a href="creating-a-research-compendium-with-rrtools.html#cb711-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> plus_sd), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span>colours[<span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb711-17"><a href="creating-a-research-compendium-with-rrtools.html#cb711-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> n), <span class="at">col=</span>colours[<span class="dv">1</span>]) <span class="sc">+</span></span>
+<span id="cb711-18"><a href="creating-a-research-compendium-with-rrtools.html#cb711-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>system_size, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) </span></code></pre></div>
 </div>
 <div id="add-caption" class="section level4">
 <h4>🚦 Add caption</h4>
@@ -1356,7 +1357,7 @@ project CA-B-INS-0162-H.
 <div id="add-paper-dependencies" class="section level2">
 <h2>🚦 Add paper dependencies</h2>
 <p>Finally, before we’re finished, let’s ensure the dependencies introduced in the paper are included. We can use <code>rrtools::add_dependencies_to_description()</code></p>
-<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="creating-a-research-compendium-with-rrtools.html#cb709-1" aria-hidden="true" tabindex="-1"></a>rrtools<span class="sc">::</span><span class="fu">add_dependencies_to_description</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="creating-a-research-compendium-with-rrtools.html#cb713-1" aria-hidden="true" tabindex="-1"></a>rrtools<span class="sc">::</span><span class="fu">add_dependencies_to_description</span>()</span></code></pre></div>
 <p>This function <strong>scans script files (<code>.R</code>, <code>.Rmd</code>, <code>.Rnw</code>, <code>.Rpres</code>, etc.) for external package dependencies</strong> indicated by <code>library()</code>, <code>require()</code> or <code>::</code> and <strong>adds those packages to the <code>Imports</code> field in the package <code>DESCRIPTION</code></strong>:</p>
 <pre><code>Imports: 
     bookdown,
@@ -1434,7 +1435,7 @@ project CA-B-INS-0162-H.
         </div>
       </div>
 <a href="packaging-functionality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="appendix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="closing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
