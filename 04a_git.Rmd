@@ -508,9 +508,10 @@ Click on the `r emo::ji("up_arrow")` button on the Git tab to push our changes u
 
 Let's go have a look at the history `r emo::ji("clock3")`
 
-> You will likely need to put re-enter your password if you use the Rstudio IDE buttons to push. To save have to do that everytime, have a look at this blogpost on [How to connect RStudio Cloud with Github](https://bren.zendesk.com/hc/en-us/articles/360015826731-How-to-connect-RStudio-Cloud-with-Github) which has details on setting up an SSH key_
->
-> Otherwise you can use `usethis::pr_push()` which uses the `GITHUB_PAT` for authentication)
+> You might need to reconfigure your GITHUB_PAT credentials after a break
+> Use `usethis::edit_r_environ()` to get your GITHUB_PAT and then `gitcreds::gitcreds_set()` to set them again.
+
+
 
 
 ### Deleting files
