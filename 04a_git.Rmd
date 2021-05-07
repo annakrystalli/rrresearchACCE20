@@ -270,6 +270,9 @@ Below, we will add your PAT to our `.Renviron` file as well as the Git credentia
 
 If you goof this up, i.e. generate a PAT but fail to capture it on your system, you’ll have to generate another one. This is not the end of the world, but you should delete the “lost” PAT on GitHub. If you aren’t disciplined about labelling PATs and deleting lost PATs, you will find yourself in an unsettling situation where you can’t be sure which PAT(s) are in use. When logged into your GitHub account, you can manage your PATs here:
 
+
+**ALSO STORE A COPY SOMEWHERE LOCALLY ON YOUR COMPUTER FOR NOW, WE WILL NEED IT IN FUTURE SESSIONS**
+
 ##### Store in `.Renviron`
 
 Copy it and paste it into your `.Renviron` file as system variable `GITHUB_PAT`.
@@ -464,14 +467,8 @@ knitr::include_graphics("assets/gh-settings.png")
 ```
 
 
-## Enable `gh-pages`
-
-```{r, out.width="90%", echo=FALSE}
-knitr::include_graphics("assets/gh-set.png")
-```
-
-
-Review setup
+### Enable `gh-pages`
+Go to repo **Settings** and navigate to the **Pages** panel on the left hand side and change your settings to the following configuration:
 
 ```{r, out.width="90%", echo=FALSE}
 knitr::include_graphics("assets/gh-setup.png")
@@ -481,7 +478,7 @@ Ensure the _Enforce HTTPS_ option is selected.
 
 Click on the link displayed and go check out your work!
 
-Copy the link. In the main repo page, edit the page details at the top and paste copied the url in the **website** field.
+Copy the link. In the main repo page, edit the page details at the right by clicking the gear button and paste copied the url in the **website** field.
 
 ```{r, out.width="90%", echo=FALSE}
 knitr::include_graphics("assets/add-url-gh.png")
