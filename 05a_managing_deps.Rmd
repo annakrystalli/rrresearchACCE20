@@ -48,7 +48,7 @@ Here's the example of `install.R` used to set up the `wood-survey` project
 
 ```
 
-The problem with this is that the versions of packages are nnot fixed. Instead, each  time the script is run, the most up to date versions of packages are installed, and R also prompts you to update any packages already installed. Changes in packages annd a general mismatch of versions compared to those used to develop the original code, could cause problems in code execution. 
+The problem with this is that the versions of packages are not fixed. Instead, each  time the script is run, the most up to date versions of packages are installed, and R also prompts you to update any packages already installed. Changes in packages and a general mismatch of versions compared to those used to develop the original code, could cause problems in code execution. 
 
 In the case of  this book, I want the materials to work with up to date versions of packages. If there are problems with  newer versions, I can correct the materials before I run the course. However, for a published analysis, using code you don't plan to further develop (and therefore do not require that it tracks the evolution of packages in the  R ecosystem), it would be better to be able to pin exact versions of packages. That way you can ensure another user will be working with the exact same versions of your dependencies.
 
