@@ -209,7 +209,7 @@ First, `git` needs to know who you are so your commits can be attributed to you.
 **Check your configuration**
 
 ```{r, eval=FALSE}
-usethis::use_git_config()
+usethis::git_sitrep()
 ```
 
 
