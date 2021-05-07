@@ -1,5 +1,3 @@
-# (PART) Additonal materials {#additional} 
-
 # Packaging functionality
 
 ## R Package Structure
