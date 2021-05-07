@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
   
   <meta property="og:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
-  <meta name="github-repo" content="https://github.com/annakrystalli/rrresearchACCE20" />
+  <meta name="github-repo" content="annakrystalli/rrresearchACCE20" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Packaging functionality | Reproducible Research Data and Project Management in R" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="managing-dependencies.html"/>
 <link rel="next" href="creating-a-research-compendium-with-rrtools.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -679,34 +679,24 @@ Now clicking <strong><svg viewBox="0 0 576 512" style="height:1em;position:relat
 <p>Document, Install and restart to load our changes</p>
 <div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="packaging-functionality.html#cb610-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-##  ----- 
+##  -------------- 
 ## Hello y&#39;all from Anna! 
-##  ------ 
-##     \   
-##      \
-##     .ﾊ,,ﾊ
-##     ( ﾟωﾟ)
-##     |つ  つ
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     |    |
-##     U &quot;  U
-##         [BoingBoing]
+##  --------------
+##       \
+##         \
+##           \
+##             |\___/|
+##             )     (
+##            =\     /=
+##              )===(
+##             /     \
+##             |     |
+##            /       \
+##            \       /
+##       jgs   \__  _/
+##               ( (
+##                ) )
+##               (_(
 ## </code></pre>
 <p>Let’s commit our current files and changes.</p>
 </div>
@@ -816,7 +806,7 @@ if you want to run the tests.</p>
 <div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="packaging-functionality.html#cb622-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb622-2"><a href="packaging-functionality.html#cb622-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
 <span id="cb622-3"><a href="packaging-functionality.html#cb622-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## Test passed 😀</code></pre>
+<pre><code>## Test passed 🥳</code></pre>
 <p>If the test doesn’t pass it throws an error</p>
 <div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="packaging-functionality.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb624-2"><a href="packaging-functionality.html#cb624-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">5</span>)</span>
@@ -834,25 +824,15 @@ if you want to run the tests.</p>
 <span id="cb626-2"><a href="packaging-functionality.html#cb626-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_null</span>(<span class="fu">suppressMessages</span>(<span class="fu">hello</span>()))</span>
 <span id="cb626-3"><a href="packaging-functionality.html#cb626-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## 
-##  -------------- 
+##  ----- 
 ## Hello world from Anna! 
-##  --------------
-##     \
-##       \
-##         \
-##                    _.-````&#39;-,_
-##          _,.,_ ,-&#39;`           `&#39;-.,_
-##        /)     (                   &#39;``-.
-##       ((      ) )                      `\
-##         \)    (_/                        )\
-##         |       /)           &#39;    ,&#39;    / \
-##         `\    ^&#39;            &#39;     (    /  ))
-##           |      _/\ ,     /    ,,`\   (  &quot;`
-##           \Y,   |   \  \  | ````| / \_ \
-##             `)_/      \  \  )    ( &gt;  ( &gt;
-##                        \( \(     |/   |/
-##           mic &amp; dwb  /_(/_(    /_(  /_(
-##     Test passed 🥳</code></pre>
+##  ------ 
+##     \   
+##      \
+##       ( )_( )
+##       (=&#39;.&#39;=)
+##       (^)_(^) [nosig]
+##   Test passed 😀</code></pre>
 <p>Now let’s test our package</p>
 <div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="packaging-functionality.html#cb628-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code></pre></div>
 <p>Success!</p>
