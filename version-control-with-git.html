@@ -552,8 +552,8 @@ You don’t need to follow the instructions for both packages – pick one!</p>
 <p>Click on the ⬆️ button on the Git tab to push our changes up to the repository</p>
 <p>Let’s go have a look at the history 🕒</p>
 <blockquote>
-<p>You will likely need to put re-enter your password if you use the Rstudio IDE buttons to push. To save have to do that everytime, have a look at this blogpost on <a href="https://bren.zendesk.com/hc/en-us/articles/360015826731-How-to-connect-RStudio-Cloud-with-Github">How to connect RStudio Cloud with Github</a> which has details on setting up an SSH key_</p>
-<p>Otherwise you can use <code>usethis::pr_push()</code> which uses the <code>GITHUB_PAT</code> for authentication)</p>
+<p>You might need to reconfigure your GITHUB_PAT credentials after a break
+Use <code>usethis::edit_r_environ()</code> to get your GITHUB_PAT and then <code>gitcreds::gitcreds_set()</code> to set them again.</p>
 </blockquote>
 </div>
 <div id="deleting-files" class="section level3">
