@@ -400,6 +400,7 @@ A PAT should always be retrieved implicitly, for example, from the Git credentia
 <h4>Store your credential</h4>
 <p>Below, we will add your PAT to our <code>.Renviron</code> file as well as the Git credential store as a semi-persistent convenience, sort of like “remember me” on a website. But, just like logging into websites, it is entirely possible that your PAT will somehow be forgotten from the credential store and you will need to re-enter it.</p>
 <p>If you goof this up, i.e. generate a PAT but fail to capture it on your system, you’ll have to generate another one. This is not the end of the world, but you should delete the “lost” PAT on GitHub. If you aren’t disciplined about labelling PATs and deleting lost PATs, you will find yourself in an unsettling situation where you can’t be sure which PAT(s) are in use. When logged into your GitHub account, you can manage your PATs here:</p>
+<p><strong>ALSO STORE A COPY SOMEWHERE LOCALLY ON YOUR COMPUTER FOR NOW, WE WILL NEED IT IN FUTURE SESSIONS</strong></p>
 <div id="store-in-.renviron" class="section level5">
 <h5>Store in <code>.Renviron</code></h5>
 <p>Copy it and paste it into your <code>.Renviron</code> file as system variable <code>GITHUB_PAT</code>.</p>
@@ -527,18 +528,17 @@ You don’t need to follow the instructions for both packages – pick one!</p>
 <h3>Go to repo <strong>Settings</strong></h3>
 <p><img src="assets/gh-settings.png" width="90%" /></p>
 </div>
-</div>
-<div id="enable-gh-pages" class="section level2">
-<h2>Enable <code>gh-pages</code></h2>
-<p><img src="assets/gh-set.png" width="90%" /></p>
-<p>Review setup</p>
+<div id="enable-gh-pages" class="section level3">
+<h3>Enable <code>gh-pages</code></h3>
+<p>Go to repo <strong>Settings</strong> and navigate to the <strong>Pages</strong> panel on the left hand side and change your settings to the following configuration:</p>
 <p><img src="assets/gh-setup.png" width="90%" /></p>
 <p>Ensure the <em>Enforce HTTPS</em> option is selected.</p>
 <p>Click on the link displayed and go check out your work!</p>
-<p>Copy the link. In the main repo page, edit the page details at the top and paste copied the url in the <strong>website</strong> field.</p>
+<p>Copy the link. In the main repo page, edit the page details at the right by clicking the gear button and paste copied the url in the <strong>website</strong> field.</p>
 <p><img src="assets/add-url-gh.png" width="90%" /></p>
 <p>Once added it provides easy access to the rendered content:</p>
 <p><img src="assets/added-url-gh.png" width="90%" /></p>
+</div>
 </div>
 <div id="tracking-changes" class="section level2">
 <h2>Tracking changes</h2>

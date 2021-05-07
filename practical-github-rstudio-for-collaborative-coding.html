@@ -332,6 +332,48 @@ If all is good, click on <strong><code>Create pull request</code></strong></p>
 <p>Check original repo to see <strong>your merged changes</strong></p>
 <p><img src="assets/merged.png" width="90%" /></p>
 <p>We’ll merge all contributions and <a href="https://rse.shef.ac.uk/collaborative_github_exercise/plot_trait_evolution.html">plot them together at the end!</a></p>
+<p>Now that everyone has contributed to the <a href="https://github.com/RSE-Sheffield/collaborative_github_exercise"><strong>RSE-Sheffield</strong> repository</a> (the <strong>upstream</strong> repository), the <code>params/</code> folder contains a number of files, one for each successful pull request.</p>
+<p>However your local copy of the repository only contains the template and your own file.</p>
+<blockquote>
+<p>Q: How can I merge changes from the <strong>upstream</strong> repository to my <strong>local</strong> repository?</p>
+</blockquote>
+</div>
+<div id="add-upstream-remote" class="section level2">
+<h2>Add upstream remote</h2>
+<div id="check-current-remotes" class="section level3">
+<h3>Check current remotes</h3>
+<p>We can check the urls of remotes currently linked to our local repo using <code>usethis::git_remotes()</code>.</p>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="practical-github-rstudio-for-collaborative-coding.html#cb572-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">git_remotes</span>()</span></code></pre></div>
+<pre><code>$origin
+[1] &quot;https://github.com/annakrystalli/collaborative_github_exercise.git&quot;</code></pre>
+<p>We see that only my form is currently listed as a remote under the name <code>origin</code>.</p>
+</div>
+<div id="add-the-rse-sheffield-repo-as-upstream" class="section level3">
+<h3>Add the RSE-Sheffield repo as upstream</h3>
+<p>To add a new remote we need the https url of the upstream repo (the equivalent of the one we used to create our project from our fork through version control) which in this case is <code>https://github.com/RSE-Sheffield/collaborative_github_exercise.git</code>.</p>
+<p>We can then use <code>usethis::use_git_remote()</code> to set the upstream repository:</p>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="practical-github-rstudio-for-collaborative-coding.html#cb574-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_remote</span>(</span>
+<span id="cb574-2"><a href="practical-github-rstudio-for-collaborative-coding.html#cb574-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;upstream&quot;</span>, </span>
+<span id="cb574-3"><a href="practical-github-rstudio-for-collaborative-coding.html#cb574-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> <span class="st">&quot;https://github.com/RSE-Sheffield/collaborative_github_exercise.git&quot;</span>)</span></code></pre></div>
+<p>We can check that everything was set correctly with <code>usethis::git_remotes()</code></p>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="practical-github-rstudio-for-collaborative-coding.html#cb575-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">git_remotes</span>()</span></code></pre></div>
+<pre><code>$origin
+[1] &quot;https://github.com/annakrystalli/collaborative_github_exercise.git&quot;
+
+$upstream
+[1] &quot;https://github.com/RSE-Sheffield/collaborative_github_exercise.git&quot;</code></pre>
+</div>
+<div id="synch-with-upstream" class="section level3">
+<h3>Synch with upstream</h3>
+<p>Finally, to synch with the upstream repository we can now use function <code>usethis::pr_pull_upstream()</code>. This fetches the master branch from the upstream repository and merges it into our own local master branch.</p>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="practical-github-rstudio-for-collaborative-coding.html#cb577-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">pr_pull_upstream</span>()</span></code></pre></div>
+<pre><code>✓ Pulling changes from GitHub source repo &#39;upstream/master&#39;</code></pre>
+<p>You should now have all participant files in the <code>params/</code> folder and will be able to generate all bird skulls if you run <code>plot_trait_evolution.Rmd</code> locally.</p>
+</div>
+</div>
+<div id="synch-origin" class="section level2">
+<h2>Synch origin</h2>
+<p>To also synch your origin remote repository you can simply push the merged upstream changes up to GitHub.</p>
 
 </div>
 </div>
