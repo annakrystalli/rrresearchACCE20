@@ -77,7 +77,7 @@ Developed by Leland Wilkinson, particularly in [“The Grammar of Graphics” 19
 
 Describes a consistent syntax for the construction of a wide range of complex graphics by a concise description of their components.
 
-
+Images created by [Thomas de Beus](https://medium.com/tdebeus/think-about-the-grammar-of-graphics-when-improving-your-graphs-18e3744d8d18)
 ```{r, echo=FALSE, out.width="90%"}
 knitr::include_graphics("https://cdn-images-1.medium.com/max/800/1*MMZuYgeC_YjXNC1r4D4sog.png")
 ```
