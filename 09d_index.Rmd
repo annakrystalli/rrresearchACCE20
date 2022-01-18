@@ -1,4 +1,4 @@
-# `index.Rmd`
+# `index.Rmd` example
 
 This Rmarkdown file should contain your analysis and be saved in the root directory:
 
