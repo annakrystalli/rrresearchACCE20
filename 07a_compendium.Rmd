@@ -1211,7 +1211,7 @@ output: rticles::elsevier_article
 At this point, your YAML header should look like this:
 
 
-```{yaml, eval=FALSE, code=readLines("appendices/rrcompendium.yaml")}
+```{r, eval=FALSE, code=readLines("appendices/rrcompendium.yaml")}
 
 ```
 

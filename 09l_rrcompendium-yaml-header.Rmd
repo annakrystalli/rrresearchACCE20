@@ -5,7 +5,7 @@ The `rrcompendium` `paper.Rmd` YAML header contains metadata about your paper, i
 
 
 
-```{yaml, eval=FALSE, code=readLines("appendices/rrcompendium.yaml")}
+```{r, eval=FALSE, code=readLines("appendices/rrcompendium.yaml")}
 
 ```
 
