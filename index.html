@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>index.Rmd | Reproducible Research Data and Project Management in R</title>
+  <title>Reproducible Research Data and Project Management in R</title>
   <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="index.Rmd | Reproducible Research Data and Project Management in R" />
+  <meta property="og:title" content="Reproducible Research Data and Project Management in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="annakrystalli/rrresearchACCE20" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="index.Rmd | Reproducible Research Data and Project Management in R" />
+  <meta name="twitter:title" content="Reproducible Research Data and Project Management in R" />
   
   <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="analysis.r-1.html"/>
-<link rel="next" href="gitignore.html"/>
+
+<link rel="next" href="welcome-slides.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="individual.html#individual.r"><code>individual.R</code></a></li>
 <li><a href="geolocate.html#geolocate.r"><code>geolocate.R</code></a></li>
 <li><a href="analysis.r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
-<li><a href="index.html#index.rmd"><code>index.Rmd</code></a></li>
+<li><a href="index.rmd-example.html#index.rmd-example"><code>index.Rmd</code> example</a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
 <li><a href="mypackage-hello.html#mypackage-hello.r"><code>mypackage</code> <code>hello.R</code></a></li>
 <li><a href="mypackage-readme.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
@@ -216,141 +216,168 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="index.rmd" class="section level1">
-<h1><code>index.Rmd</code></h1>
-<p>This Rmarkdown file should contain your analysis and be saved in the root directory:</p>
-<p><strong><code>index.Rmd</code></strong></p>
-<p>My final <code>index.Rmd</code> looks like this:</p>
-<pre><code>---
-title: &quot;Analysis of NEON Woody plant vegetation structure data&quot;
-author: &quot;Anna Krystalli&quot;
-date: &quot;2021-05-05&quot;
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    theme: cosmo
-    highlight: zenburn
----
+<div id="header">
+<h1 class="title">Reproducible Research Data and Project Management in R</h1>
+<p class="author"><em>Course Instructor: Dr Anna Krystalli</em></p>
+<p class="date"><em>April-May 2021</em></p>
+</div>
+<div id="course-description" class="section level1">
+<h1>Course description</h1>
+<p>In order to <strong>ensure robustness</strong> of outputs and <strong>maximise the benefits</strong> of ACCE research to future researchers and society more generally, it is <strong>important to share the underlying code and data</strong>. But for sharing to have any impact, such materials need to be created <strong>FAIR</strong> (<em>findable, accessible, interoperable, reusable</em>), i.e. they must be adequately described, archived, and made discoverable to an appropriate standard.</p>
+<p>Additionally, if analyses are to be deemed robust, they <strong>must be at the very least reproducible</strong>, but ideally well documented and reviewable.</p>
+<p>R and Rstudio tools and conventions offer a powerful framework for making modern, open, reproducible and collaborative computational workflows more accessible to researchers.</p>
+<p>This course focuses on <strong>data and project management through R and Rstudio</strong>, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential. The course is designed to be relevant to students with a wide range of backgrounds, working with anything from relatively small sets of data collected from field or experimental observations, to those taking a more computational approach and bigger datasets.</p>
+<p><br></p>
+<div id="learning-outcomes" class="section level2">
+<h2>Learning Outcomes</h2>
+<p>By the end of the workshop, participants will be able to:</p>
+<ul>
+<li><p>Understand the basics of good research data management and be able to produce clean datasets with appropriate metadata.</p></li>
+<li><p>Manage computational projects for reproducibility, reuse and collaboration.</p></li>
+<li><p>Use version control to track the evolution of research projects.</p></li>
+<li><p>Use R tools and conventions to document code and analyses and produce reproducible reports.</p></li>
+<li><p>Be able to publish, share materials and collaborate through the web.</p></li>
+<li><p>Understand why this all matters!</p></li>
+</ul>
+<hr />
+</div>
+<div id="course-outline" class="section level2">
+<h2>Course Outline</h2>
+<div class="row">
+<div class="col-md-4 email-sched-card">
+<div id="day-1-30th-april" class="section level4">
+<h4><svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"></path></svg> Day 1: 30th April</h4>
+<div id="section" class="section level5">
+<h5><svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"></path></svg> 10:00 - 16:30</h5>
+</div>
+<div id="optional" class="section level5">
+<h5>OPTIONAL</h5>
+</div>
+</div>
+<div id="welcome" class="section level3">
+<h3>Welcome</h3>
+<p><strong>Basics</strong></p>
+<ul>
+<li>Intro to R &amp; Rstudio</li>
+<li>R basics</li>
+<li>Data types, structures &amp; classes</li>
+<li>Indexing and Subsetting</li>
+<li>The tidyverse way</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div id="day-2-4th-may" class="section level4 col-md-4 email-sched-card">
+<h4><svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"></path></svg> Day 2: 4th May</h4>
+<div id="section-1" class="section level5">
+<h5><svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"></path></svg> 09:00 - 17:00</h5>
+<p><strong>Project Management</strong></p>
+<ul>
+<li>Data management basics</li>
+<li>Projects in Rstudio</li>
+<li>Good File Naming</li>
+<li>Paths and projects structure</li>
+</ul>
+<p><strong>Data Munging</strong></p>
+<ul>
+<li>Iteration</li>
+<li>Merging data</li>
+<li>Functions</li>
+</ul>
+</div>
+</div>
+<div id="day-3-5th-may" class="section level4 col-md-4 email-sched-card">
+<h4><svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"></path></svg> Day 3: 5th May</h4>
+<div id="section-2" class="section level5">
+<h5><svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"></path></svg> 09:00 - 17:00</h5>
+<p><strong>Metadata</strong></p>
+<ul>
+<li>Intro to metadata</li>
+<li>Creating metadata with dataspice</li>
+</ul>
+<p><strong>Analysing &amp; Presenting data</strong></p>
+<ul>
+<li>Plotting basics</li>
+<li>Literate programming</li>
+</ul>
+</div>
+</div>
+<div id="day-4-7th-may" class="section level4 col-md-4 email-sched-card">
+<h4><svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"></path></svg> Day 4: 7th May</h4>
+<div id="section-3" class="section level5">
+<h5><svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"></path></svg> 09:00 - 17:00</h5>
+<p><strong>Version Control</strong></p>
+<ul>
+<li>Version control with Git</li>
+<li>Collaboration through GitHub</li>
+</ul>
+<p><strong>Packaging Code</strong></p>
+<ul>
+<li>Writing &amp; documenting functions</li>
+<li>Capturing metadata incl. dependencies</li>
+<li>Checking &amp; Testing functions</li>
+</ul>
+<p><strong>Putting it all together: Research Compendia</strong></p>
+<ul>
+<li>Creating a research compendium</li>
+</ul>
+</div>
+</div>
+</div>
+<hr />
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<hr />
+<div id="sources-of-materials" class="section level4">
+<h4>Sources of Materials</h4>
+<p>The first few chapters of the <strong>Basics</strong> section were heavily sourced and adapted from <a href="http://swcarpentry.github.io/r-novice-gapminder/"><strong>“Software Carpentry: R for Reproducible Scientific Analysis.”</strong></a> <strong><em>Thomas Wright and Naupaka Zimmerman (eds): Version 2016.06, June 2016</em></strong> <a href="https://github.com/swcarpentry/r-novice-gapminder" class="uri">https://github.com/swcarpentry/r-novice-gapminder</a>, <a href="https://doi.org/10.5281/zenodo.57520"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.57520.svg" alt="DOI" /></a>.</p>
+<ul>
+<li>Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–2020 by <a href="https://carpentries.org/">The Carpentries</a>.</li>
+</ul>
+<p><br></p>
+<p>The <strong>Good File Naming</strong> chapter was heavily sourced from <a href="https://datacarpentry.org/rr-organization1/"><strong>“File organization for reproducible research.”</strong></a> <strong><em>Data Carpentry Reproducible Research Committee. 2016</em></strong>.</p>
+<ul>
+<li>Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–2020 by <a href="https://carpentries.org/">The Carpentries</a>. <a href="https://datacarpentry.org/rr-organization1/"></a></li>
+</ul>
+<p><br></p>
+<p>Small sections in the <strong>Data Munging</strong> section where inspired by text in the online version of <a href="https://r4ds.had.co.nz/"><strong>“R 4 Data Science”</strong></a>, <strong><em>Garrett Grolemund &amp; Hadley Wickham</em></strong>.</p>
+<ul>
+<li>Licensed under the <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0</a> License.</li>
+</ul>
+<p><br></p>
+<p><strong>Images</strong> contained throughout the materials and watermarked with <strong><em>Scriberia</em></strong> were sourced from <strong>“Illustrations from the Turing Way book dashes”</strong>, <a href="https://doi.org/10.5281/zenodo.3332808"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3332808.svg" alt="DOI" /></a>. Images were created by <a href="https://www.scriberia.co.uk/"><strong>Scriberia</strong></a> for The <a href="https://the-turing-way.netlify.app/introduction/introduction"><strong>Turing Way</strong></a> community.</p>
+<ul>
+<li>Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> by <a href="https://the-turing-way.netlify.app/introduction/introduction">The Turing Way</a>.</li>
+</ul>
+<p><br></p>
+<p><strong>Data</strong> for the the main practical parts of the course were sourced from the <a href="https://data.neonscience.org/data-products/explore"><strong>NEON Data Portal</strong></a>, provided by the <strong>National Ecological Observatory Network</strong>. 2019 Provisional data downloaded from <a href="http://data.neonscience.org" class="uri">http://data.neonscience.org</a> on 2019-08-06. Battelle, Boulder, CO, USA.</p>
+<ul>
+<li><strong>Data Products:</strong> NEON.DOM.SITE.DP1.10098.001</li>
+<li><strong>Name:</strong> Woody plant vegetation structure</li>
+<li><strong>Description:</strong> Structure measurements, including height, canopy diameter, and stem diameter, as well as mapped position of individual woody plants</li>
+<li><strong>Query information:</strong>
+<ul>
+<li><strong>Start Date-Time for Queried Data:</strong> 2018-08-15 16:00 (UTC)</li>
+<li><strong>End Date-Time for Queried Data:</strong> 2018-08-29 16:00 (UTC)</li>
+<li><strong>Domains:</strong> D01:D9</li>
+</ul></li>
+<li><a href="https://www.neonscience.org/data/about-data/data-policies"><strong>LICENSE</strong></a></li>
+<li><strong>Disclaimer</strong></li>
+</ul>
+<pre><code> THE NEON DATA PRODUCTS ARE PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE NEON DATA PRODUCTS BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE NEON DATA PRODUCTS.</code></pre>
+<p><br></p>
+<p><strong>Materials</strong> for the <strong>Research Compendium</strong> section were sourced from <strong><em>Carl Boettiger. (2018, April 17).</em></strong> <strong>cboettig/noise-phenomena: Supplement to: “From noise to knowledge: how randomness generates novel phenomena and reveals information”</strong> <a href="https://doi.org/10.5281/zenodo.1219780"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1219780.svg" alt="DOI" /></a>, accompanying the publication: Carl Boettiger <a href="https://orcid.org/0000-0002-1642-628X"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" /></a>. <em>From noise to knowledge: how randomness generates novel phenomena and reveals information</em>. Published in <em>Ecology Letters</em>, 22 May 2018 <a href="https://doi.org/10.1111/ele.13085" class="uri">https://doi.org/10.1111/ele.13085</a>.</p>
 
-
-# Background
-
-&lt;img src=&quot;https://data.neonscience.org/data-products/static/media/NSF-NEON-logo.192b6661.png&quot; width=&quot;40%&quot;&gt;
-
-The [NEON Woody plant vegetation structure dataset](https://data.neonscience.org/data-products/DP1.10098.001) contains structure measurements, including height, canopy diameter, and stem diameter, as well as mapped position of individual woody plants across the survey area.
-
-This data product contains the quality-controlled, native sampling resolution data from in-situ measurements of live and standing dead woody individuals and shrub groups, from all terrestrial NEON sites with qualifying woody vegetation. The exact measurements collected per individual depend on growth form, and these measurements are focused on enabling biomass and productivity estimation, estimation of shrub volume and biomass, and calibration / validation of multiple NEON airborne remote-sensing data products. 
-
-Our analyses focus on the **relationship between individual stem height and diameter** and how that relationship **varies across growth forms**.
-
-# Data
-
-The data were downloaded from the NEON data portal and processed into a single table using script `data-raw/individual.R`
-
-```{r, echo = FALSE}
-knitr::opts_chunk$set(message = FALSE)
-```
-
-```{r read-chunks, echo=FALSE}
-knitr::read_chunk(&quot;analysis.R&quot;)
-```
-
-## Read in data and setup analysis
-
-First we read in the data and select only the columns we are interested in, i.e `stem_diameter`, `height` and `growth_form`
-
-```{r analysis-setup}
-
-```
-
-```{r}
-summary(individual)
-```
-
-
-## Prepare data
-
-To prepare the data we exclude rows for which the value of `growth_form` was `NA` or `liana`.
-```{r analysis-filter-data}
-
-```
-
-We also convert `growth_form` to a factor and set the levels according to ascending counts of each level in the raw data.
-
-```{r analysis-set-factor-levels}
-
-```
-
-```{r, echo=FALSE}
-DT::datatable(analysis_df, caption = &quot;Table 1: Prepared analysis data&quot;)
-```
-
-## Data properties
-
-### Statistical summaries of variables
-
-```{r}
-summary(analysis_df)
-```
-
-```{r analysis-fig1-barplot, fig.cap=&quot;Figure 1: Counts of growth forms&quot;}
-
-```
-
-```{r analysis-fig2-violinplots, fig.cap=&quot;Figure 2: Distribution and statistical summaries of stem_diameter and height across growth_forms&quot;}
-
-```
-
-# Analysis
-
-## Modelling overall `stem_diameter` as a function of `height`
-
-Initially we fit a linear model of form `log(stem_diameter)` as a function of `log(height)`
-
-```{r analysis-lm-overall}
-
-```
-
-Our model is statistically significant and has modest coverage, indicated by `r.squared` of `r broom::glance(lm_overall)$r.squared`
-
-```{r analysis-lm-fig3-overall}
-
-```
-
-However, plotting our data reveals sub groups in the data. We can examine whether including `growth_form` in our analysis would improve our model fit by capturing variation explained by differing relationships across growth forms
-
-## Including an interaction with `growth_form`
-
-We fit another model, this time including an interaction term for variable `growth_form`
-```{r analysis-lm-growth}
-
-```
-
-Our model is still significant but this time explains a larger proportion of the variation (`r broom::glance(lm_growth)$r.squared`).
-
-```{r analysis-lm-fig4-growth, fig.cap=&quot;Figure 4: Log stem diameter as a function of the interaction of log height and growth form&quot;}
-
-```
-
-# Session Info
-
-```{r}
-sessionInfo()
-
-```</code></pre>
-<p>and renders to:</p>
-<iframe src="appendices/index.html" width="672" height="400px" data-external="1">
-</iframe>
-
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="analysis.r-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="gitignore.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+<a href="welcome-slides.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

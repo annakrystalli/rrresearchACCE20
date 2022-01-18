@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="individual.html#individual.r"><code>individual.R</code></a></li>
 <li><a href="geolocate.html#geolocate.r"><code>geolocate.R</code></a></li>
 <li><a href="analysis.r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
-<li><a href="index.html#index.rmd"><code>index.Rmd</code></a></li>
+<li><a href="index.rmd-example.html#index.rmd-example"><code>index.Rmd</code> example</a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
 <li><a href="mypackage-hello.html#mypackage-hello.r"><code>mypackage</code> <code>hello.R</code></a></li>
 <li><a href="mypackage-readme.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
@@ -679,25 +679,23 @@ Now clicking <strong><svg viewBox="0 0 576 512" style="height:1em;position:relat
 <p>Document, Install and restart to load our changes</p>
 <div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="packaging-functionality.html#cb623-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">&quot;y&#39;all&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-##  ------------- 
+##  ----- 
 ## Hello y&#39;all from Anna! 
-##  -------------- 
-##               \   
-##                \  
-##                 \
-##                .--.
-##               /} p \             /}
-##              `~)-) /           /` }
-##               ( / /          /`}.&#39; }
-##                / / .-&#39;&quot;&quot;-.  / &#39; }-&#39;}
-##               / (.&#39;       \/ &#39;.&#39;}_.}
-##              |            `}   .}._}
-##              |     .-=-&#39;;   } &#39; }_.}
-##              \    `.-=-;&#39;  } &#39;.}.-}
-##               &#39;.   -=-&#39;    ;,}._.}
-##                 `-,_  __.&#39;` &#39;-._}
-##               jgs   `|||
-##                    .==&#39;=,</code></pre>
+##  ------ 
+##     \   
+##      \
+##          _
+##        _/ }
+##       `&gt;&#39; \
+##       `|   \
+##        |   /&#39;-.     .-.
+##         \&#39;     &#39;;`--&#39; .&#39;
+##          \&#39;.    `&#39;-./
+##           &#39;.`-..-;`
+##             `;-..&#39;
+##             _| _|
+##             /` /` [nosig]
+## </code></pre>
 <p>Let’s commit our current files and changes.</p>
 </div>
 <div id="check-package-integrity" class="section level2">
@@ -806,7 +804,7 @@ if you want to run the tests.</p>
 <div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="packaging-functionality.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb635-2"><a href="packaging-functionality.html#cb635-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
 <span id="cb635-3"><a href="packaging-functionality.html#cb635-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## Test passed 😀</code></pre>
+<pre><code>## Test passed 🌈</code></pre>
 <p>If the test doesn’t pass it throws an error</p>
 <div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="packaging-functionality.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {</span>
 <span id="cb637-2"><a href="packaging-functionality.html#cb637-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">5</span>)</span>
@@ -824,24 +822,27 @@ if you want to run the tests.</p>
 <div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="packaging-functionality.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;hello works&quot;</span>, {</span>
 <span id="cb640-2"><a href="packaging-functionality.html#cb640-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_null</span>(<span class="fu">suppressMessages</span>(<span class="fu">hello</span>()))</span>
 <span id="cb640-3"><a href="packaging-functionality.html#cb640-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>##              ------ 
-##           Hello world from Anna! 
-##              ------ 
-##                  \   
-##                   \  
-##                    \
-##                       . .     
-##                       |\|\_   
-##                       /  ^ \  
-##                      /  _-_/° 
-##    \\\\\\\\\       /   / \    
-##   ////////////   /  \ / ||    
-##  \\\\\\\\\\\\\\ /   /\\ \\    
-## ////////////////   /  \\ \\   
-##  \\\\\\\\\\\\\/   /  / `` ``  
-##      /////////   \  /  \      
-##  ML     \\\\\\___/_/___/      
-## Test passed 🎊</code></pre>
+<pre><code>## 
+##  ------------- 
+## Hello world from Anna! 
+##  -------------- 
+##               \   
+##                \  
+##                 \
+##                .--.
+##               /} p \             /}
+##              `~)-) /           /` }
+##               ( / /          /`}.&#39; }
+##                / / .-&#39;&quot;&quot;-.  / &#39; }-&#39;}
+##               / (.&#39;       \/ &#39;.&#39;}_.}
+##              |            `}   .}._}
+##              |     .-=-&#39;;   } &#39; }_.}
+##              \    `.-=-;&#39;  } &#39;.}.-}
+##               &#39;.   -=-&#39;    ;,}._.}
+##                 `-,_  __.&#39;` &#39;-._}
+##               jgs   `|||
+##                    .==&#39;=,
+## Test passed 🥳</code></pre>
 <p>Now let’s test our package</p>
 <div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="packaging-functionality.html#cb642-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code></pre></div>
 <p>Success!</p>

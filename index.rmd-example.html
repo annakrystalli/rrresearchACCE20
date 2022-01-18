@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>The tidyverse way | Reproducible Research Data and Project Management in R</title>
+  <title>index.Rmd example | Reproducible Research Data and Project Management in R</title>
   <meta name="description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="The tidyverse way | Reproducible Research Data and Project Management in R" />
+  <meta property="og:title" content="index.Rmd example | Reproducible Research Data and Project Management in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://annakrystalli.me/rrresearchACCE20" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="annakrystalli/rrresearchACCE20" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="The tidyverse way | Reproducible Research Data and Project Management in R" />
+  <meta name="twitter:title" content="index.Rmd example | Reproducible Research Data and Project Management in R" />
   
   <meta name="twitter:description" content="This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="indexing-and-subsetting.html"/>
-<link rel="next" href="rdm-intro-view.html"/>
+<link rel="prev" href="analysis.r-1.html"/>
+<link rel="next" href="gitignore.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -216,237 +216,141 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-tidyverse-way" class="section level1">
-<h1>The tidyverse way</h1>
-<div id="intro-to-the-tidyverse" class="section level2">
-<h2>Intro to the tidyverse</h2>
-<div class="alert alert-info">
-<p>The <a href="https://www.tidyverse.org/">Tidyverse</a> is a coherent system of packages for data manipulation, exploration and visualization that share a common design philosophy.</p>
-<div id="advantages-of-the-tidyverse" class="section level3">
-<h3>Advantages of the tidyverse</h3>
-<ul>
-<li>Consistent functions.</li>
-<li>Workflow coverage.</li>
-<li>A parsimonious approach to the development of data science tools.</li>
-</ul>
-</div>
-</div>
-<p><img src="assets/tidyverse_copy.png" /><!-- --></p>
-<p><img src="https://rviews.rstudio.com/post/2017-06-09-What-is-the-tidyverse_files/tidyverse2.png" /><!-- --></p>
-<div id="tidyverse-principles" class="section level3">
-<h3>Tidyverse Principles</h3>
-<ul>
-<li><code>tibbles</code> as main data structures.</li>
-<li>Tidy data where rows are sigle observations and columns the variables observed.</li>
-<li>Piping the outputs of tidyverse functions as inputs to subsequent functions.</li>
-</ul>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="the-tidyverse-way.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tibble&quot;</span>, <span class="st">&quot;dplyr&quot;</span>))</span></code></pre></div>
-<hr />
-</div>
-</div>
-<div id="tibbles" class="section level2">
-<h2><code>tibbles</code></h2>
-<blockquote>
-<p><code>tibbles</code> are one of the unifying features of the tidyverse, and are the tidyverse version of a data.frame (I will use them interchangeably in the rest of the text).</p>
-</blockquote>
-<div id="features-2" class="section level3">
-<h3>Features</h3>
-<ul>
-<li>Better printing behaviour.</li>
-<li>Never coerces characters to factors.</li>
-<li>More robust error handling.</li>
-</ul>
-</div>
-<div id="creating-tibbles" class="section level3">
-<h3>Creating tibbles</h3>
-<div id="coercing-data.frames" class="section level4">
-<h4>Coercing data.frames</h4>
-<p>You can coerce a data.frame to a tibble</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="the-tidyverse-way.html#cb229-1" aria-hidden="true" tabindex="-1"></a>tree_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(trees)</span>
-<span id="cb229-2"><a href="the-tidyverse-way.html#cb229-2" aria-hidden="true" tabindex="-1"></a>tree_tbl</span></code></pre></div>
-<pre><code>## # A tibble: 31 × 3
-##    Girth Height Volume
-##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1   8.3     70   10.3
-##  2   8.6     65   10.3
-##  3   8.8     63   10.2
-##  4  10.5     72   16.4
-##  5  10.7     81   18.8
-##  6  10.8     83   19.7
-##  7  11       66   15.6
-##  8  11       75   18.2
-##  9  11.1     80   22.6
-## 10  11.2     75   19.9
-## # … with 21 more rows</code></pre>
-<p>As you can see, printing tibbles is much tidier and informative and designed so that you don’t accidentally overwhelm your console when you print large data.frames.</p>
-</div>
-<div id="creating-new-tibbles" class="section level4">
-<h4>Creating new tibbles</h4>
-<p>You can create a new tibble from individual vectors with <code>tibble()</code>. <code>tibble()</code> will automatically recycle inputs of length 1, and allows you to refer to variables that you just created:</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="the-tidyverse-way.html#cb231-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
-<span id="cb231-2"><a href="the-tidyverse-way.html#cb231-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, </span>
-<span id="cb231-3"><a href="the-tidyverse-way.html#cb231-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="dv">1</span>, </span>
-<span id="cb231-4"><a href="the-tidyverse-way.html#cb231-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">z =</span> x <span class="sc">^</span> <span class="dv">2</span> <span class="sc">+</span> y</span>
-<span id="cb231-5"><a href="the-tidyverse-way.html#cb231-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>## # A tibble: 5 × 3
-##       x     y     z
-##   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1     1     1     2
-## 2     2     1     5
-## 3     3     1    10
-## 4     4     1    17
-## 5     5     1    26</code></pre>
-</div>
-</div>
-</div>
-<div id="subsetting-tibbles" class="section level2">
-<h2>Subsetting tibbles</h2>
-<div id="base-r-subsetting" class="section level3">
-<h3>Base R subsetting</h3>
-<p>We can use all the tools we learnt to subset data.frames to subset tibbles.</p>
-</div>
-<div id="subsetting-using-the-tidyverse" class="section level3">
-<h3>Subsetting using the tidyverse</h3>
-<p>You can also subset <code>tibbles</code> using tidyverse functions from package <code>dplyr</code>. <code>dplyr</code> verbs are inspired by SQL vocabulary and designed to be more intuitive.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="the-tidyverse-way.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<p>The first argument of the main <code>dplyr</code> functions is a <code>tibble</code> (or data.frame)</p>
-<div id="filtering-rows-with-filter" class="section level4">
-<h4>Filtering rows with <code>filter()</code></h4>
-<p><code>filter()</code> allows us to subset observations (rows) based on their values. The first argument is the name of the data frame. The second and subsequent arguments are the expressions that filter the data frame.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="the-tidyverse-way.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(tree_tbl, Girth <span class="sc">&gt;</span> <span class="dv">14</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 10 × 3
-##    Girth Height Volume
-##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1  14.2     80   31.7
-##  2  14.5     74   36.3
-##  3  16       72   38.3
-##  4  16.3     77   42.6
-##  5  17.3     81   55.4
-##  6  17.5     82   55.7
-##  7  17.9     80   58.3
-##  8  18       80   51.5
-##  9  18       80   51  
-## 10  20.6     87   77</code></pre>
-<p><code>dplyr</code> executes the filtering operation by generating a logical vector and returns a new <code>tibble</code> of the rows that match the filtering conditions. You can therefore use any logical operators we learnt using <code>[</code>.</p>
-</div>
-<div id="slicing-rows-with-slice" class="section level4">
-<h4>Slicing rows with <code>slice()</code></h4>
-<p>Using <code>slice()</code> is similar to subsetting using element indices in that we provide element indices to select rows.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="the-tidyverse-way.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice</span>(tree_tbl, <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 3
-##   Girth Height Volume
-##   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-## 1   8.6     65   10.3</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="the-tidyverse-way.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice</span>(tree_tbl, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 3
-##   Girth Height Volume
-##   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-## 1   8.6     65   10.3
-## 2   8.8     63   10.2
-## 3  10.5     72   16.4
-## 4  10.7     81   18.8</code></pre>
-</div>
-<div id="selecting-columns-with-select" class="section level4">
-<h4>Selecting columns with <code>select()</code></h4>
-<p><code>select()</code> allows us to subset columns in tibbles using operations based on the names of the variables.</p>
-<p>In <code>dplyr</code> we use <strong>unquoted column names</strong> (ie <code>Volume</code> rather than <code>"Volume"</code>).</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="the-tidyverse-way.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(tree_tbl, Height, Volume)</span></code></pre></div>
-<pre><code>## # A tibble: 31 × 2
-##    Height Volume
-##     &lt;dbl&gt;  &lt;dbl&gt;
-##  1     70   10.3
-##  2     65   10.3
-##  3     63   10.2
-##  4     72   16.4
-##  5     81   18.8
-##  6     83   19.7
-##  7     66   15.6
-##  8     75   18.2
-##  9     80   22.6
-## 10     75   19.9
-## # … with 21 more rows</code></pre>
-<p>Behind the scenes, <code>select</code> matches any variable arguments to column names creating a vector of column indices. This is then used to subset the <code>tibble</code>. As such we can create ranges of variables using their names and <code>:</code></p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="the-tidyverse-way.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(tree_tbl, Height<span class="sc">:</span>Volume)</span></code></pre></div>
-<pre><code>## # A tibble: 31 × 2
-##    Height Volume
-##     &lt;dbl&gt;  &lt;dbl&gt;
-##  1     70   10.3
-##  2     65   10.3
-##  3     63   10.2
-##  4     72   16.4
-##  5     81   18.8
-##  6     83   19.7
-##  7     66   15.6
-##  8     75   18.2
-##  9     80   22.6
-## 10     75   19.9
-## # … with 21 more rows</code></pre>
-<p>There’s also a number of helper functions to make selections easier. For example, we can use <code>one_of()</code> to provide a character vector of column names to select.</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="the-tidyverse-way.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(tree_tbl, <span class="fu">one_of</span>(<span class="fu">c</span>(<span class="st">&quot;Height&quot;</span>, <span class="st">&quot;Volume&quot;</span>)))</span></code></pre></div>
-<pre><code>## # A tibble: 31 × 2
-##    Height Volume
-##     &lt;dbl&gt;  &lt;dbl&gt;
-##  1     70   10.3
-##  2     65   10.3
-##  3     63   10.2
-##  4     72   16.4
-##  5     81   18.8
-##  6     83   19.7
-##  7     66   15.6
-##  8     75   18.2
-##  9     80   22.6
-## 10     75   19.9
-## # … with 21 more rows</code></pre>
-<p><a href="https://tidyselect.r-lib.org/reference/select_helpers.html">Find out more about <code>dplyr</code> helper functions</a></p>
-</div>
-</div>
-</div>
-<div id="the-pipe-operator" class="section level2">
-<h2>The pipe operator <code>%&gt;%</code></h2>
-<blockquote>
-<p>Pipes are a powerful tool for clearly expressing a sequence of multiple operations.</p>
-</blockquote>
-<blockquote>
-<p>They help us write code in a way that is easier to read and understand. They also remove the need for creating intermediate objects.</p>
-</blockquote>
-<div alert="" alert-info="">
-<p>Pipes take the output of the evaluation of the preceeding code and pipe it as the first argument to the subsequent expression.</p>
-</div>
-<p>Suppose we want to get the first two rows and only columns <code>Girth</code> and <code>Volume</code>. We can chain the two operations together using the pipe.</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="the-tidyverse-way.html#cb246-1" aria-hidden="true" tabindex="-1"></a>tree_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb246-2"><a href="the-tidyverse-way.html#cb246-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Girth, Volume) <span class="sc">%&gt;%</span></span>
-<span id="cb246-3"><a href="the-tidyverse-way.html#cb246-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 2
-##   Girth Volume
-##   &lt;dbl&gt;  &lt;dbl&gt;
-## 1   8.3   10.3
-## 2   8.6   10.3</code></pre>
-<p>This form is very understandable because it focuses on intuitive verbs, not nouns. You can read this series of function compositions like it’s a set of imperative actions.</p>
-<p>As mentioned, the <strong>default behaviour</strong> of the pipe is to pipe objects through <strong>as the first argument</strong> of the next expression. However, we can <strong>pipe the object into a different argument using the <code>.</code> operator</strong>.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="the-tidyverse-way.html#cb248-1" aria-hidden="true" tabindex="-1"></a>tree_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb248-2"><a href="the-tidyverse-way.html#cb248-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(Girth <span class="sc">~</span> Height, <span class="at">data =</span> .)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = Girth ~ Height, data = .)
-## 
-## Coefficients:
-## (Intercept)       Height  
-##     -6.1884       0.2557</code></pre>
-<p><em>Note: The pipe, <code>%&gt;%</code>, comes from the <code>magrittr</code> package by Stefan Milton Bache. Packages in the tidyverse load <code>%&gt;%</code> for you automatically, so you don’t usually load <code>magrittr</code> explicitly.</em></p>
-</div>
-<div id="data-transformation-with-dplyr-cheat-sheet" class="section level2">
-<h2>Data Transformation with <code>dplyr</code> Cheat Sheet</h2>
-<p><embed src="assets/cheatsheets/data-transformation.pdf" /><!-- --></p>
+<div id="index.rmd-example" class="section level1">
+<h1><code>index.Rmd</code> example</h1>
+<p>This Rmarkdown file should contain your analysis and be saved in the root directory:</p>
+<p><strong><code>index.Rmd</code></strong></p>
+<p>My final <code>index.Rmd</code> looks like this:</p>
+<pre><code>---
+title: &quot;Analysis of NEON Woody plant vegetation structure data&quot;
+author: &quot;Anna Krystalli&quot;
+date: &quot;2021-05-05&quot;
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cosmo
+    highlight: zenburn
+---
 
-</div>
+
+# Background
+
+&lt;img src=&quot;https://data.neonscience.org/data-products/static/media/NSF-NEON-logo.192b6661.png&quot; width=&quot;40%&quot;&gt;
+
+The [NEON Woody plant vegetation structure dataset](https://data.neonscience.org/data-products/DP1.10098.001) contains structure measurements, including height, canopy diameter, and stem diameter, as well as mapped position of individual woody plants across the survey area.
+
+This data product contains the quality-controlled, native sampling resolution data from in-situ measurements of live and standing dead woody individuals and shrub groups, from all terrestrial NEON sites with qualifying woody vegetation. The exact measurements collected per individual depend on growth form, and these measurements are focused on enabling biomass and productivity estimation, estimation of shrub volume and biomass, and calibration / validation of multiple NEON airborne remote-sensing data products. 
+
+Our analyses focus on the **relationship between individual stem height and diameter** and how that relationship **varies across growth forms**.
+
+# Data
+
+The data were downloaded from the NEON data portal and processed into a single table using script `data-raw/individual.R`
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(message = FALSE)
+```
+
+```{r read-chunks, echo=FALSE}
+knitr::read_chunk(&quot;analysis.R&quot;)
+```
+
+## Read in data and setup analysis
+
+First we read in the data and select only the columns we are interested in, i.e `stem_diameter`, `height` and `growth_form`
+
+```{r analysis-setup}
+
+```
+
+```{r}
+summary(individual)
+```
+
+
+## Prepare data
+
+To prepare the data we exclude rows for which the value of `growth_form` was `NA` or `liana`.
+```{r analysis-filter-data}
+
+```
+
+We also convert `growth_form` to a factor and set the levels according to ascending counts of each level in the raw data.
+
+```{r analysis-set-factor-levels}
+
+```
+
+```{r, echo=FALSE}
+DT::datatable(analysis_df, caption = &quot;Table 1: Prepared analysis data&quot;)
+```
+
+## Data properties
+
+### Statistical summaries of variables
+
+```{r}
+summary(analysis_df)
+```
+
+```{r analysis-fig1-barplot, fig.cap=&quot;Figure 1: Counts of growth forms&quot;}
+
+```
+
+```{r analysis-fig2-violinplots, fig.cap=&quot;Figure 2: Distribution and statistical summaries of stem_diameter and height across growth_forms&quot;}
+
+```
+
+# Analysis
+
+## Modelling overall `stem_diameter` as a function of `height`
+
+Initially we fit a linear model of form `log(stem_diameter)` as a function of `log(height)`
+
+```{r analysis-lm-overall}
+
+```
+
+Our model is statistically significant and has modest coverage, indicated by `r.squared` of `r broom::glance(lm_overall)$r.squared`
+
+```{r analysis-lm-fig3-overall}
+
+```
+
+However, plotting our data reveals sub groups in the data. We can examine whether including `growth_form` in our analysis would improve our model fit by capturing variation explained by differing relationships across growth forms
+
+## Including an interaction with `growth_form`
+
+We fit another model, this time including an interaction term for variable `growth_form`
+```{r analysis-lm-growth}
+
+```
+
+Our model is still significant but this time explains a larger proportion of the variation (`r broom::glance(lm_growth)$r.squared`).
+
+```{r analysis-lm-fig4-growth, fig.cap=&quot;Figure 4: Log stem diameter as a function of the interaction of log height and growth form&quot;}
+
+```
+
+# Session Info
+
+```{r}
+sessionInfo()
+
+```</code></pre>
+<p>and renders to:</p>
+<iframe src="appendices/index.html" width="672" height="400px" data-external="1">
+</iframe>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="indexing-and-subsetting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="rdm-intro-view.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="analysis.r-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="gitignore.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

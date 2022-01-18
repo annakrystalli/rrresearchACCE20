@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="individual.html#individual.r"><code>individual.R</code></a></li>
 <li><a href="geolocate.html#geolocate.r"><code>geolocate.R</code></a></li>
 <li><a href="analysis.r-1.html#analysis.r-1"><code>analysis.R</code></a></li>
-<li><a href="index.html#index.rmd"><code>index.Rmd</code></a></li>
+<li><a href="index.rmd-example.html#index.rmd-example"><code>index.Rmd</code> example</a></li>
 <li><a href="gitignore.html#gitignore"><code>.gitignore</code></a></li>
 <li><a href="mypackage-hello.html#mypackage-hello.r"><code>mypackage</code> <code>hello.R</code></a></li>
 <li><a href="mypackage-readme.html#mypackage-readme.rmd"><code>mypackage</code> <code>README.Rmd</code></a></li>
@@ -1065,7 +1065,7 @@ abstract: |
   It consists of two paragraphs.
 
 journal: &quot;An awesome journal&quot;
-date: &quot;2021-12-28&quot;
+date: &quot;2022-01-18&quot;
 bibliography: mybibfile.bib
 #linenumbers: true
 #numbersections: true
@@ -1148,27 +1148,27 @@ output: rticles::elsevier_article
 <pre><code>output: rticles::elsevier_article</code></pre>
 <p><br></p>
 <p>At this point, your YAML header should look like this:</p>
-<div class="sourceCode" id="cb717"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb717-1"><a href="creating-a-research-compendium-with-rrtools.html#cb717-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb717-2"><a href="creating-a-research-compendium-with-rrtools.html#cb717-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;From noise to knowledge: how randomness generates novel phenomena and reveals information&quot;</span></span>
-<span id="cb717-3"><a href="creating-a-research-compendium-with-rrtools.html#cb717-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span></span>
-<span id="cb717-4"><a href="creating-a-research-compendium-with-rrtools.html#cb717-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Carl Boettiger&quot;</span></span>
-<span id="cb717-5"><a href="creating-a-research-compendium-with-rrtools.html#cb717-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">affiliation</span><span class="kw">:</span><span class="at"> a</span></span>
-<span id="cb717-6"><a href="creating-a-research-compendium-with-rrtools.html#cb717-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">email</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;cboettig@berkeley.edu&quot;</span></span>
-<span id="cb717-7"><a href="creating-a-research-compendium-with-rrtools.html#cb717-7" aria-hidden="true" tabindex="-1"></a><span class="fu">address</span><span class="kw">:</span></span>
-<span id="cb717-8"><a href="creating-a-research-compendium-with-rrtools.html#cb717-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">code</span><span class="kw">:</span><span class="at"> a</span></span>
-<span id="cb717-9"><a href="creating-a-research-compendium-with-rrtools.html#cb717-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">address</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Dept of Environmental Science, Policy, and Management, University of California Berkeley, Berkeley CA 94720-3114, USA&quot;</span></span>
-<span id="cb717-10"><a href="creating-a-research-compendium-with-rrtools.html#cb717-10" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> refs.bib</span></span>
-<span id="cb717-11"><a href="creating-a-research-compendium-with-rrtools.html#cb717-11" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span><span class="kw">:</span><span class="at">  3p</span><span class="co"> # review = doublespace, 3p = singlespace, 5p = two-column</span></span>
-<span id="cb717-12"><a href="creating-a-research-compendium-with-rrtools.html#cb717-12" aria-hidden="true" tabindex="-1"></a><span class="fu">preamble</span><span class="kw">: </span><span class="ch">|</span></span>
+<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="creating-a-research-compendium-with-rrtools.html#cb717-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb717-2"><a href="creating-a-research-compendium-with-rrtools.html#cb717-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;From noise to knowledge: how randomness generates novel phenomena and reveals information&quot;</span></span>
+<span id="cb717-3"><a href="creating-a-research-compendium-with-rrtools.html#cb717-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span></span>
+<span id="cb717-4"><a href="creating-a-research-compendium-with-rrtools.html#cb717-4" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> name<span class="sc">:</span> <span class="st">&quot;Carl Boettiger&quot;</span></span>
+<span id="cb717-5"><a href="creating-a-research-compendium-with-rrtools.html#cb717-5" aria-hidden="true" tabindex="-1"></a>    affiliation<span class="sc">:</span> a</span>
+<span id="cb717-6"><a href="creating-a-research-compendium-with-rrtools.html#cb717-6" aria-hidden="true" tabindex="-1"></a>    email<span class="sc">:</span> <span class="st">&quot;cboettig@berkeley.edu&quot;</span></span>
+<span id="cb717-7"><a href="creating-a-research-compendium-with-rrtools.html#cb717-7" aria-hidden="true" tabindex="-1"></a>address<span class="sc">:</span></span>
+<span id="cb717-8"><a href="creating-a-research-compendium-with-rrtools.html#cb717-8" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> code<span class="sc">:</span> a</span>
+<span id="cb717-9"><a href="creating-a-research-compendium-with-rrtools.html#cb717-9" aria-hidden="true" tabindex="-1"></a>    address<span class="sc">:</span> <span class="st">&quot;Dept of Environmental Science, Policy, and Management, University of California Berkeley, Berkeley CA 94720-3114, USA&quot;</span></span>
+<span id="cb717-10"><a href="creating-a-research-compendium-with-rrtools.html#cb717-10" aria-hidden="true" tabindex="-1"></a>bibliography<span class="sc">:</span> refs.bib</span>
+<span id="cb717-11"><a href="creating-a-research-compendium-with-rrtools.html#cb717-11" aria-hidden="true" tabindex="-1"></a>layout<span class="sc">:</span>  3p <span class="co"># review = doublespace, 3p = singlespace, 5p = two-column</span></span>
+<span id="cb717-12"><a href="creating-a-research-compendium-with-rrtools.html#cb717-12" aria-hidden="true" tabindex="-1"></a>preamble<span class="sc">:</span> <span class="er">|</span></span>
 <span id="cb717-13"><a href="creating-a-research-compendium-with-rrtools.html#cb717-13" aria-hidden="true" tabindex="-1"></a>  \usepackage[nomarkers]{endfloat}</span>
 <span id="cb717-14"><a href="creating-a-research-compendium-with-rrtools.html#cb717-14" aria-hidden="true" tabindex="-1"></a>  \linenumbers</span>
 <span id="cb717-15"><a href="creating-a-research-compendium-with-rrtools.html#cb717-15" aria-hidden="true" tabindex="-1"></a>  \usepackage{setspace}</span>
 <span id="cb717-16"><a href="creating-a-research-compendium-with-rrtools.html#cb717-16" aria-hidden="true" tabindex="-1"></a>  \doublespacing</span>
-<span id="cb717-17"><a href="creating-a-research-compendium-with-rrtools.html#cb717-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abstract</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb717-17"><a href="creating-a-research-compendium-with-rrtools.html#cb717-17" aria-hidden="true" tabindex="-1"></a>abstract<span class="sc">:</span> <span class="er">|</span></span>
 <span id="cb717-18"><a href="creating-a-research-compendium-with-rrtools.html#cb717-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb717-19"><a href="creating-a-research-compendium-with-rrtools.html#cb717-19" aria-hidden="true" tabindex="-1"></a>  Noise, as the term itself suggests, is most often seen a nuisance to ecological insight, a inconvenient reality that must be acknowledged, a haystack that must be stripped away to reveal the processes of interest underneath. Yet despite this well-earned reputation, noise is often interesting in its own right: noise can induce novel phenomena that could not be understood from some underlying determinstic model alone.  Nor is all noise the same, and close examination of differences in frequency, color or magnitude can reveal insights that would otherwise be inaccessible.  Yet with each aspect of stochasticity leading to some new or unexpected behavior, the time is right to move beyond the familiar refrain of &quot;everything is important&quot; [@Bjornstad2001].  Stochastic phenomena can suggest new ways of inferring process from pattern, and thus spark more dialog between theory and empirical perspectives that best advances the field as a whole. I highlight a few compelling examples, while observing that the study of stochastic phenomena are only beginning to make this translation into empirical inference.  There are rich opportunities at this interface in the years ahead.  </span>
-<span id="cb717-20"><a href="creating-a-research-compendium-with-rrtools.html#cb717-20" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> rticles::elsevier_article</span></span>
-<span id="cb717-21"><a href="creating-a-research-compendium-with-rrtools.html#cb717-21" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<span id="cb717-19"><a href="creating-a-research-compendium-with-rrtools.html#cb717-19" aria-hidden="true" tabindex="-1"></a>  Noise, as the term itself suggests, is most often seen a nuisance to ecological insight, a inconvenient reality that must be acknowledged, a haystack that must be stripped away to reveal the processes of interest underneath. Yet despite this well<span class="sc">-</span>earned reputation, noise is often interesting <span class="cf">in</span> its own right<span class="sc">:</span> noise can induce novel phenomena that could not be understood from some underlying determinstic model alone.  Nor is all noise the same, and close examination of differences <span class="cf">in</span> frequency, color or magnitude can reveal insights that would otherwise be inaccessible.  Yet with each aspect of stochasticity leading to some new or unexpected behavior, the time is right to move beyond the familiar refrain of <span class="st">&quot;everything is important&quot;</span> [<span class="sc">@</span>Bjornstad2001].  Stochastic phenomena can suggest new ways of inferring process from pattern, and thus spark more dialog between theory and empirical perspectives that best advances the field as a whole. I highlight a few compelling examples, <span class="cf">while</span> observing that the study of stochastic phenomena are only beginning to make this translation into empirical inference.  There are rich opportunities at this interface <span class="cf">in</span> the years ahead.  </span>
+<span id="cb717-20"><a href="creating-a-research-compendium-with-rrtools.html#cb717-20" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> rticles<span class="sc">::</span>elsevier_article</span>
+<span id="cb717-21"><a href="creating-a-research-compendium-with-rrtools.html#cb717-21" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <hr />
 </div>
 </div>
